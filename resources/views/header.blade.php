@@ -2,14 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Creating an Accordion with HTML, CSS &amp; jQuery (Demo) | Inspirational Pixels</title>
+    <title>Dynamic Web Generator</title>
 
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Abeezee:400|Open+Sans:400,600,700|Source+Sans+Pro:400,600">
     <link rel="stylesheet" type="text/css" href="/assets/css/defaults.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/demo.css">
@@ -26,7 +25,7 @@
     <header class="site-header-wrap">
         <div class="site-header">
             <!-- <a class="site-logo" href="#">Dynamic Web Generator </a> -->
-            <a target="_blank" href="{{ url('/') }}"><span class="fa-eye"></span>Run</a>
+            <a class="run" target="_blank" href="{{ url('/') }}"><span class="glyphicon glyphicon-new-window"></span>Run</a>
             <!-- <nav class="site-nav">
                 <a href="#"><span class="fa-reply"></span>Back To Tutorial</a>
                 <a href="/"><span class="fa-eye"></span>Dashboard</a>

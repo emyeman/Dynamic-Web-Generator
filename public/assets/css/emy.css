@@ -55,3 +55,14 @@ li{
     text-shadow: 0px 1px 0px #1a1a1a;
     color: #9A94ff;
 }
+.container {
+    padding-right: 0px; 
+    padding-left: 0px; 
+    margin-right: auto;
+    margin-left: auto; 
+}
+
+.run{
+    /* margin-left: 100px */
+    
+}
