@@ -72,13 +72,10 @@ trait ResetsPasswords
     public function sendResetLinkEmail(Request $request)
     {
         $this->validate($request, ['email' => 'required|email']);
-
         $broker = $this->getBroker();
-
         $response = Password::broker($broker)->sendResetLink(
             $request->only('email'), $this->resetEmailBuilder()
         );
-
         switch ($response) {
             case Password::RESET_LINK_SENT:
                 return $this->getSendResetLinkEmailSuccessResponse($response);

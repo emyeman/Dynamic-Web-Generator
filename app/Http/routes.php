@@ -12,31 +12,34 @@
 */
 
 Route::auth();
-
 // Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 
 
+// The user is logged in...
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/dashboard', function () {
+	Route::get('/dashboard', function () {
     return view('dashboard');
-});
+	});
+    
+    Route::resource('/branding','BrandingController');    
+	Route::resource('/navbar','NavbarController');
+	Route::resource('/page','PagesController');
+	Route::resource('/crusal','CrusalController');
+	Route::resource('/news','NewsController');
+	Route::resource('/stylecontainer','StyleContainerController');
+	Route::resource('/category','CategoryController');
+	Route::resource('/subcategory','SubCategoryController');
+	Route::resource('/product','ProductController');
+	Route::resource('/promotion','PromotionController');
+	Route::resource('/contactus','ContactUsController');
+	Route::resource('/footer','FooterController');
+	Route::resource('/numberview','NumberViewController');
+	Route::resource('/domain','DomainController');
 
+     });
 
-Route::resource('/branding','BrandingController');
-Route::resource('/navbar','NavbarController');
-Route::resource('/page','PagesController');
-Route::resource('/crusal','CrusalController');
-Route::resource('/news','NewsController');
-Route::resource('/stylecontainer','StyleContainerController');
-Route::resource('/category','CategoryController');
-Route::resource('/subcategory','SubCategoryController');
-Route::resource('/product','ProductController');
-Route::resource('/promotion','PromotionController');
-Route::resource('/contactus','ContactUsController');
-Route::resource('/footer','FooterController');
-Route::resource('/numberview','NumberViewController');
-Route::resource('/domain','DomainController');
 
 // **********************************************************************************
 
