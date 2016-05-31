@@ -17,7 +17,7 @@
         </div>
     @endif
       <br><br>
-      {{Form::model($row,['route'=>['promotion.update',$row->id],'method'=>'put']) }}
+      {{Form::model($row,['route'=>['promotion.update',$row->id],'method'=>'put' , 'files'=>true]) }}
         <div class='form-group has-warning'>
             <label class='col-md-2'>Title</label>
             <div class='col-md-10 input-group'>
@@ -26,6 +26,7 @@
                 <!-- <input placeholder='title...' class='form-control' name='title' type='text'/> -->
             </div>
         </div>  
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images{{$row->image}}"></div>
         <div class='form-group has-warning'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-10 input-group'>

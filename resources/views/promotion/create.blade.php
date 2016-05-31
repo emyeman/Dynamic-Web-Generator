@@ -7,6 +7,9 @@
 
 <div class="col-sm-9">
       <h2>Add New Promotion</h2>
+      @if (isset($path_parts))
+        <?php var_dump($path_parts); ?>
+      @endif
       @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -18,7 +21,7 @@
     @endif
 
       <br><br>
-      {!!Form::open(['route'=>'promotion.store','method'=>'post']) !!}
+      {!!Form::open(['route'=>'promotion.store','method'=>'post','files'=>true]) !!}
         <div class='form-group has-warning'>
             <label class='col-md-2'>Title Promotion</label>
             <div class='col-md-10 input-group'>
@@ -42,13 +45,13 @@
         <div class='form-group has-warning'>
             <label class='col-md-2'>Start Date</label>
             <div class='col-md-10 input-group'>
-                <input type='date' name='start_date'>
+                <input type='date' name='start_date' value="<?= date('Y-m-d');?>">
             </div>
         </div> 
         <div class='form-group has-warning'>
             <label class='col-md-2'>End Date</label>
             <div class='col-md-10 input-group'>
-                <input type='date' name='end_date'>
+                <input type='date' name='end_date' value="<?= date('Y-m-d');?>">
             </div>
         </div>   
         <span class='col-md-2'></span>

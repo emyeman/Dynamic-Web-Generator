@@ -28,29 +28,34 @@
                     <img class="img-responsive" width="500" height="30" src="/assets/images/Promotion.jpg" alt="">
                 </a>
             </div> -->
-            <div class='col-lg-offset-10 col-ms-1'>
+            <div class='col-lg-offset-11 col-ms-1'>
                 <a href='/promotion/create'><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         
-            <div class="col-lg-offset-1 col-lg-10">
+            <div >
                 <!-- *************************** -->
                 <div id="table-wrapper">
                   <div id="table-scroll">
-                    <table class='table table-hover'>
+                    <table class='table table-hover' style="table-layout: fixed;">
                         <thead>
                             <tr>
-                                <th width='15%'><span class="text">title</span></th>
-                                <th width='40%'><span class="text">description</span></th>
+                                <th width='15%'></th>
+                                <th width='25%'><span class="text">title</span></th>
+                                <th width='30%'><span class="text">description</span></th>
                                 <th width='15%'><span class="text">start date</span></th>
                                 <th width='15%'><span class="text">end date</span></th>
-                                <th width='15%'></th>
+                                <th width='5%'></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($rows as $row)
                                 <tr> 
-                                    <td><a href='/promotion/{{$row->id}}/edit'>{{$row->title}}<a/></td> 
-                                    <td>{{$row->description}}</td>
+                                    <td>
+                                        <a href='/promotion/{{$row->id}}/edit'>
+                                            <img src="/assets/images{{$row->image}}" width='100px' height='100px'></td>
+                                        </a>
+                                    <td class='wrap'><a href='/promotion/{{$row->id}}/edit'>{{$row->title}}<a/></td> 
+                                    <td class='wrap'>{{substr($row->description,0,100)}}</td>
                                     <td>{{$row->start_date}}</td>
                                     <td>{{$row->end_date}}</td> 
                                     <td><span class="glyphicon glyphicon-remove delete" id="{{$row->id}}"></span></td>
@@ -96,13 +101,10 @@
                 type: "DELETE",
                 url: '/promotion/'+ id, //resource
                 data:   { _token :token },
-                success: function(affectedRows) {
-                    // if (affectedRows) 
-                        affected_row.parent().parent().remove();
-                    console.log(affectedRows);
+                success: function(affectedRows) { 
+                    affected_row.parent().parent().remove();
                 },
                 error: function (data) {
-                    alert(data);
                     console.log(data);
                 }
             });
