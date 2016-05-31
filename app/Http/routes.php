@@ -17,14 +17,14 @@ Route::auth();
 Route::get('/', 'HomeController@index');
 
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-
+// The user is logged in...
 Route::group(['middleware' => 'auth'], function () {
 
-	Route::resource('/branding','BrandingController');
+	Route::get('/dashboard', function () {
+    return view('dashboard');
+	});
+    
+    Route::resource('/branding','BrandingController');    
 	Route::resource('/navbar','NavbarController');
 	Route::resource('/page','PagesController');
 	Route::resource('/crusal','CrusalController');
@@ -38,7 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/footer','FooterController');
 	Route::resource('/numberview','NumberViewController');
 	Route::resource('/domain','DomainController');
-});
+
+     });
+
 
 // **********************************************************************************
 
