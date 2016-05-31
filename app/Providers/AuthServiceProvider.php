@@ -26,6 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        //
+        $gate->define('access-dashboard', function ($user, $element) {
+            return $user->id == $element->site_id;
+        });
     }
 }
