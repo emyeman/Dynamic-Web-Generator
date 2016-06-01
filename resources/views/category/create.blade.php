@@ -7,8 +7,17 @@
 
 <div class="col-sm-9">
       <h2>Add New Category</h2>
+      @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
       <br><br>
-    {!!Form::open(['route'=>'category.store','method'=>'post']) !!}
+    {!!Form::open(['route'=>'category.store','files'=>true,'method'=>'post']) !!}
       <div class='form-group has-warning'>
             <label class='col-md-2'>Title Category</label>
             <div class='col-md-10 input-group'>
@@ -27,7 +36,7 @@
             <label class='col-md-2'>Description</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <input placeholder='PlZ,enter description' class='form-control' name='description' type='text' />
+                <textarea placeholder='PlZ,enter description' class='form-control' name='description'></textarea> 
             </div>
         </div>      
         <span class='col-md-2'></span>
