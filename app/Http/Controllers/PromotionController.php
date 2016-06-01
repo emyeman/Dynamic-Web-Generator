@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+use App\Exceptions\Handler;
 
 class PromotionController extends Controller
 {
@@ -22,10 +23,17 @@ class PromotionController extends Controller
         return '/'.$doman_name.'/promotions/'.time().'.'.$extension; //path of image inside the storage dir & rename image
     }
 
-	public function index(Request $request){
+	public function index($type,Request $request){
+        $type=trim($type);
+        if( !($type == '1' || $type == '0')) //prevent sending wrong type, only 1 or 0 are acceptable
+            abort(500);
+
         $site_id=Auth::user()->id; // site_id == user_id , becuase of the 1:1 relationship
-        $rows=NewsPromotion::where('site_id', $site_id)->get();
-		return  view ('promotion.index',['rows'=>$rows]);
+        $rows=NewsPromotion::where('site_id', $site_id)
+                            ->where('type',$type)
+                            ->get();
+        return  view ('promotion.index',['rows'=>$rows,'type'=>$type]);
+
      }
 
      public function show($id){
@@ -33,9 +41,12 @@ class PromotionController extends Controller
         return  view ('promotion.show');
      }
 
-     public function create(){
+     public function create($type){
+        $type=trim($type);
+        if( !($type == '1' || $type == '0')) //prevent sending wrong type, only 1 or 0 are acceptable
+            abort(500);
 
-        return  view ('promotion.create');
+        return  view ('promotion.create',['type'=>$type]);
      }
 
      public function store(Request $request)
@@ -55,14 +66,14 @@ class PromotionController extends Controller
         $new_row->image=$file_name;
         $new_row->start_date=$request->input('start_date');
         $new_row->end_date=$request->input('end_date');
-        $new_row->type=true;
+        $new_row->type=$request->input('type');
         $new_row->site_id=$request->user()->id;
 		$is_saved=$new_row->save();
         if($is_saved)
         {
             //upload image
             Storage::disk('local')->put($file_name, File::get($image));
-            return redirect()->action('PromotionController@create');
+            return redirect()->action('PromotionController@create',[$request->input('type')]);
         }
         else
         {
@@ -74,7 +85,15 @@ class PromotionController extends Controller
 
 
      public function edit($id,Request $request){
-        $row=NewsPromotion::find($id);
+        try
+        {
+            $row=NewsPromotion::findOrFail($id);
+        }
+        catch(Exception $e)
+        {
+            throw new ModelNotFoundException($e->getMassege());
+            
+        }
         $user=Auth::user();
         if ($user->cannot('access-dashboard', $row)) {
             abort(403);
@@ -84,7 +103,11 @@ class PromotionController extends Controller
 
 
      public function update($id,Request $request){
-        $row=NewsPromotion::find($id);
+        try
+            {$row=NewsPromotion::findOrFail($id);}
+        catch(Exception $e)
+            {throw new ModelNotFoundException($e->getMassege());}
+
         $user=Auth::user();
         if ($user->cannot('access-dashboard', $row)) {
             abort(403);
@@ -114,14 +137,17 @@ class PromotionController extends Controller
             unlink(public_path('assets/images/').$old_imag_name); 
             Storage::disk('local')->put($file_name, File::get($image));
         }
-		return  redirect ('promotion');
+		return redirect()->route('promotion.index',['type'=>trim($request->input('type'))]);
      }
 
 
 
      public function destroy($id)
      {
-        $row=NewsPromotion::find($id);
+        try
+            {$row=NewsPromotion::findOrFail($id);}
+        catch(Exception $e)
+            {throw new ModelNotFoundException($e->getMassege());}
         $image_path=$row->image;
         $user=Auth::user();
         if ($user->cannot('access-dashboard', $row)) {

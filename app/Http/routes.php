@@ -25,6 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 
 
+	Route::get('/promotion/{t}', 'PromotionController@index')->name('promotion.index');
+	Route::get('/promotion/create/{t}', 'PromotionController@create')->name('promotion.create');
+	Route::resource('/promotion','PromotionController',['except' => ['create', 'index']]);
+
 	Route::get('/service/delete/{service}','ServiceController@delete');
 	Route::get('/service/edit/{service}','ServiceController@edit');
 	Route::patch('/service/update/{service}','ServiceController@update');
@@ -52,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 	if (Request::ajax()){
 		Route::get('/product/{id}','ProductController@ajaxcreate');
 	}
+	
 });
 // **********************************************************************************
 

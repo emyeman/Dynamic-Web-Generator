@@ -6,7 +6,13 @@
 @include('../header')
 
 <div class="col-sm-9">
-      <h2>Add New Promotion</h2>
+    <h2>
+        @if($type==1)
+            Add New Promotion
+        @else
+            Add New News
+        @endif
+    </h2>
       @if (isset($path_parts))
         <?php var_dump($path_parts); ?>
       @endif
@@ -29,6 +35,7 @@
                 <input placeholder='title...' class='form-control' name='title' type='text'/>
             </div>
         </div>  
+        <input type='hidden' value="{{$type}}" name='type'>
         <div class='form-group has-warning'>
             <label class='col-md-2'>Promotion Image</label>
             <div class='col-md-10 input-group'>
