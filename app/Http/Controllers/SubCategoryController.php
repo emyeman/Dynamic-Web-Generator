@@ -18,9 +18,9 @@ class SubCategoryController extends Controller
 	public function index(){
         if (Auth::user()){
             //select all categories have category_id==NULL
-            $categories = DB::table('categories')->whereNull('category_id')->get();
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
               //select all categories have category_id
-            $subcategories = DB::table('categories')->whereNotNull('category_id')->get();
+            $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             // for make compare for delete subcategory or not
             $products = DB::table('products')->get();
 

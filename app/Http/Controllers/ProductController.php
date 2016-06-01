@@ -21,13 +21,25 @@ class ProductController extends Controller
    
 	public function index(){
         if (Auth::user()){
+
             //select all categories 
-            $categories = DB::table('categories')->get();
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+
               //select all subcategories have category_id
-            $subcategories = DB::table('categories')->whereNotNull('category_id')->get();
+             $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
 
             //select all products 
-            $products = DB::table('products')->get();
+            $allproducts = DB::table('products')->get();
+            // for select only product of this only site
+            $products = array();
+            foreach ($subcategories as $subcategory) {
+              foreach ($allproducts as $product) {
+                  if ($subcategory->id ==$product->category_id) {
+                      array_push($products, $product);
+                  } 
+              }
+            }
+       
 
             return  view ('product.index',compact('categories','subcategories','products'));
         }else{

@@ -18,7 +18,9 @@ class CategoryController extends Controller
     
 	public function index(){
         if (Auth::user()){
-            $categories=Category::All();
+            // $categories=Category::All();
+            $categories=DB::table('categories')->where('site_id',Auth::user()->id)->get();
+
             // return json_encode($categories);
             return  view ('category.index',compact('categories'));
        } else{
