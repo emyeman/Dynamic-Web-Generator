@@ -117,17 +117,14 @@ class CategoryController extends Controller
         if (Auth::user()){
             $category=Category::find($id);
             // for use redirect
-            $category->delete();
-            return  redirect ('/category');
+            // $category->delete();
+            // return  redirect ('/category');
             // return  view ('category.index');
             // ****************************************************
             // // for use ajax for remove
 
-            // // $category->delete();
-
-            // // return true;
-            // $affectedategories =$category->delete();
-            // return json_encode( $affectedategories );
+            $del_categories =$category->delete();
+            return json_encode( $del_categories );
         } else{
             return  redirect ('/login');   
          } 

@@ -125,9 +125,14 @@ class SubCategoryController extends Controller
      public function destroy($id){
         if (Auth::user()){
             $subcategory=Category::find($id);
-            $subcategory->delete();
-            return  redirect ('/subcategory');
+            // $subcategory->delete();
+            // return  redirect ('/subcategory');
             // return  view ('subcategory.index');
+            // ****************************************************
+            // // for use ajax for remove
+
+            $del_subcategories =$subcategory->delete();
+            return json_encode( $del_subcategories );
         } else{
             return  redirect ('/login');   
         }

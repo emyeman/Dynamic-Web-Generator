@@ -27,7 +27,7 @@
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
                 <select class='form-control'id='category_id' name='category_id' >
-                    <!-- <option >PLZ,Select Category</option> -->
+                    <option value="">PLZ,Select Category</option>
                     @foreach ($subcategories as $subcategory) 
                         @if(Auth::user()->id == $subcategory->site_id)
                             @if($subcategory->category_id == NULL)

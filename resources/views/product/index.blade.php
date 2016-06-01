@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <a href="#">
-                                <img class="img-responsive" width="500" height="30" src="/assets/images/{{$product->image}}" alt="">
+                                <img width="400" height="30" src="/assets/images/{{$product->image}}"/>
                             </a>
                         </div>
                         <div class="col-md-7">
@@ -46,16 +46,19 @@
                             @endforeach
             
                             <label >Title Product:</label>{{$product->name}}<br/>
-                            <label >Description:</label>{{$product->description}}</h3>
+                            <label >Description:</label>{{substr($product->description,0,100)}}</h3>
+                            <!-- <label >Description:</label>{{$product->description}}</h3> -->
                              <h4><label >Publish At:</label>{{$product->created_at}}</h4>
                             <a class="btn btn-primary" href="/product/{{$product->id}}/edit" >Edit Product <span class="glyphicon glyphicon-edit"></span></a>
-
-                            <a class="btn btn-danger" href="/product/destroy/{{$product->id}}">Remove Product <span class="glyphicon glyphicon-remove"></span></a>
-                        
+                            <!-- <a class="btn btn-danger" href="/product/destroy/{{$product->id}}">Remove Product <span class="glyphicon glyphicon-remove"></span></a> -->
+                             
+                                <!-- use ajax for remove -->
+                            <a id="{{$product->id}}" class="btn btn-danger delete">Remove Product<span class="glyphicon glyphicon-remove"></span> </a>
+                           <hr/>
                         </div>
                     </div>
                     <!-- /.row -->
-                    <hr/>
+                    <!-- <hr/> -->
              @endforeach
          @endif     
 </div><!--end leftsideof from-->
@@ -66,30 +69,39 @@
 <div id='getrequestdata'></div>
   <br/>
  </div>
- <meta name="_token" id='token' content="{!! csrf_token() !!}" />
+
+<meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
-<script type="text/javascript" src='/assets/js/jquery-1.12.0.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(function(){
         
-    console.log('hiiiiiii');
-        $('.getrequest').click(function() {
-            // alert($(this).text());
-            
-            category_id=$(this).attr('id');
-           // console.log(id);
-
-            $.get('/product/'+category_id,function(data){
-                console.log(data);
-                $('#getrequestdata').append(data);
+        $('.delete').on('click',function(event){
+            event.preventDefault();
+            //Declaration
+            var token = $('#token').attr('content');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                }
             });
-        });   
-
+            del_product=$(this);
+            id=$(this).attr('id');
+            $.ajax({
+                type: "DELETE",
+                url: '/category/'+ id, //resource
+                data:   { _token :token },
+                success: function(del_products) { 
+                    del_product.parent().parent().remove();
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        });
 
     });
 </script>
-
 @endsection
 
     

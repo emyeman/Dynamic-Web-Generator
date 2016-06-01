@@ -24,12 +24,13 @@
                     <div class="row">
                         <div class="col-md-5">
                             <a href="#">
-                                <img class="img-responsive" width="500" height="30" src="/assets/images/{{$category->image}}" alt="">
+                                <img width="400" height="30" src="/assets/images/{{$category->image}}" />
                             </a>
                         </div>
                         <div class="col-md-7">
                             <h3><label >Title Category:</label>{{$category->name}}<br/>
-                            <label >Description:</label>{{$category->description}}</h3>
+                            <label >Description:</label>{{substr($category->description,0,100)}}</h3>
+                            <!-- <label >Description:</label>{{$category->description}}</h3> -->
                              <h4><label >Publish At:</label>{{$category->created_at}}</h4>
                             <a class="btn btn-primary" href="/category/{{$category->id}}/edit" >Edit Category  <span class="glyphicon glyphicon-edit"></span></a>
                             <?php $flage_relation=0 ?>
@@ -43,15 +44,16 @@
                                 <span class="btn btn-danger disabled" > Remove Category  <span class="glyphicon glyphicon-remove disabled"></span></span>
                             @endif
                             @if($flage_relation==0)
-                                <a  class="btn btn-danger" href="/category/destroy/{{$category->id}}">Remove Category <span class="glyphicon glyphicon-remove"></span></a>
+                                <!-- <a  class="btn btn-danger" href="/category/destroy/{{$category->id}}">Remove Category <span class="glyphicon glyphicon-remove"></span></a> -->
 
                                 <!-- use ajax for remove -->
-                                <!-- <a id="{{$category->id}}" class="btn btn-danger remove">Remove Category <span class="glyphicon glyphicon-remove"></span></a> -->
+                                <a id="{{$category->id}}" class="btn btn-danger delete">Remove Category <span class="glyphicon glyphicon-remove"></span></a>
                             @endif
+                            <hr/>
                         </div>
                     </div>
                     <!-- /.row -->
-                    <hr/>
+                     <!-- <hr/> -->
                 @endif
             @endif
         @endforeach
@@ -64,46 +66,18 @@
 
 
  </div>
-<!-- <meta name="_token" id='token' content="{!! csrf_token() !!}" />
+<meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
 <script type="text/javascript" src='/assets/js/jquery-1.12.0.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<meta name="_token" id='token' content="{!! csrf_token() !!}" />
+<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
         
-    console.log('hiiiiiii');
-    draw_table();
-    //display all data in table in div in browser
-    function draw_table() {
-        event.preventDefault();
-            console.log("show");
-            //Declaration
-            // var token = $('#token').attr('content');
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-            //     }
-            // });
-        $.ajax({
-            url: '/category',
-            type: 'GET',
-            dataType: 'html',
-            // data:   { _token :token },
-            success:function(response)
-            {
-                console.log('okkkkkkkkk');
-                console.log(response);
-            },
-            error:function() {
-                console.log('error: onn responser');
-            }
-        
-        });     
-    }
-
-        $('.remove').on('click',function(event){
+        $('.delete').on('click',function(event){
             event.preventDefault();
-            console.log("remove");
             //Declaration
             var token = $('#token').attr('content');
             $.ajaxSetup({
@@ -111,35 +85,24 @@
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
-            console.log($(this));
+            del_category=$(this);
             id=$(this).attr('id');
-            console.log(id);
-             $.ajax({
-                // type: "POST",
+            $.ajax({
                 type: "DELETE",
-                url:'/category/'+ id, //resource
+                url: '/category/'+ id, //resource
                 data:   { _token :token },
-                // dataType: 'json',
-                success: function(response) {
-                    console.log(response);
-                    $(this).parent().parent().remove();
-                    console.log('sucessful');
-                    draw_table();
+                success: function(del_categories) { 
+                    del_category.parent().parent().remove();
                 },
-                error: function (response) {
-                    console.log(response);
-                    console.log("fail remove category");
+                error: function (data) {
+                    console.log(data);
                 }
             });
-           
         });
-        // deleteRow($('.delete').attr('id'));
-        // alert();
 
     });
 </script>
- -->
+
 @endsection
 
     

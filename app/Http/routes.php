@@ -27,32 +27,29 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/promotion/create/{t}', 'PromotionController@create')->name('promotion.create');
 	Route::resource('/promotion','PromotionController',['except' => ['create', 'index']]);
 
+	Route::resource('/branding','BrandingController');    
+	Route::resource('/navbar','NavbarController');
+	Route::resource('/page','PagesController');
+	Route::resource('/crusal','CrusalController');
+	Route::resource('/news','NewsController');
+	Route::resource('/stylecontainer','StyleContainerController');
+	Route::resource('/category','CategoryController');
+	Route::resource('/subcategory','SubCategoryController');
+	Route::resource('/product','ProductController');
+	Route::resource('/contactus','ContactUsController');
+	Route::resource('/footer','FooterController');
+	Route::resource('/numberview','NumberViewController');
+	Route::resource('/domain','DomainController');
+
+
+	// **********************************************************************************
+
+	// // route for delete data
+	// Route::get('/category/destroy/{id}','CategoryController@destroy');
+	// Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
+	// Route::get('/product/destroy/{id}','ProductController@destroy');
+
 });
-
-Route::resource('/branding','BrandingController');    
-Route::resource('/navbar','NavbarController');
-Route::resource('/page','PagesController');
-Route::resource('/crusal','CrusalController');
-Route::resource('/news','NewsController');
-Route::resource('/stylecontainer','StyleContainerController');
-Route::resource('/category','CategoryController');
-Route::resource('/subcategory','SubCategoryController');
-Route::resource('/product','ProductController');
-Route::resource('/contactus','ContactUsController');
-Route::resource('/footer','FooterController');
-Route::resource('/numberview','NumberViewController');
-Route::resource('/domain','DomainController');
-
-
-// **********************************************************************************
-
-
-
-// // route for delete data
-Route::get('/category/destroy/{id}','CategoryController@destroy');
-Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
-Route::get('/product/destroy/{id}','ProductController@destroy');
-
 
 // Route::get('/branding/destroy/{id}','BrandingController@destroy');
 // Route::get('/crusal/destroy/{id}','CrusalController@destroy');

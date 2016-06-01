@@ -164,9 +164,14 @@ class ProductController extends Controller
      public function destroy($id){
         if (Auth::user()){
             $product=Product::find($id);
-            $product->delete();
-            return  redirect ('/product');
+            // $product->delete();
+            // return  redirect ('/product');
             // return  view ('product.index');
+            // ****************************************************
+            // // for use ajax for remove
+
+            $del_products =$product->delete();
+            return json_encode( $del_products );
         } else{
             return  redirect ('/login');   
         }
