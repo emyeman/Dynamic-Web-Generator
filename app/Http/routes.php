@@ -19,10 +19,16 @@ Route::get('/', 'HomeController@index');
 // The user is logged in...
 Route::group(['middleware' => 'auth'], function () {
 
+
 	Route::get('/dashboard', function () {
     return view('dashboard');
 	});
-    
+
+	Route::get('/service/delete/{service}','ServiceController@delete');
+	Route::get('/service/edit/{service}','ServiceController@edit');
+	Route::patch('/service/update/{service}','ServiceController@update');
+    Route::resource('/site','SiteController'); 
+    Route::resource('/service','ServiceController');    
     Route::resource('/branding','BrandingController');    
 	Route::resource('/navbar','NavbarController');
 	Route::resource('/page','PagesController');

@@ -1,27 +1,5 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dynamic Web Generator</title>
 
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Abeezee:400|Open+Sans:400,600,700|Source+Sans+Pro:400,600">
-    <link rel="stylesheet" type="text/css" href="/assets/css/defaults.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/demo.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/emy.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/assets/js/accordion.js"></script>
-
-</head>
-<body>
     <header class="site-header-wrap">
         <div class="site-header">
             <!-- <a class="site-logo" href="#">Dynamic Web Generator </a> -->
@@ -47,6 +25,18 @@
 
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->
+
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-15">Service</a>
+                <div id="accordion-15" class="accordion-section-content">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li></li>
+                            <li><a href="{{ url('/service') }}">Show Service</a></li>
+                            <li><a href="{{ url('/service/create')}}">Add Service</a></li>
+                        </ul>
+                </div><!--end .accordion-section-content-->
+            </div><!--end .accordion-section-->
+
 
             <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion-2">Navbar  </a>
@@ -223,3 +213,4 @@
         </div><!--end .accordion-->
     </div><!--end .main-->
 </div> <!--end rightside dashbord-->
+
