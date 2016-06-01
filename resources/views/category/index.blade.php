@@ -9,7 +9,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Show Categories
-                    <!-- <small><i>Hello current_user</i></small> -->
+                    <small>
+                    <!-- <i>Hello current_user</i> -->
+                    <div class='col-lg-offset-11 col-ms-1'>
+                        <a href='/category/create'><span class="glyphicon glyphicon-plus"></span></a>
+                    </div></small>
                 </h1>
             </div>
         </div>
@@ -27,7 +31,7 @@
                             <h3><label >Title Category:</label>{{$category->name}}<br/>
                             <label >Description:</label>{{$category->description}}</h3>
                              <h4><label >Publish At:</label>{{$category->created_at}}</h4>
-                            <a class="btn btn-primary" href="/category/{{$category->id}}/edit" >Edit Category</a><span class="glyphicon glyphicon-chevron-right"></span>
+                            <a class="btn btn-primary" href="/category/{{$category->id}}/edit" >Edit Category  <span class="glyphicon glyphicon-edit"></span></a>
                             <?php $flage_relation=0 ?>
                             @foreach ($categories as $del_category)
                                 @if($category->id==$del_category->category_id)
@@ -36,13 +40,13 @@
                             @endforeach
 
                             @if($flage_relation==1)
-                                <span class="btn btn-danger disabled" > Remove Category </span><span class="glyphicon glyphicon-remove disabled"></span>
+                                <span class="btn btn-danger disabled" > Remove Category  <span class="glyphicon glyphicon-remove disabled"></span></span>
                             @endif
                             @if($flage_relation==0)
-                                <a  class="btn btn-danger" href="/category/destroy/{{$category->id}}">Remove Category</a><span class="glyphicon glyphicon-remove"></span>
+                                <a  class="btn btn-danger" href="/category/destroy/{{$category->id}}">Remove Category <span class="glyphicon glyphicon-remove"></span></a>
 
                                 <!-- use ajax for remove -->
-                                <!-- <a id="{{$category->id}}" class="btn btn-danger remove">Remove Category</a><span class="glyphicon glyphicon-remove"></span> -->
+                                <!-- <a id="{{$category->id}}" class="btn btn-danger remove">Remove Category <span class="glyphicon glyphicon-remove"></span></a> -->
                             @endif
                         </div>
                     </div>

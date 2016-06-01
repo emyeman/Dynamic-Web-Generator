@@ -9,7 +9,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Show Products
-                    <!-- <small><i>Hello current_user</i></small> -->
+                    <small>
+                    <!-- <i>Hello current_user</i> -->
+                    <div class='col-lg-offset-11 col-ms-1'>
+                        <a href='/product/create'><span class="glyphicon glyphicon-plus"></span></a>
+                    </div></small>
                 </h1>
             </div>
         </div>
@@ -44,9 +48,9 @@
                             <label >Title Product:</label>{{$product->name}}<br/>
                             <label >Description:</label>{{$product->description}}</h3>
                              <h4><label >Publish At:</label>{{$product->created_at}}</h4>
-                            <a class="btn btn-primary" href="/product/{{$product->id}}/edit" >Edit Product</a><span class="glyphicon glyphicon-chevron-right"></span>
+                            <a class="btn btn-primary" href="/product/{{$product->id}}/edit" >Edit Product <span class="glyphicon glyphicon-edit"></span></a>
 
-                            <a class="btn btn-danger" href="/product/destroy/{{$product->id}}">Remove Product</a><span class="glyphicon glyphicon-chevron-right"></span>
+                            <a class="btn btn-danger" href="/product/destroy/{{$product->id}}">Remove Product <span class="glyphicon glyphicon-remove"></span></a>
                         
                         </div>
                     </div>

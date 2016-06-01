@@ -6,7 +6,9 @@
 @include('../header')
 
 <div class="col-sm-9">
-      <h2>Edit Category</h2>
+      <h2><div class='col-lg-1 col-ms-1'>
+            <a href='/category'><span class="glyphicon glyphicon-backward"></span></a>
+        </div></small>Edit Category</h2>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
