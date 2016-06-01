@@ -65,14 +65,15 @@ class ProductController extends Controller
         }    
      }
 
-     // for use ajax for display sub category
-      public function ajaxcreate(Request $request){
+     // for use ajax for display element subcategory
+      public function ajaxcreate($id,Request $request){
         if (Auth::user()){
           if ($request->ajax()){
-            //select all products 
-            $subcategories = DB::table('categories')->get();
+            //select all categories 
+            $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$id)->get();
             // $subcategories='emmmmm';
-            return json_encode($subcategories);
+            // var_dump($subcategories);die();
+            return $subcategories;
           } 
         }else{
             return  redirect ('/login');   
@@ -122,9 +123,9 @@ class ProductController extends Controller
             $category=Category::find($subcategory->category_id);
 
             //select all categories have category_id==NULL
-            $categories = DB::table('categories')->whereNull('category_id')->get();
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
               //select all subcategories have category_id
-            $subcategories = DB::table('categories')->whereNotNull('category_id')->get();
+            $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$subcategory->category_id)->get();
              // var_dump($category);die();
             return  view ('product.edit',compact('category','subcategory','product','categories','subcategories'));
         } else{

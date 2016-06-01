@@ -72,7 +72,11 @@ Route::group(['middleware' => 'auth'], function () {
 // });
 
 if (Request::ajax()){
-Route::get('/product/{id}','ProductController@ajaxcreate');
+Route::get('/product/create/{id}','ProductController@ajaxcreate');
 }
+
+// if (Request::ajax()){
+// Route::get('/product/edit/{id}','ProductController@ajaxedit');
+// }
 // **************************************************************************************
 
