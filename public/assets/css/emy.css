@@ -22,7 +22,8 @@
 .site-header-wrap {
     margin-bottom: 0px;
     border-bottom: 1px solid #cddaee;
-    background: #F7F4F4
+    background: #333;
+    /* background: #F7F4F4; */
 
 }
 
@@ -31,7 +32,6 @@
     padding: 30px 0px 25px;
     position: relative;
     border-bottom: 2px solid #cddaee;
-    /* background: #1b1b1b url("../img/dark-bg.png"); */
 }
 
 li{
@@ -49,11 +49,13 @@ li{
     /* padding: 15px; */
     display: inline-block;
     border-bottom: 1px solid #1a1a1a;
-    background: #E4DFDF;
+    /* background: #E4DFDF; */
+    background: #333;
     transition: all linear 0.15s;
     font-size: 1.200em;
     text-shadow: 0px 1px 0px #1a1a1a;
-    color: #9A94ff;
+    /* color: #9A94ff; */
+    color:#fff; 
 }
 .container {
     padding-right: 0px; 

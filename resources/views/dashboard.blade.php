@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Dashboard
-                    <small><i>Hello current_user</i></small>
+                    <small><i>Hello <font color="green">{{ Auth::user()->name }}</font></i></small>
                 </h1>
             </div>
         </div>
