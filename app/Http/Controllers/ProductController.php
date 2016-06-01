@@ -98,8 +98,12 @@ class ProductController extends Controller
             if(Input::file('image_product')){
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $product->image=$imagefile->getClientOriginalName(); 
+                // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                $imagefile->move('assets/images/'.$doman_name.'/product',$extention);
+                // echo $doman_name;die();
+                $product->image=$doman_name.'/product/'.$extention; 
             }
             $product->category_id=$request->input('subcategory_id');
             $product->save();
@@ -148,9 +152,14 @@ class ProductController extends Controller
             if(Input::file('image_product')){
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $product->image=$imagefile->getClientOriginalName(); 
+                // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                $imagefile->move('assets/images/'.$doman_name.'/product',$extention);
+                // echo $doman_name;die();
+                $product->image=$doman_name.'/product/'.$extention; 
             }
+
             $product->category_id=$request->input('subcategory_id');
             $product->save();
             return  redirect ('/product');

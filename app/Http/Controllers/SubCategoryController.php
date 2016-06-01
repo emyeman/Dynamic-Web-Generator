@@ -64,9 +64,15 @@ class SubCategoryController extends Controller
             if(Input::file('image_subcategory')){
                 // echo "image_subcategory";die();
                 $imagefile = Input::file('image_subcategory');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $subcategory->image=$imagefile->getClientOriginalName(); 
+                // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                // echo $extention;die();
+                $imagefile->move('assets/images/'.$doman_name.'/subcategory',$extention);
+                // echo $doman_name;die();
+                $subcategory->image=$doman_name.'/subcategory/'.$extention; 
             }
+
             $subcategory->site_id=Auth::user()->id;
             $subcategory->category_id=$request->input('category_id');
             $subcategory->save();
@@ -108,8 +114,12 @@ class SubCategoryController extends Controller
             if(Input::file('image_subcategory')){
                 // echo "image_subcategory";die();
                 $imagefile = Input::file('image_subcategory');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $subcategory->image=$imagefile->getClientOriginalName(); 
+                // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                $imagefile->move('assets/images/'.$doman_name.'/subcategory',$extention);
+                // echo $doman_name;die();
+                $subcategory->image=$doman_name.'/subcategory/'.$extention; 
             }
             $subcategory->site_id=Auth::user()->id;
             $subcategory->category_id=$request->input('category_id');

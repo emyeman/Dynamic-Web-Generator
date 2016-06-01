@@ -26,7 +26,9 @@
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 <input class='form-control' name='title_category' type='text' value='{{$category->name}}'/>
             </div>
-        </div>  
+        </div>
+
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images/{{$category->image}}"></div>          
         <div class='form-group has-warning'>
             <label class='col-md-2'>Category Image</label>
             <div class='col-md-10 input-group'>

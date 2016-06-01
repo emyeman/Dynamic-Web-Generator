@@ -91,7 +91,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/category/'+ id, //resource
+                url: '/subcategory/'+ id, //resource
                 data:   { _token :token },
                 success: function(del_subcategories) { 
                     del_subcategory.parent().parent().remove();

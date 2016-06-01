@@ -45,8 +45,11 @@
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 <input value='{{$subcategory->name}}' class='form-control' name='title_subcategory' type='text'/>
+                
             </div>
-        </div>  
+        </div> 
+
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images/{{$subcategory->image}}"></div>         
         <div class='form-group has-warning'>
             <label class='col-md-2'>SubCategory Image</label>
             <div class='col-md-10 input-group'>
@@ -55,6 +58,7 @@
                 <input class='form-control' name='image_subcategory' type='file' />
             </div>
         </div>  
+        
         <div class='form-group has-warning'>
             <label class='col-md-2'>Description</label>
             <div class='col-md-10 input-group'>

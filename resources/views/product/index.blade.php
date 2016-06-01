@@ -64,10 +64,7 @@
 </div><!--end leftsideof from-->
 
  <br/><br/><hr/><hr/>
-  <button class="getrequest" id="2">Get Product</button>
-
-<div id='getrequestdata'></div>
-  <br/>
+  
  </div>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
@@ -89,7 +86,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/category/'+ id, //resource
+                url: '/product/'+ id, //resource
                 data:   { _token :token },
                 success: function(del_products) { 
                     del_product.parent().parent().remove();
