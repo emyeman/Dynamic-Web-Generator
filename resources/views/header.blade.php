@@ -213,6 +213,11 @@
             </div><!--end .accordion-section-->
 
             <div class="accordion-section">
+                <a class="accordion-section-title" href="{{ url('/aboutus/create')}}">Aboutus</a>
+                
+            </div><!--end .accordion-section-->
+
+            <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion"> </a>
                 <div id="accordion" class="accordion-section-content">
                         

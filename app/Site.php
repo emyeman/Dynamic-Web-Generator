@@ -46,5 +46,10 @@ class Site extends Model
     {
         return $this->belongsTo(Template::class);
     }
+
+    public function aboutus()
+    {
+        return $this->hasOne(Aboutus::class,'id');
+    }
 }
 

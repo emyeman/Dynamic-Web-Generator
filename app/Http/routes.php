@@ -26,13 +26,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/promotion/{t}', 'PromotionController@index')->name('promotion.index');
 	Route::get('/promotion/create/{t}', 'PromotionController@create')->name('promotion.create');
 	Route::resource('/promotion','PromotionController',['except' => ['create', 'index']]);
-
+	// Route::resource('/aboutus','AboutUsController',['only' => ['edit', 'update','show']]);   
+	Route::resource('/aboutus','AboutUsController',['except' => ['index']]);   
+	Route::resource('/crusal','CrusalController');
 });
 
 Route::resource('/branding','BrandingController');    
 Route::resource('/navbar','NavbarController');
 Route::resource('/page','PagesController');
-Route::resource('/crusal','CrusalController');
+
 Route::resource('/news','NewsController');
 Route::resource('/stylecontainer','StyleContainerController');
 Route::resource('/category','CategoryController');
