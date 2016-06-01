@@ -46,22 +46,36 @@ Route::resource('/domain','DomainController');
 
 // **********************************************************************************
 
+
+
 // // route for delete data
+Route::get('/category/destroy/{id}','CategoryController@destroy');
+Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
+Route::get('/product/destroy/{id}','ProductController@destroy');
 
-// Route::get('/branding/destory/{id}','BrandingController@destory');
-// Route::get('/category/destory/{id}','CategoryController@destory');
-// Route::get('/crusal/destory/{id}','CrusalController@destory');
-// Route::get('/navbar/destory/{id}','NavbarController@destory');
-// Route::get('/news/destory/{id}','NewsController@destory');
-// Route::get('/page/destory/{id}','PagesController@destory');
-// Route::get('/stylecontainer/destory/{id}','StyleContainerController@destory');
-// Route::get('/subcategory/destory/{id}','SubCategoryController@destory');
-// Route::get('/product/destory/{id}','ProductController@destory');
-// Route::get('/promotion/destory/{id}','PromotionController@destory');
-// Route::get('/contactus/destory/{id}','ContactUsController@destory');
-// Route::get('/footer/destory/{id}','FooterController@destory');
-// Route::get('/numberview/destory/{id}','NumberViewController@destory');
-// Route::get('/domain/destory/{id}','DomainController@destory');
 
+// Route::get('/branding/destroy/{id}','BrandingController@destroy');
+// Route::get('/crusal/destroy/{id}','CrusalController@destroy');
+// Route::get('/navbar/destroy/{id}','NavbarController@destroy');
+// Route::get('/news/destroy/{id}','NewsController@destroy');
+// Route::get('/page/destroy/{id}','PagesController@destroy');
+// Route::get('/stylecontainer/destroy/{id}','StyleContainerController@destroy');
+// Route::get('/promotion/destroy/{id}','PromotionController@destroy');
+// Route::get('/contactus/destroy/{id}','ContactUsController@destroy');
+// Route::get('/footer/destroy/{id}','FooterController@destroy');
+// Route::get('/numberview/destroy/{id}','NumberViewController@destroy');
+// Route::get('/domain/destroy/{id}','DomainController@destroy');
+
+// **************************************************************************************
+// Route::get ('/getrequest',function(){
+// 	if (Request::ajax()){
+// 		// return 'emyyyyyyyyyyyyyy';
+// 		Route::get('/product','ProductController@ajaxindex');
+// 	}
+// });
+
+if (Request::ajax()){
+Route::get('/product/{id}','ProductController@ajaxcreate');
+}
 // **************************************************************************************
 
