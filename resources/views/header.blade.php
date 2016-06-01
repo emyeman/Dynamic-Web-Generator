@@ -106,8 +106,8 @@
 
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/news')}}">Show News</a></li>
-                            <li><a href="{{ url('/news/create')}}">Add News</a></li>
+                            <li><a href="{{ url('/promotion/0')}}">Show News</a></li>
+                            <li><a href="{{ url('/promotion/create/0')}}">Add News</a></li>
                         </ul>
 
                 </div><!--end .accordion-section-content-->
@@ -155,8 +155,8 @@
 
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/promotion')}}">Show Promotions</a></li>
-                            <li><a href="{{ url('/promotion/create')}}">Add Promotion</a></li>
+                            <li><a href="{{ url('/promotion/1')}}">Show Promotions</a></li>
+                            <li><a href="{{ url('/promotion/create/1')}}">Add Promotion</a></li>
                         </ul>
 
                 </div><!--end .accordion-section-content-->

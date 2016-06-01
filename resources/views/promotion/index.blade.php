@@ -14,7 +14,12 @@
 <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Show Promotions
+                <h1 class="page-header">
+                    @if($type==1)
+                        Show Promotions
+                    @else
+                        Show News
+                    @endif
                     <!-- <small><i>Hello current_user</i></small> -->
                 </h1>
             </div>
@@ -29,7 +34,7 @@
                 </a>
             </div> -->
             <div class='col-lg-offset-11 col-ms-1'>
-                <a href='/promotion/create'><span class="glyphicon glyphicon-plus"></span></a>
+                <a href='/promotion/create/{{$type}}'><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         
             <div >
