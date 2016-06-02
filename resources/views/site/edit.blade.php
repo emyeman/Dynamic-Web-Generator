@@ -18,7 +18,7 @@
         </div>  
 
         <div class='form-group has-warning'>
-            <label class='col-md-2'>Site Body</label>
+            <label class='col-md-2'>Doman Type</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                         <select name="doman_type" class="form-control">
@@ -35,7 +35,7 @@
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
-                <input value='{{ $site->color }}' class='form-control' name='color' type='text'/>
+                <input value='{{ $site->color }}' class='form-control picker' name='color' type='text'/>
             </div>
         </div>  
           
@@ -43,7 +43,7 @@
             <label class='col-md-2'>Primary Color</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <input value='{{ $site->primary_color }}' class='form-control'name='primary_color' type='text' />
+                <input value='{{ $site->primary_color }}' class='form-control picker'name='primary_color' type='text' />
             </div>
         </div>      
 
@@ -51,7 +51,7 @@
             <label class='col-md-2'>Secondary Color</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <input value='{{ $site->secondry_color }}' class='form-control'name='secondry_color' type='text' />
+                <input value='{{ $site->secondry_color }}' class='form-control picker' name='secondry_color' type='text' />
             </div>
         </div>
 
