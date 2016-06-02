@@ -38,6 +38,7 @@
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-picture'></i></span>
                 {{Form::file('image' ,['class'=>'form-control'])}}
+                
             </div>
         </div>  
         <div class='form-group has-warning'>

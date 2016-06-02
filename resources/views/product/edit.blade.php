@@ -24,7 +24,7 @@
             <label class='col-md-2'>Select Category</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
-                <select class='form-control' id='category_id' name='category_id' >
+                <select class='form-control getrequest' id='category_id' name='category_id' >
                     <option value="{{$category->id}}"> {{$category->name}}</option>
                     @if (Auth::user()->id == $category->site_id)
                         @foreach ($categories as $sel_category) 
@@ -38,23 +38,30 @@
              </div>
         </div>
 
-        <div class='form-group has-warning'>
+        <div class='form-group has-warning' id="beforselect" style="display:show">
             <label class='col-md-2'>Select Sub Category</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
                 <select class='form-control' id='subcategory_id' name='subcategory_id'>
                     <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
-                    @if (Auth::user()->id == $subcategory->site_id)
+                     @if (Auth::user()->id == $subcategory->site_id)
                         @foreach ($subcategories as $sel_subcategory) 
-                            <!-- for no repeat name of subcategory-->
-                            @if($subcategory->name !=$sel_subcategory->name)
+                            <!-- ************for no repeat name of subcategory*****************-->
+                             @if($subcategory->name !=$sel_subcategory->name)
                                 <option value="{{$sel_subcategory->id}}">{{$sel_subcategory->name}}</option>
                             @endif
                         @endforeach 
-                    @endif    
+                    @endif     
                 </select>           
              </div>
         </div>
+        <div class='form-group has-warning'id="afterselect" style="display:none">
+            <label class='col-md-2'>Select Sub Category</label>
+                <div class='col-md-10 input-group'id='subcategorydata' >
+                   
+                </div>
+        </div>
+        <!-- end select of subcategory -->
 
         <div class='form-group has-warning'>
             <label class='col-md-2'>Title Product</label>
@@ -62,7 +69,9 @@
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 <input value='{{$product->name}}' class='form-control' name='title_product' type='text'/>
             </div>
-        </div>  
+        </div>
+
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images/{{$product->image}}"></div>
         <div class='form-group has-warning'>
             <label class='col-md-2'>Product Image</label>
             <div class='col-md-10 input-group'>
@@ -90,6 +99,67 @@
  <br/><br/><hr/><hr/>
 
 </div>
+
+
+<meta name="_token" id='token' content="{!! csrf_token() !!}" />
+<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
+<script type="text/javascript" src='/assets/js/jquery-1.12.0.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('hiiiiiii');
+        $('.getrequest').click(function() {            
+                event.preventDefault();
+                // alert($(this).text());
+                
+                //Declaration
+                var token = $('#token').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+                console.log($(this));
+                // id=$(this).attr('id');
+                id=$(this).val();
+                console.log(id);
+                console.log({{$category->id}});
+                if (id=={{$category->id}}) {
+                    document.getElementById('beforselect').style.display = "block";
+                    document.getElementById('afterselect').style.display = "none";
+                    console.log("emy not change");
+                 }else{
+                    
+                    document.getElementById('beforselect').style.display = "none";
+                    document.getElementById('afterselect').style.display = "block";
+                    console.log("emy change");
+                    $.get('/product/create/'+id,function(data){
+                        // console.log(data[0]);
+                        // console.log(data);
+                        var showdata;
+                        // for(i=0;i<data.length;i++){
+                        //   for(j in data[i]){
+                                // showdata+=j+": "+data[i][j]+'<br/>';
+                        //   }   
+                        // }
+                        showdata="<span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>";          
+                        showdata+="<label class='form-control'>Old Your Select : {{$subcategory->name}}</label>";
+                        showdata+="<select class='form-control'id='subcategory_id' name='subcategory_id'>";
+                            showdata+="<option value=''>Select SubCategory</option>";
+                            for(i=0;i<data.length;i++){
+                                showdata+="<option value="+data[i]['id']+">"+data[i]['name']+"</option>";
+                            }      
+                        showdata+="</select>";
+                        $('#subcategorydata').html(showdata);
+                    });//end get to obtain data from control
+                }
+        });  //end get request when press and select category 
+
+
+    });//end function
+</script>
+
 @endsection
 
 

@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/promotion/{t}', 'PromotionController@index')->name('promotion.index');
 	Route::get('/promotion/create/{t}', 'PromotionController@create')->name('promotion.create');
 	Route::resource('/promotion','PromotionController',['except' => ['create', 'index']]);
+  
+	Route::resource('/aboutus','AboutUsController',['except' => ['index']]);   
+
 
 	Route::get('/service/delete/{service}','ServiceController@delete');
 	Route::get('/service/edit/{service}','ServiceController@edit');
@@ -62,14 +65,16 @@ Route::group(['middleware' => 'auth'], function () {
 	if (Request::ajax()){
 		Route::get('/product/{id}','ProductController@ajaxcreate');
 	}
+
+
+	if (Request::ajax()){
+		Route::get('/product/create/{id}','ProductController@ajaxcreate');
+	}
 	
 });
-// **********************************************************************************
-
 
 
 // // route for delete data
-
 
 // Route::get('/branding/destroy/{id}','BrandingController@destroy');
 // Route::get('/crusal/destroy/{id}','CrusalController@destroy');
@@ -91,6 +96,6 @@ Route::group(['middleware' => 'auth'], function () {
 // 	}
 // });
 
-
-// **************************************************************************************
-
+// if (Request::ajax()){
+// Route::get('/product/edit/{id}','ProductController@ajaxedit');
+// }

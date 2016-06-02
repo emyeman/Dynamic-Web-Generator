@@ -52,11 +52,17 @@ class Site extends Model
     {
         return $this->belongsTo(Template::class);
     }
+
     public function services()
     {
         return $this->hasMany(Service::class);
     }
 
+    public function aboutus()
+    {
+        return $this->hasOne(Aboutus::class,'id');
+    }
+    
     public function addSite(Site $site)
     {
         return $site->save();

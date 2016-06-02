@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCrusalsTable extends Migration
+class CreateAboutusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,12 @@ class CreateCrusalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('crusals', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('aboutuses', function (Blueprint $table) {
+             $table->increments('id');
+            $table->text('description');
             $table->string('image',200);
-            $table->string('title',150)->nullable();
-            $table->string('description',400)->nullable();
-            $table->softDeletes();
             $table->timestamps();
-            $table->integer('site_id')->unsigned();
-            $table->foreign('site_id')
+            $table->foreign('id')
                   ->references('id')->on('sites');
         });
     }
@@ -32,6 +29,6 @@ class CreateCrusalsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('crusals');
+        Schema::drop('aboutuses');
     }
 }
