@@ -34,7 +34,7 @@
             <label class='col-md-2'>Service Icon</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-picture'></i></span>
-                <button class="btn btn-default" name="icon" role="iconpicker"></button>
+                <button class="btn btn-default form-control" name="icon" role="iconpicker"></button>
             </div>
         </div>  
 
@@ -42,7 +42,9 @@
             <label class='col-md-2'>Service Description</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <input value='{{$service->description}}' class='form-control'name='description' type='text' />
+                <!-- <input value='{{$service->description}}' class='form-control'name='description' type='text' /> -->
+                <textarea class='form-control' name='description'>{{$service->description}}</textarea> 
+
             </div>
         </div>      
         <span class='col-md-2'></span>
