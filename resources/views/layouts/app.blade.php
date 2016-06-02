@@ -75,7 +75,7 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                        <li><img id="profile" class="img-circle" src="{{ asset('images/') }}/{{ Auth::user()->image }}" alt=""></li>
+                        <li><img id="profile" class="img-circle" src="{{ Auth::user()->image }}" alt=""></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -84,7 +84,7 @@
                              @if (Session::get('site_id') != null)
                                 <li class="dropdown-item"><a href="/site/edit/{{ Session::get('site_id') }}" >my site</a></li>
                              @endif
-                                <li class="dropdown-item"><a href="#" >edit my profile</a></li>
+                                <li class="dropdown-item"><a href="/user/edit/{{ Auth::user()->id }}" >edit my profile</a></li>
                             </ul>
                         </li>
 

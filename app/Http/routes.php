@@ -25,6 +25,12 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 
 
+	Route::get('/user/edit/{user}','UserController@edit');
+	Route::patch('/user/update/{user}','UserController@update');
+	Route::resource('/user','UserController');
+
+
+
 	Route::get('/promotion/{t}', 'PromotionController@index')->name('promotion.index');
 	Route::get('/promotion/create/{t}', 'PromotionController@create')->name('promotion.create');
 	Route::resource('/promotion','PromotionController',['except' => ['create', 'index']]);

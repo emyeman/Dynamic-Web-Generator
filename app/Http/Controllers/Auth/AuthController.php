@@ -68,18 +68,19 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $filename='';
+        $imagePath='';
         if(Input::hasFile('image')){
                 $file = Input::file('image');
                 $filename = Input::file('image')->getClientOriginalName(); 
-                $file = $file->move(public_path().'/images/',$filename);
+                $file = $file->move(public_path().'/images/profile/',$filename);
                 // $user->image = $file->getRealPath();
+                  $imagePath = '/images/profile/'.$filename;
         }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'image' => $filename, 
+            'image' => $imagePath, 
         ]);
     }
 }

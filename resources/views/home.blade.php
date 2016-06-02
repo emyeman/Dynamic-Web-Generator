@@ -6,12 +6,12 @@
 
 <div class="container">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-8 col-md-offset-5">
                       @if (Auth::guest())
-						<a href="{{ url('/login') }}">create your own website
+						<a href="{{ url('/login') }}" class="btn btn-primary">create your own website
                         </a>
                       @elseif (Session::get('site_id') == null) 
-                         <a href="{{ url('/site/create') }}">create your own website
+                         <a href="{{ url('/site/create') }}" class="btn btn-primary">create your own website
                          </a>
                     @endif
 					</div>
