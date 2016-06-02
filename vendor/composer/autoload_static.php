@@ -8,8 +8,8 @@ class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
@@ -17,6 +17,7 @@ class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -192,13 +193,10 @@ class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
-<<<<<<< HEAD
-=======
         'DebugBar\\' => 
         array (
             0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
         ),
->>>>>>> 3e2f27501843b0b1237bd390341468eca37f52e0
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
@@ -286,7 +284,6 @@ class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
         'CreatePagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120531_create_pages_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120452_create_products_table.php',
-        'CreateServicesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_134813_create_services_table.php',
         'CreateSitesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_104611_create_sites_table.php',
         'CreateSpecialTemplatesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_115721_create_special_templates_table.php',
         'CreateTemplatesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_115038_create_templates_table.php',

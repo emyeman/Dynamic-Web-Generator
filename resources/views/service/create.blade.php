@@ -25,7 +25,7 @@
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
-            <input placeholder='PlZ,enter title news' class='form-control' name='title' type='text'/>
+            <input placeholder='PlZ,enter title service' class='form-control' name='title' type='text'/>
             </div>
         </div>  
 
@@ -33,7 +33,7 @@
             <label class='col-md-2'>Service Icon</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-picture'></i></span>
-                <button class="btn btn-default" name="icon" role="iconpicker"></button>
+                <button class="btn btn-default form-control" name="icon" role="iconpicker"></button>
             </div>
         </div>  
 
@@ -42,7 +42,9 @@
             <label class='col-md-2'>Service Description</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <input placeholder='PlZ,enter description' class='form-control'name='description' type='text' />
+                <!-- <input placeholder='PlZ,enter description' class='form-control'name='description' type='text' />--> 
+                <textarea placeholder='PlZ,enter description' class='form-control' name='description'></textarea> 
+
             </div>
         </div>      
         <span class='col-md-2'></span>
