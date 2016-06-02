@@ -111,9 +111,7 @@
         $('.getrequest').click(function() {            
                 event.preventDefault();
                 // alert($(this).text());
-                document.getElementById('beforselect').style.display = "none";
-                document.getElementById('afterselect').style.display = "block";
-                console.log("emy");
+                
                 //Declaration
                 var token = $('#token').attr('content');
                 $.ajaxSetup({
@@ -126,26 +124,36 @@
                 // id=$(this).attr('id');
                 id=$(this).val();
                 console.log(id);
-
-                $.get('/product/create/'+id,function(data){
-                    // console.log(data[0]);
-                    // console.log(data);
-                    var showdata;
-                    // for(i=0;i<data.length;i++){
-                    //   for(j in data[i]){
-                            // showdata+=j+": "+data[i][j]+'<br/>';
-                    //   }   
-                    // }
-                    showdata="<span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>";          
-                    showdata+="<label class='form-control'>Old Your Select : {{$subcategory->name}}</label>";
-                    showdata+="<select class='form-control'id='subcategory_id' name='subcategory_id'>";
-                        showdata+="<option value=''>Select SubCategory</option>";
-                        for(i=0;i<data.length;i++){
-                            showdata+="<option value="+data[i]['id']+">"+data[i]['name']+"</option>";
-                        }      
-                    showdata+="</select>";
-                    $('#subcategorydata').html(showdata);
-                });//end get to obtain data from control
+                console.log({{$category->id}});
+                if (id=={{$category->id}}) {
+                    document.getElementById('beforselect').style.display = "block";
+                    document.getElementById('afterselect').style.display = "none";
+                    console.log("emy not change");
+                 }else{
+                    
+                    document.getElementById('beforselect').style.display = "none";
+                    document.getElementById('afterselect').style.display = "block";
+                    console.log("emy change");
+                    $.get('/product/create/'+id,function(data){
+                        // console.log(data[0]);
+                        // console.log(data);
+                        var showdata;
+                        // for(i=0;i<data.length;i++){
+                        //   for(j in data[i]){
+                                // showdata+=j+": "+data[i][j]+'<br/>';
+                        //   }   
+                        // }
+                        showdata="<span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>";          
+                        showdata+="<label class='form-control'>Old Your Select : {{$subcategory->name}}</label>";
+                        showdata+="<select class='form-control'id='subcategory_id' name='subcategory_id'>";
+                            showdata+="<option value=''>Select SubCategory</option>";
+                            for(i=0;i<data.length;i++){
+                                showdata+="<option value="+data[i]['id']+">"+data[i]['name']+"</option>";
+                            }      
+                        showdata+="</select>";
+                        $('#subcategorydata').html(showdata);
+                    });//end get to obtain data from control
+                }
         });  //end get request when press and select category 
 
 
