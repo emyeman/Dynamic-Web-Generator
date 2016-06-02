@@ -21,13 +21,14 @@
         @foreach ($subcategories as $subcategory) 
             @if (Auth::user()->id == $subcategory->site_id)
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <a href="#">
                                 <img width="400px" height="30px" src="/assets/images/{{$subcategory->image}}" />
                             </a>
                             <!-- <hr/> -->
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
                             <!-- for obtain name of category  -->
                             @foreach ($categories as $category)
                                 @if($category->id==$subcategory->category_id)
