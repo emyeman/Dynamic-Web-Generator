@@ -16,6 +16,18 @@
             </div>
         </div>  
 
+        <div class='form-group has-warning'>
+            <label class='col-md-2'>Site Body</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
+                        <select name="doman_type" class="form-control">
+                            <option>com</option>
+                            <option>eg</option>
+                            <option>org</option>
+                        </select>
+            </div>
+        </div>
+
          <div class='form-group has-warning'>
             <label class='col-md-2'>Site Color</label>
             <div class='col-md-10 input-group'>

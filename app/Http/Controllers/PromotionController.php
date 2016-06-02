@@ -74,9 +74,11 @@ class PromotionController extends Controller
             //upload image
             Storage::disk('local')->put($file_name, File::get($image));
             return redirect()->action('PromotionController@create',[$request->input('type')]);
+
         }
         else
         {
+
             abort(500);
         }
         

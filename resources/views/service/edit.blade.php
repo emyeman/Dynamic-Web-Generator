@@ -34,7 +34,7 @@
             <label class='col-md-2'>Service Icon</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-picture'></i></span>
-                <button class="btn btn-default" name="image" role="iconpicker"></button>
+                <button class="btn btn-default" name="icon" role="iconpicker"></button>
             </div>
         </div>  
 

@@ -7,9 +7,12 @@
 <div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-                    @if (Session::get('site_id') == null)
-						<a href="{{ url('/site/create') }}">create your own website
+                      @if (Auth::guest())
+						<a href="{{ url('/login') }}">create your own website
                         </a>
+                      @elseif (Session::get('site_id') == null) 
+                         <a href="{{ url('/site/create') }}">create your own website
+                         </a>
                     @endif
 					</div>
 				</div>

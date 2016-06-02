@@ -10,7 +10,7 @@ class Site extends Model
 {
     //
     protected $fillable = [
-        'doman_name', 'color', 'primary_color','secondry_color','body_type',
+        'doman_name', 'doman_type','color', 'primary_color','secondry_color','body_type',
     ];
 
     public function owner()

@@ -24,13 +24,14 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        
+    {    
         if(isset(Auth::user()->id))
         {
+
             $site = Site::find(Auth::user()->id);
             if($site != null)
             {
+
                 Session::put('site_id', Auth::user()->id);    
             }
         }

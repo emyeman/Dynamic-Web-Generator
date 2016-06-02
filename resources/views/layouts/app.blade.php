@@ -81,7 +81,9 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a> 
                             <ul class="dropdown-menu mydrop">
-                                <li class="dropdown-item"><a href="#" >my site</a></li>
+                             @if (Session::get('site_id') != null)
+                                <li class="dropdown-item"><a href="/site/edit/{{ Session::get('site_id') }}" >my site</a></li>
+                             @endif
                                 <li class="dropdown-item"><a href="#" >edit my profile</a></li>
                             </ul>
                         </li>

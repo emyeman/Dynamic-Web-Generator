@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Auth;
 
 use Session;
-
 use Illuminate\Http\Request;
 use App\Site;
 use App\Http\Requests;
@@ -24,12 +23,16 @@ class SiteController extends Controller
 
      public function create(){
         // dd(Auth::user()['attributes']);
-        return  view('site.create');
+        $site = Site::find(Auth::user()->id);
+        if($site == null)
+        {
+            return  view('site.create');    
+        }
+        return view('home');
      }
 
      public function store(Request $request)
      {
-
         $site = new Site($request->all());
         $site->id = Auth::user()->id;
         if($site->addSite($site)) 
@@ -46,10 +49,15 @@ class SiteController extends Controller
         return view('site.edit',compact('site'));
      }
 
-     public function update()
+     public function update(Request $request , Site $site)
      {
          # code...
-        return true;
+        // return $request->all();
+       if($site->update($request->all()))
+       {
+            return redirect('/dashboard');
+       }
+       return back();
      }
 
 

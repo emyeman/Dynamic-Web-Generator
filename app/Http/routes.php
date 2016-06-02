@@ -32,8 +32,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/service/delete/{service}','ServiceController@delete');
 	Route::get('/service/edit/{service}','ServiceController@edit');
 	Route::patch('/service/update/{service}','ServiceController@update');
+	Route::resource('/service','ServiceController');    
+
+
+	Route::get('/site/edit/{site}','SiteController@edit');
+	Route::patch('/site/update/{site}','SiteController@update');
     Route::resource('/site','SiteController'); 
-    Route::resource('/service','ServiceController');    
+
+    
     Route::resource('/branding','BrandingController');    
 	Route::resource('/navbar','NavbarController');
 	Route::resource('/page','PagesController');

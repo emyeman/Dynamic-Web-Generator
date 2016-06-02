@@ -8,7 +8,12 @@
 <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Show News
+                <h1 class="page-header">Show Services
+                    <small>
+                    <!-- <i>Hello current_user</i> -->
+                    <div class='col-lg-offset-11 col-ms-1'>
+                        <a href='/service/create'><span class="glyphicon glyphicon-plus"></span></a>
+                    </div></small>
                     <!-- <small><i>Hello current_user</i></small> -->
                 </h1>
             </div>
@@ -19,13 +24,15 @@
 
             <div class="col-md-5">
                 <a href="#">
-                    <img class="img-responsive" width="500" height="30" src="/assets/images/News.jpg" alt="">
                 </a>
             </div>
             <div class="col-md-7">
                <table class="table">
                 @foreach($services as $service)
                     <tr>
+                        <td>
+                            <button class="btn btn-default btn-icon" value="{{$service->icon}}" title="glyphicon-adjust" style="display: inline-block;"><i class="glyphicon {{$service->icon}}"></i></button>
+                        </td>
                         <td>{{$service->title}}</td>
                         <td>{{$service->description}}</td>
                         <td></td>

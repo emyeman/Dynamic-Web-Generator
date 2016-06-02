@@ -32,7 +32,7 @@ class ServiceController extends Controller
         # code...
         $this->validate($request, [
         'title' => 'required|max:255',
-        'image' => 'required',
+        'icon' => 'required',
         'description' => 'required',
         ]);
 
@@ -62,7 +62,7 @@ class ServiceController extends Controller
         // $imagepath = public_path().'/images/services/'.$imagename;
         $this->validate($request, [
         'title' => 'required|max:255',
-        'image' => 'required',
+        'icon' => 'required',
         'description' => 'required',
         ]);
 
