@@ -21,12 +21,13 @@
         @if (Auth::user()) 
             @foreach ($products as $product) 
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <a href="#">
                                 <img width="400" height="30" src="/assets/images/{{$product->image}}"/>
                             </a>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
                             <!-- for obtain name of category  -->
                             @foreach ($categories as $allcategory)
                                 @if($allcategory->id==$product->category_id)

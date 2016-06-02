@@ -22,12 +22,13 @@
             @if (Auth::user()->id == $category->site_id)
                 @if($category->category_id ==NULL)
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-3">
                             <a href="#">
                                 <img width="400" height="30" src="/assets/images/{{$category->image}}" />
                             </a>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
                             <h3><label >Title Category:</label>{{$category->name}}<br/>
                             <label >Description:</label>{{substr($category->description,0,100)}}</h3>
                             <!-- <label >Description:</label>{{$category->description}}</h3> -->

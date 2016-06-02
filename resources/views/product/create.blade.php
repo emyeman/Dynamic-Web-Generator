@@ -21,11 +21,11 @@
       <br><br>
       {!!Form::open(['route'=>'product.store','files'=>true,'method'=>'post']) !!}
        <div class='form-group has-warning'>
-            <label class='col-md-2'>Select Category</label>
+            <label class='col-md-2'> Category</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
                 <select class='form-control getrequest' id='category_id' name='category_id'>
-                    <option value=""> Category</option>
+                    <option value="">Select Category</option>
                     @foreach ($categories as $category) 
                         @if(Auth::user()->id == $category->site_id)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -37,7 +37,7 @@
         </div>
 
         <div class='form-group has-warning'id="beforselect" style="display:show">
-            <label class='col-md-2'>Select Sub Category</label>
+            <label class='col-md-2'> Sub Category</label>
                 <div class='col-md-10 input-group' >
                     <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
                     <!-- <select class='form-control' id='subcategory_id' name='subcategory_id'>
