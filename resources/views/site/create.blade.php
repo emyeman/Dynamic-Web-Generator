@@ -5,6 +5,15 @@
 <div class="col-sm-9">
       <h2>create Site</h2>
       <br><br>
+       @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
       {!!Form::open(['route'=>'site.store','method'=>'post']) !!}
         <div class='form-group has-warning'>
             <label class='col-md-2'>Domain Name</label>

@@ -31,9 +31,9 @@ class ServiceController extends Controller
      {
         # code...
         $this->validate($request, [
-        'title' => 'required|max:255',
-        'icon' => 'required',
-        'description' => 'required',
+            'title' => 'required|max:255',
+            'icon' => 'required',
+            'description' => 'required',
         ]);
 
        if($service->update($request->all()))

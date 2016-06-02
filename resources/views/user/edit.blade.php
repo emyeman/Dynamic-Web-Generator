@@ -5,6 +5,15 @@
 <div class="col-sm-9">
       <h2>edit User</h2>
       <br><br>
+      @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
       {!!Form::open(['route'=>['user.update', Auth::user()->id ],'method'=>'patch','files'=>true]) !!}
       {{ method_field('patch') }}
         <div class='form-group has-warning'>
@@ -27,12 +36,13 @@
 
 
         <div class='form-group has-warning'>
-            <label class='col-md-2'>Email</label>
+            <label class='col-md-2'>Image</label>
             <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
+                
                     <label class="btn btn-primary btn-file">
                                 Browse <input id="image" type="file" name="image" style="display: none;">
                             </label>
+                            <img id="profile" class="col-md-offset-2" src="{{ Auth::user()->image }}" alt="">
             </div>
         </div>
          
