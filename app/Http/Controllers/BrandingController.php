@@ -1,55 +1,67 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Input;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Header;
 
-class BrandingController extends Controller
-{
-    
-	public function index(){
+class BrandingController extends Controller {
 
-		return  view ('branding.index');
-     }
+    public function index(Request $request) {
+        $site = $request->user()->site->header;
+        if ($site) {
+//            $branding = $site->header();
 
-     public function show($id){
+            return view('branding.index')->withBranding($site);
+        } else {
+            return redirect('branding/create');
+        }
+    }
 
-        return  view ('branding.show');
-     }
+    public function show($id) {
 
-     public function create(){
+        return view('branding.show');
+    }
 
-        return  view ('branding.create');
-     }
+    public function create() {
 
-     public function store(){
+        return view('branding.create');
+    }
 
-		return  redirect ('/branding');
-     }
+    public function store(Request $request) {
+        $doman_name = $request->user()->site->doman_name;
+        $logo = Input::file('image')->getClientOriginalName();
 
+        $directory = "/$doman_name/branding/";
+        
+        Input::file('image')->move(public_path().$directory, $logo);
 
+        $brand['id'] = $request->user()->id;
+        $brand['company_name'] = $request->input('companyname');
+        $brand['logo'] = $directory.$logo;
+        $brand['slogan'] = $request->input('slogan');
+        if (Header::create($brand)) {
+            return redirect('/branding');
+        }
+        else{
+            return redirect('/branding/create')->withErrors('Something Error');
+        }
+    }
 
-     public function edit($id){
+    public function edit($id) {
 
-		return  view ('branding.edit');
-     }
+        return view('branding.edit');
+    }
 
+    public function update($id) {
 
-     public function update($id){
+        // return  redirect ('/branding');
+    }
 
-		// return  redirect ('/branding');
-     }
-
-
-
-     public function destroy($id){
+    public function destroy($id) {
 
         // return  view ('branding.index');
-     }
-
+    }
 
 }
-
-

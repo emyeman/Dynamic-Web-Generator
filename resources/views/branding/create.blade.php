@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
 
-@include('../header')
+    @include('../header')
 
-<div class="col-sm-9">
-      <h2>Add New Branding</h2>
-      <br><br>
-      {!!Form::open(['route'=>'branding.store','method'=>'post']) !!}
+    <div class="col-sm-9">
+        <h2>Add New Branding</h2>
+        <br><br>
+        {!!Form::open(['route'=>'branding.store','method'=>'post', 'files'=>true ]) !!}
         <div class='form-group has-warning'>
             <label class='col-md-2'>Company Name</label>
             <div class='col-md-10 input-group'>
@@ -20,7 +20,8 @@
             <label class='col-md-2'>Logo</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-picture'></i></span>
-                <input class='form-control' name='password' type='file' />
+                {!! Form::file('image', ['class'=>'form-control']) !!}
+
             </div>
         </div>  
         <div class='form-group has-warning'>
@@ -32,18 +33,18 @@
         </div>      
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
-   {!!Form::close() !!}
+        {!!Form::close() !!}
 
 
-      <br><br>
-      <br><br>
-</div><!--end leftsideof from-->
+        <br><br>
+        <br><br>
+    </div><!--end leftsideof from-->
 
- <br/><br/><hr/><hr/>
+    <br/><br/><hr/><hr/>
 
 
- 
- </div>
+
+</div>
 @endsection
 
-    
+

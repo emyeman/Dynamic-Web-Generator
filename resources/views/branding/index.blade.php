@@ -19,13 +19,13 @@
 
             <div class="col-md-5">
                 <a href="#">
-                    <img class="img-responsive" width="500" height="30" src="/assets/images/logo.jpg" alt="">
+                    <img class="img-responsive" width="500" height="30" src="{{ url($branding['logo']) }}" alt="">
                 </a>
             </div>
             <div class="col-md-7">
-                <h3><label >Company Name:</label><br/>
-                <label >Company Slogan:</label></h3>
-                 <h4><label >Publish At:</label></h4>
+                <h3><label >Company Name: &nbsp;</label>{{ $branding['company_name'] }}<br/>
+                <label >Company Slogan:&nbsp;</label>{{ $branding['slogan'] }}</h3>
+                 <h4><label >Publish At:&nbsp;</label>{{ $branding['created_at'] }}</h4>
                 <a class="btn btn-primary" href="#" >Edit Branding</a><span class="glyphicon glyphicon-chevron-right"></span>
 
                 <a class="btn btn-danger" href="#">Remove Branding</a><span class="glyphicon glyphicon-chevron-right"></span>
