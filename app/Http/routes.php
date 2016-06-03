@@ -64,21 +64,28 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/numberview','NumberViewController');
 	Route::resource('/domain','DomainController');
 	Route::resource('/promotion','PromotionController');
-	Route::get('/category/destroy/{id}','CategoryController@destroy');
-	Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
-	Route::get('/product/destroy/{id}','ProductController@destroy');
-
-	if (Request::ajax()){
-		Route::get('/product/{id}','ProductController@ajaxcreate');
-	}
-
+	Route::resource('/googlemap','GoogleMapController');
 
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
+		Route::get('/googlemap/storelocation/{XYlocation}','GoogleMapController@ajaxstore');
 	}
+
+
+	// Route::get('/category/destroy/{id}','CategoryController@destroy');
+	// Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
+	// Route::get('/product/destroy/{id}','ProductController@destroy');
+
+	// if (Request::ajax()){
+	// 	Route::get('/product/{id}','ProductController@ajaxcreate');
+	// }
+
+
+	
 	
 });
 
+<<<<<<< HEAD
 
 // // route for delete data
 
@@ -105,3 +112,6 @@ Route::group(['middleware' => 'auth'], function () {
 // if (Request::ajax()){
 // Route::get('/product/edit/{id}','ProductController@ajaxedit');
 // }
+=======
+
+>>>>>>> origin/master

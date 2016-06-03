@@ -67,5 +67,10 @@ class Site extends Model
     {
         return $site->save();
     }
+
+    public function googlemaps()
+    {
+        return $this->hasOne(GoogleMap::class);
+    }
     
 }

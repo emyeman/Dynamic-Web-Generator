@@ -31,20 +31,10 @@
         </div>
     </div> -->
 
-Hoooooooooooooooooooooooooooome
-<hr />
-<h1>Test values:</h1>
-base_path(): {{ base_path() }}
-<br />
-public_path(): {{ public_path() }}
-<br />
-app_path(): {{ app_path() }}
-<br />
-storage_path(): {{ storage_path() }}
-<br />
-URL::full(): {{ URL::full() }}
-<br />
-url(''): {{ url('') }}
+
+
+
+
 
 </div>
 @endsection

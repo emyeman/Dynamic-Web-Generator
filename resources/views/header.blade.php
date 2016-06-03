@@ -37,6 +37,18 @@
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->
 
+<!--             <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-16">Google Map</a>
+                <div id="accordion-16" class="accordion-section-content">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li></li>
+                            <li><a href="{{ url('/googlemap')}}">Show Google Map</a></li>
+                            <li><a href="{{ url('/googlemap/create')}}">Add Google Map</a></li>
+                        </ul>
+
+                </div>--><!--end .accordion-section-content-->
+            <!--</div>--><!--end .accordion-section-->
 
             <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion-2">Navbar  </a>
