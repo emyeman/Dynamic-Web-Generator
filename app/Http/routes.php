@@ -85,33 +85,3 @@ Route::group(['middleware' => 'auth'], function () {
 	
 });
 
-<<<<<<< HEAD
-
-// // route for delete data
-
-// Route::get('/branding/destroy/{id}','BrandingController@destroy');
-// Route::get('/crusal/destroy/{id}','CrusalController@destroy');
-// Route::get('/navbar/destroy/{id}','NavbarController@destroy');
-// Route::get('/news/destroy/{id}','NewsController@destroy');
-// Route::get('/page/destroy/{id}','PagesController@destroy');
-// Route::get('/stylecontainer/destroy/{id}','StyleContainerController@destroy');
-// Route::get('/promotion/destroy/{id}','PromotionController@destroy');
-// Route::get('/contactus/destroy/{id}','ContactUsController@destroy');
-// Route::get('/footer/destroy/{id}','FooterController@destroy');
-// Route::get('/numberview/destroy/{id}','NumberViewController@destroy');
-// Route::get('/domain/destroy/{id}','DomainController@destroy');
-
-// **************************************************************************************
-// Route::get ('/getrequest',function(){
-// 	if (Request::ajax()){
-// 		// return 'emyyyyyyyyyyyyyy';
-// 		Route::get('/product','ProductController@ajaxindex');
-// 	}
-// });
-
-// if (Request::ajax()){
-// Route::get('/product/edit/{id}','ProductController@ajaxedit');
-// }
-=======
-
->>>>>>> origin/master
