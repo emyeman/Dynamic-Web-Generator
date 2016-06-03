@@ -33,6 +33,15 @@ class SiteController extends Controller
 
      public function store(Request $request)
      {
+        $this->validate($request, [
+            'doman_name' => 'required|max:255',
+            'doman_type' => 'required',
+            'color' => 'required',
+            'primary_color' => 'required',
+            'secondry_color' => 'required',
+            'body_type' => 'required',
+        ]);
+
         $site = new Site($request->all());
         $site->id = Auth::user()->id;
         if($site->addSite($site)) 
@@ -51,6 +60,14 @@ class SiteController extends Controller
 
      public function update(Request $request , Site $site)
      {
+        $this->validate($request, [
+            'doman_name' => 'required|max:255',
+            'doman_type' => 'required',
+            'color' => 'required',
+            'primary_color' => 'required',
+            'secondry_color' => 'required',
+            'body_type' => 'required',
+        ]);
          # code...
         // return $request->all();
        if($site->update($request->all()))

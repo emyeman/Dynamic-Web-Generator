@@ -26,7 +26,7 @@
                 <a href="#">
                 </a>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-10">
                <table class="table">
                 @foreach($services as $service)
                     <tr>

@@ -21,6 +21,12 @@ class UserController extends Controller
     public function update(Request $request , User $user)
     {
     	# code...
+       $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users',
+            'image' => 'required',
+        ]);
+
     	$imagePath='';
         if(Input::hasFile('image')){
                 $file = Input::file('image');
