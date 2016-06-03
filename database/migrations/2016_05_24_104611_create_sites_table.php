@@ -15,6 +15,7 @@ class CreateSitesTable extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
             $table->string('doman_name', 100);
+            $table->enum('doman_type', ['com', 'eg','org']);
             $table->string('color', 10);
             $table->string('primary_color', 10);
             $table->string('secondry_color', 10);

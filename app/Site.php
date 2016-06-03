@@ -3,10 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class Site extends Model
 {
     //
+    protected $fillable = [
+        'doman_name', 'doman_type','color', 'primary_color','secondry_color','body_type',
+    ];
+
     public function owner()
     {
     	return $this->belongsTo(User::class);
@@ -46,5 +52,20 @@ class Site extends Model
     {
         return $this->belongsTo(Template::class);
     }
-}
 
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
+    public function aboutus()
+    {
+        return $this->hasOne(Aboutus::class,'id');
+    }
+    
+    public function addSite(Site $site)
+    {
+        return $site->save();
+    }
+    
+}

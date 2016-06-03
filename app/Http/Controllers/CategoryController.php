@@ -59,9 +59,14 @@ class CategoryController extends Controller
             if(Input::file('image_category')){
                 // echo "image_category";die();
                 $imagefile = Input::file('image_category');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $category->image=$imagefile->getClientOriginalName(); 
+                 // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                $imagefile->move('assets/images/'.$doman_name.'/category',$extention);
+                // echo $doman_name;die();
+                $category->image=$doman_name.'/category/'.$extention; 
             }
+
             $category->site_id=Auth::user()->id;
             $category->save();
     		return  redirect ('/category');
@@ -98,8 +103,12 @@ class CategoryController extends Controller
             if(Input::file('image_category')){
                 // echo "image_category";die();
                 $imagefile = Input::file('image_category');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $category->image=$imagefile->getClientOriginalName(); 
+                // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                $imagefile->move('assets/images/'.$doman_name.'/category',$extention);
+                // echo $doman_name;die();
+                $category->image=$doman_name.'/category/'.$extention; 
             }
 
             $category->site_id=Auth::user()->id;
@@ -117,17 +126,14 @@ class CategoryController extends Controller
         if (Auth::user()){
             $category=Category::find($id);
             // for use redirect
-            $category->delete();
-            return  redirect ('/category');
+            // $category->delete();
+            // return  redirect ('/category');
             // return  view ('category.index');
             // ****************************************************
             // // for use ajax for remove
 
-            // // $category->delete();
-
-            // // return true;
-            // $affectedategories =$category->delete();
-            // return json_encode( $affectedategories );
+            $del_categories =$category->delete();
+            return json_encode( $del_categories );
         } else{
             return  redirect ('/login');   
          } 

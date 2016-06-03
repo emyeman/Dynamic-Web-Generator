@@ -4,8 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>web site generator</title>
 
-    <title>Laravel</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Abeezee:400|Open+Sans:400,600,700|Source+Sans+Pro:400,600">
+    <link rel="stylesheet" type="text/css" href="/assets/css/defaults.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/demo.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css">
+
+   
+
+    <link rel="stylesheet" href="/assets/css/emy.css">
+     <link rel="stylesheet" href="/assets/bootstrap-3.2.0/css/bootstrap.min.css"/>
+<!-- Bootstrap-Iconpicker -->
+    <link rel="stylesheet" href="/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css"/>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -13,6 +25,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -48,7 +61,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
-                    @if (Auth::check())
+                    @if (Session::get('site_id') != null)
                         <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
                         <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
                         <li><a href="#">Contact Us</a></li>
@@ -62,10 +75,18 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+                        <li><img id="profile" class="img-circle" src="{{ Auth::user()->image }}" alt=""></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                            </a> 
+                            <ul class="dropdown-menu mydrop">
+                             @if (Session::get('site_id') != null)
+                                <li class="dropdown-item"><a href="/site/edit/{{ Session::get('site_id') }}" >my site</a></li>
+                             @endif
+                                <li class="dropdown-item"><a href="/user/edit/{{ Auth::user()->id }}" >edit my profile</a></li>
+                            </ul>
+                        </li>
 
                             <!-- <ul class="dropdown-menu" role="menu"> -->
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
@@ -77,11 +98,28 @@
         </div>
     </nav>
 
+
     @yield('content')
 
     <!-- JavaScripts -->
+     <footer class="container-fluid">
+      <!-- <p>Footer Text</p> -->
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/assets/jquery/jquery-1.10.2.min.js"></script>
+<!-- Bootstrap -->
+<script type="text/javascript" src="/assets/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+<!-- Bootstrap-Iconpicker Iconset for Glyphicon -->
+<script type="text/javascript" src="/assets/bootstrap-iconpicker/js/iconset/iconset-glyphicon.min.js"></script>
+<!-- Bootstrap-Iconpicker -->
+<script type="text/javascript" src="/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/accordion.js"></script>
+   
 </body>
 </html>

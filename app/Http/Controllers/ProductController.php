@@ -65,14 +65,15 @@ class ProductController extends Controller
         }    
      }
 
-     // for use ajax for display sub category
-      public function ajaxcreate(Request $request){
+     // for use ajax for display element subcategory
+      public function ajaxcreate($id,Request $request){
         if (Auth::user()){
           if ($request->ajax()){
-            //select all products 
-            $subcategories = DB::table('categories')->get();
+            //select all categories 
+            $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$id)->get();
             // $subcategories='emmmmm';
-            return json_encode($subcategories);
+            // var_dump($subcategories);die();
+            return $subcategories;
           } 
         }else{
             return  redirect ('/login');   
@@ -98,8 +99,12 @@ class ProductController extends Controller
             if(Input::file('image_product')){
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $product->image=$imagefile->getClientOriginalName(); 
+                // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                $imagefile->move('assets/images/'.$doman_name.'/product',$extention);
+                // echo $doman_name;die();
+                $product->image=$doman_name.'/product/'.$extention; 
             }
             $product->category_id=$request->input('subcategory_id');
             $product->save();
@@ -118,9 +123,9 @@ class ProductController extends Controller
             $category=Category::find($subcategory->category_id);
 
             //select all categories have category_id==NULL
-            $categories = DB::table('categories')->whereNull('category_id')->get();
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
               //select all subcategories have category_id
-            $subcategories = DB::table('categories')->whereNotNull('category_id')->get();
+            $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$subcategory->category_id)->get();
              // var_dump($category);die();
             return  view ('product.edit',compact('category','subcategory','product','categories','subcategories'));
         } else{
@@ -148,9 +153,14 @@ class ProductController extends Controller
             if(Input::file('image_product')){
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
-                 $imagefile->move('assets/images',$imagefile->getClientOriginalName());
-                 $product->image=$imagefile->getClientOriginalName(); 
+                // for obtain domain name for save image
+                $doman_name=Auth::user()->site->doman_name;
+                $extention=time().$imagefile->getClientOriginalName();
+                $imagefile->move('assets/images/'.$doman_name.'/product',$extention);
+                // echo $doman_name;die();
+                $product->image=$doman_name.'/product/'.$extention; 
             }
+
             $product->category_id=$request->input('subcategory_id');
             $product->save();
             return  redirect ('/product');
@@ -164,9 +174,14 @@ class ProductController extends Controller
      public function destroy($id){
         if (Auth::user()){
             $product=Product::find($id);
-            $product->delete();
-            return  redirect ('/product');
+            // $product->delete();
+            // return  redirect ('/product');
             // return  view ('product.index');
+            // ****************************************************
+            // // for use ajax for remove
+
+            $del_products =$product->delete();
+            return json_encode( $del_products );
         } else{
             return  redirect ('/login');   
         }

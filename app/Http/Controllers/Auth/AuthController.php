@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Input;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
 
 class AuthController extends Controller
 {
@@ -20,7 +26,6 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
-
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
@@ -63,10 +68,19 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        $imagePath='';
+        if(Input::hasFile('image')){
+                $file = Input::file('image');
+                $filename = Input::file('image')->getClientOriginalName(); 
+                $file = $file->move(public_path().'/images/profile/',$filename);
+                // $user->image = $file->getRealPath();
+                  $imagePath = '/images/profile/'.$filename;
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'image' => $imagePath, 
         ]);
     }
 }

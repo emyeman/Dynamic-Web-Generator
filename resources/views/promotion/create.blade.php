@@ -13,9 +13,6 @@
             Add New News
         @endif
     </h2>
-      @if (isset($path_parts))
-        <?php var_dump($path_parts); ?>
-      @endif
       @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
