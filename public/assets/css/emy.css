@@ -64,16 +64,40 @@ li{
     margin-left: auto; 
 }
 
-#profile
-{
-    width: 50px;
-    height: 50px;
-}
 .run{
     /* margin-left: 100px */
     
 }
-.cp-color-picker
-{
-    z-index: 10;
+.google{
+    color: #337ab7;
+    size: 100px;
+    /* background-color: #337ab7; */
+    /* border-color: #2e6da4; */
+}
+#map,#savelocation,#sel_googlemap{
+    margin: 5px auto;
+    background: -webkit-linear-gradient(top,#C5DEDE,#A4A4A9);
+    border-radius: 0px;
+    border: 2px solid #C0EFEF;
+    width: 0%;
+    text-align: center;
+}
+
+#sel_googlemap{
+    width: 50%;
+    border-radius: 200px;
+    /* background: -webkit-linear-gradient(top,#C5DEDE,#A4A4A9); */
+    background: -webkit-linear-gradient(top,#98D6D6,#D7D7DE);
+     border:2px solid #94A0A0;
+
+}
+#spphone,#spmobile,#spemail,#spfax,#spfacebook,#spgoogle,#spinstagram,#splinkedin,#sppinterest,#spyoutube{
+        font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
+        color: black;
+        display: none;
+    }
+
+.Error{
+        background: rgba(255,221,221,1);
+        /* color: red; */
 }
