@@ -64,13 +64,12 @@ class ContactUsController extends Controller
             ]);
 
             $contact= new Contact;
-            $contact->id=Auth::user()->id;   //becaues id of contactus is same as id of site that equal id of user
+            $contact->site_id=Auth::user()->id;   //becaues site_id of contactus is same as id of user 
             $contact->address=$request->input('address');
             // data from google map
-            $lat=$request->input('latitude');
-            $lon=$request->input('longitude');
-            $contact->lat_lon=$lat.','.$lon;
 
+            $contact->lat=$request->input('latitude');
+            $contact->lng=$request->input('longitude');
             $contact->phone=$request->input('phone');
             $contact->mobile=$request->input('mobile');
             $contact->email=$request->input('email');
@@ -123,9 +122,10 @@ class ContactUsController extends Controller
 
             // data from google map
             $lat=$request->input('latitude');
-            $lon=$request->input('longitude');
-            if (!(empty($lat) and empty($lat))){
-                $contact->lat_lon=$lat.','.$lon;
+            $lng=$request->input('longitude');
+            if (!(empty($lat) and empty($lng))){
+                $contact->lat=$request->input('latitude');
+                $contact->lng=$request->input('longitude');
             }
             
             $contact->phone=$request->input('phone');
