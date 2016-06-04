@@ -14,12 +14,13 @@ class CreateHeadersTable extends Migration
     {
         Schema::create('headers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('site_id')->unsigned();
             $table->string('company_name',100)->nullable();
             $table->string('slogan',500)->nullable();
             $table->string('logo',200)->nullable();
             $table->timestamps();
-            $table->foreign('id')
-                  ->references('id')->on('sites');
+            $table->foreign('site_id')
+                  ->references('id')->on('sites')->onUpdate('cascade');
         });
     }
 

@@ -14,14 +14,14 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('site_id')->unsigned();
             $table->string('title');
             $table->string('description');
             $table->string('icon');
             $table->softDeletes();
             $table->timestamps();
-            $table->integer('site_id')->unsigned();
             $table->foreign('site_id')
-                  ->references('id')->on('sites');
+                  ->references('id')->on('sites')->onUpdate('cascade');
         });
     }
 

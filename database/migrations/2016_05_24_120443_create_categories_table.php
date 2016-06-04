@@ -14,9 +14,9 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',200)->unique();
-            $table->string('description',1000)->nullable();
-            $table->string('image',200)->nullable();
+            $table->string('name', 200)->unique();
+            $table->string('description', 1000)->nullable();
+            $table->string('image', 200)->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->integer('site_id')->unsigned();
@@ -25,11 +25,13 @@ class CreateCategoriesTable extends Migration
                 ->nullable()
                 ->default(null);
             $table->foreign('site_id')
-                  ->references('id')
-                  ->on('sites');
+                ->references('id')
+                ->on('sites')
+                ->onUpdate('cascade');
             $table->foreign('category_id')
-                  ->references('id')
-                  ->on('categories');
+                ->references('id')
+                ->on('categories')
+                ->onUpdate('cascade');
         });
     }
 

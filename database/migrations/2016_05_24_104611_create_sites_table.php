@@ -14,17 +14,28 @@ class CreateSitesTable extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('doman_name', 100);
-            $table->enum('doman_type', ['com', 'eg','org']);
+
+            $table->integer('user_id')->unsigned();
+            $table->integer('template_id')->unsigned();
+
+            $table->string('domain', 255);
             $table->string('color', 10);
             $table->string('primary_color', 10);
             $table->string('secondry_color', 10);
             $table->enum('body_type', ['fill', 'centered']);
+            $table->string('background_image');
             $table->softDeletes();
             $table->timestamps();
-            $table->foreign('id')
-                  ->references('id')
-                  ->on('users');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade');
+
+            $table->foreign('template_id')
+                ->references('id')
+                ->on('templates')
+                ->onUpdate('cascade');
         });
     }
 

@@ -14,11 +14,12 @@ class CreateAboutusesTable extends Migration
     {
         Schema::create('aboutuses', function (Blueprint $table) {
              $table->increments('id');
+            $table->integer('site_id');
             $table->text('description');
             $table->string('image',200);
             $table->timestamps();
-            $table->foreign('id')
-                  ->references('id')->on('sites');
+            $table->foreign('site_id')
+                  ->references('id')->on('sites')->onUpdate('cascade');
         });
     }
 

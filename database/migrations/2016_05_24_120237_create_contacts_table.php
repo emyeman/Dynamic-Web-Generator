@@ -14,8 +14,10 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('site_id')->unsigned();
             $table->string('address',300)->nullable();
-            $table->string('lat_lon',300)->nullable();
+            $table->float('lat',11.8)->nullable();
+            $table->float('lng',11.8)->nullable();
             $table->string('phone',100)->nullable();
             $table->string('mobile',100)->nullable();
             $table->string('email',130)->nullable();
@@ -27,8 +29,9 @@ class CreateContactsTable extends Migration
             $table->string('linkedin',100)->nullable();
             $table->string('pinterest',100)->nullable();
             $table->timestamps();
-            $table->foreign('id')
-                  ->references('id')->on('sites');
+
+            $table->foreign('site_id')
+                  ->references('id')->on('sites')->onUpdate('cascade');
                   
         });
     }

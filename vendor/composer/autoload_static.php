@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
+class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -16,8 +16,8 @@ class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -273,17 +273,17 @@ class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
     );
 
     public static $classMap = array (
-        'CreateAboutUsesTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_113233_create_about_uses_table.php',
         'CreateAboutusesTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_01_135357_create_aboutuses_table.php',
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120443_create_categories_table.php',
         'CreateContactsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120237_create_contacts_table.php',
         'CreateCrusalsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120336_create_crusals_table.php',
         'CreateHeadersTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120109_create_headers_table.php',
-        'CreateMenuItemsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_25_120146_create_menu_items_table.php',
+        'CreateMenusTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_090910_create_menus_table.php',
         'CreateNewsPromotionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_115926_create_news_promotions_table.php',
-        'CreatePagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120531_create_pages_table.php',
+        'CreatePagesTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_090957_create_pages_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120452_create_products_table.php',
+        'CreateServicesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_30_134813_create_services_table.php',
         'CreateSitesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_104611_create_sites_table.php',
         'CreateSpecialTemplatesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_115721_create_special_templates_table.php',
         'CreateTemplatesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_115038_create_templates_table.php',
@@ -799,10 +799,10 @@ class ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitf213ea9aba8d0d8bea1f8bbf1d543ef3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7925e826c81882e013a6152a49eaa5a4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7925e826c81882e013a6152a49eaa5a4::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7925e826c81882e013a6152a49eaa5a4::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit7925e826c81882e013a6152a49eaa5a4::$classMap;
 
         }, null, ClassLoader::class);
     }

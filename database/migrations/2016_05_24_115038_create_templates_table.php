@@ -16,12 +16,9 @@ class CreateTemplatesTable extends Migration
             $table->increments('id');
             $table->string('name',50)->unique();
             $table->string('image',200);
-            $table->string('path',200);
+            $table->string('development_name',200);
             $table->softDeletes();
             $table->timestamps();
-            $table->integer('site_id')->unsigned();
-            $table->foreign('site_id')
-                  ->references('id')->on('sites');
         });
     }
 
