@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -8,12 +9,26 @@ use App\Header;
 
 class BrandingController extends Controller {
 
-    public function index(Request $request) {
-        $site = $request->user()->site->header;
-        if ($site) {
-//            $branding = $site->header();
+    private $branding = Null;
 
-            return view('branding.index')->withBranding($site);
+    public function __construct(Request $request) {
+        $this->branding = $request->user()->site->header;
+    }
+
+    private function upload_image($image) {
+        $domain_name = $request->user()->site->doman_name;
+
+        $directory = "/$domain_name/branding/";
+        if (Input::file('image')->move(public_path() . $directory, $image)) {
+            return $directory . $image;
+        }
+        return FALSE;
+    }
+
+    public function index(Request $request) {
+//        $branding = $request->user()->site->header;
+        if ($this->branding) {
+            return view('branding.index')->withBranding($branding);
         } else {
             return redirect('branding/create');
         }
@@ -30,38 +45,49 @@ class BrandingController extends Controller {
     }
 
     public function store(Request $request) {
-        $doman_name = $request->user()->site->doman_name;
-        $logo = Input::file('image')->getClientOriginalName();
+        $image = Input::file('image')->getClientOriginalName();
 
-        $directory = "/$doman_name/branding/";
-        
-        Input::file('image')->move(public_path().$directory, $logo);
-
-        $brand['id'] = $request->user()->id;
-        $brand['company_name'] = $request->input('companyname');
-        $brand['logo'] = $directory.$logo;
-        $brand['slogan'] = $request->input('slogan');
-        if (Header::create($brand)) {
-            return redirect('/branding');
+        if ($logo = $this->upload_image($image)) {
+            $brand['id'] = $request->user()->id;
+            $brand['company_name'] = $request->input('companyname');
+            $brand['logo'] = $logo;
+            $brand['slogan'] = $request->input('slogan');
+            if (Header::create($brand)) {
+                return redirect('/branding');
+            }
         }
-        else{
-            return redirect('/branding/create')->withErrors('Something Error');
-        }
+        return redirect('/branding/create')->withErrors('Something Error');
     }
 
-    public function edit($id) {
-
-        return view('branding.edit');
+    public function edit(Request $request) {
+        if ($this->branding) {
+            return view('branding.edit')->withBranding($branding);
+        } else {
+            return view('branding.index')->withErrors('Something Error');
+        }
     }
 
     public function update($id) {
+        $image = Input::file('image')->getClientOriginalName();
 
-        // return  redirect ('/branding');
+        if ($logo = $this->upload_image($image) && $brand = $this->branding->id) {
+            $brand['company_name'] = $request->input('companyname');
+            $brand['logo'] = $logo;
+            $brand['slogan'] = $request->input('slogan');
+            if ($brand->save()) {
+                return redirect('/branding');
+            }
+        }
+        return redirect('/branding')->withErrors('Something Error');
     }
 
-    public function destroy($id) {
-
-        // return  view ('branding.index');
+    public function destroy(Request $request) {
+        if ($this->branding) {
+            Header::destroy($this->branding->id);
+            return redirect('branding/create');
+        } else {
+            return view('branding.index')->withErrors('Something Error');
+        }
     }
 
 }
