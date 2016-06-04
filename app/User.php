@@ -26,6 +26,6 @@ class User extends Authenticatable
     
     public function site()
     {
-        return $this->hasOne(Site::class, 'id');
+        return $this->hasOne(Site::class, 'user_id');
     }
 }

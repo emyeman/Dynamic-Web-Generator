@@ -81,7 +81,15 @@
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                 <textarea placeholder='PlZ,enter description' class='form-control' name='description'></textarea> 
             </div>
-        </div>      
+        </div> 
+
+        <div class='form-group has-warning'>
+            <label class='col-md-2'>Product Price</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'>LE</span>
+                <input placeholder='PlZ,enter price product' class='form-control' name='price_product' type='text'/>
+            </div>
+        </div>     
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
     {!!Form::close() !!}

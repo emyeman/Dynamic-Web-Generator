@@ -12,7 +12,7 @@
                     <!-- for display add only one first and then display edit everytime -->
                      <?php $flagadd=0?>
                         @foreach($contacts as $contact)
-                            @if($contact->id==Auth::user()->id)
+                            @if($contact->site_id==Auth::user()->id)
                                 <?php $flagadd=1?>
                             @endif
                         @endforeach
@@ -100,8 +100,8 @@
                            
                     </table>
                         <!-- <div id="map"> -->
-                        @if ($contact->lat_lon != ",")
-                            <img src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat_lon}}&markers=color:blue|label:N|{{$contact->lat_lon}}&zoom=15&size=1057x600&sensor=false'/>
+                        @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
+                            <img src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
                         @endif
                         <!-- </div>  -->
                     <br/><hr/>

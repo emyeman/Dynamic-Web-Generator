@@ -14,28 +14,16 @@
             </ul>
         </div>
       @endif
-      {!!Form::open(['route'=>'site.store','method'=>'post']) !!}
+      {!!Form::open(['route'=>'site.store' , 'method'=>'post', 'files'=>true]) !!}
         <div class='form-group has-warning'>
-            <label class='col-md-2'>Domain Name</label>
+            <label class='col-md-2'>SubDomain</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
-                <input placeholder='PlZ,enter title news' class='form-control' name='doman_name' type='text'/>
+                <input placeholder='PlZ,enter title news' class='form-control' name='subdomain' type='text'/>
             </div>
         </div>  
-
-        <div class='form-group has-warning'>
-            <label class='col-md-2'>Doman Type</label>
-            <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                        <select name="doman_type" class="form-control">
-                            <option>com</option>
-                            <option>eg</option>
-                            <option>org</option>
-                        </select>
-            </div>
-        </div>
 
          <div class='form-group has-warning'>
             <label class='col-md-2'>Site Color</label>
@@ -73,6 +61,19 @@
 						</select>
             </div>
         </div>
+
+         <div class='form-group has-warning'>
+            <label class='col-md-2'>Image</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
+                <label class="btn btn-primary btn-file">
+                    Browse <input id="image" type="file" name="background_image" style="display: none;">
+                </label>  
+            </div>
+        </div>
+
+
+ 
       
 
         <span class='col-md-2'></span>

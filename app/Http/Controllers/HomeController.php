@@ -27,13 +27,16 @@ class HomeController extends Controller
     {    
         if(isset(Auth::user()->id))
         {
-
-            $site = Site::find(Auth::user()->id);
+            $site =Auth::user()->site()->first()['attributes']['id'];
+            // $site = Site::find(Auth::user()->id);
             if($site != null)
             {
-
-                Session::put('site_id', Auth::user()->id);    
+                Session::put('site_id',$site);    
             }
+        }
+        else
+        {
+            Session::forget('site_id');
         }
         return view('home');
     }

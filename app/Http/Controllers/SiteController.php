@@ -8,6 +8,7 @@ use Session;
 use Illuminate\Http\Request;
 use App\Site;
 use App\Http\Requests;
+use Input;
 
 class SiteController extends Controller
 {
@@ -34,16 +35,28 @@ class SiteController extends Controller
      public function store(Request $request)
      {
         $this->validate($request, [
-            'doman_name' => 'required|max:255',
-            'doman_type' => 'required',
+            'subdomain' => 'required|max:255',
             'color' => 'required',
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
         ]);
-
         $site = new Site($request->all());
-        $site->id = Auth::user()->id;
+        $site->user_id = Auth::user()->id;
+        $site->template_id = 1;
+
+        $imagePath='';
+        if(Input::hasFile('background_image')){  
+                $file = Input::file('background_image');
+                $filename = Input::file('background_image')->getClientOriginalName();
+                
+                $file = $file->move(public_path().'/assets/'.$site->subdomain.'/backgrounds/',$filename);
+                // $user->image = $file->getRealPath();
+                $imagePath = '/assets/'.$site->subdomain.'/backgrounds/'.$filename;
+        }
+        
+        // dd($imagePath);
+        $site->background_image = $imagePath;
         if($site->addSite($site)) 
         {
             Session::put('site_id', $site->id);

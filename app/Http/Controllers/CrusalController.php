@@ -10,19 +10,20 @@ use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Session;
 
 class CrusalController extends Controller
 {
     private function path_to_crusal_images($image)
     {
-        $doman_name=Auth::user()->site->doman_name;
+        $doman_name = Auth::user()->site()->first()['attributes']['subdomain'];
         $extension = $image->getClientOriginalExtension();
         return '/'.$doman_name.'/crusal/'.time().'.'.$extension; //path of image inside the storage dir & rename image
     }
 
 	public function index(){
 
-        $site_id=Auth::user()->id; // site_id == user_id , becuase of the 1:1 relationship
+        $site_id=Session::get('site_id'); // site_id == user_id , becuase of the 1:1 relationship
         $rows=Crusal::where('site_id', $site_id)->get();
         return  view ('crusal.index',['rows'=>$rows]);
      }
@@ -49,7 +50,7 @@ class CrusalController extends Controller
         $new_row->title=trim($request->input('title'));
         $new_row->description=trim($request->input('description'));
         $new_row->image=$file_name;
-        $new_row->site_id=Auth::user()->id;
+        $new_row->site_id=Session::get('site_id');
         $is_saved=$new_row->save();
         if($is_saved)
         {
