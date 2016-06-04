@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use DB;
+use Session;
 class AboutUsController extends Controller
 {
 	private function path_to_aboutus_image($image)
     {
-        $doman_name=Auth::user()->site->doman_name;
+        $doman_name=Auth::user()->site()->first()['attributes']['subdomain'];
         $extension = $image->getClientOriginalExtension();
-        return '/'.$doman_name.'/'.time().'.'.$extension; //path of image inside the storage dir & rename image
+        return '/'.$doman_name.'/about/'.time().'.'.$extension; //path of image inside the storage dir & rename image
     }
 
 
@@ -29,18 +30,18 @@ class AboutUsController extends Controller
             }
         catch(Exception $e)
             {throw new ModelNotFoundException($e->getMassege());}
-
-        
     }
+
+
     public function create(){
-    	$aboutus_id=Auth::user()->id; // user_id == aboutus_id --> 1:1 relationship
-    	$is_exists=Aboutus::where('id', '=',$aboutus_id)->first();
+    	$aboutus_id = Session::get('site_id'); // user_id == aboutus_id --> 1:1 relationship
+    	$is_exists=Aboutus::where('site_id', '=',$aboutus_id)->first();
 		if($is_exists===null)
 			return  view ('aboutus.create');
 		// return view('aboutus.edit'); 
-
-		return redirect()->action('AboutUsController@show',[$aboutus_id]);      
+		return redirect()->action('AboutUsController@show',[$is_exists['attributes']['id']]);      
     }
+
 
     public function store(Request $request)
      {
@@ -53,7 +54,7 @@ class AboutUsController extends Controller
         $new_row=new Aboutus;
         $new_row->description=trim($request->input('description'));
         $new_row->image=$file_name;
-        $new_row->id=$request->user()->id;
+        $new_row->site_id=Session::get('site_id');
 		$is_saved=$new_row->save();
         if($is_saved)
         {
@@ -65,8 +66,8 @@ class AboutUsController extends Controller
         {
             abort(500);
         }
-
     }
+
 
     public function edit($id,Request $request){
         try
@@ -80,15 +81,14 @@ class AboutUsController extends Controller
         }
         catch(Exception $e)
         {
-            throw new ModelNotFoundException($e->getMassege());
-            
+            throw new ModelNotFoundException($e->getMassege());   
         }
-        
      }
+      
 
 
      public function update($id,Request $request){
-        try //the requested row is exists
+        try    //the requested row is exists
             {$row=Aboutus::findOrFail($id);}
         catch(Exception $e)
             {throw new ModelNotFoundException($e->getMassege());}
