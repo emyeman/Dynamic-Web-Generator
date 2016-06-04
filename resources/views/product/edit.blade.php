@@ -86,7 +86,15 @@
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                 <textarea  class='form-control' name='description'>{{$product->description}}</textarea> 
             </div>
-        </div>      
+        </div>  
+
+        <div class='form-group has-warning'>
+            <label class='col-md-2'>Product Price</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'>LE</span>
+                <input value="{{$product->price}}" class='form-control' name='price_product' type='text'/>
+            </div>
+        </div>     
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='Edit' />
     {!!Form::close() !!}

@@ -59,11 +59,11 @@ class CategoryController extends Controller
                 // echo "image_category";die();
                 $imagefile = Input::file('image_category');
                  // for obtain domain name for save image
-                $doman_name=Auth::user()->site->doman_name;
+                $subdomain=Auth::user()->site->subdomain;
                 $extention=time().$imagefile->getClientOriginalName();
-                $imagefile->move('assets/images/'.$doman_name.'/category',$extention);
-                // echo $doman_name;die();
-                $category->image=$doman_name.'/category/'.$extention; 
+                $imagefile->move('assets/images/'.$subdomain.'/category',$extention);
+                // echo $subdomain;die();
+                $category->image=$subdomain.'/category/'.$extention; 
             }
 
             $category->site_id=Auth::user()->id;
@@ -103,11 +103,11 @@ class CategoryController extends Controller
                 // echo "image_category";die();
                 $imagefile = Input::file('image_category');
                 // for obtain domain name for save image
-                $doman_name=Auth::user()->site->doman_name;
+                $subdomain=Auth::user()->site->subdomain;
                 $extention=time().$imagefile->getClientOriginalName();
-                $imagefile->move('assets/images/'.$doman_name.'/category',$extention);
-                // echo $doman_name;die();
-                $category->image=$doman_name.'/category/'.$extention; 
+                $imagefile->move('assets/images/'.$subdomain.'/category',$extention);
+                // echo $subdomain;die();
+                $category->image=$subdomain.'/category/'.$extention; 
             }
 
             $category->site_id=Auth::user()->id;
