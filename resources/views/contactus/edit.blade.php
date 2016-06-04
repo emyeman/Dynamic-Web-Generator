@@ -217,27 +217,9 @@
     $(document).ready(function(){
         console.log('hiiiiiii');
     //************************ for make validation **************************
-             var emailspan=document.getElementById("spemail");
-             var contemail=document.getElementById("email");
-             var phonespan=document.getElementById("spphone");
-             var contphone=document.getElementById("phone");
-             var mobilespan=document.getElementById("spmobile");
-             var contmobile=document.getElementById("mobile");
-             var faxspan=document.getElementById("spfax");
-             var contfax=document.getElementById("fax");
-             var facebookspan=document.getElementById("spfacebook");
-             var contfacebook=document.getElementById("facebook");
-             var instagramspan=document.getElementById("spinstagram");
-             var continstagram=document.getElementById("instagram");
-             var googlespan=document.getElementById("spgoogle");
-             var contgoogle=document.getElementById("google");
-             var linkedinspan=document.getElementById("splinkedin");
-             var contlinkedin=document.getElementById("linkedin");
-             var pinterestspan=document.getElementById("sppinterest");
-             var contpinterest=document.getElementById("pinterest");
-             var youtubespan=document.getElementById("spyoutube");
-             var contyoutube=document.getElementById("youtube");
-
+            //  var emailspan=document.getElementById("spemail");
+            //  var contemail=document.getElementById("email");
+            
             //  // valdation for email
             //  contemail.onblur=function(){
             //   // $('#contemail').click(function() {  
@@ -256,85 +238,7 @@
             //         emailspan.style.display="block";
             //       }   
             // // });
-            //     }  
-
-            //         // validation for phone
-            // contphone.onblur=function(){
-            // // $('#contphone').click(function() {   
-            //    var checkph= /[0-9]{7}/;
-            //     if(this.value.match(checkph))
-            //       { 
-            //         this.className="form-control";
-            //         phonespan.style.display="none";
-            //       }
-            //       else
-            //       {
-            //         // this.focus();
-            //         this.select();
-            //         this.className="form-control Error";
-            //         phonespan.style.display="block";
-            //       }   
-            // // }); 
-            // }   
-
-
-            
-            // // validation for mobile
-            // contmobile.onblur=function(){
-            // // $('#contmobile').click(function() {   
-            //    var checkmob= /[0-9]{10}/;
-            //     if(this.value.match(checkmob))
-            //       { 
-            //         this.className="form-control";
-            //         mobilespan.style.display="none";
-            //       }
-            //       else
-            //       {
-            //         // this.focus();
-            //         this.select();
-            //         this.className="form-control Error";
-            //         mobilespan.style.display="block";
-            //       }   
-            // // }); 
-            // } 
-            //     //validation for facebook
-            // contfacebook.onblur=function(){
-            // // $('#contfacebook').click(function() {
-            //    var checkfac= /[a-zA-z]{5,40}/;
-            //     if(this.value.match(checkfac))
-            //       { 
-            //         this.className="form-control";
-            //         facebookspan.style.display="none";
-            //       }
-            //       else
-            //       {
-            //         // this.focus();
-            //         this.select();
-            //         this.className="form-control Error";
-            //         facebookspan.style.display="block";
-            //       }   
-            // // }); 
-            // } 
-
-            //             // validation for fax
-            // contfax.onblur=function(){
-            // // $('#contfax').click(function() {
-
-            //    var checkfax= /[0-9]{9}/;
-            //     if(this.value.match(checkfax))
-            //       { 
-            //         this.className="form-control";
-            //         faxspan.style.display="none";
-            //       }
-            //       else
-            //       {
-            //         // this.focus();
-            //         this.select();
-            //         this.className="form-control Error";
-            //         faxspan.style.display="block";
-            //       }   
-            // // });
-            // }   
+            //     }    
 
 // ************************************ end validation ******************************************
                   // for google map

@@ -50,7 +50,8 @@ class ContactUsController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'address' => 'max:300',
-                'lat_lon' => 'max:300',
+                'lat' => 'max:300',
+                'lng' => 'max:300',
                 'phone' => 'max:300',
                 'mobile' => 'max:300',
                 'email' => 'max:300',
@@ -103,7 +104,8 @@ class ContactUsController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'address' => 'max:500',
-                'lat_lon' => 'max:300',
+                'lat' => 'max:300',
+                'lng' => 'max:300',
                 'phone' => 'max:200',
                 'mobile' => 'max:200',
                 'email' => 'max:200',

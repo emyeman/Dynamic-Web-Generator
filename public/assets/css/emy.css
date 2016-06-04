@@ -101,7 +101,13 @@ li{
         font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
         color: black;
         display: none;
-    }
+    } 
+/* 
+#spemail{
+        font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
+        color: black;
+        display: none;
+    }  */
 
 .Error{
         background: rgba(255,221,221,1);
