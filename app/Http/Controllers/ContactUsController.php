@@ -19,7 +19,7 @@ class ContactUsController extends Controller
 	public function index(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('id',Auth::user()->id)->get();
+            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
 
             return  view ('contactus.index',compact('contacts'));
        } else{
@@ -38,7 +38,7 @@ class ContactUsController extends Controller
      public function create(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('id',Auth::user()->id)->get();
+            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
 
             return  view ('contactus.create',compact('contacts'));
         }else{
