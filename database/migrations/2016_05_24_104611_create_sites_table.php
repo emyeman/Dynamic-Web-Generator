@@ -18,7 +18,7 @@ class CreateSitesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('template_id')->unsigned();
 
-            $table->string('domain', 255);
+            $table->string('subdomain', 255)->unique();
             $table->string('color', 10);
             $table->string('primary_color', 10);
             $table->string('secondry_color', 10);

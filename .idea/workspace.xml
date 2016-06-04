@@ -316,8 +316,8 @@
       <file leaf-file-name="2016_05_24_104611_create_sites_table.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_24_104611_create_sites_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+            <state relative-caret-position="216">
+              <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -429,11 +429,11 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_05_24_115926_create_news_promotions_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_05_24_120452_create_products_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_05_30_134813_create_services_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_05_24_104611_create_sites_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_05_24_115038_create_templates_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_04_090910_create_menus_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_04_090957_create_pages_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_05_24_104611_create_sites_table.php" />
       </list>
     </option>
   </component>
@@ -593,12 +593,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1465027366097</updated>
-      <workItem from="1465027367426" duration="4853000" />
+      <workItem from="1465027367426" duration="5162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4853000" />
+    <option name="totallyTimeSpent" value="5162000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -779,8 +779,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_24_104611_create_sites_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="216">
+          <caret line="20" column="55" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
           <folding />
         </state>
       </provider>
