@@ -6,12 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddForeignKeyFromSiteToTemplates' => $baseDir . '/database/migrations/2016_06_04_093919_add_foreign_key_from_site_to_templates.php',
     'CreateAboutusesTable' => $baseDir . '/database/migrations/2016_06_01_135357_create_aboutuses_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_05_24_120443_create_categories_table.php',
     'CreateContactsTable' => $baseDir . '/database/migrations/2016_05_24_120237_create_contacts_table.php',
     'CreateCrusalsTable' => $baseDir . '/database/migrations/2016_05_24_120336_create_crusals_table.php',
     'CreateHeadersTable' => $baseDir . '/database/migrations/2016_05_24_120109_create_headers_table.php',
-    'CreateMenusTable' => $baseDir . '/database/migrations/2016_06_04_090910_create_menus_table.php',
+    'CreateMenusTable' => $baseDir . '/database/migrations/2016_06_04_095421_create_menus_table.php',
     'CreateNewsPromotionsTable' => $baseDir . '/database/migrations/2016_05_24_115926_create_news_promotions_table.php',
     'CreatePagesTable' => $baseDir . '/database/migrations/2016_06_04_090957_create_pages_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',

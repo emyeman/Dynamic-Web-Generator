@@ -13,13 +13,16 @@ class CreateAboutusesTable extends Migration
     public function up()
     {
         Schema::create('aboutuses', function (Blueprint $table) {
-             $table->increments('id');
-            $table->integer('site_id');
+            $table->increments('id');
+            $table->integer('site_id')->unsigned();
             $table->text('description');
-            $table->string('image',200);
+            $table->string('image', 200);
             $table->timestamps();
+
             $table->foreign('site_id')
-                  ->references('id')->on('sites')->onUpdate('cascade');
+                ->references('id')
+                ->on('sites')
+                ->onUpdate('cascade');
         });
     }
 

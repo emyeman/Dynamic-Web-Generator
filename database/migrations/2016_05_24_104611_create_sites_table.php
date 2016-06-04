@@ -32,10 +32,7 @@ class CreateSitesTable extends Migration
                 ->on('users')
                 ->onUpdate('cascade');
 
-            $table->foreign('template_id')
-                ->references('id')
-                ->on('templates')
-                ->onUpdate('cascade');
+    
         });
     }
 

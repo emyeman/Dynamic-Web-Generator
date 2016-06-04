@@ -20,17 +20,14 @@ class CreateMenusTable extends Migration
             $table->integer('route')->unsigned();
             $table->softDeletes();
             $table->timestamps();
-
             $table->foreign('site_id')
                 ->references('id')
                 ->on('sites')
                 ->onUpdate('cascade');
-
             $table->foreign('parent_id')
                 ->references('id')
                 ->on('menus')
                 ->onUpdate('cascade');
-
             $table->foreign('route')
                 ->references('id')
                 ->on('pages')

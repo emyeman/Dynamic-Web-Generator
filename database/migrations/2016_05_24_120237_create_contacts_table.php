@@ -15,19 +15,19 @@ class CreateContactsTable extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('site_id')->unsigned();
-            $table->string('address',300)->nullable();
-            $table->float('lat',11.8)->nullable();
-            $table->float('lng',11.8)->nullable();
-            $table->string('phone',100)->nullable();
-            $table->string('mobile',100)->nullable();
-            $table->string('email',130)->nullable();
-            $table->string('fax',100)->nullable();
-            $table->string('facebook',100)->nullable();
-            $table->string('youtube',100)->nullable();
-            $table->string('google_plus',100)->nullable();
-            $table->string('instagram',100)->nullable();
-            $table->string('linkedin',100)->nullable();
-            $table->string('pinterest',100)->nullable();
+            $table->string('address')->nullable();
+            $table->float('lat',11, 8)->nullable();
+            $table->float('lng',11, 8)->nullable();
+            $table->string('phone')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('email')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('google_plus')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('pinterest')->nullable();
             $table->timestamps();
 
             $table->foreign('site_id')
