@@ -8,7 +8,8 @@
     <div class="col-sm-9">
         <h2>Edit your Branding</h2>
         <br><br>
-        {!!Form::open(['route'=>'branding.store','method'=>'post', 'files'=>true ]) !!}
+        {!!Form::model($branding, ['route'=>array('branding.update', $branding->id),'method'=>'put', 'files'=>true]) !!}
+        {!! csrf_field() !!}
         <div class='form-group has-warning'>
             <label class='col-md-2'>Company Name</label>
             <div class='col-md-10 input-group'>
@@ -32,7 +33,7 @@
             </div>
         </div>      
         <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
+        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='edit' />
         {!!Form::close() !!}
 
 
