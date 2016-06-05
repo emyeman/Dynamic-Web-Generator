@@ -33,5 +33,9 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('access-aboutus', function ($user, $element) {
             return $user->id == $element->id;
         });
+
+        $gate->define('access-pages', function ($user, $site) {
+            return $user->id == $site->user_id;
+        });
     }
 }

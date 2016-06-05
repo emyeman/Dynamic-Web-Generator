@@ -19,7 +19,7 @@ class ContactUsController extends Controller
 	public function index(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('id',Auth::user()->id)->get();
+            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
 
             return  view ('contactus.index',compact('contacts'));
        } else{
@@ -38,7 +38,7 @@ class ContactUsController extends Controller
      public function create(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('id',Auth::user()->id)->get();
+            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
 
             return  view ('contactus.create',compact('contacts'));
         }else{
@@ -50,7 +50,8 @@ class ContactUsController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'address' => 'max:300',
-                'lat_lon' => 'max:300',
+                'lat' => 'max:300',
+                'lng' => 'max:300',
                 'phone' => 'max:300',
                 'mobile' => 'max:300',
                 'email' => 'max:300',
@@ -103,7 +104,8 @@ class ContactUsController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'address' => 'max:500',
-                'lat_lon' => 'max:300',
+                'lat' => 'max:300',
+                'lng' => 'max:300',
                 'phone' => 'max:200',
                 'mobile' => 'max:200',
                 'email' => 'max:200',
