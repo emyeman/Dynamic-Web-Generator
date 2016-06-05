@@ -62,7 +62,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/contactus','ContactUsController');
 	Route::resource('/footer','FooterController');
 	Route::resource('/numberview','NumberViewController');
+
+
+	Route::patch('/domain/update/{domain}','DomainController@update');
+	Route::get('/domain/edit/{domain}','DomainController@edit');
 	Route::resource('/domain','DomainController');
+
 	Route::resource('/promotion','PromotionController');
 	Route::resource('/googlemap','GoogleMapController');
 

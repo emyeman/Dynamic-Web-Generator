@@ -10,8 +10,14 @@ class Site extends Model
 {
     //
     protected $fillable = [
-        'subdomain', 'color', 'primary_color','secondry_color','body_type','background_image',
+        'user_id ','template_id ','subdomain', 'color', 'primary_color','secondry_color','body_type','background_image',
     ];
+
+    public function domain()
+    {
+        return $this->hasOne(Domain::class);
+    }
+
 
     public function owner()
     {
