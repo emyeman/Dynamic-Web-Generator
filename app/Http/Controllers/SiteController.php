@@ -18,19 +18,22 @@ class SiteController extends Controller
      }
 
      public function show($id){
-
         return  view('site.show');
      }
 
+
      public function create(){
-        // dd(Auth::user()['attributes']);
         $site = Site::find(Auth::user()->id);
         if($site == null)
         {
-            return  view('site.create');    
+            return view('site.create');    
         }
-        return view('home');
+        else
+        {
+            return view('home');       
+        } 
      }
+
 
      public function store(Request $request)
      {
@@ -42,19 +45,17 @@ class SiteController extends Controller
             'body_type' => 'required',
         ]);
         $site = new Site($request->all());
+        $site->id = Auth::user()->id;
         $site->user_id = Auth::user()->id;
         $site->template_id = 1;
-
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
                 $filename = Input::file('background_image')->getClientOriginalName();
-                
-                $file = $file->move(public_path().'/assets/'.$site->subdomain.'/backgrounds/',$filename);
+                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',$filename);
                 // $user->image = $file->getRealPath();
-                $imagePath = '/assets/'.$site->subdomain.'/backgrounds/'.$filename;
+                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.$filename;
         }
-        
         // dd($imagePath);
         $site->background_image = $imagePath;
         if($site->addSite($site)) 
@@ -74,21 +75,36 @@ class SiteController extends Controller
      public function update(Request $request , Site $site)
      {
         $this->validate($request, [
-            'doman_name' => 'required|max:255',
-            'doman_type' => 'required',
+            'subdomain' => 'required|max:255',
             'color' => 'required',
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
         ]);
-         # code...
-        // return $request->all();
-       if($site->update($request->all()))
+
+        $imagePath='';
+        if(Input::hasFile('background_image')){  
+                $file = Input::file('background_image');
+                $filename = Input::file('background_image')->getClientOriginalName();
+                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',$filename);
+                // $user->image = $file->getRealPath();
+                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.$filename;
+        }
+        // dd($imagePath);
+        $site->background_image = $imagePath;
+
+       
+       if($site->update([
+            'subdomain'=>$request->all()['subdomain'],
+            'color' => $request->all()['color'],
+           'primary_color' => $request->all()['primary_color'],
+            'secondry_color' => $request->all()['secondry_color'],
+            'body_type' => $request->all()['body_type'],
+            'background_image' => $request->all()['background_image'],
+        ]))
        {
             return redirect('/dashboard');
        }
        return back();
      }
-
-
 }

@@ -23,13 +23,11 @@ class UserController extends Controller
     	# code...
        $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'required|unique:users',
+            'email' => 'required',
             'mobile' => 'required|regex:/^[0-9]{10}/',
-            'image' => 'required',
 
         ]);
-
-    	$imagePath='';
+    	 $imagePath=$user->image;
         if(Input::hasFile('image')){
                 $file = Input::file('image');
                 $filename = Input::file('image')->getClientOriginalName(); 
@@ -40,8 +38,8 @@ class UserController extends Controller
       	if($user->update([
           'name'=>$request->all()['name'],
       		'email' => $request->all()['email'],
-           'mobile' => $request->all()['mobile'],
-      	    'image' => $imagePath,
+          'mobile' => $request->all()['mobile'],
+      	  'image' => $imagePath,
       		]))
        	{
        	    return redirect('/dashboard');

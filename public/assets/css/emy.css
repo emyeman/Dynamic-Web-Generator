@@ -113,3 +113,8 @@ li{
         background: rgba(255,221,221,1);
         /* color: red; */
 }
+
+.cp-color-picker
+{
+    z-index: 10;
+}
