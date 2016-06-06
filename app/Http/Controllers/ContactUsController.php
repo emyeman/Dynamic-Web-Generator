@@ -19,7 +19,7 @@ class ContactUsController extends Controller
 	public function index(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('id',Auth::user()->id)->get();
+            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
 
             return  view ('contactus.index',compact('contacts'));
        } else{
@@ -38,7 +38,7 @@ class ContactUsController extends Controller
      public function create(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('id',Auth::user()->id)->get();
+            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
 
             return  view ('contactus.create',compact('contacts'));
         }else{
@@ -50,7 +50,8 @@ class ContactUsController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'address' => 'max:300',
-                'lat_lon' => 'max:300',
+                'lat' => 'max:300',
+                'lng' => 'max:300',
                 'phone' => 'max:300',
                 'mobile' => 'max:300',
                 'email' => 'max:300',
@@ -64,13 +65,12 @@ class ContactUsController extends Controller
             ]);
 
             $contact= new Contact;
-            $contact->id=Auth::user()->id;   //becaues id of contactus is same as id of site that equal id of user
+            $contact->site_id=Auth::user()->id;   //becaues site_id of contactus is same as id of user 
             $contact->address=$request->input('address');
             // data from google map
-            $lat=$request->input('latitude');
-            $lon=$request->input('longitude');
-            $contact->lat_lon=$lat.','.$lon;
 
+            $contact->lat=$request->input('latitude');
+            $contact->lng=$request->input('longitude');
             $contact->phone=$request->input('phone');
             $contact->mobile=$request->input('mobile');
             $contact->email=$request->input('email');
@@ -104,7 +104,8 @@ class ContactUsController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'address' => 'max:500',
-                'lat_lon' => 'max:300',
+                'lat' => 'max:300',
+                'lng' => 'max:300',
                 'phone' => 'max:200',
                 'mobile' => 'max:200',
                 'email' => 'max:200',
@@ -123,9 +124,10 @@ class ContactUsController extends Controller
 
             // data from google map
             $lat=$request->input('latitude');
-            $lon=$request->input('longitude');
-            if (!(empty($lat) and empty($lat))){
-                $contact->lat_lon=$lat.','.$lon;
+            $lng=$request->input('longitude');
+            if (!(empty($lat) and empty($lng))){
+                $contact->lat=$request->input('latitude');
+                $contact->lng=$request->input('longitude');
             }
             
             $contact->phone=$request->input('phone');

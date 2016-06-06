@@ -24,7 +24,9 @@ class UserController extends Controller
        $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|unique:users',
+            'mobile' => 'required|regex:/^[0-9]{10}/',
             'image' => 'required',
+
         ]);
 
     	$imagePath='';
@@ -35,8 +37,10 @@ class UserController extends Controller
                 // $user->image = $file->getRealPath();
                 $imagePath = '/images/profile/'.$filename;
         }
-      	if($user->update(['name'=>$request->all()['name'],
+      	if($user->update([
+          'name'=>$request->all()['name'],
       		'email' => $request->all()['email'],
+           'mobile' => $request->all()['mobile'],
       	    'image' => $imagePath,
       		]))
        	{

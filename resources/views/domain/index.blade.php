@@ -4,38 +4,42 @@
 <div class="container">
 
 @include('../header')
-
 <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Show Contact Us
+                <h1 class="page-header">Show Services
+                    <small>
+                    <!-- <i>Hello current_user</i> -->
+                    @if(!$domain)
+                    <div class='col-lg-offset-11 col-ms-1'>
+                        <a href='/service/create'><span class="glyphicon glyphicon-plus"></span></a>
+                    </div></small>
+                    @endif
                     <!-- <small><i>Hello current_user</i></small> -->
                 </h1>
             </div>
         </div>
         <!-- /.row -->
-
         <div class="row">
-            <div class="col-md-10">
-                <h3><label >Address:</label><br/>
-                <label >Phone:</label><br/>
-                <label >Mobile:</label><br/>
-                <label >E-mail:</label><br/>
-                <label >ID Number:</label><br/>
-                <label >Domain Name:</label><br/>
-                <label >Domain Type:</label><br/>
-                <label >Acount Number:</label></h3>
-                 <h4><label >Publish At:</label></h4>
-                <a class="btn btn-primary" href="#" >Edit Branding</a><span class="glyphicon glyphicon-chevron-right"></span>
-
-                <a class="btn btn-danger" href="#">Remove Branding</a><span class="glyphicon glyphicon-chevron-right"></span>
+            <div class="col-md-5">
+                <a href="#">
+                </a>
             </div>
+            <div class="col-md-10">
+               <table class="table">
+                    <tr>
+                        <td>{{ $domain->Domain_name }}</td>
+                        <td><a href="/domain/edit/{{  $domain->id }}" class="btn btn-primary">Edit</a></td>
+                    </tr>
+                </table>
+            </div> 
         </div>
         <!-- /.row -->
         <hr/>
 </div><!--end leftsideof from-->
 
  <br/><br/><hr/><hr/>
+
 
 </div>
 @endsection

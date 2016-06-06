@@ -79,7 +79,7 @@ li{
     /* background-color: #337ab7; */
     /* border-color: #2e6da4; */
 }
-#map,#savelocation,#sel_googlemap{
+#map,#savelocation{
     margin: 5px auto;
     background: -webkit-linear-gradient(top,#C5DEDE,#A4A4A9);
     border-radius: 0px;
@@ -89,18 +89,25 @@ li{
 }
 
 #sel_googlemap{
-    width: 50%;
+    width: 8%;
     border-radius: 200px;
     /* background: -webkit-linear-gradient(top,#C5DEDE,#A4A4A9); */
     background: -webkit-linear-gradient(top,#98D6D6,#D7D7DE);
-     border:2px solid #94A0A0;
+    border:2px solid #94A0A0;
+    text-align: center;
 
 }
 #spphone,#spmobile,#spemail,#spfax,#spfacebook,#spgoogle,#spinstagram,#splinkedin,#sppinterest,#spyoutube{
         font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
         color: black;
         display: none;
-    }
+    } 
+/* 
+#spemail{
+        font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
+        color: black;
+        display: none;
+    }  */
 
 .Error{
         background: rgba(255,221,221,1);

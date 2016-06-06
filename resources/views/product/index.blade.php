@@ -47,8 +47,9 @@
                             @endforeach
             
                             <label >Title Product:</label>{{$product->name}}<br/>
-                            <label >Description:</label>{{substr($product->description,0,100)}}</h3>
+                            <label >Description:</label>{{substr($product->description,0,100)}}<br/>
                             <!-- <label >Description:</label>{{$product->description}}</h3> -->
+                            <label >Price Product:</label>{{$product->price}} LE</h3>
                              <h4><label >Publish At:</label>{{$product->created_at}}</h4>
                             <a class="btn btn-primary" href="/product/{{$product->id}}/edit" >Edit Product <span class="glyphicon glyphicon-edit"></span></a>
                             <!-- <a class="btn btn-danger" href="/product/destroy/{{$product->id}}">Remove Product <span class="glyphicon glyphicon-remove"></span></a> -->

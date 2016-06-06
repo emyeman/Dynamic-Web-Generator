@@ -207,9 +207,7 @@
                 <a class="accordion-section-title" href="#accordion-14">Domain  </a>
                 <div id="accordion-14" class="accordion-section-content">
                         <ul class="nav nav-pills nav-stacked">
-                            <li></li>
                             <li><a href="{{ url('/domain')}}">Show Domain</a></li>
-                            <li><a href="{{ url('/domain/create')}}">Add Domain</a></li>
                         </ul>
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->

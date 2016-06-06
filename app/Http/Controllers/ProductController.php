@@ -95,16 +95,17 @@ class ProductController extends Controller
             $product= new Product;
             $product->name=$request->input('title_product');
             $product->description=$request->input('description');
+            $product->price=$request->input('price_product');
 
             if(Input::file('image_product')){
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
                 // for obtain domain name for save image
-                $doman_name=Auth::user()->site->doman_name;
+                $subdomain=Auth::user()->site->subdomain;
                 $extention=time().$imagefile->getClientOriginalName();
-                $imagefile->move('assets/images/'.$doman_name.'/product',$extention);
-                // echo $doman_name;die();
-                $product->image=$doman_name.'/product/'.$extention; 
+                $imagefile->move('assets/images/'.$subdomain.'/product',$extention);
+                // echo $subdomain;die();
+                $product->image=$subdomain.'/product/'.$extention; 
             }
             $product->category_id=$request->input('subcategory_id');
             $product->save();
@@ -149,16 +150,16 @@ class ProductController extends Controller
             $product=Product::find($id);
             $product->name=$request->input('title_product');
             $product->description=$request->input('description');
-
+            $product->price=$request->input('price_product');
             if(Input::file('image_product')){
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
                 // for obtain domain name for save image
-                $doman_name=Auth::user()->site->doman_name;
+                $subdomain=Auth::user()->site->subdomain;
                 $extention=time().$imagefile->getClientOriginalName();
-                $imagefile->move('assets/images/'.$doman_name.'/product',$extention);
-                // echo $doman_name;die();
-                $product->image=$doman_name.'/product/'.$extention; 
+                $imagefile->move('assets/images/'.$subdomain.'/product',$extention);
+                // echo $subdomain;die();
+                $product->image=$subdomain.'/product/'.$extention; 
             }
 
             $product->category_id=$request->input('subcategory_id');

@@ -51,7 +51,7 @@ class PromotionController extends Controller
 
      public function store(Request $request)
      {
-         $this->validate($request, [
+        $this->validate($request, [
             'title' => 'required|max:300',
             'description' => 'required|max:2000',
             'image' => 'required|image', // ????? what is the required max size

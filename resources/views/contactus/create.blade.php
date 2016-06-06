@@ -8,7 +8,7 @@
 <div class="col-sm-9">
  <?php $flagadd=0?>
     @foreach($contacts as $contact)
-        @if($contact->id==Auth::user()->id)
+        @if($contact->site_id==Auth::user()->id)
             <?php $flagadd=1?>
         @endif
     @endforeach
@@ -19,6 +19,15 @@
       <br><br>
         
       {!!Form::open(['route'=>'contactus.store','method'=>'post']) !!}
+
+        <div class='form-group has-warning'>
+            <label class='col-md-2'>Address:</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                <input placeholder='PlZ,enter your address' class='form-control' name='address' type='text'/>
+            </div>
+        </div> 
+
         <div class='form-group has-warning'>
             <label class='col-md-2'>Phone:</label>
             <div class='col-md-10 input-group'>
@@ -100,28 +109,58 @@
         </div>  
 
         <!-- for display select between write address and use google map -->
-        <div class='col-lg-offset-4 col-ms-8' id="sel_googlemap">
+        <!-- <div class='col-lg-offset-4 col-ms-8' id="sel_googlemap"> -->
             <!-- <label class='col-md-2'>SelectTo Enter Your Address:</label><br/> -->
-            <h1> <a class="getaddress btn btn-primary btn-lg">Enter Address  <span class="glyphicon glyphicon-pencil"></span> </a>
+            <!-- <h1> <a class="getaddress btn btn-primary btn-lg">Enter localization  <span class="glyphicon glyphicon-pencil"></span> </a>
               &nbsp; <a class="getlocation"><span class="google glyphicon glyphicon-globe"></span> </a></h1>
         
+        </div> -->
+<!--         <br/>
+ -->     <div  id="enterlatlng">      
+            <div class='form-group has-warning'>
+                  <label class='col-md-2'>Latitude (X):</label>
+                  <div class='col-md-10 input-group'>
+                      <span class='input-group-addon'>X</span>
+                      <input placeholder='PlZ,enter your latitude X' class='form-control' name='latitude' type='text'/>
+                  </div>
+              </div>
+
+              <div class='form-group has-warning'>
+                  <label class='col-md-2'> Longitude(Y):</label>
+                  <div class='col-md-10 input-group'>
+                      <span class='input-group-addon'>Y</span>
+                      <input placeholder='PlZ,enter your longitude Y' class='form-control' name='longitude' type='text'/>
+                  </div>
+              </div> 
+          </div>
+        <div  id="googlelatlng">    
+<!--           <div class='form-group has-warning'>
+              <label class='col-md-2'>Latitude (X):</label>
+              <div class='col-md-10 input-group'>
+                  <span class='input-group-addon'>X</span>
+                  <input placeholder='PlZ,enter your latitude X' class='form-control' name='latitude' type='text'/>
+              </div>
+          </div>
+
+          <div class='form-group has-warning'>
+              <label class='col-md-2'> Longitude(Y):</label>
+              <div class='col-md-10 input-group'>
+                  <span class='input-group-addon'>Y</span>
+                  <input placeholder='PlZ,enter your longitude Y' class='form-control' name='longitude' type='text'/>
+              </div>
+          </div> 
+ -->
+       </div> 
+        <div class='col-lg-offset-11 col-ms-1' id="sel_googlemap">
+            <h1><a class="getlocation"><span class="google glyphicon glyphicon-globe"></span> </a></h1>
+        
         </div>
-        <br/>
         <!-- for enter adress to obtain googlemap -->
          <div id="savelocation">
                 <!-- there draw input of value lat and lon  and draw google map -->
                <br/><br/>                     
           </div> 
-            
-        <div class='form-group has-warning' id="enteraddress">
-            <label class='col-md-2'>Address:</label>
-            <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter your address' class='form-control' name='address' type='text'/>
-            </div>
-            <br/>
-        </div> 
-
+          <br/>
         <span class='col-md-1'></span>
         <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
       {!!Form::close() !!}
@@ -147,127 +186,32 @@
     $(document).ready(function(){
         console.log('hiiiiiii');
     //************************ for make validation **************************
-             var emailspan=document.getElementById("spemail");
-             var contemail=document.getElementById("email");
-             var phonespan=document.getElementById("spphone");
-             var contphone=document.getElementById("phone");
-             var mobilespan=document.getElementById("spmobile");
-             var contmobile=document.getElementById("mobile");
-             var faxspan=document.getElementById("spfax");
-             var contfax=document.getElementById("fax");
-             var facebookspan=document.getElementById("spfacebook");
-             var contfacebook=document.getElementById("facebook");
-             var instagramspan=document.getElementById("spinstagram");
-             var continstagram=document.getElementById("instagram");
-             var googlespan=document.getElementById("spgoogle");
-             var contgoogle=document.getElementById("google");
-             var linkedinspan=document.getElementById("splinkedin");
-             var contlinkedin=document.getElementById("linkedin");
-             var pinterestspan=document.getElementById("sppinterest");
-             var contpinterest=document.getElementById("pinterest");
-             var youtubespan=document.getElementById("spyoutube");
-             var contyoutube=document.getElementById("youtube");
-
-             // valdation for email
-             contemail.onblur=function(){
-              // $('#contemail').click(function() {  
-               var checkma=/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
-               console.log(this.value);
-                if(this.value.match(checkma))
-                  { 
-                    this.className="form-control";
-                    emailspan.style.display="none";
-                  }
-                  else
-                  {
-                    // this.focus();
-                    this.select();
-                    this.className="form-control Error";
-                    emailspan.style.display="block";
-                  }   
-            // });
-                }  
-
-            //         // validation for phone
-            // contphone.onblur=function(){
-            // // $('#contphone').click(function() {   
-            //    var checkph= /[0-9]{7}/;
-            //     if(this.value.match(checkph))
+            //  var emailspan=document.getElementById("spemail");
+            //  var contemail=document.getElementById("email");
+            
+            //  // valdation for email
+            //  contemail.onblur=function(){
+            //   // $('#contemail').click(function() {  
+            //    var checkma=/[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+            //    console.log(this.value);
+            //     if(this.value.match(checkma))
             //       { 
             //         this.className="form-control";
-            //         phonespan.style.display="none";
+            //         emailspan.style.display="none";
             //       }
             //       else
             //       {
             //         // this.focus();
-            //         this.select();
+            //         // this.select();
             //         this.className="form-control Error";
-            //         phonespan.style.display="block";
+            //         emailspan.style.display="block";
             //       }   
-            // // }); 
-            // }   
-
-
-            
-            // validation for mobile
-            contmobile.onblur=function(){
-            // $('#contmobile').click(function() {   
-               var checkmob= /[0-9]{10}/;
-                if(this.value.match(checkmob))
-                  { 
-                    this.className="form-control";
-                    mobilespan.style.display="none";
-                  }
-                  else
-                  {
-                    // this.focus();
-                    this.select();
-                    this.className="form-control Error";
-                    mobilespan.style.display="block";
-                  }   
-            // }); 
-            } 
-                //validation for facebook
-            contfacebook.onblur=function(){
-            // $('#contfacebook').click(function() {
-               var checkfac= /[a-zA-z]{5,40}/;
-                if(this.value.match(checkfac))
-                  { 
-                    this.className="form-control";
-                    facebookspan.style.display="none";
-                  }
-                  else
-                  {
-                    // this.focus();
-                    this.select();
-                    this.className="form-control Error";
-                    facebookspan.style.display="block";
-                  }   
-            // }); 
-            } 
-
-                        // validation for fax
-            contfax.onblur=function(){
-            // $('#contfax').click(function() {
-
-               var checkfax= /[0-9]{9}/;
-                if(this.value.match(checkfax))
-                  { 
-                    this.className="form-control";
-                    faxspan.style.display="none";
-                  }
-                  else
-                  {
-                    // this.focus();
-                    this.select();
-                    this.className="form-control Error";
-                    faxspan.style.display="block";
-                  }   
-            // });
-            }   
+            // // });
+            //     }  
 
 // ************************************ end validation ******************************************
                   // for google map
+            // document.getElementById('googlelatlng').style.display = "none";      
             savelocation = document.getElementById('savelocation');
             savelocation.style.width="646px";
             savelocation.style.height="605px";
@@ -278,7 +222,7 @@
                     }
                 });
                 
-            document.getElementById('enteraddress').style.display = "none";
+            document.getElementById('googlelatlng').style.display = "none";
             document.getElementById('savelocation').style.display = "none";
                 //for use google map and display map
             $('.getlocation').click(function() {
@@ -295,16 +239,37 @@
 
         function getmylocation(position) {
 
-            document.getElementById('enteraddress').style.display = "none";
+            document.getElementById('enterlatlng').style.display = "none";
             document.getElementById('savelocation').style.display = "block";
+            document.getElementById('googlelatlng').style.display = "block";
 
              // for display google map of this location
             lat = position.coords.latitude;
             lon = position.coords.longitude;
             latlon = lat + ' , ' + lon;
+            var showdata;
+
+             showdata="<div class='form-group has-warning'>";
+             showdata+="<label class='col-md-2'>Latitude (X):</label>";
+             showdata+="<div class='col-md-10 input-group'>";
+             showdata+=" <span class='input-group-addon'>X</span>";
+             showdata+="<input value="+lat+" class='form-control' name='latitude' type='text'/>";
+             showdata+="</div>";
+             showdata+="</div>";
+
+          showdata+="<div class='form-group has-warning'>";
+          showdata+=" <label class='col-md-2'> Longitude(Y):</label>";
+          showdata+="<div class='col-md-10 input-group'>";
+          showdata+="<span class='input-group-addon'>Y</span>";
+          showdata+="<input value="+lon+" class='form-control' name='longitude' type='text'/>";
+          showdata+="</div>";
+          showdata+="</div>"; 
+          $('#googlelatlng').html(showdata);
+
+          // for display google map
             var savedata;
-            savedata="<input type='hidden' name='latitude' value="+lat+">";
-            savedata+="<input type='hidden' name='longitude' value="+lon+">";
+            // savedata="<input type='hidden' name='latitude' value="+lat+">";
+            // savedata+="<input type='hidden' name='longitude' value="+lon+">";
 
             img = "http://maps.googleapis.com/maps/api/staticmap?center="
              + latlon + "&markers=color:blue|label:N|" + latlon + "&zoom=15&size=1057x600&sensor=false";
@@ -333,11 +298,11 @@
         }
 
         // for enter address
-        $('.getaddress').click(function() {            
-            document.getElementById('enteraddress').style.display = "block";
-            document.getElementById('savelocation').style.display = "none";
+        // $('.getaddress').click(function() {            
+        //     document.getElementById('googlelatlng').style.display = "block";
+        //     document.getElementById('savelocation').style.display = "none";
             
-            });
+        //     });
 
     });//end function
 </script>

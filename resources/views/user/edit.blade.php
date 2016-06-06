@@ -36,6 +36,15 @@
 
 
         <div class='form-group has-warning'>
+            <label class='col-md-2'>Mobile</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
+                    <input value='{{ $user->mobile }}' class='form-control' name='mobile' type='text'/>
+            </div>
+        </div>
+
+
+        <div class='form-group has-warning'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-10 input-group'>
                 
