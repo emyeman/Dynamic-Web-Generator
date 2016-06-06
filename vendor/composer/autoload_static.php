@@ -48,6 +48,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Symfony\\Component\\ClassLoader\\' => 30,
             'SuperClosure\\' => 13,
         ),
         'P' => 
@@ -91,6 +92,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         ),
         'B' => 
         array (
+            'Barryvdh\\LaravelIdeHelper\\' => 26,
             'Barryvdh\\Debugbar\\' => 18,
         ),
         'A' => 
@@ -172,6 +174,10 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Symfony\\Component\\ClassLoader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/class-loader',
+        ),
         'SuperClosure\\' => 
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
@@ -235,6 +241,10 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'Barryvdh\\LaravelIdeHelper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src',
         ),
         'Barryvdh\\Debugbar\\' => 
         array (
@@ -307,6 +317,9 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Crusal' => __DIR__ . '/../..' . '/app/Crusal.php',
+
+        'App\\Domain' => __DIR__ . '/../..' . '/app/Domain.php',
+
         'App\\Events\\Event' => __DIR__ . '/../..' . '/app/Events/Event.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\GoogleMap' => __DIR__ . '/../..' . '/app/GoogleMap.php',
@@ -386,6 +399,15 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Barryvdh\\Debugbar\\Twig\\Extension\\Stopwatch' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/Extension/Stopwatch.php',
         'Barryvdh\\Debugbar\\Twig\\Node\\StopwatchNode' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/Node/StopwatchNode.php',
         'Barryvdh\\Debugbar\\Twig\\TokenParser\\StopwatchTokenParser' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Twig/TokenParser/StopwatchTokenParser.php',
+
+        'Barryvdh\\LaravelIdeHelper\\Alias' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Alias.php',
+        'Barryvdh\\LaravelIdeHelper\\Console\\GeneratorCommand' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Console/GeneratorCommand.php',
+        'Barryvdh\\LaravelIdeHelper\\Console\\MetaCommand' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Console/MetaCommand.php',
+        'Barryvdh\\LaravelIdeHelper\\Console\\ModelsCommand' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Console/ModelsCommand.php',
+        'Barryvdh\\LaravelIdeHelper\\Generator' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Generator.php',
+        'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/IdeHelperServiceProvider.php',
+        'Barryvdh\\LaravelIdeHelper\\Method' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Method.php',
+
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'ClassPreloader\\ClassList' => __DIR__ . '/..' . '/classpreloader/classpreloader/src/ClassList.php',
@@ -414,6 +436,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120443_create_categories_table.php',
         'CreateContactsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120237_create_contacts_table.php',
         'CreateCrusalsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120336_create_crusals_table.php',
+        'CreateDomainsTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_152454_create_domains_table.php',
         'CreateHeadersTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_120109_create_headers_table.php',
         'CreateMenusTable' => __DIR__ . '/../..' . '/database/migrations/2016_06_04_095421_create_menus_table.php',
         'CreateNewsPromotionsTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_115926_create_news_promotions_table.php',
@@ -1541,6 +1564,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Illuminate\\View\\View' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/View.php',
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+
         'Intervention\\Image\\AbstractColor' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractColor.php',
         'Intervention\\Image\\AbstractDecoder' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractDecoder.php',
         'Intervention\\Image\\AbstractDriver' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/AbstractDriver.php',
@@ -1665,6 +1689,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Intervention\\Image\\Point' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Point.php',
         'Intervention\\Image\\Response' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Response.php',
         'Intervention\\Image\\Size' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Size.php',
+
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
@@ -2534,6 +2559,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Prophecy\\Prophet' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Prophet.php',
         'Prophecy\\Util\\ExportUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/ExportUtil.php',
         'Prophecy\\Util\\StringUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/StringUtil.php',
+
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
@@ -2541,6 +2567,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
+
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',
         'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/Psr/Log/LogLevel.php',
@@ -2705,6 +2732,16 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'SuperClosure\\SerializableClosure' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/SerializableClosure.php',
         'SuperClosure\\Serializer' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/Serializer.php',
         'SuperClosure\\SerializerInterface' => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src/SerializerInterface.php',
+
+        'Symfony\\Component\\ClassLoader\\ApcClassLoader' => __DIR__ . '/..' . '/symfony/class-loader/ApcClassLoader.php',
+        'Symfony\\Component\\ClassLoader\\ClassCollectionLoader' => __DIR__ . '/..' . '/symfony/class-loader/ClassCollectionLoader.php',
+        'Symfony\\Component\\ClassLoader\\ClassLoader' => __DIR__ . '/..' . '/symfony/class-loader/ClassLoader.php',
+        'Symfony\\Component\\ClassLoader\\ClassMapGenerator' => __DIR__ . '/..' . '/symfony/class-loader/ClassMapGenerator.php',
+        'Symfony\\Component\\ClassLoader\\MapClassLoader' => __DIR__ . '/..' . '/symfony/class-loader/MapClassLoader.php',
+        'Symfony\\Component\\ClassLoader\\Psr4ClassLoader' => __DIR__ . '/..' . '/symfony/class-loader/Psr4ClassLoader.php',
+        'Symfony\\Component\\ClassLoader\\WinCacheClassLoader' => __DIR__ . '/..' . '/symfony/class-loader/WinCacheClassLoader.php',
+        'Symfony\\Component\\ClassLoader\\XcacheClassLoader' => __DIR__ . '/..' . '/symfony/class-loader/XcacheClassLoader.php',
+
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Command\\Command' => __DIR__ . '/..' . '/symfony/console/Command/Command.php',
         'Symfony\\Component\\Console\\Command\\HelpCommand' => __DIR__ . '/..' . '/symfony/console/Command/HelpCommand.php',
@@ -3206,6 +3243,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Symfony\\Polyfill\\Util\\TestListener' => __DIR__ . '/..' . '/symfony/polyfill-util/TestListener.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+
         'Unisharp\\Laravelfilemanager\\LaravelFilemanagerServiceProvider' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/LaravelFilemanagerServiceProvider.php',
         'Unisharp\\Laravelfilemanager\\controllers\\Controller' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/controllers/Controller.php',
         'Unisharp\\Laravelfilemanager\\controllers\\CropController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/controllers/CropController.php',
@@ -3218,6 +3256,7 @@ class ComposerStaticInit7925e826c81882e013a6152a49eaa5a4
         'Unisharp\\Laravelfilemanager\\controllers\\ResizeController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/controllers/ResizeController.php',
         'Unisharp\\Laravelfilemanager\\controllers\\UploadController' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/controllers/UploadController.php',
         'Unisharp\\Laravelfilemanager\\middleware\\MultiUser' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/middleware/MultiUser.php',
+
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlock\\Context' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Context.php',

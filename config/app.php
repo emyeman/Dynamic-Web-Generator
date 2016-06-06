@@ -156,7 +156,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        /*UniShap file manager for tinymce html editor*/
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
     ],

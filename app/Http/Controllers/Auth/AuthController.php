@@ -57,6 +57,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'mobile' => 'required|regex:/^[0-9]{10}/',
         ]);
     }
 
@@ -80,6 +81,7 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'mobile' => $data['mobile'],
             'image' => $imagePath, 
         ]);
     }

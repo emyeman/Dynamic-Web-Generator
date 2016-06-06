@@ -13,6 +13,9 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Contact' => $baseDir . '/app/Contact.php',
     'App\\Crusal' => $baseDir . '/app/Crusal.php',
+
+    'App\\Domain' => $baseDir . '/app/Domain.php',
+
     'App\\Events\\Event' => $baseDir . '/app/Events/Event.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\GoogleMap' => $baseDir . '/app/GoogleMap.php',
@@ -92,6 +95,15 @@ return array(
     'Barryvdh\\Debugbar\\Twig\\Extension\\Stopwatch' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/Extension/Stopwatch.php',
     'Barryvdh\\Debugbar\\Twig\\Node\\StopwatchNode' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/Node/StopwatchNode.php',
     'Barryvdh\\Debugbar\\Twig\\TokenParser\\StopwatchTokenParser' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/TokenParser/StopwatchTokenParser.php',
+
+    'Barryvdh\\LaravelIdeHelper\\Alias' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Alias.php',
+    'Barryvdh\\LaravelIdeHelper\\Console\\GeneratorCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Console/GeneratorCommand.php',
+    'Barryvdh\\LaravelIdeHelper\\Console\\MetaCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Console/MetaCommand.php',
+    'Barryvdh\\LaravelIdeHelper\\Console\\ModelsCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Console/ModelsCommand.php',
+    'Barryvdh\\LaravelIdeHelper\\Generator' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Generator.php',
+    'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => $vendorDir . '/barryvdh/laravel-ide-helper/src/IdeHelperServiceProvider.php',
+    'Barryvdh\\LaravelIdeHelper\\Method' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Method.php',
+
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'ClassPreloader\\ClassList' => $vendorDir . '/classpreloader/classpreloader/src/ClassList.php',
@@ -120,6 +132,7 @@ return array(
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_05_24_120443_create_categories_table.php',
     'CreateContactsTable' => $baseDir . '/database/migrations/2016_05_24_120237_create_contacts_table.php',
     'CreateCrusalsTable' => $baseDir . '/database/migrations/2016_05_24_120336_create_crusals_table.php',
+    'CreateDomainsTable' => $baseDir . '/database/migrations/2016_06_04_152454_create_domains_table.php',
     'CreateHeadersTable' => $baseDir . '/database/migrations/2016_05_24_120109_create_headers_table.php',
     'CreateMenusTable' => $baseDir . '/database/migrations/2016_06_04_095421_create_menus_table.php',
     'CreateNewsPromotionsTable' => $baseDir . '/database/migrations/2016_05_24_115926_create_news_promotions_table.php',
@@ -1371,6 +1384,7 @@ return array(
     'Intervention\\Image\\Point' => $vendorDir . '/intervention/image/src/Intervention/Image/Point.php',
     'Intervention\\Image\\Response' => $vendorDir . '/intervention/image/src/Intervention/Image/Response.php',
     'Intervention\\Image\\Size' => $vendorDir . '/intervention/image/src/Intervention/Image/Size.php',
+
     'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => $vendorDir . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
     'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => $vendorDir . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
     'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => $vendorDir . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
@@ -2240,6 +2254,7 @@ return array(
     'Prophecy\\Prophet' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Prophet.php',
     'Prophecy\\Util\\ExportUtil' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Util/ExportUtil.php',
     'Prophecy\\Util\\StringUtil' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Util/StringUtil.php',
+
     'Psr\\Http\\Message\\MessageInterface' => $vendorDir . '/psr/http-message/src/MessageInterface.php',
     'Psr\\Http\\Message\\RequestInterface' => $vendorDir . '/psr/http-message/src/RequestInterface.php',
     'Psr\\Http\\Message\\ResponseInterface' => $vendorDir . '/psr/http-message/src/ResponseInterface.php',
@@ -2247,6 +2262,7 @@ return array(
     'Psr\\Http\\Message\\StreamInterface' => $vendorDir . '/psr/http-message/src/StreamInterface.php',
     'Psr\\Http\\Message\\UploadedFileInterface' => $vendorDir . '/psr/http-message/src/UploadedFileInterface.php',
     'Psr\\Http\\Message\\UriInterface' => $vendorDir . '/psr/http-message/src/UriInterface.php',
+
     'Psr\\Log\\AbstractLogger' => $vendorDir . '/psr/log/Psr/Log/AbstractLogger.php',
     'Psr\\Log\\InvalidArgumentException' => $vendorDir . '/psr/log/Psr/Log/InvalidArgumentException.php',
     'Psr\\Log\\LogLevel' => $vendorDir . '/psr/log/Psr/Log/LogLevel.php',
@@ -2411,6 +2427,16 @@ return array(
     'SuperClosure\\SerializableClosure' => $vendorDir . '/jeremeamia/SuperClosure/src/SerializableClosure.php',
     'SuperClosure\\Serializer' => $vendorDir . '/jeremeamia/SuperClosure/src/Serializer.php',
     'SuperClosure\\SerializerInterface' => $vendorDir . '/jeremeamia/SuperClosure/src/SerializerInterface.php',
+
+    'Symfony\\Component\\ClassLoader\\ApcClassLoader' => $vendorDir . '/symfony/class-loader/ApcClassLoader.php',
+    'Symfony\\Component\\ClassLoader\\ClassCollectionLoader' => $vendorDir . '/symfony/class-loader/ClassCollectionLoader.php',
+    'Symfony\\Component\\ClassLoader\\ClassLoader' => $vendorDir . '/symfony/class-loader/ClassLoader.php',
+    'Symfony\\Component\\ClassLoader\\ClassMapGenerator' => $vendorDir . '/symfony/class-loader/ClassMapGenerator.php',
+    'Symfony\\Component\\ClassLoader\\MapClassLoader' => $vendorDir . '/symfony/class-loader/MapClassLoader.php',
+    'Symfony\\Component\\ClassLoader\\Psr4ClassLoader' => $vendorDir . '/symfony/class-loader/Psr4ClassLoader.php',
+    'Symfony\\Component\\ClassLoader\\WinCacheClassLoader' => $vendorDir . '/symfony/class-loader/WinCacheClassLoader.php',
+    'Symfony\\Component\\ClassLoader\\XcacheClassLoader' => $vendorDir . '/symfony/class-loader/XcacheClassLoader.php',
+
     'Symfony\\Component\\Console\\Application' => $vendorDir . '/symfony/console/Application.php',
     'Symfony\\Component\\Console\\Command\\Command' => $vendorDir . '/symfony/console/Command/Command.php',
     'Symfony\\Component\\Console\\Command\\HelpCommand' => $vendorDir . '/symfony/console/Command/HelpCommand.php',
@@ -2912,6 +2938,7 @@ return array(
     'Symfony\\Polyfill\\Util\\TestListener' => $vendorDir . '/symfony/polyfill-util/TestListener.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+
     'Unisharp\\Laravelfilemanager\\LaravelFilemanagerServiceProvider' => $vendorDir . '/unisharp/laravel-filemanager/src/LaravelFilemanagerServiceProvider.php',
     'Unisharp\\Laravelfilemanager\\controllers\\Controller' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/Controller.php',
     'Unisharp\\Laravelfilemanager\\controllers\\CropController' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/CropController.php',
@@ -2924,6 +2951,7 @@ return array(
     'Unisharp\\Laravelfilemanager\\controllers\\ResizeController' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/ResizeController.php',
     'Unisharp\\Laravelfilemanager\\controllers\\UploadController' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/UploadController.php',
     'Unisharp\\Laravelfilemanager\\middleware\\MultiUser' => $vendorDir . '/unisharp/laravel-filemanager/src/middleware/MultiUser.php',
+
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlock\\Context' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Context.php',

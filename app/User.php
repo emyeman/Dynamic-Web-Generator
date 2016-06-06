@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','image',
+        'name', 'email', 'password','mobile','image',
     ];
 
     /**
@@ -26,6 +26,6 @@ class User extends Authenticatable
     
     public function site()
     {
-        return $this->hasOne(Site::class, 'user_id');
+        return $this->hasOne(Site::class);
     }
 }

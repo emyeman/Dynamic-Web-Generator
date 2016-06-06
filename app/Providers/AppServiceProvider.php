@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use DB;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //   
     }
 
     /**
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function register()
     {
         //
