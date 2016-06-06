@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Show Pages
+                    Pages
                 </h1>
             </div>
         </div>
@@ -29,16 +29,14 @@
                     <table class='table table-hover' style="table-layout: fixed;">
                         <thead>
                             <tr>
-                                <th width='40%'><span class="text">name</span></th>
-                                <th width='40%'><span class="text">content</span></th>
-                                <th width='20%'></th>
+                                <th width='90%'><span class="text">name</span></th>
+                                <th width='10%'></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($rows as $row)
                                 <tr>
-                                    <td class='wrap'><a href='/page/{{$row->id}}/edit'>name<a/></td> 
-                                    <td class='wrap'>{{substr($row->content,0,100)}}</td>
+                                    <td class='wrap'><a href='/page/{{$row->id}}/edit'>{{$row->title}}<a/></td> 
                                     <td><span class="glyphicon glyphicon-remove delete" id="{{$row->id}}"></span></td>
                                 </tr>
                             @endforeach

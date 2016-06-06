@@ -31,9 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-	Route::get('/promotion/{t}', 'PromotionController@index')->name('promotion.index');
-	Route::get('/promotion/create/{t}', 'PromotionController@create')->name('promotion.create');
-	Route::resource('/promotion','PromotionController',['except' => ['create', 'index']]);
+	Route::get('/news_promotion/{t}', 'NewsPromotionController@index')->name('news_promotion.index');
+	Route::get('/news_promotion/create/{t}', 'NewsPromotionController@create')->name('news_promotion.create');
+	Route::resource('/news_promotion','NewsPromotionController',['except' => ['create', 'index']]);
   
 	Route::resource('/aboutus','AboutUsController',['except' => ['index']]);   
 
@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     
     Route::resource('/branding','BrandingController');    
-	Route::resource('/navbar','NavbarController');
+	Route::resource('/menu','MenuController');
 	Route::resource('/page','PagesController');
 	Route::resource('/crusal','CrusalController');
 	Route::resource('/news','NewsController');
@@ -63,7 +63,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/footer','FooterController');
 	Route::resource('/numberview','NumberViewController');
 	Route::resource('/domain','DomainController');
-	Route::resource('/promotion','PromotionController');
 	Route::resource('/googlemap','GoogleMapController');
 
 	if (Request::ajax()){

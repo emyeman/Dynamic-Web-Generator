@@ -20,21 +20,20 @@
     @endif
       <br><br>
       {{Form::model($row,['route'=>['crusal.update',$row->id],'method'=>'put' , 'files'=>true]) }}
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Title</label>
             <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 {{Form::text('title', null ,['class'=>'col-ms-2 form-control'])}}
             </div>
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Description</label>
             <div class='col-md-10 input-group'>
                 {{Form::textarea('description', null ,['class'=>'form-control','rows'=>'4'])}}
             </div>
         </div>  
         <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images{{$row->image}}"></div>
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-picture'></i></span>
@@ -42,7 +41,7 @@
             </div>
         </div>     
         <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='EDIT' />
+        <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='EDIT' />
     {{Form::close() }}
 
 

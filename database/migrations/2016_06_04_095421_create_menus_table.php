@@ -28,6 +28,7 @@ class CreateMenusTable extends Migration
                 ->references('id')
                 ->on('menus')
                 ->onUpdate('cascade');
+                ->onDelete('cascade');
             $table->foreign('route')
                 ->references('id')
                 ->on('pages')

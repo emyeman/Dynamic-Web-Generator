@@ -11,8 +11,8 @@ class Page extends Model
     	return $this->belongsTo(Site::class);
     }
     
-    public function menuItem()
+    public function menu()
     {
-    	return $this->hasOne(MenuItem::class);
+    	return $this->hasMany(Menu::class);
     }
 }

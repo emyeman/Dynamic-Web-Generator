@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use DB;
-use Session;
 class AboutUsController extends Controller
 {
 	private function path_to_aboutus_image($image)
     {
         $doman_name=Auth::user()->site()->first()['attributes']['subdomain'];
         $extension = $image->getClientOriginalExtension();
-        return '/'.$doman_name.'/about/'.time().'.'.$extension; //path of image inside the storage dir & rename image
+        return '/'.$doman_name.'/aboutus/'.time().'.'.$extension; //path of image inside the storage dir & rename image
     }
 
 
@@ -34,7 +33,7 @@ class AboutUsController extends Controller
 
 
     public function create(){
-    	$aboutus_id = Session::get('site_id'); // user_id == aboutus_id --> 1:1 relationship
+    	$aboutus_id = Auth::user()->site->id;
     	$is_exists=Aboutus::where('site_id', '=',$aboutus_id)->first();
 		if($is_exists===null)
 			return  view ('aboutus.create');
@@ -54,7 +53,7 @@ class AboutUsController extends Controller
         $new_row=new Aboutus;
         $new_row->description=trim($request->input('description'));
         $new_row->image=$file_name;
-        $new_row->site_id=Session::get('site_id');
+        $new_row->site_id=Auth::user()->site->id;
 		$is_saved=$new_row->save();
         if($is_saved)
         {

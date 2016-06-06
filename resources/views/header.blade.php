@@ -1,6 +1,4 @@
-
-
-    <header class="site-header-wrap">
+ <header class="site-header-wrap">
         <div class="site-header">
             <!-- <a class="site-logo" href="#">Dynamic Web Generator </a> -->
             <a class="run" target="_blank" href="{{ url('/') }}"><span class="glyphicon glyphicon-new-window"></span>Run</a>
@@ -40,31 +38,29 @@
 <!--             <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion-16">Google Map</a>
                 <div id="accordion-16" class="accordion-section-content">
-
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
                             <li><a href="{{ url('/googlemap')}}">Show Google Map</a></li>
                             <li><a href="{{ url('/googlemap/create')}}">Add Google Map</a></li>
                         </ul>
-
                 </div>--><!--end .accordion-section-content-->
             <!--</div>--><!--end .accordion-section-->
 
             <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-2">Navbar  </a>
+                <a class="accordion-section-title" href="#accordion-2">Menus  </a>
                 <div id="accordion-2" class="accordion-section-content">
 
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/navbar')}}">Show Navbar</a></li>
-                            <li><a href="{{ url('/navbar/create')}}">Add Navbar</a></li>
+                            <li><a href="{{ url('/menu')}}">Show Menus</a></li>
+                            <li><a href="{{ url('/menu/create')}}">Add Menu</a></li>
                         </ul>
 
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->
 
             <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-3">Page  </a>
+                <a class="accordion-section-title" href="#accordion-3">Pages</a>
                 <div id="accordion-3" class="accordion-section-content">
 
                         <ul class="nav nav-pills nav-stacked">
@@ -108,8 +104,8 @@
 
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/promotion/0')}}">Show News</a></li>
-                            <li><a href="{{ url('/promotion/create/0')}}">Add News</a></li>
+                            <li><a href="{{ url('/news_promotion/news')}}">Show News</a></li>
+                            <li><a href="{{ url('/news_promotion/create/news')}}">Add News</a></li>
                         </ul>
 
                 </div><!--end .accordion-section-content-->
@@ -157,8 +153,8 @@
 
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/promotion/1')}}">Show Promotions</a></li>
-                            <li><a href="{{ url('/promotion/create/1')}}">Add Promotion</a></li>
+                            <li><a href="{{ url('/news_promotion/promotion')}}">Show Promotions</a></li>
+                            <li><a href="{{ url('/news_promotion/create/promotion')}}">Add Promotion</a></li>
                         </ul>
 
                 </div><!--end .accordion-section-content-->
@@ -207,9 +203,7 @@
                 <a class="accordion-section-title" href="#accordion-14">Domain  </a>
                 <div id="accordion-14" class="accordion-section-content">
                         <ul class="nav nav-pills nav-stacked">
-                            <li></li>
                             <li><a href="{{ url('/domain')}}">Show Domain</a></li>
-                            <li><a href="{{ url('/domain/create')}}">Add Domain</a></li>
                         </ul>
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->
@@ -230,4 +224,3 @@
         </div><!--end .accordion-->
     </div><!--end .main-->
 </div> <!--end rightside dashbord-->
-

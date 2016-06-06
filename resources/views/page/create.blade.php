@@ -8,22 +8,17 @@
   {!! Html::script('assets/tinymce/tinymce.js') !!}
 
   <div class="col-sm-9">
-        <h2>Add New Page</h2>
+        <h2 class='page-header'>Add New Page</h2>
         <br><br>
         {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
-          <!-- <div class='form-group has-warning'>
-              <label class='col-md-2'>Page Name</label>
-              <div class='col-md-10 input-group'>
-                  <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                  <input placeholder='PlZ,enter page name' class='form-control' name='pagename' type='text'/>
+          <div class='form-group'>
+              <div class='col-md-12 input-group'>
+                  <input placeholder='page title ...' class='form-control' name='title' type='text'/>
               </div>
-          </div>   -->   
-
-    
-
+          </div>     
           <textarea name='content'></textarea>
           <br><br>
-          <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
+          <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='ADD' />
       {!!Form::close() !!}
   </div><!--end leftsideof from-->
 </div>
