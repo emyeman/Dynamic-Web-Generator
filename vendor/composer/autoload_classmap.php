@@ -13,9 +13,7 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Contact' => $baseDir . '/app/Contact.php',
     'App\\Crusal' => $baseDir . '/app/Crusal.php',
-
     'App\\Domain' => $baseDir . '/app/Domain.php',
-
     'App\\Events\\Event' => $baseDir . '/app/Events/Event.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\GoogleMap' => $baseDir . '/app/GoogleMap.php',
@@ -95,7 +93,6 @@ return array(
     'Barryvdh\\Debugbar\\Twig\\Extension\\Stopwatch' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/Extension/Stopwatch.php',
     'Barryvdh\\Debugbar\\Twig\\Node\\StopwatchNode' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/Node/StopwatchNode.php',
     'Barryvdh\\Debugbar\\Twig\\TokenParser\\StopwatchTokenParser' => $vendorDir . '/barryvdh/laravel-debugbar/src/Twig/TokenParser/StopwatchTokenParser.php',
-
     'Barryvdh\\LaravelIdeHelper\\Alias' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Alias.php',
     'Barryvdh\\LaravelIdeHelper\\Console\\GeneratorCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Console/GeneratorCommand.php',
     'Barryvdh\\LaravelIdeHelper\\Console\\MetaCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Console/MetaCommand.php',
@@ -103,7 +100,6 @@ return array(
     'Barryvdh\\LaravelIdeHelper\\Generator' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Generator.php',
     'Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider' => $vendorDir . '/barryvdh/laravel-ide-helper/src/IdeHelperServiceProvider.php',
     'Barryvdh\\LaravelIdeHelper\\Method' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Method.php',
-
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'ClassPreloader\\ClassList' => $vendorDir . '/classpreloader/classpreloader/src/ClassList.php',
@@ -712,6 +708,7 @@ return array(
     'Illuminate\\Auth\\DatabaseUserProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/DatabaseUserProvider.php',
     'Illuminate\\Auth\\EloquentUserProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php',
     'Illuminate\\Auth\\Events\\Attempting' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Attempting.php',
+    'Illuminate\\Auth\\Events\\Failed' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Failed.php',
     'Illuminate\\Auth\\Events\\Lockout' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Lockout.php',
     'Illuminate\\Auth\\Events\\Login' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Login.php',
     'Illuminate\\Auth\\Events\\Logout' => $vendorDir . '/laravel/framework/src/Illuminate/Auth/Events/Logout.php',
@@ -833,6 +830,7 @@ return array(
     'Illuminate\\Contracts\\Queue\\Job' => $vendorDir . '/laravel/framework/src/Illuminate/Contracts/Queue/Job.php',
     'Illuminate\\Contracts\\Queue\\Monitor' => $vendorDir . '/laravel/framework/src/Illuminate/Contracts/Queue/Monitor.php',
     'Illuminate\\Contracts\\Queue\\Queue' => $vendorDir . '/laravel/framework/src/Illuminate/Contracts/Queue/Queue.php',
+    'Illuminate\\Contracts\\Queue\\QueueableCollection' => $vendorDir . '/laravel/framework/src/Illuminate/Contracts/Queue/QueueableCollection.php',
     'Illuminate\\Contracts\\Queue\\QueueableEntity' => $vendorDir . '/laravel/framework/src/Illuminate/Contracts/Queue/QueueableEntity.php',
     'Illuminate\\Contracts\\Queue\\ShouldQueue' => $vendorDir . '/laravel/framework/src/Illuminate/Contracts/Queue/ShouldQueue.php',
     'Illuminate\\Contracts\\Redis\\Database' => $vendorDir . '/laravel/framework/src/Illuminate/Contracts/Redis/Database.php',
@@ -1384,7 +1382,6 @@ return array(
     'Intervention\\Image\\Point' => $vendorDir . '/intervention/image/src/Intervention/Image/Point.php',
     'Intervention\\Image\\Response' => $vendorDir . '/intervention/image/src/Intervention/Image/Response.php',
     'Intervention\\Image\\Size' => $vendorDir . '/intervention/image/src/Intervention/Image/Size.php',
-
     'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => $vendorDir . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
     'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => $vendorDir . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
     'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => $vendorDir . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
@@ -2254,7 +2251,6 @@ return array(
     'Prophecy\\Prophet' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Prophet.php',
     'Prophecy\\Util\\ExportUtil' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Util/ExportUtil.php',
     'Prophecy\\Util\\StringUtil' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Util/StringUtil.php',
-
     'Psr\\Http\\Message\\MessageInterface' => $vendorDir . '/psr/http-message/src/MessageInterface.php',
     'Psr\\Http\\Message\\RequestInterface' => $vendorDir . '/psr/http-message/src/RequestInterface.php',
     'Psr\\Http\\Message\\ResponseInterface' => $vendorDir . '/psr/http-message/src/ResponseInterface.php',
@@ -2262,7 +2258,6 @@ return array(
     'Psr\\Http\\Message\\StreamInterface' => $vendorDir . '/psr/http-message/src/StreamInterface.php',
     'Psr\\Http\\Message\\UploadedFileInterface' => $vendorDir . '/psr/http-message/src/UploadedFileInterface.php',
     'Psr\\Http\\Message\\UriInterface' => $vendorDir . '/psr/http-message/src/UriInterface.php',
-
     'Psr\\Log\\AbstractLogger' => $vendorDir . '/psr/log/Psr/Log/AbstractLogger.php',
     'Psr\\Log\\InvalidArgumentException' => $vendorDir . '/psr/log/Psr/Log/InvalidArgumentException.php',
     'Psr\\Log\\LogLevel' => $vendorDir . '/psr/log/Psr/Log/LogLevel.php',
@@ -2427,7 +2422,6 @@ return array(
     'SuperClosure\\SerializableClosure' => $vendorDir . '/jeremeamia/SuperClosure/src/SerializableClosure.php',
     'SuperClosure\\Serializer' => $vendorDir . '/jeremeamia/SuperClosure/src/Serializer.php',
     'SuperClosure\\SerializerInterface' => $vendorDir . '/jeremeamia/SuperClosure/src/SerializerInterface.php',
-
     'Symfony\\Component\\ClassLoader\\ApcClassLoader' => $vendorDir . '/symfony/class-loader/ApcClassLoader.php',
     'Symfony\\Component\\ClassLoader\\ClassCollectionLoader' => $vendorDir . '/symfony/class-loader/ClassCollectionLoader.php',
     'Symfony\\Component\\ClassLoader\\ClassLoader' => $vendorDir . '/symfony/class-loader/ClassLoader.php',
@@ -2436,7 +2430,6 @@ return array(
     'Symfony\\Component\\ClassLoader\\Psr4ClassLoader' => $vendorDir . '/symfony/class-loader/Psr4ClassLoader.php',
     'Symfony\\Component\\ClassLoader\\WinCacheClassLoader' => $vendorDir . '/symfony/class-loader/WinCacheClassLoader.php',
     'Symfony\\Component\\ClassLoader\\XcacheClassLoader' => $vendorDir . '/symfony/class-loader/XcacheClassLoader.php',
-
     'Symfony\\Component\\Console\\Application' => $vendorDir . '/symfony/console/Application.php',
     'Symfony\\Component\\Console\\Command\\Command' => $vendorDir . '/symfony/console/Command/Command.php',
     'Symfony\\Component\\Console\\Command\\HelpCommand' => $vendorDir . '/symfony/console/Command/HelpCommand.php',
@@ -2938,7 +2931,6 @@ return array(
     'Symfony\\Polyfill\\Util\\TestListener' => $vendorDir . '/symfony/polyfill-util/TestListener.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-
     'Unisharp\\Laravelfilemanager\\LaravelFilemanagerServiceProvider' => $vendorDir . '/unisharp/laravel-filemanager/src/LaravelFilemanagerServiceProvider.php',
     'Unisharp\\Laravelfilemanager\\controllers\\Controller' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/Controller.php',
     'Unisharp\\Laravelfilemanager\\controllers\\CropController' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/CropController.php',
@@ -2951,7 +2943,6 @@ return array(
     'Unisharp\\Laravelfilemanager\\controllers\\ResizeController' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/ResizeController.php',
     'Unisharp\\Laravelfilemanager\\controllers\\UploadController' => $vendorDir . '/unisharp/laravel-filemanager/src/controllers/UploadController.php',
     'Unisharp\\Laravelfilemanager\\middleware\\MultiUser' => $vendorDir . '/unisharp/laravel-filemanager/src/middleware/MultiUser.php',
-
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlock\\Context' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Context.php',
