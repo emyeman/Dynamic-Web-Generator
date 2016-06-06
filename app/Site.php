@@ -26,7 +26,7 @@ class Site extends Model
 
     public function header()
     {
-    	return $this->hasOne(Header::class, 'id');
+    	return $this->hasOne(Header::class);
     }
 
     public function categories()

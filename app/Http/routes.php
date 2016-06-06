@@ -48,8 +48,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::patch('/site/update/{site}','SiteController@update');
     Route::resource('/site','SiteController'); 
 
+	Route::any('branding/edit','BrandingController@edit'); 
+	Route::any('branding/update','BrandingController@update'); 
     
-    Route::resource('/branding','BrandingController');    
+    Route::resource('branding','BrandingController');    
 	Route::resource('/navbar','NavbarController');
 	Route::resource('/page','PagesController');
 	Route::resource('/crusal','CrusalController');

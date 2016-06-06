@@ -7,6 +7,16 @@
 
     <div class="col-sm-9">
         <h2>Add New Branding</h2>
+        @if(count($errors))
+            <div class="alert alert-danger">
+
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <br><br>
         {!!Form::open(['route'=>'branding.store','method'=>'post', 'files'=>true ]) !!}
         <div class='form-group has-warning'>
