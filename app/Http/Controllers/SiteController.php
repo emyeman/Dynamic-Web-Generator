@@ -81,7 +81,7 @@ class SiteController extends Controller
             'secondry_color' => 'required',
             'body_type' => 'required',
         ]);
-
+        $old_imag_name = $site['attributes']['background_image'];
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
@@ -91,18 +91,16 @@ class SiteController extends Controller
                 $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.$filename;
         }
         // dd($imagePath);
-        $site->background_image = $imagePath;
-
-       
        if($site->update([
             'subdomain'=>$request->all()['subdomain'],
             'color' => $request->all()['color'],
            'primary_color' => $request->all()['primary_color'],
             'secondry_color' => $request->all()['secondry_color'],
             'body_type' => $request->all()['body_type'],
-            'background_image' => $request->all()['background_image'],
+            'background_image' => $imagePath,
         ]))
        {
+            unlink(public_path().$old_imag_name);
             return redirect('/dashboard');
        }
        return back();

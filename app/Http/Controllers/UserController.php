@@ -25,10 +25,11 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => 'required',
             'mobile' => 'required|regex:/^[0-9]{10}/',
-
         ]);
+
+       $old_imag_name = $user['attributes']['image'];
     	 $imagePath=$user->image;
-        if(Input::hasFile('image')){
+       if(Input::hasFile('image')){
                 $file = Input::file('image');
                 $filename = Input::file('image')->getClientOriginalName(); 
                 $file = $file->move(public_path().'/images/profile/',$filename);
@@ -42,6 +43,7 @@ class UserController extends Controller
       	  'image' => $imagePath,
       		]))
        	{
+            unlink(public_path().$old_imag_name);
        	    return redirect('/dashboard');
        	}
        	else

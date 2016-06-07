@@ -10,7 +10,6 @@ use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use Session;
 
 class CrusalController extends Controller
 {
@@ -23,7 +22,7 @@ class CrusalController extends Controller
 
 	public function index(){
 
-        $site_id=Session::get('site_id'); // site_id == user_id , becuase of the 1:1 relationship
+        $site_id=Auth::user()->site->id;
         $rows=Crusal::where('site_id', $site_id)->get();
         return  view ('crusal.index',['rows'=>$rows]);
      }
@@ -50,7 +49,7 @@ class CrusalController extends Controller
         $new_row->title=trim($request->input('title'));
         $new_row->description=trim($request->input('description'));
         $new_row->image=$file_name;
-        $new_row->site_id=Session::get('site_id');
+        $new_row->site_id=Auth::user()->site->id;
         $is_saved=$new_row->save();
         if($is_saved)
         {
@@ -69,7 +68,7 @@ class CrusalController extends Controller
         {
             $row=Crusal::findOrFail($id);
             $user=Auth::user();
-            if ($user->cannot('access-dashboard', $row)) {
+            if ($user->cannot('access-crusal', $row)) {
                 abort(403);
             }
             return  view ('crusal.edit',['row'=>$row]);
@@ -90,7 +89,7 @@ class CrusalController extends Controller
             {throw new ModelNotFoundException($e->getMassege());}
 
         $user=Auth::user();
-        if ($user->cannot('access-dashboard', $row)) {
+        if ($user->cannot('access-crusal', $row)) {
             abort(403);
         }
         $this->validate($request, [
@@ -126,7 +125,7 @@ class CrusalController extends Controller
             {throw new ModelNotFoundException($e->getMassege());}
         $image_path=$row->image;
         $user=Auth::user();
-        if ($user->cannot('access-dashboard', $row)) {
+        if ($user->cannot('access-crusal', $row)) {
             abort(403);
         }
         $affectedRows  =$row->delete();

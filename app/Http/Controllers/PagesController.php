@@ -29,12 +29,12 @@ class PagesController extends Controller
 
      public function store(Request $request){
         $this->validate($request, [
-            // 'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'content' => 'required',
         ]);
         $site_id=Auth::user()->site->id;
         $new_row=new Page;
-        // $new_row->name=trim($request->input('name'));
+        $new_row->title=trim($request->input('title'));
         $new_row->content=$request->input('content');
         $new_row->site_id=$site_id;
         $is_saved=$new_row->save();
@@ -66,7 +66,6 @@ class PagesController extends Controller
      }
 
      public function update($id,Request $request){
-
 		try
             {$row=Page::findOrFail($id);}
         catch(Exception $e)
@@ -77,10 +76,10 @@ class PagesController extends Controller
             abort(403);
         }
         $this->validate($request, [
-            // 'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'content' => 'required',
         ]);
-        // $row->name=trim($request->input('name'));
+        $row->title=trim($request->input('title'));
         $row->content=trim($request->input('content'));
         $is_saved=$row->save();
         return redirect()->route('page.index');

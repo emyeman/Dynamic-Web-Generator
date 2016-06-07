@@ -1,0 +1,189 @@
+/* ========= Basic styles ============= */
+
+body{
+	background-color: #fff;
+	font-family: 'open sans', sans-serif;
+	line-height: 1px;
+	font-size: 13px;
+	color: #333;
+}
+
+ol,ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+figure, p{
+	margin: 0;
+}
+
+a{
+	-webkit-transition: all .3s ease-in 0s;
+	   -moz-transition: all .3s ease-in 0s;
+	   -ms-transition: all .3s ease-in 0s;
+         -o-transition: all .3s ease-in 0s;
+            transition: all .3s ease-in 0s;
+}
+
+
+iframe {
+    border: 0;
+}
+
+a, a:focus, a:hover {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:focus, a:hover {
+    color: inherit;
+}
+
+h1, h2, h3,h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+	font-weight: normal;
+	margin: 0;
+}
+div{
+	margin: 0 auto;
+}
+
+/* ================= Top =============== */
+
+.top{
+	height:90px;
+	background-color: #fff;
+	box-shadow: 0 0px 5px #999; 
+/* 	position: absolute;
+ */}
+.container{
+	margin: 0 auto;
+}
+
+.nav{
+
+	position: relative;
+	border: 1px solid transparent;
+	/* height: 70px; */
+
+}
+
+.logo{
+	/* height: 0px; */
+	border-top:4px solid #fe5e00;
+	float: left;
+	background-color: #f9f9f9;
+}
+.imagelogo{
+	width: 112px;
+	height: 36px;
+	display: block;
+	/* margin: 20px auto; */
+}
+.tt{
+	height: 50px;
+}
+/* #navv{
+
+	display: block;
+	color: #2d2d2d;
+    font-weight: 500;
+	text-transform: capitalize;
+	font-size: 15px;
+	margin-top: 20px;
+	
+} */
+.menuitem{
+	display: block;
+	margin-right: 15px;
+	color:#333;
+	font-size: 15px;
+
+}
+.menuitem:focus{
+	color: #fe5e00;
+}
+.menuitem:hover{
+	color: #fe5e00;
+	background-color: #fff;
+}
+
+/* ================= Services =============== */
+
+
+
+/* .services{
+	margin:60px auto 60px auto;
+	position: relative;
+	text-align: center;
+
+} */
+.con{
+	margin: 70px 0px 70px 0px;
+}
+.titleSec{
+
+	margin:0 auto;
+	padding-bottom: 20px;
+	text-align: center;
+
+
+}
+.subTitle{
+		padding-bottom: 20px;
+
+
+}
+
+.title-detail{
+		padding-bottom: 20px;
+
+
+}
+.iconService{
+	width: 100px;
+	height: 90px;
+	border: 3px solid #fe5e00;
+	text-align: center;
+
+}
+.icon{
+	color: #787878;
+	/* text-align: center; */
+	font-size: 25px;
+	background-position: center;
+
+}
+.bgIcon{
+	position: center;
+	text-align: center;
+
+
+
+}
+
+
+/*================ Advs ===================*/
+.sec{
+	margin: 40px auto 70px auto;
+}
+
+
+.adv{
+	height:250px;
+	margin: 0px;
+}
+
+/*================ About =====================*/
+.img-about{
+	border: 1px solid #DADFE1;
+}
+
+.desc{
+	font-size: 25px;
+	line-height: 50px;
+}
+.serv:hover{
+	background-color: #EEEEEE;
+}

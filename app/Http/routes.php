@@ -29,48 +29,34 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::patch('/user/update/{user}','UserController@update');
 	Route::resource('/user','UserController');
 
-
-
-	Route::get('/promotion/{t}', 'PromotionController@index')->name('promotion.index');
-	Route::get('/promotion/create/{t}', 'PromotionController@create')->name('promotion.create');
-	Route::resource('/promotion','PromotionController',['except' => ['create', 'index']]);
-  
-	Route::resource('/aboutus','AboutUsController',['except' => ['index']]);   
-
+	Route::get('/news_promotion/{t}', 'NewsPromotionController@index')->name('news_promotion.index');
+	Route::get('/news_promotion/create/{t}', 'NewsPromotionController@create')->name('news_promotion.create');
+	Route::resource('/news_promotion','NewsPromotionController',['except' => ['create', 'index']]);
+	Route::resource('/aboutus','AboutUsController',['except' => ['index']]); 
+	Route::resource('/menu','MenuController');
+	Route::resource('/page','PagesController');
+	Route::resource('/crusal','CrusalController');  
 
 	Route::get('/service/delete/{service}','ServiceController@delete');
 	Route::get('/service/edit/{service}','ServiceController@edit');
 	Route::patch('/service/update/{service}','ServiceController@update');
 	Route::resource('/service','ServiceController');    
-
-
 	Route::get('/site/edit/{site}','SiteController@edit');
 	Route::patch('/site/update/{site}','SiteController@update');
     Route::resource('/site','SiteController'); 
-
 	Route::any('branding/edit','BrandingController@edit'); 
-	Route::any('branding/update','BrandingController@update'); 
-    
-    Route::resource('branding','BrandingController');    
-	Route::resource('/navbar','NavbarController');
-	Route::resource('/page','PagesController');
-	Route::resource('/crusal','CrusalController');
-	Route::resource('/news','NewsController');
+	Route::any('branding/update','BrandingController@update');     
+    Route::resource('/branding','BrandingController');    
 	Route::resource('/stylecontainer','StyleContainerController');
 	Route::resource('/category','CategoryController');
 	Route::resource('/subcategory','SubCategoryController');
 	Route::resource('/product','ProductController');
-
 	Route::resource('/contactus','ContactUsController');
 	Route::resource('/footer','FooterController');
 	Route::resource('/numberview','NumberViewController');
-
-
 	Route::patch('/domain/update/{domain}','DomainController@update');
 	Route::get('/domain/edit/{domain}','DomainController@edit');
 	Route::resource('/domain','DomainController');
-
-	Route::resource('/promotion','PromotionController');
 	Route::resource('/googlemap','GoogleMapController');
 
 	if (Request::ajax()){

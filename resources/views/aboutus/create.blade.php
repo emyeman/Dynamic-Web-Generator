@@ -21,23 +21,22 @@
 
       <br><br>
       {!!Form::open(['route'=>'aboutus.store','method'=>'post','files'=>true]) !!}
-          <div class='form-group has-warning'>
+          <div class='form-group'>
             <label class='col-md-2'>Description</label>
             <div class='col-md-10 input-group'>
                 <textarea placeholder='description...' class='form-control' name='description'  rows="15" style='resize: none;'></textarea>
             </div>
         </div> 
        
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-picture'></i></span>
                 <input class='form-control' name='image' type='file' />
             </div>
         </div>  
          
         <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='ADD' />
+        <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
     {!!Form::close() !!}
 
 

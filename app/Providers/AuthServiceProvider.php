@@ -26,16 +26,24 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        $gate->define('access-dashboard', function ($user, $element) {
-            return $user->id == $element->site_id;
+        $gate->define('access-news_promotions', function ($user, $element) {
+            return $user->site->id == $element->site_id;
+        });
+
+        $gate->define('access-crusal', function ($user, $crual) {
+            return $user->site->id == $crual->site_id;
         });
 
         $gate->define('access-aboutus', function ($user, $element) {
-            return $user->id == $element->id;
+            return $user->site->id == $element->site_id;
         });
 
         $gate->define('access-pages', function ($user, $site) {
             return $user->id == $site->user_id;
+        });
+
+        $gate->define('access-menus', function ($user, $menu) {
+            return $user->site->id == $menu->site_id;
         });
     }
 }

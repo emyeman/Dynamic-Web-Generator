@@ -6,9 +6,9 @@
     @include('../header')
     {!! Html::script('assets/tinymce/tinymce.js') !!}
     <div class="col-sm-9">
-          <h2>
+          <h2 class='page-header'>
             Edit Page
-        </h2>
+          </h2>
           @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -20,7 +20,12 @@
         @endif
           <br><br>
           {{Form::model($row,['route'=>['page.update',$row->id],'method'=>'put']) }}
-            <textarea name='content'>{{$row->content}}</textarea>
+            <div class='form-group'>
+              <div class='col-md-12 input-group'>
+                  {{Form::text('title', null ,['class'=>'form-control','placeholder'=>'page title ...'])}}
+                </div>
+            </div>
+            {{Form::textarea('content', null)}}
             <br><br>
             <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='EDIT' />
         {{Form::close() }}

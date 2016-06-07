@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbea52cfbb527656d080f902cea9910d9
+class ComposerStaticInit129cb8eea2a1ce1a17b0da824c1a6ac6
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -334,12 +334,11 @@ class ComposerStaticInitbea52cfbb527656d080f902cea9910d9
         'App\\Http\\Controllers\\FooterController' => __DIR__ . '/../..' . '/app/Http/Controllers/FooterController.php',
         'App\\Http\\Controllers\\GoogleMapController' => __DIR__ . '/../..' . '/app/Http/Controllers/GoogleMapController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
-        'App\\Http\\Controllers\\NavbarController' => __DIR__ . '/../..' . '/app/Http/Controllers/NavbarController.php',
-        'App\\Http\\Controllers\\NewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewsController.php',
+        'App\\Http\\Controllers\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/MenuController.php',
+        'App\\Http\\Controllers\\NewsPromotionController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewsPromotionController.php',
         'App\\Http\\Controllers\\NumberViewController' => __DIR__ . '/../..' . '/app/Http/Controllers/NumberViewController.php',
         'App\\Http\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagesController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
-        'App\\Http\\Controllers\\PromotionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PromotionController.php',
         'App\\Http\\Controllers\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ServiceController.php',
         'App\\Http\\Controllers\\SiteController' => __DIR__ . '/../..' . '/app/Http/Controllers/SiteController.php',
         'App\\Http\\Controllers\\StyleContainerController' => __DIR__ . '/../..' . '/app/Http/Controllers/StyleContainerController.php',
@@ -352,7 +351,7 @@ class ComposerStaticInitbea52cfbb527656d080f902cea9910d9
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Request' => __DIR__ . '/../..' . '/app/Http/Requests/Request.php',
         'App\\Jobs\\Job' => __DIR__ . '/../..' . '/app/Jobs/Job.php',
-        'App\\MenuItem' => __DIR__ . '/../..' . '/app/MenuItem.php',
+        'App\\Menu' => __DIR__ . '/../..' . '/app/Menu.php',
         'App\\NewsPromotion' => __DIR__ . '/../..' . '/app/NewsPromotion.php',
         'App\\Page' => __DIR__ . '/../..' . '/app/Page.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
@@ -3278,10 +3277,10 @@ class ComposerStaticInitbea52cfbb527656d080f902cea9910d9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbea52cfbb527656d080f902cea9910d9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbea52cfbb527656d080f902cea9910d9::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitbea52cfbb527656d080f902cea9910d9::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitbea52cfbb527656d080f902cea9910d9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit129cb8eea2a1ce1a17b0da824c1a6ac6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit129cb8eea2a1ce1a17b0da824c1a6ac6::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit129cb8eea2a1ce1a17b0da824c1a6ac6::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit129cb8eea2a1ce1a17b0da824c1a6ac6::$classMap;
 
         }, null, ClassLoader::class);
     }
