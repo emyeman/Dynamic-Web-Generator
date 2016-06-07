@@ -51,10 +51,10 @@ class SubCategoryController extends Controller
         if (Auth::user()){
 
              $this->validate($request, [
-                'category_id' => 'required|max:300',
-                'title_subcategory' => 'required|max:300',
-                'subdescription' => 'required|max:2000',
-                'image_subcategory' => 'required|image',                 
+                'category_id' => 'required|max:255',
+                'title_subcategory' => 'required|max:255',
+                'subdescription' => 'required|max:255',
+                'image_subcategory' => 'required',                 
             ]);
 
             $subcategory= new Category;
@@ -101,10 +101,10 @@ class SubCategoryController extends Controller
 	    if (Auth::user()){
 
             $this->validate($request, [
-                'category_id' => 'required|max:300',
-                'title_subcategory' => 'required|max:300',
-                'subdescription' => 'required|max:2000',
-                // 'image_subcategory' => 'required|image',                 
+                'category_id' => 'required|max:255',
+                'title_subcategory' => 'required|max:255',
+                'subdescription' => 'required|max:255',
+                // 'image_subcategory' => 'required',                 
             ]);
 
             $subcategory=Category::find($id);

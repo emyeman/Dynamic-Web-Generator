@@ -49,19 +49,19 @@ class ContactUsController extends Controller
      public function store(Request $request){
         if (Auth::user()){
             $this->validate($request, [
-                'address' => 'max:300',
-                'lat' => 'max:300',
-                'lng' => 'max:300',
-                'phone' => 'max:300',
-                'mobile' => 'max:300',
-                'email' => 'max:300',
-                'fax' => 'max:300',
-                'facebook' => 'max:300', 
-                'google_plus' => 'max:300', 
-                'instagram' => 'max:300', 
-                'pinterest' => 'max:300',   
-                'linkedin' => 'max:300', 
-                'youtube' => 'max:300',          
+                'address' => 'max:255',
+                'lat' => 'max:255',
+                'lng' => 'max:255',
+                'phone' => 'max:255',
+                'mobile' => 'max:255',
+                'email' => 'max:255',
+                'fax' => 'max:255',
+                'facebook' => 'max:255', 
+                'google_plus' => 'max:255', 
+                'instagram' => 'max:255', 
+                'pinterest' => 'max:255',   
+                'linkedin' => 'max:255', 
+                'youtube' => 'max:255',          
             ]);
 
             $contact= new Contact;
@@ -103,19 +103,19 @@ class ContactUsController extends Controller
      public function update($id,Request $request){
         if (Auth::user()){
             $this->validate($request, [
-                'address' => 'max:500',
-                'lat' => 'max:300',
-                'lng' => 'max:300',
-                'phone' => 'max:200',
-                'mobile' => 'max:200',
-                'email' => 'max:200',
-                'fax' => 'max:200',
-                'facebook' => 'max:200', 
-                'google_plus' => 'max:200', 
-                'instagram' => 'max:200', 
-                'pinterest' => 'max:200',   
-                'linkedin' => 'max:200', 
-                'youtube' => 'max:200',          
+                'address' => 'max:255',
+                'lat' => 'max:255',
+                'lng' => 'max:255',
+                'phone' => 'max:255',
+                'mobile' => 'max:255',
+                'email' => 'max:255',
+                'fax' => 'max:255',
+                'facebook' => 'max:255', 
+                'google_plus' => 'max:255', 
+                'instagram' => 'max:255', 
+                'pinterest' => 'max:255',   
+                'linkedin' => 'max:255', 
+                'youtube' => 'max:255',          
             ]);
 
             $contact=Contact::find($id);

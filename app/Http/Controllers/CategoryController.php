@@ -46,9 +46,9 @@ class CategoryController extends Controller
      public function store(Request $request){
         if (Auth::user()){
             $this->validate($request, [
-                'title_category' => 'required|max:300',
-                'description' => 'required|max:2000',
-                'image_category' => 'required|image',                 
+                'title_category' => 'required|max:255',
+                'description' => 'required|max:255',
+                'image_category' => 'required',                 
             ]);
 
             $category= new Category;
@@ -90,9 +90,9 @@ class CategoryController extends Controller
         if (Auth::user()){
 
             $this->validate($request, [
-                'title_category' => 'required|max:300',
-                'description' => 'required|max:2000',
-                // 'image_category' => 'required|image',                 
+                'title_category' => 'required|max:255',
+                'description' => 'required|max:255',
+                // 'image_category' => 'required',                 
             ]);
 
             $category=Category::find($id);

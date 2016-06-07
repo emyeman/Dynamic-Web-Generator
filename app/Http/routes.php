@@ -21,8 +21,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	Route::get('/dashboard', function () {
-    return view('dashboard');
+    	return view('dashboard');
 	});
+
+	
 
 
 	Route::get('/user/edit/{user}','UserController@edit');
@@ -78,3 +80,6 @@ Route::group(['middleware' => 'auth'], function () {
 	
 });
 
+Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
+    	return view('welcome');
+});
