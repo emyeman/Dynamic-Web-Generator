@@ -25,8 +25,6 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 
 	
-
-
 	Route::get('/user/edit/{user}','UserController@edit');
 	Route::patch('/user/update/{user}','UserController@update');
 	Route::resource('/user','UserController');
@@ -67,6 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
 	}
 
 
+
 	// Route::get('/category/destroy/{id}','CategoryController@destroy');
 	// Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
 	// Route::get('/product/destroy/{id}','ProductController@destroy');
@@ -82,6 +81,11 @@ Route::group(['middleware' => 'auth'], function () {
 
 //***************************for generator new project*******************************
 
+// Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
+//     	return redirect('welcome');
+// });
+
 Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
-    	return redirect('welcome');
+    	return view('temp1/Home/show_en');
 });
+
