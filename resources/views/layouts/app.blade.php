@@ -7,15 +7,15 @@
     <title>web site generator</title>
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Abeezee:400|Open+Sans:400,600,700|Source+Sans+Pro:400,600">
-    <link rel="stylesheet" type="text/css" href="/assets/css/defaults.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/demo.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/defaults.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/demo.css') }}">
+    <link rel="stylesheet" href="{{ url('/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/assets/css/bootstrap-theme.min.css')}}">
    
-    <link rel="stylesheet" href="/assets/css/emy.css">
-     <link rel="stylesheet" href="/assets/bootstrap-3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{{ url('/assets/css/emy.css') }}">
+     <link rel="stylesheet" href="{{ url('/assets/bootstrap-3.2.0/css/bootstrap.min.css')}}"/>
 <!-- Bootstrap-Iconpicker -->
-    <link rel="stylesheet" href="/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css"/>
+    <link rel="stylesheet" href="{{ url('/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}"/>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -73,16 +73,16 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
-                        <li><img id="profile" class="img-circle" src="{{ Auth::user()->image }}" alt=""></li>
+                        <li><img id="profile" class="img-circle" src="{{ url('/') }}{{ Auth::user()->image }}" alt=""></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a> 
                             <ul class="dropdown-menu mydrop">
                              @if (Session::get('site_id') != null)
-                                <li class="dropdown-item"><a href="/site/edit/{{ Session::get('site_id') }}" >my site</a></li>
+                                <li class="dropdown-item"><a href="{{ url('/site/edit/') }}/{{ Session::get('site_id') }}" >my site</a></li>
                              @endif
-                                <li class="dropdown-item"><a href="/user/edit/{{ Auth::user()->id }}" >edit my profile</a></li>
+                                <li class="dropdown-item"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}" >edit my profile</a></li>
                             </ul>
                         </li>
 
@@ -109,19 +109,19 @@
         <script type="text/javascript" src="/assets/jquery/jquery-1.10.2.min.js"></script>
         <!-- color picker -->
 
-<script type="text/javascript" src="/assets/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ url('/assets/bootstrap-3.2.0/js/bootstrap.min.js') }}"></script>
 <!-- Bootstrap-Iconpicker Iconset for Glyphicon -->
-<script type="text/javascript" src="/assets/bootstrap-iconpicker/js/iconset/iconset-glyphicon.min.js"></script>
+<script type="text/javascript" src="{{ url('/assets/bootstrap-iconpicker/js/iconset/iconset-glyphicon.min.js') }}"></script>
 <!-- Bootstrap-Iconpicker -->
-<script type="text/javascript" src="/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js"></script>
+<script type="text/javascript" src="{{ url('/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js') }}"></script>
     {{-- <script src="{{ elixir('j/assets/js/s/app.js') }}"></script> --}}
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/assets/js/accordion.js"></script>
+    <script src="{{ url('/assets/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/assets/js/accordion.js') }}"></script>
 
-    <script type="text/javascript" src="/colorPicker/colors.js"></script>
-   <script type="text/javascript" src="/colorPicker/jqColorPicker.min.js"></script>
+    <script type="text/javascript" src="{{ url('/colorPicker/colors.js') }}"></script>
+   <script type="text/javascript" src="{{ url('/colorPicker/jqColorPicker.min.js') }}"></script>
 
 
     <script type="text/javascript">

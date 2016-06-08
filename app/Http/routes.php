@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
     	return view('dashboard');
 	});
 
+	// Route::get('/dashboard','DashboardController@index');
+
 	
 	Route::get('/user/edit/{user}','UserController@edit');
 	Route::patch('/user/update/{user}','UserController@update');
@@ -85,7 +87,10 @@ Route::group(['middleware' => 'auth'], function () {
 //     	return redirect('welcome');
 // });
 
-Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
+// Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
+//     	return view('temp1/Home/show_en');
+// });
+
+Route::get('/webgenerator/{subdomain}/{temp_id}/Home/show_en', function () {
     	return view('temp1/Home/show_en');
 });
-
