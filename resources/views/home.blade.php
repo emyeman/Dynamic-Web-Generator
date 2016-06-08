@@ -10,7 +10,7 @@
 						<a href="{{ url('/login') }}" class="btn btn-primary">create your own website
                         </a>
                       @elseif (Session::get('site_id') == null) 
-                         <a href="{{ url('/site/create') }}" class="btn btn-primary">create your own website
+                         <a href="{{ url('site/create') }}" class="btn btn-primary">create your own website
                          </a>
                     @endif
 					</div>

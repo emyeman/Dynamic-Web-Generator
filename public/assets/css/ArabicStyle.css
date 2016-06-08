@@ -1,0 +1,12 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
+
+.main-navigation .navbar-default .navbar-nav > li > a {
+   font-family: 'Droid Arabic Naskh', serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color:#FFFFFF;
+
+}
