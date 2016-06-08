@@ -31,7 +31,7 @@
                 {{Form::text('title', null ,['class'=>'col-ms-2 form-control'])}}
             </div>
         </div>  
-        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images{{$row->image}}"></div>
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images'.$row->image)}}"></div>
         <div class='form-group'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-10 input-group'>

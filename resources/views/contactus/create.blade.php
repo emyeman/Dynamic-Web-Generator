@@ -14,7 +14,7 @@
     @endforeach
  @if($flagadd==0)
   <h2><div class='col-lg-1 col-ms-1'>
-            <a href='/contactus'><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
         </div></small>Add New Contact Us</h2>
       <br><br>
         
@@ -167,8 +167,8 @@
 
 @else
     <h2><div class='col-lg-1 col-ms-1'>
-            <a href='/contactus'><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small>Sorry,Can't Add New Contact Us,PLZ press<a href='/contactus'> here</a></h2>
+            <a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
+        </div></small>Sorry,Can't Add New Contact Us,PLZ press<a href="{{url('/contactus')}}"> here</a></h2>
 @endif
       <br><br>
       <br><br>
@@ -179,8 +179,8 @@
 </div>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
-<script type="text/javascript" src='/assets/js/jquery-1.12.0.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
