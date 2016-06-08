@@ -53,13 +53,11 @@ class BrandingController extends Controller {
         $image = Input::file('image')->getClientOriginalName();
 
         if ($this->site && $logo = $this->upload_image($image)) {
-            $brand = new Header;
-            $brand->site_id = $this->site->id;
-            $brand->company_name = $this->request->input('companyname');
-            $brand->logo = $logo;
-            $brand->slogan = $this->request->input('slogan');
-            // die(print_r($brand));
-            if ($brand->save()) {
+            $brand['site_id'] = $this->site->id;
+            $brand['company_name'] = $this->request->input('companyname');
+            $brand['logo'] = $logo;
+            $brand['slogan'] = $this->request->input('slogan');
+            if (Header::create($brand)) {
                 return redirect('/branding');
             }
         }
