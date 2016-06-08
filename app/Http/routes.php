@@ -83,20 +83,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 //***************************for generator new project*******************************
 
-<<<<<<< HEAD
 Route::get('/webgenerator/{subdomain}/{temp_id}/show_en', function () {
     	return view('temp1/show_en');
 });
-=======
-// Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
-//     	return redirect('welcome');
-// });
-
-// Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
-//     	return view('temp1/Home/show_en');
-// });
-
-Route::get('/webgenerator/{subdomain}/{temp_id}/Home/show_en', function () {
-    	return view('temp1/Home/show_en');
-});
->>>>>>> 7c0ac9faaaa4dccdf55a06a42742577bf16f0e86
