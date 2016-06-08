@@ -213,6 +213,7 @@
         </div>
 
       @endif
+      @if($aboutus)
         <div class="line">
             <hr>
         </div>
@@ -220,22 +221,26 @@
 
         <!-- section start -->
 		<!-- ================ -->
+        
 		<div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<h1 id="about" class="title text-center">About</h1>
-						<p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p>
+						<!-- <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p> -->
 						<div class="space"></div>
 						<div class="row">
 							<div class="col-md-6">
-								<img class="img-rounded" src="{{ url('/assets/images/1.jpg')}}" alt="">
+                                <?php $img='/assets/images'.$aboutus->image ?>
+								<img class="img-rounded" src="{{ url($img)}}" alt="">
 							</div>
 							<div class="col-md-6 abouty">
 								<div class="space"></div>
-							
-								<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
-								<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ducimus explicabo quibusdam temporibus deserunt doloremque pariatur ea, animi a. Delectus similique atque eligendi, enim vel reiciendis deleniti neque aliquid, sit?</p>
+							        <p class='lead'>
+                                        {{$aboutus->description}}
+                                    </p>
+								<!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
+								<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ducimus explicabo quibusdam temporibus deserunt doloremque pariatur ea, animi a. Delectus similique atque eligendi, enim vel reiciendis deleniti neque aliquid, sit?</p> -->
 						</div>
 							</div>
 						</div>
@@ -245,6 +250,7 @@
                 </div>
             </div>
 		</div>
+        @endif
 		<!-- section end -->
 
 
