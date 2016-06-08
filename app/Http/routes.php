@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
 	
 });
 
-Route::get('/webgenerator/{subdomain}/Home/show_en', function () {
-    	return view('welcome');
+//***************************for generator new project*******************************
+
+Route::get('/webgenerator/{subdomain}/{temp_id}/Home/show_en', function () {
+    	return view('temp1/Home/show_en');
 });
