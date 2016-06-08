@@ -7,7 +7,7 @@
 
 <div class="col-sm-9">
       <h2><div class='col-lg-1 col-ms-1'>
-            <a href='/googlemap'><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="{{url('/googlemap')}}"><span class="glyphicon glyphicon-backward"></span></a>
         </div></small>Add New Product</h2>
           @if (count($errors) > 0)
             <div class="alert alert-danger">
