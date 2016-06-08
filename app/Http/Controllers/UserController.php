@@ -34,6 +34,7 @@ class UserController extends Controller
                 $filename = Input::file('image')->getClientOriginalName(); 
                 $file = $file->move(public_path().'/images/profile/',$filename);
                 // $user->image = $file->getRealPath();
+
                 $imagePath = '/images/profile/'.$filename;
         }
       	if($user->update([
@@ -44,7 +45,7 @@ class UserController extends Controller
       		]))
        	{
             unlink(public_path().$old_imag_name);
-       	    return redirect('/dashboard');
+            return redirect('/dashboard');
        	}
        	else
        	{
