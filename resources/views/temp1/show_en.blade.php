@@ -16,8 +16,13 @@
         <!-- Web Fonts -->
         <link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
 
+        <link href="{{ url('/assets/bootstrap-3.2.0/css/bootstrap.min.css')}}" rel="stylesheet">
         <!-- Bootstrap core CSS -->
         <link href="{{ url('/assets/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+
+        
+
+         <link rel="stylesheet" href="{{ url('/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}"/>
 
         <!-- Font Awesome CSS -->
         <link href="{{ url('/assets/fonts/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -139,7 +144,7 @@
                 <div class="row">
                     <div class="col-md-offset-2 col-md-8 hidden-sm hidden-xs object-non-visible animated object-visible fadeIn" data-animation-effect="fadeIn">
                         <!--<h1 class="text-center"><span>Spirit</span></h1>-->
-                        <img class="img-responsive center-block" src="{{ url('/assets/images/logo.png')}}"/>
+                        {{-- <img class="img-responsive center-block" src="{{ url('/assets/images/logo.png')}}"/> --}}
                         <h3 class="text-center">The best website template ever</h3>
 
                     </div>
@@ -149,9 +154,25 @@
 
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
+        @if($crusals)
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
+            <?php $crusal_count=0;?>
+            @foreach($crusals as $crusal)
+                @if($crusal_count == 0)
+                <div class="item active">
+                @else
+                <div class="item">
+                @endif
+                    <img src="{{ url('/assets/images/')}}/{{ $crusal->image }}" alt="image1">
+                </div>
+                <?php $crusal_count++; ?>
+            @endforeach
+            </div>
+
+
+            {{-- <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <img src="{{ url('/assets/images/1.jpg')}}" alt="image1">
                 </div>
@@ -161,7 +182,7 @@
                 <div class="item">
                     <img src="{{ url('/assets/images/1.jpg')}}" alt="image3">
                 </div>
-            </div>
+            </div> --}}
 
             <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -177,13 +198,21 @@
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            @for($i=1 ;$i < count($crusals);$i++)
+                <li data-target="#carousel-example-generic" data-slide-to="{{ $i }}"></li>
+            @endfor
+
+            </ol>
+
+            {{-- <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="2"></li>
             </ol>
-
+ --}}
         </div>
 
-
+      @endif
         <div class="line">
             <hr>
         </div>
@@ -225,6 +254,7 @@
 
         <!-- section start -->
         <!-- ================ -->
+        @if($promotions)
         <div class="section translucent-bg bg-image-2 pb-clear">
             <div class="container object-non-visible" data-animation-effect="fadeIn">
                 <h1 id="promotion" class="title text-center">Promotion</h1>
@@ -234,37 +264,38 @@
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
-
-                        <div class="item active">
-                            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
+                    <?php $pro_count =0; ?>
+                    @foreach($promotions as $promotion)
+                        @if($pro_count == 0)
+                            <div class="item active">
+                        @else
+                            <div class="item"> 
+                        @endif
+                         
+                            <p class="text-center">{{ $promotion->description }}</p>
                             <p><a class="btn btn-primary view center-block" role="button">know more</a></p>
                         </div>
-                        <div class="item">
-                            <div >
-                                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
-                                <p><a class="btn btn-primary view center-block" role="button">know more</a></p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div >
-                                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
-                                <p><a class="btn btn-primary view center-block" role="button">know more</a></p>
-                            </div>
-                        </div>
+                        <?php $pro_count++; ?>
+                    @endforeach
+
 
                     </div>
 
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#move_p" data-slide-to="0" class="active"></li>
-                        <li data-target="#move_p" data-slide-to="1"></li>
-                        <li data-target="#move_p" data-slide-to="2"></li>
+                         @for($i=1 ;$i < count($promotions);$i++)
+                            <li data-target="#move_p" data-slide-to="{{ $i }}"></li>
+                        @endfor
                     </ol>
 
 
                 </div>
             </div>
 </div>
+</div>
+@endif
+
             <!--end section-->
 
         <div class="line">
@@ -273,22 +304,61 @@
 
 		<!-- section start -->
 		<!-- ================ -->
-		<div class="section" id="services">
-			<div class="container object-non-visible" data-animation-effect="fadeIn">
-				<h1 class="text-center title">Services</h1>
-				<div class="space"></div>
+        @if($services)
+           <div class="section" id="services">
+            <div class="container object-non-visible" data-animation-effect="fadeIn">
+                <h1 class="text-center title">Services</h1>
+                <div class="space"></div>
 
                 <div id="move_s" class="carousel slide" data-ride="carousel">
 
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
-                        <div class="item active">
+
+                    
+                        <?php $count=0; ?>
+                        @foreach($services as $service)
+                            @if($count == 0)
+                                <div class="item active">
+                                     <div class="row">
+                                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                            <div class="row text-center">
+                            @elseif($count % 3 == 0)
+                                     </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                            
+                                <div class="item">
+                                     <div class="row">
+                                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                            <div class="row text-center">
+                            @endif
+
+                            
+                                <div class="col-md-4 col-sm-8">
+                                <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="glyphicon {{ $service->icon }} fa-stack-1x fa-inverse"></i>
+                            </span>
+                                            <h4 class="service-heading">{{ $service->title }}</h4>
+                                            <p class="text-muted">{{ $service->description }}</p>
+                                        </div>
+                            <?php $count++; ?>
+                        @endforeach
+
+                        @if($count % 3 != 0 )
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                       {{--  <div class="item active">
                             <div class="row">
                                 <div class="col-md-offset-2 col-md-8 col-xs-12">
-
-
-
                                     <div class="row text-center">
                                         <div class="col-md-4 col-sm-8">
                     <span class="fa-stack fa-4x">
@@ -317,9 +387,12 @@
                                     </div>
 
 
+
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="item">
                             <div class="row text-center">
@@ -348,13 +421,18 @@
                                     <p class="text-muted">Lorem ipsum dolor sit amet, inventore harum ex magni, dicta impedit.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
+                    <?php $ind_num = ceil($count/3);?>
+                   
                     </div>
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#move_s" data-slide-to="0" class="active"></li>
-                        <li data-target="#move_s" data-slide-to="1"></li>
+                        @for($i =1;$i < $ind_num;$i++ )
+                            <li data-target="#move_s" data-slide-to="{{ $i }}"></li>
+                        @endfor
+                        
                     </ol>
 
                 </div>
@@ -362,7 +440,7 @@
 
             </div>
             </div>
-            </div>
+        @endif
 		<!-- section end -->
 		<!-- section start -->
 		<!-- ================ -->
@@ -383,6 +461,7 @@
         </div>
 
         <!--section Start-->
+        @if($news)
         <div class="section">
             <div class="container object-non-visible" data-animation-effect="fadeIn">
                 <h1 id="news"  class="text-center title">News</h1>
@@ -394,123 +473,69 @@
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="row">
-                            <div class="col-md-offset-2 col-md-8 col-xs-12">
 
+                     <?php $news_count=0; ?>
+                        @foreach($news as $new)
+                            @if($news_count == 0)
+                               <div class="item active">
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                            <div class="row">
+                            @elseif($news_count % 3 == 0)
+                                     </div>
+                                    </div>
+                                  </div>
+                                </div>
 
-
-                                <div class="row">
-
-                                    <div class="col-sm-4  wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded img-responsive" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Responsive</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
-
-                                    <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded img-responsive" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Google</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
-
-                                    <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded img-responsive" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Bootstrap</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
-
-                                </div><!-- /.row -->
-
-
-
+                            
+                                <div class="item">
+                                     <div class="row">
+                                        <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                            <div class="row">
+                            @endif
+                                <div class="col-sm-4  wow fadeInDown text-center animated animated">
+                                        <img class="img-rounded img-responsive" src="{{ url('/assets/images/')}}{{ $new->image }}" alt="Generic placeholder image">
+                                        <h3>{{ $new->title }}</h3>
+                                        <p class="lead text-center">{{ $new->description }}</p>
+                                    </div>
+                            <?php $news_count++; ?>
+                        @endforeach
+                        @if($news_count % 3 != 0 )
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                        @endif
 
 
 
-                                <div class="row">
-
-                                    <div class="col-sm-4  wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Responsive</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
-
-                                    <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Google</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
-
-                                    <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Bootstrap</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
-
-                                </div><!-- /.row -->
 
 
 
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-md-offset-2 col-md-8 col-xs-12">
 
 
 
-                                <div class="row">
 
-                                    <div class="col-sm-4  wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Responsive</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
 
-                                    <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Google</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
 
-                                    <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                                        <img class="img-rounded" src="{{ url('/assets/images/1.jpg')}}" alt="Generic placeholder image">
-                                        <h3>Bootstrap</h3>
-                                        <p class="lead text-center">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
-                                        <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                                    </div><!-- /.col-lg-4 -->
-                                </div><!-- /.row -->
-                            </div>
-                        </div>
-                    </div>
+
+               
+
+ 
+
                 </div>
-
+                <?php $news_ind_num = ceil($news_count/3);?>
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#move" data-slide-to="0" class="active"></li>
-                    <li data-target="#move" data-slide-to="1"></li>
-                    <li data-target="#move" data-slide-to="2"></li>
+                    @for($i =1;$i < $news_ind_num;$i++ )
+                        <li data-target="#move" data-slide-to="{{ $i }}"></li>
+                    @endfor
                 </ol>
             </div>
         </div>
+
+        @endif
         </div>
 
         <!--section End-->
@@ -1133,6 +1158,8 @@
 
 		<!-- Modernizr javascript -->
 		<script type="text/javascript" src="{{ url('/assets/plugins/modernizr.js')}}"></script>
+
+        <script type="text/javascript" src="{{ url('/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js') }}"></script>
 
 		<!-- Isotope javascript -->
 		<script type="text/javascript" src="{{ url('/assets/plugins/isotope/isotope.pkgd.min.js')}}"></script>
