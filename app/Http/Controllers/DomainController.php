@@ -35,7 +35,7 @@ class DomainController extends Controller
         ]);
 
         $domain = new Domain($request->all());
-        $domain->site_id = Session::get('site_id');
+        $domain->site_id = Auth::user()->id;
         
         if($domain->addDomain($domain))
         {

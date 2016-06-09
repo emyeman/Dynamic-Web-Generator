@@ -26,9 +26,8 @@ class TemplateController extends Controller
         $mysite = DB::table('sites')->where('subdomain',$arrayurl[0])->get();
         // var_dump($mysite);
         foreach ($mysite as $site) {
-         $site_id=$site->id;
+            $site_id=$site->id;
         }
-
         // die($site_id);  //for obtain on site_id
  // ***************** for pages and navbar ***************************
         $menus = DB::table('menus')->where('site_id',$site_id)->get();
