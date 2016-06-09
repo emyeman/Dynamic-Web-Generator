@@ -79,6 +79,13 @@
                                         <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
                                             <ul class="nav navbar-nav navbar-right">
                                                     <?php $flagelang=0?>
+                                                    <?php $findpage_top=0?>
+                                                    <?php $findservices=0?>
+                                                    <?php $findabout=0?>
+                                                    <?php $findgallery=0?>
+                                                    <?php $findnews=0?>
+                                                    <?php $findpromotion=0?>
+                                                    <?php $findcontact=0?>
                                                     @for ($x = 0; $x < count($urlpages); $x++)
 
                                                         @if($urlpages[$x]=='page_top')
@@ -88,16 +95,19 @@
                                                             <li>
                                                                 <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                             </li>
+                                                            <?php $findpage_top=1?>
                                                         @endif 
                                                         @if($urlpages[$x]=='services')   
                                                             <li>
                                                                 <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                             </li>
+                                                            <?php $findservices=1?>
                                                         @endif
                                                         @if($urlpages[$x]=='about')
                                                             <li>
                                                                 <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                             </li>
+                                                            <?php $findabout=1?>
                                                         @endif
                                                         @if($flagelang==1)
                                                             <li>
@@ -124,21 +134,25 @@
                                                                     <li><a class="page-scroll" href="#gallery">Type3</a></li>
                                                                 </ul>
                                                             </li>
+                                                            <?php $findgallery=1?>
                                                         @endif
                                                         @if($urlpages[$x]=='news')
                                                             <li>
                                                                 <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                             </li>
+                                                            <?php $findnews=1?>
                                                         @endif
                                                         @if($urlpages[$x]=='promotion')
                                                             <li>
                                                                 <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                             </li>
+                                                            <?php $findpromotion=1?>
                                                         @endif
                                                         @if($urlpages[$x]=='contact')
                                                             <li>
                                                                 <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                             </li>
+                                                             <?php $findcontact=1?>
                                                         @endif    
                                                             
                                                     @endfor
@@ -160,6 +174,7 @@
             </div>
         </header>
         <!-- header end -->
+    @if($findpage_top==1)
         @if($header)
         <header>
             <div class="container">
@@ -215,6 +230,9 @@
         </div>
 
       @endif
+    @endif  
+    
+    @if($findabout==1)
       @if($aboutus)
         <div class="line">
             <hr>
@@ -259,9 +277,10 @@
         <div class="line">
             <hr>
         </div>
-
+    @endif
         <!-- section start -->
         <!-- ================ -->
+    @if($findpromotion==1)    
         @if($promotions)
         <div class="section translucent-bg bg-image-2 pb-clear">
             <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -300,18 +319,19 @@
 
                 </div>
             </div>
-</div>
-</div>
-@endif
+        </div>
+        </div>
+        @endif
 
             <!--end section-->
 
         <div class="line">
             <hr>
         </div>
-
+    @endif
 		<!-- section start -->
 		<!-- ================ -->
+    @if($findservices==1)    
         @if($services)
            <div class="section" id="services">
             <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -383,6 +403,7 @@
             </div>
             </div>
         @endif
+    @endif    
 		<!-- section end -->
 		<!-- section start -->
 		<!-- ================ -->
@@ -403,6 +424,7 @@
         </div>
 
         <!--section Start-->
+    @if($findnews==1)    
         @if($news)
         <div class="section">
             <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -469,9 +491,10 @@
         <div class="line">
             <hr>
         </div>
-
+    @endif
 		<!-- section start -->
 		<!-- ================ -->
+    @if($findgallery==1)    
 		<div class="section">
 			<div class="container">
 				<h1 class="text-center title" id="gallery">Portfolio</h1>
@@ -558,7 +581,7 @@
         <div class="line">
             <hr>
         </div>
-
+    @endif
 
 		<!-- section start -->
 		<!-- ================ -->
@@ -573,6 +596,7 @@
 
 			<!-- .footer start -->
 			<!-- ================ -->
+        @if($findcontact==1)    
 			<div class="footer section">
 				<div class="container">
 					<h1 class="title text-center" id="contact">Contact Us</h1>
@@ -652,7 +676,7 @@
                 </div>
               @endforeach  
 			</div>
-
+        @endif
 			<!-- .footer end -->
 
 			<!-- .subfooter start -->
