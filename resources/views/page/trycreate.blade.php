@@ -30,20 +30,14 @@
              </div>
         </div>
 
-                <!-- for display select between write address and use google map -->
-        <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
-            <a id="getbage" class="btn btn-primary getbage">Enter Another Page  <span class="glyphicon glyphicon-modal-window"></span> </a>
-            
-        </div> 
-        <br/>
 
-          <div class='form-group has-warning'>
-            <label class='col-md-2'>Title Page</label>
-            <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter page title ...' class='form-control' name='title' type='text'/>
-            </div>
-        </div>     
+
+
+          <div class='form-group'>
+              <div class='col-md-12 input-group'>
+                  <input placeholder='page title ...' class='form-control' name='title' type='text'/>
+              </div>
+          </div>     
           <textarea name='content'></textarea>
           <br><br>
           <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='ADD' />
