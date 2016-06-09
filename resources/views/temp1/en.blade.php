@@ -40,6 +40,7 @@
 
         <!-- Custom css --> 
         <link href="{{ url('/assets/css/custom.css')}}" rel="stylesheet">
+        <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
     </head>
 
     <body class="no-trans" id="page_top">
@@ -399,11 +400,8 @@
 
                 </div>
 
-
             </div>
             </div>
-        @endif
-    @endif    
 		<!-- section end -->
 		<!-- section start -->
 		<!-- ================ -->
@@ -417,8 +415,8 @@
 			</div>
 		</div>
 		<!-- section end -->
-
-
+    @endif 
+@endif
         <div class="line">
             <hr>
         </div>
@@ -494,7 +492,8 @@
     @endif
 		<!-- section start -->
 		<!-- ================ -->
-    @if($findgallery==1)    
+    @if($findgallery==1)
+    @if($categories)    
 		<div class="section">
 			<div class="container">
 				<h1 class="text-center title" id="gallery">Portfolio</h1>
@@ -582,7 +581,7 @@
             <hr>
         </div>
     @endif
-
+    @endif
 		<!-- section start -->
 		<!-- ================ -->
 
@@ -596,7 +595,8 @@
 
 			<!-- .footer start -->
 			<!-- ================ -->
-        @if($findcontact==1)    
+        @if($findcontact==1)
+        @if($contacts)    
 			<div class="footer section">
 				<div class="container">
 					<h1 class="title text-center" id="contact">Contact Us</h1>
@@ -607,7 +607,7 @@
 							<div class="footer-content">
 								<p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p>
 								<ul class="list-icons">
-									<li><i class="fa fa-map-marker pr-10"></i> One infinity loop, 54100</li>
+									<li><i class="fa fa-map-marker pr-10"></i>{{$contact->address}}</li>
 									<li><i class="fa fa-phone pr-10"></i> {{$contact->phone}}</li>
 									<li><i class="fa fa-fax pr-10"></i>{{$contact->mobile}}</li>
 									<li><i class="fa fa-envelope-o pr-10"></i>{{$contact->email}}</li>
@@ -629,7 +629,7 @@
                                     <li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
 								@endif
                                 @if(!empty($contact->youtube))	
-                                    <li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube"></i></a></li>
+                                    <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
 								@endif
                                 @if(!empty($contact->flickr))	
                                     <li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>
@@ -676,6 +676,7 @@
                 </div>
               @endforeach  
 			</div>
+        @endif
         @endif
 			<!-- .footer end -->
 

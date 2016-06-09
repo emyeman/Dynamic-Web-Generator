@@ -30,13 +30,7 @@
              </div>
         </div>
 
-                <!-- for display select between write address and use google map -->
-        <div class='col-lg-offset-4 col-ms-8' id="sel_googlemap"> 
-            <label class='col-md-2'>Enter Another Page:</label><br/> 
-            <h1> <a class="getaddress btn btn-primary btn-lg">Enter localization  <span class="glyphicon glyphicon-pencil"></span> </a>
-              &nbsp; <a class="getlocation"><span class="google glyphicon glyphicon-globe"></span> </a></h1>
-        
-        </div> 
+
 
 
           <div class='form-group'>
