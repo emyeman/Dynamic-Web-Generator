@@ -136,7 +136,7 @@
                 id=$(this).val();
                 console.log(id);
 
-                $.get('/product/create/'+id,function(data){
+                $.get("{{url('/product/create/')}}/"+id,function(data){
                     // console.log(data[0]);
                     // console.log(data);
                     var showdata;
