@@ -13,7 +13,6 @@ class Service extends Model
     public function addService(Service $service)
     {
     	# code...
-    	$service->site_id = Session::get('site_id');
     	return $service->save();
     }
 }
