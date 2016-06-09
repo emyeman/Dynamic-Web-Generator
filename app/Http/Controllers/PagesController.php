@@ -30,7 +30,7 @@ class PagesController extends Controller
      public function store(Request $request){
         $this->validate($request, [
             'title' => 'required|max:255',
-            'content' => 'required',
+            // 'content' => 'required',
         ]);
         $site_id=Auth::user()->site->id;
         $new_row=new Page;

@@ -32,7 +32,7 @@
 
                 <!-- for display select between write address and use google map -->
         <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
-            <a id="id_getbage" class="btn btn-primary getbage">Enter Another Page  <span class="glyphicon glyphicon-modal-window"></span> </a>
+            <a id="id_getbage" class="btn btn-primary getbage">Create New Page  <span class="glyphicon glyphicon-modal-window"></span> </a>
             
         </div> 
         <br/>
@@ -44,7 +44,7 @@
                 <input placeholder='PlZ,enter page title ...' class='form-control' name='title' type='text'/>
             </div>
         </div>     
-          <textarea  name='content'></textarea>
+          <textarea  name='content'></textarea> 
        </div>   
           <br><br>
           <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='ADD' />
@@ -66,6 +66,19 @@ $(document).ready(function(){
     $('.getbage').click(function() {
       document.getElementById('ourpage').style.display = "none";
       document.getElementById('enternewbage').style.display = "block";
+
+      // var newpage; 
+      // newpage="<div class='form-group has-warning'>";
+      //       newpage+="<label class='col-md-2'>Title Page</label>";
+      //       newpage+="<div class='col-md-10 input-group'>";
+      //         newpage+="<span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>";
+      //           newpage+="<input placeholder='PlZ,enter page title ...' class='form-control' name='title' type='text'/>";
+      //       newpage+="</div>";
+      //   newpage+="</div>";     
+      //   newpage+="<textarea  name='content'></textarea>";
+      //   $('#enternewbage').html(newpage);
+
+      
     });
 
 
