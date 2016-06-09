@@ -76,7 +76,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: "{{url('/crusal/"+ id"')}}", //resource
+                url: "{{url('/crusal')}}/"+id, //resource
                 data:   { _token :token },
                 success: function(affectedRows) { 
                     affected_row.parent().parent().remove();

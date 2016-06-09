@@ -70,7 +70,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/page/'+ id, //resource
+                url: "{{ url('/page')}}/"+ id, //resource
                 data:   { _token :token },
                 success: function(affectedRows) { 
                     affected_row.parent().parent().remove();
