@@ -21,7 +21,7 @@ class BrandingController extends Controller {
     private function upload_image($image) {
         $domain_name = $this->request->user()->site['subdomain'];
 
-        $directory = "/$domain_name/branding/";
+        $directory = "/assets/images/$domain_name/branding/";
         if (Input::file('image')->move(public_path() . $directory, $image)) {
             return $directory . $image;
         }

@@ -19,7 +19,7 @@
 
             <div class="col-md-5">
                 <a href="#">
-                    <img class="img-responsive" width="500" height="30" src="/assets/images/Footer.jpg" alt="">
+                    <img class="img-responsive" width="500" height="30" src="{{url('/assets/images/Footer.jpg')}}" alt="">
                 </a>
             </div>
             <div class="col-md-7">

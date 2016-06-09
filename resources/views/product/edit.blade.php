@@ -7,7 +7,7 @@
 
 <div class="col-sm-9">
       <h2><div class='col-lg-1 col-ms-1'>
-            <a href='/product'><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="{{url('/product')}}"><span class="glyphicon glyphicon-backward"></span></a>
         </div></small>Edit Product</h2>
           @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images/{{$product->image}}"></div>
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image')}}"></div>
         <div class='form-group has-warning'>
             <label class='col-md-2'>Product Image</label>
             <div class='col-md-10 input-group'>
@@ -110,8 +110,8 @@
 
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
-<script type="text/javascript" src='/assets/js/jquery-1.12.0.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -142,7 +142,7 @@
                     document.getElementById('beforselect').style.display = "none";
                     document.getElementById('afterselect').style.display = "block";
                     console.log("emy change");
-                    $.get('/product/create/'+id,function(data){
+                    $.get("{{url('/product/create/"+id"')}}",function(data){
                         // console.log(data[0]);
                         // console.log(data);
                         var showdata;

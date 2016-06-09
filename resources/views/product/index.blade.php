@@ -12,7 +12,7 @@
                     <small>
                     <!-- <i>Hello current_user</i> -->
                     <div class='col-lg-offset-11 col-ms-1'>
-                        <a href='/product/create'><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{{url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
                     </div></small>
                 </h1>
             </div>
@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <a href="#">
-                                <img width="400" height="30" src="/assets/images/{{$product->image}}"/>
+                                <img width="400" height="30" src="{{url('/assets/images/'.$product->image)}}"/>
                             </a>
                         </div>
                         <div class="col-md-1"></div>
@@ -51,7 +51,7 @@
                             <!-- <label >Description:</label>{{$product->description}}</h3> -->
                             <label >Price Product:</label>{{$product->price}} LE</h3>
                              <h4><label >Publish At:</label>{{$product->created_at}}</h4>
-                            <a class="btn btn-primary" href="/product/{{$product->id}}/edit" >Edit Product <span class="glyphicon glyphicon-edit"></span></a>
+                            <a class="btn btn-primary" href="{{url('/product/'.$product->id.'/edit')}}" >Edit Product <span class="glyphicon glyphicon-edit"></span></a>
                             <!-- <a class="btn btn-danger" href="/product/destroy/{{$product->id}}">Remove Product <span class="glyphicon glyphicon-remove"></span></a> -->
                              
                                 <!-- use ajax for remove -->
@@ -70,7 +70,7 @@
  </div>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
@@ -88,7 +88,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/product/'+ id, //resource
+                url: "{{url('/product/"+ id"')}}", //resource
                 data:   { _token :token },
                 success: function(del_products) { 
                     del_product.parent().parent().remove();

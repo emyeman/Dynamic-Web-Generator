@@ -12,10 +12,13 @@ use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
 
+use App\Site;
+use App\Aboutus;
+use App\Header;
+
 class TemplateController extends Controller
 {
-    
-    public function Show(Request $request){
+   public function Show(Request $request){
     	$url=$request->path();
     	$arrayurl = explode("/", $url);
     	// $arrayurl[1];   //for obtain on subdomain
@@ -42,9 +45,19 @@ class TemplateController extends Controller
 // ***************** for category and subcategory and product ***************************
         $categories = DB::table('categories')->where('site_id',$arrayurl[2])->whereNull('category_id')->get(); 
 
+// ***************** for services ***************************
+        $services = DB::table('services')->where('site_id',$arrayurl[2])->get();
+        $crusals = DB::table('crusals')->where('site_id',$arrayurl[2])->get();
+        $news = DB::table('news_promotions')->where('site_id',$arrayurl[2])->where('type','news')->get();
+        $promotions = DB::table('news_promotions')->where('site_id',$arrayurl[2])->where('type','promotion')->get();
+        $site_id=$arrayurl[2];
+        $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
+        $header=Header::where('site_id', '=', $site_id)->first();
 
-
-
-    	return view('temp1/show_en',compact('menupages','urlpages','contacts','categories'));
+// ***************** return ***************************
+    	return view('temp1/show_en',compact('menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
      }
+
+
+
 }

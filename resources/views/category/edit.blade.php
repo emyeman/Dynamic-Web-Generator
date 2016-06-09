@@ -7,7 +7,7 @@
 
 <div class="col-sm-9">
       <h2><div class='col-lg-1 col-ms-1'>
-            <a href='/category'><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="{{url('/category')}}"><span class="glyphicon glyphicon-backward"></span></a>
         </div></small>Edit Category</h2>
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="/assets/images/{{$category->image}}"></div>          
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$category->image)}}"></div>          
         <div class='form-group has-warning'>
             <label class='col-md-2'>Category Image</label>
             <div class='col-md-10 input-group'>

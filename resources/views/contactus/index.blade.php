@@ -20,14 +20,14 @@
                     <small>
                     <!-- <i>Hello current_user</i> -->
                     <div class='col-lg-offset-11 col-ms-1'>
-                        <a href='/contactus/create'><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{{url('/contactus/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
                     </div></small>
                     @else
                         <small>
                         <!-- <i>Hello current_user</i> -->
                         <div class='col-lg-offset-9 col-ms-3' id="del_edit">
                         @foreach($contacts as $contact)
-                            <a href='/contactus/{{$contact->id}}/edit' class="btn btn-primary">Edit <span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="{{url('/contactus/'.$contact->id.'/edit')}}" class="btn btn-primary">Edit <span class="glyphicon glyphicon-edit"></span></a>
                                    
                                 <!-- use ajax for remove -->
                             <!-- <a id="{{$contact->id}}" class="btn btn-danger delete">Remove <span class="glyphicon glyphicon-remove"></span> </a> -->
@@ -37,7 +37,7 @@
                     <small>
                     <!-- <i>Hello current_user</i> -->
                     <div class='col-lg-offset-11 col-ms-1' id="del_create">
-                        <a href='/contactus/create'><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{{url('/contactus/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
                     </div></small>
                 </h1>
             </div>
@@ -125,8 +125,8 @@
 
 </div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
-<script type="text/javascript" src='/assets/js/jquery-1.12.0.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -150,7 +150,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/contactus/'+ id, //resource
+                url: "{{url('/contactus/"+ id +"')}}", //resource
                 data:   { _token :token },
                 success: function(del_contacts) { 
                     del_contactus.parent().parent().remove();

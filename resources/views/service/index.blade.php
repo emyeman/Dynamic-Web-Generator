@@ -12,7 +12,7 @@
                     <small>
                     <!-- <i>Hello current_user</i> -->
                     <div class='col-lg-offset-11 col-ms-1'>
-                        <a href='/service/create'><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{{url('/service/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
                     </div></small>
                     <!-- <small><i>Hello current_user</i></small> -->
                 </h1>
