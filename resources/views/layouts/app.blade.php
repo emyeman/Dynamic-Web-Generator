@@ -59,11 +59,6 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
-                    @if (Session::get('site_id') != null)
-                        <!-- <li><a href="{{ url('/home') }}">Home</a></li> -->
-                        <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                   @endif 
                 </ul>
 
                 <!-- Right Side Of Navbar -->

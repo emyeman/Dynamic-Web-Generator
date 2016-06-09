@@ -7,10 +7,13 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-5">
                       @if (Auth::guest())
-						<a href="{{ url('/login') }}" class="btn btn-primary">create your own website
+						            <a href="{{ url('/login') }}" class="btn btn-primary">create your own website
                         </a>
-                      @elseif (Session::get('site_id') == null) 
-                         <a href="{{ url('site/create') }}" class="btn btn-primary">create your own website
+                      @elseif (isset($site)) 
+                         <a href="{{ url('/dashboard') }}" class="btn btn-primary">Your Dashboard
+                         </a>
+                      @else
+                         <a href="{{ url('/site/create') }}" class="btn btn-primary">Create Your Website
                          </a>
                     @endif
 					</div>
