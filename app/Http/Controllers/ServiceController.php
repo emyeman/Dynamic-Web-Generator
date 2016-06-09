@@ -7,6 +7,7 @@ use App\Http\Requests;
 use DB;
 use Session;
 use Illuminate\Support\Facades\Input;
+use Auth;
 
 class ServiceController extends Controller
 {
@@ -68,6 +69,7 @@ class ServiceController extends Controller
 
 
      	$service = new Service($request->all());
+        $service->site_id = Auth::user()->id;
      	if( $service->addService($service))
         {
             return  redirect('/service');
