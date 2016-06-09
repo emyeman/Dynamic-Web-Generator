@@ -42,7 +42,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/service/delete/{service}','ServiceController@delete');
 	Route::get('/service/edit/{service}','ServiceController@edit');
 	Route::patch('/service/update/{service}','ServiceController@update');
-	Route::resource('/service','ServiceController');    
+	Route::resource('/service','ServiceController'); 
+    Route::get('/activetemp/{id}','SiteController@activetemp');
+
 	Route::get('/site/edit/{site}','SiteController@edit');
 	Route::patch('/site/update/{site}','SiteController@update');
     Route::resource('/site','SiteController'); 
@@ -91,3 +93,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/webgenerator/{subdomain}/{temp_id}/show_en','TemplateController@Show');
+Route::resource('/template','TemplateController');
+// Route::resource('/template','TemplateController');
+
