@@ -18,7 +18,7 @@
         <div class="row">
 
             <div class='col-lg-offset-11 col-ms-1'>
-                <a href='/crusal/create'><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{{url('/crusal/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
             </div>
         
             <div >
@@ -38,10 +38,10 @@
                             @foreach ($rows as $row)
                                 <tr> 
                                     <td>
-                                        <a href='/crusal/{{$row->id}}/edit'>
-                                            <img src="/assets/images{{$row->image}}" width='100px' height='100px'></td>
+                                        <a href="{{url('/crusal/'.$row->id.'/edit')}}">
+                                            <img src="{{url('/assets/images'.$row->image)}}" width='100px' height='100px'></td>
                                         </a>
-                                    <td class='wrap'><a href='/crusal/{{$row->id}}/edit'>{{$row->title}}<a/></td> 
+                                    <td class='wrap'><a href="{{url('/crusal/'.$row->id.'/edit')}}">{{$row->title}}<a/></td> 
                                     <td class='wrap'>{{substr($row->description,0,100)}}</td> 
                                     <td><span class="glyphicon glyphicon-remove delete" id="{{$row->id}}"></span></td>
                                 </tr>
@@ -58,7 +58,7 @@
 
 </div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
@@ -76,7 +76,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/crusal/'+ id, //resource
+                url: "{{url('/crusal')}}/"+id, //resource
                 data:   { _token :token },
                 success: function(affectedRows) { 
                     affected_row.parent().parent().remove();

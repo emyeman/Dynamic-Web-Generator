@@ -7,7 +7,7 @@
 
 <div class="col-sm-9">
       <h2><div class='col-lg-1 col-ms-1'>
-            <a href='/contactus'><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
         </div></small>Edit Contact Us</h2>
           @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -210,8 +210,8 @@
 </div>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
-<script type="text/javascript" src='/assets/js/jquery-1.12.0.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -304,7 +304,7 @@
 
             img = "http://maps.googleapis.com/maps/api/staticmap?center="
              + latlon + "&markers=color:blue|label:N|" + latlon + "&zoom=15&size=1057x600&sensor=false";
-            savedata+="<img src='"+img+"'/>";
+            savedata+="<img src='{{url('"+img+"')}}'/>";
 
             $('#savelocation').html(savedata);
             console.log(latlon);

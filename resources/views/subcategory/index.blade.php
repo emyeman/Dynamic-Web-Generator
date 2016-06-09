@@ -12,7 +12,7 @@
                     <small>
                     <!-- <i>Hello current_user</i> -->
                     <div class='col-lg-offset-11 col-ms-1'>
-                        <a href='/subcategory/create'><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{{url('/subcategory/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
                     </div></small>
                 </h1>
             </div>
@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <a href="#">
-                                <img width="400px" height="30px" src="/assets/images/{{$subcategory->image}}" />
+                                <img width="400px" height="30px" src="{{url('/assets/images/'.$subcategory->image)}}" />
                             </a>
                             <!-- <hr/> -->
                         </div>
@@ -40,7 +40,7 @@
                             <label >Description:</label>{{substr($subcategory->description,0,100)}}</h3>
                             <!-- <label >Description:</label>{{$subcategory->description}}</h3> -->
                              <h4><label >Publish At:</label>{{$subcategory->created_at}}</h4>
-                            <a class="btn btn-primary" href="/subcategory/{{$subcategory->id}}/edit" >Edit SubCategory<span class="glyphicon glyphicon-edit"></span></a>
+                            <a class="btn btn-primary" href="{{url('/subcategory/'.$subcategory->id.'/edit')}}" >Edit SubCategory<span class="glyphicon glyphicon-edit"></span></a>
 
                             <?php $flage_relation=0 ?>
                             @foreach ($products as $product)
@@ -74,7 +74,7 @@
 
  </div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
@@ -92,7 +92,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/subcategory/'+ id, //resource
+                url: "{{url('/subcategory/"+ id"')}}", //resource
                 data:   { _token :token },
                 success: function(del_subcategories) { 
                     del_subcategory.parent().parent().remove();

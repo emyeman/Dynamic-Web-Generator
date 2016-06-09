@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class='col-lg-offset-11 col-ms-1'>
-            <a href='/menu/create'><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{{url('/menu/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
     
         <div >
@@ -40,9 +40,9 @@
                     <tbody>
                         @foreach ($rows as $row)
                             <tr> 
-                                <td class='wrap'><a href='/menu/{{$row->menu_id}}/edit'>{{$row->menu_title}}<a/></td> 
-                                <td class='wrap'><a href='/menu/{{$row->parent_id}}/edit'>{{$row->parent_title}}</a></td>
-                                <td><a href='/page/{{$row->page_id}}/edit'>{{$row->page_title}}</a></td>
+                                <td class='wrap'><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->menu_title}}<a/></td>
+                                <td class='wrap'><a href="{{url('/menu/'.$row->parent_id.'/edit')}}">{{$row->parent_title}}</a></td>
+                                <td><a href="{{url('/page/'.$row->page_id.'/edit')}}">{{$row->page_title}}</a></td>
                                 <td><span class="glyphicon glyphicon-remove delete" id="{{$row->menu_id}}"></span></td>
                             </tr>
                         @endforeach
@@ -60,7 +60,7 @@
 
 </div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src='/assets/js/jquery-2.1.4.min.js'></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
@@ -78,7 +78,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/menu/'+ id, //resource
+                url: "{{url('/menu/')}}/"+id, //resource
                 data:   { _token :token },
                 success: function(deleted_menus) { 
                     arr=jQuery.parseJSON(deleted_menus);

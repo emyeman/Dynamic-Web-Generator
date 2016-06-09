@@ -7,7 +7,7 @@
 
 <div class="col-sm-9">
       <h2><div class='col-lg-1 col-ms-1'>
-            <a href='/subcategory'><span class="glyphicon glyphicon-backward"></span></a>
+            <a href="{{url('/subcategory')}}"><span class="glyphicon glyphicon-backward"></span></a>
         </div></small>Add New SubCategory</h2>
         
       @if (count($errors) > 0)

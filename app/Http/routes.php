@@ -90,4 +90,4 @@ Route::group(['middleware' => 'auth'], function () {
 // });
 
 
-Route::get('/webgenerator/{subdomain}/{temp_id}/show_en','TemplateController@Show');
+Route::get('/{subdomain}/en','TemplateController@Show');
