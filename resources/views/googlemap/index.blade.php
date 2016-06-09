@@ -137,7 +137,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: '/googlemap/'+ id, //resource
+                url: "{{url('/googlemap/')}}/"+ id, //resource
                 data:   { _token :token },
                 success: function(del_googlemaps) { 
                     del_googlemap.parent().parent().remove();

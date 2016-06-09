@@ -88,7 +88,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: "{{url('/product/"+ id"')}}", //resource
+                url: "{{url('/product/')}}/"+ id, //resource
                 data:   { _token :token },
                 success: function(del_products) { 
                     del_product.parent().parent().remove();
