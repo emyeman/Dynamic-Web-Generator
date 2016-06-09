@@ -78,7 +78,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: "{{url('/menu/"+ id"')}}", //resource
+                url: "{{url('/menu/')}}/"+id, //resource
                 data:   { _token :token },
                 success: function(deleted_menus) { 
                     arr=jQuery.parseJSON(deleted_menus);
