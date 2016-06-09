@@ -31,11 +31,11 @@ class UserController extends Controller
     	 $imagePath=$user->image;
        if(Input::hasFile('image')){
                 $file = Input::file('image');
-                $filename = Input::file('image')->getClientOriginalName(); 
-                $file = $file->move(public_path().'/images/profile/',$filename);
+                $extension = $file->getClientOriginalExtension();
+                $file = $file->move(public_path().'/images/profile/',time().'.'.$extension);
                 // $user->image = $file->getRealPath();
 
-                $imagePath = '/images/profile/'.$filename;
+                $imagePath = '/images/profile/'.time().'.'.$extension;
         }
       	if($user->update([
           'name'=>$request->all()['name'],
@@ -44,7 +44,7 @@ class UserController extends Controller
       	  'image' => $imagePath,
       		]))
        	{
-            // unlink(public_path().$old_imag_name);
+            unlink(public_path().$old_imag_name);
             return redirect('/dashboard');
        	}
        	else

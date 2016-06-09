@@ -36,7 +36,6 @@ class ServiceController extends Controller
             'icon' => 'required',
             'description' => 'required',
         ]);
-
        if($service->update($request->all()))
        {
             return redirect('/service');
@@ -46,36 +45,27 @@ class ServiceController extends Controller
      }
 
      public function create(){
-
         return  view('service.create');
         // die('ssss');
      }
 
+
      public function store(Request $request)
      {
-        // $imagepath = '';
-        // if(Input::hasFile('image')){
-        //         $image = Input::file('image');
-        //         $imagename = Input::file('image')->getClientOriginalName(); 
-        //         $image = $image->move(public_path().'/images/',$imagename);
-        // }
-
-        // $imagepath = public_path().'/images/services/'.$imagename;
         $this->validate($request, [
         'title' => 'required|max:255',
         'icon' => 'required',
         'description' => 'required',
         ]);
-
-
      	$service = new Service($request->all());
         $service->site_id = Auth::user()->id;
      	if( $service->addService($service))
         {
-            return  redirect('/service');
+            return redirect('/service');
         }
         return redirect('service.create');
      }
+
 
      public function delete(Service $service)
      {

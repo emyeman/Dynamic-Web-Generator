@@ -52,10 +52,10 @@ class SiteController extends Controller
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
-                $filename = Input::file('background_image')->getClientOriginalName();
-                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',$filename);
+                $extension = $file->getClientOriginalExtension();
+                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',time().$extension);
                 // $user->image = $file->getRealPath();
-                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.$filename;
+                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.time().$extension;
         }
         // dd($imagePath);
         $site->background_image = $imagePath;
@@ -88,10 +88,10 @@ class SiteController extends Controller
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
-                $filename = Input::file('background_image')->getClientOriginalName();
-                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',$filename);
+                $extension = $file->getClientOriginalExtension();
+                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',time().'.'.$extension);
                 // $user->image = $file->getRealPath();
-                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.$filename;
+                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.time().'.'.$extension;
         }
         // dd($imagePath);
        if($site->update([
@@ -103,8 +103,7 @@ class SiteController extends Controller
             'background_image' => $imagePath,
         ]))
        {
-            // dd(public_path().$old_imag_name);
-            // unlink(public_path().$old_imag_name);    
+            unlink(public_path().$old_imag_name);    
             return redirect('/dashboard');
        }
        return back();
