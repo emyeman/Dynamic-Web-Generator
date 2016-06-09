@@ -11,18 +11,79 @@
         <h2 class='page-header'>Add New Page</h2>
         <br><br>
         {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
-          <div class='form-group'>
-              <div class='col-md-12 input-group'>
-                  <input placeholder='page title ...' class='form-control' name='title' type='text'/>
-              </div>
-          </div>     
-          <textarea name='content'></textarea>
+
+            <div class='form-group has-warning' id='ourpage'>
+            <label class='col-md-2'>Select Your Page</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
+                <select class='form-control'id='findtitle' name='findtitle' >
+                    <option value="">PLZ,Select Name Page</option>
+                      <option  value="page_top">Home</option>
+                      <option  value="services">Services</option>
+                      <option  value="about">About Us</option>
+                      <option  value="contact">Contact Us</option>
+                      <option  value="gallery">Category</option>
+                      <option  value="news">News</option>
+                      <option  value="promotion">Promotion</option>
+                      <!-- <option  value=""></option> -->
+                </select>           
+             </div>
+        </div>
+
+                <!-- for display select between write address and use google map -->
+        <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
+            <a id="id_getbage" class="btn btn-primary getbage">Create New Page  <span class="glyphicon glyphicon-modal-window"></span> </a>
+            
+        </div> 
+        <br/>
+        <div id="enternewbage">
+          <div class='form-group has-warning'>
+            <label class='col-md-2'>Title Page</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                <input placeholder='PlZ,enter page title ...' class='form-control' name='title' type='text'/>
+            </div>
+        </div>     
+          <textarea  name='content'></textarea> 
+       </div>   
           <br><br>
           <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='ADD' />
       {!!Form::close() !!}
   </div><!--end leftsideof from-->
 </div>
+
+<meta name="_token" id='token' content="{!! csrf_token() !!}" />
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
+$(document).ready(function(){
+
+    console.log('hii');
+    document.getElementById('ourpage').style.display = "block";
+    document.getElementById('enternewbage').style.display = "none";
+    
+    $('.getbage').click(function() {
+      document.getElementById('ourpage').style.display = "none";
+      document.getElementById('enternewbage').style.display = "block";
+
+      // var newpage; 
+      // newpage="<div class='form-group has-warning'>";
+      //       newpage+="<label class='col-md-2'>Title Page</label>";
+      //       newpage+="<div class='col-md-10 input-group'>";
+      //         newpage+="<span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>";
+      //           newpage+="<input placeholder='PlZ,enter page title ...' class='form-control' name='title' type='text'/>";
+      //       newpage+="</div>";
+      //   newpage+="</div>";     
+      //   newpage+="<textarea  name='content'></textarea>";
+      //   $('#enternewbage').html(newpage);
+
+      
+    });
+
+
+});
+
   var editor_config = {
     path_absolute : "/",
     selector: "textarea",

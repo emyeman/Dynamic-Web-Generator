@@ -31,12 +31,17 @@ class TemplateController extends Controller
    public function Show(Request $request){
     	$url=$request->path();
     	$arrayurl = explode("/", $url);
-    	// $arrayurl[1];   //for obtain on subdomain
-    	// $arrayurl[2];     //for obtain on site_id
 
+    	// $arrayurl[0];   //for obtain on subdomain
+        $mysite = DB::table('sites')->where('subdomain',$arrayurl[0])->get();
+        // var_dump($mysite);
+        foreach ($mysite as $site) {
+            $site_id=$site->id;
+        }
+        // die($site_id);  //for obtain on site_id
  // ***************** for pages and navbar ***************************
-        $menus = DB::table('menus')->where('site_id',$arrayurl[2])->get();
-        $pages = DB::table('pages')->where('site_id',$arrayurl[2])->get();
+        $menus = DB::table('menus')->where('site_id',$site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
         $menupages = array();
         $urlpages = array();
         // var_dump($menus);die();
@@ -50,24 +55,30 @@ class TemplateController extends Controller
         }
  
   // ***************** for contact us ***************************
-        $contacts = DB::table('contacts')->where('site_id',$arrayurl[2])->get();       
+        $contacts = DB::table('contacts')->where('site_id',$site_id)->get();       
 
 // ***************** for category and subcategory and product ***************************
-        $categories = DB::table('categories')->where('site_id',$arrayurl[2])->whereNull('category_id')->get(); 
+        $categories = DB::table('categories')->where('site_id',$site_id)->whereNull('category_id')->get(); 
 
 // ***************** for services ***************************
-        $services = DB::table('services')->where('site_id',$arrayurl[2])->get();
-        $crusals = DB::table('crusals')->where('site_id',$arrayurl[2])->get();
-        $news = DB::table('news_promotions')->where('site_id',$arrayurl[2])->where('type','news')->get();
-        $promotions = DB::table('news_promotions')->where('site_id',$arrayurl[2])->where('type','promotion')->get();
-        $site_id=$arrayurl[2];
+        $services = DB::table('services')->where('site_id',$site_id)->get();
+        $crusals = DB::table('crusals')->where('site_id',$site_id)->get();
+        $news = DB::table('news_promotions')->where('site_id',$site_id)->where('type','news')->get();
+        $promotions = DB::table('news_promotions')->where('site_id',$site_id)->where('type','promotion')->get();
+
+
         $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
         $header=Header::where('site_id', '=', $site_id)->first();
 
 // ***************** return ***************************
-    	return view('temp1/show_en',compact('menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+    	return view('temp1/en',compact('menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
      }
 
 
 
 }
+
+
+
+
+        

@@ -7,7 +7,7 @@
 <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Show Services
+                <h1 class="page-header">Show Domain
                     <small>
                     <!-- <i>Hello current_user</i> -->
                     @if(!$domain)

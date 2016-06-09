@@ -150,7 +150,7 @@
             id=$(this).attr('id');
             $.ajax({
                 type: "DELETE",
-                url: "{{url('/contactus/"+ id +"')}}", //resource
+                url: "{{url('/contactus/')}}/"+ id , //resource
                 data:   { _token :token },
                 success: function(del_contacts) { 
                     del_contactus.parent().parent().remove();

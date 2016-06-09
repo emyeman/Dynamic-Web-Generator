@@ -31,11 +31,12 @@ class DomainController extends Controller
      public function store(Request $request){
 
         $this->validate($request, [
-            'domain_name' => 'required|max:255|unique:domains',
+            'domain_name' => 'required|max:255|unique:domains|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);
 
         $domain = new Domain($request->all());
-        $domain->site_id = Session::get('site_id');
+        $domain->site_id = Auth::user()->id;
+        
         if($domain->addDomain($domain))
         {
             return  redirect ('/domain');    
@@ -46,14 +47,13 @@ class DomainController extends Controller
 
 
      public function edit(Domain $domain){
-
 		return  view ('domain.edit',compact('domain'));
      }
 
 
      public function update(Request $request , Domain $domain){
         $this->validate($request, [
-            'domain_name' => 'required|max:255|unique:domains||regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'domain_name' => 'required|max:255|unique:domains|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);
 
         if($domain->update($request->all()))

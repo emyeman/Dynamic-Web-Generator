@@ -53,6 +53,7 @@ class SiteController extends Controller
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
+            'background_image' => 'min:100'
         ]);
         $site = new Site($request->all());
         $site->id = Auth::user()->id;
@@ -60,10 +61,10 @@ class SiteController extends Controller
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
-                $filename = Input::file('background_image')->getClientOriginalName();
-                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',$filename);
+                $extension = $file->getClientOriginalExtension();
+                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',time().$extension);
                 // $user->image = $file->getRealPath();
-                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.$filename;
+                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.time().$extension;
         }
         // dd($imagePath);
         $site->background_image = $imagePath;
@@ -71,15 +72,18 @@ class SiteController extends Controller
         {
             Session::put('site_id', $site->id);
             // return  redirect('/site');
-         return redirect()->action('TemplateController@index');
+            return redirect()->action('TemplateController@index');
     
+            // return  redirect('/dashboard');
         }
         return redirect('site.create');
      }
 
+
+
      public function edit(Site $site)
      {
-         # code...
+        # code...
         return view('site.edit',compact('site'));
      }
 
@@ -91,15 +95,17 @@ class SiteController extends Controller
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
+            'background_image' => 'min:100'
         ]);
         $old_imag_name = $site['attributes']['background_image'];
+
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
-                $filename = Input::file('background_image')->getClientOriginalName();
-                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',$filename);
+                $extension = $file->getClientOriginalExtension();
+                $file = $file->move(public_path().'/assets/images/'.$site->subdomain.'/backgrounds/',time().'.'.$extension);
                 // $user->image = $file->getRealPath();
-                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.$filename;
+                $imagePath = '/assets/images/'.$site->subdomain.'/backgrounds/'.time().'.'.$extension;
         }
         // dd($imagePath);
        if($site->update([
@@ -111,7 +117,7 @@ class SiteController extends Controller
             'background_image' => $imagePath,
         ]))
        {
-            unlink(public_path().$old_imag_name);
+            unlink(public_path().$old_imag_name);    
             return redirect('/dashboard');
        }
        return back();

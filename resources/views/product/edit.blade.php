@@ -6,9 +6,11 @@
 @include('../header')
 
 <div class="col-sm-9">
-      <h2><div class='col-lg-1 col-ms-1'>
+      <h2>
+      <div class='col-lg-1 col-ms-1'>
             <a href="{{url('/product')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small>Edit Product</h2>
+        </div>
+        </small>Edit Product</h2>
           @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
@@ -71,7 +73,7 @@
             </div>
         </div>
 
-        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image')}}"></div>
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image)}}"></div>
         <div class='form-group has-warning'>
             <label class='col-md-2'>Product Image</label>
             <div class='col-md-10 input-group'>
