@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image')}}"></div>
+        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image)}}"></div>
         <div class='form-group has-warning'>
             <label class='col-md-2'>Product Image</label>
             <div class='col-md-10 input-group'>
