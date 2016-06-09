@@ -20,12 +20,13 @@
         @endif
           <br><br>
           {{Form::model($row,['route'=>['page.update',$row->id],'method'=>'put']) }}
-            <div class='form-group'>
-              <div class='col-md-12 input-group'>
-                  {{Form::text('title', null ,['class'=>'form-control','placeholder'=>'page title ...'])}}
-                </div>
-            </div>
-            {{Form::textarea('content', null)}}
+            
+              <div class='form-group'>
+                <div class='col-md-12 input-group'>
+                    {{Form::text('title', null ,['class'=>'form-control','placeholder'=>'page title ...'])}}
+                  </div>
+              </div>
+              {{Form::textarea('content', null)}}
             <br><br>
             <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='EDIT' />
         {{Form::close() }}

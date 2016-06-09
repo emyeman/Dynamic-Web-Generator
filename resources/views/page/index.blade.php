@@ -36,7 +36,11 @@
                         <tbody>
                             @foreach ($rows as $row)
                                 <tr>
-                                    <td class='wrap'><a href="{{url('/page/'.$row->id.'/edit')}}">{{$row->title}}<a/></td>
+                                    @if(($row->title=='page_top')||($row->title=='services')||($row->title=='about')||($row->title=='gallery')||($row->title=='news')||($row->title=='promotion')||($row->title=='contact'))
+                                        <td class='wrap'>{{$row->title}}</td>
+                                    @else
+                                        <td class='wrap'><a style="color:blue;" href="{{url('/page/'.$row->id.'/edit')}}">{{$row->title}}<a/></td>
+                                    @endif
                                     <td><span class="glyphicon glyphicon-remove delete" id="{{$row->id}}"></span></td>
                                 </tr>
                             @endforeach

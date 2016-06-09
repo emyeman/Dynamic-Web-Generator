@@ -16,7 +16,7 @@
             <label class='col-md-2'>Select Your Page</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
-                <select class='form-control'id='title' name='title' >
+                <select class='form-control'id='findtitle' name='findtitle' >
                     <option value="">PLZ,Select Name Page</option>
                       <option  value="page_top">Home</option>
                       <option  value="services">Services</option>
