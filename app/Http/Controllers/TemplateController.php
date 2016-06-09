@@ -10,6 +10,7 @@ use DB;
 
 use App\Site;
 use App\Aboutus;
+use App\Header;
 
 class TemplateController extends Controller
 {
@@ -25,8 +26,9 @@ class TemplateController extends Controller
         $promotions = DB::table('news_promotions')->where('site_id',$arrayurl[2])->where('type','promotion')->get();
         $site_id=$arrayurl[2];
         $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
+        $header=Header::where('site_id', '=', $site_id)->first();
 
-        return view('temp1/show_en' , compact('services' , 'crusals' , 'news' , 'promotions','aboutus'));
+        return view('temp1/show_en' , compact('services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
     }
 
 

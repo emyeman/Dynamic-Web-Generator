@@ -138,19 +138,20 @@
             </div>
         </header>
         <!-- header end -->
-
+        @if($header)
         <header>
             <div class="container">
                 <div class="row">
                     <div class="col-md-offset-2 col-md-8 hidden-sm hidden-xs object-non-visible animated object-visible fadeIn" data-animation-effect="fadeIn">
                         <!--<h1 class="text-center"><span>Spirit</span></h1>-->
-                        {{-- <img class="img-responsive center-block" src="{{ url('/assets/images/logo.png')}}"/> --}}
-                        <h3 class="text-center">The best website template ever</h3>
+                        <img class="img-responsive center-block" src="{{ url($header->logo)}}"/> 
+                        <h3 class="text-center">{{$header->slogan}}</h3>
 
                     </div>
                 </div>
             </div>
         </header>
+        @endif
 
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
