@@ -61,15 +61,16 @@ class SiteController extends Controller
         $site->background_image = $imagePath;
         if($site->addSite($site)) 
         {
-            Session::put('site_id', $site->id);
-            return  redirect('/site');    
+            return  redirect('/dashboard');
         }
         return redirect('site.create');
      }
 
+
+
      public function edit(Site $site)
      {
-         # code...
+        # code...
         return view('site.edit',compact('site'));
      }
 

@@ -29,14 +29,10 @@ class HomeController extends Controller
         {
             $site =Auth::user()->site()->first()['attributes']['id'];
             // $site = Site::find(Auth::user()->id);
-            if($site != null)
+            if($site)
             {
-                Session::put('site_id',$site);    
+                return view('home',compact('site'));            
             }
-        }
-        else
-        {
-            Session::forget('site_id');
         }
         return view('home');
     }
