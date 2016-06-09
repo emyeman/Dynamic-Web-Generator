@@ -18,7 +18,7 @@
         </div>
       @endif
       {!!Form::open(['route'=>['domain.update',$domain->id ],'method'=>'patch']) !!}
-
+      {{ method_field('patch') }}
 
         <div class='form-group has-warning'>
             <label class='col-md-2'>Domain Name:</label>
@@ -28,7 +28,7 @@
             </div>
         </div>    
         <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
+        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='Update' />
 {!!Form::close() !!}
 
       <br><br>

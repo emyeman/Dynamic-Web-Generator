@@ -43,6 +43,7 @@ class SiteController extends Controller
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
+            'background_image' => 'min:100'
         ]);
         $site = new Site($request->all());
         $site->id = Auth::user()->id;
@@ -80,8 +81,10 @@ class SiteController extends Controller
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
+            'background_image' => 'min:100'
         ]);
         $old_imag_name = $site['attributes']['background_image'];
+
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
@@ -100,7 +103,8 @@ class SiteController extends Controller
             'background_image' => $imagePath,
         ]))
        {
-            unlink(public_path().$old_imag_name);
+            // dd(public_path().$old_imag_name);
+            // unlink(public_path().$old_imag_name);    
             return redirect('/dashboard');
        }
        return back();

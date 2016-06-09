@@ -44,7 +44,7 @@ class UserController extends Controller
       	  'image' => $imagePath,
       		]))
        	{
-            unlink(public_path().$old_imag_name);
+            // unlink(public_path().$old_imag_name);
             return redirect('/dashboard');
        	}
        	else
