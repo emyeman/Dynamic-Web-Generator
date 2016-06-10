@@ -13,6 +13,16 @@ use Input;
 class SiteController extends Controller
 {
     //
+
+    public function activetemp($id){
+        $site_id=Auth::user()->site->id;
+        $row=Site::find($site_id);
+        $row->template_id=$id;
+        $row->save();
+        return view('dashboard');
+
+
+    }
      public function index(){
 		return  view('site.index');
      }
@@ -48,7 +58,6 @@ class SiteController extends Controller
         $site = new Site($request->all());
         $site->id = Auth::user()->id;
         $site->user_id = Auth::user()->id;
-        $site->template_id = 1;
         $imagePath='';
         if(Input::hasFile('background_image')){  
                 $file = Input::file('background_image');
@@ -61,7 +70,11 @@ class SiteController extends Controller
         $site->background_image = $imagePath;
         if($site->addSite($site)) 
         {
-            return  redirect('/dashboard');
+            Session::put('site_id', $site->id);
+            // return  redirect('/site');
+            return redirect()->action('TemplateController@index');
+    
+            // return  redirect('/dashboard');
         }
         return redirect('site.create');
      }

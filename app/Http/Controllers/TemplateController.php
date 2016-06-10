@@ -15,9 +15,19 @@ use DB;
 use App\Site;
 use App\Aboutus;
 use App\Header;
+use App\Template;
 
 class TemplateController extends Controller
 {
+    
+    public function index(){
+
+        $temps=Template::all();
+
+        return view('activetemp',compact('temps'));
+        
+        
+    }
    public function Show(Request $request){
     	$url=$request->path();
     	$arrayurl = explode("/", $url);
