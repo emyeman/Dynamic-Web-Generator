@@ -1,12 +1,16 @@
+
  <header class="site-header-wrap">
         <div class="site-header">
+
             <!-- <a class="site-logo" href="#">Dynamic Web Generator </a> -->
+            
             <a class="run" target="_blank" href="{{url('/'.Auth::user()->site->subdomain.'/en')}}"><span class="glyphicon glyphicon-new-window"></span>Run</a>
             <!-- <nav class="site-nav">
                 <a href="#"><span class="fa-reply"></span>Back To Tutorial</a>
                 <a href="/"><span class="fa-eye"></span>Dashboard</a>
             </nav> -->
         </div>
+
     </header>
     <div class="col-sm-3">
     <div class="main">

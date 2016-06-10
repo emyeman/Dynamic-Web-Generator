@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\User;
 use Illuminate\Support\Facades\Input;
+use Auth;
 
 class UserController extends Controller
 {
@@ -28,8 +29,10 @@ class UserController extends Controller
         ]);
 
        $old_imag_name = $user['attributes']['image'];
-    	 $imagePath=$user->image;
+    	 $imagePath=$old_imag_name;
+       $has_new_file = 0;
        if(Input::hasFile('image')){
+                $has_new_file = 1;
                 $file = Input::file('image');
                 $extension = $file->getClientOriginalExtension();
                 $file = $file->move(public_path().'/images/profile/',time().'.'.$extension);
@@ -44,8 +47,17 @@ class UserController extends Controller
       	  'image' => $imagePath,
       		]))
        	{
-            unlink(public_path().$old_imag_name);
-            return redirect('/dashboard');
+          if($has_new_file == 1)
+          {
+                try
+                {
+                    unlink(public_path().$old_imag_name);    
+                }
+                catch (\Exception $e) {
+                }
+          }
+          
+            return redirect('/');
        	}
        	else
        	{

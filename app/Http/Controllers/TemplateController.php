@@ -23,10 +23,7 @@ class TemplateController extends Controller
     public function index(){
 
         $temps=Template::all();
-
         return view('activetemp',compact('temps'));
-        
-        
     }
    public function Show(Request $request){
     	$url=$request->path();

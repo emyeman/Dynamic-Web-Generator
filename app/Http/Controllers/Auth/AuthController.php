@@ -69,7 +69,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $imagePath='';
+        $imagePath='/default.jpg';
         if(Input::hasFile('image')){
                 $file = Input::file('image');
                 $filename = Input::file('image')->getClientOriginalName(); 
