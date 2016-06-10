@@ -29,7 +29,7 @@ class PagesController extends Controller
 
      public function store(Request $request){
         $this->validate($request, [
-            // 'title' => 'required|max:255',
+            'title' => 'max:255',
             // 'content' => 'required',
         ]);
         $site_id=Auth::user()->site->id;
@@ -85,7 +85,7 @@ class PagesController extends Controller
             abort(403);
         }
         $this->validate($request, [
-            // 'title' => 'required|max:255',
+            'title' => 'max:255',
             // 'content' => 'required',
         ]);
         $newtitle =trim($request->input('title'));

@@ -63,6 +63,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/domain','DomainController');
 	Route::resource('/googlemap','GoogleMapController');
 
+	Route::resource('/template','TemplateController');
+
+
+
+
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
 		Route::get('/googlemap/storelocation/{XYlocation}','GoogleMapController@ajaxstore');
@@ -92,7 +97,8 @@ Route::group(['middleware' => 'auth'], function () {
 // });
 
 
-Route::get('/webgenerator/{subdomain}/{temp_id}/show_en','TemplateController@Show');
-Route::resource('/template','TemplateController');
+// Route::get('/webgenerator/{subdomain}/{temp_id}/show_en','TemplateController@Show');
+
 
 Route::get('/{subdomain}/en','TemplateController@Show');
+Route::get('/{subdomain}/ar','TemplateController@Show');

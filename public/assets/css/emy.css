@@ -124,3 +124,7 @@ li{
     /* filter: alpha(opacity=50); */
     opacity: 0;
 }
+.section {
+    background-color: #DDDDDD;
+    padding: 0px;
+}
