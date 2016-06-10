@@ -11,6 +11,7 @@ use App\Category;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
+use File;
 
 class SubCategoryController extends Controller
 {
@@ -110,7 +111,7 @@ class SubCategoryController extends Controller
             $subcategory=Category::find($id);
             $subcategory->name=$request->input('title_subcategory');
             $subcategory->description=$request->input('subdescription');
-
+            $old_image=$subcategory->image;
             if(Input::file('image_subcategory')){
                 // echo "image_subcategory";die();
                 $imagefile = Input::file('image_subcategory');
@@ -120,6 +121,8 @@ class SubCategoryController extends Controller
                 $imagefile->move('assets/images/'.$subdomain.'/subcategory',$extention);
                 // echo $subdomain;die();
                 $subcategory->image=$subdomain.'/subcategory/'.$extention; 
+
+                File::delete('assets/images/'.$old_image); //for delete file image from folder
             }
             $subcategory->site_id=Auth::user()->id;
             $subcategory->category_id=$request->input('category_id');
@@ -140,8 +143,9 @@ class SubCategoryController extends Controller
             // return  view ('subcategory.index');
             // ****************************************************
             // // for use ajax for remove
-
+            $old_image=$subcategory->image;
             $del_subcategories =$subcategory->delete();
+            File::delete('assets/images/'.$old_image); //for delete file image from folder
             return json_encode( $del_subcategories );
         } else{
             return  redirect ('/login');   

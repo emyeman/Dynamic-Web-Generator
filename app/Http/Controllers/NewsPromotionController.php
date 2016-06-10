@@ -139,6 +139,7 @@ class NewsPromotionController extends Controller
             unlink(public_path('assets/images/').$old_imag_name); 
             Storage::disk('local')->put($file_name, File::get($image));
         }
+        
 		return redirect()->route('news_promotion.index',['type'=>$type]);
      }
 

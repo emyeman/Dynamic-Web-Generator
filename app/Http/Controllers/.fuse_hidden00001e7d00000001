@@ -21,11 +21,12 @@ class TemplateController extends Controller
    public function Show(Request $request){
     	$url=$request->path();
     	$arrayurl = explode("/", $url);
+
     	// $arrayurl[0];   //for obtain on subdomain
         $mysite = DB::table('sites')->where('subdomain',$arrayurl[0])->get();
         // var_dump($mysite);
         foreach ($mysite as $site) {
-         $site_id=$site->id;
+            $site_id=$site->id;
         }
         // die($site_id);  //for obtain on site_id
  // ***************** for pages and navbar ***************************
@@ -55,6 +56,7 @@ class TemplateController extends Controller
         $news = DB::table('news_promotions')->where('site_id',$site_id)->where('type','news')->get();
         $promotions = DB::table('news_promotions')->where('site_id',$site_id)->where('type','promotion')->get();
 
+
         $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
         $header=Header::where('site_id', '=', $site_id)->first();
 
@@ -65,3 +67,8 @@ class TemplateController extends Controller
 
 
 }
+
+
+
+
+        

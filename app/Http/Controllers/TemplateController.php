@@ -15,14 +15,27 @@ use DB;
 use App\Site;
 use App\Aboutus;
 use App\Header;
+use App\Template;
 
 class TemplateController extends Controller
 {
+    
+    public function index(){
+
+        $temps=Template::all();
+
+        return view('activetemp',compact('temps'));
+        
+        
+    }
    public function Show(Request $request){
     	$url=$request->path();
     	$arrayurl = explode("/", $url);
 
     	// $arrayurl[0];   //for obtain on subdomain
+        // $arrayurl[1];  //for obtain on (ar or en)
+        // echo $arrayurl[1];die();
+        $subdomain=$arrayurl[0];
         $mysite = DB::table('sites')->where('subdomain',$arrayurl[0])->get();
         // var_dump($mysite);
         foreach ($mysite as $site) {
@@ -60,11 +73,14 @@ class TemplateController extends Controller
         $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
         $header=Header::where('site_id', '=', $site_id)->first();
 
-// ***************** return ***************************
-    	return view('temp2/en',compact('menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
-     }
 
-
+// ***************** return  ar r en***************************
+        if ($arrayurl[1]=='en') {
+            return view('temp1/en',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+        }elseif ($arrayurl[1]=='ar') {
+            return view('temp1/ar',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+        }
+    }
 
 }
 
