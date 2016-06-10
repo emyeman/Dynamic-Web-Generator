@@ -952,6 +952,7 @@
 		<div class="space"></div>
 		<div class="row">
 			<div class="col-sm-6">
+            @foreach($contacts as $contact)
 				<div class="footer-content">
 					<p class="large">ر ويكيبيديا, وبعض الآلاف ان كلا, ماذا الدمج عملية عرض من. قد ومن الجنوب العالمية, أي دار تحرّك الطرفين.</p>
 					<ul class="list-icons">
@@ -961,15 +962,31 @@
 						<li><i class="fa fa-envelope-o pr-10"></i> your@email.com</li>
 					</ul>
 					<ul class="social-links">
-						<li class="facebook"><a target="_blank" href="https://www.facebook.com/pages/HtmlCoder/714570988650168"><i class="fa fa-facebook"></i></a></li>
-						<li class="twitter"><a target="_blank" href="https://twitter.com/HtmlcoderMe"><i class="fa fa-twitter"></i></a></li>
-						<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
-						<li class="skype"><a target="_blank" href="http://www.skype.com"><i class="fa fa-skype"></i></a></li>
-						<li class="linkedin"><a target="_blank" href="http://www.linkedin.com"><i class="fa fa-linkedin"></i></a></li>
-						<li class="youtube"><a target="_blank" href="http://www.youtube.com"><i class="fa fa-youtube"></i></a></li>
-						<li class="flickr"><a target="_blank" href="http://www.flickr.com"><i class="fa fa-flickr"></i></a></li>
-						<li class="pinterest"><a target="_blank" href="http://www.pinterest.com"><i class="fa fa-pinterest"></i></a></li>
-					</ul>
+                        @if(!empty($contact->facebook))
+                            <li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                        @endif
+                        @if(!empty($contact->twitter))  
+                            <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                        @endif
+                        @if(!empty($contact->google_plus))      
+                            <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                        @endif
+                        @if(!empty($contact->skype))    
+                            <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
+                        @endif
+                        @if(!empty($contact->linkedin)) 
+                            <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                        @endif
+                        @if(!empty($contact->youtube))  
+                            <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
+                        @endif
+                        @if(!empty($contact->flickr))   
+                            <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
+                        @endif
+                        @if(!empty($contact->pinterest))    
+                            <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
+                        @endif
+                        </ul>
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -998,9 +1015,15 @@
 	</div>
     <div class="row">
         <div class="col-xs-12">
-            <div id="googleMap" style="width:100%;height:500px;"></div>
+            <div id="emygoogleMap" style="width:100%;height:500px;">
+                    <!-- for show google map -->
+                    @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
+                        <img style="width:100%;height:100%;" src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
+                    @endif 
+            </div>
         </div>
     </div>
+    @endforeach 
 </div>
 
 <!-- .footer end -->

@@ -604,13 +604,13 @@
 			</div>
 		</div>
         <div class="row">
-            <div class="col-xs-12" id="emygoogleMap" style="width:100%;height:500px;">
-                <!-- <div id="emygoogleMap" style="width:100%;height:500px;"> -->
+            <div class="col-xs-12">
+                <div id="emygoogleMap" style="width:100%;height:500px;">
                     <!-- for show google map -->
                     @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
                         <img style="width:100%;height:100%;" src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
                     @endif 
-                <!-- </div> -->
+                </div>
             </div>
         </div>
       @endforeach  

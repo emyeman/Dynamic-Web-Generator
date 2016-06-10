@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
-use App\Category;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
 
+use App\Category;
 use App\Site;
 use App\Aboutus;
 use App\Header;
@@ -40,8 +40,14 @@ class TemplateController extends Controller
         // var_dump($mysite);
         foreach ($mysite as $site) {
             $site_id=$site->id;
+            $template_id=$site->template_id;
         }
-        // die($site_id);  //for obtain on site_id
+        // die($template_id);  
+        $mytemplate = DB::table('templates')->where('id',$template_id)->get();
+        foreach ($mytemplate as $templat) {
+            $templat_name=$templat->name;
+        }
+        // die($templat_name);
  // ***************** for pages and navbar ***************************
         $menus = DB::table('menus')->where('site_id',$site_id)->get();
         $pages = DB::table('pages')->where('site_id',$site_id)->get();
@@ -75,9 +81,9 @@ class TemplateController extends Controller
 
 // ***************** return  ar r en***************************
         if ($arrayurl[1]=='en') {
-            return view('temp1/en',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }elseif ($arrayurl[1]=='ar') {
-            return view('temp1/ar',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }
     }
 
