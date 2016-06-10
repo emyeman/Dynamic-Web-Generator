@@ -33,7 +33,8 @@
                 <!-- for display select between write address and use google map -->
         <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
             <a id="id_getbage" class="btn btn-primary getbage">Create New Page  <span class="glyphicon glyphicon-modal-window"></span> </a>
-            
+            <a id="backbage" class="btn btn-info oldbage" href="{{url('/page/create')}}"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Our Page</a>
+
         </div> 
         <br/>
         <div id="enternewbage">
@@ -62,11 +63,16 @@ $(document).ready(function(){
     console.log('hii');
     document.getElementById('ourpage').style.display = "block";
     document.getElementById('enternewbage').style.display = "none";
+
+    document.getElementById('id_getbage').style.display = "block";
+    document.getElementById('backbage').style.display = "none";
     
     $('.getbage').click(function() {
       document.getElementById('ourpage').style.display = "none";
       document.getElementById('enternewbage').style.display = "block";
 
+    document.getElementById('id_getbage').style.display = "none";
+    document.getElementById('backbage').style.display = "block";
       // var newpage; 
       // newpage="<div class='form-group has-warning'>";
       //       newpage+="<label class='col-md-2'>Title Page</label>";

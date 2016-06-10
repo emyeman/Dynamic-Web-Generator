@@ -13,7 +13,7 @@ use App\Product;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
-
+use File;
 
 class ProductController extends Controller
 {
@@ -151,6 +151,7 @@ class ProductController extends Controller
             $product->name=$request->input('title_product');
             $product->description=$request->input('description');
             $product->price=$request->input('price_product');
+            $old_image=$product->image;
             if(Input::file('image_product')){
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
@@ -159,7 +160,9 @@ class ProductController extends Controller
                 $extention=time().$imagefile->getClientOriginalName();
                 $imagefile->move('assets/images/'.$subdomain.'/product',$extention);
                 // echo $subdomain;die();
-                $product->image=$subdomain.'/product/'.$extention; 
+                $product->image=$subdomain.'/product/'.$extention;
+
+                File::delete('assets/images/'.$old_image); //for delete file image from folder 
             }
 
             $product->category_id=$request->input('subcategory_id');
@@ -180,8 +183,9 @@ class ProductController extends Controller
             // return  view ('product.index');
             // ****************************************************
             // // for use ajax for remove
-
+            $old_image=$product->image;
             $del_products =$product->delete();
+            File::delete('assets/images/'.$old_image); //for delete file image from folder
             return json_encode( $del_products );
         } else{
             return  redirect ('/login');   

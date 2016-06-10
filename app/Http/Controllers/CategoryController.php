@@ -11,6 +11,7 @@ use App\Category;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
+use File;
 
 
 class CategoryController extends Controller
@@ -68,6 +69,7 @@ class CategoryController extends Controller
 
             $category->site_id=Auth::user()->id;
             $category->save();
+
     		return  redirect ('/category');
         } else{
             return  redirect ('/login');   
@@ -98,7 +100,8 @@ class CategoryController extends Controller
             $category=Category::find($id);
             $category->name=$request->input('title_category');
             $category->description=$request->input('description');
-            // for upload image 
+            // for upload image
+            $old_image=$category->image; 
             if(Input::file('image_category')){
                 // echo "image_category";die();
                 $imagefile = Input::file('image_category');
@@ -107,7 +110,9 @@ class CategoryController extends Controller
                 $extention=time().$imagefile->getClientOriginalName();
                 $imagefile->move('assets/images/'.$subdomain.'/category',$extention);
                 // echo $subdomain;die();
-                $category->image=$subdomain.'/category/'.$extention; 
+                $category->image=$subdomain.'/category/'.$extention;
+                
+                File::delete('assets/images/'.$old_image); //for delete file image from folder   
             }
 
             $category->site_id=Auth::user()->id;
@@ -130,8 +135,9 @@ class CategoryController extends Controller
             // return  view ('category.index');
             // ****************************************************
             // // for use ajax for remove
-
+            $old_image=$category->image;
             $del_categories =$category->delete();
+            File::delete('assets/images/'.$old_image); //for delete file image from folder
             return json_encode( $del_categories );
         } else{
             return  redirect ('/login');   
