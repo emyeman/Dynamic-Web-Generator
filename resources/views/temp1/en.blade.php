@@ -2,14 +2,23 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">
-                                            <?php $flagelang=0?>
-                                            <?php $findpage_top=0?>
-                                            <?php $findservices=0?>
-                                            <?php $findabout=0?>
-                                            <?php $findgallery=0?>
-                                            <?php $findnews=0?>
-                                            <?php $findpromotion=0?>
-                                            <?php $findcontact=0?>
+                                            <?php  
+                                                $flagelang=0;
+                                                $findpage_top=0;
+                                                $findservices=0;
+                                                $findabout=0;
+                                                $findgallery=0;
+                                                $findnews=0;
+                                                $findpromotion=0;
+                                                $findcontact=0;
+                                                $myservices='';
+                                                $mypage_top='';
+                                                $myabout='';
+                                                $mycontact='';
+                                                $mynews='';
+                                                $mypromotion='';
+                                                $mygallery='';
+                                            ?>
                                             @for ($x = 0; $x < count($urlpages); $x++)
 
                                                 @if($urlpages[$x]=='page_top')
@@ -19,19 +28,22 @@
                                                     <li>
                                                         <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                     </li>
-                                                    <?php $findpage_top=1?>
+                                                    <?php $findpage_top=1;
+                                                    $mypage_top=$menupages[$x];?>
                                                 @endif 
                                                 @if($urlpages[$x]=='services')   
                                                     <li>
                                                         <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                     </li>
-                                                    <?php $findservices=1?>
+                                                    <?php $findservices=1;
+                                                    $myservices=$menupages[$x];?>
                                                 @endif
                                                 @if($urlpages[$x]=='about')
                                                     <li>
                                                         <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                     </li>
-                                                    <?php $findabout=1?>
+                                                    <?php $findabout=1;
+                                                     $myabout=$menupages[$x];?>
                                                 @endif
                                                 @if($flagelang==0)
                                                     <li>
@@ -58,25 +70,29 @@
                                                             <li><a class="page-scroll" href="#gallery">Type3</a></li>
                                                         </ul>
                                                     </li>
-                                                    <?php $findgallery=1?>
+                                                    <?php $findgallery=1;
+                                                    $mygallery=$menupages[$x];?>
                                                 @endif
                                                 @if($urlpages[$x]=='news')
                                                     <li>
                                                         <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                     </li>
-                                                    <?php $findnews=1?>
+                                                    <?php $findnews=1;
+                                                    $mynews=$menupages[$x];?>
                                                 @endif
                                                 @if($urlpages[$x]=='promotion')
                                                     <li>
                                                         <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                     </li>
-                                                    <?php $findpromotion=1?>
+                                                    <?php $findpromotion=1;
+                                                    $mypromotion=$menupages[$x];?>
                                                 @endif
                                                 @if($urlpages[$x]=='contact')
                                                     <li>
                                                         <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                     </li>
-                                                     <?php $findcontact=1?>
+                                                     <?php $findcontact=1;
+                                                     $mycontact=$menupages[$x];?>
                                                 @endif    
                                                     
                                             @endfor
@@ -170,7 +186,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 id="about" class="title text-center">About</h1>
+				<h1 id="about" class="title text-center"><?php echo $myabout; ?></h1>
 				<!-- <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p> -->
 				<div class="space"></div>
 				<div class="row">
@@ -208,7 +224,7 @@
 @if($promotions)
 <div class="section translucent-bg bg-image-2 pb-clear">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
-        <h1 id="promotion" class="title text-center">Promotion</h1>
+        <h1 id="promotion" class="title text-center"><?php echo $mypromotion;?></h1>
         <div class="space"></div>
         <div id="move_p" class="carousel slide" data-ride="carousel">
 
@@ -259,7 +275,7 @@
 @if($services)
    <div class="section" id="services">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
-        <h1 class="text-center title">Services</h1>
+        <h1 class="text-center title"><?php echo $myservices; ?></h1>
         <div class="space"></div>
 
         <div id="move_s" class="carousel slide" data-ride="carousel">
@@ -349,7 +365,7 @@
 @if($news)
 <div class="section">
     <div class="container object-non-visible" data-animation-effect="fadeIn">
-        <h1 id="news"  class="text-center title">News</h1>
+        <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>
         <div class="space"></div>
         <p class="lead text-center">Know what is always new with us</p>
     </div>
@@ -419,7 +435,7 @@
 @if($categories)    
 <div class="section">
 	<div class="container">
-		<h1 class="text-center title" id="gallery">Portfolio</h1>
+		<h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
 		<div class="separator"></div>
 		<p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
 		<br>			
@@ -522,7 +538,7 @@
 @if($contacts)    
 	<div class="footer section">
 		<div class="container">
-			<h1 class="title text-center" id="contact">Contact Us</h1>
+			<h1 class="title text-center" id="contact"><?php echo $mycontact;?></h1>
 			<div class="space"></div>
 			<div class="row">
 				<div class="col-sm-6">
