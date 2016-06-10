@@ -47,7 +47,7 @@ class UserController extends Controller
       	  'image' => $imagePath,
       		]))
        	{
-          if($has_new_file == 1)
+          if($has_new_file == 1 && $old_imag_name != '/default.jpg')
           {
                 try
                 {
