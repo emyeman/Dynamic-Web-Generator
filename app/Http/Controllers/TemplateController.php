@@ -61,7 +61,7 @@ class TemplateController extends Controller
         $header=Header::where('site_id', '=', $site_id)->first();
 
 // ***************** return ***************************
-    	return view('temp1/en',compact('menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+    	return view('temp2/en',compact('menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
      }
 
 

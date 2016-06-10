@@ -192,7 +192,7 @@
         @endif
 
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
+        
         @if($crusals)
 
             <!-- Wrapper for slides -->
