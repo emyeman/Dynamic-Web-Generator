@@ -28,6 +28,7 @@ class TemplateController extends Controller
         
         
     }
+    
    public function Show(Request $request){
     	$url=$request->path();
     	$arrayurl = explode("/", $url);
@@ -79,7 +80,7 @@ class TemplateController extends Controller
         $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
         $header=Header::where('site_id', '=', $site_id)->first();
 
-// ***************** return  ar r en***************************
+// ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }elseif ($arrayurl[1]=='ar') {
