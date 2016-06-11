@@ -15,9 +15,9 @@ class CreateCrusalsTable extends Migration
         Schema::create('crusals', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('site_id')->unsigned();
-            $table->string('image',200);
-            $table->string('title',150)->nullable();
-            $table->string('description',400)->nullable();
+            $table->string('image');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('site_id')

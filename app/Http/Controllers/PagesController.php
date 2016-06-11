@@ -28,13 +28,12 @@ class PagesController extends Controller
      }
 
      public function store(Request $request){
+        $site_id=Auth::user()->site->id;
         $this->validate($request, [
-            'title' => 'max:255',
+            'title' => 'max:255|unique:pages,title,NULL,id,site_id,'.$site_id,
             // 'content' => 'required',
         ]);
-        $site_id=Auth::user()->site->id;
         $new_row=new Page;
-
 
         $newtitle =trim($request->input('title'));
         $findtitle=trim($request->input('findtitle'));
@@ -85,7 +84,7 @@ class PagesController extends Controller
             abort(403);
         }
         $this->validate($request, [
-            'title' => 'max:255',
+            'title' => 'max:255|unique:pages,title,'.$id,
             // 'content' => 'required',
         ]);
         $newtitle =trim($request->input('title'));
