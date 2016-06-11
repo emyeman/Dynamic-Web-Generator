@@ -66,7 +66,8 @@ class TemplateController extends Controller
 
 // ***************** for category and subcategory and product ***************************
         $categories = DB::table('categories')->where('site_id',$site_id)->whereNull('category_id')->get(); 
-
+        $subcategories = DB::table('categories')->where('site_id',$site_id)->whereNotNull('category_id')->get();
+        $products= DB::table('products')->get();
 // ***************** for services ***************************
         $services = DB::table('services')->where('site_id',$site_id)->get();
         $crusals = DB::table('crusals')->where('site_id',$site_id)->get();
@@ -79,9 +80,9 @@ class TemplateController extends Controller
 
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
-            return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }elseif ($arrayurl[1]=='ar') {
-            return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }
     }
 

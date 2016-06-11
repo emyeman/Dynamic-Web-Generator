@@ -17,13 +17,16 @@ class CreatePagesTable extends Migration
             $table->integer('site_id')->unsigned();
             $table->text('content');
             $table->string('title');
-
+            
+            // $table->primary(array('title', 'site_id'));
             $table->timestamps();
 
             $table->foreign('site_id')
                 ->references('id')
                 ->on('sites')
                 ->onUpdate('cascade');
+
+
         });
     }
 
