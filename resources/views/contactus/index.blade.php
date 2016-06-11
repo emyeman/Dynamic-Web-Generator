@@ -53,48 +53,48 @@
                     <table class='table table-hover' style="table-layout: fixed;">
                     
                         <tr>
-                            <td><b><span class="text">Address</span></b></td>
+                            <td><b><span style="color:blue;">Address</span></b></td>
                             <td>{{$contact->address}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Phone</span></b></td>
+                            <td><b><span style="color:blue;">Phone</span></b></td>
                             <td>{{$contact->phone}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Mobile</span></b></td>
+                            <td><b><span style="color:blue;">Mobile</span></b></td>
                             <td>{{$contact->mobile}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">E-mail</span></b></td>
+                            <td><b><span style="color:blue;">E-mail</span></b></td>
                             <td>{{$contact->email}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Fax</span></b></td>
+                            <td><b><span style="color:blue;">Fax</span></b></td>
                             <td>{{$contact->fax}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Facebook</span></b></td>
+                            <td><b><span style="color:blue;">Facebook</span></b></td>
                             <td>{{$contact->facebook}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Google_plus</span></b></td>
+                            <td><b><span style="color:blue;">Google_plus</span></b></td>
                             <td>{{$contact->google_plus}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Pinterest</span></b></td>
+                            <td><b><span style="color:blue;">Pinterest</span></b></td>
                             <td>{{$contact->pinterest}}</td>
                         </tr>
                         
                         <tr>
-                            <td><b><span class="text">Instagram</span></b></td>
+                            <td><b><span style="color:blue;">Instagram</span></b></td>
                             <td>{{$contact->instagram}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Linkedin</span></b></td>
+                            <td><b><span style="color:blue;">Linkedin</span></b></td>
                             <td>{{$contact->linkedin}}</td>
                         </tr>
                         <tr>
-                            <td><b><span class="text">Youtube</span></b></td>
+                            <td><b><span style="color:blue;">Youtube</span></b></td>
                             <td>{{$contact->youtube}}</td>
                         </tr>
                            

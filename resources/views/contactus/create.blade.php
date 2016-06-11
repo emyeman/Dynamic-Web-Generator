@@ -168,7 +168,7 @@
 @else
     <h2><div class='col-lg-1 col-ms-1'>
             <a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small>Sorry,Can't Add New Contact Us,PLZ press<a href="{{url('/contactus')}}"> here</a></h2>
+        </div><span style="color:red;">Sorry,Can't Add New Contact Us,PLZ press</span><a style="color:blue;" href="{{url('/contactus')}}"> here</a></h2>
 @endif
       <br><br>
       <br><br>
