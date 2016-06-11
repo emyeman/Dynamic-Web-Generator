@@ -131,7 +131,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><img id="mylogo" src="1.png" ></a>
+          @if(isset($header))
+          <a class="navbar-brand" href="index.html"><img id="mylogo" src="{{ url('/') }}{{ $header->logo }}" ></a>
+          @endif
+          
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -302,6 +305,8 @@
 
     <!-- Products Section
     ==========================================-->
+    @if(isset($cats_and_subcats))
+
     <div id="gallery">
         <div class="container"> <!-- Container -->
             <div class="section-title text-center center">
@@ -320,213 +325,66 @@
                   
                     <li class="pull-right wow fadeInRight">
                         <ol class="type">
-
                             <li> <button class="btn btn-default btn-xs" type="button" id="buton1"  ><a href="#" data-filter="*" class="active">All</a>
-                                </button></li>
-                            <li>
-                                <div class="dropdown">
-                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".web" class="active">Web</a>
-                                        <span class="caret"></span>
-                                    </button>
+                            </button></li>
 
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" data-filter=".web">web1</a></li>
-                                        <li><a href="#" data-filter=".web">web2</a></li>
-                                        <li><a href="#" data-filter=".web">web3</a></li>
+                              {{-- display the category and sub categories --}}
 
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
+                              @foreach($cats_and_subcats as $cat_and_subcats)
+                               <li>
+                                  <div class="dropdown">
+                                      <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                          <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ $cat_and_subcats->name }}</a>
+                                          <span class="caret"></span>
+                                      </button>
 
-                                <div class="dropdown">
-                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".photography" class="active">photography</a>
-                                        <span class="caret"></span>
-                                    </button>
+                                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" data-filter=".photography">web1</a></li>
-                                        <li><a href="#" data-filter=".photography">web2</a></li>
-                                        <li><a href="#" data-filter=".photography">web3</a></li>
+                                        @foreach($cat_and_subcats->subcategories as $sub)
+                                              <li><a href="#" data-filter=".{{ $sub->name }}">{{ $sub->name }}</a></li>
+                                        @endforeach
+                                      </ul>
+                                  </div>
+                              </li>
+                              @endforeach
 
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li>
-
-                                <div class="dropdown">
-                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".app" class="active">App</a>
-                                        <span class="caret"></span>
-                                    </button>
-
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" data-filter=".app">app1</a></li>
-                                        <li><a href="#" data-filter=".app">app2</a></li>
-                                        <li><a href="#" data-filter=".app">app3</a></li>
-
-                                    </ul>
-                                </div>
-
-                            </li>
-                           <li>
-                            <div class="dropdown">
-                                <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-
-                                    <a href="#" data-filter=".branding" class="active">Branding</a>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li><a href="#" data-filter=".branding">branding1</a></li>
-                                    <li><a href="#" data-filter=".branding">branding2</a></li>
-                                    <li><a href="#" data-filter=".branding">branding3</a></li>
-
-                                </ul>
-                            </div>
-                            </li>
                         </ol>
-
                 </ul>
                 <div class="clearfix"></div>
             </div>
 
             <div id="lightbox" class="row">
+                {{-- display the product here --}}
+                @foreach($cats_and_subcats as $cat_and_subcats)
+                  @foreach($cat_and_subcats->subcategories as $subcategory)
+                    @foreach($subcategory->products as $product)
 
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/01.jpg" class="img-responsive" alt="...">
-                            </a>
+                      <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }}">
+                        <div class="portfolio-item">
+                            <div class="hover-bg">
+                                <a href="#">
+                                    <div class="hover-text">
+                                        <h4 style="color:white">{{ $product->name }}</h4>
+                                        <small style="color:white">{{ $product->price }}</small>
+                                        <div class="clearfix"></div>
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                    <img src="{{ url('/assets/images') }}/{{$product->image}}" class="img-responsive" alt="...">
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 photography app">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/02.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/03.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/04.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/05.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 app">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/06.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 photography web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/07.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/08.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                  @endforeach
+                @endforeach
 
             </div>
         </div>
     </div>
+@endif
+
+
 
     <!-- News Section
     ==========================================-->
@@ -571,7 +429,7 @@
 
 
 
-@endif
+  @endif
 
     <!-- Contact Section
     ==========================================-->
@@ -622,7 +480,7 @@
 
  
 
-
+@if(isset($contacts))
 
     <nav id="footer">
         <div class="container">
@@ -631,16 +489,43 @@
             </div>
             <div class="pull-right fnav">
                 <ul class="footer-social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                   
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        @if(!empty($contacts->facebook))
+                            <li><a href="{{ $contacts->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                        @endif
+
+                        @if(!empty($contacts->twitter))  
+                            <li><a href="{{ $contacts->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                        @endif
+
+                        @if(!empty($contacts->google_plus))    
+                            <li><a href="{{ $contacts->google_plus }}"><i class="fa fa-google-plus"></i></a></li>
+                        @endif
+
+                        @if(!empty($contacts->skype))  
+                            <li><a href="{{ $contacts->skype }}"><i class="fa fa-skype"></i></a></li>
+                        @endif
+
+                        @if(!empty($contacts->linkedin)) 
+                            <li><a href="{{ $contacts->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
+                        @endif
+
+                        @if(!empty($contacts->youtube))  
+                            <li><a href="{{ $contacts->youtube }}"><i class="fa fa-youtube"></i></a></li>
+                        @endif
+
+                        @if(!empty($contacts->flickr)) 
+                            <li><a href="{{ $contacts->flickr }}"><i class="fa fa-flicker"></i></a></li>
+                        @endif
+
+                        @if(!empty($contacts->pinterest))  
+                            <li><a href="{{ $contacts->pinterest }}"><i class="fa fa-pinterest"></i></a></li>
+                        @endif
                 </ul>
             </div>
         </div>
     </nav> 
 
-
+@endif
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url('assets/Temp2/en/js/jquery.1.11.1.js') }}"></script>

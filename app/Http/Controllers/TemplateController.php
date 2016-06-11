@@ -61,10 +61,20 @@ class TemplateController extends Controller
         }
  
   // ***************** for contact us ***************************
-        $contacts = DB::table('contacts')->where('site_id',$site_id)->get();       
+        $contacts = DB::table('contacts')->where('site_id',$site_id)->first();       
 
 // ***************** for category and subcategory and product ***************************
+        $cats_and_subcats=[];
         $categories = DB::table('categories')->where('site_id',$site_id)->whereNull('category_id')->get(); 
+        foreach ($categories as $category) {
+            # code...
+            $category->subcategories = DB::table('categories')->where('site_id',$site_id)->where('category_id',$category->id)->get(); 
+            foreach ($category->subcategories as $subcategory) {
+                # code...
+                $subcategory->products = DB::table('products')->where('category_id',$subcategory->id)->get();
+            }
+            array_push($cats_and_subcats, $category) ;
+        }
 
 // ***************** for services ***************************
         $services = DB::table('services')->where('site_id',$site_id)->get();
@@ -79,9 +89,9 @@ class TemplateController extends Controller
 
 // ***************** return  ar r en***************************
         if ($arrayurl[1]=='en') {
-            return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }elseif ($arrayurl[1]=='ar') {
-            return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }
     }
 
