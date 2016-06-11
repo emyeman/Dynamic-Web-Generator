@@ -130,71 +130,60 @@
             <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>
           </ul>
         </div>
+
         @for ($x = 0; $x < count($urlpages); $x++)
 
-            @if($urlpages[$x]=='page_top')
+            @if($urlpages[$x]=='contact')
+                <li>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                <?php $findcontact=1;
+                $mycontact=$menupages[$x];?>
+            @endif
+            @if($urlpages[$x]=='news')
               <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
               </li>
-              <?php $findpage_top=1;
-              $mypage_top=$menupages[$x];?>
+              <?php $findnews=1;
+              $mynews=$menupages[$x];?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                 </li>
                 <?php $findservices=1;
                 $myservices=$menupages[$x];?>
             @endif
-            @if($urlpages[$x]=='about')
-                <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
-                </li>
-                <?php $findabout=1;
-                 $myabout=$menupages[$x];?>
-            @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                 </li>
                 <?php $findgallery=1;
-                $mygallery=$menupages[$x];?>
-            @endif
-            @if($urlpages[$x]=='news')
-                <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
-                </li>
-                <?php $findnews=1;
-                $mynews=$menupages[$x];?>
+                 $mygallery=$menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                 </li>
                 <?php $findpromotion=1;
                 $mypromotion=$menupages[$x];?>
             @endif
-            @if($urlpages[$x]=='contact')
+            @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                 </li>
-                 <?php $findcontact=1;
-                 $mycontact=$menupages[$x];?>
+                <?php $findabout=1;
+                $myabout=$menupages[$x];?>
+            @endif
+            @if($urlpages[$x]=='page_top')
+                <li>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                 <?php $findpage_top=1;
+                 $mypage_top=$menupages[$x];?>
             @endif    
              @endfor
 
-
-
-
-          </li>
-            <li><a href="#contact" class="page-scroll droid-arabic-kufi"><h4>للاتصال بنا</h4></a></li>
-            <li><a href="#news" class="page-scroll droid-arabic-kufi"><h4>الاخبار</h4></a></li>
-            <li><a href="#services" class="page-scroll droid-arabic-kufi"><h4>الخدمات</h4></a></li>
-              <li><a href="#gallery" class="page-scroll droid-arabic-kufi"><h4>المنتجات</h4></a></li>
-            <li><a href="#promotion" class="page-scroll droid-arabic-kufi"><h4>الاعلانات</h4></a></li>
-            <li><a href="#about" class="page-scroll droid-arabic-kufi"><h4>من نحن</h4></a></li>
-            <li><a href="#wowslider-container0" class="page-scroll droid-arabic-kufi"><h4>القائمه الرئسيه</h4></a></li>
-            
 
 
 
