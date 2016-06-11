@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Basic Page Needs
@@ -80,7 +80,7 @@
     <!--News section-->
     
 	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
-	<div id="wowslider-container0">
+	<div id="page_top">
 	<div class="ws_images"><ul>
 		<li><img src="data0/images/8.jpg" alt="Welcome" title="مرحبا" id="wows0_0"/></li>
 		<li><img src="data0/images/1.jpg" alt="Creating a unique look." title="يوجد لدينا احدث التصميمات" id="wows0_1"/></li>
@@ -133,57 +133,56 @@
 
         @for ($x = 0; $x < count($urlpages); $x++)
 
-            @if($urlpages[$x]=='contact')
-                <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
-                </li>
-                <?php $findcontact=1;
-                $mycontact=$menupages[$x];?>
-            @endif
-            @if($urlpages[$x]=='news')
+            @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
               </li>
-              <?php $findnews=1;
-              $mynews=$menupages[$x];?>
+              <?php $findpage_top=1;
+              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                 <?php $findservices=1;
-                $myservices=$menupages[$x];?>
-            @endif
-            @if($urlpages[$x]=='gallery')
-                <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
-                </li>
-                <?php $findgallery=1;
-                 $mygallery=$menupages[$x];?>
-            @endif
-            @if($urlpages[$x]=='promotion')
-                <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
-                </li>
-                <?php $findpromotion=1;
-                $mypromotion=$menupages[$x];?>
+                $myservices=trans('arabic_english.'.$menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                 <?php $findabout=1;
-                $myabout=$menupages[$x];?>
+                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
             @endif
-            @if($urlpages[$x]=='page_top')
+            @if($urlpages[$x]=='gallery')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
-                 <?php $findpage_top=1;
-                 $mypage_top=$menupages[$x];?>
+                <?php $findgallery=1;
+                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='news')
+                <li>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findnews=1;
+                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='promotion')
+                <li>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findpromotion=1;
+                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='contact')
+                <li>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                 <?php $findcontact=1;
+                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
             @endif    
              @endfor
-
 
 
 

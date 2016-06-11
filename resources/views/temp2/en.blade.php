@@ -152,52 +152,52 @@
 
             @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
               </li>
               <?php $findpage_top=1;
-              $mypage_top=$menupages[$x];?>
+              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                 <?php $findservices=1;
-                $myservices=$menupages[$x];?>
+                $myservices=trans('arabic_english.'.$menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                 <?php $findabout=1;
-                 $myabout=$menupages[$x];?>
+                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                 <?php $findgallery=1;
-                $mygallery=$menupages[$x];?>
+                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                 <?php $findnews=1;
-                $mynews=$menupages[$x];?>
+                $mynews=trans('arabic_english.'.$menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                 <?php $findpromotion=1;
-                $mypromotion=$menupages[$x];?>
+                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
                  <?php $findcontact=1;
-                 $mycontact=$menupages[$x];?>
+                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
             @endif    
              @endfor
             <li>

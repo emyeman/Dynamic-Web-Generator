@@ -96,9 +96,16 @@ Route::group(['middleware' => 'auth'], function () {
 //     	return view('temp1/show_en');
 // });
 
+// ***************** for make route of webgenerator
+
 
 // Route::get('/webgenerator/{subdomain}/{temp_id}/show_en','TemplateController@Show');
 
 
 Route::get('/{subdomain}/en','TemplateController@Show');
 Route::get('/{subdomain}/ar','TemplateController@Show');
+
+
+
+
+// Route::get('/{subdomain}/{locale}','TemplateController@Show');

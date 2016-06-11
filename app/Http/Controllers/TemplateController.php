@@ -16,6 +16,7 @@ use App\Site;
 use App\Aboutus;
 use App\Header;
 use App\Template;
+use App;
 
 class TemplateController extends Controller
 {
@@ -92,8 +93,10 @@ class TemplateController extends Controller
 
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
+            App::setLocale('en');
             return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }elseif ($arrayurl[1]=='ar') {
+            App::setLocale('ar');
             return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
 
         }

@@ -19,78 +19,78 @@
                                     $mypromotion='';
                                     $mygallery='';
                                 ?>
-                                @for ($x = 0; $x < count($urlpages); $x++)
+                                 @for ($x = 0; $x < count($urlpages); $x++)
 
-                                    @if($urlpages[$x]=='page_top')
-                                    <!-- <li class="hidden">
-                                         <a href="#page-top"></a>
-                                     </li>-->
-                                    <li>
-                                        <a class="page-scroll" href="#page_top">الرئيسية</a>
-                                    </li>
-                                    <?php $findpage_top=1;
-                                    $mypage_top=$menupages[$x];?>
-                                    @endif 
-                                    @if($urlpages[$x]=='services')   
-                                    <li>
-                                        <a class="page-scroll" href="#services">الخدمات</a>
-                                    </li>
-                                     <?php $findservices=1;
-                                     $myservices=$menupages[$x];?>
-                                    @endif
-                                    @if($urlpages[$x]=='about')
-                                    <li>
-                                        <a class="page-scroll" href="#about">من نحن</a>
-                                    </li>
-                                    <?php $findabout=1;
-                                    $myabout=$menupages[$x];?>
-                                    @endif
-                                    @if($flagelang==0)
-                                    <li>
-                                        <div class="btn-group dropdown">
-                                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                <span class="lang-sm lang-lbl-full" lang="ar"></span> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl-full" lang="ar"></span></a></li>
-                                                <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl-full" lang="en"></span></a></li>
+                                            @if($urlpages[$x]=='page_top')
+                                                <!-- <li class="hidden">
+                                                     <a href="#page-top"></a>
+                                                 </li>-->
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                </li>
+                                                <?php $findpage_top=1;
+                                                $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+                                            @endif 
+                                            @if($urlpages[$x]=='services')   
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                </li>
+                                                <?php $findservices=1;
+                                                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                                            @endif
+                                            @if($urlpages[$x]=='about')
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                </li>
+                                                <?php $findabout=1;
+                                                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                                            @endif
+                                            @if($flagelang==0)
+                                                <li>
+                                                    <div class="btn-group dropdown">
+                                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                                            <span class="lang-sm lang-lbl-full" lang="ar"></span> <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li><a href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl-full" lang="ar"></span></a></li>
+                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl-full" lang="en"></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                               <?php $flagelang=1?> 
+                                             @endif   
                                             </ul>
-                                        </div>
-                                    </li>
-                                    <?php $flagelang=1?> 
-                                @endif
-                                </ul>
-                                <ul class="nav navbar-nav navbar-left">
-                                @if($urlpages[$x]=='gallery')
-                                    <li>
-                                        <a class="page-scroll" href="#gallery">المنتجات</a>
-                                    </li>
-                                    <?php $findgallery=1;
-                                    $mygallery=$menupages[$x];?>
-                                @endif
-                                @if($urlpages[$x]=='news')
-                                    <li>
-                                        <a class="page-scroll" href="#news">الأخبار</a>
-                                    </li>
-                                    <?php $findnews=1;
-                                    $mynews=$menupages[$x];?>
-                                @endif
-                                @if($urlpages[$x]=='promotion')    
-                                    <li>
-                                        <a class="page-scroll" href="#promotion">العروض</a>
-                                    </li>
-                                    <?php $findpromotion=1;
-                                    $mypromotion=$menupages[$x];?>
-                                @endif
-                                @if($urlpages[$x]=='contact')
-                                    <li>
-                                        <a class="page-scroll" href="#contact">تواصل معنا</a>
-                                    </li>
-                                  <?php $findcontact=1;
-                                  $mycontact=$menupages[$x];?>
-                                @endif    
-                                    
-                            @endfor    
+                                            <ul class="nav navbar-nav navbar-left">
+                                            @if($urlpages[$x]=='gallery')
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                </li>
+                                                <?php $findgallery=1;
+                                                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                                            @endif
+                                            @if($urlpages[$x]=='news')
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                </li>
+                                                <?php $findnews=1;
+                                                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                                            @endif
+                                            @if($urlpages[$x]=='promotion')
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                </li>
+                                                <?php $findpromotion=1;
+                                                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                                            @endif
+                                            @if($urlpages[$x]=='contact')
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                </li>
+                                                 <?php $findcontact=1;
+                                                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+                                            @endif    
+                                                
+                                        @endfor
                                 </ul>
 							</div>
 
