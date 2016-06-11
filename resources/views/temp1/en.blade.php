@@ -49,7 +49,7 @@
                                                 <li>
                                                     <div class="btn-group dropdown">
                                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="lang-sm lang-lbl-full" lang="ar"></span> <span class="caret"></span>
+                                                            <span class="lang-sm lang-lbl-full" lang="en"></span> <span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li><a href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl-full" lang="ar"></span></a></li>

@@ -9,6 +9,15 @@
 		'My services'=>'خدماتى',
 		'My Services'=>'خدماتى',
 
+		'service'=>'الخدمات',
+		'Service'=>'الخدمات',
+		'our service'=>'خدماتنا',
+		'Our service'=>'خدماتنا',
+		'Our Service'=>'خدماتنا',
+		'my service'=>'خدماتى',
+		'My service'=>'خدماتى',
+		'My Service'=>'خدماتى',
+
 		'home'=>'الرئيسية',
 		'Home'=>'الرئيسية',
 		'our home'=>'القائمة الرئسية',
@@ -26,6 +35,15 @@
 		'my promotion'=>'اعلاناتى',
 		'My promotion'=>'اعلاناتى',
 		'My Promotion'=>'اعلاناتى',
+
+		'promotions'=>'الاعلانات',
+		'Promotions'=>'الاعلانات',
+		'our promotions'=>'اعلاناتنا',
+		'Our promotions'=>'اعلاناتنا',
+		'Our Promotions'=>'اعلاناتنا',
+		'my promotions'=>'اعلاناتى',
+		'My promotions'=>'اعلاناتى',
+		'My Promotions'=>'اعلاناتى',
 
 		'about us'=>'من نحن',
 		'About us'=>'من نحن',
@@ -75,6 +93,34 @@
 		'my product'=>'منتجاتى',
 		'My product'=>'منتجاتى',
 		'My Product'=>'منتجاتى',
+
+		'categories'=>'المنتجات',
+		'galleries'=>'المنتجات',
+		'products'=>'المنتجات',
+		'Categories'=>'المنتجات',
+		'Galleries'=>'المنتجات',
+		'Products'=>'المنتجات',
+
+		'our categories'=>'منتجاتنا',
+		'Our categories'=>'منتجاتنا',
+		'Our Categories'=>'منتجاتنا',
+		'my categories'=>'منتجاتى',
+		'My categories'=>'منتجاتى',
+		'My Categories'=>'منتجاتى',
+
+		'our galleries'=>'منتجاتنا',
+		'Our galleries'=>'منتجاتنا',
+		'Our Galleries'=>'منتجاتنا',
+		'my galleries'=>'منتجاتى',
+		'My galleries'=>'منتجاتى',
+		'My Galleries'=>'منتجاتى',
+
+		'our products'=>'منتجاتنا',
+		'Our products'=>'منتجاتنا',
+		'Our Products'=>'منتجاتنا',
+		'my products'=>'منتجاتى',
+		'My products'=>'منتجاتى',
+		'My Products'=>'منتجاتى',
 
 // **********************************************************
 
