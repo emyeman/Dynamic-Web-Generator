@@ -57,7 +57,7 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'mobile' => 'required|regex:/^[0-9]{10}/',
+            'mobile' => 'required|unique:users|regex:/^[0-9]{10}/',
         ]);
     }
 
@@ -69,7 +69,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $imagePath='';
+        $imagePath='/default.jpg';
         if(Input::hasFile('image')){
                 $file = Input::file('image');
                 $filename = Input::file('image')->getClientOriginalName(); 

@@ -21,8 +21,8 @@ return [
     // NOTE: make sure to use an unique field.
     'user_field'            => 'id',
 
-    'shared_folder_name'    => 'shares',
-    'thumb_folder_name'     => 'thumbs',
+    // 'shared_folder_name'    => 'shares',
+    // 'thumb_folder_name'     => 'thumbs',
 
     'images_dir'            => 'public/photos/',
     'images_url'            => '/photos/',

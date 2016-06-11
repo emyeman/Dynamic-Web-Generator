@@ -1,12 +1,16 @@
+
  <header class="site-header-wrap">
         <div class="site-header">
+
             <!-- <a class="site-logo" href="#">Dynamic Web Generator </a> -->
+            
             <a class="run" target="_blank" href="{{url('/'.Auth::user()->site->subdomain.'/en')}}"><span class="glyphicon glyphicon-new-window"></span>Run</a>
             <!-- <nav class="site-nav">
                 <a href="#"><span class="fa-reply"></span>Back To Tutorial</a>
                 <a href="/"><span class="fa-eye"></span>Dashboard</a>
             </nav> -->
         </div>
+
     </header>
     <div class="col-sm-3">
     <div class="main">
@@ -25,35 +29,76 @@
             </div><!--end .accordion-section-->
 
             <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-15">Service</a>
-                <div id="accordion-15" class="accordion-section-content">
+                <a class="accordion-section-title" href="#accordion-7">Categories</a>
+                <div id="accordion-7" class="accordion-section-content">
+
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/service') }}">Show Service</a></li>
-                            <li><a href="{{ url('/service/create')}}">Add Service</a></li>
+                            <li><a href="{{ url('/category')}}">Show Categories</a></li>
+                            <li><a href="{{ url('/category/create')}}">Add Category</a></li>
                         </ul>
+
+                </div><!--end .accordion-section-content-->
+            </div><!--end .accordion-section-->
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-8">Sub Categories</a>
+                <div id="accordion-8" class="accordion-section-content">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li></li>
+                            <li><a href="{{ url('/subcategory')}}">Show Sub Categories</a></li>
+                            <li><a href="{{ url('/subcategory/create')}}">Add Sub Category</a></li>
+                        </ul>
+
+                </div><!--end .accordion-section-content-->
+            </div><!--end .accordion-section-->
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-9">Products</a>
+                <div id="accordion-9" class="accordion-section-content">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li></li>
+                            <li><a href="{{ url('/product')}}">Show Products</a></li>
+                            <li><a href="{{ url('/product/create')}}">Add Product</a></li>
+                        </ul>
+
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->
 
-<!--             <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-16">Google Map</a>
-                <div id="accordion-16" class="accordion-section-content">
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-4">Crusals</a>
+                <div id="accordion-4" class="accordion-section-content">
+
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/googlemap')}}">Show Google Map</a></li>
-                            <li><a href="{{ url('/googlemap/create')}}">Add Google Map</a></li>
+                            <li><a href="{{ url('/crusal')}}">Show Crusal</a></li>
+                            <li><a href="{{ url('/crusal/create')}}">Add Crusal</a></li>
                         </ul>
-                </div>--><!--end .accordion-section-content-->
-            <!--</div>--><!--end .accordion-section-->
+
+                </div><!--end .accordion-section-content-->
+            </div><!--end .accordion-section-->
 
             <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-2">Menus  </a>
-                <div id="accordion-2" class="accordion-section-content">
+                <a class="accordion-section-title" href="#accordion-10">Promotions</a>
+                <div id="accordion-10" class="accordion-section-content">
 
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/menu')}}">Show Menus</a></li>
-                            <li><a href="{{ url('/menu/create')}}">Add Menu</a></li>
+                            <li><a href="{{ url('/news_promotion/promotion')}}">Show Promotions</a></li>
+                            <li><a href="{{ url('/news_promotion/create/promotion')}}">Add Promotion</a></li>
+                        </ul>
+
+                </div><!--end .accordion-section-content-->
+            </div><!--end .accordion-section-->
+
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-6">News</a>
+                <div id="accordion-6" class="accordion-section-content">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li></li>
+                            <li><a href="{{ url('/news_promotion/news')}}">Show News</a></li>
+                            <li><a href="{{ url('/news_promotion/create/news')}}">Add News</a></li>
                         </ul>
 
                 </div><!--end .accordion-section-content-->
@@ -73,19 +118,45 @@
             </div><!--end .accordion-section-->
 
             <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-4">Crusal  </a>
-                <div id="accordion-4" class="accordion-section-content">
+                <a class="accordion-section-title" href="#accordion-2">Menus  </a>
+                <div id="accordion-2" class="accordion-section-content">
 
                         <ul class="nav nav-pills nav-stacked">
                             <li></li>
-                            <li><a href="{{ url('/crusal')}}">Show Crusal</a></li>
-                            <li><a href="{{ url('/crusal/create')}}">Add Crusal</a></li>
+                            <li><a href="{{ url('/menu')}}">Show Menus</a></li>
+                            <li><a href="{{ url('/menu/create')}}">Add Menu</a></li>
                         </ul>
 
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->
-
+            
             <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-15">Services</a>
+                <div id="accordion-15" class="accordion-section-content">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li></li>
+                            <li><a href="{{ url('/service') }}">Show Services</a></li>
+                            <li><a href="{{ url('/service/create')}}">Add Service</a></li>
+                        </ul>
+                </div><!--end .accordion-section-content-->
+            </div><!--end .accordion-section-->
+
+<!--             <div class="accordion-section">
+                <a class="accordion-section-title" href="#accordion-16">Google Map</a>
+                <div id="accordion-16" class="accordion-section-content">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li></li>
+                            <li><a href="{{ url('/googlemap')}}">Show Google Map</a></li>
+                            <li><a href="{{ url('/googlemap/create')}}">Add Google Map</a></li>
+                        </ul>
+                </div>--><!--end .accordion-section-content-->
+            <!--</div>--><!--end .accordion-section-->
+
+            
+
+            
+
+           <!--  <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion-5">Style Container  </a>
                 <div id="accordion-5" class="accordion-section-content">
 
@@ -95,70 +166,10 @@
                             <li><a href="{{ url('/stylecontainer/create')}}">Add Style Container</a></li>
                         </ul>
 
-                </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
+                </div>
+            </div> -->
 
-            <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-6">News  </a>
-                <div id="accordion-6" class="accordion-section-content">
-
-                        <ul class="nav nav-pills nav-stacked">
-                            <li></li>
-                            <li><a href="{{ url('/news_promotion/news')}}">Show News</a></li>
-                            <li><a href="{{ url('/news_promotion/create/news')}}">Add News</a></li>
-                        </ul>
-
-                </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
-
-            <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-7">Category  </a>
-                <div id="accordion-7" class="accordion-section-content">
-
-                        <ul class="nav nav-pills nav-stacked">
-                            <li></li>
-                            <li><a href="{{ url('/category')}}">Show Categories</a></li>
-                            <li><a href="{{ url('/category/create')}}">Add Category</a></li>
-                        </ul>
-
-                </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
-            <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-8">Sub Category  </a>
-                <div id="accordion-8" class="accordion-section-content">
-
-                        <ul class="nav nav-pills nav-stacked">
-                            <li></li>
-                            <li><a href="{{ url('/subcategory')}}">Show Sub Categories</a></li>
-                            <li><a href="{{ url('/subcategory/create')}}">Add Sub Category</a></li>
-                        </ul>
-
-                </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
-            <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-9">Product  </a>
-                <div id="accordion-9" class="accordion-section-content">
-
-                        <ul class="nav nav-pills nav-stacked">
-                            <li></li>
-                            <li><a href="{{ url('/product')}}">Show Products</a></li>
-                            <li><a href="{{ url('/product/create')}}">Add Product</a></li>
-                        </ul>
-
-                </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
-            <div class="accordion-section">
-                <a class="accordion-section-title" href="#accordion-10">Promotion  </a>
-                <div id="accordion-10" class="accordion-section-content">
-
-                        <ul class="nav nav-pills nav-stacked">
-                            <li></li>
-                            <li><a href="{{ url('/news_promotion/promotion')}}">Show Promotions</a></li>
-                            <li><a href="{{ url('/news_promotion/create/promotion')}}">Add Promotion</a></li>
-                        </ul>
-
-                </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
+            
             <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion-11">Contact Us  </a>
                 <div id="accordion-11" class="accordion-section-content">
@@ -172,7 +183,7 @@
                 </div><!--end .accordion-section-content-->
             </div><!--end .accordion-section-->
 
-            <div class="accordion-section">
+            <!-- <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion-12">Footer  </a>
                 <div id="accordion-12" class="accordion-section-content">
 
@@ -183,10 +194,10 @@
                         </ul>
 
 
-                </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
-
-            <div class="accordion-section">
+                </div>
+            </div>
+ -->
+            <!-- <div class="accordion-section">
                 <a class="accordion-section-title" href="#accordion-13">Number View  </a>
                 <div id="accordion-13" class="accordion-section-content">
 
@@ -196,7 +207,18 @@
                             <li><a href="{{ url('/numberview/create')}}">Add Number View</a></li>
                         </ul>
 
-                </div><!--end .accordion-section-content-->
+                </div>
+            </div> -->
+
+            
+
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="{{ url('/aboutus/create')}}">Aboutus</a>
+                
+            </div><!--end .accordion-section-->
+
+            <div class="accordion-section">
+                <a class="accordion-section-title" href="{{ url('/template')}}">Template</a>
             </div><!--end .accordion-section-->
 
             <div class="accordion-section">
@@ -206,16 +228,6 @@
                             <li><a href="{{ url('/domain')}}">Show Domain</a></li>
                         </ul>
                 </div><!--end .accordion-section-content-->
-            </div><!--end .accordion-section-->
-
-            <div class="accordion-section">
-                <a class="accordion-section-title" href="{{ url('/aboutus/create')}}">Aboutus</a>
-                
-            </div><!--end .accordion-section-->
-
-            <div class="accordion-section">
-                <a class="accordion-section-title" href="{{ url('/template')}}">Template</a>
-                
             </div><!--end .accordion-section-->
 
             <div class="accordion-section">

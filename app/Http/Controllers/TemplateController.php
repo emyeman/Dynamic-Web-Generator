@@ -23,10 +23,7 @@ class TemplateController extends Controller
     public function index(){
 
         $temps=Template::all();
-
         return view('activetemp',compact('temps'));
-        
-        
     }
     
    public function Show(Request $request){
@@ -87,8 +84,6 @@ class TemplateController extends Controller
             return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
         }
     }
-
-
 
 }
 

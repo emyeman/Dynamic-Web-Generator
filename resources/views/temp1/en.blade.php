@@ -228,7 +228,6 @@
         <div class="space"></div>
         <div id="move_p" class="carousel slide" data-ride="carousel">
 
-
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
             <?php $pro_count =0; ?>

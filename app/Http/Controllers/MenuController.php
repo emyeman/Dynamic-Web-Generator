@@ -44,7 +44,7 @@ class MenuController extends Controller
 
      public function store(Request $request){
 		$this->validate($request, [
-            'title' => 'required|max:300',
+            'title' => 'required|unique:menus,title,NULL,id,site_id,'.Auth::user()->site->id,
             'parent_id' => 'integer',
             'route' => 'required|integer',   
         ]); 
@@ -77,7 +77,7 @@ class MenuController extends Controller
             throw new ModelNotFoundException($e->getMassege());
             
         }
-        $menus=Menu::pluck('title','id');
+        $menus=Menu::where('id','!=', $id)->pluck('title','id'); // to not add a menu as a parent to itself
      	$pages=Page::pluck('title','id');
         $user=Auth::user();
         if ($user->cannot('access-menus', $row)) {
@@ -98,7 +98,7 @@ class MenuController extends Controller
             abort(403);
         }
         $this->validate($request, [
-            'title' => 'required|max:300',
+            'title' => 'required|unique:menus,title,'.$id,
             'parent_id' => 'integer',
             'route' => 'required|integer',   
         ]);
@@ -114,23 +114,14 @@ class MenuController extends Controller
      }
 
 
-	private function ch($id,&$arr)
+	private function getChildren($id,&$menus_to_delete_arr)
 	{
-		// $arr=collect();
 		$row=Menu::findOrFail($id)->children;
 		foreach ($row as $key => $item) {
-			$arr->push($item->id);
-			MenuController::ch($item->id,$arr);
+			$menus_to_delete_arr->push($item->id);
+			MenuController::getChildren($item->id,$menus_to_delete_arr);
 		 	$item->delete();
 		}
-	 //    $arr->push($row->each(function ($item, $key) {
-  //       	// $arr=collect();
-  //       	// $arr->push($item->id);
-		//     MenuController::ch($item->id,$arr);
-		//     $item->delete();
-		//     return $item->id;
-		// }));
-		return $arr;
 	}
 
      public function destroy($id){
@@ -142,32 +133,18 @@ class MenuController extends Controller
         if ($user->cannot('access-menus', $row)) {
             abort(403);
         }
-      //   $affectedRows  =$row->delete();
-      //   if($affectedRows)
-      //       return 'true';
-      //   else
-      //       abort(500);
-        $arr=collect();
- 
-  //       $arr=$row->children->each(function ($item, $key) {
-  //       	$arr=collect();
-  //       	$arr->push($item->id);
-		//     MenuController::ch($item->id,$arr);
-		//     $item->delete();
-		//     return $arr;
-		// });
+
+        $menus_to_delete_arr=collect();
 
 		foreach ($row->children as $key => $item) {
-			$arr->push($item->id);
-			MenuController::ch($item->id,$arr);
+			$menus_to_delete_arr->push($item->id);
+			MenuController::getChildren($item->id,$menus_to_delete_arr);
 		    $item->delete();
 		}
-		// $arr->push($row->id);
+
 		$row->delete();
-  //       echo "<pre>";
-		// var_dump($arr);
-		// echo "</pre>";
-		return $arr->toJson();
+
+		return $menus_to_delete_arr->toJson();
      }
 }
 

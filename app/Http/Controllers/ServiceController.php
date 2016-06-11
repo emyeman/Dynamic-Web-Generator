@@ -13,7 +13,7 @@ class ServiceController extends Controller
 {
     public function index(){
 
-        $services = DB::table('services')->where('site_id',Session::get('site_id'))->get();
+        $services = DB::table('services')->where('site_id',Auth::user()->id)->get();
 		return  view('service.index' ,compact('services'));
      }
 
