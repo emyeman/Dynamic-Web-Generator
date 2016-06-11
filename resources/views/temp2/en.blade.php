@@ -535,41 +535,36 @@
             <div class="pull-left fnav">
                 <p>ALL RIGHTS RESERVED. COPYRIGHT © 2016.  </p>
             </div>
+            @foreach($contacts as $contact)
             <div class="pull-right fnav">
                 <ul class="footer-social">
-                        @if(!empty($contacts->facebook))
-                            <li><a href="{{ $contacts->facebook }}"><i class="fa fa-facebook"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->twitter))  
-                            <li><a href="{{ $contacts->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->google_plus))    
-                            <li><a href="{{ $contacts->google_plus }}"><i class="fa fa-google-plus"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->skype))  
-                            <li><a href="{{ $contacts->skype }}"><i class="fa fa-skype"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->linkedin)) 
-                            <li><a href="{{ $contacts->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->youtube))  
-                            <li><a href="{{ $contacts->youtube }}"><i class="fa fa-youtube"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->flickr)) 
-                            <li><a href="{{ $contacts->flickr }}"><i class="fa fa-flicker"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->pinterest))  
-                            <li><a href="{{ $contacts->pinterest }}"><i class="fa fa-pinterest"></i></a></li>
-                        @endif
+                    @if(!empty($contact->facebook))
+                      <li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                    @endif
+                              @if(!empty($contact->twitter))  
+                                  <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                      @endif
+                              @if(!empty($contact->google_plus))    
+                                  <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                    @endif
+                              @if(!empty($contact->skype))  
+                                  <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
+                    @endif
+                              @if(!empty($contact->linkedin)) 
+                                  <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                    @endif
+                              @if(!empty($contact->youtube))  
+                                  <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
+                    @endif
+                              @if(!empty($contact->flickr)) 
+                                  <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
+                    @endif
+                              @if(!empty($contact->pinterest))  
+                                  <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
+                    @endif
                 </ul>
             </div>
+           @endforeach 
         </div>
     </nav> 
 

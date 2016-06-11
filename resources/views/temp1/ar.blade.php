@@ -2,14 +2,23 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right">
-                                <?php $flagelang=0?>
-                                <?php $findpage_top=0?>
-                                <?php $findservices=0?>
-                                <?php $findabout=0?>
-                                <?php $findgallery=0?>
-                                <?php $findnews=0?>
-                                <?php $findpromotion=0?>
-                                <?php $findcontact=0?>
+                                <?php  
+                                    $flagelang=0;
+                                    $findpage_top=0;
+                                    $findservices=0;
+                                    $findabout=0;
+                                    $findgallery=0;
+                                    $findnews=0;
+                                    $findpromotion=0;
+                                    $findcontact=0;
+                                    $myservices='';
+                                    $mypage_top='';
+                                    $myabout='';
+                                    $mycontact='';
+                                    $mynews='';
+                                    $mypromotion='';
+                                    $mygallery='';
+                                ?>
                                 @for ($x = 0; $x < count($urlpages); $x++)
 
                                     @if($urlpages[$x]=='page_top')
@@ -19,19 +28,22 @@
                                     <li>
                                         <a class="page-scroll" href="#page_top">الرئيسية</a>
                                     </li>
-                                    <?php $findpage_top=1?>
+                                    <?php $findpage_top=1;
+                                    $mypage_top=$menupages[$x];?>
                                     @endif 
                                     @if($urlpages[$x]=='services')   
                                     <li>
                                         <a class="page-scroll" href="#services">الخدمات</a>
                                     </li>
-                                     <?php $findservices=1?>
+                                     <?php $findservices=1;
+                                     $myservices=$menupages[$x];?>
                                     @endif
                                     @if($urlpages[$x]=='about')
                                     <li>
                                         <a class="page-scroll" href="#about">من نحن</a>
                                     </li>
-                                    <?php $findabout=1?>
+                                    <?php $findabout=1;
+                                    $myabout=$menupages[$x];?>
                                     @endif
                                     @if($flagelang==0)
                                     <li>
@@ -50,33 +62,32 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-left">
                                 @if($urlpages[$x]=='gallery')
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle " href="#gallery" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">المنتجات <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a  class="page-scroll" href="#gallery">النوع الاول</a></li>
-                                            <li><a  class="page-scroll" href="#gallery">النوع الثاني</a></li>
-                                            <li><a class="page-scroll" href="#gallery">النوع الثالث</a></li>
-                                        </ul>
+                                    <li>
+                                        <a class="page-scroll" href="#gallery">المنتجات</a>
                                     </li>
-                                    <?php $findgallery=1?>
+                                    <?php $findgallery=1;
+                                    $mygallery=$menupages[$x];?>
                                 @endif
                                 @if($urlpages[$x]=='news')
                                     <li>
                                         <a class="page-scroll" href="#news">الأخبار</a>
                                     </li>
-                                    <?php $findnews=1?>
+                                    <?php $findnews=1;
+                                    $mynews=$menupages[$x];?>
                                 @endif
                                 @if($urlpages[$x]=='promotion')    
                                     <li>
                                         <a class="page-scroll" href="#promotion">العروض</a>
                                     </li>
-                                    <?php $findpromotion=1?>
+                                    <?php $findpromotion=1;
+                                    $mypromotion=$menupages[$x];?>
                                 @endif
                                 @if($urlpages[$x]=='contact')
                                     <li>
                                         <a class="page-scroll" href="#contact">تواصل معنا</a>
                                     </li>
-                                  <?php $findcontact=1?>
+                                  <?php $findcontact=1;
+                                  $mycontact=$menupages[$x];?>
                                 @endif    
                                     
                             @endfor    
@@ -100,57 +111,66 @@
 <!-- header end -->
 
 
-
+@if($findpage_top==1)
+@if($header)
 <header>
 <div class="container">
     <div class="row">
         <div class="col-md-offset-2 col-md-8 hidden-sm hidden-xs object-non-visible animated object-visible fadeIn" data-animation-effect="fadeIn">
             <!--<h1 class="text-center"><span>Spirit</span></h1>-->
-            <img class="img-responsive center-block" src="images/logo.png"/>
-            <h3 class="text-center">لأنك تستحق الأفضل</h3>
+            <img class="img-responsive center-block" src="{{ url($header->logo)}}"/> 
+            <h3 class="text-center">{{$header->slogan}}</h3>
 
         </div>
     </div>
 </div>
 </header>
+@endif
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
+@if($crusals)
 
 <!-- Wrapper for slides -->
 <div class="carousel-inner" role="listbox">
+<?php $crusal_count=0;?>
+@foreach($crusals as $crusal)
+    @if($crusal_count == 0)
     <div class="item active">
-        <img src="images/1.jpg" alt="image1">
-    </div>
+    @else
     <div class="item">
-        <img src="images/2.jpg" alt="image2">
+    @endif
+        <img src="{{ url('/assets/images/')}}/{{ $crusal->image }}" alt="image1">
     </div>
-    <div class="item">
-        <img src="images/3.jpg" alt="image3">
-    </div>
+    <?php $crusal_count++; ?>
+@endforeach
 </div>
-
 <!-- Controls -->
 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left hidden-sm hidden-xs" aria-hidden="true"></span>
-    <span class="sr-only">السابق</span>
+    <span class="sr-only">Previous</span>
 </a>
 <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right hidden-sm hidden-xs" aria-hidden="true"></span>
-    <span class="sr-only">التالي</span>
+    <span class="sr-only">Next</span>
 </a>
 
 
 <!-- Indicators -->
 <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-</ol>
+@for($i=1 ;$i < count($crusals);$i++)
+    <li data-target="#carousel-example-generic" data-slide-to="{{ $i }}"></li>
+@endfor
 
+</ol>
 </div>
 
+@endif
+@endif  
 
+@if($findabout==1)
+@if($aboutus)
 <div class="line">
 <hr>
 </div>
@@ -158,198 +178,163 @@
 
 <!-- section start -->
 <!-- ================ -->
+
 <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<h1 id="about" class="title text-center">من نحن</h1>
-			<p class="lead text-center">مسارح البولندي هو به،. يبق إذ إعمار قتيل، وبحلول, أم العصبة والمعدات به،. حدى ٣٠ تزامناً الدّفاع, الى ان نقطة وقام لفشل.</p>
-			<div class="space"></div>
-			<div class="row">
-				<div class="col-md-6">
-					<img class="img-rounded" src="images/portfolio-10.jpg" alt="">
-					<div class="space"></div>
-				</div>
-				<div class="col-md-6 abouty">
-                    <p>
-                        مسارح البولندي هو به،. يبق إذ إعمار قتيل، وبحلول, أم العصبة والمعدات به،. حدى ٣٠ تزامناً الدّفاع, الى ان نقطة وقام لفشل. بسبب بلاده الساحلية في ضرب, أي شيء وقبل شاسعة عالمية. يكن لم أهّل النزاع, وسمّيت الإقتصادية جهة في, مدن أن وقوعها، بمعارضة. قد جيما حلّت فاتّبع بال. اليابان العالمية من بها.
-
-                    </p>
-                    <p>
-                        مسارح البولندي هو به،. يبق إذ إعمار قتيل، وبحلول, أم العصبة والمعدات به،. حدى ٣٠ تزامناً الدّفاع, الى ان نقطة وقام لفشل. بسبب بلاده الساحلية في ضرب, أي شيء وقبل شاسعة عالمية. يكن لم أهّل النزاع, وسمّيت الإقتصادية جهة في, مدن أن وقوعها، بمعارضة. قد جيما حلّت فاتّبع بال. اليابان العالمية من بها.
-
-                    </p>
-				
-				</div>
-			</div>
-			<div class="space"></div>
-			</div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="about" class="title text-center"><?php echo $myabout; ?></h1>
+            <!-- <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p> -->
+            <div class="space"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <?php $img='/assets/images'.$aboutus->image ?>
+                    <img class="img-rounded" src="{{ url($img)}}" alt="">
+                </div>
+                <div class="col-md-6 abouty">
+                    <div class="space"></div>
+                        <p class='lead'>
+                            {{$aboutus->description}}
+                        </p>
+                    <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ducimus explicabo quibusdam temporibus deserunt doloremque pariatur ea, animi a. Delectus similique atque eligendi, enim vel reiciendis deleniti neque aliquid, sit?</p> -->
+            </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            </div>
         </div>
     </div>
 </div>
 </div>
+@endif
 <!-- section end -->
 
 
 <div class="line">
 <hr>
 </div>
-
+@endif
 <!-- section start -->
 <!-- ================ -->
+@if($findpromotion==1)    
+@if($promotions)
 <div class="section translucent-bg bg-image-2 pb-clear">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 id="promotion" class="title text-center">العروض</h1>
+    <h1 id="promotion" class="title text-center"><?php echo $mypromotion;?></h1>
     <div class="space"></div>
     <div id="move_p" class="carousel slide" data-ride="carousel">
 
-
         <!-- Wrapper for slides -->
-        <div class="carousel-inner center-block" role="listbox">
+        <div class="carousel-inner" role="listbox">
+        <?php $pro_count =0; ?>
+        @foreach($promotions as $promotion)
+            @if($pro_count == 0)
+                <div class="item active">
+            @else
+                <div class="item"> 
+            @endif
+             
+                <p class="text-center">{{ $promotion->description }}</p>
+                <p><a class="btn btn-primary view center-block" role="button">know more</a></p>
+            </div>
+            <?php $pro_count++; ?>
+        @endforeach
 
-            <div class="item active">
-				<div class="row">
-				<div class="col-md-3 col-md-push-1">
-				<img src="images/pro.jpg" class="img-responsive">
-				</div>
-				<div class="col-md-6 col-md-push-1">
-                <p class="text-center">كان مشروط وحرمان يكن هو, أضف وبدون المعاهدات تشيكوسلوفاكيا و. عدد ثم الحكم لإعادة التجارية, المواد تكتيكاً دنو أي, هامش فكان فرنسية قد شيء. بال يذكر والحزب للأراضي تم, انتباه الإقتصادية الأوروبيّون عل جعل. والتي الشتاء، المؤلّفة عن عرض. تمهيد الولايات حتى لم.</p>
-				</div>
-				<div class="col-md-12">
-                <p><a class="btn btn-primary view center-block" role="button">أعرف المزيد</a></p>
-				</div>
-
-				</div>
-            </div>
-            <div class="item">
-                <div >
-                    <p class="text-center">كان مشروط وحرمان يكن هو, أضف وبدون المعاهدات تشيكوسلوفاكيا و. عدد ثم الحكم لإعادة التجارية, المواد تكتيكاً دنو أي, هامش فكان فرنسية قد شيء. بال يذكر والحزب للأراضي تم, انتباه الإقتصادية الأوروبيّون عل جعل. والتي الشتاء، المؤلّفة عن عرض. تمهيد الولايات حتى لم.</p>
-                    <p><a class="btn btn-primary view center-block" role="button">أعرف المزيد</a></p>
-                </div>
-            </div>
-            <div class="item">
-                <div >
-                    <p class="text-center">كان مشروط وحرمان يكن هو, أضف وبدون المعاهدات تشيكوسلوفاكيا و. عدد ثم الحكم لإعادة التجارية, المواد تكتيكاً دنو أي, هامش فكان فرنسية قد شيء. بال يذكر والحزب للأراضي تم, انتباه الإقتصادية الأوروبيّون عل جعل. والتي الشتاء، المؤلّفة عن عرض. تمهيد الولايات حتى لم.</p>
-                    <p><a class="btn btn-primary view center-block" role="button">أعرف المزيد</a></p>
-                </div>
-            </div>
 
         </div>
 
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#move_p" data-slide-to="0" class="active"></li>
-            <li data-target="#move_p" data-slide-to="1"></li>
-            <li data-target="#move_p" data-slide-to="2"></li>
+             @for($i=1 ;$i < count($promotions);$i++)
+                <li data-target="#move_p" data-slide-to="{{ $i }}"></li>
+            @endfor
         </ol>
 
 
     </div>
 </div>
 </div>
+</div>
+@endif
+
 <!--end section-->
 
 <div class="line">
 <hr>
 </div>
-
+@endif
 <!-- section start -->
 <!-- ================ -->
+@if($findservices==1)    
+@if($services)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-	<h1 class="text-center title">ألخدمات</h1>
-	<div class="space"></div>
+    <h1 class="text-center title"><?php echo $myservices; ?></h1>
+    <div class="space"></div>
 
     <div id="move_s" class="carousel slide" data-ride="carousel">
 
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-8 col-xs-12">
 
+        
+            <?php $count=0; ?>
+            @foreach($services as $service)
+                @if($count == 0)
+                    <div class="item active">
+                         <div class="row">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <div class="row text-center">
+                @elseif($count % 3 == 0)
+                         </div>
+                        </div>
+                      </div>
+                    </div>
 
+                
+                    <div class="item">
+                         <div class="row">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <div class="row text-center">
+                @endif
 
-                        <div class="row text-center">
-                            <div class="col-md-4 col-sm-8">
-        <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-        </span>
-                                <h4 class="service-heading">خدمة الكترونية</h4>
-                                <p class="text-muted">ألمّ الشتاء بحث بل. أخر وصغار الأراضي للإتحاد ما, من يطول لإعلان بالفشل إيو.</p>
+                
+                    <div class="col-md-4 col-sm-8">
+                    <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                <i class="glyphicon {{ $service->icon }} fa-stack-1x fa-inverse"></i>
+                </span>
+                                <h4 class="service-heading">{{ $service->title }}</h4>
+                                <p class="text-muted">{{ $service->description }}</p>
                             </div>
-                            <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-            <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-        </span>
-                                <h4 class="service-heading">خدمة العملاء</h4>
-                                <p class="text-muted">ألمّ الشتاء بحث بل. أخر وصغار الأراضي للإتحاد ما, من يطول لإعلان بالفشل إيو.</p>
-                            </div>
-                            <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-            <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-        </span>
-                                <h4 class="service-heading">خدمة مصرفية</h4>
-                                <p class="text-muted">ألمّ الشتاء بحث بل. أخر وصغار الأراضي للإتحاد ما, من يطول لإعلان بالفشل إيو.</p>
+                <?php $count++; ?>
+            @endforeach
+
+            @if($count % 3 != 0 )
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-            </div>
+            @endif
 
-            <div class="item">
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-8 col-xs-12">
-
-
-
-                        <div class="row text-center">
-                            <div class="col-md-4 col-sm-8">
-        <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
-        </span>
-                                <h4 class="service-heading">خدمة الكترونية</h4>
-                                <p class="text-muted">ألمّ الشتاء بحث بل. أخر وصغار الأراضي للإتحاد ما, من يطول لإعلان بالفشل إيو.</p>
-                            </div>
-                            <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-            <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
-        </span>
-                                <h4 class="service-heading">خدمة العملاء</h4>
-                                <p class="text-muted">ألمّ الشتاء بحث بل. أخر وصغار الأراضي للإتحاد ما, من يطول لإعلان بالفشل إيو.</p>
-                            </div>
-                            <div class="col-md-4">
-        <span class="fa-stack fa-4x">
-            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-            <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
-        </span>
-                                <h4 class="service-heading">خدمة مصرفية</h4>
-                                <p class="text-muted">ألمّ الشتاء بحث بل. أخر وصغار الأراضي للإتحاد ما, من يطول لإعلان بالفشل إيو.</p>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
+           
+        <?php $ind_num = ceil($count/3);?>
+       
+        </div>
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#move_s" data-slide-to="0" class="active"></li>
-            <li data-target="#move_s" data-slide-to="1"></li>
+            @for($i =1;$i < $ind_num;$i++ )
+                <li data-target="#move_s" data-slide-to="{{ $i }}"></li>
+            @endfor
+            
         </ol>
 
     </div>
 
-
-</div>
 </div>
 </div>
 <!-- section end -->
@@ -357,149 +342,81 @@
 <!-- ================ -->
 <div class="default-bg space">
 <div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<h1 class="text-center"> بحث لعملة وعُرفت ٣٠. ما انه مرجع الأمريكي ويكيبيديا،</h1>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1 class="text-center">Let's Work Together!</h1>
+        </div>
+    </div>
 </div>
 </div>
 <!-- section end -->
-
-
+@endif 
+@endif
 <div class="line">
 <hr>
 </div>
 
 <!--section Start-->
+@if($findnews==1)    
+@if($news)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 id="news"  class="text-center title">الأخبار</h1>
+    <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>
     <div class="space"></div>
-    <p class="lead text-center">تعرف علي كل ماهو جديد</p>
+    <p class="lead text-center">Know what is always new with us</p>
 </div>
 <div id="move" class="carousel slide" data-ride="carousel">
 
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8 col-xs-12">
 
+         <?php $news_count=0; ?>
+            @foreach($news as $new)
+                @if($news_count == 0)
+                   <div class="item active">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <div class="row">
+                @elseif($news_count % 3 == 0)
+                         </div>
+                        </div>
+                      </div>
+                    </div>
 
-
-                    <div class="row">
-
-                        <div class="col-sm-4  wow fadeInDown text-center animated animated">
-                            <img class="img-rounded img-responsive" src="images/portfolio-2.jpg" alt="Generic placeholder image">
-                            <h3>الفروع</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                        <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                            <img class="img-rounded img-responsive" src="images/portfolio-1.jpg" alt="Generic placeholder image">
-                            <h3>الفروع</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                        <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                            <img class="img-rounded img-responsive" src="images/portfolio-3.jpg" alt="Generic placeholder image">
-                            <h3>الفروع</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                    </div><!-- /.row -->
-
-
-
+                
+                    <div class="item">
+                         <div class="row">
+                            <div class="col-md-offset-2 col-md-8 col-xs-12">
+                                <div class="row">
+                @endif
+                    <div class="col-sm-4  wow fadeInDown text-center animated animated">
+                            <img class="img-rounded img-responsive" src="{{ url('/assets/images/')}}{{ $new->image }}" alt="Generic placeholder image">
+                            <h3>{{ $new->title }}</h3>
+                            <p class="lead text-center">{{ $new->description }}</p>
+                        </div>
+                <?php $news_count++; ?>
+            @endforeach
+            @if($news_count % 3 != 0 )
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            @endif
 
-        <div class="item">
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8 col-xs-12">
-
-
-
-                    <div class="row">
-
-                        <div class="col-sm-4  wow fadeInDown text-center animated animated">
-                            <img class="img-rounded" src="images/portfolio-2.jpg" alt="Generic placeholder image">
-                            <h3>Responsive</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور.  </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                        <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                            <img class="img-rounded" src="images/portfolio-1.jpg" alt="Generic placeholder image">
-                            <h3>Google</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                        <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                            <img class="img-rounded" src="images/portfolio-3.jpg" alt="Generic placeholder image">
-                            <h3>Bootstrap</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                    </div><!-- /.row -->
-
-
-
-                </div>
-            </div>
-        </div>
-
-
-        <div class="item">
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8 col-xs-12">
-
-
-
-                    <div class="row">
-
-                        <div class="col-sm-4  wow fadeInDown text-center animated animated">
-                            <img class="img-rounded" src="images/portfolio-2.jpg" alt="Generic placeholder image">
-                            <h3>Responsive</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                        <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                            <img class="img-rounded" src="images/portfolio-1.jpg" alt="Generic placeholder image">
-                            <h3>Google</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-
-                        <div class="col-sm-4 wow fadeInDown text-center animated animated">
-                            <img class="img-rounded" src="images/portfolio-3.jpg" alt="Generic placeholder image">
-                            <h3>Bootstrap</h3>
-                            <p class="lead text-center">دار التحالف وهولندا، البشريةً في, عن دار الشهيرة المشتّتون. تطوير أدوات وقوعها، جعل أم, أراض تكبّد مشروط ثم بال. من شيء قادة وفرنسا, يكن الإمداد بالولايات عن, يكن لم بتخصيص بالمحور. </p>
-                            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
-                        </div><!-- /.col-lg-4 -->
-                    </div><!-- /.row -->
-                </div>
-            </div>
-        </div>
     </div>
-
+    <?php $news_ind_num = ceil($news_count/3);?>
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#move" data-slide-to="0" class="active"></li>
-        <li data-target="#move" data-slide-to="1"></li>
-        <li data-target="#move" data-slide-to="2"></li>
+        @for($i =1;$i < $news_ind_num;$i++ )
+            <li data-target="#move" data-slide-to="{{ $i }}"></li>
+        @endfor
     </ol>
 </div>
 </div>
+
+@endif
 </div>
 
 <!--section End-->
@@ -507,432 +424,105 @@
 <div class="line">
 <hr>
 </div>
-
+@endif
 <!-- section start -->
 <!-- ================ -->
+@if($findgallery==1)
+@if($categories) 
+
 <div class="section">
 <div class="container">
-	<h1 class="text-center title" id="gallery">المنتجات</h1>
-	<div class="separator"></div>
-	<p class="lead text-center">عرض الأمور الساحل تزامناً, لم دون وسوء الشمال. بحث لعملة وعُرفت ٣٠. ما انه مرجع الأمريكي ويكيبيديا</p>
-	<br>			
-	<div class="row object-non-visible" data-animation-effect="fadeIn">
-		<div class="col-md-12">
+    <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
+    <div class="separator"></div>
+    <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
+    <br>            
+    <div class="row object-non-visible" data-animation-effect="fadeIn">
+        <div class="col-md-12">
 
-			<!-- isotope filters start -->
-			<div class="filters text-center">
-				<ul class="nav nav-pills">
-					<li class="active"><a href="#" data-filter="*">كل المنتجات</a></li>
-					<li><a href="#" data-filter=".web-design">النوع الاول</a></li>
-					<li><a href="#" data-filter=".app-development">النوع الثاني</a></li>
-					<li><a href="#" data-filter=".site-building">النوع الثالث</a></li>
-				</ul>
-			</div>
-			<!-- isotope filters end -->
+            <!-- isotope filters start -->
+            <div class="filters text-center">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#" data-filter="*">All</a></li>
+                    @foreach($categories as $category) 
 
-			<!-- portfolio items start -->
-			<div class="isotope-container row grid-space-20">
-				<div class="col-sm-6 col-md-3 isotope-item web-design">
-					<div class="image-box">
-						<div class="overlay-container">
-							<img src="images/portfolio-1.jpg" alt="">
-							<a class="overlay" data-toggle="modal" data-target="#project-1">
-								<i class="fa fa-search-plus"></i>
-								<span>النوع الاول</span>
-							</a>
-						</div>
-						<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-1">اسم المنتج</a>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="project-1" tabindex="-1" role="dialog" aria-labelledby="project-1-label" aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">أغلق</span></button>
-									<h4 class="modal-title" id="project-1-label">اسم المنتج</h4>
-								</div>
-								<div class="modal-body">
-									<h3>تفاصيل المنتج</h3>
-									<div class="row">
-										<div class="col-md-6">
-                                            <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                                            </p>
-                                            <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                                            </p>
-										</div>
-										<div class="col-md-6">
-											<img src="images/portfolio-1.jpg" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">أغلق</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal end -->
-				</div>
+                        <li><a href="#" data-filter=".{{$category->name}}">{{$category->name}}</a></li>
+                    @endforeach
+                    <!-- <li><a href="#" data-filter=".web-design">Web design</a></li>
+                    <li><a href="#" data-filter=".app-development">App development</a></li>
+                    <li><a href="#" data-filter=".site-building">Site building</a></li> -->
+                </ul>
+            </div>
+            <!-- isotope filters end -->
 
-				<div class="col-sm-6 col-md-3 isotope-item app-development">
-					<div class="image-box">
-						<div class="overlay-container">
-							<img src="images/portfolio-2.jpg" alt="">
-							<a class="overlay" data-toggle="modal" data-target="#project-2">
-								<i class="fa fa-search-plus"></i>
-								<span>النوع الثاني</span>
-							</a>
-						</div>
-						<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-2">اسم المنتج</a>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="project-2" tabindex="-1" role="dialog" aria-labelledby="project-2-label" aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-									<h4 class="modal-title" id="project-2-label">Project Title</h4>
-								</div>
-								<div class="modal-body">
-									<h3>Project Description</h3>
-									<div class="row">
-										<div class="col-md-6">
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque sed, quidem quis praesentium, ut unde. Quae sed, incidunt laudantium nesciunt, optio corporis quod earum pariatur omnis illo saepe numquam suscipit, nemo placeat dignissimos eius mollitia et quas officia doloremque ipsum labore rem deserunt vero! Magnam totam delectus accusantium voluptas et, tempora quos atque, fugiat, obcaecati voluptatibus commodi illo voluptates dolore nemo quo soluta quis.</p>
-											<p>Molestiae sed enim laboriosam atque delectus voluptates rerum nostrum sapiente obcaecati molestias quasi optio exercitationem, voluptate quis consequatur libero incidunt, in, quod. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nobis officiis, autem earum tenetur quidem. Quae non dicta earum. Ipsum autem eaque cum dolor placeat corporis quisquam dolorum at nesciunt.</p>
-										</div>
-										<div class="col-md-6">
-											<img src="images/portfolio-2.jpg" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal end -->
-				</div>
-				
-				<div class="col-sm-6 col-md-3 isotope-item web-design">
-					<div class="image-box">
-						<div class="overlay-container">
-							<img src="images/portfolio-3.jpg" alt="">
-							<a class="overlay" data-toggle="modal" data-target="#project-3">
-								<i class="fa fa-search-plus"></i>
-								<span>Web Design</span>
-							</a>
-						</div>
-						<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-3">Project Title</a>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="project-3" tabindex="-1" role="dialog" aria-labelledby="project-3-label" aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-									<h4 class="modal-title" id="project-3-label">اسم المنتج</h4>
-								</div>
-								<div class="modal-body">
-									<h3>تفاصيل المنتج</h3>
-									<div class="row">
-										<div class="col-md-6">
-                                            <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                                            </p>
-                                            <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                                            </p>
-										</div>
-										<div class="col-md-6">
-											<img src="images/portfolio-3.jpg" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal end -->
-				</div>
-				
-				<div class="col-sm-6 col-md-3 isotope-item site-building">
-					<div class="image-box">
-						<div class="overlay-container">
-							<img src="images/portfolio-4.jpg" alt="">
-							<a class="overlay" data-toggle="modal" data-target="#project-4">
-								<i class="fa fa-search-plus"></i>
-								<span>النوع الثالث</span>
-							</a>
-						</div>
-						<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-4">اسم المنتج</a>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="project-4" tabindex="-1" role="dialog" aria-labelledby="project-4-label" aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-									<h4 class="modal-title" id="project-4-label">اسم المنتج</h4>
-								</div>
-								<div class="modal-body">
-									<h3>تفاصيل المشروع</h3>
-									<div class="row">
-										<div class="col-md-6">
-                                            <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                                            </p>
-                                            <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                                            </p>
-										</div>
-										<div class="col-md-6">
-											<img src="images/portfolio-4.jpg" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal end -->
-				</div>
-				
-				<div class="col-sm-6 col-md-3 isotope-item app-development">
-					<div class="image-box">
-						<div class="overlay-container">
-							<img src="images/portfolio-5.jpg" alt="">
-							<a class="overlay" data-toggle="modal" data-target="#project-5">
-								<i class="fa fa-search-plus"></i>
-								<span>النوع الثالث</span>
-							</a>
-						</div>
-						<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-5">اسم المنتج</a>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="project-5" tabindex="-1" role="dialog" aria-labelledby="project-5-label" aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-									<h4 class="modal-title" id="project-6-label">اسم المنتج</h4>
-								</div>
-								<div class="modal-body">
-									<h3>Project Description</h3>
-									<div class="row">
-										<div class="col-md-6">
-                                            <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                                            </p>
-                                            <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                                            </p>
-										</div>
-										<div class="col-md-6">
-											<img src="images/portfolio-5.jpg" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal end -->
-				</div>
-                <div class="modal fade" id="project-6" tabindex="-1" role="dialog" aria-labelledby="project-5-label" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-                                <h4 class="modal-title" id="project-9-label">اسم المنتج</h4>
-                            </div>
-                            <div class="modal-body">
-                                <h3>Project Description</h3>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                                        </p>
-                                        <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="images/portfolio-6.jpg" alt="">
+            <!-- portfolio items start -->
+            <div class="isotope-container row grid-space-20">
+<!-- start emyyyyyyyyyyyyyyyy -->
+                <?php $flagproject=1?>
+                @foreach($categories as $category)
+                @foreach($subcategories as $subcategory)
+                    @if($category->id == $subcategory->category_id)
+                <div class="col-sm-6 col-md-3 isotope-item {{$category->name}}">
+                    <div class="image-box">
+                    
+                        <div class="overlay-container">
+                            <img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
+                            <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
+                                <i class="fa fa-search-plus"></i>
+                                <span>{{$subcategory->name}}</span>
+                            </a>
+                        </div>
+                        <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$subcategory->name}}</a>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$subcategory->name}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>{{$subcategory->name}} Description</h3>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>{{$subcategory->description}}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-				</div>
-            		<!-- Modal end -->
-				</div>
-
-        <div class="modal fade" id="project-7" tabindex="-1" role="dialog" aria-labelledby="project-5-label" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-                        <h4 class="modal-title" id="project-7-label">اسم المنتج</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h3>Project Description</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                                </p>
-                                <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <img src="images/portfolio-7.jpg" alt="">
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
+                    <!-- Modal end -->
                     </div>
-                </div>
-            </div>
-        </div>
-					<!-- Modal end -->
-				</div>
+                    <?php $flagproject+=1?>
+                    @endif
+                    @endforeach
+                @endforeach
+<!-- endemyyyyyyyyyyyyyyyy -->
 
-    <div class="modal fade" id="project-8" tabindex="-1" role="dialog" aria-labelledby="project-5-label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-                    <h4 class="modal-title" id="project-8-label">اسم المنتج</h4>
-                </div>
-                <div class="modal-body">
-                    <h3>Project Description</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                            </p>
-                            <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <img src="images/portfolio-8.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
-                </div>
-            </div>
-        </div>
-    </div>
-					<!-- Modal end -->
-				</div>
 
-<div class="modal fade" id="project-9" tabindex="-1" role="dialog" aria-labelledby="project-5-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-                <h4 class="modal-title" id="project-5-label">اسم المنتج</h4>
-            </div>
-            <div class="modal-body">
-                <h3>Project Description</h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                        </p>
-                        <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="images/portfolio-9.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
-            </div>
-        </div>
-    </div>
-</div>
-					<!-- Modal end -->
-				</div>
 
-<div class="modal fade" id="project-10" tabindex="-1" role="dialog" aria-labelledby="project-5-label" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-            <h4 class="modal-title" id="project-10-label">اسم المنتج</h4>
-        </div>
-        <div class="modal-body">
-            <h3>Project Description</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                    </p>
-                    <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <img src="images/portfolio-10.jpg" alt="">
-                </div>
+<!-- emyyyyyyyyy Put part in show_ar -->
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
-        </div>
-    </div>
-</div>
-</div>
-					<!-- Modal end -->
-				</div>
-
-<div class="modal fade" id="project-11" tabindex="-1" role="dialog" aria-labelledby="project-11-label" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-            <h4 class="modal-title" id="project-11-label">اسم المنتج</h4>
-        </div>
-        <div class="modal-body">
-            <h3>Project Description</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>قبل أعلنت السادس عل. بل عدد نقطة وحتى حالية, وبعض مشروط الأثناء، هو فصل. شيء بل تعداد تاريخ الآلاف, في أخذ لكون عملية الإنذار،. هذه أحكم الأبرياء ان, جدول شاسعة أفريقيا تم بال.
-                    </p>
-                    <p>ترتيب لإعلان الوراء كلّ أي, كلّ أمام مليون إذ. جهة أم الأعمال بريطانيا-فرنسا. واحدة العدّ الولايات عدد بـ, بريطانيا الكونجرس بريطانيا، قد أضف. عرض معقل كردة مع, الإتحاد الإحتفاظ أضف لم. شعار إعلان كُلفة عرض هو, حين بـ والعتاد الأثناء،, قد الأوضاع لإنعدام بحث.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <img src="images/portfolio-11.jpg" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
+            <!-- portfolio items end -->
         </div>
     </div>
 </div>
 </div>
 
-
-			</div>
-			<!-- portfolio items end -->
-		
-		</div>
-	</div>
-</div>
-</div>
 <!-- section end -->
 
 <div class="line">
 <hr>
 </div>
-
-
+@endif
+@endif
 <!-- section start -->
 <!-- ================ -->
 
@@ -946,98 +536,100 @@
 
 <!-- .footer start -->
 <!-- ================ -->
+@if($findcontact==1)
+@if($contacts)    
 <div class="footer section">
-	<div class="container">
-		<h1 class="title text-center" id="contact">تواصل معانا</h1>
-		<div class="space"></div>
-		<div class="row">
-			<div class="col-sm-6">
-            @foreach($contacts as $contact)
-				<div class="footer-content">
-					<p class="large">ر ويكيبيديا, وبعض الآلاف ان كلا, ماذا الدمج عملية عرض من. قد ومن الجنوب العالمية, أي دار تحرّك الطرفين.</p>
-					<ul class="list-icons">
-						<li><i class="fa fa-map-marker pr-10"></i> 15,شارع النيل</li>
-						<li><i class="fa fa-phone pr-10"></i> +00 1234567890</li>
-						<li><i class="fa fa-fax pr-10"></i> +00 1234567891 </li>
-						<li><i class="fa fa-envelope-o pr-10"></i> your@email.com</li>
-					</ul>
-					<ul class="social-links">
-                        @if(!empty($contact->facebook))
-                            <li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
-                        @endif
-                        @if(!empty($contact->twitter))  
-                            <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
-                        @endif
-                        @if(!empty($contact->google_plus))      
-                            <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
-                        @endif
-                        @if(!empty($contact->skype))    
-                            <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
-                        @endif
-                        @if(!empty($contact->linkedin)) 
-                            <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
-                        @endif
-                        @if(!empty($contact->youtube))  
-                            <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
-                        @endif
-                        @if(!empty($contact->flickr))   
-                            <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
-                        @endif
-                        @if(!empty($contact->pinterest))    
-                            <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
-                        @endif
-                        </ul>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="footer-content">
-					<form role="form" id="footer-form">
-						<div class="form-group has-feedback">
-							<label class="sr-only" for="name2">Name</label>
-							<input type="text" class="form-control" id="name2" placeholder="الأسم" name="name2" required>
-							<i class="fa fa-user form-control-feedback"></i>
-						</div>
-						<div class="form-group has-feedback">
-							<label class="sr-only" for="email2">Email address</label>
-							<input type="email" class="form-control" id="email2" placeholder="بريدك الالكتروني" name="email2" required>
-							<i class="fa fa-envelope form-control-feedback"></i>
-						</div>
-						<div class="form-group has-feedback">
-							<label class="sr-only" for="message2">Message</label>
-							<textarea class="form-control" rows="8" id="message2" placeholder="الرسالة" name="message2" required></textarea>
-							<i class="fa fa-pencil form-control-feedback"></i>
-						</div>
-						<input type="submit" value="أرسل" class="btn btn-default">
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div id="emygoogleMap" style="width:100%;height:500px;">
-                    <!-- for show google map -->
-                    @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
-                        <img style="width:100%;height:100%;" src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
-                    @endif 
+    <div class="container">
+        <h1 class="title text-center" id="contact"><?php echo $mycontact;?></h1>
+        <div class="space"></div>
+        <div class="row">
+            <div class="col-sm-6">
+                @foreach($contacts as $contact)
+                <div class="footer-content">
+                    <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p>
+                    <ul class="list-icons">
+                        <li><i class="fa fa-map-marker pr-10"></i>{{$contact->address}}</li>
+                        <li><i class="fa fa-phone pr-10"></i> {{$contact->phone}}</li>
+                        <li><i class="fa fa-fax pr-10"></i>{{$contact->mobile}}</li>
+                        <li><i class="fa fa-envelope-o pr-10"></i>{{$contact->email}}</li>
+                    </ul>
+                    <ul class="social-links">
+                    @if(!empty($contact->facebook))
+                        <li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                    @endif
+                    @if(!empty($contact->twitter))  
+                        <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                    @endif
+                    @if(!empty($contact->google_plus))      
+                        <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                    @endif
+                    @if(!empty($contact->skype))    
+                        <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
+                    @endif
+                    @if(!empty($contact->linkedin)) 
+                        <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                    @endif
+                    @if(!empty($contact->youtube))  
+                        <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
+                    @endif
+                    @if(!empty($contact->flickr))   
+                        <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
+                    @endif
+                    @if(!empty($contact->pinterest))    
+                        <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
+                    @endif
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="footer-content">
+                    <form role="form" id="footer-form">
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="name2">Name</label>
+                            <input type="text" class="form-control" id="name2" placeholder="Name" name="name2" required>
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="email2">Email address</label>
+                            <input type="email" class="form-control" id="email2" placeholder="Enter email" name="email2" required>
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="message2">Message</label>
+                            <textarea class="form-control" rows="8" id="message2" placeholder="Message" name="message2" required></textarea>
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                        <input type="submit" value="Send" class="btn btn-default">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    @endforeach 
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="emygoogleMap" style="width:100%;height:500px;">
+                <!-- for show google map -->
+                @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
+                    <img style="width:100%;height:100%;" src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
+                @endif 
+            </div>
+        </div>
+    </div>
+  @endforeach  
 </div>
-
+@endif
+@endif
 <!-- .footer end -->
-
 <!-- .subfooter start -->
 <!-- ================ -->
 <div class="subfooter">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<p class="text-center">حقوق الملكية محفوظة ل  <a target="_blank" href="http://www.businessmonk.com">Businessmonk</a>.</p>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">Copyright © 2014 Worthy by  <a target="_blank" href="http://www.businessmonk.com">Businessmonk</a>.</p>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- .subfooter end -->
 
@@ -1045,4 +637,4 @@
 <!-- footer end -->
 
 
-@include('../temp1/footer')
+@include('../temp1/footer') 
