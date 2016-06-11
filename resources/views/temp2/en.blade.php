@@ -66,9 +66,26 @@
     <!--News section-->
     
 	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+
+  <?php  
+    $findpage_top=0;
+    $findservices=0;
+    $findabout=0;
+    $findgallery=0;
+    $findnews=0;
+    $findpromotion=0;
+    $findcontact=0;
+    $myservices='';
+    $mypage_top='';
+    $myabout='';
+    $mycontact='';
+    $mynews='';
+    $mypromotion='';
+    $mygallery='';
+?>
   @if(isset($crusals))
 
-	<div id="wowslider-container0">
+	<div id="page_top">
 
 	<div class="ws_images">
     <ul>
@@ -78,23 +95,14 @@
         <li><img src="{{ url('/assets/images/')}}{{ $crusal->image }}" alt="{{ $crusal->title }}" title="{{ $crusal->title }}" id="wows0_{{ $count }}"/></li> 
         <?php $count++; ?>  
     @endforeach
-
-  		{{-- <li><img src="data0/images/8.jpg" alt="Welcome" title="Welcome" id="wows0_0"/></li>
-  		<li><img src="data0/images/1.jpg" alt="Creating a unique look." title="Creating a unique look." id="wows0_1"/></li>
-  		<li><a href="http://wowslider.com/vi"><img src="data0/images/3.jpg" alt="cssslider" title="Never been easier." id="wows0_2"/></a></li>
-  		<li><img src="data0/images/5.jpg" alt="Creating a unique look." title="Creating a unique look." id="wows0_3"/></li> --}}
   	</ul>
   </div>
 
 	<div class="ws_bullets">
   <div>
-		<a href="#" title="{{ $crusals[0]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/8.jpg') }}" alt="{{ $crusals[0]->title }}"/>1</span></a>
-
-		<a href="#" title="{{ $crusals[1]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/1.jpg') }}" alt="{{ $crusals[1]->title }}"/>2</span></a>
-
-		<a href="#" title="{{ $crusals[2]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/3.jpg') }}" alt="{{ $crusals[2]->title }}"/>3</span></a>
-
-		<a href="#" title="{{ $crusals[3]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/5.jpg') }}" alt="{{ $crusals[3]->title }}"/>4</span></a>
+     @for ($x = 0; $x < count($crusals); $x++)
+		<a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[0]->title }}"/>1</span></a>
+    @endfor
 	</div>
   </div>
 
@@ -137,30 +145,72 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#wowslider-container0" class="page-scroll">Home</a></li>
-            <li><a href="#about" class="page-scroll">About</a></li>
-            <li><a href="#promotion" class="page-scroll">Promotions</a></li>
-            <li><a href="#services" class="page-scroll">Services</a></li>
-            <li><a href="#gallery" class="page-scroll">Products</a></li>
-            <li><a href="#news" class="page-scroll">News</a></li>
-            <li><a href="#contact" class="page-scroll">Contact</a></li>
+            @for ($x = 0; $x < count($urlpages); $x++)
 
-
-
+            @if($urlpages[$x]=='page_top')
+              <li>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+              </li>
+              <?php $findpage_top=1;
+              $mypage_top=$menupages[$x];?>
+            @endif 
+            @if($urlpages[$x]=='services')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                <?php $findservices=1;
+                $myservices=$menupages[$x];?>
+            @endif
+            @if($urlpages[$x]=='about')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                <?php $findabout=1;
+                 $myabout=$menupages[$x];?>
+            @endif
+            @if($urlpages[$x]=='gallery')
+                <li>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                <?php $findgallery=1;
+                $mygallery=$menupages[$x];?>
+            @endif
+            @if($urlpages[$x]=='news')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                <?php $findnews=1;
+                $mynews=$menupages[$x];?>
+            @endif
+            @if($urlpages[$x]=='promotion')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                <?php $findpromotion=1;
+                $mypromotion=$menupages[$x];?>
+            @endif
+            @if($urlpages[$x]=='contact')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                </li>
+                 <?php $findcontact=1;
+                 $mycontact=$menupages[$x];?>
+            @endif    
+             @endfor
             <li>
-    <div id="mydropdown">
-   <div class="btn-group dropdown" >
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    <span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" >
-    <li><center><span class="lang-sm lang-lbl" lang="ar"></span></center></li>
-   
-  </ul>
-</div>
-    </div>
+              <div id="mydropdown">
+               <div class="btn-group dropdown" >
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" >
+                <li><center><a href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></center></li>
+               
+              </ul>
+            </div>
+                </div>
             </li>
-
+         
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -211,6 +261,7 @@
 
     <!-- Services Section
     ==========================================-->
+    @if($findservices==1)
     @if(isset($services))
 
     <div id="services" class="text-center">
@@ -245,11 +296,11 @@
             </div>
         </div>
     </div>
-
+  @endif
   @endif
  <!-- promotion
     ==========================================-->
-
+@if($findpromotion==1)
 @if(isset($promotions))
 
  <div id="promotion" class="text-center">
@@ -295,13 +346,15 @@
             </div>
         </div>
     </div>
-
+@endif
 
 @endif
 
 
     <!-- Products Section
     ==========================================-->
+  @if($findgallery==1)
+  @if($categories)
     <div id="gallery">
         <div class="container"> <!-- Container -->
             <div class="section-title text-center center">
@@ -527,9 +580,11 @@
             </div>
         </div>
     </div>
-
+@endif
+@endif
     <!-- News Section
     ==========================================-->
+    @if($findnews==1)
     @if(isset($news))
 
     <div id="news" class="text-center">
@@ -567,14 +622,12 @@
         </div>
     </div> 
 
-
-
-
-
 @endif
-
+@endif
     <!-- Contact Section
     ==========================================-->
+  @if($contacts)  
+    @if($findcontact==1)
     <div id="contact" class="text-center">
         <div class="container">
 
@@ -621,7 +674,7 @@
 
 
  
-
+  @endif
 
 
     <nav id="footer">
@@ -640,7 +693,7 @@
         </div>
     </nav> 
 
-
+  @endif
    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url('assets/Temp2/en/js/jquery.1.11.1.js') }}"></script>

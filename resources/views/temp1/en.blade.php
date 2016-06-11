@@ -63,12 +63,7 @@
                                             <ul class="nav navbar-nav navbar-left">
                                             @if($urlpages[$x]=='gallery')
                                                 <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle " href="#{{$urlpages[$x]}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$menupages[$x]}}<span class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a  class="page-scroll" href="#gallery">Type1</a></li>
-                                                        <li><a  class="page-scroll" href="#gallery">Type2</a></li>
-                                                        <li><a class="page-scroll" href="#gallery">Type3</a></li>
-                                                    </ul>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
                                                 </li>
                                                 <?php $findgallery=1;
                                                 $mygallery=$menupages[$x];?>
@@ -518,6 +513,7 @@
     </div>
 </div>
 </div>
+
 <!-- section end -->
 
 <div class="line">
