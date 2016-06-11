@@ -429,7 +429,109 @@
 <!-- ================ -->
 @if($findgallery==1)
 @if($categories) 
+@if($products)
+    <div class="section">
+            <div class="container">
+                <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
+                <div class="separator"></div>
+                <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
+                <br>            
+                <div class="row object-non-visible" data-animation-effect="fadeIn">
+                    <div class="col-md-12">
 
+                        <!-- isotope filters start -->
+                        <div class="filters text-center">
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#" data-filter="*">All</a></li>
+                                @foreach($categories as $category)                                                                                            
+                                <li class="dropdown">
+                                    <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        {{$category->name}}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <?php $allsub='';?>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                         @foreach($subcategories as $subcategory)
+                                            @if($category->id == $subcategory->category_id)
+                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', $subcategory->name);?>">{{$subcategory->name}}</a></li>
+                                            <?php 
+                                                $sub='.'.$subcategory->name;
+                                                $allsub=$sub.','.$allsub;
+                                            ?>
+                                            @endif
+                                        @endforeach
+                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', $all);?>">All</a></li>    
+                                    </ul>
+                                </li>
+
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- isotope filters end -->
+
+                        <!-- portfolio items start -->
+                        <div class="isotope-container row grid-space-20">
+                            <?php $flagproject=1?>
+                            @foreach($subcategories as $subcategory)
+                            @foreach($products as $product)
+                                @if($subcategory->id == $product->category_id)
+                            <div class="col-sm-6 col-md-3 isotope-item <?php echo str_replace(' ', '', $subcategory->name);?>">
+                                <div class="image-box">
+                                    <div class="overlay-container">
+                                        <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                                        <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
+                                            <i class="fa fa-search-plus"></i>
+                                            <span>{{$subcategory->name}}</span>
+                                        </a>
+                                    </div>
+                                    <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$product->name}}</a>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$product->name}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3><u>{{$product->name}} Description</u></h3>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p>{{$product->description}}</p>
+                                                        <hr/>
+                                                        <h3><u>{{$product->name}} Price</u></h3>
+                                                        <p>{{$product->price}} LE</p>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal end -->
+                            </div>
+                         
+                         <?php $flagproject+=1?>
+                        @endif
+                        @endforeach
+                    @endforeach
+                    </div>
+                        <!-- portfolio items end -->
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+@else
 <div class="section">
 <div class="container">
     <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
@@ -515,12 +617,12 @@
     </div>
 </div>
 </div>
-
+@endif
 <!-- section end -->
 
 <div class="line">
 <hr>
-</div>
+</div> 
 @endif
 @endif
 <!-- section start -->
