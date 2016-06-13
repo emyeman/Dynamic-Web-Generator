@@ -84,7 +84,7 @@ class PagesController extends Controller
             abort(403);
         }
         $this->validate($request, [
-            'title' => 'max:255|unique:pages,title,'.$id,
+            'title' => 'required|max:255|unique:pages,title,'.$id,
             // 'content' => 'required',
         ]);
         $newtitle =trim($request->input('title'));

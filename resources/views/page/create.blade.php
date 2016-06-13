@@ -1,64 +1,54 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
+@section('sidebar')
+    @include('../header')
+@endsection
 
-  @include('../header')
+@section('content')
 
   {!! Html::script('assets/tinymce/tinymce.js') !!}
 
-  <div class="col-sm-9">
-        <h2 class='page-header'>Add New Page</h2>
-        <br><br>
-        {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
+  <h2 class='page-header'>Add New Page</h2>
 
-            <div class='form-group has-warning' id='ourpage'>
-            <label class='col-md-2'>Select Your Page</label>
-            <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
-                <select class='form-control'id='findtitle' name='findtitle' >
-                    <option value="">PLZ,Select Name Page</option>
-                      <option  value="page_top">Home</option>
-                      <option  value="services">Services</option>
-                      <option  value="about">About Us</option>
-                      <option  value="contact">Contact Us</option>
-                      <option  value="gallery">Category</option>
-                      <option  value="news">News</option>
-                      <option  value="promotion">Promotion</option>
-                      <!-- <option  value=""></option> -->
-                </select>           
-             </div>
+  {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
+    <div class='form-group' id='ourpage'>
+      <label class='col-md-2'>Select Your Page</label>
+      <div class='col-md-8'>
+          <select class='form-control'id='findtitle' name='findtitle' >
+              <option value="">PLZ,Select Name Page</option>
+                <option  value="page_top">Home</option>
+                <option  value="services">Services</option>
+                <option  value="about">About Us</option>
+                <option  value="contact">Contact Us</option>
+                <option  value="gallery">Category</option>
+                <option  value="news">News</option>
+                <option  value="promotion">Promotion</option>
+          </select>           
+      </div>
+    </div>
+    <!-- for display select between write address and use google map -->
+    <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
+      <a id="id_getbage" class="getbage"><input type='button>' class='btn btn-info' value='Create New Page'/></a>
+      <a id="backbage" class="oldbage" href="{{url('/page/create')}}"><input type='button>' class='btn btn-info' value='Back to Our Page'/></a>
+    </div> 
+    <br/>
+    <div id="enternewbage">
+      <div class='form-group'>
+        <label class='col-md-2'>Title *</label>
+        <div class='col-md-10'>
+            <input placeholder='title ...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
         </div>
-
-                <!-- for display select between write address and use google map -->
-        <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
-            <a id="id_getbage" class="btn btn-primary getbage">Create New Page  <span class="glyphicon glyphicon-modal-window"></span> </a>
-            <a id="backbage" class="btn btn-info oldbage" href="{{url('/page/create')}}"><span class="glyphicon glyphicon-chevron-left"></span>  Back to Our Page</a>
-
-        </div> 
-        <br/>
-        <div id="enternewbage">
-          <div class='form-group has-warning'>
-            <label class='col-md-2'>Title Page</label>
-            <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter page title ...' class='form-control' name='title' type='text'/>
-            </div>
-        </div>     
-          <textarea  name='content'></textarea> 
-       </div>   
-          <br><br>
-          <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='ADD' />
-      {!!Form::close() !!}
-  </div><!--end leftsideof from-->
-</div>
+      </div>  
+      <br><br><br>   
+      <textarea  name='content'>{{old('title')}}</textarea> 
+    </div>   
+    <br>
+    <input type='submit' class='col-md-12 btn btn-primary' name='ok' value='ADD' />
+  {!!Form::close() !!}
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
-<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script>
-$(document).ready(function(){
 
     console.log('hii');
     document.getElementById('ourpage').style.display = "block";
@@ -84,8 +74,6 @@ $(document).ready(function(){
       //   newpage+="<textarea  name='content'></textarea>";
       //   $('#enternewbage').html(newpage);
 
-      
-    });
 
 
 });
