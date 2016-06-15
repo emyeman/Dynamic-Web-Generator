@@ -132,3 +132,22 @@ li{
 /*.space {
     padding: 1px;
 }*/
+
+/* .line{
+    background-color: green;
+} */
+hr {
+    margin-left: 200px;
+    margin-right: 200px;                                                               
+    /* border: 2px; */
+    border-top: 1px solid #c00939;
+    box-shadow: #a20832;
+    /* background-color: green; */
+    height:5px;
+}
+
+.section_space{
+    background-color:#DDD; 
+    /* margin-top:10px; */
+    height: 50px;
+}

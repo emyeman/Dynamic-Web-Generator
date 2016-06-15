@@ -27,14 +27,14 @@
 		'My home'=>'القائمة الرئسية',
 		'My Home'=>'القائمة الرئسية',
 
-		'promotion'=>'الاعلانات',
-		'Promotion'=>'الاعلانات',
-		'our promotion'=>'اعلاناتنا',
-		'Our promotion'=>'اعلاناتنا',
-		'Our Promotion'=>'اعلاناتنا',
-		'my promotion'=>'اعلاناتى',
-		'My promotion'=>'اعلاناتى',
-		'My Promotion'=>'اعلاناتى',
+		'promotion'=>'عروض',
+		'Promotion'=>'عروض',
+		'our promotion'=>'عروض',
+		'Our promotion'=>'عروض',
+		'Our Promotion'=>'عروض',
+		'my promotion'=>'عروض',
+		'My promotion'=>'عروض',
+		'My Promotion'=>'عروض',
 
 		'promotions'=>'الاعلانات',
 		'Promotions'=>'الاعلانات',
@@ -133,8 +133,7 @@
 		'القائمة الرئسية'=>'القائمة الرئسية',
 
 		'الاعلانات'=>'الاعلانات',
-		'اعلاناتنا'=>'اعلاناتنا',
-		'اعلاناتى'=>'اعلاناتى',
+		'عروض'=>'عروض',
 
 		'من نحن'=>'من نحن',
 

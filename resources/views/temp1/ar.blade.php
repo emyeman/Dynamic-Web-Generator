@@ -1,16 +1,17 @@
 @include('../temp1/header')
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                <div class="navbar-brand site-name">التمبلت</div>
                                 <ul class="nav navbar-nav navbar-right">
                                 <?php  
                                     $flagelang=0;
-                                    $findpage_top=0;
-                                    $findservices=0;
-                                    $findabout=0;
-                                    $findgallery=0;
-                                    $findnews=0;
-                                    $findpromotion=0;
-                                    $findcontact=0;
+                                    // $findpage_top=0;
+                                    // $findservices=0;
+                                    // $findabout=0;
+                                    // $findgallery=0;
+                                    // $findnews=0;
+                                    // $findpromotion=0;
+                                    // $findcontact=0;
                                     $myservices='';
                                     $mypage_top='';
                                     $myabout='';
@@ -28,90 +29,102 @@
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findpage_top=1;
+                                                <?php 
+                                                // $findpage_top=1;
                                                 $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif 
                                             @if($urlpages[$x]=='services')   
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findservices=1;
+                                                <?php 
+                                                // $findservices=1;
                                                 $myservices=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='about')
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findabout=1;
+                                                <?php
+                                                 // $findabout=1;
                                                  $myabout=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
+                                        @endfor
                                             @if($flagelang==0)
-                                                <li>
+                                               <li>
                                                     <div class="btn-group dropdown">
                                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="lang-sm lang-lbl-full" lang="ar"></span> <span class="caret"></span>
+                                                            <span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl-full" lang="en"></span></a></li>
-                                                            <li><a href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl-full" lang="ar"></span></a></li>
+                                                            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                         <!--sally's update  remove 'full'-->
+                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>                         <!--sally's update remove 'full' -->
                                                         </ul>
                                                     </div>
                                                 </li>
                                                <?php $flagelang=1?> 
-                                             @endif   
+                                             @endif  
+
+ 
                                             </ul>
-                                            <ul class="nav navbar-nav navbar-left">
+                                            
+                                        <ul class="nav navbar-nav navbar-left">
+
+                                            @for ($x = 0; $x < count($urlpages); $x++)
                                             @if($urlpages[$x]=='gallery')
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findgallery=1;
+                                                <?php 
+                                                // $findgallery=1;
                                                 $mygallery=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='news')
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findnews=1;
+                                                <?php 
+                                                // $findnews=1;
                                                 $mynews=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='promotion')
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findpromotion=1;
+                                                <?php 
+                                                // $findpromotion=1;
                                                 $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='contact')
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                 <?php $findcontact=1;
+                                                 <?php 
+                                                 // $findcontact=1;
                                                  $mycontact=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif    
-                                                
-                                        @endfor
-                                </ul>
-							</div>
+                                          @endfor
 
-						</div>
-					</nav>
-					<!-- navbar end -->
+                                        </ul>
+							                            </div>
 
-				</div>
-				<!-- main-navigation end -->
+                        </div>
+                    </nav>
+                    <!-- navbar end -->
 
-			</div>
-			<!-- header-right end -->
+                </div>
+                <!-- main-navigation end -->
 
-		</div>
-	</div>
+            </div>
+            <!-- header-right end -->
+
+        </div>
+    </div>
 </div>
 </header>
 <!-- header end -->
 
 
-@if($findpage_top==1)
 @if($header)
 <header>
 <div class="container">
@@ -167,14 +180,12 @@
 </div>
 
 @endif
-@endif  
-
-@if($findabout==1)
+<div class="section_space"></div>
 @if($aboutus)
-<div class="line">
+<!-- <div class="line">
 <hr>
 </div>
-
+ -->
 
 <!-- section start -->
 <!-- ================ -->
@@ -211,13 +222,12 @@
 <!-- section end -->
 
 
-<div class="line">
+<!-- <div class="line">
 <hr>
-</div>
-@endif
+</div> -->
+<div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($findpromotion==1)    
 @if($promotions)
 <div class="section translucent-bg bg-image-2 pb-clear">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -260,14 +270,13 @@
 @endif
 
 <!--end section-->
-
+<!-- 
 <div class="line">
 <hr>
-</div>
-@endif
+</div> -->
+<div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($findservices==1)    
 @if($services)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -351,13 +360,11 @@
 </div>
 <!-- section end -->
 @endif 
-@endif
-<div class="line">
+<!-- <div class="line">
 <hr>
-</div>
-
+</div> -->
+<div class="section_space"></div>
 <!--section Start-->
-@if($findnews==1)    
 @if($news)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -421,13 +428,12 @@
 
 <!--section End-->
 
-<div class="line">
+<!-- <div class="line">
 <hr>
-</div>
-@endif
+</div> -->
+<div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($findgallery==1)
 @if($categories) 
 @if($products)
     <div class="section">
@@ -619,11 +625,10 @@
 </div>
 @endif
 <!-- section end -->
-
+<!-- 
 <div class="line">
 <hr>
-</div> 
-@endif
+</div>  -->
 @endif
 <!-- section start -->
 <!-- ================ -->
@@ -638,7 +643,7 @@
 
 <!-- .footer start -->
 <!-- ================ -->
-@if($findcontact==1)
+<div class="section_space"></div>
 @if($contacts)    
 <div class="footer section">
     <div class="container">
@@ -719,7 +724,7 @@
     </div>
   @endforeach  
 </div>
-@endif
+
 @endif
 <!-- .footer end -->
 <!-- .subfooter start -->

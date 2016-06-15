@@ -1,7 +1,7 @@
 @include('../temp1/header')
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
-                                <div class="navbar-brand site-name">monk</div>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                <div class="navbar-brand site-name">التمبلت</div>
                                 <ul class="nav navbar-nav navbar-right">
                                 <?php  
                                     $flagelang=0;
@@ -20,7 +20,7 @@
                                     $mypromotion='';
                                     $mygallery='';
                                 ?>
-                                @for ($x = 0; $x < count($urlpages); $x++)
+                                 @for ($x = 0; $x < count($urlpages); $x++)
 
                                             @if($urlpages[$x]=='page_top')
                                                 <!-- <li class="hidden">
@@ -45,8 +45,8 @@
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php 
-                                                // $findabout=1;
+                                                <?php
+                                                 // $findabout=1;
                                                  $myabout=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                         @endfor
@@ -54,7 +54,7 @@
                                                <li>
                                                     <div class="btn-group dropdown">
                                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
+                                                            <span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                         <!--sally's update  remove 'full'-->
@@ -99,32 +99,33 @@
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                 <?php
-                                                  // $findcontact=1;
+                                                 <?php 
+                                                 // $findcontact=1;
                                                  $mycontact=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif    
                                           @endfor
 
                                         </ul>
-                            </div>
+							</div>
 
-                        </div>
-                    </nav>
-                    <!-- navbar end -->
+						</div>
+					</nav>
+					<!-- navbar end -->
 
-                </div>
-                <!-- main-navigation end -->
+				</div>
+				<!-- main-navigation end -->
 
-            </div>
-            <!-- header-right end -->
+			</div>
+			<!-- header-right end -->
 
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 </header>
 <!-- header end -->
 
 
+@if($findpage_top==1)
 @if($header)
 <header>
 <div class="container">
@@ -180,12 +181,14 @@
 </div>
 
 @endif
-<div class="section_space"></div>
+@endif  
+
+@if($findabout==1)
 @if($aboutus)
 <!-- <div class="line">
 <hr>
-</div>
- -->
+</div> -->
+
 
 <!-- section start -->
 <!-- ================ -->
@@ -225,9 +228,10 @@
 <!-- <div class="line">
 <hr>
 </div> -->
-<div class="section_space"></div>
+@endif
 <!-- section start -->
 <!-- ================ -->
+@if($findpromotion==1)    
 @if($promotions)
 <div class="section translucent-bg bg-image-2 pb-clear">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -270,13 +274,14 @@
 @endif
 
 <!--end section-->
-<!-- 
-<div class="line">
+
+<!-- <div class="line">
 <hr>
 </div> -->
-<div class="section_space"></div>
+@endif
 <!-- section start -->
 <!-- ================ -->
+@if($findservices==1)    
 @if($services)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -360,11 +365,13 @@
 </div>
 <!-- section end -->
 @endif 
+@endif
 <!-- <div class="line">
 <hr>
 </div> -->
-<div class="section_space"></div>
+
 <!--section Start-->
+@if($findnews==1)    
 @if($news)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -431,9 +438,10 @@
 <!-- <div class="line">
 <hr>
 </div> -->
-<div class="section_space"></div>
+@endif
 <!-- section start -->
 <!-- ================ -->
+@if($findgallery==1)
 @if($categories) 
 @if($products)
     <div class="section">
@@ -625,10 +633,11 @@
 </div>
 @endif
 <!-- section end -->
-<!-- 
-<div class="line">
+
+<!-- <div class="line">
 <hr>
 </div>  -->
+@endif
 @endif
 <!-- section start -->
 <!-- ================ -->
@@ -643,7 +652,7 @@
 
 <!-- .footer start -->
 <!-- ================ -->
-<div class="section_space"></div>
+@if($findcontact==1)
 @if($contacts)    
 <div class="footer section">
     <div class="container">
@@ -724,7 +733,7 @@
     </div>
   @endforeach  
 </div>
-
+@endif
 @endif
 <!-- .footer end -->
 <!-- .subfooter start -->
