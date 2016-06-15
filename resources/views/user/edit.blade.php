@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.outside')
 
 @section('content')
 
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <img id="profile" class="col-md-offset-3" src="{{ Auth::user()->image }}" width='300px' height='300px'>
+
         <div class='form-group'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-8 input-group'>
@@ -60,7 +60,8 @@
             </div>
         </div>
         <span class='col-md-2'></span>
-        <input type='submit' class='col-md-1 btn btn-default' name='ok' value='update' />
+        <input type='submit' class='col-md-1 col-md-offset-0 btn btn-default' name='ok' value='update' />
+        
     {!!Form::close() !!}
 </div><!--end leftsideof from-->
 </div>

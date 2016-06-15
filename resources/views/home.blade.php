@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <!-- for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -93,12 +92,12 @@
 
                             @if (Request::path() == '/')
 
-                                <li class="menu-item"><a href="index.html#about">About us</a></li>
-                                <li class="menu-item"><a href="index.html#services">Services</a></li>
-                                <li class="menu-item"><a href="index.html#portfolio-items">Portfolio</a></li>
+                                <li class="menu-item"><a href="#about">About us</a></li>
+                                <li class="menu-item"><a href="#services">Services</a></li>
+                                <li class="menu-item"><a href="#portfolio-items">Portfolio</a></li>
 
 
-                                <li class="menu-item"><a href="index.html#our-contact">Contact</a></li>
+                                <li class="menu-item"><a href="#our-contact">Contact</a></li>
                             @endif
                             </ul>
                         </div>
@@ -110,16 +109,37 @@
         <div class="mobile-menu-wrapper">
             <div class="menu-main-nav-menu-container">
                 <ul id="menu-main-nav-menu-1" class="mobile-menu">
-                    <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="index.html#home">Home</a>
+                    <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
                         <ul class="submenu_1">
-                            <li class="menu-item"><a href="http://psd2html5.in/demo/wpm/altos/home-2/#home-2">Home #2</a></li>
+                            <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#about">About us</a></li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#services">Services</a></li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Portfolio</a></li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#blog">Blog</a></li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#our-contact">Contact</a></li>
+                     @if (Auth::guest())
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
+
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+
+                                @else
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+                                @endif
+
+                               
+
+                            @if (Request::path() == '/')
+
+                                <li class="menu-item"><a href="#about">About us</a></li>
+                                <li class="menu-item"><a href="#services">Services</a></li>
+                                <li class="menu-item"><a href="#portfolio-items">Portfolio</a></li>
+
+
+                                <li class="menu-item"><a href="#our-contact">Contact</a></li>
+                            @endif
                 </ul>
             </div>
         </div>
@@ -139,16 +159,37 @@
                     <div class="main-menu">
                         <div class="menu-main-nav-menu-container">
                             <ul id="menu-main-nav-menu-2" class="sf-menu">
-                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="index.html#home">Home</a>
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
                                     <ul class="submenu_1">
-                                        <li class="menu-item"><a href="home-2.html#home-2">Home #2</a></li>
+                                        <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item"><a href="index.html#about">About us</a></li>
-                                <li class="menu-item"><a href="index.html#services">Services</a></li>
-                                <li class="menu-item"><a href="index.html#portfolio-items">Portfolio</a></li>
-                                <li class="menu-item"><a href="index.html#blog">Blog</a></li>
-                                <li class="menu-item"><a href="index.html#our-contact">Contact</a></li>
+                                 @if (Auth::guest())
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
+
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+
+                                @else
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+                                @endif
+
+                               
+
+                            @if (Request::path() == '/')
+
+                                <li class="menu-item"><a href="#about">About us</a></li>
+                                <li class="menu-item"><a href="#services">Services</a></li>
+                                <li class="menu-item"><a href="#portfolio-items">Portfolio</a></li>
+
+
+                                <li class="menu-item"><a href="#our-contact">Contact</a></li>
+                            @endif
                             </ul>
                         </div>
                     </div>
