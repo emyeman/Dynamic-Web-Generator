@@ -1,5 +1,5 @@
 
- <header class="site-header-wrap">
+ <header class="site-header-wrap" style="margin-top:100px;">
         <div class="site-header">
 
             <!-- <a class="site-logo" href="#">Dynamic Web Generator </a> -->
@@ -12,7 +12,7 @@
         </div>
 
     </header>
-    <div class="col-sm-3">
+    <div class="col-sm-3" >
     <div class="main">
         <div class="accordion">
             <div class="accordion-section">

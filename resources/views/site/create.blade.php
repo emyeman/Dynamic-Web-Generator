@@ -2,9 +2,15 @@
 
 @section('content')
 <div class="container">
-<div class="col-sm-9">
-      <h2>create Site</h2>
-      <br><br>
+
+
+<h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">Create <font color="red">Website</font></h5>
+<hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
+
+
+<div class="col-md-10 col-md-offset-1">
+
+
        @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -17,7 +23,7 @@
       {!!Form::open(['route'=>'site.store' , 'method'=>'post', 'files'=>true]) !!}
         <div class='form-group has-warning'>
             <label class='col-md-2'>SubDomain</label>
-            <div class='col-md-10 input-group'>
+            <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
@@ -27,7 +33,7 @@
 
          <div class='form-group has-warning'>
             <label class='col-md-2'>Site Color</label>
-            <div class='col-md-10 input-group'>
+            <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
@@ -37,7 +43,7 @@
           
         <div class='form-group has-warning'>
             <label class='col-md-2'>Primary Color</label>
-            <div class='col-md-10 input-group'>
+            <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                 <input placeholder='PlZ,enter description' class='form-control picker' name='primary_color' type='text' />
             </div>
@@ -45,7 +51,7 @@
 
          <div class='form-group has-warning'>
             <label class='col-md-2'>Secondary Color</label>
-            <div class='col-md-10 input-group'>
+            <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                 <input placeholder='PlZ,enter description' class='form-control picker' name='secondry_color' type='text' />
             </div>
@@ -53,7 +59,7 @@
 
         <div class='form-group has-warning'>
             <label class='col-md-2'>Site Body</label>
-            <div class='col-md-10 input-group'>
+            <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                        <select name="body_type" class="form-control">
   							<option>fill</option>
@@ -64,9 +70,9 @@
 
          <div class='form-group has-warning'>
             <label class='col-md-2'>Image</label>
-            <div class='col-md-10 input-group'>
+            <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <label class="btn btn-primary btn-file">
+                <label class="btn btn-default btn-file">
                     Browse <input id="image" type="file" name="background_image" style="display: none;">
                 </label>  
             </div>
@@ -77,15 +83,10 @@
       
 
         <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
+        <input type='submit' class='col-md-1 btn btn-default' name='ok' value='add' />
     {!!Form::close() !!}
 
-      <br><br>
-      <br><br>
 </div><!--end leftsideof from-->
-
- <br/><br/><hr/><hr/>
-
 </div>
 </div>
 @endsection

@@ -49,7 +49,9 @@ class BrandingController extends Controller {
         return view('branding.create');
     }
 
-    public function store() {
+    public function store(Request $request) {
+
+
         $image = Input::file('image')->getClientOriginalName();
 
         if ($this->site && $logo = $this->upload_image($image)) {
@@ -74,6 +76,7 @@ class BrandingController extends Controller {
     }
 
     public function update($id) {
+
         $image = Input::file('image')->getClientOriginalName();
 
         if ($id == $this->site->header->id && $logo = $this->upload_image($image)) {
