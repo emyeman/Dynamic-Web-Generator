@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-
+@section('sidebar')
     @include('../header')
+@endsection
+
+@section('content')
     {!! Html::script('assets/tinymce/tinymce.js') !!}
-    <div class="col-sm-9">
           <h2 class='page-header'>
             Edit Page
           </h2>
@@ -19,16 +19,17 @@
             </div>
         @endif
           <br><br>
-          {{Form::model($row,['route'=>['page.update',$row->id],'method'=>'put']) }}
+          {{Form::model($row,['route'=>['page.update',$row->id],'method'=>'put','class'=>'form-horizontal']) }}
             
               <div class='form-group'>
-                <div class='col-md-12 input-group'>
-                    {{Form::text('title', null ,['class'=>'form-control','placeholder'=>'page title ...'])}}
+                <label class='col-md-2'>Title</label>
+                <div class='col-md-10 input-group'>
+                    {{Form::text('title', old('title') ,['class'=>'form-control','placeholder'=>'page title ...'])}}
                   </div>
               </div>
-              {{Form::textarea('content', null)}}
+              {{Form::textarea('content', old('content'))}}
             <br><br>
-            <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='EDIT' />
+            <input type='submit' class='col-md-12 btn btn-primary' name='ok' value='EDIT' />
         {{Form::close() }}
     </div><!--end leftsideof from-->
 </div>

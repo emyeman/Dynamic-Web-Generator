@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('../header')
+@endsection
+
 @section('content')
-<div class="container">
-
-@include('../header')
-
-<div class="col-sm-9">
       <h2 class='page-header'>
         @if($row->type == 'promotion')
             Edit Promotion
@@ -23,12 +22,12 @@
         </div>
     @endif
       <br><br>
-      {{Form::model($row,['route'=>['news_promotion.update',$row->id],'method'=>'put' , 'files'=>true]) }}
+      {{Form::model($row,['route'=>['news_promotion.update',$row->id],'method'=>'put' , 'files'=>true,'class'=>'form-horizontal']) }}
         <input type='hidden' value="{{$row->type}}" name='type'>
         <div class='form-group'>
-            <label class='col-md-2'>Title</label>
+            <label class='col-md-2'>Title*</label>
             <div class='col-md-10 input-group'>
-                {{Form::text('title', null ,['class'=>'col-ms-2 form-control'])}}
+                {{Form::text('title', old('title') ,['class'=>'col-ms-2 form-control'])}}
             </div>
         </div>  
         <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images'.$row->image)}}"></div>
@@ -40,35 +39,26 @@
             </div>
         </div>  
         <div class='form-group'>
-            <label class='col-md-2'>Description</label>
+            <label class='col-md-2'>Description*</label>
             <div class='col-md-10 input-group'>
-                {{Form::textarea('description', null ,['class'=>'form-control','rows'=>'4'])}}
+                {{Form::textarea('description', old('description') ,['class'=>'form-control','rows'=>'4'])}}
             </div>
         </div> 
         <div class='form-group'>
-            <label class='col-md-2'>Start Date</label>
-            <div class='col-md-10 input-group'>
-                {{Form::date('start_date', null ,['class'=>'form-control','rows'=>'4'])}}
+            <label class='col-md-2'>Start Date*</label>
+            <div class='col-md-10'>
+                {{Form::date('start_date', old('start_date') ,['class'=>'form-control','rows'=>'4'])}}
             </div>
         </div> 
         <div class='form-group'>
-            <label class='col-md-2'>End Date</label>
-            <div class='col-md-10 input-group'>
-                {{Form::date('end_date', null ,['class'=>'form-control','rows'=>'4'])}}
+            <label class='col-md-2'>End Date*</label>
+            <div class='col-md-10'>
+                {{Form::date('end_date', old('end_date') ,['class'=>'form-control','rows'=>'4'])}}
             </div>
         </div>   
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='EDIT' />
     {{Form::close() }}
-
-
-      <br><br>
-      <br><br>
-</div><!--end leftsideof from-->
-
- <br/><br/><hr/><hr/>
-
-</div>
 @endsection
 
 

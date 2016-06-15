@@ -1,102 +1,111 @@
 @include('../temp1/header')
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                <div class="navbar-brand site-name">monk</div>
                                 <ul class="nav navbar-nav navbar-right">
-                                        <?php  
-                                            $flagelang=0;
-                                            $findpage_top=0;
-                                            $findservices=0;
-                                            $findabout=0;
-                                            $findgallery=0;
-                                            $findnews=0;
-                                            $findpromotion=0;
-                                            $findcontact=0;
-                                            $myservices='';
-                                            $mypage_top='';
-                                            $myabout='';
-                                            $mycontact='';
-                                            $mynews='';
-                                            $mypromotion='';
-                                            $mygallery='';
-                                        ?>
-                                        @for ($x = 0; $x < count($urlpages); $x++)
+                                <?php  
+                                    $flagelang=0;
+                                    // $findpage_top=0;
+                                    // $findservices=0;
+                                    // $findabout=0;
+                                    // $findgallery=0;
+                                    // $findnews=0;
+                                    // $findpromotion=0;
+                                    // $findcontact=0;
+                                    $myservices='';
+                                    $mypage_top='';
+                                    $myabout='';
+                                    $mycontact='';
+                                    $mynews='';
+                                    $mypromotion='';
+                                    $mygallery='';
+                                ?>
+                                @for ($x = 0; $x < count($urlpages); $x++)
 
                                             @if($urlpages[$x]=='page_top')
                                                 <!-- <li class="hidden">
                                                      <a href="#page-top"></a>
                                                  </li>-->
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findpage_top=1;
-                                                $mypage_top=$menupages[$x];?>
+                                                <?php 
+                                                // $findpage_top=1;
+                                                $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif 
                                             @if($urlpages[$x]=='services')   
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findservices=1;
-                                                $myservices=$menupages[$x];?>
+                                                <?php 
+                                                // $findservices=1;
+                                                $myservices=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='about')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findabout=1;
-                                                 $myabout=$menupages[$x];?>
+                                                <?php 
+                                                // $findabout=1;
+                                                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
+                                        @endfor
                                             @if($flagelang==0)
-                                                <li>
+                                               <li>
                                                     <div class="btn-group dropdown">
                                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="lang-sm lang-lbl-full" lang="en"></span> <span class="caret"></span>
+                                                            <span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li><a href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl-full" lang="ar"></span></a></li>
-                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl-full" lang="en"></span></a></li>
+                                                            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                         <!--sally's update  remove 'full'-->
+                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>                         <!--sally's update remove 'full' -->
                                                         </ul>
                                                     </div>
                                                 </li>
                                                <?php $flagelang=1?> 
-                                             @endif   
+                                             @endif  
+
+ 
                                             </ul>
-                                            <ul class="nav navbar-nav navbar-left">
+                                            
+                                        <ul class="nav navbar-nav navbar-left">
+
+                                            @for ($x = 0; $x < count($urlpages); $x++)
                                             @if($urlpages[$x]=='gallery')
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle " href="#{{$urlpages[$x]}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$menupages[$x]}}<span class="caret"></span></a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a  class="page-scroll" href="#gallery">Type1</a></li>
-                                                        <li><a  class="page-scroll" href="#gallery">Type2</a></li>
-                                                        <li><a class="page-scroll" href="#gallery">Type3</a></li>
-                                                    </ul>
+                                                <li>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findgallery=1;
-                                                $mygallery=$menupages[$x];?>
+                                                <?php 
+                                                // $findgallery=1;
+                                                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='news')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findnews=1;
-                                                $mynews=$menupages[$x];?>
+                                                <?php 
+                                                // $findnews=1;
+                                                $mynews=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='promotion')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php $findpromotion=1;
-                                                $mypromotion=$menupages[$x];?>
+                                                <?php 
+                                                // $findpromotion=1;
+                                                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                             @if($urlpages[$x]=='contact')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$menupages[$x]}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                 <?php $findcontact=1;
-                                                 $mycontact=$menupages[$x];?>
+                                                 <?php
+                                                  // $findcontact=1;
+                                                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif    
-                                                
-                                        @endfor
-                                </ul>
+                                          @endfor
+
+                                        </ul>
                             </div>
 
                         </div>
@@ -114,7 +123,8 @@
 </div>
 </header>
 <!-- header end -->
-@if($findpage_top==1)
+
+
 @if($header)
 <header>
 <div class="container">
@@ -170,42 +180,40 @@
 </div>
 
 @endif
-@endif  
-
-@if($findabout==1)
+<div class="section_space"></div>
 @if($aboutus)
-<div class="line">
+<!-- <div class="line">
 <hr>
 </div>
-
+ -->
 
 <!-- section start -->
 <!-- ================ -->
 
 <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<h1 id="about" class="title text-center"><?php echo $myabout; ?></h1>
-			<!-- <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p> -->
-			<div class="space"></div>
-			<div class="row">
-				<div class="col-md-6">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="about" class="title text-center"><?php echo $myabout; ?></h1>
+            <!-- <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p> -->
+            <div class="space"></div>
+            <div class="row">
+                <div class="col-md-6">
                     <?php $img='/assets/images'.$aboutus->image ?>
-					<img class="img-rounded" src="{{ url($img)}}" alt="">
-				</div>
-				<div class="col-md-6 abouty">
-					<div class="space"></div>
-				        <p class='lead'>
+                    <img class="img-rounded" src="{{ url($img)}}" alt="">
+                </div>
+                <div class="col-md-6 abouty">
+                    <div class="space"></div>
+                        <p class='lead'>
                             {{$aboutus->description}}
                         </p>
-					<!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
-					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ducimus explicabo quibusdam temporibus deserunt doloremque pariatur ea, animi a. Delectus similique atque eligendi, enim vel reiciendis deleniti neque aliquid, sit?</p> -->
-			</div>
-				</div>
-			</div>
-			<div class="space"></div>
-			</div>
+                    <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ducimus explicabo quibusdam temporibus deserunt doloremque pariatur ea, animi a. Delectus similique atque eligendi, enim vel reiciendis deleniti neque aliquid, sit?</p> -->
+            </div>
+                </div>
+            </div>
+            <div class="space"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -214,13 +222,12 @@
 <!-- section end -->
 
 
-<div class="line">
+<!-- <div class="line">
 <hr>
-</div>
-@endif
+</div> -->
+<div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($findpromotion==1)    
 @if($promotions)
 <div class="section translucent-bg bg-image-2 pb-clear">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -263,14 +270,13 @@
 @endif
 
 <!--end section-->
-
+<!-- 
 <div class="line">
 <hr>
-</div>
-@endif
+</div> -->
+<div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($findservices==1)    
 @if($services)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -345,22 +351,20 @@
 <!-- ================ -->
 <div class="default-bg space">
 <div class="container">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<h1 class="text-center">Let's Work Together!</h1>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h1 class="text-center">Let's Work Together!</h1>
+        </div>
+    </div>
 </div>
 </div>
 <!-- section end -->
 @endif 
-@endif
-<div class="line">
+<!-- <div class="line">
 <hr>
-</div>
-
+</div> -->
+<div class="section_space"></div>
 <!--section Start-->
-@if($findnews==1)    
 @if($news)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
@@ -424,84 +428,185 @@
 
 <!--section End-->
 
-<div class="line">
+<!-- <div class="line">
 <hr>
-</div>
-@endif
+</div> -->
+<div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($findgallery==1)
 @if($categories) 
+@if($products)
+    <div class="section">
+            <div class="container">
+                <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
+                <div class="separator"></div>
+                <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
+                <br>            
+                <div class="row object-non-visible" data-animation-effect="fadeIn">
+                    <div class="col-md-12">
 
+                        <!-- isotope filters start -->
+                        <div class="filters text-center">
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#" data-filter="*">All</a></li>
+                                @foreach($categories as $category)                                                                                            
+                                <li class="dropdown">
+                                    <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        {{$category->name}}
+                                        <span class="caret"></span>
+                                    </a>
+                                    <?php $allsub='';?>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                         @foreach($subcategories as $subcategory)
+                                            @if($category->id == $subcategory->category_id)
+                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', $subcategory->name);?>">{{$subcategory->name}}</a></li>
+                                            <?php 
+                                                $sub='.'.$subcategory->name;
+                                                $allsub=$sub.','.$allsub;
+                                            ?>
+                                            @endif
+                                        @endforeach
+                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', $all);?>">All</a></li>    
+                                    </ul>
+                                </li>
+
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- isotope filters end -->
+
+                        <!-- portfolio items start -->
+                        <div class="isotope-container row grid-space-20">
+                            <?php $flagproject=1?>
+                            @foreach($subcategories as $subcategory)
+                            @foreach($products as $product)
+                                @if($subcategory->id == $product->category_id)
+                            <div class="col-sm-6 col-md-3 isotope-item <?php echo str_replace(' ', '', $subcategory->name);?>">
+                                <div class="image-box">
+                                    <div class="overlay-container">
+                                        <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                                        <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
+                                            <i class="fa fa-search-plus"></i>
+                                            <span>{{$subcategory->name}}</span>
+                                        </a>
+                                    </div>
+                                    <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$product->name}}</a>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$product->name}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3><u>{{$product->name}} Description</u></h3>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p>{{$product->description}}</p>
+                                                        <hr/>
+                                                        <h3><u>{{$product->name}} Price</u></h3>
+                                                        <p>{{$product->price}} LE</p>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal end -->
+                            </div>
+                         
+                         <?php $flagproject+=1?>
+                        @endif
+                        @endforeach
+                    @endforeach
+                    </div>
+                        <!-- portfolio items end -->
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+@else
 <div class="section">
 <div class="container">
-	<h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
-	<div class="separator"></div>
-	<p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
-	<br>			
-	<div class="row object-non-visible" data-animation-effect="fadeIn">
-		<div class="col-md-12">
+    <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
+    <div class="separator"></div>
+    <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
+    <br>            
+    <div class="row object-non-visible" data-animation-effect="fadeIn">
+        <div class="col-md-12">
 
-			<!-- isotope filters start -->
-			<div class="filters text-center">
-				<ul class="nav nav-pills">
-					<li class="active"><a href="#" data-filter="*">All</a></li>
+            <!-- isotope filters start -->
+            <div class="filters text-center">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#" data-filter="*">All</a></li>
                     @foreach($categories as $category) 
 
-					    <li><a href="#" data-filter=".{{$category->name}}">{{$category->name}}</a></li>
+                        <li><a href="#" data-filter=".{{$category->name}}">{{$category->name}}</a></li>
                     @endforeach
                     <!-- <li><a href="#" data-filter=".web-design">Web design</a></li>
-					<li><a href="#" data-filter=".app-development">App development</a></li>
-					<li><a href="#" data-filter=".site-building">Site building</a></li> -->
-				</ul>
-			</div>
-			<!-- isotope filters end -->
+                    <li><a href="#" data-filter=".app-development">App development</a></li>
+                    <li><a href="#" data-filter=".site-building">Site building</a></li> -->
+                </ul>
+            </div>
+            <!-- isotope filters end -->
 
-			<!-- portfolio items start -->
-			<div class="isotope-container row grid-space-20">
+            <!-- portfolio items start -->
+            <div class="isotope-container row grid-space-20">
 <!-- start emyyyyyyyyyyyyyyyy -->
                 <?php $flagproject=1?>
                 @foreach($categories as $category)
                 @foreach($subcategories as $subcategory)
                     @if($category->id == $subcategory->category_id)
-				<div class="col-sm-6 col-md-3 isotope-item {{$category->name}}">
-					<div class="image-box">
+                <div class="col-sm-6 col-md-3 isotope-item {{$category->name}}">
+                    <div class="image-box">
                     
-						<div class="overlay-container">
-							<img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
-							<a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
-								<i class="fa fa-search-plus"></i>
-								<span>{{$subcategory->name}}</span>
-							</a>
-						</div>
-						<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$subcategory->name}}</a>
-					</div>
-					<!-- Modal -->
-					<div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
-						<div class="modal-dialog modal-lg">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-									<h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$subcategory->name}}</h4>
-								</div>
-								<div class="modal-body">
-									<h3>{{$subcategory->name}} Description</h3>
-									<div class="row">
-										<div class="col-md-6">
-											<p>{{$subcategory->description}}</p>
-										</div>
-										<div class="col-md-6">
-											<img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal end -->
+                        <div class="overlay-container">
+                            <img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
+                            <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
+                                <i class="fa fa-search-plus"></i>
+                                <span>{{$subcategory->name}}</span>
+                            </a>
+                        </div>
+                        <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$subcategory->name}}</a>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$subcategory->name}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>{{$subcategory->name}} Description</h3>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p>{{$subcategory->description}}</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal end -->
                     </div>
                     <?php $flagproject+=1?>
                     @endif
@@ -518,12 +623,12 @@
     </div>
 </div>
 </div>
+@endif
 <!-- section end -->
-
+<!-- 
 <div class="line">
 <hr>
-</div>
-@endif
+</div>  -->
 @endif
 <!-- section start -->
 <!-- ================ -->
@@ -538,75 +643,75 @@
 
 <!-- .footer start -->
 <!-- ================ -->
-@if($findcontact==1)
+<div class="section_space"></div>
 @if($contacts)    
 <div class="footer section">
-	<div class="container">
-		<h1 class="title text-center" id="contact"><?php echo $mycontact;?></h1>
-		<div class="space"></div>
-		<div class="row">
-			<div class="col-sm-6">
+    <div class="container">
+        <h1 class="title text-center" id="contact"><?php echo $mycontact;?></h1>
+        <div class="space"></div>
+        <div class="row">
+            <div class="col-sm-6">
                 @foreach($contacts as $contact)
-				<div class="footer-content">
-					<p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p>
-					<ul class="list-icons">
-						<li><i class="fa fa-map-marker pr-10"></i>{{$contact->address}}</li>
-						<li><i class="fa fa-phone pr-10"></i> {{$contact->phone}}</li>
-						<li><i class="fa fa-fax pr-10"></i>{{$contact->mobile}}</li>
-						<li><i class="fa fa-envelope-o pr-10"></i>{{$contact->email}}</li>
-					</ul>
-					<ul class="social-links">
-                    @if(!empty($contact->facebook))
-						<li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
-					@endif
-                    @if(!empty($contact->twitter))	
-                        <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
-				    @endif
-                    @if(!empty($contact->google_plus)) 		
-                        <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
-					@endif
-                    @if(!empty($contact->skype))	
-                        <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
-					@endif
-                    @if(!empty($contact->linkedin))	
-                        <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
-					@endif
-                    @if(!empty($contact->youtube))	
-                        <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
-					@endif
-                    @if(!empty($contact->flickr))	
-                        <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
-					@endif
-                    @if(!empty($contact->pinterest))	
-                        <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
-					@endif
+                <div class="footer-content">
+                    <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p>
+                    <ul class="list-icons">
+                        <li><i class="fa fa-map-marker pr-10"></i>{{$contact->address}}</li>
+                        <li><i class="fa fa-phone pr-10"></i> {{$contact->phone}}</li>
+                        <li><i class="fa fa-fax pr-10"></i>{{$contact->mobile}}</li>
+                        <li><i class="fa fa-envelope-o pr-10"></i>{{$contact->email}}</li>
                     </ul>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div class="footer-content">
-					<form role="form" id="footer-form">
-						<div class="form-group has-feedback">
-							<label class="sr-only" for="name2">Name</label>
-							<input type="text" class="form-control" id="name2" placeholder="Name" name="name2" required>
-							<i class="fa fa-user form-control-feedback"></i>
-						</div>
-						<div class="form-group has-feedback">
-							<label class="sr-only" for="email2">Email address</label>
-							<input type="email" class="form-control" id="email2" placeholder="Enter email" name="email2" required>
-							<i class="fa fa-envelope form-control-feedback"></i>
-						</div>
-						<div class="form-group has-feedback">
-							<label class="sr-only" for="message2">Message</label>
-							<textarea class="form-control" rows="8" id="message2" placeholder="Message" name="message2" required></textarea>
-							<i class="fa fa-pencil form-control-feedback"></i>
-						</div>
-						<input type="submit" value="Send" class="btn btn-default">
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+                    <ul class="social-links">
+                    @if(!empty($contact->facebook))
+                        <li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                    @endif
+                    @if(!empty($contact->twitter))  
+                        <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                    @endif
+                    @if(!empty($contact->google_plus))      
+                        <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                    @endif
+                    @if(!empty($contact->skype))    
+                        <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
+                    @endif
+                    @if(!empty($contact->linkedin)) 
+                        <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                    @endif
+                    @if(!empty($contact->youtube))  
+                        <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
+                    @endif
+                    @if(!empty($contact->flickr))   
+                        <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
+                    @endif
+                    @if(!empty($contact->pinterest))    
+                        <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
+                    @endif
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="footer-content">
+                    <form role="form" id="footer-form">
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="name2">Name</label>
+                            <input type="text" class="form-control" id="name2" placeholder="Name" name="name2" required>
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="email2">Email address</label>
+                            <input type="email" class="form-control" id="email2" placeholder="Enter email" name="email2" required>
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="message2">Message</label>
+                            <textarea class="form-control" rows="8" id="message2" placeholder="Message" name="message2" required></textarea>
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                        <input type="submit" value="Send" class="btn btn-default">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12">
             <div id="emygoogleMap" style="width:100%;height:500px;">
@@ -619,7 +724,7 @@
     </div>
   @endforeach  
 </div>
-@endif
+
 @endif
 <!-- .footer end -->
 <!-- .subfooter start -->
@@ -639,4 +744,4 @@
 <!-- footer end -->
 
 
-@include('../temp1/footer')	
+@include('../temp1/footer') 

@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
+@section('sidebar')
+    @include('../header')
+@endsection
 
-@include('../header')
+@section('content')
 
 <div class="col-sm-9">
         <div class="row">
@@ -27,10 +28,10 @@
             </div>
         </div>
         <!-- /.row -->
-        <hr/>
+
 </div><!--end leftsideof from-->
 
- <br/><br/><hr/><hr/>
+ <br/><br/>
  
 </div>
 @endsection

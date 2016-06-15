@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
 
 
@@ -19,6 +20,7 @@
                 @endforeach
             </ul>
         </div>
+
       @endif
       {!!Form::open(['route'=>'site.store' , 'method'=>'post', 'files'=>true]) !!}
         <div class='form-group has-warning'>
@@ -75,14 +77,11 @@
                 <label class="btn btn-default btn-file">
                     Browse <input id="image" type="file" name="background_image" style="display: none;">
                 </label>  
+
             </div>
         </div>
-
-
- 
-      
-
         <span class='col-md-2'></span>
+
         <input type='submit' class='col-md-1 btn btn-default' name='ok' value='add' />
     {!!Form::close() !!}
 

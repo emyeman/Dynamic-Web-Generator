@@ -1,12 +1,18 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('../header')
+@endsection
+
 @section('content')
+
 <div class="container">
 
 <h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">Update <font color="red">Website</font></h5>
 <hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
 
 <div class="col-md-10 col-md-offset-1">
+
        @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -16,19 +22,21 @@
             </ul>
         </div>
       @endif
-      {!!Form::open(['route'=>['site.update', $site->id],'method'=>'patch','files'=>true]) !!}
+      {!!Form::open(['route'=>['site.update', $site->id],'method'=>'patch','files'=>true,'class'=>'form-horizontal']) !!}
       {{ method_field('patch') }}
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>SubDomain</label>
+
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
+
                 <input value='{{ $site->subdomain }}' class='form-control' name='subdomain' type='text'/>
             </div>
         </div>  
 
-         <div class='form-group has-warning'>
+         <div class='form-group'>
             <label class='col-md-2'>Site Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
@@ -38,7 +46,7 @@
             </div>
         </div>  
           
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Primary Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
@@ -46,7 +54,7 @@
             </div>
         </div>      
 
-         <div class='form-group has-warning'>
+         <div class='form-group'>
             <label class='col-md-2'>Secondary Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
@@ -54,7 +62,7 @@
             </div>
         </div>
 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Site Body</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>

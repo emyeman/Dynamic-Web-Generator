@@ -53,7 +53,7 @@
 					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 					if (target.length) {
 						$('html,body').animate({
-							scrollTop: target.offset().top-151
+							scrollTop: target.offset().top-90    /*Sally's update----change the number*/
 						}, 1000);
 						return false;
 					}

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
 
 <h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">Update <font color="red">User</font></h5>
@@ -17,10 +18,11 @@
                 @endforeach
             </ul>
         </div>
-      @endif
-      {!!Form::open(['route'=>['user.update', Auth::user()->id ],'method'=>'patch','files'=>true]) !!}
-      {{ method_field('patch') }}
-        <div class='form-group has-warning'>
+    @endif
+    {!!Form::open(['route'=>['user.update', Auth::user()->id ],'method'=>'patch','files'=>true,'class'=>'form-horizontal']) !!}
+    {{ method_field('patch') }}
+
+        <div class='form-group'>
             <label class='col-md-2'>Name</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
@@ -30,7 +32,7 @@
             </div>
         </div>  
 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Email</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
@@ -38,8 +40,7 @@
             </div>
         </div>
 
-
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Mobile</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
@@ -47,8 +48,8 @@
             </div>
         </div>
 
-
-        <div class='form-group has-warning'>
+        <img id="profile" class="col-md-offset-3" src="{{ Auth::user()->image }}" width='300px' height='300px'>
+        <div class='form-group'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-8 input-group'>
                 
@@ -58,12 +59,10 @@
                             <img id="profile" class="col-md-offset-2" src="{{ Auth::user()->image }}" alt="">
             </div>
         </div>
-         
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-1 btn btn-default' name='ok' value='update' />
     {!!Form::close() !!}
 </div><!--end leftsideof from-->
-
 </div>
 </div>
 @endsection

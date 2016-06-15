@@ -36,7 +36,7 @@
         
 
         <!-- Worthy core CSS file -->
-        <link href="{{ url('/assets/css/style.css')}}" rel="stylesheet">
+        <link href="{{ url('/assets/css/sally/style.css')}}" rel="stylesheet">
 
         <!-- Custom css --> 
         <link href="{{ url('/assets/css/custom.css')}}" rel="stylesheet">

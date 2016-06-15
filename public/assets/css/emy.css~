@@ -22,7 +22,8 @@
 .site-header-wrap {
     margin-bottom: 0px;
     border-bottom: 1px solid #cddaee;
-    background: #F7F4F4
+    background: #333;
+    /* background: #F7F4F4; */
 
 }
 
@@ -31,7 +32,6 @@
     padding: 30px 0px 25px;
     position: relative;
     border-bottom: 2px solid #cddaee;
-    /* background: #1b1b1b url("../img/dark-bg.png"); */
 }
 
 li{
@@ -49,11 +49,13 @@ li{
     /* padding: 15px; */
     display: inline-block;
     border-bottom: 1px solid #1a1a1a;
-    background: #E4DFDF;
+    /* background: #E4DFDF; */
+    background: #333;
     transition: all linear 0.15s;
     font-size: 1.200em;
     text-shadow: 0px 1px 0px #1a1a1a;
-    color: #9A94ff;
+    /* color: #9A94ff; */
+    color:#fff; 
 }
 .container {
     padding-right: 0px; 
@@ -62,120 +64,71 @@ li{
     margin-left: auto; 
 }
 
-.run{
-    /* margin-left: 100px */
-    
-}
-
 #profile
 {
     width: 50px;
     height: 50px;
-    display: inline;
 }
-
-/*!
-    * Bootstrap 3.0 IconPicker Style
-    * Custom Style Elements for IconPicker
-    *
-    * Intigrated, Processed and  Built with passion by @titosust; Web Developer @vizrt
-  */
-  
-
-
-
-
-
-        #wraper{position:absolute;width:400px; left:50%;margin-left: -200px;top:100px;}
-        input{padding-bottom: 30px;}
+.run{
+    /* margin-left: 100px */
     
-
-.icon-popup{
-    position: absolute;
-	width: 278px;
-	height: 268px;
-	color: #000;
-	font-size: 14px;
 }
-.icon-popup:before {
- content: '';
-display: inline-block;
-border-left: 7px solid transparent;
-border-right: 7px solid transparent;
-border-bottom: 7px solid #ccc;
-border-bottom-color: rgba(0,0,0,0.2);
-position: absolute;
-top: -7px;
-left: 6px;
+.google{
+    color: #337ab7;
+    size: 100px;
+    /* background-color: #337ab7; */
+    /* border-color: #2e6da4; */
 }
-.icon-popup:after {
-  content: '';
-display: inline-block;
-border-left: 6px solid transparent;
-border-right: 6px solid transparent;
-border-bottom: 6px solid #fff;
-position: absolute;
-top: -6px;
-left: 7px;
-}
-.icon-popup a:hover{
-	background-color:#eee;
-}
-.icon-popup .icon-title{
-	position: relative;
-	background-color: #563d7c;
-	color: #fff;
-	border: 1px solid #463265;
-	
-}
-.icon-popup .icon-title h4{
-	margin: 0;
-	padding: 8px 10px;
-	font-size: 17px;
-	font-weight: bold;
-}
-.pointer{
-	cursor: pointer;
-}
-.icon-popup .ip-control{
-	background-color: white;
-	height: 40px;
-	margin-top: -2px;
-	padding-top: 2px;
-	border-bottom: 1px solid #e5e5e5;
-}
-.icon-popup .ip-search{
-	width: 171px;
-	padding:2px 0px 5px 27px;
-	margin-left: 8px;
-	background-repeat: no-repeat;
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAAAQAAAAEABcxq3DAAACcElEQVQ4y5XSQUiaYRgH8P+rzlSS6lKuZbkvvjq0NWfg0Xu1jO0gWbO5ctBtxDrtsE51CIJZgxWLMQbtsA7TQ5RX5ygPFbRD1rBJDko+ZtI++fT7nM8uDpoWrD+8p/d5fu8Dz8tQChEZs9nsk4ODgwcnJye8RqNRmpubd3ief69Wq1dwSTSl5tbt7e2VYDB4N51Ow2AwoFgsQpKkGxzH3Usmkx+amppGGWO5coARkXFra+vzwuLCnVau9ai3t3fWbDZHC4WCPhaL3Q8EAmMqxrTPJiYWTSbTWMUIv0Tx6fj4OE1OTsay2ewLIpo9f59IfPf6fD7l1fw8EVFXeb/q6+6uK5FIwOl0rhoMBhlA5HyBxXLzncPhWN/Y3IQgCP0VwOHhIQcALS0tqwDeMMY+lRfxPB8WBAHHx8dcBQBAyWQykGVZwxj7SUS6sqMSRdEoiiJUKpVSsYW2tradVCplDofDLiI6BVAPoACAlR44Da2HempqamCxWL5UAFardamzs9M5NTXt5nk+bbPZJAAmAL8B/FheXr4VCAa6bDYbdHodVawRAPb29t4ODAw8FgShODw8vGG321O5XE4dCoW4tbW120ajEfl8Hn19fTm/3/9Iq9V+/EchomvxePyl1+stNNQ3kE6nI71eTx0dHdTT3U11dXV0vbGRqquraWRkRM7n864LvyURWY+Oks8jkchSNBp9nclkfLIse0ZHfRIAqq2tJcYYDT0cuhy5KIqi9Hs8HgkAVVVVEQByuVzy2dnZ1ZDBwUEJADHGCADNzMyk/xv4i7jdbgkAtbe30/7+/vSVAACQZdk5Nzf3LR6PTwHAHzdFLfF/9+ryAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDEwLTAyLTExVDExOjIxOjA0LTA2OjAw10lxMgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAwNi0wNS0zMFQxMToxMzowNi0wNTowMGfB+zwAAAAASUVORK5CYII=) no-repeat 3px;
-
+#map,#savelocation{
+    margin: 5px auto;
+    background: -webkit-linear-gradient(top,#C5DEDE,#A4A4A9);
+    border-radius: 0px;
+    border: 2px solid #C0EFEF;
+    width: 0%;
+    text-align: center;
 }
 
-.icon-popup .icon-list{position:absolute;top: 43px;bottom:0;overflow: hidden;}
-.icon-list ul{
-	margin: 0;
-	padding: 0;
-	margin-bottom: 10px;
-}
-.icon-popup .ip-control ul{margin: 4px 0;padding: 0;}
-.icon-popup .ip-control ul li{float: left;list-style-type: none;}
-.icon-popup .ip-control ul li a{margin-top: -3px;color:#373737;}
-.icon-popup .ip-control ul li:first-child{margin-left: 3px;}
-.icon-popup .ip-control ul li:last-child{position: absolute;right: 0;top: 9px;}
+#sel_googlemap{
+    width: 8%;
+    border-radius: 200px;
+    /* background: -webkit-linear-gradient(top,#C5DEDE,#A4A4A9); */
+    background: -webkit-linear-gradient(top,#98D6D6,#D7D7DE);
+    border:2px solid #94A0A0;
+    text-align: center;
 
-.icon-list ul li{
-	display: inline-block;
-	margin: 5px;
-	float: left;
-	border: 1px dotted #eee;
+}
+#spphone,#spmobile,#spemail,#spfax,#spfacebook,#spgoogle,#spinstagram,#splinkedin,#sppinterest,#spyoutube{
+        font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
+        color: black;
+        display: none;
+    } 
+/* 
+#spemail{
+        font: normal normal bold 14px/2 Verdana, Geneva, sans-serif;
+        color: black;
+        display: none;
+    }  */
+
+.Error{
+        background: rgba(255,221,221,1);
+        /* color: red; */
 }
 
-.icon-list ul li a{
-	display: block;
-	text-decoration: none;
-	color:#373737;
-	padding: 6px 10px;
+.cp-color-picker
+{
+    z-index: 10;
 }
-.icon-list ul li a:hover{color:#000;}
+
+
+.modal-backdrop.in {
+    /* filter: alpha(opacity=50); */
+    opacity: 0;
+}
+.section {
+    background-color: #DDDDDD;
+    padding: 0px;
+}
+
+/*.space {
+    padding: 1px;
+}*/

@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('../header')
+@endsection
+
 @section('content')
-<div class="container">
-
-@include('../header')
-
-<div class="col-sm-9">
     <h2 class='page-header'>
         Add New Menu
     </h2>
@@ -19,36 +18,27 @@
         </div>
     @endif
 
-      <br><br>
-      {!!Form::open(['route'=>'menu.store','method'=>'post']) !!}
+    <br><br>
+    {!!Form::open(['route'=>'menu.store','method'=>'post','class'=>'form-horizontal']) !!}
         <div class='form-group'>
-            <label class='col-md-2'>Title</label>
+            <label class='col-md-2'>Title*</label>
             <div class='col-md-10 input-group'>
-                <input placeholder='title...' class='form-control' name='title' type='text'/>
+                <input placeholder='title...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
             </div>
         </div>  
         <div class='form-group'>
             <label class='col-md-2'>Parent</label>
             <div class='col-md-10 input-group'>
-                {!! Form::select('parent_id', $menus, null, ['class' => 'form-control','placeholder' => 'Pick a menu..']) !!}
+                {!! Form::select('parent_id', $menus, old('parent_id'), ['class' => 'form-control','placeholder' => 'Pick a menu..']) !!}
             </div>
         </div>  
         <div class='form-group'>
-            <label class='col-md-2'>Page</label>
+            <label class='col-md-2'>Page*</label>
             <div class='col-md-10 input-group'>
-                {!! Form::select('route', $pages, null, ['class' => 'form-control','placeholder' => 'Pick a page..']) !!}
+                {!! Form::select('route', $pages, old('route'), ['class' => 'form-control','placeholder' => 'Pick a page..']) !!}
             </div>
         </div>    
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
     {!!Form::close() !!}
-
-
-      <br><br>
-      <br><br>
-</div><!--end leftsideof from-->
-
- <br/><br/><hr/><hr/>
-
-</div>
 @endsection

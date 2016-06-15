@@ -66,9 +66,26 @@
     <!--News section-->
     
 	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+
+  <?php  
+    $findpage_top=0;
+    $findservices=0;
+    $findabout=0;
+    $findgallery=0;
+    $findnews=0;
+    $findpromotion=0;
+    $findcontact=0;
+    $myservices='';
+    $mypage_top='';
+    $myabout='';
+    $mycontact='';
+    $mynews='';
+    $mypromotion='';
+    $mygallery='';
+?>
   @if(isset($crusals))
 
-	<div id="wowslider-container0">
+	<div id="page_top">
 
 	<div class="ws_images">
     <ul>
@@ -78,23 +95,14 @@
         <li><img src="{{ url('/assets/images/')}}{{ $crusal->image }}" alt="{{ $crusal->title }}" title="{{ $crusal->title }}" id="wows0_{{ $count }}"/></li> 
         <?php $count++; ?>  
     @endforeach
-
-  		{{-- <li><img src="data0/images/8.jpg" alt="Welcome" title="Welcome" id="wows0_0"/></li>
-  		<li><img src="data0/images/1.jpg" alt="Creating a unique look." title="Creating a unique look." id="wows0_1"/></li>
-  		<li><a href="http://wowslider.com/vi"><img src="data0/images/3.jpg" alt="cssslider" title="Never been easier." id="wows0_2"/></a></li>
-  		<li><img src="data0/images/5.jpg" alt="Creating a unique look." title="Creating a unique look." id="wows0_3"/></li> --}}
   	</ul>
   </div>
 
 	<div class="ws_bullets">
   <div>
-		<a href="#" title="{{ $crusals[0]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/8.jpg') }}" alt="{{ $crusals[0]->title }}"/>1</span></a>
-
-		<a href="#" title="{{ $crusals[1]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/1.jpg') }}" alt="{{ $crusals[1]->title }}"/>2</span></a>
-
-		<a href="#" title="{{ $crusals[2]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/3.jpg') }}" alt="{{ $crusals[2]->title }}"/>3</span></a>
-
-		<a href="#" title="{{ $crusals[3]->title }}"><span><img src="{{ url('assets/Temp2/en/data0/tooltips/5.jpg') }}" alt="{{ $crusals[3]->title }}"/>4</span></a>
+     @for ($x = 0; $x < count($crusals); $x++)
+		<a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[0]->title }}"/>1</span></a>
+    @endfor
 	</div>
   </div>
 
@@ -140,30 +148,72 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#wowslider-container0" class="page-scroll">Home</a></li>
-            <li><a href="#about" class="page-scroll">About</a></li>
-            <li><a href="#promotion" class="page-scroll">Promotions</a></li>
-            <li><a href="#services" class="page-scroll">Services</a></li>
-            <li><a href="#gallery" class="page-scroll">Products</a></li>
-            <li><a href="#news" class="page-scroll">News</a></li>
-            <li><a href="#contact" class="page-scroll">Contact</a></li>
+            @for ($x = 0; $x < count($urlpages); $x++)
 
-
-
+            @if($urlpages[$x]=='page_top')
+              <li>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+              </li>
+              <?php $findpage_top=1;
+              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+            @endif 
+            @if($urlpages[$x]=='services')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findservices=1;
+                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='about')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findabout=1;
+                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='gallery')
+                <li>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findgallery=1;
+                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='news')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findnews=1;
+                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='promotion')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findpromotion=1;
+                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='contact')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                 <?php $findcontact=1;
+                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+            @endif    
+             @endfor
             <li>
-    <div id="mydropdown">
-   <div class="btn-group dropdown" >
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    <span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" >
-    <li><center><span class="lang-sm lang-lbl" lang="ar"></span></center></li>
-   
-  </ul>
-</div>
-    </div>
+              <div id="mydropdown">
+               <div class="btn-group dropdown" >
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" >
+                <li><center><a href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></center></li>
+               
+              </ul>
+            </div>
+                </div>
             </li>
-
+         
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -214,6 +264,7 @@
 
     <!-- Services Section
     ==========================================-->
+    @if($findservices==1)
     @if(isset($services))
 
     <div id="services" class="text-center">
@@ -248,11 +299,11 @@
             </div>
         </div>
     </div>
-
+  @endif
   @endif
  <!-- promotion
     ==========================================-->
-
+@if($findpromotion==1)
 @if(isset($promotions))
 
  <div id="promotion" class="text-center">
@@ -298,15 +349,15 @@
             </div>
         </div>
     </div>
-
+@endif
 
 @endif
 
 
     <!-- Products Section
     ==========================================-->
+  @if($findgallery==1)
     @if(isset($cats_and_subcats))
-
     <div id="gallery">
         <div class="container"> <!-- Container -->
             <div class="section-title text-center center">
@@ -328,7 +379,7 @@
                             <li> <button class="btn btn-default btn-xs" type="button" id="buton1"  ><a href="#" data-filter="*" class="active">All</a>
                             </button></li>
 
-                              {{-- display the category and sub categories --}}
+                              <!--  display the category and sub categories - -->
 
                               @foreach($cats_and_subcats as $cat_and_subcats)
                                <li>
@@ -354,7 +405,7 @@
             </div>
 
             <div id="lightbox" class="row">
-                {{-- display the product here --}}
+                <!--display the product here  -->
                 @foreach($cats_and_subcats as $cat_and_subcats)
                   @foreach($cat_and_subcats->subcategories as $subcategory)
                     @foreach($subcategory->products as $product)
@@ -383,11 +434,10 @@
         </div>
     </div>
 @endif
-
-
-
+@endif
     <!-- News Section
     ==========================================-->
+    @if($findnews==1)
     @if(isset($news))
 
     <div id="news" class="text-center">
@@ -425,14 +475,13 @@
         </div>
     </div> 
 
-
-
-
-
-  @endif
+@endif
+@endif
 
     <!-- Contact Section
     ==========================================-->
+  @if($contacts)  
+    @if($findcontact==1)
     <div id="contact" class="text-center">
         <div class="container">
 
@@ -479,54 +528,48 @@
 
 
  
-
-@if(isset($contacts))
+  @endif
 
     <nav id="footer">
         <div class="container">
             <div class="pull-left fnav">
                 <p>ALL RIGHTS RESERVED. COPYRIGHT © 2016.  </p>
             </div>
+            @foreach($contacts as $contact)
             <div class="pull-right fnav">
                 <ul class="footer-social">
-                        @if(!empty($contacts->facebook))
-                            <li><a href="{{ $contacts->facebook }}"><i class="fa fa-facebook"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->twitter))  
-                            <li><a href="{{ $contacts->twitter }}"><i class="fa fa-twitter"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->google_plus))    
-                            <li><a href="{{ $contacts->google_plus }}"><i class="fa fa-google-plus"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->skype))  
-                            <li><a href="{{ $contacts->skype }}"><i class="fa fa-skype"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->linkedin)) 
-                            <li><a href="{{ $contacts->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->youtube))  
-                            <li><a href="{{ $contacts->youtube }}"><i class="fa fa-youtube"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->flickr)) 
-                            <li><a href="{{ $contacts->flickr }}"><i class="fa fa-flicker"></i></a></li>
-                        @endif
-
-                        @if(!empty($contacts->pinterest))  
-                            <li><a href="{{ $contacts->pinterest }}"><i class="fa fa-pinterest"></i></a></li>
-                        @endif
+                    @if(!empty($contact->facebook))
+                      <li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                    @endif
+                              @if(!empty($contact->twitter))  
+                                  <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                      @endif
+                              @if(!empty($contact->google_plus))    
+                                  <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                    @endif
+                              @if(!empty($contact->skype))  
+                                  <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
+                    @endif
+                              @if(!empty($contact->linkedin)) 
+                                  <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                    @endif
+                              @if(!empty($contact->youtube))  
+                                  <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
+                    @endif
+                              @if(!empty($contact->flickr)) 
+                                  <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
+                    @endif
+                              @if(!empty($contact->pinterest))  
+                                  <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
+                    @endif
                 </ul>
             </div>
+           @endforeach 
         </div>
     </nav> 
 
-@endif
-   
+  @endif
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url('assets/Temp2/en/js/jquery.1.11.1.js') }}"></script>
    
