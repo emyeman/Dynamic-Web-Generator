@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
+@section('sidebar')
+    @include('../header')
+@endsection
 
-@include('../header')
+@section('content')
 
 <div class="col-sm-9">
       <h2><div class='col-lg-1 col-ms-1'>
@@ -205,13 +206,13 @@
       <br><br>
 </div><!--end leftsideof from-->
 
- <br/><br/><hr/><hr/>
+ <!-- <br/><br/><hr/><hr/> -->
 
 </div>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
-<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){

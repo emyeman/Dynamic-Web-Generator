@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
+@section('sidebar')
+    @include('../header')
+@endsection
 
-@include('../header')
+@section('content')
+
 {!! Html::style('assets/css/table-scroll.css') !!}
 <div class="col-sm-9">
         <div class="row">
@@ -121,12 +123,12 @@
         <hr/>
 </div><!--end leftsideof from-->
 
- <br/><br/><hr/><hr/>
-
+<!--  <br/><br/><hr/><hr/>
+ -->
 </div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
-<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -146,6 +148,8 @@
             });
             document.getElementById('del_create').style.display = "block";
             document.getElementById('del_edit').style.display = "none";
+
+            // for delete contact
             del_contactus=$(this);
             id=$(this).attr('id');
             $.ajax({
