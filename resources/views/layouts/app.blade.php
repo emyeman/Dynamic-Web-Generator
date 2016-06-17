@@ -14,7 +14,7 @@
   
     <!-- ********************************************************************* -->
     
-    {!! Html::style('assets/bootstrap/css/bootstrap.min.css') !!}
+    {!! Html::style('assets/bootstrap-3.2.0/css/bootstrap.min.css') !!}
     <!-- jQuery UI -->
     <!--<link href="plugins/jquery-ui/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />-->
     <!--[if lt IE 9]>
