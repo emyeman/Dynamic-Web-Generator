@@ -30,7 +30,8 @@
                     <tr>
                     @if($domain)
                         <td>{{ $domain->Domain_name }}</td>
-                        <td><a href="url('/domain/edit/'.$domain->id)}}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="{{ url('/domain/edit/'.$domain->id) }}">
+                        <span class="glyphicon glyphicon-edit edit" id="{{$domain->id}}"></span></a></td>
                     @else
                         <h1>Empty Set</h1>
                     @endif

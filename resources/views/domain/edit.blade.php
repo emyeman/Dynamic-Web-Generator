@@ -26,7 +26,7 @@
         </div>
     </div>    
     <span class='col-md-2'></span>
-    <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='Update' />
+    <input type='submit' class='col-md-1 btn btn-primary' name='ok' value='Update' style="margin:10px 10px;" />
   {!!Form::close() !!}
 
 @endsection

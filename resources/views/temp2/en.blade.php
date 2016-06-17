@@ -51,9 +51,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-	
 	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-	<link rel="stylesheet" type="text/css" href="{{ url('assets/Temp2/en/engine0/style.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ url('assets/Temp2/en/engine0/style.css') }}"/>
+
 	<script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/jquery.js') }}"></script>
 	<!-- End WOWSlider.com HEAD section --></head>
   <body>
@@ -140,7 +140,7 @@
             <span class="icon-bar"></span>
           </button>
           @if(isset($header))
-          <a class="navbar-brand" href="index.html"><img id="mylogo" src="{{ url('/') }}{{ $header->logo }}" ></a>
+            <a class="navbar-brand" href="index.html"><img id="mylogo" src="{{ url('/') }}{{ $header->logo }}" ></a>
           @endif
           
         </div>
@@ -264,7 +264,7 @@
 
     <!-- Services Section
     ==========================================-->
-    @if($findservices==1)
+  
     @if(isset($services))
 
     <div id="services" class="text-center">
@@ -300,10 +300,8 @@
         </div>
     </div>
   @endif
-  @endif
  <!-- promotion
     ==========================================-->
-@if($findpromotion==1)
 @if(isset($promotions))
 
  <div id="promotion" class="text-center">
@@ -351,12 +349,10 @@
     </div>
 @endif
 
-@endif
 
 
     <!-- Products Section
     ==========================================-->
-  @if($findgallery==1)
     @if(isset($cats_and_subcats))
     <div id="gallery">
         <div class="container"> <!-- Container -->
@@ -434,10 +430,8 @@
         </div>
     </div>
 @endif
-@endif
     <!-- News Section
     ==========================================-->
-    @if($findnews==1)
     @if(isset($news))
 
     <div id="news" class="text-center">
@@ -476,12 +470,10 @@
     </div> 
 
 @endif
-@endif
 
     <!-- Contact Section
     ==========================================-->
-  @if($contacts)  
-    @if($findcontact==1)
+  @if(isset($contacts))  
     <div id="contact" class="text-center">
         <div class="container">
 
@@ -528,7 +520,6 @@
 
 
  
-  @endif
 
     <nav id="footer">
         <div class="container">

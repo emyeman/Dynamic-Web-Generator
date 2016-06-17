@@ -53,7 +53,7 @@
         <div id="header" class="header-wrapper">
             <div class="header-inside">
                 <div class="logo">
-                    <a href="index.html" title="ALTOS Agency"><img class="logoImage" src="{{ url('assets/DynamicWebGenerator/images/logo.png')}}" alt="ALTOS Agency"/><img class="logoImageRetina" src="{{ url('assets/DynamicWebGenerator/images/logo-retina.png')}}" alt="ALTOS Agency"/></a>
+                    <a href="#" title="ALTOS Agency"><img class="logoImage" src="{{ url('assets/DynamicWebGenerator/images/logo.png')}}" alt="ALTOS Agency"/><img class="logoImageRetina" src="{{ url('assets/DynamicWebGenerator/images/logo-retina.png')}}" alt="ALTOS Agency"/></a>
                     <div class="clear"></div>
                 </div>
                 <div class="menu-wrapper">
@@ -73,21 +73,6 @@
                                     </ul>
                                 </li>
                                 
-                                @if (Auth::guest())
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
-
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
-
-                                @else
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
-
-                                    @if (isset($site))
-                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                                    @else
-                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
-                                    @endif
-                                @endif
-
                                
 
                             @if (Request::path() == '/')
@@ -99,6 +84,29 @@
 
                                 <li class="menu-item"><a href="#our-contact">Contact</a></li>
                             @endif
+
+                             @if (Auth::guest())
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
+
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+
+                                @else
+                                    
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="#home"><img style="width:45px;height:30px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle"></a>
+                                     <ul class="submenu_1">
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+                                  
+
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+                                     </ul>
+                                    </li>
+                                @endif
+
+                               
                             </ul>
                         </div>
                     </div>
@@ -332,7 +340,7 @@
 
                                                             </div>
                                                         </div>
-                                                        <div class="wpb_content_element vc_altos_button wpb_animate_when_almost_visible wpb_appear"><a class="altos-button" target="_self" href="index.html#services" title="&lt;strong&gt;our&lt;/strong&gt; services"><strong>our</strong> services</a></div>
+                                                        <div class="wpb_content_element vc_altos_button wpb_animate_when_almost_visible wpb_appear"><a class="altos-button" target="_self" href="#services" title="&lt;strong&gt;our&lt;/strong&gt; services"><strong>our</strong> services</a></div>
                                                     </div>
                                                 </div>
                                             </div>
