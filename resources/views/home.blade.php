@@ -53,7 +53,7 @@
         <div id="header" class="header-wrapper">
             <div class="header-inside">
                 <div class="logo">
-                    <a href="index.html" title="ALTOS Agency"><img class="logoImage" src="{{ url('assets/DynamicWebGenerator/images/logo.png')}}" alt="ALTOS Agency"/><img class="logoImageRetina" src="{{ url('assets/DynamicWebGenerator/images/logo-retina.png')}}" alt="ALTOS Agency"/></a>
+                    <a href="#" title="ALTOS Agency"><img class="logoImage" src="{{ url('assets/DynamicWebGenerator/images/logo.png')}}" alt="ALTOS Agency"/><img class="logoImageRetina" src="{{ url('assets/DynamicWebGenerator/images/logo-retina.png')}}" alt="ALTOS Agency"/></a>
                     <div class="clear"></div>
                 </div>
                 <div class="menu-wrapper">
@@ -340,7 +340,7 @@
 
                                                             </div>
                                                         </div>
-                                                        <div class="wpb_content_element vc_altos_button wpb_animate_when_almost_visible wpb_appear"><a class="altos-button" target="_self" href="index.html#services" title="&lt;strong&gt;our&lt;/strong&gt; services"><strong>our</strong> services</a></div>
+                                                        <div class="wpb_content_element vc_altos_button wpb_animate_when_almost_visible wpb_appear"><a class="altos-button" target="_self" href="#services" title="&lt;strong&gt;our&lt;/strong&gt; services"><strong>our</strong> services</a></div>
                                                     </div>
                                                 </div>
                                             </div>
