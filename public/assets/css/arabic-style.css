@@ -1,0 +1,16 @@
+.breadcrumb{
+    font-size:20px;
+}
+
+.title, .subtitle{
+
+    font-size:6em;
+}
+
+
+@media (min-width: 992px){
+    .col-md-offset-6 {
+        margin-right: 0;
+    }
+}
+
