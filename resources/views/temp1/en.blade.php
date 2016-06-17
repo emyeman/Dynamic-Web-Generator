@@ -20,6 +20,7 @@
                                     $mypromotion='';
                                     $mygallery='';
                                 ?>
+
                                 @for ($x = 0; $x < count($urlpages); $x++)
 
                                             @if($urlpages[$x]=='page_top')
@@ -181,12 +182,12 @@
 
 @endif
 <div class="section_space"></div>
-@if($aboutus)
+
 <!-- <div class="line">
 <hr>
 </div>
  -->
-
+@if($aboutus)
 <!-- section start -->
 <!-- ================ -->
 

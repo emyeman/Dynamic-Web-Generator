@@ -1,30 +1,24 @@
 
-		<!-- JavaScript files placed at the end of the document so the pages load faster
-		================================================== -->
-		<!-- Jquery and Bootstap core js files -->
-		<script type="text/javascript" src="{{ url('/assets/plugins/jquery.min.js')}}"></script>
-		<script type="text/javascript" src="{{ url('/assets/bootstrap/js/bootstrap.min.js')}}"></script>
 
-		<!-- Modernizr javascript -->
-		<script type="text/javascript" src="{{ url('/assets/plugins/modernizr.js')}}"></script>
-
-        <script type="text/javascript" src="{{ url('/assets/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js') }}"></script>
-
-		<!-- Isotope javascript -->
-		<script type="text/javascript" src="{{ url('/assets/plugins/isotope/isotope.pkgd.min.js')}}"></script>
-		
-		<!-- Backstretch javascript -->
-		<script type="text/javascript" src="{{ url('/assets/plugins/jquery.backstretch.min.js')}}"></script>
-
-		<!-- Appear javascript -->
-		<script type="text/javascript" src="{{ url('/assets/plugins/jquery.appear.js')}}"></script>
-
-		<!-- Initialization of Plugins -->
-		<script type="text/javascript" src="{{ url('/assets/js/template.js')}}"></script>
-
-		<!-- Custom Scripts -->
-		<script type="text/javascript" src="{{ url('/assets/js/custom.js')}}"></script>
-
-
-	</body>
+<!-- Load js libs only when the page is loaded. -->
+<script src="{{url('assets/js/jquery.js')}}"></script>
+<script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{url('assets/js/modernizr.custom.72241.js')}}"></script>
+<!--<script src="{{url('assets/js/isotope.pkgd.min.js')}}"></script>-->
+    <script src="{{url('assets/js/isotope.pkgd.min.js')}}"></script>
+<!-- Custom template scripts -->
+<script src="{{url('assets/js/magister.js')}}"></script>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+    function initialize() {
+        var mapProp = {
+            center:new google.maps.LatLng(51.508742,-0.120850),
+            zoom:5,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</body>
 </html>

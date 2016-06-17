@@ -1,48 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author"      content="mSergey Pozhilov (GetTemplate.co)">
-    
-    <title>التمبلت 2</title>
-
-    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
-    
-    <!-- Bootstrap itself -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="assets/css/magister.css">
-
-    <!-- Fonts -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
-    <!--flag font-->
-        <link href="assets/css/languages.min.css" rel="stylesheet">
-<!--Arabic language -->
-        <link href="assets/css/bootstrap-rtl.css" rel="stylesheet">
-    <link href="assets/css/arabic-style.css" rel="stylesheet">
-
-</head>
-
-<!-- use "theme-invert" class on bright backgrounds, also try "text-shadows" class -->
-<body class="theme-invert">
-
-<nav class="mainmenu">
-  <div class="container-fluid hidden-lg hidden-md">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header ">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
-        <span class="sr-only">القائمة</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-   
-    </div>
+@include('../temp3/header')
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -781,29 +737,5 @@
 </section>
 
 
+@include('../temp3/footer')
 
-
-<!-- Load js libs only when the page is loaded. -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/modernizr.custom.72241.js"></script>
-<!--<script src="assets/js/isotope.pkgd.min.js"></script>-->
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-<!-- Custom template scripts -->
-<script src="assets/js/magister.js"></script>
-<script src="http://maps.googleapis.com/maps/api/js"></script>
-<script>
-    function initialize() {
-        var mapProp = {
-            center:new google.maps.LatLng(51.508742,-0.120850),
-            zoom:5,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-</body>
-</html>
-
-@include('../temp1/footer') 

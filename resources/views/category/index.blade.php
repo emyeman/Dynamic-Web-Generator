@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('../header')
+@endsection
+
 @section('content')
-<div class="container">
 
-@include('../header')
-
-<div class="col-sm-9">
+<div class="col-sm-8">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Show Categories
@@ -63,7 +64,6 @@
         <div  id="alldata"></div>
 </div><!--end leftsideof from-->
 
- <br/><br/><hr/><hr/>
 
 
  </div>

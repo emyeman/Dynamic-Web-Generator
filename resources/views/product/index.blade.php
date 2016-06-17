@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
+@section('sidebar')
+    @include('../header')
+@endsection
 
-@include('../header')
+@section('content')
+
 
 <div class="col-sm-9">
         <div class="row">
@@ -65,7 +67,6 @@
          @endif     
 </div><!--end leftsideof from-->
 
- <br/><br/><hr/><hr/>
   
  </div>
 
