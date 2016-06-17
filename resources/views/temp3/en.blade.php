@@ -1,5 +1,24 @@
 @include('../temp3/header')
 
+</head>
+
+<!-- use "theme-invert" class on bright backgrounds, also try "text-shadows" class -->
+<body class="theme-invert">
+
+<nav class="mainmenu">
+  <div class="container-fluid hidden-lg hidden-md">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header ">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+   
+    </div>
+<!-- *********************************************************************** -->
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -203,6 +222,7 @@
     </div>
 </section>
 @endif
+
 @if($aboutus)
 <!-- Second (About) section -->
 <section class="section" id="about">
@@ -210,7 +230,7 @@
     
         <h2 class="text-center title"><?php echo $myabout; ?></h2>
         <div class="row backg">
-            <div class="col-sm-4 col-sm-offset-1">  aboutus  
+            <div class="col-sm-4 col-sm-offset-1">  <?php echo $myabout; ?>  
                 <!--<h5><strong>Where's my lorem ipsum?<br></strong></h5>
                 <p>Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?</p>  -->
                 <?php $img='/assets/images'.$aboutus->image ?>
@@ -243,7 +263,7 @@
                 <!-- isotope filters start -->
                 <div class="filters text-center">
                     <ul class="nav nav-pills">
-                        <li class="active"><a href="#" data-filter="*">All</a></li>
+                        <li class="active"><a href="#" data-filter="*">All <?php echo $mygallery;?></a></li>
                         @foreach($categories as $category)
                             <li>
 
@@ -338,8 +358,10 @@
 </div>
 </section>
 @endif
+
+
+<!-- Fourth (services) section -->
 @if($services)
-<!-- Fourth (Contact) section -->
 <section class="section" id="services">
     <div class="container">
     
@@ -513,9 +535,6 @@
 @endif
 
 
-
-
-
 <!-- Fourth (Contact) section -->
 @if($contacts) 
 <section class="section" id="contact">
@@ -527,7 +546,7 @@
         <div class="col-sm-6">
         @foreach($contacts as $contact) 
             <div class="footer-content">
-                <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p>
+                <!-- <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p> -->
                 <ul class="list-icons">
                     <li><i class="fa fa-map-marker pr-10"></i>   {{$contact->address}}</li>
                     <li><i class="fa fa-phone pr-10"></i>    {{$contact->phone}}</li>
