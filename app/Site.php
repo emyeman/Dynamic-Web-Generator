@@ -78,5 +78,10 @@ class Site extends Model
     {
         return $this->hasOne(GoogleMap::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
     
 }

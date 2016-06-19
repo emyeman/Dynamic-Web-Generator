@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/news_promotion/create/{t}', 'NewsPromotionController@create')->name('news_promotion.create');
 	Route::resource('/news_promotion','NewsPromotionController',['except' => ['create', 'index']]);
 	Route::resource('/aboutus','AboutUsController',['except' => ['index']]); 
+	Route::post('/menu/updateall','MenuController@updateAll');
 	Route::resource('/menu','MenuController');
 	Route::resource('/page','PagesController');
 	Route::resource('/crusal','CrusalController');  
@@ -64,6 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/googlemap','GoogleMapController');
 
 	Route::resource('/template','TemplateController');
+	Route::get('/message/unseen','MessageController@unseen');
+	Route::resource('/message','MessageController');
 
 
 
