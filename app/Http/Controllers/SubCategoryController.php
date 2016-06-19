@@ -15,7 +15,6 @@ use File;
 
 class SubCategoryController extends Controller
 {
-    
 	public function index(){
         if (Auth::user()){
             //select all categories have category_id==NULL
@@ -59,8 +58,8 @@ class SubCategoryController extends Controller
             ]);
 
             $subcategory= new Category;
-            $subcategory->name=$request->input('title_subcategory');
-            $subcategory->description=$request->input('subdescription');
+            $subcategory->name=trim($request->input('title_subcategory'));
+            $subcategory->description=trim($request->input('subdescription'));
             // for uploadimage
             if(Input::file('image_subcategory')){
                 // echo "image_subcategory";die();
@@ -109,8 +108,8 @@ class SubCategoryController extends Controller
             ]);
 
             $subcategory=Category::find($id);
-            $subcategory->name=$request->input('title_subcategory');
-            $subcategory->description=$request->input('subdescription');
+            $subcategory->name=trim($request->input('title_subcategory'));
+            $subcategory->description=trim($request->input('subdescription'));
             $old_image=$subcategory->image;
             if(Input::file('image_subcategory')){
                 // echo "image_subcategory";die();

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Dashboard | Melon - Flat &amp; Responsive Admin Template</title>
 
-                                <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Register</a></li>
+    <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Register</a></li>
 
 
     <!-- ******************************************************* -->

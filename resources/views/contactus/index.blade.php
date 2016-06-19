@@ -126,49 +126,44 @@
 <!--  <br/><br/><hr/><hr/>
  -->
 </div>
+
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
-<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script type="text/javascript">
-    $(document).ready(function(){
         console.log('hiiiiiii');
         document.getElementById('del_create').style.display = "none";
 
+    $('.delete').on('click',function(event){
+        event.preventDefault();
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+           
+        document.getElementById('del_create').style.display = "block";
+        document.getElementById('del_edit').style.display = "none";
 
-        // for make delete google map
-        $('.delete').on('click',function(event){
-            event.preventDefault();
-            //Declaration
-            var token = $('#token').attr('content');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            document.getElementById('del_create').style.display = "block";
-            document.getElementById('del_edit').style.display = "none";
-
-            // for delete contact
-            del_contactus=$(this);
-            id=$(this).attr('id');
-            $.ajax({
-                type: "DELETE",
-                url: "{{url('/contactus/')}}/"+ id , //resource
-                data:   { _token :token },
-                success: function(del_contacts) { 
-                    del_contactus.parent().parent().remove();
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-        });  //end function delete
-
-    });//end function
+        del_contactu=$(this);
+        id=$(this).attr('id');
+        $.ajax({
+            type: "DELETE",
+            url: "{{url('/contactus') }}/"+id, //resource
+            data:   { _token :token },
+            success: function(del_contactus) { 
+                del_contactu.parent().parent().remove();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    });
 </script>
+@endsection  
 
-@endsection
 
 
-    
+

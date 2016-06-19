@@ -62,7 +62,7 @@
                 </div>
             </div>  
             <div class='form-group'>
-                <label class='col-md-2'>Image *</label>
+                <label class='col-md-2'>Image*</label>
                 <div class='col-md-10 input-group'>                    
                     <input class='form-control' name='image_product' type='file' />
                 </div>
@@ -77,7 +77,7 @@
             <div class='form-group'>
                 <label class='col-md-2'>Price</label>
                 <div class='col-md-10 input-group'>                    
-                    <input placeholder='price ...' class='form-control' name='price_product' type='number' value="{{old('price_product')}}"/>
+                    <input placeholder='price ...' class='form-control' name='price_product' type='decimal' />
                 </div>
             </div>     
             <span class='col-md-2'></span>
