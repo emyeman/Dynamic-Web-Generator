@@ -488,29 +488,45 @@
                         <div class="clearfix"></div>
                         <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            
                     </div>
-
-                    <form>
+                    @if (count($errors) > 0)
+                      <div class="alert alert-danger">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                    @endif
+                    {!!Form::open(['route'=>'message.store','method'=>'post']) !!}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input type="email" name='email' class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{old('email')}}">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    <label for="exampleInputPassword1">Name</label>
+                                    <input type="text" name='name' class="form-control" id="exampleInputName1" placeholder="Name" value="{{old('name')}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                          <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Subject</label>
+                                    <input type="text" name='subject' class="form-control" id="exampleInputSubject1" placeholder="Subject" value="{{old('subject')}}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Message</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea name='content' class="form-control" rows="3">{{old('content')}}</textarea>
                         </div>
                         
                         <button type="submit" class="btn tf-btn btn-default">Submit</button>
-                    </form>
+                    {!!Form::close() !!}
 
                 </div>
             </div>

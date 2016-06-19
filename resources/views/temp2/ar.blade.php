@@ -734,30 +734,46 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
                         <div class="clearfix"></div>
                         <small><em>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،" (باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،</em></small>
                     </div>
-
-                    <form>
+                    @if (count($errors) > 0)
+                      <div class="alert alert-danger">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                    @endif
+                    {!!Form::open(['route'=>'message.store','method'=>'post']) !!}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">كلمه السر</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="الرمز السري">
+                                    <label for="exampleInputPassword1">اسم المرسل</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="اسم المرسل" name='name' value="{{old('name')}}">
 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">البريد الالكتروني</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ادخل بريدك">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ادخل بريدك" name='email' value="{{old('email')}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                          <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">العنوان</label>
+                                    <input type="text" name='subject' class="form-control" id="exampleInputSubject1" placeholder="العنوان" value="{{old('subject')}}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">الرساله</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="3" name='content'>{{old('content')}}</textarea>
                         </div>
                         
                         <button type="submit" class="btn tf-btn btn-default">ارسال</button>
-                    </form>
+                    {!!Form::close() !!}
 
                 </div>
             </div>

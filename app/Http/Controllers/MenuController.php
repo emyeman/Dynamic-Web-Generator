@@ -146,6 +146,13 @@ class MenuController extends Controller
 
 		return $menus_to_delete_arr->toJson();
      }
+
+     public function updateAll(Request $request)
+     {
+        // echo "<pre>";
+        return($request->input('data'));
+        // echo "</pre>";
+     }
 }
 
 

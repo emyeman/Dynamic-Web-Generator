@@ -47,18 +47,27 @@
         <div class='form-group'>
             <label class='col-md-2'>Start Date*</label>
             <div class='col-md-10'>
-                {{Form::date('start_date', old('start_date') ,['class'=>'form-control','rows'=>'4'])}}
+                {{Form::text('start_date', old('start_date') ,['class'=>'form-control','rows'=>'4','style'=>'position: absolute; z-index: 5;'])}}
             </div>
         </div> 
         <div class='form-group'>
             <label class='col-md-2'>End Date*</label>
             <div class='col-md-10'>
-                {{Form::date('end_date', old('end_date') ,['class'=>'form-control','rows'=>'4'])}}
+                {{Form::text('end_date', old('end_date') ,['class'=>'form-control','rows'=>'4','style'=>'position: absolute; z-index: 5;'])}}
             </div>
         </div>   
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='EDIT' />
     {{Form::close() }}
+
+    {!! Html::style('assets/css/jquery-ui.min.css') !!}
+    {!! Html::script('assets/js/jquery-ui.min.js') !!}
+   <script>
+
+    $( "[name=end_date]" ).datepicker({dateFormat: "yy-mm-dd"});
+    $( "[name=start_date]" ).datepicker({dateFormat: "yy-mm-dd"});
+
+  </script>
 @endsection
 
 

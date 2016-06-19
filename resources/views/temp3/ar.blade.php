@@ -572,6 +572,7 @@
            @endforeach 
         </div>
         <div class="col-sm-6">
+<<<<<<< HEAD
             <div class="footer-content">
                 <form role="form" id="footer-form">
                     <div class="form-group has-feedback">
@@ -591,6 +592,41 @@
                     </div>
                     <input type="submit" value="Send" class="btn btn-default">
                 </form>
+=======
+            @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="footer-content">
+                    {!!Form::open(['route'=>'message.store','method'=>'post','role'=>'form','id'=>'footer-form']) !!}
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="name2">اسم المرسل</label>
+                            <input type="text" class="form-control" id="name2" placeholder="اسم المرسل" name="name" required value="{{old('name')}}">
+                            <i class="fa fa-user form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="email2">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email2" placeholder="البريد اﻹلكتروني" name="email" required value="{{old('email')}}">
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="email2">العنوان</label>
+                            <input type="text" class="form-control" id="email2" placeholder="العنوان" name="subject" required value="{{old('subject')}}">
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="message2">الرساله</label>
+                            <textarea class="form-control" rows="8" id="message2" placeholder="محتوى الرساله" name="content" required>{{old('content')}}</textarea>
+                            <i class="fa fa-pencil form-control-feedback"></i>
+                        </div>
+                        <input type="submit" value="Send" class="btn btn-default">
+                    {!!Form::close() !!}
+>>>>>>> a79331578a9ee86737039adf6e8accb5f608edaf
             </div>
         </div>
     </div>
