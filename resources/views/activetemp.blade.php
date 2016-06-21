@@ -14,7 +14,7 @@
       <div class="col-sm-6 col-md-4 container" >
         <div class="thumbnail" id="{{ $temp->id }}">
         <a href="/activetemp/{{ $temp->id }}">
-          <img src="{{ url('assets/DynamicWebGenerator/upload/slider-city.jpg')}}" />
+          <img src="{{$temp->image}}" />
           <div class="textbox">
           <p class="text" style="text-align:center;"><strong>
           <font color="gray" style="font-size:20px;">{{ $temp->name }}</font></strong></p>

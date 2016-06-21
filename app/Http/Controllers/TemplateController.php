@@ -44,7 +44,7 @@ class TemplateController extends Controller
         // die($template_id);  
         $mytemplate = DB::table('templates')->where('id',$template_id)->get();
         foreach ($mytemplate as $templat) {
-            $templat_name=$templat->name;
+            $templat_name=$templat->development_name;
         }
         // die($templat_name);
  // ***************** for pages and navbar ***************************
