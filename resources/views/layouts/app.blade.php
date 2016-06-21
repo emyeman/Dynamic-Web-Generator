@@ -132,6 +132,11 @@
         $('.picker').colorPicker(/* optinal options */); // that's it
     });
     </script>
+    <script type="text/javascript">
+        $(function(){
+            $('.alert-autocloseable').delay(5000).slideUp( 1000);
+        });
+    </script>
     <meta name="_token" id='token' content="{!! csrf_token() !!}" />
     <script type="text/javascript">
             var token = $('#token').attr('content');

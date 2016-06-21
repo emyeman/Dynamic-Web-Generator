@@ -21,6 +21,9 @@
             <a href="{{url('/news_promotion/create/'.$type)}}"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
     </div >
+    @if(Session::has('update_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
+    @endif
     <div class="row">
         <div id="table-wrapper">
             <div id="table-scroll">

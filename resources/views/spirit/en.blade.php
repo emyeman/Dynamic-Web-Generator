@@ -1,7 +1,7 @@
-@include('../temp1/header')
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
-                                <div class="navbar-brand site-name">التمبلت</div>
+@include('../spirit/header')
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                <div class="navbar-brand site-name">monk</div>
                                 <ul class="nav navbar-nav navbar-right">
                                 <?php  
                                     $flagelang=0;
@@ -20,7 +20,8 @@
                                     $mypromotion='';
                                     $mygallery='';
                                 ?>
-                                 @for ($x = 0; $x < count($urlpages); $x++)
+
+                                @for ($x = 0; $x < count($urlpages); $x++)
 
                                             @if($urlpages[$x]=='page_top')
                                                 <!-- <li class="hidden">
@@ -45,8 +46,8 @@
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                <?php
-                                                 // $findabout=1;
+                                                <?php 
+                                                // $findabout=1;
                                                  $myabout=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif
                                         @endfor
@@ -54,7 +55,7 @@
                                                <li>
                                                     <div class="btn-group dropdown">
                                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
+                                                            <span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                         <!--sally's update  remove 'full'-->
@@ -99,14 +100,14 @@
                                                 <li>
                                                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                                                 </li>
-                                                 <?php 
-                                                 // $findcontact=1;
+                                                 <?php
+                                                  // $findcontact=1;
                                                  $mycontact=trans('arabic_english.'.$menupages[$x]);?>
                                             @endif    
                                           @endfor
 
                                         </ul>
-							                            </div>
+                            </div>
 
                         </div>
                     </nav>
@@ -143,7 +144,6 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
 @if($crusals)
-
 <!-- Wrapper for slides -->
 <div class="carousel-inner" role="listbox">
 <?php $crusal_count=0;?>
@@ -157,6 +157,7 @@
     </div>
     <?php $crusal_count++; ?>
 @endforeach
+
 </div>
 <!-- Controls -->
 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -181,12 +182,12 @@
 
 @endif
 <div class="section_space"></div>
-@if($aboutus)
+
 <!-- <div class="line">
 <hr>
 </div>
  -->
-
+@if($aboutus)
 <!-- section start -->
 <!-- ================ -->
 
@@ -701,23 +702,23 @@
                 <div class="footer-content">
                     {!!Form::open(['route'=>'message.store','method'=>'post','role'=>'form','id'=>'footer-form']) !!}
                         <div class="form-group has-feedback">
-                            <label class="sr-only" for="name2">اسم المرسل</label>
-                            <input type="text" class="form-control" id="name2" placeholder="اسم المرسل" name="name" required value="{{old('name')}}">
+                            <label class="sr-only" for="name2">Name</label>
+                            <input type="text" class="form-control" id="name2" placeholder="Name" name="name" required value="{{old('name')}}">
                             <i class="fa fa-user form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="sr-only" for="email2">البريد الإلكتروني</label>
-                            <input type="email" class="form-control" id="email2" placeholder="البريد اﻹلكتروني" name="email" required value="{{old('email')}}">
+                            <label class="sr-only" for="email2">Email address</label>
+                            <input type="email" class="form-control" id="email2" placeholder="Enter email" name="email" required value="{{old('email')}}">
                             <i class="fa fa-envelope form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="sr-only" for="email2">العنوان</label>
-                            <input type="text" class="form-control" id="email2" placeholder="العنوان" name="subject" required value="{{old('subject')}}">
+                            <label class="sr-only" for="email2">Subject</label>
+                            <input type="text" class="form-control" id="subject2" placeholder="Subject" name="subject" required value="{{old('subject')}}">
                             <i class="fa fa-envelope form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="sr-only" for="message2">الرساله</label>
-                            <textarea class="form-control" rows="8" id="message2" placeholder="محتوى الرساله" name="content" required>{{old('content')}}</textarea>
+                            <label class="sr-only" for="message2">Message</label>
+                            <textarea class="form-control" rows="8" id="message2" placeholder="Message" name="content" required>{{old('name')}}</textarea>
                             <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
                         <input type="submit" value="Send" class="btn btn-default">
@@ -758,4 +759,4 @@
 <!-- footer end -->
 
 
-@include('../temp1/footer') 
+@include('../spirit/footer') 

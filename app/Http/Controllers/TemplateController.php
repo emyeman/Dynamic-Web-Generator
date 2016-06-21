@@ -44,7 +44,7 @@ class TemplateController extends Controller
         // die($template_id);  
         $mytemplate = DB::table('templates')->where('id',$template_id)->get();
         foreach ($mytemplate as $templat) {
-            $templat_name=$templat->name;
+            $templat_name=$templat->development_name;
         }
         // die($templat_name);
  // ***************** for pages and navbar ***************************
@@ -84,9 +84,11 @@ class TemplateController extends Controller
 // ***************** for services ***************************
         $services = DB::table('services')->where('site_id',$site_id)->get();
         $crusals = DB::table('crusals')->where('site_id',$site_id)->get();
-        $news = DB::table('news_promotions')->where('site_id',$site_id)->where('type','news')->get();
-        $promotions = DB::table('news_promotions')->where('site_id',$site_id)->where('type','promotion')->get();
+        $news = DB::table('news_promotions')->where('site_id',$site_id)->where('type','news')->where('end_date', '>=', date('Y-m-d'))->where('start_date', '<=', date('Y-m-d'))->get();
+        $promotions = DB::table('news_promotions')->where('site_id',$site_id)->where('type','promotion')->where('end_date', '>=', date('Y-m-d'))->where('start_date', '<=', date('Y-m-d'))->get();
+        // $q->where('end_date', '>=', date('Y-m-d'));
 
+        // dd(date('Y-m-d'));
 
         $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
         $header=Header::where('site_id', '=', $site_id)->first();
@@ -94,10 +96,10 @@ class TemplateController extends Controller
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/en',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
         }elseif ($arrayurl[1]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header'));
+            return view($templat_name.'/ar',compact('subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
 
         }
     }

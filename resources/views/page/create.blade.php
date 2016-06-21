@@ -9,7 +9,9 @@
   {!! Html::script('assets/tinymce/tinymce.js') !!}
 
   <h2 class='page-header'>Add New Page</h2>
-
+  @if(Session::has('insert_success'))
+      <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+  @endif
   {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
     <div class='form-group' id='ourpage'>
       <label class='col-md-2'>Select Your Page</label>

@@ -17,12 +17,13 @@
         </div>
     </div>
     <!-- /.row -->
-
     <div class="row">
         <div class='col-lg-offset-11 col-ms-1'>
             <a href="{{url('/menu/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
-    
+        @if(Session::has('update_success'))
+            <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
+        @endif
         <div >
             <!-- *************************** -->
             <div id="table-wrapper">

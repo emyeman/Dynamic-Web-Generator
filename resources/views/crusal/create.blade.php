@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     <h2 class='page-header'>Add Image to Crusal</h2>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -17,6 +18,9 @@
     @endif
 
     <br><br>
+    @if(Session::has('insert_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+    @endif
     {!!Form::open(['route'=>'crusal.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
         <div class='form-group'>
             <label class='col-md-2'>Title</label>

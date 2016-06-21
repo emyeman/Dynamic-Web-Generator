@@ -10,6 +10,7 @@ use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Session;
 
 class CrusalController extends Controller
 {
@@ -54,7 +55,8 @@ class CrusalController extends Controller
         {
             //upload image
             Storage::disk('local')->put($file_name, File::get($image));
-            return view('crusal.create');
+            Session::flash('insert_success', 'A new crusal image has been added successfully');
+            return redirect()->route('crusal.create');
         }
         else
         {
@@ -109,6 +111,12 @@ class CrusalController extends Controller
             unlink(public_path('assets/images/').$old_imag_name); 
             Storage::disk('local')->put($file_name, File::get($image));
         }
+        if($is_saved)
+        {
+            Session::flash('update_success', 'the crusal image has been updated successfully');
+        }
+        else
+            Session::flash('update_failed', '<strong>ERROR!!</strong> the crusal image has not been updated, please try again.');
         return redirect()->route('crusal.index');
      }
 

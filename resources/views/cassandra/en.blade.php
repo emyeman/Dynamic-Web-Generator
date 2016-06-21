@@ -1,4 +1,4 @@
-@include('../temp3/header')
+@include('../cassandra/header')
 
 </head>
 
@@ -634,5 +634,5 @@
 </section>
 @endif
 
-@include('../temp3/footer')
+@include('../cassandra/footer')
 

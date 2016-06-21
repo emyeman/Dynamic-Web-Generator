@@ -24,6 +24,9 @@
     @endif
 
     <br><br>
+    @if(Session::has('insert_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+    @endif
     {!!Form::open(['route'=>'news_promotion.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
         <div class='form-group'>
             <label class='col-md-2'>Title *</label>
@@ -65,7 +68,6 @@
 
     $( "[name=end_date]" ).datepicker({dateFormat: "yy-mm-dd"});
     $( "[name=start_date]" ).datepicker({dateFormat: "yy-mm-dd"});
-
   </script>
 
 @endsection

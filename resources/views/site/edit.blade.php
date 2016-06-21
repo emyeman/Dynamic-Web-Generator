@@ -37,14 +37,26 @@
         </div>  
 
          <div class='form-group'>
-            <label class='col-md-2'>Site Color</label>
+            <label class='col-md-2'>Slogan Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
-                <input value='{{ $site->color }}' class='form-control picker' name='color' type='text'/>
+                <input value='{{ $site->slogan_color }}' class='form-control picker' name='slogan_color' type='text'/>
+            </div>
+        </div>
+
+
+         <div class='form-group'>
+            <label class='col-md-2'>Text Color</label>
+            <div class='col-md-8 input-group'>
+                <span class='input-group-addon'>
+                <i class='glyphicon glyphicon-pencil'></i>
+                </span>
+                <input value='{{ $site->text_color }}' class='form-control picker' name='text_color' type='text'/>
             </div>
         </div>  
+
           
         <div class='form-group'>
             <label class='col-md-2'>Primary Color</label>

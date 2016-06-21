@@ -47,5 +47,9 @@ class AuthServiceProvider extends ServiceProvider
         $gate->define('access-menus', function ($user, $menu) {
             return $user->site->id == $menu->site_id;
         });
+
+        $gate->define('access-messages', function ($user, $message) {
+            return $user->site->id == $message->site_id;
+        });
     }
 }

@@ -95,10 +95,14 @@
                                 <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="#home"><img style="width:45px;height:30px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle"></a>
                                      <ul class="submenu_1">
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
-                                  
+
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
 
                                     @if (isset($site))
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
                                     @else
                                         <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
                                     @endif
@@ -118,25 +122,11 @@
             <div class="menu-main-nav-menu-container">
                 <ul id="menu-main-nav-menu-1" class="mobile-menu">
                     <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
-                        <ul class="submenu_1">
-                            <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
-                        </ul>
-                    </li>
-                     @if (Auth::guest())
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
-
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
-
-                                @else
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
-
-                                    @if (isset($site))
-                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                                    @else
-                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
-                                    @endif
-                                @endif
-
+                                    <ul class="submenu_1">
+                                        <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
+                                    </ul>
+                                </li>
+                                
                                
 
                             @if (Request::path() == '/')
@@ -148,6 +138,32 @@
 
                                 <li class="menu-item"><a href="#our-contact">Contact</a></li>
                             @endif
+
+                             @if (Auth::guest())
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
+
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+
+                                @else
+                                    
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="#home"><img style="width:45px;height:30px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle"></a>
+                                     <ul class="submenu_1">
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+                                        
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
+
+
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+                                     </ul>
+                                    </li>
+                                @endif
                 </ul>
             </div>
         </div>
@@ -172,21 +188,7 @@
                                         <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
                                     </ul>
                                 </li>
-                                 @if (Auth::guest())
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
-
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
-
-                                @else
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
-
-                                    @if (isset($site))
-                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                                    @else
-                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
-                                    @endif
-                                @endif
-
+                                
                                
 
                             @if (Request::path() == '/')
@@ -198,6 +200,32 @@
 
                                 <li class="menu-item"><a href="#our-contact">Contact</a></li>
                             @endif
+
+                             @if (Auth::guest())
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
+
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+
+                                @else
+                                    
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="#home"><img style="width:45px;height:30px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle"></a>
+                                     <ul class="submenu_1">
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+                                        
+                                        
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
+                                  
+
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+                                     </ul>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

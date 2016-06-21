@@ -15,7 +15,7 @@ Route::auth();
 // Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 
-
+Route::post('/message','MessageController@store')->name('message.store');;
 // The user is logged in...
 Route::group(['middleware' => 'auth'], function () {
 
@@ -66,7 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('/template','TemplateController');
 	Route::get('/message/unseen','MessageController@unseen');
-	Route::resource('/message','MessageController');
+	Route::resource('/message','MessageController', ['except' => ['store']]);
 
 
 
