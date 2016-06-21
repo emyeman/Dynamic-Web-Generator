@@ -19,9 +19,10 @@ class CreateSitesTable extends Migration
             $table->integer('template_id')->unsigned()->nullable();
 
             $table->string('subdomain', 255)->unique();
-            $table->string('color', 10);
-            $table->string('primary_color', 10);
-            $table->string('secondry_color', 10);
+            $table->string('slogan_color', 100);
+            $table->string('text_color',100);
+            $table->string('primary_color', 100);
+            $table->string('secondry_color', 100);
             $table->enum('body_type', ['fill', 'centered']);
             $table->string('background_image');
             $table->softDeletes();

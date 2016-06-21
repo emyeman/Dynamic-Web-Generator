@@ -16,7 +16,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
     	# code...
-    	return view('user.edit',compact('user'));
+      $site =Auth::user()->site()->first()['attributes']['id'];
+    	return view('user.edit',compact('user','site'));
     }
 
     public function update(Request $request , User $user)

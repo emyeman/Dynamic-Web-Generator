@@ -116,34 +116,47 @@
                     <div class="main-menu">
                         <div class="menu-main-nav-menu-container">
                             <ul id="menu-main-nav-menu" class="sf-menu">
-
-                            <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
+<li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
                                     <ul class="submenu_1">
                                         <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
                                     </ul>
                                 </li>
+                                
+                               
 
-                                @if (Auth::guest())
+                            @if (Request::path() == '/')
+
+                                <li class="menu-item"><a href="#about">About us</a></li>
+                                <li class="menu-item"><a href="#services">Services</a></li>
+                                <li class="menu-item"><a href="#portfolio-items">Portfolio</a></li>
+
+
+                                <li class="menu-item"><a href="#our-contact">Contact</a></li>
+                            @endif
+
+                             @if (Auth::guest())
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
 
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Create My Site</a></li>
                                 @else
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+                                    
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="#home"><img style="width:45px;height:30px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle"></a>
+                                     <ul class="submenu_1">
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+                                  
+                                      <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
+                                  
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+                                     </ul>
+                                    </li>
                                 @endif
-
-
-                            @if (Request::path() == '/')
-
-                                <li class="menu-item"><a href="index.html#about">About us</a></li>
-                                <li class="menu-item"><a href="index.html#services">Services</a></li>
-                                <li class="menu-item"><a href="index.html#portfolio-items">Portfolio</a></li>
-
-
-                                <li class="menu-item"><a href="index.html#our-contact">Contact</a></li>
-                            @endif
-                                
                             </ul>
                         </div>
                     </div>
@@ -154,20 +167,48 @@
         <div class="mobile-menu-wrapper">
             <div class="menu-main-nav-menu-container">
                 <ul id="menu-main-nav-menu-1" class="mobile-menu">
-                    <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="index.html#home">Home</a>
-                        <ul class="submenu_1">
-                            <li class="menu-item"><a href="http://psd2html5.in/demo/wpm/altos/home-2/#home-2">Home #2</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#about">About us</a></li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#services">Services</a></li>
-                    <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Portfolio</a></li>
-                   {{--  <li class="menu-item one-page-subsite"><a href="index.html#blog">Blog</a></li> --}}
-                   <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Login</a></li>
+                   <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
+                                    <ul class="submenu_1">
+                                        <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
+                                    </ul>
+                                </li>
+                                
+                               
 
-                   <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Register</a></li>
+                            @if (Request::path() == '/')
 
-                    <li class="menu-item one-page-subsite"><a href="index.html#our-contact">Contact</a></li>
+                                <li class="menu-item"><a href="#about">About us</a></li>
+                                <li class="menu-item"><a href="#services">Services</a></li>
+                                <li class="menu-item"><a href="#portfolio-items">Portfolio</a></li>
+
+
+                                <li class="menu-item"><a href="#our-contact">Contact</a></li>
+                            @endif
+
+                             @if (Auth::guest())
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
+
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+
+                                @else
+                                    
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="#home"><img style="width:45px;height:30px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle"></a>
+                                     <ul class="submenu_1">
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
+                                  
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+
+                                     </ul>
+                                    </li>
+                                @endif
                 </ul>
             </div>
         </div>
@@ -187,20 +228,48 @@
                     <div class="main-menu">
                         <div class="menu-main-nav-menu-container">
                             <ul id="menu-main-nav-menu-2" class="sf-menu">
-                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="index.html#home">Home</a>
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
                                     <ul class="submenu_1">
-                                        <li class="menu-item"><a href="home-2.html#home-2">Home #2</a></li>
+                                        <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-item"><a href="index.html#about">About us</a></li>
-                                <li class="menu-item"><a href="index.html#services">Services</a></li>
-                                <li class="menu-item"><a href="index.html#portfolio-items">Portfolio</a></li>
+                                
+                               
 
-                                <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Login</a></li>
+                            @if (Request::path() == '/')
 
-                                <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Register</a></li>
+                                <li class="menu-item"><a href="#about">About us</a></li>
+                                <li class="menu-item"><a href="#services">Services</a></li>
+                                <li class="menu-item"><a href="#portfolio-items">Portfolio</a></li>
 
-                                <li class="menu-item"><a href="index.html#our-contact">Contact</a></li>
+
+                                <li class="menu-item"><a href="#our-contact">Contact</a></li>
+                            @endif
+
+                             @if (Auth::guest())
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
+
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+
+                                @else
+                                    
+                                <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="#home"><img style="width:45px;height:30px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle"></a>
+                                     <ul class="submenu_1">
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/logout') }}">Logout</a></li>
+                                  
+                                       <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
+                                  
+
+                                    @if (isset($site))
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+
+                                        <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
+                                    @else
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                    @endif
+                                     </ul>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -212,7 +281,7 @@
         @yield('content')
 
         <div id="footer" class="footer">
-            <div class="footer-inner">
+            {{-- <div class="footer-inner">
                 <div class="footer-left">
                     <img id="logoFooterImage" class="footer-logo" src="{{ url('assets/DynamicWebGenerator/images/logo-footer.png')}}" alt="ALTOS Agency"/>
                     <img class="footer-logo" id="logoFooterImageRetina" src="images/logo-footer-retina.png" alt="ALTOS Agency"/>
@@ -220,11 +289,12 @@
                 <div class="footer-right">
                     45 street Los Angeles, California / Phone: <span>1.800.123 456789</span> </div>
                 <div class="scroll_to_top pe-7s-up-arrow"></div>
-            </div>
+            </div> --}}
             <div class="clear"></div>
             <div class="footer-under-center">
                 <div class="footer-inner">
                     Copyright 2016 - Altos. Powered by <a href="index.html#" title="HTML5 Themes">HTML5</a>. Made by <a href="http://themeforest.net/user/max-themes/portfolio" title="Pego Premium HTML5 Themes">max-themes</a>. </div>
+            </div>
             </div>
 
 <script type="text/javascript" src="{{ url('/assets/bootstrap-3.2.0/js/bootstrap.min.js') }}"></script>

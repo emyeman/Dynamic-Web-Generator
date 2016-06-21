@@ -520,13 +520,13 @@
                             <li>
                                 <div class="dropdown">
                                     <button class="btn-system btn-medium border-btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".web" class="active">{{ $cat_and_subcats->name }}</a>
+                                        <a href="#" data-filter=".web" class="active">{{ str_replace(' ', '', $cat_and_subcats->name) }}</a>
                                         <span class="caret"></span>
                                     </button>
 
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     @foreach($cat_and_subcats->subcategories as $sub)
-                                        <li><a href="#" data-filter=".{{ $sub->name }}">{{ $sub->name }}</a></li>
+                                        <li><a href="#" data-filter=".{{ $sub->name }}">{{ str_replace(' ', '', $sub->name) }}</a></li>
                                     @endforeach
                                     </ul>
                                 </div>

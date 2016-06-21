@@ -194,6 +194,9 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
 
     <!-- About Us Page
     ==========================================-->
+
+    @if(isset($aboutus) && $aboutus != null)
+
     <div id="about">
         <div class="container">
             <div class="row">
@@ -204,12 +207,12 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
         </div>
     </div>
                 <div class="col-md-6">
-                    <img id="myimg" src="img/02.jpg" class="img-responsive wow fadeInLeft" data-wow-delay="0.2s">
+                    <img id="myimg" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" class="img-responsive wow fadeInLeft" data-wow-delay="0.2s">
                 </div>
                 <div class="col-md-6">
                     <div class="about-text wow fadeInRight" data-wow-delay="0.2s">
 
-                        <p class="intro">باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي، يتم إعادة تصميم القسم بحيث يتناسب مع الألوان والتصميمات الخاصة بالشعار والعلامة التجارية للراعي، كما يحتكر كل المساحات الإعلانية في هذا القسم، إضافة إلى نشرة إعلانية وخدمات تحريرية أخرى.</p>
+                        <p class="intro">{{ $aboutus->description }}</p>
                         <ul class="about-list">
                             <li>
 
@@ -229,15 +232,16 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-   
+   @endif
 
     <!-- Services Section
     ==========================================-->
+    @if(isset($services) && $services != null)
+
     <div id="services" class="text-center">
         <div class="container">
             <div class="section-title center">
@@ -250,37 +254,35 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
             </div>
             <div class="space"></div>
             <div class="row">
-                <div class="col-md-3 col-sm-6 service wow fadeInLeft" data-wow-delay="0.2s">
-                    <i class="fa fa-desktop"></i>
-                    <h4><strong>التصميم الالكتروني</strong></h4>
-                    <p>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،</p>
-                </div>
 
-                <div class="col-md-3 col-sm-6 service wow fadeInLeft" data-wow-delay="0.2s">
-                    <i class="fa fa-mobile"></i>
-                    <h4><strong>تطبيقات الهاتف</strong></h4>
-                    <p>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،</p>
-                </div>
+            <?php $services =  array_slice($services, 0, 4) ?>
 
-                <div class="col-md-3 col-sm-6 service wow fadeInRight" data-wow-delay="0.2s">
-                    <i class="fa fa-camera"></i>
-                    <h4><strong>الفتوجرافي</strong></h4>
-                    <p>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،</p>
-                </div>
+            @for($i = 0; $i < count($services) ; $i++)
+                 @if($i <= 1)
+                  <div class="col-md-3 col-sm-6 service wow fadeInLeft" data-wow-delay="0.2s">
+                      <i class="glyphicon {{ $services[$i]->icon }}"></i>
+                      <h4><strong>{{ $services[$i]->title }}</strong></h4>
+                      <p>{{ $services[$i]->description }}</p>
+                  </div>
+                  @else
+                  <div class="col-md-3 col-sm-6 service wow fadeInRight" data-wow-delay="0.2s">
+                      <i class="glyphicon {{ $services[$i]->icon }}"></i>
+                      <h4><strong>{{ $services[$i]->title }}</strong></h4>
+                      <p>{{ $services[$i]->description }}</p>
+                  </div>
+                  @endif
+               @endfor
 
-                <div class="col-md-3 col-sm-6 service wow fadeInRight" data-wow-delay="0.2s">
-                    <i class="fa fa-bullhorn"></i>
-                    <h4><strong>التسويق</strong></h4>
-                    <p>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي</p>
-                </div>
             </div>
         </div>
     </div>
 
-  
+  @endif
 
      <!-- promotion Section
     ==========================================-->
+    @if(isset($promotions) && $promotions != null)
+
   <div id="promotion" class="text-center">
         <div class="overlay">
             <div class="container">
@@ -293,132 +295,32 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
                 </div>
                 <div class="wow bounceInRight">
                 <div id="clients" class="owl-carousel owl-theme ">
+
+
+                                @foreach($promotions as $promotion)
+
                     <div class="item">
-                            <div class="panel">
-                       <div class="panel-heading">
-                                     <img src="sale.png" width="160" height="181">
+                        <a href="#{{ $promotion->id }}"  data-toggle="modal" data-target="#{{ $promotion->id }}">
+                        <div class="panel">
+                                 <div class="panel-heading">
+                                     <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" width="160" height="181">
                                           <div class="panel-heading">
-                                            <h1 class="panel-title">عروض الخصم</h1>
+                                            <h1 class="panel-title">العرض</h1>
                                           </div>
                                  </div>
                             <div class="panel-body">
-                               <h3>خصومات علي جميع المنتجات</h3>
+                               <h3><strong>{{ $promotion->title }}</strong></h3>
                                  <hr class="myline">
-                                 <h3 ><sup>$</sup>9.99</h3>
+                                 <h3 >{{ $promotion->description }}</h3>
                                   <hr class="myline">
-                                 <p >كل شهر</p>
-                                <p >خصومات جديده</p>
+                                 <p ><strong>From:</strong>{{ $promotion->start_date }}</p>
+                                <p ><strong>To:</strong>{{ $promotion->end_date }}</p>
                             </div>
-                                </div>
+                                </div>    
+                                </a>
                     </div>
-                    <div class="item">
-                            <div class="panel">
-                       <div class="panel-heading">
-                                     <img src="sale.png" width="160" height="181">
-                                          <div class="panel-heading">
-                                            <h1 class="panel-title">عروض الخصم</h1>
-                                          </div>
-                                 </div>
-                            <div class="panel-body">
-                               <h3>خصومات علي جميع المنتجات</h3>
-                                 <hr class="myline">
-                                 <h3 ><sup>$</sup>9.99</h3>
-                                  <hr class="myline">
-                                 <p >كل شهر</p>
-                                <p >خصومات جديده</p>
-                            </div>
-                                </div>
-                    </div>
-                    <div class="item">
-                            <div class="panel">
-                       <div class="panel-heading"  style="background-color: #09ab9b;">
-                                     <img src="sale.png" width="160" height="181">
-                                          <div class="panel-heading"  style="background-color: #09ab9b;">
-                                            <h1 class="panel-title">عروض الخصم</h1>
-                                          </div>
-                                 </div>
-                            <div class="panel-body">
-                               <h3>خصومات علي جميع المنتجات</h3>
-                                 <hr class="myline">
-                                 <h3 ><sup>$</sup>9.99</h3>
-                                  <hr class="myline">
-                                 <p >كل شهر</p>
-                                <p >خصومات جديده</p>
-                            </div>
-                                </div>
-                    </div>
-                    <div class="item">
-                            <div class="panel">
-                       <div class="panel-heading">
-                                     <img src="sale.png" width="160" height="181">
-                                          <div class="panel-heading">
-                                            <h1 class="panel-title">عروض الخصم</h1>
-                                          </div>
-                                 </div>
-                            <div class="panel-body">
-                               <h3>خصومات علي جميع المنتجات</h3>
-                                 <hr class="myline">
-                                 <h3 ><sup>$</sup>9.99</h3>
-                                  <hr class="myline">
-                                 <p >كل شهر</p>
-                                <p >خصومات جديده</p>
-                            </div>
-                                </div>
-                    </div>
-                    <div class="item">
-                           <div class="panel">
-                       <div class="panel-heading">
-                                     <img src="sale.png" width="160" height="181">
-                                          <div class="panel-heading">
-                                            <h1 class="panel-title">عروض الخصم</h1>
-                                          </div>
-                                 </div>
-                            <div class="panel-body">
-                               <h3>خصومات علي جميع المنتجات</h3>
-                                 <hr class="myline">
-                                 <h3 ><sup>$</sup>9.99</h3>
-                                  <hr class="myline">
-                                 <p >كل شهر</p>
-                                <p >خصومات جديده</p>
-                            </div>
-                                </div>
-                    </div>
-                    <div class="item">
-                            <div class="panel">
-                       <div class="panel-heading">
-                                     <img src="sale.png" width="160" height="181">
-                                          <div class="panel-heading">
-                                            <h1 class="panel-title">عروض الخصم</h1>
-                                          </div>
-                                 </div>
-                            <div class="panel-body">
-                               <h3>خصومات علي جميع المنتجات</h3>
-                                 <hr class="myline">
-                                 <h3 ><sup>$</sup>9.99</h3>
-                                  <hr class="myline">
-                                 <p >كل شهر</p>
-                                <p >خصومات جديده</p>
-                            </div>
-                                </div>
-                    </div>
-                    <div class="item">
-                           <div class="panel">
-                       <div class="panel-heading">
-                                     <img src="sale.png" width="160" height="181">
-                                          <div class="panel-heading">
-                                            <h1 class="panel-title">عروض الخصم</h1>
-                                          </div>
-                                 </div>
-                            <div class="panel-body">
-                               <h3>خصومات علي جميع المنتجات</h3>
-                                 <hr class="myline">
-                                 <h3 ><sup>$</sup>9.99</h3>
-                                  <hr class="myline">
-                                 <p >كل شهر</p>
-                                <p >خصومات جديده</p>
-                            </div>
-                                </div>
-                    </div>
+                    
+                @endforeach
                 </div>
                 </div>
 
@@ -426,8 +328,39 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
         </div>
     </div>
 
+    @foreach($promotions as $promotion)
+    <div class="modal fade" id="{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    
+                  <div class="modal-content">
+                    <div class="modal-header" style="background: #09ab9b;">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">{{ $promotion->title }}</h4>
+                    </div>
+                    <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <img class="img-responsive" src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="" >
+                      </div>
+                       <div class="col-md-6 col-xs-12">
+                         <p> {{ $promotion->description }}</p>
+                       </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">اغلاق</button>
+                    </div>
+                  </div><!-- /.modal-content -->               
+              </div>
+           </div>
+           @endforeach
+
+  @endif
+
     <!-- Products Section
     ==========================================-->
+    @if(isset($cats_and_subcats) && $cats_and_subcats != null)
+
     <div id="gallery">
         <div class="container"> <!-- Container -->
             <div class="section-title text-center center">
@@ -446,73 +379,27 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
                     <li class="pull-right wow fadeInRight">
                         <ol class="type">
 
-                            <li> <button class="btn btn-default btn-xs" type="button" id="buton1"  ><a href="#" data-filter="*" class="active">All</a>
+                            <li> <button class="btn btn-default btn-xs" type="button" id="buton1"  ><a href="#" data-filter="*" class="active">الكل</a>
                             </button></li>
-                            <li>
-                                <div class="dropdown">
-                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".web" class="active">الموقع الالكتروني</a>
-                                        <span class="caret"></span>
-                                    </button>
 
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" data-filter=".web">الموقع الاول</a></li>
-                                        <li><a href="#" data-filter=".web">الموقع الثاني</a></li>
-                                        <li><a href="#" data-filter=".web">الموقع الثالث</a></li>
+                            @foreach($cats_and_subcats as $cat_and_subcats)
+                               <li>
+                                  <div class="dropdown">
+                                      <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                          <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ str_replace(' ', '', $cat_and_subcats->name) }}</a>
+                                          <span class="caret"></span>
+                                      </button>
 
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
+                                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-                                <div class="dropdown">
-                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".photography" class="active">التصوير الفوتوجرافي</a>
-                                        <span class="caret"></span>
-                                    </button>
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" data-filter=".photography">التصوير الفوتوجرافي 1</a></li>
-                                        <li><a href="#" data-filter=".photography">التصوير الفوتوجرافي 2</a></li>
-                                        <li><a href="#" data-filter=".photography">التصوير الفوتوجرافي 3</a></li>
-
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li>
-
-                                <div class="dropdown">
-                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".app" class="active">التطبيقات الالكترونيه</a>
-                                        <span class="caret"></span>
-                                    </button>
-
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" data-filter=".app"> التطبيقات الالكترونيه 1</a></li>
-                                        <li><a href="#" data-filter=".app">التطبيقات الالكترونيه 2</a></li>
-                                        <li><a href="#" data-filter=".app">التطبيقات الالكترونيه 3</a></li>
-
-                                    </ul>
-                                </div>
-
-                            </li>
-                            <li>
-                                <div class="dropdown">
-                                    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-
-                                        <a href="#" data-filter=".branding" class="active">العلامات التجاريه</a>
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" data-filter=".branding">العلامات التجاريه 1</a></li>
-                                        <li><a href="#" data-filter=".branding">العلامات التجاريه 2</a></li>
-                                        <li><a href="#" data-filter=".branding">العلامات التجاريه 3</a></li>
-
-                                    </ul>
-                                </div>
-                            </li>
+                                        @foreach($cat_and_subcats->subcategories as $sub)
+                                              <li><a href="#" data-filter=".{{ $sub->name }}">{{ str_replace(' ', '', $sub->name) }}</a></li>
+                                        @endforeach
+                                      </ul>
+                                  </div>
+                              </li>
+                              @endforeach
+                            
                         </ol>
                     </li>
                 </ul>
@@ -521,146 +408,45 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
 
             <div id="lightbox" class="row">
 
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/01.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @foreach($cats_and_subcats as $cat_and_subcats)
+                  @foreach($cat_and_subcats->subcategories as $subcategory)
+                    @foreach($subcategory->products as $product)
 
-                <div class="col-sm-6 col-md-3 col-lg-3 photography app">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/02.jpg" class="img-responsive" alt="...">
-                            </a>
+                      <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }}">
+                        <div class="portfolio-item">
+                            <div class="hover-bg">
+                                <a href="#">
+                                    <div class="hover-text">
+                                        <h4 style="color:white">{{ $product->name }}</h4>
+                                        <small style="color:white">{{ $product->price }}</small>
+                                        <div class="clearfix"></div>
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                    <img src="{{ url('/assets/images') }}/{{$product->image}}" class="img-responsive" alt="...">
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/03.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 branding">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/04.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/05.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 app">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/06.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 photography web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/07.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 col-lg-3 web">
-                    <div class="portfolio-item">
-                        <div class="hover-bg">
-                            <a href="#">
-                                <div class="hover-text">
-                                    <h4>Logo Design</h4>
-                                    <small>Branding</small>
-                                    <div class="clearfix"></div>
-                                    <i class="fa fa-plus"></i>
-                                </div>
-                                <img src="img/portfolio/08.jpg" class="img-responsive" alt="...">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                  @endforeach
+                @endforeach
 
             </div>
         </div>
-
     </div>
+
+@endif
 
     <!-- News Section
     ==========================================-->
+    @if(isset($news) && $news != null )
+
     <div id="news" class="text-center">
         <div class="overlay">
             <div class="container">
                 <div class="section-title center wow bounceInDown">
-                    <h2><strong></strong> الاخبار</h2>
+                    <h2><strong></strong>الاخبار</h2>
                     <div class="line">
                         <hr>
                     </div>
@@ -668,50 +454,30 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div id="testimonial" class="owl-carousel owl-theme">
-                            <div class="item wow lightSpeedIn">
-                               <div class="row">
-                                <div class="col-md-4 ">
-                               <img src="news.png" width="300" height="236">
-                            </div>
-                               <div class="col-md-4 col-md-offset-2">
-                                <h5>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،</h5>
-                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
-                            </div>
-                           
-                            </div>
-                        </div>
-                            <div class="item wow lightSpeedIn">
-                               <div class="row">
-                                <div class="col-md-4 ">
-                               <img src="news.png" width="300" height="236">
-                            </div>
-                               <div class="col-md-4 col-md-offset-2">
-                                <h5>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،</h5>
-                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
-                            </div>
-                           
-                            </div>
-                        </div>
 
-                            <div class="item wow lightSpeedIn">
+
+                        <?php $news  = array_slice($news, -3); ?>
+                        @foreach($news as $new)
+                          <div class="item wow lightSpeedIn">
                                <div class="row">
                                 <div class="col-md-4 ">
-                               <img src="news.png" width="300" height="236">
+                               <img src="{{ url('/assets/images/')}}{{ $new->image }}" width="300" height="236">
                             </div>
                                <div class="col-md-4 col-md-offset-2">
-                                <h5>باقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعيباقة كاملة ذات مزايا متنوعة في حالة رعاية قسم خاص من الموقع يكون مرتبطا بالنشاط التجاري للراعي،.</h5>
-                                <p><strong>Dean Martin</strong>, CEO Acme Inc.</p>
-                            </div>
-                           
+                                <h5>{{ $new->description }}</h5>
+                                <p>Dean Martin, CEO Acme Inc.</p>
+                                </div>
                             </div>
                         </div>
+                        
+                        @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+@endif
 
 
 
@@ -720,6 +486,8 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
 
     <!-- Contact Section
     ==========================================-->
+    @if(isset($contacts) && $contacts != null)
+    
     <div id="contact" class="text-center">
         <div class="container">
 
@@ -777,16 +545,36 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
             </div>
             <div class="pull-right fnav">
                 <ul class="footer-social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <!--<li><a href="#"><i class="fa fa-vimeo"></i></a></li>-->
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    @if(!empty($contact->facebook))
+                      <li class="facebook"><a target="_blank" href="https://www.facebook.com/{{$contact->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                    @endif
+                              @if(!empty($contact->twitter))  
+                                  <li class="twitter"><a target="_blank" href="https://twitter.com/{{$contact->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                      @endif
+                              @if(!empty($contact->google_plus))    
+                                  <li class="googleplus"><a target="_blank" href="http://plus.google.com/{{$contact->google_plus}}"><i class="fa fa-google-plus"></i></a></li>
+                    @endif
+                              @if(!empty($contact->skype))  
+                                  <li class="skype"><a target="_blank" href="http://www.skype.com/{{$contact->skype}}"><i class="fa fa-skype"></i></a></li>
+                    @endif
+                              @if(!empty($contact->linkedin)) 
+                                  <li class="linkedin"><a target="_blank" href="http://www.linkedin.com/{{$contact->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+                    @endif
+                              @if(!empty($contact->youtube))  
+                                  <li class="youtube"><a target="_blank" href="http://www.youtube.com/{{$contact->youtube}}"><i class="fa fa-youtube"></i></a></li>
+                    @endif
+                              @if(!empty($contact->flickr)) 
+                                  <li class="flickr"><a target="_blank" href="http://www.flickr.com/{{$contact->flickr}}"><i class="fa fa-flickr"></i></a></li>
+                    @endif
+                              @if(!empty($contact->pinterest))  
+                                  <li class="pinterest"><a target="_blank" href="http://www.pinterest.com/{{$contact->pinterest}}"><i class="fa fa-pinterest"></i></a></li>
+                    @endif
                 </ul>
             </div>
         </div>
     </nav> 
 
-
+  @endif
    
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
     <script type="text/javascript" src="{{ url('/assets/js/jquery.1.11.1.js')}}"></script>
