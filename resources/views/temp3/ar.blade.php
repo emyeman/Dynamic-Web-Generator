@@ -21,7 +21,6 @@
    
     </div>
 <!-- ********************************************************************** -->
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav hidden-lg hidden-md ">
@@ -181,10 +180,10 @@
         </button>
         <ul class="dropdown-menu" role="menu">
         <li class="space"></li>
-            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><button class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></button></a></li>                               
-            <li><a  href="{{url('/'.$subdomain.'/en')}}"><button class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></button></a></li>                               
+            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></button></li>                               
+            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></button></li>                               
         </ul>
-        </div>      
+        </div>     
         </div> 
         
     </div>
@@ -375,7 +374,7 @@
 
                             <span class="fa-stack fa-4x">
                                 
-                                <i class="fa fa-shopping-cart fa-stack-1x"></i>
+                                <i class="glyphicon {{ $service->icon }} fa-stack-1x"></i>
                             </span>
                                 <h4 class="service-heading">{{ $service->title }}</h4>
                                 <p class="text-muted">{{ $service->description }}</p>
@@ -529,7 +528,7 @@
 <section class="section" id="contact">
     <div class="container">
     
-     <h2 class="text-center title">Contact us</h2>
+     <h2 class="text-center title"><?php echo $mycontact;?></h2>
 
     <div class="row">
         <div class="col-sm-6">
@@ -573,6 +572,27 @@
            @endforeach 
         </div>
         <div class="col-sm-6">
+<<<<<<< HEAD
+            <div class="footer-content">
+                <form role="form" id="footer-form">
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="name2">Name</label>
+                        <input type="text" class="form-control" id="name2" placeholder="الاسم" name="name2" required>
+                        <i class="fa fa-user form-control-feedback"></i>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="email2">Email address</label>
+                        <input type="email" class="form-control" id="email2" placeholder="البريد الالكتروني" name="email2" required>
+                        <i class="fa fa-envelope form-control-feedback"></i>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="message2">Message</label>
+                        <textarea class="form-control" rows="8" id="message2" placeholder="الرسالة" name="message2" required></textarea>
+                        <i class="fa fa-pencil form-control-feedback"></i>
+                    </div>
+                    <input type="submit" value="Send" class="btn btn-default">
+                </form>
+=======
             @if (count($errors) > 0)
                     <div class="alert alert-danger">
                         <ul>
@@ -606,6 +626,7 @@
                         </div>
                         <input type="submit" value="Send" class="btn btn-default">
                     {!!Form::close() !!}
+>>>>>>> a79331578a9ee86737039adf6e8accb5f608edaf
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
         
       {!!Form::open(['route'=>'contactus.store','method'=>'post']) !!}
 
-        <div class='form-group has-warning'>
+        <div class='form-group '>
             <label class='col-md-2'>Address:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
@@ -28,62 +28,62 @@
             </div>
         </div> 
 
-        <div class='form-group has-warning'>
+        <div class='form-group '>
             <label class='col-md-2'>Phone:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter your phone' class='form-control'id=='phone' name='phone' type='text'/>
+                <input placeholder='PlZ,enter your phone' class='form-control'id=='phone' name='phone' type='number'/>
             </div>
           <!-- <span class='col-lg-offset-3' id="spphone">Please enter a valid phone number Like (34125678).  </span>   -->
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Mobile:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter your mobile' class='form-control' id='mobile' name='mobile' type='text'/>
+                <input placeholder='PlZ,enter your mobile' class='form-control' id='mobile' name='mobile' type='number'/>
             </div>
              <!-- <span class='col-lg-offset-3' id="spmobile">Please enter a valid mobile number Like (01023456789).  </span>                         -->
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>E-mail:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'>@</span>
-                <input placeholder='PlZ,enter your e-mail' id="email" class='form-control' name='email' type='text'/>
+                <input placeholder='PlZ,enter your e-mail' id="email" class='form-control' name='email' type='email'/>
             </div>
              <!-- <span class='col-lg-offset-3' id="spemail">Please enter a valid email address Like (test@Gmail.com).  </span> -->
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Fax:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter your fax' class='form-control' id='fax' name='fax' type='text'/>
+                <input placeholder='PlZ,enter your fax' class='form-control' id='fax' name='fax' type='number'/>
             </div>
             <!-- <span class='col-lg-offset-3' id="spfax">Please enter a valid fax address Like ().  </span> -->
         </div>  
-        <div class='form-group has-warning'>
-            <label class='col-md-2'>FaceBook:</label>
+        <div class='form-group'>
+            <label class='col-md-2'>Facebook:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 <input placeholder='PlZ,enter your facebook' class='form-control' id='facebook' name='facebook' type='text'/>
             </div>
-            <!-- <span class='col-lg-offset-3' id="spemail">Please enter a valid facebook address Like (aaa bbb).  </span> -->
+            <span style="color:blue;" class='col-lg-offset-3' id="spemail">Please enter a valid facebook address Like (aaabbb).  </span>
         </div> 
-        <div class='form-group has-warning'>
-            <label class='col-md-2'>Google_Plus:</label>
+        <div class='form-group'>
+            <label class='col-md-2'>Google+:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter your google_plus' class='form-control' id='google_plus' name='google_plus' type='text'/>
+                <input placeholder='PlZ,enter your google+' class='form-control' id='google_plus' name='google_plus' type='text'/>
             </div>
-           <!-- <span class='col-lg-offset-3' id="spgoogle">Please enter a valid google plus address Like ().  </span>  -->
+           <!-- <span class='col-lg-offset-3' id="spgoogle">Please enter a valid google+ address Like ().  </span>  -->
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Instagram:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 <input placeholder='PlZ,enter your instagram' class='form-control'id='instagram' name='instagram' type='text'/>
             </div>
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Pinterest:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
@@ -91,7 +91,7 @@
             </div>
             <!-- <span class='col-lg-offset-3' id="sppinterest">Please enter a valid pinterest address Like ().  </span> -->
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Linkedin:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
@@ -99,7 +99,7 @@
             </div>
             <!-- <span class='col-lg-offset-3' id="splinkedin">Please enter a valid linkedin address Like ().  </span> -->
         </div> 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Youtube:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
@@ -117,7 +117,7 @@
         </div> -->
 <!--         <br/>
  -->     <div  id="enterlatlng">      
-            <div class='form-group has-warning'>
+            <div class='form-group'>
                   <label class='col-md-2'>Latitude (X):</label>
                   <div class='col-md-10 input-group'>
                       <span class='input-group-addon'>X</span>
@@ -125,7 +125,7 @@
                   </div>
               </div>
 
-              <div class='form-group has-warning'>
+              <div class='form-group'>
                   <label class='col-md-2'> Longitude(Y):</label>
                   <div class='col-md-10 input-group'>
                       <span class='input-group-addon'>Y</span>
@@ -134,7 +134,7 @@
               </div> 
           </div>
         <div  id="googlelatlng">    
-<!--           <div class='form-group has-warning'>
+<!--           <div class='form-group'>
               <label class='col-md-2'>Latitude (X):</label>
               <div class='col-md-10 input-group'>
                   <span class='input-group-addon'>X</span>
@@ -142,7 +142,7 @@
               </div>
           </div>
 
-          <div class='form-group has-warning'>
+          <div class='form-group'>
               <label class='col-md-2'> Longitude(Y):</label>
               <div class='col-md-10 input-group'>
                   <span class='input-group-addon'>Y</span>
@@ -249,7 +249,7 @@
             latlon = lat + ' , ' + lon;
             var showdata;
 
-             showdata="<div class='form-group has-warning'>";
+             showdata="<div class='form-group'>";
              showdata+="<label class='col-md-2'>Latitude (X):</label>";
              showdata+="<div class='col-md-10 input-group'>";
              showdata+=" <span class='input-group-addon'>X</span>";
@@ -257,7 +257,7 @@
              showdata+="</div>";
              showdata+="</div>";
 
-          showdata+="<div class='form-group has-warning'>";
+          showdata+="<div class='form-group'>";
           showdata+=" <label class='col-md-2'> Longitude(Y):</label>";
           showdata+="<div class='col-md-10 input-group'>";
           showdata+="<span class='input-group-addon'>Y</span>";

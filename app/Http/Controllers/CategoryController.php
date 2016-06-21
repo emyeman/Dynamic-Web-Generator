@@ -53,8 +53,8 @@ class CategoryController extends Controller
             ]);
 
             $category= new Category;
-            $category->name=$request->input('title_category');
-            $category->description=$request->input('description');
+            $category->name=trim($request->input('title_category'));
+            $category->description=trim($request->input('description'));
             // for upload image
             if(Input::file('image_category')){
                 // echo "image_category";die();
@@ -98,8 +98,8 @@ class CategoryController extends Controller
             ]);
 
             $category=Category::find($id);
-            $category->name=$request->input('title_category');
-            $category->description=$request->input('description');
+            $category->name=trim($request->input('title_category'));
+            $category->description=trim($request->input('description'));
             // for upload image
             $old_image=$category->image; 
             if(Input::file('image_category')){

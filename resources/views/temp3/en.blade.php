@@ -19,7 +19,6 @@
     </div>
 <!-- *********************************************************************** -->
 
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav hidden-lg hidden-md ">
@@ -182,8 +181,8 @@
         </button>
         <ul class="dropdown-menu" role="menu">
         <li class="space"></li>
-            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><button class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></button></a></li>                               
-            <li><a  href="{{url('/'.$subdomain.'/en')}}"><button class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></button></a></li>                               
+            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></button></li>                               
+            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></button></li>                               
         </ul>
         </div>      
         </div> 
@@ -382,7 +381,7 @@
 
                             <span class="fa-stack fa-4x">
                                 
-                                <i class="fa fa-shopping-cart fa-stack-1x"></i>
+                                <i class="glyphicon {{ $service->icon }} fa-stack-1x"></i>
                             </span>
                                 <h4 class="service-heading">{{ $service->title }}</h4>
                                 <p class="text-muted">{{ $service->description }}</p>
@@ -525,8 +524,8 @@
                 <?php  $inc_promtion+=1;?>
                 @endforeach
                 </ol>
-</div>
             </div>
+        </div>
 
 
     </div>
@@ -540,7 +539,7 @@
 <section class="section" id="contact">
     <div class="container">
     
-     <h2 class="text-center title">Contact us</h2>
+     <h2 class="text-center title"><?php echo $mycontact;?></h2>
 
     <div class="row">
         <div class="col-sm-6">
