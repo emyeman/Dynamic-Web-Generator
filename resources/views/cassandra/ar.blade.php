@@ -1,4 +1,4 @@
-@include('../temp3/header')
+@include('../cassandra/header')
 <!--Arabic language -->
         <link href="{{url('assets/css/bootstrap-rtl.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/arabic-style.css')}}" rel="stylesheet">
@@ -645,5 +645,5 @@
 </section>
 @endif
 
-@include('../temp3/footer')
+@include('../cassandra/footer')
 

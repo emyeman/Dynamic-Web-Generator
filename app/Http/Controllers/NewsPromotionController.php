@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\Handler;
+use Session;
 
 class NewsPromotionController extends Controller
 {
@@ -74,9 +75,12 @@ class NewsPromotionController extends Controller
         if($is_saved)
         {
             //upload image
+            if($type=='promotion')
+                Session::flash('insert_success', 'A new promotion has been added successfully');
+            else
+                Session::flash('insert_success', 'A new news has been added successfully');
             Storage::disk('local')->put($file_name, File::get($image));
             return redirect()->action('NewsPromotionController@create',[$type]);
-            // return redirect()->route('promotion.create',['type'=>trim($request->input('type'))]);
         }
         else
         {
@@ -139,7 +143,10 @@ class NewsPromotionController extends Controller
             unlink(public_path('assets/images/').$old_imag_name); 
             Storage::disk('local')->put($file_name, File::get($image));
         }
-        
+        if($type == 'promotion')
+            Session::flash('update_success', 'the promotion has been updated successfully');
+        else
+            Session::flash('update_success', 'the news has been updated successfully');
 		return redirect()->route('news_promotion.index',['type'=>$type]);
      }
 

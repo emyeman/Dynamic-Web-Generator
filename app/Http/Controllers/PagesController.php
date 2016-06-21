@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Page;
 use Auth;
+use Session;
 
 class PagesController extends Controller
 {
@@ -48,6 +49,7 @@ class PagesController extends Controller
         $is_saved=$new_row->save();
         if($is_saved)
         {
+            Session::flash('insert_success', 'A new page has been added successfully');
             return redirect()->action('PagesController@create');
         }
         else
@@ -97,6 +99,7 @@ class PagesController extends Controller
 
         $row->content=trim($request->input('content'));
         $is_saved=$row->save();
+        Session::flash('update_success', 'the page has been updated successfully');
         return redirect()->route('page.index');
      }
 

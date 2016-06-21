@@ -524,7 +524,7 @@
                             <label for="exampleInputEmail1">Message</label>
                             <textarea name='content' class="form-control" rows="3">{{old('content')}}</textarea>
                         </div>
-                        
+                        <input type='hidden' value="{{$site_id}}" name='site_id'>
                         <button type="submit" class="btn tf-btn btn-default">Submit</button>
                     {!!Form::close() !!}
 
