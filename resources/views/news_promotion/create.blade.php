@@ -24,6 +24,9 @@
     @endif
 
     <br><br>
+    @if(Session::has('insert_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+    @endif
     {!!Form::open(['route'=>'news_promotion.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
         <div class='form-group'>
             <label class='col-md-2'>Title *</label>
@@ -47,17 +50,24 @@
         <div class='form-group'>
             <label class='col-md-2'>Start Date *</label>
             <div class='col-md-10'>
-                <input type='date' name='start_date' class='form-control required' value="{{date('Y-m-d')}}">
+                <input type='text' style='position: absolute; z-index: 5;' name='start_date' class='form-control required' value="{{date('Y-m-d')}}">
             </div>
         </div> 
         <div class='form-group'>
             <label class='col-md-2'>End Date *</label>
             <div class='col-md-10'>
-                <input type='date' name='end_date' class='form-control required' value="<?= date('Y-m-d');?>">
+                <input type='text' style='position: absolute; z-index: 5;' name='end_date' class='form-control required' value="<?= date('Y-m-d');?>">
             </div>
         </div>   
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
     {!!Form::close() !!}
+    {!! Html::style('assets/css/jquery-ui.min.css') !!}
+    {!! Html::script('assets/js/jquery-ui.min.js') !!}
+   <script>
+
+    $( "[name=end_date]" ).datepicker({dateFormat: "yy-mm-dd"});
+    $( "[name=start_date]" ).datepicker({dateFormat: "yy-mm-dd"});
+  </script>
 
 @endsection

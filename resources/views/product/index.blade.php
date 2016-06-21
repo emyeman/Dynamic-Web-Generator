@@ -1,106 +1,113 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('../header')
+@endsection
+
 @section('content')
-<div class="container">
 
-@include('../header')
 
-<div class="col-sm-9">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Show Products
-                    <small>
-                    <!-- <i>Hello current_user</i> -->
-                    <div class='col-lg-offset-11 col-ms-1'>
-                        <a href="{{url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
-                    </div></small>
-                </h1>
-            </div>
+
+{!! Html::style('assets/css/table-scroll.css') !!}
+
+    <h1 class="page-header">
+        Show Products
+    </h1>
+    <div class="row">
+        <div class='col-lg-offset-11 col-ms-1'>
+            <a href="{{url('/product/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
-        <!-- /.row -->
-        @if (Auth::user()) 
-            @foreach ($products as $product) 
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a href="#">
-                                <img width="400" height="30" src="{{url('/assets/images/'.$product->image)}}"/>
-                            </a>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-8">
-                            <!-- for obtain name of category  -->
-                            @foreach ($categories as $allcategory)
-                                @if($allcategory->id==$product->category_id)
-                                     @foreach ($categories as $category)
-                                        @if($category->id==$allcategory->category_id)
-                                            <h3><label >Title Category:</label>{{$category->name}}<br/>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            @endforeach
+    </div >
+    <div class="row">
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class='table table-hover' style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th width='10%'><span class="text">Category</span></th>
+                            <th width='10%'><span class="text">Sub Category</span></th>
+                            <th width='15%'><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image</span></th>
+                            <th width='10%'><span class="text">Product</span></th>
+                            <th width='20%'><span class="text">Description</span></th>
+                            <th width='15%'><span class="text">Price</span></th>
+                            <th width='10%'><span class="text">Publish At</span></th>
+                            <th width='5%'></th>
+                            <th width='5%'></th> <!-- edit operation -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @if (Auth::user()) 
+                        @foreach ($products as $product)
+                            <tr> 
+                                   <!-- for obtain name of category  -->
+                                @foreach ($categories as $allcategory)
+                                    @if($allcategory->id==$product->category_id)
+                                         @foreach ($categories as $category)
+                                            @if($category->id==$allcategory->category_id)
+                                             <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$category->name}}<a/></td>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                @endforeach
 
                             <!-- for obtain name of subcategory  -->
                             @foreach ($subcategories as $subcategory)
                                 @if($subcategory->id == $product->category_id)
-                                    <label >Title SubCategory:</label>{{$subcategory->name}}<br/>                              
+                                <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$subcategory->name}}<a/></td>
                                 @endif
                             @endforeach
-            
-                            <label >Title Product:</label>{{$product->name}}<br/>
-                            <label >Description:</label>{{substr($product->description,0,100)}}<br/>
-                            <!-- <label >Description:</label>{{$product->description}}</h3> -->
-                            <label >Price Product:</label>{{$product->price}} LE</h3>
-                             <h4><label >Publish At:</label>{{$product->created_at}}</h4>
-                            <a class="btn btn-primary" href="{{url('/product/'.$product->id.'/edit')}}" >Edit Product <span class="glyphicon glyphicon-edit"></span></a>
-                            <!-- <a class="btn btn-danger" href="/product/destroy/{{$product->id}}">Remove Product <span class="glyphicon glyphicon-remove"></span></a> -->
-                             
-                                <!-- use ajax for remove -->
-                            <a id="{{$product->id}}" class="btn btn-danger delete">Remove Product<span class="glyphicon glyphicon-remove"></span> </a>
-                           <hr/>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <!-- <hr/> -->
-             @endforeach
-         @endif     
-</div><!--end leftsideof from-->
+                            <td>
+                                <a href="{{url('/product/'.$product->id.'/edit')}}">
+                                    <img src="{{url('/assets/images/'.$product->image)}}" width='100px' height='100px'>
+                                </a>
+                            </td>
 
- <br/><br/><hr/><hr/>
-  
- </div>
+                             <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$product->name}}<a/></td>
+                                <td class='wrap'>{{substr($product->description,0,100)}}</td>
+                                <td>{{$product->price}} LE</td>
+                                <td>{{$product->created_at}}</td> 
+                                <td>
+                                    <a href="{{url('/product/'.$product->id.'/edit')}}">
+                                        <span style="color:blue;" class="glyphicon glyphicon-edit edit" id="{{$product->id}}"></span>
+                                    </a>
+                                </td> 
+                                <td><span class="glyphicon glyphicon-remove delete" id="{{$product->id}}"></span></td>
+                            </tr>
+                        @endforeach
+                     @endif 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script type="text/javascript">
-    $(function(){
-        
-        $('.delete').on('click',function(event){
-            event.preventDefault();
-            //Declaration
-            var token = $('#token').attr('content');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            del_product=$(this);
-            id=$(this).attr('id');
-            $.ajax({
-                type: "DELETE",
-                url: "{{url('/product/')}}/"+ id, //resource
-                data:   { _token :token },
-                success: function(del_products) { 
-                    del_product.parent().parent().remove();
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
+    $('.delete').on('click',function(event){
+        event.preventDefault();
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
         });
-
+        del_product=$(this);
+        id=$(this).attr('id');
+        $.ajax({
+            type: "DELETE",
+            url: "{{url('/product') }}/"+id, //resource
+            data:   { _token :token },
+            success: function(del_products) { 
+                del_product.parent().parent().remove();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
     });
 </script>
-@endsection
-
-    
+@endsection   

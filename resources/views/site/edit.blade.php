@@ -98,6 +98,7 @@
 
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-1 btn btn-default' name='ok' value='update' />
+        <br/><br/><br/><br/>
     {!!Form::close() !!}
 
 </div>

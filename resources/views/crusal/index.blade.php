@@ -12,6 +12,12 @@
             <a href="{{url('/crusal/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
     </div>
+    @if(Session::has('update_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
+    @endif
+    @if(Session::has('update_failed'))
+        <div class="alert alert-warning alert-autocloseable" role="alert">{!!session('update_failed')!!}</div>
+    @endif
     <div class="row">
         <div id="table-wrapper">
             <div id="table-scroll">
@@ -49,8 +55,6 @@
     </div>
         <!-- /.row -->
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<!-- script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script type="text/javascript">      
     $('.delete').on('click',function(event){
         event.preventDefault();

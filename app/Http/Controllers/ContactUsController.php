@@ -66,21 +66,21 @@ class ContactUsController extends Controller
 
             $contact= new Contact;
             $contact->site_id=Auth::user()->id;   //becaues site_id of contactus is same as id of user 
-            $contact->address=$request->input('address');
+            $contact->address=trim($request->input('address'));
             // data from google map
 
-            $contact->lat=$request->input('latitude');
-            $contact->lng=$request->input('longitude');
-            $contact->phone=$request->input('phone');
-            $contact->mobile=$request->input('mobile');
-            $contact->email=$request->input('email');
-            $contact->fax=$request->input('fax');
-            $contact->facebook=$request->input('facebook');
-            $contact->google_plus=$request->input('google_plus');
-            $contact->instagram=$request->input('instagram');
-            $contact->pinterest=$request->input('pinterest');
-            $contact->linkedin=$request->input('linkedin');
-            $contact->youtube=$request->input('youtube');
+            $contact->lat=trim($request->input('latitude'));
+            $contact->lng=trim($request->input('longitude'));
+            $contact->phone=trim($request->input('phone'));
+            $contact->mobile=trim($request->input('mobile'));
+            $contact->email=trim($request->input('email'));
+            $contact->fax=trim($request->input('fax'));
+            $contact->facebook=trim($request->input('facebook'));
+            $contact->google_plus=trim($request->input('google_plus'));
+            $contact->instagram=trim($request->input('instagram'));
+            $contact->pinterest=trim($request->input('pinterest'));
+            $contact->linkedin=trim($request->input('linkedin'));
+            $contact->youtube=trim($request->input('youtube'));
             $contact->save();
             return  redirect ('/contactus');
         } else{
@@ -120,26 +120,26 @@ class ContactUsController extends Controller
 
             $contact=Contact::find($id);
             $contact->id=Auth::user()->id;   //becaues id of contactus is same as id of site that equal id of user
-            $contact->address=$request->input('address');
+            $contact->address=trim($request->input('address'));
 
             // data from google map
-            $lat=$request->input('latitude');
-            $lng=$request->input('longitude');
+            $lat=trim($request->input('latitude'));
+            $lng=trim($request->input('longitude'));
             if (!(empty($lat) and empty($lng))){
-                $contact->lat=$request->input('latitude');
-                $contact->lng=$request->input('longitude');
+                $contact->lat=trim($request->input('latitude'));
+                $contact->lng=trim($request->input('longitude'));
             }
             
-            $contact->phone=$request->input('phone');
-            $contact->mobile=$request->input('mobile');
-            $contact->email=$request->input('email');
-            $contact->fax=$request->input('fax');
-            $contact->facebook=$request->input('facebook');
-            $contact->google_plus=$request->input('google_plus');
-            $contact->instagram=$request->input('instagram');
-            $contact->pinterest=$request->input('pinterest');
-            $contact->linkedin=$request->input('linkedin');
-            $contact->youtube=$request->input('youtube');
+            $contact->phone=trim($request->input('phone'));
+            $contact->mobile=trim($request->input('mobile'));
+            $contact->email=trim($request->input('email'));
+            $contact->fax=trim($request->input('fax'));
+            $contact->facebook=trim($request->input('facebook'));
+            $contact->google_plus=trim($request->input('google_plus'));
+            $contact->instagram=trim($request->input('instagram'));
+            $contact->pinterest=trim($request->input('pinterest'));
+            $contact->linkedin=trim($request->input('linkedin'));
+            $contact->youtube=trim($request->input('youtube'));
             $contact->save();
             return  redirect ('/contactus');
         } else{

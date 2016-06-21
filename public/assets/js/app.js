@@ -69,9 +69,12 @@ var App = function() {
 		}
 
 		// handles responsive breakpoints.
-		$(window).setBreakpoints({
-			breakpoints: [320, 480, 768, 979, 1200]
-		});
+//************************** emy***************************************** 
+		// $(window).setBreakpoints({
+		// 	breakpoints: [320, 480, 768, 979, 1200]
+		// });
+//************************** emy*****************************************
+
 
 		$(window).bind('exitBreakpoint320', function() {
 			handleElements();
@@ -334,7 +337,7 @@ var App = function() {
 					if ($(window).width() <= 767) {
 						$('#sidebar').css('margin-left', '-250px').css('margin-top', '-52px');
 					}
-				} else {
+				}else {
 					var wheelStepInt = 7;
 				}
 

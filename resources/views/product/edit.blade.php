@@ -88,7 +88,7 @@
         <div class='form-group'>
             <label class='col-md-2'>Price</label>
             <div class='col-md-10 input-group'>                
-                <input value="{{$product->price}}" class='form-control' name='price_product' type='number'/>
+                <input value="{{$product->price}}" class='form-control' name='price_product' type='double'/>
             </div>
         </div>     
         <span class='col-md-2'></span>

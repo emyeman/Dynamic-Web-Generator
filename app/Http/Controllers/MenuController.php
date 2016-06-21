@@ -9,6 +9,7 @@ use Auth;
 use App\Menu;
 use App\Page;
 use DB;
+use Session;
 class MenuController extends Controller
 {
     public function index(){
@@ -57,6 +58,7 @@ class MenuController extends Controller
 		$is_saved=$new_row->save();
         if($is_saved)
         {
+            Session::flash('insert_success', 'A new menu item has been added successfully');
             return redirect()->action('MenuController@create');
         }
         else
@@ -108,7 +110,10 @@ class MenuController extends Controller
         $row->route=trim($request->input('route'));
         $is_saved=$row->save();
         if($is_saved)
+        {
+            Session::flash('update_success', 'the menu item has been updated successfully');
             return redirect()->action('MenuController@index');
+        }
         else
             abort(500);
      }
@@ -145,6 +150,13 @@ class MenuController extends Controller
 		$row->delete();
 
 		return $menus_to_delete_arr->toJson();
+     }
+
+     public function updateAll(Request $request)
+     {
+        // echo "<pre>";
+        return($request->input('data'));
+        // echo "</pre>";
      }
 }
 

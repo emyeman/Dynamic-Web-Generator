@@ -19,6 +19,9 @@
     @endif
 
     <br><br>
+    @if(Session::has('insert_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+    @endif
     {!!Form::open(['route'=>'menu.store','method'=>'post','class'=>'form-horizontal']) !!}
         <div class='form-group'>
             <label class='col-md-2'>Title*</label>

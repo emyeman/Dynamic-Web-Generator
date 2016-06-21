@@ -16,7 +16,7 @@ class CreateTemplatesTable extends Migration
             $table->increments('id');
             $table->string('name',50)->unique();
             $table->mediumText('image');
-            $table->string('development_name',200);
+            $table->string('development_name');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -116,6 +116,7 @@ class AboutUsController extends Controller
             unlink(public_path('assets/images/').$old_imag_name); 
             Storage::disk('local')->put($file_name, File::get($image));
         }
+        Session::flash('update_success', 'Aboutus page data has been updated successfully');
 		return redirect()->route('aboutus.show',['id'=>$row->id]);
      }
 	        

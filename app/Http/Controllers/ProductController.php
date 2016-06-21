@@ -93,8 +93,8 @@ class ProductController extends Controller
             ]);
 
             $product= new Product;
-            $product->name=$request->input('title_product');
-            $product->description=$request->input('description');
+            $product->name=trim($request->input('title_product'));
+            $product->description=trim($request->input('description'));
             $product->price=$request->input('price_product');
 
             if(Input::file('image_product')){
@@ -148,8 +148,8 @@ class ProductController extends Controller
             ]);
 
             $product=Product::find($id);
-            $product->name=$request->input('title_product');
-            $product->description=$request->input('description');
+            $product->name=trim($request->input('title_product'));
+            $product->description=trim($request->input('description'));
             $product->price=$request->input('price_product');
             $old_image=$product->image;
             if(Input::file('image_product')){

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Dashboard | Melon - Flat &amp; Responsive Admin Template</title>
 
-                                <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Register</a></li>
+    <li class="menu-item one-page-subsite"><a href="index.html#portfolio-items">Register</a></li>
 
 
     <!-- ******************************************************* -->
@@ -133,6 +132,41 @@
         $('.picker').colorPicker(/* optinal options */); // that's it
     });
     </script>
+    <script type="text/javascript">
+        $(function(){
+            $('.alert-autocloseable').delay(5000).slideUp( 1000);
+        });
+    </script>
+    <meta name="_token" id='token' content="{!! csrf_token() !!}" />
+    <script type="text/javascript">
+            var token = $('#token').attr('content');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: "{{url('/message/unseen') }}",
+                data:   { _token :token },
+                success: function(data) { 
+                    data_arr=$.parseJSON(data);
+                    $('.num-notifications').append(data_arr[1]);
+                    $.each(data_arr[0],function(index,message){
+                        str='<li><a href="/message/'+message.id+'">'
+                        str+='<span class="subject"><span class="from">';
+                        str+=message.name;
+                        str+='</span></span><span class="text">';
+                        str+=message.subject;
+                        str+='</span></a></li>';
+                        $('.notification').prepend(str);
+                    });
+                },
+                error: function (data) {
+                    console.log('error :(');
+                }
+            });
+    </script>
 
 
     <!-- Demo JS -->
@@ -195,13 +229,13 @@
                     <li class="dropdown hidden-xs hidden-sm">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-envelope"></i>
-                            <span class="badge">1</span>
+                            <span class="badge num-notifications"></span>
                         </a>
                         <ul class="dropdown-menu extended notification">
-                            <li class="title">
+                            <!-- <li class="title">
                                 <p>You have 3 new messages</p>
-                            </li>
-                            <li>
+                            </li> -->
+                            <!-- <li>
                                 <a href="javascript:void(0);">
                                     <span class="photo"><img src="/assets/img/demo/avatar-1.jpg" alt="" /></span>
                                     <span class="subject">
@@ -212,33 +246,9 @@
                                         Consetetur sadipscing elitr...
                                     </span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <span class="photo"><img src="/assets/img/demo/avatar-2.jpg" alt="" /></span>
-                                    <span class="subject">
-                                        <span class="from">Jane Doe</span>
-                                        <span class="time">45 mins</span>
-                                    </span>
-                                    <span class="text">
-                                        Sed diam nonumy...
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);">
-                                    <span class="photo"><img src="/assets/img/demo/avatar-3.jpg" alt="" /></span>
-                                    <span class="subject">
-                                        <span class="from">Patrick Nilson</span>
-                                        <span class="time">6 hours</span>
-                                    </span>
-                                    <span class="text">
-                                        No sea takimata sanctus...
-                                    </span>
-                                </a>
-                            </li>
+                            </li> -->
                             <li class="footer">
-                                <a href="javascript:void(0);">View all messages</a>
+                                <a href="/message">View all messages</a>
                             </li>
                         </ul>
                     </li>

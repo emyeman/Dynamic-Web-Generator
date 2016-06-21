@@ -1,40 +1,54 @@
 @extends('layouts.app')
 
+@section('sidebar')
+    @include('../header')
+@endsection
+
 @section('content')
-<div class="container">
 
-@include('../header')
 
-<div class="col-sm-9">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Show Categories
-                    <small>
-                    <!-- <i>Hello current_user</i> -->
-                    <div class='col-lg-offset-11 col-ms-1'>
-                        <a href="{{url('/category/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
-                    </div></small>
-                </h1>
-            </div>
+{!! Html::style('assets/css/table-scroll.css') !!}
+
+    <h1 class="page-header">
+        Show Categories
+    </h1>
+    <div class="category">
+        <div class='col-lg-offset-11 col-ms-1'>
+            <a href="{{url('/category/create/')}}"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
-        <!-- /.row -->
-        @foreach ($categories as $category) 
-            @if (Auth::user()->id == $category->site_id)
-                @if($category->category_id ==NULL)
-                    <div class="row">
-                        <div class="col-md-3">
-                            <a href="#">
-                                <img width="400" height="30" src="{{url('/assets/images/'.$category->image)}}" />
-                            </a>
-                        </div>
-                        <div class="col-md-1"></div>
-                        <div class="col-md-8">
-                            <h3><label >Title Category:</label>{{$category->name}}<br/>
-                            <label >Description:</label>{{substr($category->description,0,100)}}</h3>
-                            <!-- <label >Description:</label>{{$category->description}}</h3> -->
-                             <h4><label >Publish At:</label>{{$category->created_at}}</h4>
-                            <a class="btn btn-primary" href="{{url('/category/'.$category->id.'/edit')}}" >Edit Category  <span class="glyphicon glyphicon-edit"></span></a>
-                            <?php $flage_relation=0 ?>
+    </div >
+    <div class="category">
+        <div id="table-wrapper">
+            <div id="table-scroll">
+                <table class='table table-hover' style="table-layout: fixed;">
+                    <thead>
+                        <tr>
+                            <th width='30%'><span class="text">Image</span></th>
+                            <th width='20%'><span class="text">Sub Category</span></th>
+                            <th width='30%'><span class="text">Description</span></th>
+                            <th width='20%'><span class="text">Publish At</span></th>
+                            <th width='5%'></th>
+                            <th width='5%'></th> <!-- edit operation -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($categories as $category) 
+                            @if (Auth::user()->id == $category->site_id)
+                            <tr> 
+                                <td>
+                                    <a href="{{url('/category/'.$category->id.'/edit')}}">
+                                        <img src="{{url('/assets/images/'.$category->image)}}" width='100px' height='100px'></td>
+                                    </a>
+                                <td class='wrap'><a href="{{url('/category/'.$category->id.'/edit')}}">{{$category->name}}<a/></td>
+                                <td class='wrap'>{{substr($category->description,0,100)}}</td>
+                                <td>{{$category->created_at}}</td>
+                                <td>
+                                    <a href="{{url('/category/'.$category->id.'/edit')}}">
+                                        <span style="color:blue;" class="glyphicon glyphicon-edit edit" id="{{$category->id}}"></span>
+                                    </a>
+                                </td> 
+
+                             <?php $flage_relation=0 ?>
                             @foreach ($categories as $del_category)
                                 @if($category->id==$del_category->category_id)
                                     <?php $flage_relation=1 ?>
@@ -42,64 +56,55 @@
                             @endforeach
 
                             @if($flage_relation==1)
-                                <span class="btn btn-danger disabled" > Remove Category  <span class="glyphicon glyphicon-remove disabled"></span></span>
+                                <!-- <span class="btn btn-danger disabled" > Remove category  <span class="glyphicon glyphicon-remove disabled"></span></span> -->
+                                <td><span style="size-weight:bold;" class="disabled">x</span></td>
                             @endif
                             @if($flage_relation==0)
-                                <!-- <a  class="btn btn-danger" href="/category/destroy/{{$category->id}}">Remove Category <span class="glyphicon glyphicon-remove"></span></a> -->
+                            <!-- <a class="btn btn-danger" href="/category/destroy/{{$category->id}}">Remove category <span class="glyphicon glyphicon-remove"></span></a> -->
 
                                 <!-- use ajax for remove -->
-                                <a id="{{$category->id}}" class="btn btn-danger delete">Remove Category <span class="glyphicon glyphicon-remove"></span></a>
+                                <td><span class="glyphicon glyphicon-remove delete" id="{{$category->id}}"></span></td>
+
+                                 <!-- <a id="{{$category->id}}" class="btn btn-danger delete">Remove Category<span class="glyphicon glyphicon-remove"></span> </a> -->
                             @endif
-                            <hr/>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                     <!-- <hr/> -->
-                @endif
-            @endif
-        @endforeach
+
+                            </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
-        <div  id="alldata"></div>
-</div><!--end leftsideof from-->
-
- <br/><br/><hr/><hr/>
-
-
- </div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <script type="text/javascript">
-    $(function(){
-        
-        $('.delete').on('click',function(event){
-            event.preventDefault();
-            //Declaration
-            var token = $('#token').attr('content');
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            del_category=$(this);
-            id=$(this).attr('id');
-            $.ajax({
-                type: "DELETE",
-                url: "{{url('/category/')}}/"+ id, //resource
-                data:   { _token :token },
-                success: function(del_categories) { 
-                    del_category.parent().parent().remove();
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
+    $('.delete').on('click',function(event){
+        event.preventDefault();
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
         });
-
+        del_category=$(this);
+        id=$(this).attr('id');
+        $.ajax({
+            type: "DELETE",
+            url: "{{url('/category') }}/"+id, //resource
+            data:   { _token :token },
+            success: function(del_categories) { 
+                del_category.parent().parent().remove();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
     });
 </script>
+@endsection   
 
-@endsection
-
-    
