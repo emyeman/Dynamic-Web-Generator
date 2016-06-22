@@ -144,7 +144,6 @@
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
 @if($crusals)
-
 <!-- Wrapper for slides -->
 <div class="carousel-inner" role="listbox">
 <?php $crusal_count=0;?>
@@ -158,6 +157,7 @@
     </div>
     <?php $crusal_count++; ?>
 @endforeach
+
 </div>
 <!-- Controls -->
 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

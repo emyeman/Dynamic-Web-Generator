@@ -84,9 +84,11 @@ class TemplateController extends Controller
 // ***************** for services ***************************
         $services = DB::table('services')->where('site_id',$site_id)->get();
         $crusals = DB::table('crusals')->where('site_id',$site_id)->get();
-        $news = DB::table('news_promotions')->where('site_id',$site_id)->where('type','news')->get();
-        $promotions = DB::table('news_promotions')->where('site_id',$site_id)->where('type','promotion')->get();
+        $news = DB::table('news_promotions')->where('site_id',$site_id)->where('type','news')->where('end_date', '>=', date('Y-m-d'))->where('start_date', '<=', date('Y-m-d'))->get();
+        $promotions = DB::table('news_promotions')->where('site_id',$site_id)->where('type','promotion')->where('end_date', '>=', date('Y-m-d'))->where('start_date', '<=', date('Y-m-d'))->get();
+        // $q->where('end_date', '>=', date('Y-m-d'));
 
+        // dd(date('Y-m-d'));
 
         $aboutus=Aboutus::where('site_id', '=', $site_id)->first();
         $header=Header::where('site_id', '=', $site_id)->first();

@@ -55,7 +55,8 @@ class SiteController extends Controller
      {
         $this->validate($request, [
             'subdomain' => 'required|max:255|unique:sites',
-            'color' => 'required',
+            'slogan_color' => 'required',
+            'text_color' => 'required',
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
@@ -98,7 +99,8 @@ class SiteController extends Controller
      {
         $this->validate($request, [
             'subdomain' => 'required|max:255',
-            'color' => 'required',
+            'slogan_color' => 'required',
+            'text_color' => 'required',
             'primary_color' => 'required',
             'secondry_color' => 'required',
             'body_type' => 'required',
@@ -119,7 +121,8 @@ class SiteController extends Controller
         // dd($imagePath);
        if($site->update([
             'subdomain'=>$request->all()['subdomain'],
-            'color' => $request->all()['color'],
+            'slogan_color' => $request->all()['slogan_color'],
+            'text_color' => $request->all()['text_color'],
            'primary_color' => $request->all()['primary_color'],
             'secondry_color' => $request->all()['secondry_color'],
             'body_type' => $request->all()['body_type'],

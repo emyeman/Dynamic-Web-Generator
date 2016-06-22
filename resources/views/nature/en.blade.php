@@ -85,12 +85,16 @@
 ?>
   @if(isset($crusals))
 
-	<div id="page_top">
+	<div id="wowslider-container0">
 
 	<div class="ws_images">
     <ul>
     <?php $count=0; ?>
-    <?php $crusals =  array_slice($crusals, 0, 4) ?>
+    <?php 
+
+    $crusals =  array_slice($crusals, 0, 4); 
+
+    ?>
     @foreach($crusals as $crusal)
         <li><img src="{{ url('/assets/images/')}}{{ $crusal->image }}" alt="{{ $crusal->title }}" title="{{ $crusal->title }}" id="wows0_{{ $count }}"/></li> 
         <?php $count++; ?>  
@@ -101,7 +105,8 @@
 	<div class="ws_bullets">
   <div>
      @for ($x = 0; $x < count($crusals); $x++)
-		<a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[0]->title }}"/>1</span></a>
+		<a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[$x]->title }}"/>
+    {{ ++$x }}</span></a>
     @endfor
 	</div>
   </div>
@@ -222,7 +227,7 @@
 
     <!-- About Us Page
     ==========================================-->
-    @if(isset($aboutus))
+    @if(isset($aboutus) && $aboutus != null)
 
     <div id="about">
         <div class="container">
@@ -265,7 +270,7 @@
     <!-- Services Section
     ==========================================-->
   
-    @if(isset($services))
+    @if(isset($services) && $services != null)
 
     <div id="services" class="text-center">
         <div class="container">
@@ -300,9 +305,10 @@
         </div>
     </div>
   @endif
+
  <!-- promotion
     ==========================================-->
-@if(isset($promotions))
+@if(isset($promotions) && $promotions != null)
 
  <div id="promotion" class="text-center">
         <div class="overlay">
@@ -320,7 +326,7 @@
                 @foreach($promotions as $promotion)
 
                     <div class="item">
-                        
+                        <a href="#{{ $promotion->id }}"  data-toggle="modal" data-target="#{{ $promotion->id }}">
                         <div class="panel">
                                  <div class="panel-heading">
                                      <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" width="160" height="181">
@@ -336,7 +342,8 @@
                                  <p ><strong>From:</strong>{{ $promotion->start_date }}</p>
                                 <p ><strong>To:</strong>{{ $promotion->end_date }}</p>
                             </div>
-                                </div>     
+                                </div>    
+                                </a>
                     </div>
                     
                 @endforeach
@@ -346,14 +353,45 @@
 
             </div>
         </div>
+
+
+           
     </div>
+
+    @foreach($promotions as $promotion)
+    <div class="modal fade" id="{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    
+                  <div class="modal-content">
+                    <div class="modal-header" style="background: #09ab9b;">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">{{ $promotion->title }}</h4>
+                    </div>
+                    <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <img class="img-responsive" src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="" >
+                      </div>
+                       <div class="col-md-6 col-xs-12">
+                         <p> {{ $promotion->description }}</p>
+                       </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div><!-- /.modal-content -->               
+              </div>
+           </div>
+           @endforeach
+
 @endif
 
 
 
     <!-- Products Section
     ==========================================-->
-    @if(isset($cats_and_subcats))
+    @if(isset($cats_and_subcats) && $cats_and_subcats != null)
     <div id="gallery">
         <div class="container"> <!-- Container -->
             <div class="section-title text-center center">
@@ -381,14 +419,14 @@
                                <li>
                                   <div class="dropdown">
                                       <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                          <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ $cat_and_subcats->name }}</a>
+                                          <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ str_replace(' ', '', $cat_and_subcats->name) }}</a>
                                           <span class="caret"></span>
                                       </button>
 
                                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
                                         @foreach($cat_and_subcats->subcategories as $sub)
-                                              <li><a href="#" data-filter=".{{ $sub->name }}">{{ $sub->name }}</a></li>
+                                              <li><a href="#" data-filter=".{{ $sub->name }}">{{ str_replace(' ', '', $sub->name) }}</a></li>
                                         @endforeach
                                       </ul>
                                   </div>
@@ -396,6 +434,7 @@
                               @endforeach
 
                         </ol>
+                      </li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -432,7 +471,7 @@
 @endif
     <!-- News Section
     ==========================================-->
-    @if(isset($news))
+    @if(isset($news) && $news != null )
 
     <div id="news" class="text-center">
         <div class="overlay">
@@ -473,7 +512,7 @@
 
     <!-- Contact Section
     ==========================================-->
-  @if(isset($contacts))  
+  @if(isset($contacts) && $contacts != null)  
     <div id="contact" class="text-center">
         <div class="container">
 
