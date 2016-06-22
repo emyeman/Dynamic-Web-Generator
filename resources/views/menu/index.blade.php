@@ -98,12 +98,31 @@
             <li id='item_f'>Item 6</li>
           </ol>
         </div> -->
+        <style type="text/css">
+            .dd-handle {
+                display: block;
+                height: 30px;
+                margin: 5px 0;
+                cursor: move;
+                padding: 5px 10px;
+                color: #333;
+                text-decoration: none;
+                font-weight: 400;
+                border: 1px solid #ccc;
+                background: lightblue;
+                box-sizing: border-box;
+            }
+            ul
+            {
+                list-style-type: none;
+            }
+        </style>
 
-        <ul class='hhh'>
+        <ul class='sortable-list'>
             @foreach ($rows as $row)
                 @if($row->parent_id == null)
                     <li id="{{$row->menu_id}}">
-                        <div>{{$row->menu_title}}</div>
+                        <div class='dd-handle'>{{$row->menu_title}}</div>
                         @foreach($rows as $submenu)
                             @if($row->menu_id == $submenu->parent_id)
                                 @include('menu.submenus',['menus'=>$rows,'parent_menu'=>$submenu])
@@ -125,7 +144,7 @@
            </li>
         </ul> -->
 
-        <input type='button' id='show_ser' value='save'>
+        <input type='button' id='update_menus' value='save'>
 </div><!--end leftsideof from-->
 
  <br/><br/><hr/><hr/>
@@ -242,29 +261,24 @@
     insertZonePlus: true
 
 }
-    $('.hhh').sortableLists(options);
-    $('#show_ser').click(function(){
-        data=$('.hhh').sortableListsToHierarchy();
+    $('.sortable-list').sortableLists(options);
+    $('#update_menus').click(function(){
+        data=$('.sortable-list').sortableListsToHierarchy();
         // console.log(data);
         $.ajaxSetup({
                 headers: {
                     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            affected_row=$(this);
-            id=$(this).attr('id');
             $.ajax({
                 type: "POST",
                 url: "{{url('/menu/updateall')}}", //resource
                 data:   { _token :token, data: data },
                 success: function(deleted_menus) { 
                     // arr=jQuery.parseJSON(deleted_menus);
-                    // $.each(arr,function(index,id){
-                    //     console.log(id);
-                    //     $('.delete[id='+id+']').parent().parent().remove();
-                    // });
-                    // affected_row.parent().parent().remove();
-                    console.log('yes');
+                    // console.log(arr);
+                    k=deleted_menus;
+                    console.log(deleted_menus);
                 },
                 error: function (data) {
                     console.log(data);
