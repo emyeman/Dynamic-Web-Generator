@@ -40,38 +40,5 @@
 
         <!-- Custom css --> 
         <link href="{{ url('/assets/css/custom.css')}}" rel="stylesheet">
-        <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
-    </head>
 
-    <body class="no-trans" id="page_top">
-        <!-- scrollToTop -->
-        <!-- ================ -->
-        <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
-
-        <!-- header start -->
-        <!-- ================ --> 
-        <header class="header fixed clearfix navbar navbar-fixed-top">
-            <div class="container">
-
-                        <!-- header-right start -->
-                        <!-- ================ -->
-                        <div class="header-right clearfix">
-
-                            <!-- main-navigation start -->
-                            <!-- ================ -->
-                            <div class="main-navigation animated">
-
-                                <!-- navbar start -->
-                                <!-- ================ -->
-                                <nav class="navbar navbar-default" role="navigation">
-                                    <div class="container-fluid">
-
-                                        <!-- Toggle get grouped for better mobile display -->
-                                        <div class="navbar-header">
-                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                                                <span class="sr-only">Toggle navigation</span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                                <span class="icon-bar"></span>
-                                            </button>
-                                        </div>
+        
