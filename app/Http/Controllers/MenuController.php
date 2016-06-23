@@ -152,10 +152,34 @@ class MenuController extends Controller
 		return $menus_to_delete_arr->toJson();
      }
 
+     private function updateMenus($parent_id, $menus)
+     {
+        foreach ($menus as $menu) {
+            $id=$menu['id'];
+            $m=Menu::findOrFail($id);
+            $m->parent_id=$parent_id;
+            $m->save();
+            if(isset($menu['children']))
+                return MenuController::updateMenus($id,$menu['children']);
+        }
+        return 'kk' ;
+     }
+
      public function updateAll(Request $request)
      {
+        $menus=$request->input('data');
+        foreach ($menus as $menu) {
+            // return $menu['children'];
+            $id=$menu['id'];
+            $m=Menu::findOrFail($id);
+            $m->parent_id= NULL;
+            $m->save();
+            if(isset($menu['children']))
+                MenuController::updateMenus($id,$menu['children']);
+        }
+        return 'yes';
         // echo "<pre>";
-        return($request->input('data'));
+        // return($request->input('data'));
         // echo "</pre>";
      }
 }

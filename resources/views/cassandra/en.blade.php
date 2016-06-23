@@ -213,7 +213,7 @@
                 </h3>-->
                 
                 <!-- Nice place to describe your site in a sentence or two -->
-                <p><a href="#" class="btn btn-default btn-lg">Know more</a></p>
+                <!-- <p><a href="#" class="btn btn-default btn-lg">Know more</a></p> -->
     
             </div> <!-- /col -->
         </div> <!-- /row -->
@@ -252,9 +252,9 @@
     <div class="container">
 
         <h2 class="text-center title"><?php echo $mygallery;?></h2>
-        <p class="lead text-center">
+        <!-- <p class="lead text-center">
             Know more about each of our unique products
-        </p>
+        </p> -->
 
         <div class="row object-non-visible" data-animation-effect="fadeIn">
             <div class="col-md-12">
@@ -275,14 +275,14 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', $subcategory->name);?>">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', str_replace('&', '', $subcategory->name));?>">{{$subcategory->name}}</a></li>
                                         <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
                                             ?>
                                             @endif
                                         @endforeach
-                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', $all);?>">All</a></li>
+                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', str_replace('&', '', $all));?>">All</a></li>
                                     </ul>
                                 </div>
 
@@ -304,7 +304,7 @@
                 @if($subcategory->id == $product->category_id)
 
 
-            <div class="col-sm-4 col-sm-offset-1 isotope-item <?php echo str_replace(' ', '', $subcategory->name);?>">
+            <div class="col-sm-4 col-sm-offset-1 isotope-item <?php echo str_replace(' ', '', str_replace('&', '', $subcategory->name));?>">
                 <div class="thumbnail">
                     <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
                     <div class="caption">
@@ -483,7 +483,6 @@
 
 @endif
 
-
 @if($promotions)
 
 <!-- Fourth (Promotion) section -->
@@ -506,7 +505,7 @@
                 <p class="text-center">{{ $promotion->description }}</p>
                 <div class="space"></div>
                 <div>
-                        <p><a class="btn view center-block" role="button">know more</a></p>
+                        <!-- <p><a class="btn view center-block" role="button">know more</a></p> -->
                 </div>
             </div>
         </div>
@@ -532,6 +531,11 @@
 </section>
 
 @endif
+
+
+
+
+
 
 
 <!-- Fourth (Contact) section -->

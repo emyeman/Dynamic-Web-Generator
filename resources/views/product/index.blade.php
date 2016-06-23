@@ -24,11 +24,11 @@
                 <table class='table table-hover' style="table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th width='10%'><span class="text">Category</span></th>
-                            <th width='10%'><span class="text">Sub Category</span></th>
+                            <th width='15%'><span class="text">Category</span></th>
+                            <th width='15%'><span class="text">Sub Category</span></th>
                             <th width='15%'><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image</span></th>
                             <th width='10%'><span class="text">Product</span></th>
-                            <th width='20%'><span class="text">Description</span></th>
+                            <th width='15%'><span class="text">Description</span></th>
                             <th width='15%'><span class="text">Price</span></th>
                             <th width='10%'><span class="text">Publish At</span></th>
                             <th width='5%'></th>
@@ -63,9 +63,9 @@
                             </td>
 
                              <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$product->name}}<a/></td>
-                                <td class='wrap'>{{substr($product->description,0,100)}}</td>
+                                <td class='wrap'>{{substr($product->description,0,50)}}</td>
                                 <td>{{$product->price}} LE</td>
-                                <td>{{$product->created_at}}</td> 
+                                <td>{{substr($product->created_at,0,10)}}</td> 
                                 <td>
                                     <a href="{{url('/product/'.$product->id.'/edit')}}">
                                         <span style="color:blue;" class="glyphicon glyphicon-edit edit" id="{{$product->id}}"></span>

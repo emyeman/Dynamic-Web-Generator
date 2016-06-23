@@ -46,6 +46,7 @@ class TemplateController extends Controller
         foreach ($mytemplate as $templat) {
             $templat_name=$templat->development_name;
         }
+        
         // die($templat_name);
  // ***************** for pages and navbar ***************************
         $menus = DB::table('menus')->where('site_id',$site_id)->get();

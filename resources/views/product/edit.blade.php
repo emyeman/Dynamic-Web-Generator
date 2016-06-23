@@ -127,7 +127,7 @@
             document.getElementById('beforselect').style.display = "none";
             document.getElementById('afterselect').style.display = "block";
             console.log("emy change");
-            $.get("{{url('/product/create/"+id"')}}",function(data){
+            $.get("{{url('/product/create/')}}/"+id,function(data){
                 // console.log(data[0]);
                 // console.log(data);
                 var showdata;

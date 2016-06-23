@@ -1,7 +1,45 @@
 @include('../spirit/header')
+            <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
+
+    </head>
+
+    <body class="no-trans" id="page_top">
+        <!-- scrollToTop -->
+        <!-- ================ -->
+        <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+        <!-- header start -->
+        <!-- ================ --> 
+        <header class="header fixed clearfix navbar navbar-fixed-top">
+            <div class="container">
+
+                        <!-- header-right start -->
+                        <!-- ================ -->
+                        <div class="header-right clearfix">
+
+                            <!-- main-navigation start -->
+                            <!-- ================ -->
+                            <div class="main-navigation animated">
+
+                                <!-- navbar start -->
+                                <!-- ================ -->
+                                <nav class="navbar navbar-default" role="navigation">
+                                    <div class="container-fluid">
+
+                                        <!-- Toggle get grouped for better mobile display -->
+                                        <div class="navbar-header">
+                                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                        </div>
+
+        <!-- ********************************************************** -->
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
-                                <div class="navbar-brand site-name">monk</div>
+                                <!-- <div class="navbar-brand site-name">monk</div> -->
                                 <ul class="nav navbar-nav navbar-right">
                                 <?php  
                                     $flagelang=0;
@@ -55,11 +93,11 @@
                                                <li>
                                                     <div class="btn-group dropdown">
                                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
+                                                            <span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span>            
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                         <!--sally's update  remove 'full'-->
-                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>                         <!--sally's update remove 'full' -->
+                                                            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                   
+                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>                     
                                                         </ul>
                                                     </div>
                                                 </li>
@@ -223,6 +261,7 @@
 <!-- section end -->
 
 
+
 <!-- <div class="line">
 <hr>
 </div> -->
@@ -297,24 +336,12 @@
 
             <?php $pro_count++; ?>
         @endforeach
-
-
-        </div>
-
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#move_p" data-slide-to="0" class="active"></li>
-             @for($i=1 ;$i < count($promotions);$i++)
-                <li data-target="#move_p" data-slide-to="{{ $i }}"></li>
-            @endfor
-        </ol>
-
-
-    </div>
+            </div>
 </div>
 </div>
 </div>
-@endif
+</div>
+
 
 <!--end section-->
 <!-- 
@@ -396,7 +423,7 @@
 <!-- section end -->
 <!-- section start -->
 <!-- ================ -->
-<div class="default-bg space">
+<!-- <div class="default-bg space">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -404,7 +431,7 @@
         </div>
     </div>
 </div>
-</div>
+</div> -->
 <!-- section end -->
 @endif 
 <!-- <div class="line">
@@ -487,7 +514,7 @@
             <div class="container">
                 <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
                 <div class="separator"></div>
-                <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
+                <!-- <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p> -->
                 <br>            
                 <div class="row object-non-visible" data-animation-effect="fadeIn">
                     <div class="col-md-12">
@@ -495,7 +522,7 @@
                         <!-- isotope filters start -->
                         <div class="filters text-center">
                             <ul class="nav nav-pills">
-                                <li class="active"><a href="#" data-filter="*">All</a></li>
+                                <li class="active"><a href="#" data-filter="*">All <?php echo $mygallery;?></a></li>
                                 @foreach($categories as $category)                                                                                            
                                 <li class="dropdown">
                                     <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -506,14 +533,14 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                          @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', $subcategory->name);?>">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', str_replace('&', '', $subcategory->name));?>">{{$subcategory->name}}</a></li>
                                             <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
                                             ?>
                                             @endif
                                         @endforeach
-                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', $all);?>">All</a></li>    
+                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', str_replace('&', '', $all));?>">All</a></li>    
                                     </ul>
                                 </li>
 
@@ -528,7 +555,7 @@
                             @foreach($subcategories as $subcategory)
                             @foreach($products as $product)
                                 @if($subcategory->id == $product->category_id)
-                            <div class="col-sm-6 col-md-3 isotope-item <?php echo str_replace(' ', '', $subcategory->name);?>">
+                            <div class="col-sm-6 col-md-3 isotope-item <?php echo str_replace(' ', '', str_replace('&', '', $all));?>">
                                 <div class="image-box">
                                     <div class="overlay-container">
                                         <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
@@ -589,7 +616,7 @@
 <div class="container">
     <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
     <div class="separator"></div>
-    <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p>
+    <!-- <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p> -->
     <br>            
     <div class="row object-non-visible" data-animation-effect="fadeIn">
         <div class="col-md-12">
@@ -700,7 +727,7 @@
             <div class="col-sm-6">
                 @foreach($contacts as $contact)
                 <div class="footer-content">
-                    <p class="large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel nam magnam natus tempora cumque, aliquam deleniti voluptatibus voluptas. Repellat vel, et itaque commodi iste ab, laudantium voluptas deserunt nobis.</p>
+                    <p class="large"> </p>
                     <ul class="list-icons">
                         <li><i class="fa fa-map-marker pr-10"></i>{{$contact->address}}</li>
                         <li><i class="fa fa-phone pr-10"></i> {{$contact->phone}}</li>
@@ -768,6 +795,7 @@
                             <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
                         <input type="submit" value="Send" class="btn btn-default">
+                        <br/><br/>
                     {!!Form::close() !!}
                 </div>
             </div>
@@ -775,13 +803,8 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div id="emygoogleMap" style="width:100%;height:500px;">
-                <!-- for show google map -->
-                @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
-                    <img style="width:100%;height:100%;" src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
-                @endif 
-            </div>
-        </div>
+            <div id="googleMap" style="width:100%;height:500px;"></div>
+         </div>
     </div>
   @endforeach  
 </div>
@@ -804,5 +827,21 @@
 </footer>
 <!-- footer end -->
 
+<!-- *********************************************************************  -->
+        <script
+                src="http://maps.googleapis.com/maps/api/js">
+        </script>
 
+        <script>
+            function initialize() {
+                var mapProp = {
+                    center:new google.maps.LatLng(31.29411320,31.75878360),
+                    zoom:5,
+                    mapTypeId:google.maps.MapTypeId.ROADMAP
+                };
+                var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+        </script>
 @include('../spirit/footer') 
