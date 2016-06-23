@@ -229,8 +229,8 @@
 <div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($promotions)
-<div class="section translucent-bg bg-image-2 pb-clear">
+@if(isset($promotions) && $promotions != null)
+<div class="section translucent-bg bg-image-2 pb-clear" style="background: url('{{ $mysite[0]->background_image }}') 50% 0px no-repeat;">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
     <h1 id="promotion" class="title text-center"><?php echo $mypromotion;?></h1>
     <div class="space"></div>
@@ -240,15 +240,61 @@
         <div class="carousel-inner" role="listbox">
         <?php $pro_count =0; ?>
         @foreach($promotions as $promotion)
-            @if($pro_count == 0)
-                <div class="item active">
+             @if($pro_count == 0)
+                <div class="item active pro-back"> 
             @else
-                <div class="item"> 
+                 <div class="item pro-back"> 
             @endif
-             
-                <p class="text-center">{{ $promotion->description }}</p>
-                <p><a class="btn btn-primary view center-block" role="button">know more</a></p>
-            </div>
+                
+                                <div class="row">
+                                    <div class="col-md-offset-1 col-md-4 ">
+                                        <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" class="img-responsive img-pro">
+                                    </div>
+                                    <div class="col-md-offset-2"></div>
+                                    <div class="col-md-4 col-md-push-2">
+                                        <div class="space"></div>
+                                        <div class="space"></div>
+                                        <div class="space"></div>
+                                        <p class="text-center">{{ $promotion->description }}</p>
+                                        <div class="space"></div>
+                                        <div>
+                                            <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p>
+                                        </div>
+
+
+
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="promotion-1" tabindex="-1" role="dialog" aria-labelledby="promotion-1-label" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">Close</span></button>
+                                                        <h4 class="modal-title" id="promotion-1-label">promotion </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+
+                                                                <p class="lead text-center">{{ $promotion->description }} </p>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
             <?php $pro_count++; ?>
         @endforeach
 
@@ -278,10 +324,10 @@
 <div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
-@if($services)
+@if(isset($services) && $services != null)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 class="text-center title"><?php echo $myservices; ?></h1>
+    <h1 class="text-center title">Services</h1>
     <div class="space"></div>
 
     <div id="move_s" class="carousel slide" data-ride="carousel">

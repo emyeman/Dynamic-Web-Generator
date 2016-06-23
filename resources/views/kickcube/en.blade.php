@@ -58,7 +58,40 @@
   
 
 
-  
+  <style type="text/css" media="screen">
+    .primary
+    {
+      background-color:{{ $mysite[0]->primary_color }}; 
+    }
+
+    .navbar-default .navbar-nav > li > a.active, .navbar-default .navbar-nav > li:hover > a 
+    {
+    border-color: {{ $mysite[0]->primary_color }};
+    }
+
+    .navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li > a.active
+    {
+    color: {{ $mysite[0]->primary_color }};
+    }
+
+    a.main-button, input[type="submit"] {
+    background-color: {{ $mysite[0]->primary_color }};
+    }
+
+    .classic-title span {
+    border-bottom-color: {{ $mysite[0]->primary_color }};
+    }
+
+    .primary-text
+    {
+      color:{{ $mysite[0]->text_color }};
+    }
+
+    .btn-system.border-btn {
+        border-color: {{ $mysite[0]->primary_color }};
+        color: {{ $mysite[0]->primary_color }};
+    }
+  </style>
 
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -81,8 +114,10 @@
           <div class="row">
             <div class="col-md-7">
               <!-- Start Contact Info -->
-              <img alt="" src="images/header.png">
+              @if(isset($header))
+              <img alt="" src="{{ url('/') }}{{ $header->logo }}">
               <!-- End Contact Info -->
+              @endif
             </div>
             <!-- .col-md-6 -->
             <div class="col-md-5">
@@ -154,7 +189,7 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a  href="#page_top" class="page-scroll">Home</a>
+                <a  href="#page_top" class="primary-link page-scroll">Home</a>
               </li>
               <li>
                 <a href="#about" class="page-scroll">About</a>
@@ -260,12 +295,12 @@
                 <div class="slider-content">
                   <div class="col-md-12 text-center">
                     <h2 class="animated2">
-                                  <span>Welcome to <strong>{{ $crusal->title }}</strong></span>
+                                  <span>Welcome to <strong class="primary-text">{{ $crusal->title }}</strong></span>
                                   </h2>
                     <h3 class="animated3">
                                     <span>{{ $crusal->description }}</span>
                                   </h3>
-                    <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Check Now</a>
+                    <p class="animated4"><a href="#" class="primary slider btn btn-system btn-large">Check Now</a>
                     </p>
                   </div>
                 </div>
@@ -276,12 +311,12 @@
                 <div class="slider-content">
                   <div class="col-md-12 text-center">
                     <h2 class="animated2">
-                                  <span>Welcome to <strong>{{ $crusal->title }}</strong></span>
+                                  <span>Welcome to <strong class="primary-text">{{ $crusal->title }}</strong></span>
                                   </h2>
                     <h3 class="animated3">
                                     <span>{{ $crusal->description }}</span>
                                   </h3>
-                    <p class="animated4"><a href="#" class="slider btn btn-system btn-large">Check Now</a>
+                    <p class="animated4"><a href="#" class="primary slider btn btn-system btn-large">Check Now</a>
                     </p>
                   </div>
                 </div>
@@ -322,7 +357,7 @@
 
               <!-- Start Big Heading -->
               <div class="big-title">
-                <h1><strong>About Us</strong> </h1>
+                <h1><strong class="primary-text">About Us</strong> </h1>
                 <p class="title-desc">Some Words About Our Company</p>
               </div>
               <!-- End Big Heading -->
@@ -334,31 +369,14 @@
               <div class="hr1" style="margin-bottom:14px;"></div>
 
               <!-- Start Icons Lists -->
-              <div class="row">
-                <div class="col-md-6">
-                  <ul class="icons-list">
-                    <li><i class="fa fa-check-circle"></i> Duis aute irure dolor in reprehenderit.</li>
-                    <li><i class="fa fa-check-circle"></i> Lorem Ipsum is simply dummy text.</li>
-                    <li><i class="fa fa-check-circle"></i> Excepteur sint occaecat cupidatat.</li>
-                    <li><i class="fa fa-check-circle"></i> Sed ut perspiciatis unde omnis.</li>
-                  </ul>
-                </div>
-                <div class="col-md-6">
-                  <ul class="icons-list">
-                    <li><i class="fa fa-check-circle"></i> Duis aute irure dolor in reprehenderit.</li>
-                    <li><i class="fa fa-check-circle"></i> Lorem Ipsum is simply dummy text.</li>
-                    <li><i class="fa fa-check-circle"></i> Excepteur sint occaecat cupidatat.</li>
-                    <li><i class="fa fa-check-circle"></i> Sed ut perspiciatis unde omnis.</li>
-                  </ul>
-                </div>
-              </div>
+              
               <!-- End Icons Lists -->
 
               <!-- Divider -->
               <div class="hr1" style="margin-bottom:20px;"></div>
 
               <!-- Button -->
-              <a class="btn-system btn-small" data-toggle="modal" href="#myModal">Read More About Us</a>
+              <a class="primary btn-system btn-small" data-toggle="modal" href="#aboutmodal">Read More About Us</a>
             </div>
             <!-- End Left Side -->
 
@@ -379,6 +397,24 @@
       </div>
       </div>
 
+      <div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">About Us</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="" ></p><br>
+                      <p>{{ $aboutus->description }}   </p><br>
+                      <p><b><a href="#" class="primary">Visit Site</a></b></p>
+                    </div>
+                    <div class="modals-footer">
+                      <button type="button" class="primary btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
       @endif
       <!-- End Full Width Section 2 -->
 
@@ -400,7 +436,7 @@
             <div class="our-services">
 
               <div class="big-title text-center" data-animation="fadeInUp">
-                <h1><strong>Our Services</strong> </h1>
+                <h1><strong class="primary-text">Our Services</strong> </h1>
                 <p class="title-desc">Some Words About Our Services</p>
               </div> 
 
@@ -463,8 +499,8 @@
 
 
           <!-- Start Buttons -->
-          <a href="#" class="btn-system btn-large"><i class="fa fa-tasks"></i> Check Out Features</a>
-          <a href="#" class="btn-system btn-large btn-wite"><i class="fa fa-download"></i> Purchase This Now</a>
+          <a href="#" class="primary btn-system btn-large"><i class="fa fa-tasks"></i> Check Out Features</a>
+          <a href="#" class="primary btn-system btn-large btn-wite"><i class="fa fa-download"></i> Purchase This Now</a>
 
         </div>
         <!-- End Section Content -->
@@ -485,7 +521,7 @@
 
       <!-- Start Big Heading -->
       <div class="big-title text-center" data-animation="fadeInDown" data-animation-delay="01">
-        <h1>This is Our Latest <strong>Work</strong></h1>
+        <h1>This is Our Latest <strong class="primary-text">Work</strong></h1>
       </div>
       <!-- End Big Heading -->
 
@@ -578,7 +614,7 @@
      <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
       <div class="container">
          <div class="big-title text-center" data-animation="fadeInDown" >
-                <h1><strong>Our News</strong> </h1>
+                <h1><strong class="primary-text">Our News</strong> </h1>
                 <p class="title-desc">Some Words About Our Latest news</p>
               </div>   
       
@@ -601,7 +637,7 @@
                   <h3 class="post-title"><a href="#">{{ $new->title }}  </a></h3>
                   <div class="post-content">
                     <p>{{ $new->description }}    
-                  <button type="button" class="btn btn-default btn-sm read-more" data-toggle="modal" href="#myModal">Read More... </button></p>
+                  <button type="button" class="primary btn btn-default btn-sm read-more" data-toggle="modal" href="#myModal">Read More... </button></p>
                   </div>
                 </div>
                 @endforeach
@@ -621,10 +657,10 @@
                     <div class="modal-body">
                       <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $new->image }}" alt="" ></p><br>
                       <p>{{ $new->description }}    </p><br>
-                      <p><b><a href="#">Visit Site</a></b></p>
+                      <p><b><a href="#" class="primary">Visit Site</a></b></p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="primary btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -646,7 +682,7 @@
 
           <!-- Start Big Heading -->
           <div class="big-title text-center" data-animation="fadeInUp">
-            <h1>Our Latest <strong>Promotions</strong></h1>
+            <h1>Our Latest <strong class="primary-text">Promotions</strong></h1>
             
           </div>
           <!-- End Big Heading -->
@@ -671,8 +707,8 @@
               </div>
               <div class="plan-list">
                 <ul>
-                  <li><strong>Start Date</strong> {{ $promotion->start_date }}</li>
-                  <li><strong>End Date</strong> {{ $promotion->end_date }}</li>
+                  <li><strong class="primary-text">Start Date</strong> {{ $promotion->start_date }}</li>
+                  <li><strong class="primary-text">End Date</strong> {{ $promotion->end_date }}</li>
                   
                 </ul>
               </div>
@@ -708,7 +744,7 @@
               <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
               <form class="subscribe">
                 <input type="text" placeholder="mail@example.com">
-                <input type="submit" class="btn-system" value="Send">
+                <input type="submit" class="primary btn-system" value="Send">
               </form>
             </div>
             <div class="footer-widget social-widget">
@@ -786,7 +822,7 @@
             </div>
             <div class="form-group">
              <!--  <button class="tm-submit-btn" type="submit" name="submit">Submit now</button>  -->
-             <input type="submit" class="btn-system" value="Submit now" id="mysubmit">
+             <input type="submit" class="primary btn-system" value="Submit now" id="mysubmit">
             </div>               
           </div>
         </form>
@@ -797,7 +833,10 @@
           <!-- Start Contact Widget -->
           <div class="col-md-3 col-xs-12">
             <div class="footer-widget contact-widget">
-              <h4><img src="images/footer-kickcube.png" class="img-responsive" alt="Footer Logo" /></h4>
+            @if(isset($header))
+              <h4><img src="{{ url('/') }}{{ $header->logo }}" class="img-responsive" alt="Footer Logo" /></h4>
+            @endif
+
               <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
               <ul>
                 <li><span>Phone Number:</span> +01 234 567 890</li>

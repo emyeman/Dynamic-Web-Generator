@@ -36,11 +36,41 @@
         
 
         <!-- Worthy core CSS file -->
-        <link href="{{ url('/assets/css/sally/style.css')}}" rel="stylesheet">
+        <link href="{{ url('/assets/css/sally/style.css') }}" rel="stylesheet">
 
         <!-- Custom css --> 
-        <link href="{{ url('/assets/css/custom.css')}}" rel="stylesheet">
-        <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
+        <link href="{{ url('/assets/css/custom.css') }}" rel="stylesheet">
+        <link href="{{ url('/assets/css/emy.css') }}" rel="stylesheet">
+        <style type="text/css" media="screen">
+            .main-navigation .navbar-default .navbar-nav > li > a
+            {
+                color:{{ $mysite[0]->primary_color }};
+            }   
+
+            .carousel-indicators li
+            {
+                background-color:{{ $mysite[0]->primary_color }};
+            }
+
+            .carousel-indicators .active
+            {
+                background-color:{{ $mysite[0]->secondry_color }};
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                color:{{ $mysite[0]->text_color }};
+            }
+
+            a {
+                color: {{ $mysite[0]->primary_color }};
+            }
+
+            .default-bg h1, .default-bg h2, .default-bg h3, .default-bg h4, .default-bg h5, .default-bg h6, .translucent-bg h1, .translucent-bg h2, .translucent-bg h3, .translucent-bg h4, .translucent-bg h5, .translucent-bg h6 {
+               color: {{ $mysite[0]->secondry_color }};
+                }
+        </style>
+
+
     </head>
 
     <body class="no-trans" id="page_top">

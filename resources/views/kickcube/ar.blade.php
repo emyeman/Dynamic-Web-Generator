@@ -60,6 +60,41 @@
   <script type="text/javascript" src="{{ url('assets/kickcube/ar/js/jquery.slicknav.js') }}"></script>
   
 
+  <style type="text/css" media="screen">
+    .primary
+    {
+      background-color:{{ $mysite[0]->primary_color }}; 
+    }
+
+    .navbar-default .navbar-nav > li > a.active, .navbar-default .navbar-nav > li:hover > a 
+    {
+    border-color: {{ $mysite[0]->primary_color }};
+    }
+
+    .navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li > a.active
+    {
+    color: {{ $mysite[0]->primary_color }};
+    }
+
+    a.main-button, input[type="submit"] {
+    background-color: {{ $mysite[0]->primary_color }};
+    }
+
+    .classic-title span {
+    border-bottom-color: {{ $mysite[0]->primary_color }};
+    }
+
+    .primary-text
+    {
+      color:{{ $mysite[0]->text_color }};
+    }
+
+    .btn-system.border-btn {
+        border-color: {{ $mysite[0]->primary_color }};
+        color: {{ $mysite[0]->primary_color }};
+    }
+  </style>
+
   
 
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -342,31 +377,13 @@
               <div class="hr1" style="margin-bottom:14px;"></div>
 
               <!-- Start Icons Lists -->
-              <div class="row" style="text-align: right;">
-                <div class="col-md-6">
-                  <ul class="icons-list">
-                    <li> .الباهضة الدّفاع كلّ إذ, يقوم بوابة تاريخ عدم ٣٠ <i class="fa fa-check-circle"></i></li>
-                    <li> .الوراء بريطانيا، وفيالشرقي وباستثناء <i class="fa fa-check-circle"></i></li>
-                    <li> .عل ودول موالية الحكومة أما. أخر بالحرب الإثنان ثم <i class="fa fa-check-circle"></i></li>
-                    <li> .الباهضة الدّفاع كلّ إذ, يقوم بوابة تاريخ عدم ٣٠ <i class="fa fa-check-circle"></i></li>
-                  </ul>
-                </div>
-                <div class="col-md-6">
-                  <ul class="icons-list">
-                    <li> .الباهضة الدّفاع كلّ إذ, يقوم بوابة تاريخ عدم ٣٠ <i class="fa fa-check-circle"></i></li>
-                    <li> .عل ودول موالية الحكومة أما. أخر بالحرب الإثنان ثم <i class="fa fa-check-circle"></i></li>
-                    <li>.الوراء بريطانيا، وفيالشرقي وباستثناء <i class="fa fa-check-circle"></i></li>
-                    <li> .عل ودول موالية الحكومة أما. أخر بالحرب الإثنان ثم <i class="fa fa-check-circle"></i></li>
-                  </ul>
-                </div>
-              </div>
               <!-- End Icons Lists -->
 
               <!-- Divider -->
               <div class="hr1" style="margin-bottom:20px;"></div>
 
               <!-- Button -->
-              <a class="btn-system btn-small" data-toggle="modal" href="#myModal" style="float:right;">.....لمعرفه المزيد </a>
+              <a class="btn-system btn-small" data-toggle="modal" href="#aboutmodal" style="float:right;">.....لمعرفه المزيد </a>
             </div>
             <!-- End Left Side -->
 
@@ -376,6 +393,27 @@
         </div>
       </div>
       </div>
+
+      <div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">عن شركتنا</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="" ></p><br>
+                      <p>{{ $aboutus->description }}   </p><br>
+                      <p><b><a href="#">قم بزيارتنا</a></b></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">اغلاق</button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+      @endif
+
       @endif
       <!-- End Full Width Section 2 -->
 

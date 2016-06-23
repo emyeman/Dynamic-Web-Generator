@@ -9,8 +9,19 @@
 		  @endif
     </div>
   </div>
-  <div class="row col-md-6 col-md-offset-2">
+  <div class="row col-md-10 col-md-offset-2">
     @foreach($temps as $temp)
+<a href="/activetemp/{{ $temp->id }}">
+<ul class="demo-2 effect" id="{{ $temp->id }}">
+    <li>
+       <h2 class="zero">{{ $temp->name }}</h2>
+       <p class="zero">{{ $temp->name }}</p>
+    </li>
+    <li><img class="top" src="{{ url('assets/DynamicWebGenerator/upload/bg-slider4.jpg')}}" alt=""/></li>
+</ul>
+</a>
+{{-- 
+
       <div class="col-sm-6 col-md-4 container" >
         <div class="thumbnail" id="{{ $temp->id }}">
         <a href="/activetemp/{{ $temp->id }}">
@@ -22,7 +33,7 @@
           </a>
         </div>
       </div>
-    @endforeach  
+ --}}    @endforeach  
   </div>
   <script type="text/javascript">
     var id={{Auth::user()->site->template_id}};
