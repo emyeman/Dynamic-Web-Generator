@@ -12,6 +12,8 @@ use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
 use File;
+use Session;
+
 
 class SubCategoryController extends Controller
 {
@@ -76,7 +78,8 @@ class SubCategoryController extends Controller
             $subcategory->site_id=Auth::user()->id;
             $subcategory->category_id=$request->input('category_id');
             $subcategory->save();
-            return  redirect ('/subcategory');
+            Session::flash('insert_success', 'A new subcategory has been added successfully');
+            return  redirect ('/subcategory/create');
         } else{
             return  redirect ('/login');   
         }

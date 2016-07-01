@@ -14,6 +14,8 @@ use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
 use File;
+use Session;
+
 
 class ProductController extends Controller
 {
@@ -109,7 +111,8 @@ class ProductController extends Controller
             }
             $product->category_id=$request->input('subcategory_id');
             $product->save();
-            return  redirect ('/product');
+            Session::flash('insert_success', 'A new product has been added successfully');
+            return  redirect ('/product/create');
         } else{
             return  redirect ('/login');   
         }

@@ -12,7 +12,7 @@ use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
 use File;
-
+use Session;
 
 class CategoryController extends Controller
 {
@@ -69,8 +69,8 @@ class CategoryController extends Controller
 
             $category->site_id=Auth::user()->id;
             $category->save();
-
-    		return  redirect ('/category');
+            Session::flash('insert_success', 'A new category has been added successfully');
+    		return  redirect ('/category/create');
         } else{
             return  redirect ('/login');   
         }  

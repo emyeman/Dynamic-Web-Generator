@@ -11,6 +11,7 @@ use App\Contact;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
+use Session;
 
 
 class ContactUsController extends Controller
