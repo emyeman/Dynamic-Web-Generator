@@ -183,40 +183,101 @@
             @endif
           </div>
           <div class="navbar-collapse collapse">
-    
-
-
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
-              <li>
-                <a  href="#page_top" class="primary-link page-scroll">Home</a>
-              </li>
-              <li>
-                <a href="#about" class="page-scroll">About</a>
-              </li>
-              <li>
-                <a href="#services" class="page-scroll">Services</a>
-              </li>
-              <li>
-                <a href="#gallery" class="page-scroll">Gallery</a>
-              </li>
-              <li>
-                <a href="#news" class="page-scroll">News</a>
-              </li>
-              <li>
-                <a href="#promotion" class="page-scroll">Promotion</a>
-              </li>
-              <li><a href="#contact" class="page-scroll">Contact</a>
-              </li>
+              
+               <?php  
+                  $flagelang=0;
+                  // $findpage_top=0;
+                  // $findservices=0;
+                  // $findabout=0;
+                  // $findgallery=0;
+                  // $findnews=0;
+                  // $findpromotion=0;
+                  // $findcontact=0;
+                  $myservices='';
+                  $mypage_top='';
+                  $myabout='';
+                  $mycontact='';
+                  $mynews='';
+                  $mypromotion='';
+                  $mygallery='';
+              ?>
+
+                      @for ($x = 0; $x < count($urlpages); $x++)
+
+                          @if($urlpages[$x]=='page_top')
+                              <!-- <li class="hidden">
+                                   <a href="#page-top"></a>
+                               </li>-->
+                              <li>
+                                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                              </li>
+                              <?php 
+                              // $findpage_top=1;
+                              $mypage_top=$en_menupages[$x];?>
+                          @endif 
+                          @if($urlpages[$x]=='services')   
+                              <li>
+                                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                              </li>
+                              <?php 
+                              // $findservices=1;
+                              $myservices=$en_menupages[$x];?>
+                          @endif
+                          @if($urlpages[$x]=='about')
+                              <li>
+                                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                              </li>
+                              <?php 
+                              // $findabout=1;
+                               $myabout=$en_menupages[$x];?>
+                          @endif
+                           @if($urlpages[$x]=='gallery')
+                                <li>
+                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                                </li>
+                                <?php 
+                                // $findgallery=1;
+                                $mygallery=$en_menupages[$x];?>
+                            @endif
+                            @if($urlpages[$x]=='news')
+                                <li>
+                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                                </li>
+                                <?php 
+                                // $findnews=1;
+                                $mynews=$en_menupages[$x];?>
+                            @endif
+                            @if($urlpages[$x]=='promotion')
+                                <li>
+                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                                </li>
+                                <?php 
+                                // $findpromotion=1;
+                                $mypromotion=$en_menupages[$x];?>
+                            @endif
+                            @if($urlpages[$x]=='contact')
+                                <li>
+                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                                </li>
+                                 <?php
+                                  // $findcontact=1;
+                                 $mycontact=$en_menupages[$x];?>
+                            @endif
+                      @endfor
+
                 <li>
-                <a  href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/en"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
+                <a  href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
                 <ul class="dropdown">
                   <li>
-                    <a href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/ar">
+                    <a href="{{url('/'.$subdomain.'/ar')}}">
                   <span class="lang-sm lang-lbl" lang="ar"></span>
                   </a>
                   </li>
                </ul>
+
+
               </li>
 
           </ul>

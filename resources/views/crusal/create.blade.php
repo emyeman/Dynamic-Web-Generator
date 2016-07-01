@@ -18,6 +18,7 @@
     @endif
 
     <br><br>
+    
     @if(Session::has('insert_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
     @endif

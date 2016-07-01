@@ -59,34 +59,34 @@
                                     $mygallery='';
                                 ?>
 
-                                @for ($x = 0; $x < count($urlpages); $x++)
+                                        @for ($x = 0; $x < count($urlpages); $x++)
 
                                             @if($urlpages[$x]=='page_top')
                                                 <!-- <li class="hidden">
                                                      <a href="#page-top"></a>
                                                  </li>-->
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findpage_top=1;
-                                                $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mypage_top=$en_menupages[$x];?>
                                             @endif 
                                             @if($urlpages[$x]=='services')   
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findservices=1;
-                                                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                                                $myservices=$en_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='about')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findabout=1;
-                                                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                                                 $myabout=$en_menupages[$x];?>
                                             @endif
                                         @endfor
                                             @if($flagelang==0)
@@ -112,35 +112,35 @@
                                             @for ($x = 0; $x < count($urlpages); $x++)
                                             @if($urlpages[$x]=='gallery')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findgallery=1;
-                                                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mygallery=$en_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='news')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findnews=1;
-                                                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mynews=$en_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='promotion')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findpromotion=1;
-                                                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mypromotion=$en_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='contact')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                                                 </li>
                                                  <?php
                                                   // $findcontact=1;
-                                                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+                                                 $mycontact=$en_menupages[$x];?>
                                             @endif    
                                           @endfor
 
@@ -297,7 +297,7 @@
                                         <p class="text-center">{{ $promotion->description }}</p>
                                         <div class="space"></div>
                                         <div>
-                                            <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p>
+                                            <!-- <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p> -->
                                         </div>
 
 
@@ -445,7 +445,7 @@
 <div class="container object-non-visible" data-animation-effect="fadeIn">
     <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>
     <div class="space"></div>
-    <p class="lead text-center">Know what is always new with us</p>
+    <!-- <p class="lead text-center">Know what is always new with us</p> -->
 </div>
 <div id="move" class="carousel slide" data-ride="carousel">
 
@@ -510,6 +510,7 @@
 <!-- section start -->
 <!-- ================ -->
 @if($categories) 
+
 @if($products)
     <div class="section">
             <div class="container">
@@ -523,7 +524,7 @@
                         <!-- isotope filters start -->
                         <div class="filters text-center">
                             <ul class="nav nav-pills">
-                                <li class="active"><a href="#" data-filter="*">All <?php echo $mygallery;?></a></li>
+                                <li class="active"><a href="#" data-filter="*">All</a></li>
                                 @foreach($categories as $category)                                                                                            
                                 <li class="dropdown">
                                     <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -534,7 +535,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                          @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', str_replace('&', '', $subcategory->name));?>">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->name}}</a></li>
                                             <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
@@ -556,7 +557,7 @@
                             @foreach($subcategories as $subcategory)
                             @foreach($products as $product)
                                 @if($subcategory->id == $product->category_id)
-                            <div class="col-sm-6 col-md-3 isotope-item <?php echo str_replace(' ', '', str_replace('&', '', $all));?>">
+                            <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                                 <div class="image-box">
                                     <div class="overlay-container">
                                         <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
@@ -628,7 +629,7 @@
                     <li class="active"><a href="#" data-filter="*">All</a></li>
                     @foreach($categories as $category) 
 
-                        <li><a href="#" data-filter=".{{$category->name}}">{{$category->name}}</a></li>
+                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $category->name))}}">{{$category->name}}</a></li>
                     @endforeach
                     <!-- <li><a href="#" data-filter=".web-design">Web design</a></li>
                     <li><a href="#" data-filter=".app-development">App development</a></li>
@@ -644,7 +645,7 @@
                 @foreach($categories as $category)
                 @foreach($subcategories as $subcategory)
                     @if($category->id == $subcategory->category_id)
-                <div class="col-sm-6 col-md-3 isotope-item {{$category->name}}">
+                <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $category->name))}}">
                     <div class="image-box">
                     
                         <div class="overlay-container">
@@ -705,6 +706,9 @@
 <hr>
 </div>  -->
 @endif
+
+
+
 <!-- section start -->
 <!-- ================ -->
 
@@ -805,6 +809,10 @@
     <div class="row">
         <div class="col-xs-12">
             <div id="googleMap" style="width:100%;height:500px;"></div>
+            <?php 
+                $lat=$contact->lat;
+                $lng=$contact->lng;
+            ?>
          </div>
     </div>
   @endforeach  
@@ -834,9 +842,11 @@
         </script>
 
         <script>
+        console.log(<?php echo $lat;?>);
+        console.log(<?php echo $lng;?>);
             function initialize() {
                 var mapProp = {
-                    center:new google.maps.LatLng(31.29411320,31.75878360),
+                    center:new google.maps.LatLng(<?php echo $lat;?>,<?php echo $lng;?>),
                     zoom:5,
                     mapTypeId:google.maps.MapTypeId.ROADMAP
                 };

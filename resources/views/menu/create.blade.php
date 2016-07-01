@@ -24,11 +24,17 @@
     @endif
     {!!Form::open(['route'=>'menu.store','method'=>'post','class'=>'form-horizontal']) !!}
         <div class='form-group'>
-            <label class='col-md-2'>Title*</label>
+            <label class='col-md-2'>English Title*</label>
             <div class='col-md-10 input-group'>
-                <input placeholder='title...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
+                <input placeholder='english title...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
             </div>
-        </div>  
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Title*</label>
+            <div class='col-md-10 input-group'>
+                <input placeholder='arabic title...' class='form-control' name='ar_title' type='text' value="{{old('ar_title')}}"/>
+            </div>
+        </div> 
         <div class='form-group'>
             <label class='col-md-2'>Parent</label>
             <div class='col-md-10 input-group'>

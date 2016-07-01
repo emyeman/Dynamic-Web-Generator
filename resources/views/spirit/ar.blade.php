@@ -40,10 +40,10 @@
                                             </button>
                                         </div>
 
-            <!-- *************************************************************************** -->
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
-                                <!-- <div class="navbar-brand site-name">التمبلت</div> -->
+        <!-- ********************************************************** -->
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                <!-- <div class="navbar-brand site-name">monk</div> -->
                                 <ul class="nav navbar-nav navbar-right">
                                 <?php  
                                     $flagelang=0;
@@ -62,45 +62,46 @@
                                     $mypromotion='';
                                     $mygallery='';
                                 ?>
-                                 @for ($x = 0; $x < count($urlpages); $x++)
+
+                                @for ($x = 0; $x < count($urlpages); $x++)
 
                                             @if($urlpages[$x]=='page_top')
                                                 <!-- <li class="hidden">
                                                      <a href="#page-top"></a>
                                                  </li>-->
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findpage_top=1;
-                                                $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mypage_top=$ar_menupages[$x];?>
                                             @endif 
                                             @if($urlpages[$x]=='services')   
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findservices=1;
-                                                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                                                $myservices=$ar_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='about')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                                                 </li>
-                                                <?php
-                                                 // $findabout=1;
-                                                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                                                <?php 
+                                                // $findabout=1;
+                                                 $myabout=$ar_menupages[$x];?>
                                             @endif
                                         @endfor
                                             @if($flagelang==0)
                                                <li>
                                                     <div class="btn-group dropdown">
                                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                                            <span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span>              <!--sally's update  remove 'full'-->
+                                                            <span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span>            
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
-                                                            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                         <!--sally's update  remove 'full'-->
-                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>                         <!--sally's update remove 'full' -->
+                                                            <li><a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                   
+                                                            <li><a href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>                     
                                                         </ul>
                                                     </div>
                                                 </li>
@@ -115,40 +116,40 @@
                                             @for ($x = 0; $x < count($urlpages); $x++)
                                             @if($urlpages[$x]=='gallery')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findgallery=1;
-                                                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mygallery=$ar_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='news')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findnews=1;
-                                                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mynews=$ar_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='promotion')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                                                 </li>
                                                 <?php 
                                                 // $findpromotion=1;
-                                                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                                                $mypromotion=$ar_menupages[$x];?>
                                             @endif
                                             @if($urlpages[$x]=='contact')
                                                 <li>
-                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                                                 </li>
-                                                 <?php 
-                                                 // $findcontact=1;
-                                                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+                                                 <?php
+                                                  // $findcontact=1;
+                                                 $mycontact=$ar_menupages[$x];?>
                                             @endif    
                                           @endfor
 
                                         </ul>
-							                            </div>
+                            </div>
 
                         </div>
                     </nav>
@@ -165,6 +166,7 @@
 </div>
 </header>
 <!-- header end -->
+
 
 @if($header)
 <header>
@@ -262,10 +264,11 @@
 @endif
 <!-- section end -->
 
+
+
 <!-- <div class="line">
 <hr>
 </div> -->
-
 <div class="section_space"></div>
 <!-- section start -->
 <!-- ================ -->
@@ -280,7 +283,7 @@
         <div class="carousel-inner" role="listbox">
         <?php $pro_count =0; ?>
         @foreach($promotions as $promotion)
-            @if($pro_count == 0)
+             @if($pro_count == 0)
                 <div class="item active pro-back"> 
             @else
                  <div class="item pro-back"> 
@@ -298,7 +301,7 @@
                                         <p class="text-center">{{ $promotion->description }}</p>
                                         <div class="space"></div>
                                         <div>
-                                            <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">اعرف المزيد</a></p>
+                                            <!-- <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p> -->
                                         </div>
 
 
@@ -309,8 +312,8 @@
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">اغلق</span></button>
-                                                        <h4 class="modal-title" id="promotion-1-label">عروض </h4>
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">غلاق</span></button>
+                                                        <h4 class="modal-title" id="promotion-1-label">promotion </h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="row">
@@ -324,7 +327,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
+                                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلاق</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -337,14 +340,12 @@
 
             <?php $pro_count++; ?>
         @endforeach
-
             </div>
 </div>
 </div>
 </div>
 </div>
 @endif
-
 
 
 <!--end section-->
@@ -358,7 +359,7 @@
 @if(isset($services) && $services != null)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 class="text-center title"><?php echo $myservices; ?></h1>
+    <h1 class="text-center title">Services</h1>
     <div class="space"></div>
 
     <div id="move_s" class="carousel slide" data-ride="carousel">
@@ -448,7 +449,7 @@
 <div class="container object-non-visible" data-animation-effect="fadeIn">
     <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>
     <div class="space"></div>
-    <p class="lead text-center">Know what is always new with us</p>
+    <!-- <p class="lead text-center">Know what is always new with us</p> -->
 </div>
 <div id="move" class="carousel slide" data-ride="carousel">
 
@@ -513,6 +514,7 @@
 <!-- section start -->
 <!-- ================ -->
 @if($categories) 
+
 @if($products)
     <div class="section">
             <div class="container">
@@ -526,7 +528,7 @@
                         <!-- isotope filters start -->
                         <div class="filters text-center">
                             <ul class="nav nav-pills">
-                                <li class="active"><a href="#" data-filter="*">كل <?php echo $mygallery;?></a></li>
+                                <li class="active"><a href="#" data-filter="*"> كل <?php echo $mygallery;?></a></li>
                                 @foreach($categories as $category)                                                                                            
                                 <li class="dropdown">
                                     <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -537,14 +539,14 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                          @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', str_replace('&', '', $subcategory->name));?>">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->name}}</a></li>
                                             <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
                                             ?>
                                             @endif
                                         @endforeach
-                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', str_replace('&', '', $all));?>">All</a></li>    
+                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', str_replace('&', '', $all));?>">الكل</a></li>    
                                     </ul>
                                 </li>
 
@@ -559,7 +561,7 @@
                             @foreach($subcategories as $subcategory)
                             @foreach($products as $product)
                                 @if($subcategory->id == $product->category_id)
-                            <div class="col-sm-6 col-md-3 isotope-item <?php echo str_replace(' ', '', str_replace('&', '', $all));?>">
+                            <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                                 <div class="image-box">
                                     <div class="overlay-container">
                                         <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
@@ -575,17 +577,17 @@
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلاق</span></button>
                                                 <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$product->name}}</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h3><u>{{$product->name}} Description</u></h3>
+                                                <h3><u>تفاصيل وصف {{$product->name}}</u></h3>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <p>{{$product->description}}</p>
                                                         <hr/>
-                                                        <h3><u>{{$product->name}} Price</u></h3>
-                                                        <p>{{$product->price}} LE</p>
+                                                        <h3><u>السعر {{$product->name}} </u></h3>
+                                                        <p>{{$product->price}}  جنيها</p>
                                                     </div>
                                                     <div class="col-md-1">
                                                     </div>
@@ -595,7 +597,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلاق</button>
                                             </div>
                                         </div>
                                     </div>
@@ -628,10 +630,10 @@
             <!-- isotope filters start -->
             <div class="filters text-center">
                 <ul class="nav nav-pills">
-                    <li class="active"><a href="#" data-filter="*">All</a></li>
+                    <li class="active"><a href="#" data-filter="*"> كل <?php echo $mygallery;?> </a></li>
                     @foreach($categories as $category) 
 
-                        <li><a href="#" data-filter=".{{$category->name}}">{{$category->name}}</a></li>
+                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $category->name))}}">{{$category->name}}</a></li>
                     @endforeach
                     <!-- <li><a href="#" data-filter=".web-design">Web design</a></li>
                     <li><a href="#" data-filter=".app-development">App development</a></li>
@@ -647,7 +649,7 @@
                 @foreach($categories as $category)
                 @foreach($subcategories as $subcategory)
                     @if($category->id == $subcategory->category_id)
-                <div class="col-sm-6 col-md-3 isotope-item {{$category->name}}">
+                <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $category->name))}}">
                     <div class="image-box">
                     
                         <div class="overlay-container">
@@ -664,11 +666,11 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلاق</span></button>
                                     <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$subcategory->name}}</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h3>{{$subcategory->name}} Description</h3>
+                                    <h3>تفاصيل وصف {{$subcategory->name}}</h3>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p>{{$subcategory->description}}</p>
@@ -679,7 +681,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلاق</button>
                                 </div>
                             </div>
                         </div>
@@ -708,6 +710,9 @@
 <hr>
 </div>  -->
 @endif
+
+
+
 <!-- section start -->
 <!-- ================ -->
 
@@ -780,25 +785,20 @@
                     {!!Form::open(['route'=>'message.store','method'=>'post','role'=>'form','id'=>'footer-form']) !!}
                         <div class="form-group has-feedback">
                             <label class="sr-only" for="name2">Name</label>
-                            <input type="text" class="form-control" id="name2" placeholder="Name" name="name" required value="{{old('name')}}">
+                            <input type="text" class="form-control" id="name2" placeholder="الأسم" name="name2" required>
                             <i class="fa fa-user form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
                             <label class="sr-only" for="email2">Email address</label>
-                            <input type="email" class="form-control" id="email2" placeholder="Enter email" name="email" required value="{{old('email')}}">
-                            <i class="fa fa-envelope form-control-feedback"></i>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label class="sr-only" for="email2">Subject</label>
-                            <input type="text" class="form-control" id="subject2" placeholder="Subject" name="subject" required value="{{old('subject')}}">
+                            <input type="email" class="form-control" id="email2" placeholder="بريدك الالكتروني" name="email2" required>
                             <i class="fa fa-envelope form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
                             <label class="sr-only" for="message2">Message</label>
-                            <textarea class="form-control" rows="8" id="message2" placeholder="Message" name="content" required>{{old('name')}}</textarea>
+                            <textarea class="form-control" rows="8" id="message2" placeholder="الرسالة" name="message2" required></textarea>
                             <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
-                        <input type="submit" value="Send" class="btn btn-default">
+                        <input type="submit" value="أرسل" class="btn btn-default">
                         <br/><br/>
                     {!!Form::close() !!}
                 </div>
@@ -808,6 +808,10 @@
     <div class="row">
         <div class="col-xs-12">
             <div id="googleMap" style="width:100%;height:500px;"></div>
+            <?php 
+                $lat=$contact->lat;
+                $lng=$contact->lng;
+            ?>
          </div>
     </div>
   @endforeach  
@@ -821,8 +825,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="text-center">Copyright © 2014 Worthy by  <a target="_blank" href="http://www.businessmonk.com">Businessmonk</a>.</p>
-            </div>
+                <p class="text-center">حقوق الملكية محفوظة ل  <a target="_blank" href="http://www.businessmonk.com">Businessmonk</a>.</p>            </div>
         </div>
     </div>
 </div>
@@ -837,9 +840,11 @@
         </script>
 
         <script>
+        console.log(<?php echo $lat;?>);
+        console.log(<?php echo $lng;?>);
             function initialize() {
                 var mapProp = {
-                    center:new google.maps.LatLng(31.29411320,31.75878360),
+                    center:new google.maps.LatLng(<?php echo $lat;?>,<?php echo $lng;?>),
                     zoom:5,
                     mapTypeId:google.maps.MapTypeId.ROADMAP
                 };

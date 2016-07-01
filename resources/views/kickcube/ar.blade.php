@@ -189,35 +189,95 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                <a  href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/en"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
-                <ul class="dropdown">
-                  <li>
-                    <a href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/ar">
-                  <span class="lang-sm lang-lbl" lang="ar"></span>
-                  </a>
-                  </li>
-               </ul>
+                  <a  href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
+                  <ul class="dropdown">
+                    <li>
+                      <a href="{{url('/'.$subdomain.'/ar')}}">
+                    <span class="lang-sm lang-lbl" lang="ar"></span>
+                    </a>
+                    </li>
+                 </ul>
               </li>
-                <li><a href="#contact" class="page-scroll">للاتصال بنا</a>
-                </li>
-                <li>
-                    <a href="#promotion" class="page-scroll">العروض</a>
-                </li>
-                <li>
-                    <a href="#news" class="page-scroll">الاخبار</a>
-                </li>
-                <li>
-                    <a href="#gallery" class="page-scroll">المعرض</a>
-                </li>
-                <li>
-                    <a href="#services" class="page-scroll">الخدمات</a>
-                </li>
-                <li>
-                    <a href="#about" class="page-scroll">من نحن</a>
-                </li>
-               <li>
-                <a  href="#page_top" class="page-scroll">الرئيسيه</a>
-               </li>
+                <?php  
+                  $flagelang=0;
+                  // $findpage_top=0;
+                  // $findservices=0;
+                  // $findabout=0;
+                  // $findgallery=0;
+                  // $findnews=0;
+                  // $findpromotion=0;
+                  // $findcontact=0;
+                  $myservices='';
+                  $mypage_top='';
+                  $myabout='';
+                  $mycontact='';
+                  $mynews='';
+                  $mypromotion='';
+                  $mygallery='';
+              ?>
+
+              @for ($x = 0; $x < count($urlpages); $x++)
+
+                  @if($urlpages[$x]=='page_top')
+                      <!-- <li class="hidden">
+                           <a href="#page-top"></a>
+                       </li>-->
+                      <li>
+                          <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                      </li>
+                      <?php 
+                      // $findpage_top=1;
+                      $mypage_top=$ar_menupages[$x];?>
+                  @endif 
+                  @if($urlpages[$x]=='services')   
+                      <li>
+                          <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                      </li>
+                      <?php 
+                      // $findservices=1;
+                      $myservices=$ar_menupages[$x];?>
+                  @endif
+                  @if($urlpages[$x]=='about')
+                      <li>
+                          <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                      </li>
+                      <?php 
+                      // $findabout=1;
+                       $myabout=$ar_menupages[$x];?>
+                  @endif
+                   @if($urlpages[$x]=='gallery')
+                        <li>
+                            <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                        </li>
+                        <?php 
+                        // $findgallery=1;
+                        $mygallery=$ar_menupages[$x];?>
+                    @endif
+                    @if($urlpages[$x]=='news')
+                        <li>
+                            <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                        </li>
+                        <?php 
+                        // $findnews=1;
+                        $mynews=$ar_menupages[$x];?>
+                    @endif
+                    @if($urlpages[$x]=='promotion')
+                        <li>
+                            <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                        </li>
+                        <?php 
+                        // $findpromotion=1;
+                        $mypromotion=$ar_menupages[$x];?>
+                    @endif
+                    @if($urlpages[$x]=='contact')
+                        <li>
+                            <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                        </li>
+                         <?php
+                          // $findcontact=1;
+                         $mycontact=$ar_menupages[$x];?>
+                    @endif
+              @endfor
           </ul>
             <!-- End Navigation List -->
           </div>
@@ -225,32 +285,74 @@
 
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
-          <li>
-              <a class="active" href="#page_top">الرئيسيه</a>
-              </li>
-              <li>
-                <a href="#about" class="page-scroll">من نحن</a>
-              </li>
-              <li>
-                <a href="#services" class="page-scroll">الخدمات</a>
-              </li>
-              <li>
-                <a href="#gallery" class="page-scroll">المعرض</a>
-              </li>
-              <li>
-                <a href="#news" class="page-scroll">الاخبار</a>
-              </li>
-              <li>
-                <a href="#promotion" class="page-scroll">العروض</a>
-              </li>
-              <li><a href="#contact" class="page-scroll">للاتصال بنا</a>
-              </li>
+          
+          @for ($x = 0; $x < count($urlpages); $x++)
 
+              @if($urlpages[$x]=='page_top')
+                  <!-- <li class="hidden">
+                       <a href="#page-top"></a>
+                   </li>-->
+                  <li>
+                      <a class="active" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findpage_top=1;
+                  $mypage_top=$ar_menupages[$x];?>
+              @endif 
+              @if($urlpages[$x]=='services')   
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findservices=1;
+                  $myservices=$ar_menupages[$x];?>
+              @endif
+              @if($urlpages[$x]=='about')
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findabout=1;
+                   $myabout=$ar_menupages[$x];?>
+              @endif
+               @if($urlpages[$x]=='gallery')
+                    <li>
+                        <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                    </li>
+                    <?php 
+                    // $findgallery=1;
+                    $mygallery=$ar_menupages[$x];?>
+                @endif
+                @if($urlpages[$x]=='news')
+                    <li>
+                        <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                    </li>
+                    <?php 
+                    // $findnews=1;
+                    $mynews=$ar_menupages[$x];?>
+                @endif
+                @if($urlpages[$x]=='promotion')
+                    <li>
+                        <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                    </li>
+                    <?php 
+                    // $findpromotion=1;
+                    $mypromotion=$ar_menupages[$x];?>
+                @endif
+                @if($urlpages[$x]=='contact')
+                    <li>
+                        <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
+                    </li>
+                     <?php
+                      // $findcontact=1;
+                     $mycontact=$ar_menupages[$x];?>
+                @endif
+          @endfor
               <li>
-                <a  href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/en"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
+                <a  href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
                 <ul class="dropdown">
                   <li>
-                    <a href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/ar">
+                    <a href="{{url('/'.$subdomain.'/ar')}}">
                   <span class="lang-sm lang-lbl" lang="ar"></span>
                   </a>
                   </li>
@@ -414,7 +516,6 @@
               </div><!-- /.modal -->
       @endif
 
-      @endif
       <!-- End Full Width Section 2 -->
 
 

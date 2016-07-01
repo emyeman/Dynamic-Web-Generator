@@ -58,24 +58,24 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
   <body>
     <!-- Navigation
     ==========================================-->
-<?php  
-    $findpage_top=0;
-    $findservices=0;
-    $findabout=0;
-    $findgallery=0;
-    $findnews=0;
-    $findpromotion=0;
-    $findcontact=0;
-    $myservices='';
-    $mypage_top='';
-    $myabout='';
-    $mycontact='';
-    $mynews='';
-    $mypromotion='';
-    $mygallery='';
-?>
     
-	
+ <?php  
+      $flagelang=0;
+      // $findpage_top=0;
+      // $findservices=0;
+      // $findabout=0;
+      // $findgallery=0;
+      // $findnews=0;
+      // $findpromotion=0;
+      // $findcontact=0;
+      $myservices='';
+      $mypage_top='';
+      $myabout='';
+      $mycontact='';
+      $mynews='';
+      $mypromotion='';
+      $mygallery='';
+  ?>
 
     <!--News section-->
     
@@ -135,52 +135,59 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
 
             @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
               </li>
-              <?php $findpage_top=1;
-              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+              <?php 
+              // $findpage_top=1;
+              $mypage_top=$ar_menupages[$x];?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findservices=1;
-                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                <?php 
+                // $findservices=1;
+                $myservices=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findabout=1;
-                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                <?php 
+                // $findabout=1;
+                 $myabout=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findgallery=1;
-                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                <?php
+                 // $findgallery=1;
+                $mygallery=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findnews=1;
-                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                <?php 
+                // $findnews=1;
+                $mynews=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findpromotion=1;
-                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                <?php
+                 // $findpromotion=1;
+                $mypromotion=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                 <?php $findcontact=1;
-                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+                  <?php
+                   // $findcontact=1;
+                 $mycontact=$ar_menupages[$x];?>
             @endif    
              @endfor
 

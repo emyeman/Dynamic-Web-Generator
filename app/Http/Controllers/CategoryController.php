@@ -48,7 +48,7 @@ class CategoryController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'title_category' => 'required|max:255',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 'image_category' => 'required',                 
             ]);
 
@@ -93,7 +93,7 @@ class CategoryController extends Controller
 
             $this->validate($request, [
                 'title_category' => 'required|max:255',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 // 'image_category' => 'required',                 
             ]);
 

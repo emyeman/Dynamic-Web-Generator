@@ -51,18 +51,21 @@ class TemplateController extends Controller
  // ***************** for pages and navbar ***************************
         $menus = DB::table('menus')->where('site_id',$site_id)->get();
         $pages = DB::table('pages')->where('site_id',$site_id)->get();
-        $menupages = array();
+        $en_menupages = array();
+        $ar_menupages = array();
         $urlpages = array();
         // var_dump($menus);die();
         foreach ($menus as $menu) {
         	foreach ($pages as $page) {
         		if ($menu->route==$page->id) {
-        			array_push($menupages, $menu->title);
+        			array_push($en_menupages, $menu->title);
+                    array_push($ar_menupages, $menu->ar_title);
         			array_push($urlpages,$page->title);
         		}
         	}
         }
- 
+ // var_dump($en_menupages);
+ // var_dump($ar_menupages);die();
   // ***************** for contact us ***************************
         $contacts = DB::table('contacts')->where('site_id',$site_id)->get();       
 
@@ -97,10 +100,10 @@ class TemplateController extends Controller
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/en',compact('mysite','subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
         }elseif ($arrayurl[1]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/ar',compact('mysite','subdomain','menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
 
         }
     }

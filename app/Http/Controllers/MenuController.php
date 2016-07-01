@@ -51,6 +51,7 @@ class MenuController extends Controller
         ]); 
         $new_row=new Menu;
         $new_row->title=trim($request->input('title'));
+        $new_row->ar_title=trim($request->input('ar_title'));
         if (trim($request->input('parent_id'))!='')
         	$new_row->parent_id=trim($request->input('parent_id'));
         $new_row->route=trim($request->input('route'));
@@ -105,6 +106,7 @@ class MenuController extends Controller
             'route' => 'required|integer',   
         ]);
         $row->title=trim($request->input('title'));
+        $row->ar_title=trim($request->input('ar_title'));
         if (trim($request->input('parent_id'))!='')
         	$row->parent_id=trim($request->input('parent_id'));
         $row->route=trim($request->input('route'));

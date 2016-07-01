@@ -53,7 +53,7 @@ class SubCategoryController extends Controller
              $this->validate($request, [
                 'category_id' => 'required|max:255',
                 'title_subcategory' => 'required|max:255',
-                'subdescription' => 'required|max:255',
+                'subdescription' => 'required',
                 'image_subcategory' => 'required',                 
             ]);
 
@@ -103,7 +103,7 @@ class SubCategoryController extends Controller
             $this->validate($request, [
                 'category_id' => 'required|max:255',
                 'title_subcategory' => 'required|max:255',
-                'subdescription' => 'required|max:255',
+                'subdescription' => 'required',
                 // 'image_subcategory' => 'required',                 
             ]);
 

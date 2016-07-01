@@ -51,43 +51,44 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-	<link rel="stylesheet" type="text/css" href="{{ url('assets/Temp2/en/engine0/style.css') }}"/>
+  <!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+  <link rel="stylesheet" type="text/css" href="{{ url('assets/Temp2/en/engine0/style.css') }}"/>
 
-	<script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/jquery.js') }}"></script>
-	<!-- End WOWSlider.com HEAD section --></head>
+  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/jquery.js') }}"></script>
+  <!-- End WOWSlider.com HEAD section --></head>
   <body>
     <!-- Navigation
     ==========================================-->
 
     
-	
+  
 
     <!--News section-->
     
-	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+  <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
 
   <?php  
-    $findpage_top=0;
-    $findservices=0;
-    $findabout=0;
-    $findgallery=0;
-    $findnews=0;
-    $findpromotion=0;
-    $findcontact=0;
-    $myservices='';
-    $mypage_top='';
-    $myabout='';
-    $mycontact='';
-    $mynews='';
-    $mypromotion='';
-    $mygallery='';
-?>
+      $flagelang=0;
+      // $findpage_top=0;
+      // $findservices=0;
+      // $findabout=0;
+      // $findgallery=0;
+      // $findnews=0;
+      // $findpromotion=0;
+      // $findcontact=0;
+      $myservices='';
+      $mypage_top='';
+      $myabout='';
+      $mycontact='';
+      $mynews='';
+      $mypromotion='';
+      $mygallery='';
+  ?>
   @if(isset($crusals))
 
-	<div id="wowslider-container0">
+  <div id="wowslider-container0">
 
-	<div class="ws_images">
+  <div class="ws_images">
     <ul>
     <?php $count=0; ?>
     <?php 
@@ -99,32 +100,32 @@
         <li><img src="{{ url('/assets/images/')}}{{ $crusal->image }}" alt="{{ $crusal->title }}" title="{{ $crusal->title }}" id="wows0_{{ $count }}"/></li> 
         <?php $count++; ?>  
     @endforeach
-  	</ul>
+    </ul>
   </div>
 
-	<div class="ws_bullets">
+  <div class="ws_bullets">
   <div>
      @for ($x = 0; $x < count($crusals); $x++)
-		<a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[$x]->title }}"/>
+    <a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[$x]->title }}"/>
     {{ ++$x }}</span></a>
     @endfor
-	</div>
+  </div>
   </div>
 
   <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com/vi">css slider</a> by WOWSlider.com v8.7
   </div>
-	<div class="ws_shadow">
+  <div class="ws_shadow">
     
   </div>
 
 
-	</div>	
+  </div>  
 
   @endif
 
-	<script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/wowslider.js') }}"></script>
-	<script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/script.js') }}"></script>
-	<!-- End WOWSlider.com BODY section -->
+  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/wowslider.js') }}"></script>
+  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/script.js') }}"></script>
+  <!-- End WOWSlider.com BODY section -->
 
 <!--start promotion-->
   <nav id="myn" class="navbar navbar-default navbar-fixed-top">
@@ -154,56 +155,64 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             @for ($x = 0; $x < count($urlpages); $x++)
-
-            @if($urlpages[$x]=='page_top')
-              <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
-              </li>
-              <?php $findpage_top=1;
-              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
-            @endif 
-            @if($urlpages[$x]=='services')
-                <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
-                </li>
-                <?php $findservices=1;
-                $myservices=trans('arabic_english.'.$menupages[$x]);?>
-            @endif
-            @if($urlpages[$x]=='about')
-                <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
-                </li>
-                <?php $findabout=1;
-                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
-            @endif
-            @if($urlpages[$x]=='gallery')
-                <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
-                </li>
-                <?php $findgallery=1;
-                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
-            @endif
-            @if($urlpages[$x]=='news')
-                <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
-                </li>
-                <?php $findnews=1;
-                $mynews=trans('arabic_english.'.$menupages[$x]);?>
-            @endif
-            @if($urlpages[$x]=='promotion')
-                <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
-                </li>
-                <?php $findpromotion=1;
-                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
-            @endif
-            @if($urlpages[$x]=='contact')
-                <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
-                </li>
-                 <?php $findcontact=1;
-                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
-            @endif    
+              @if($urlpages[$x]=='page_top')
+                  
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findpage_top=1;
+                  $mypage_top=$en_menupages[$x];?>
+              @endif 
+              @if($urlpages[$x]=='services')   
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findservices=1;
+                  $myservices=$en_menupages[$x];?>
+              @endif
+              @if($urlpages[$x]=='about')
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findabout=1;
+                   $myabout=$en_menupages[$x];?>
+              @endif
+               @if($urlpages[$x]=='gallery')
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findgallery=1;
+                  $mygallery=$en_menupages[$x];?>
+              @endif
+              @if($urlpages[$x]=='news')
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findnews=1;
+                  $mynews=$en_menupages[$x];?>
+              @endif
+              @if($urlpages[$x]=='promotion')
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                  </li>
+                  <?php 
+                  // $findpromotion=1;
+                  $mypromotion=$en_menupages[$x];?>
+              @endif
+              @if($urlpages[$x]=='contact')
+                  <li>
+                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                  </li>
+                   <?php
+                    // $findcontact=1;
+                   $mycontact=$en_menupages[$x];?>
+              @endif 
+           
              @endfor
             <li>
               <div id="mydropdown">

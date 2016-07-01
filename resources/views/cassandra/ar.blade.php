@@ -1,6 +1,6 @@
 @include('../cassandra/header')
 <!--Arabic language -->
-        <link href="{{url('assets/css/bootstrap-rtl.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/bootstrap-rtl.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/arabic-style.css')}}" rel="stylesheet">
 
 </head>
@@ -46,59 +46,59 @@
 
             @if($urlpages[$x]=='page_top')
                  <li>
-                    <a class="active" href="#head">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="active" href="#head">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
                 </li>
                 <?php 
                 // $findpage_top=1;
-                $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+                $mypage_top=$ar_menupages[$x];?>
             @endif 
             @if($urlpages[$x]=='services')   
                 <li>
-                    <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php 
                 // $findservices=1;
-                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                $myservices=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php 
                 // $findabout=1;
-                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                 $myabout=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                    <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php 
                 // $findgallery=1;
-                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                $mygallery=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php 
                 // $findnews=1;
-                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                $mynews=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php 
                 // $findpromotion=1;
-                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                $mypromotion=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                  <?php
                   // $findcontact=1;
-                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+                 $mycontact=$ar_menupages[$x];?>
             @endif 
             @endfor
 
@@ -115,59 +115,59 @@
 
                         @if($urlpages[$x]=='page_top')
                              <li>
-                                <a class="active" href="#head">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                <a class="active" href="#head">{{$ar_menupages[$x]}}</a>
                             </li>
                             <?php 
                             // $findpage_top=1;
-                            $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+                            $mypage_top=$ar_menupages[$x];?>
                         @endif 
                         @if($urlpages[$x]=='services')   
                             <li>
-                                <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                             </li>
                             <?php 
                             // $findservices=1;
-                            $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                            $myservices=$ar_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='about')
                             <li>
-                                <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                             </li>
                             <?php 
                             // $findabout=1;
-                             $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                             $myabout=$ar_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='gallery')
                             <li>
-                                <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                             </li>
                             <?php 
                             // $findgallery=1;
-                            $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                            $mygallery=$ar_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='news')
                             <li>
-                                <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                             </li>
                             <?php 
                             // $findnews=1;
-                            $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                            $mynews=$ar_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='promotion')
                             <li>
-                                <a  href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                <a  href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                             </li>
                             <?php 
                             // $findpromotion=1;
-                            $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                            $mypromotion=$ar_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='contact')
                             <li>
-                                <a href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                                <a href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                             </li>
                              <?php
                               // $findcontact=1;
-                             $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+                             $mycontact=$ar_menupages[$x];?>
                         @endif 
                         @endfor
                     </ol>
@@ -278,14 +278,14 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', $subcategory->name);?>">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->name}}</a></li>
                                         <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
                                             ?>
                                             @endif
                                         @endforeach
-                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', $all);?>">All</a></li>
+                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', str_replace('&', '', $all));?>">الكل</a></li>
                                     </ul>
                                 </div>
 
@@ -301,7 +301,7 @@
             @foreach($subcategories as $subcategory)
             @foreach($products as $product)
                 @if($subcategory->id == $product->category_id)
-            <div class="col-sm-4 col-sm-offset-1 isotope-item <?php echo str_replace(' ', '', $subcategory->name);?>">
+            <div class="col-sm-4 col-sm-offset-1 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                 <div class="thumbnail">
                     <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
                     <div class="caption">
@@ -318,13 +318,13 @@
                                     <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$product->name}}</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h3><u>{{$product->name}} Description</u></h3>
+                                    <h3><u>تفصيل وصف {{$product->name}} </u></h3>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <p>{{$product->description}}</p>
                                             <hr/>
-                                            <h3><u>{{$product->name}} Price</u></h3>
-                                            <p>{{$product->price}} LE</p>
+                                            <h3><u>السعر  {{$product->name}} </u></h3>
+                                            <p>{{$product->price}} جنيها</p>
                                         </div>
                                         <div class="col-md-6">
                                             <img class="img-responsive" src="{{ url('/assets/images/'.$product->image)}}" alt="">
@@ -572,27 +572,7 @@
            @endforeach 
         </div>
         <div class="col-sm-6">
-<<<<<<< HEAD
-            <div class="footer-content">
-                <form role="form" id="footer-form">
-                    <div class="form-group has-feedback">
-                        <label class="sr-only" for="name2">Name</label>
-                        <input type="text" class="form-control" id="name2" placeholder="الاسم" name="name2" required>
-                        <i class="fa fa-user form-control-feedback"></i>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label class="sr-only" for="email2">Email address</label>
-                        <input type="email" class="form-control" id="email2" placeholder="البريد الالكتروني" name="email2" required>
-                        <i class="fa fa-envelope form-control-feedback"></i>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <label class="sr-only" for="message2">Message</label>
-                        <textarea class="form-control" rows="8" id="message2" placeholder="الرسالة" name="message2" required></textarea>
-                        <i class="fa fa-pencil form-control-feedback"></i>
-                    </div>
-                    <input type="submit" value="Send" class="btn btn-default">
-                </form>
-=======
+       
             @if (count($errors) > 0)
                     <div class="alert alert-danger">
                         <ul>
@@ -624,20 +604,20 @@
                             <textarea class="form-control" rows="8" id="message2" placeholder="محتوى الرساله" name="content" required>{{old('content')}}</textarea>
                             <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
-                        <input type="submit" value="Send" class="btn btn-default">
+                        <input type="submit" value="ارسال" class="btn btn-default">
                     {!!Form::close() !!}
->>>>>>> a79331578a9ee86737039adf6e8accb5f608edaf
             </div>
         </div>
     </div>
     <div class="space"></div>
         <div class="row">
             <div class="col-xs-12">
-                <div id="emy_googleMap"  style="width:100%;height:500px;">
+            <div id="googleMap" style="width:100%;height:500px;"></div>
+                <!-- <div id="emy_googleMap"  style="width:100%;height:500px;">
                      @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
                          <img style="width:100%;height:100%;" src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
                     @endif 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

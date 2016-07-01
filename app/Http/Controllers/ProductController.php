@@ -87,7 +87,7 @@ class ProductController extends Controller
                 'category_id' => 'required|max:255',
                 'subcategory_id' => 'required|max:255',
                 'title_product' => 'required|max:255',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 'image_product' => 'required',
                 
             ]);
@@ -142,7 +142,7 @@ class ProductController extends Controller
                 'category_id' => 'required|max:255',
                 'subcategory_id' => 'required|max:255',
                 'title_product' => 'required|max:255',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 // 'image_product' => 'required',
                 
             ]);

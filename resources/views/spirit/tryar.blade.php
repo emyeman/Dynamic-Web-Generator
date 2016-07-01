@@ -443,6 +443,7 @@
 <!-- ================ -->
 @if($findgallery==1)
 @if($categories) 
+
 @if($products)
     <div class="section">
             <div class="container">
@@ -467,14 +468,14 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                          @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".<?php echo str_replace(' ', '', $subcategory->name);?>">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->name}}</a></li>
                                             <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
                                             ?>
                                             @endif
                                         @endforeach
-                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', $all);?>">All</a></li>    
+                                        <li><a href="#" data-filter="<?php $all=trim($allsub, ", ");echo str_replace(' ', '', str_replace('&', '', $all));?>">All</a></li>    
                                     </ul>
                                 </li>
 
@@ -489,7 +490,7 @@
                             @foreach($subcategories as $subcategory)
                             @foreach($products as $product)
                                 @if($subcategory->id == $product->category_id)
-                            <div class="col-sm-6 col-md-3 isotope-item <?php echo str_replace(' ', '', $subcategory->name);?>">
+                            <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                                 <div class="image-box">
                                     <div class="overlay-container">
                                         <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
@@ -561,7 +562,7 @@
                     <li class="active"><a href="#" data-filter="*">All</a></li>
                     @foreach($categories as $category) 
 
-                        <li><a href="#" data-filter=".{{$category->name}}">{{$category->name}}</a></li>
+                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $category->name))}}">{{$category->name}}</a></li>
                     @endforeach
                     <!-- <li><a href="#" data-filter=".web-design">Web design</a></li>
                     <li><a href="#" data-filter=".app-development">App development</a></li>
@@ -577,7 +578,7 @@
                 @foreach($categories as $category)
                 @foreach($subcategories as $subcategory)
                     @if($category->id == $subcategory->category_id)
-                <div class="col-sm-6 col-md-3 isotope-item {{$category->name}}">
+                <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $category->name))}}">
                     <div class="image-box">
                     
                         <div class="overlay-container">
@@ -633,8 +634,8 @@
 </div>
 @endif
 <!-- section end -->
-
-<!-- <div class="line">
+<!-- 
+<div class="line">
 <hr>
 </div>  -->
 @endif
