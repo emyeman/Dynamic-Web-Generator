@@ -24,6 +24,7 @@
       <ul class="nav navbar-nav hidden-lg hidden-md ">
         <?php  
             $flagelang=0;
+            // $count_static=1;
             // $findpage_top=0;
             // $findservices=0;
             // $findabout=0;
@@ -31,6 +32,8 @@
             // $findnews=0;
             // $findpromotion=0;
             // $findcontact=0;
+            $lat=0;
+            $lng=0;
             $myservices='';
             $mypage_top='';
             $myabout='';
@@ -38,6 +41,8 @@
             $mynews='';
             $mypromotion='';
             $mygallery='';
+            $menuearray_static=[];
+            $pagearray_static=[];
         ?>
 
         @for ($x = 0; $x < count($urlpages); $x++)
@@ -98,6 +103,16 @@
                   // $findcontact=1;
                  $mycontact=$en_menupages[$x];?>
             @endif 
+            <!-- for static page -->
+            @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                <li>
+                    <a  href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$en_menupages[$x]}}</a>
+                </li>
+                 <?php
+                  // $count_static+=1;
+                 array_push($pagearray_static, $urlpages[$x]);
+                 array_push($menuearray_static, $en_menupages[$x]);?>
+            @endif
             @endfor
 
         </ul>
@@ -167,6 +182,13 @@
                               // $findcontact=1;
                              $mycontact=$en_menupages[$x];?>
                         @endif 
+                        <!-- for static page -->
+                        @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                            <li>
+                                <a  href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$en_menupages[$x]}}</a>
+                            </li>
+                             
+                        @endif
                         @endfor
 
                     </ol>
@@ -531,10 +553,24 @@
 
 @endif
 
+<!-- ========================================================= -->
+<!-- start staticpage -->
+@for($static=0;$static< count($pagearray_static);$static++) 
+<section class="section" id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+    <div class="container">
+    
+        <h2 class="text-center title"><?php echo $menuearray_static[$static];?></h2>
+        <div class="row backg">
+        <?php echo "$containpages[$static]";?>
+          
 
+        </div>
+    </div>
+</section>
+@endfor        
 
-
-
+<!-- end staticpage -->
+<!-- =========================================================== -->
 
 
 <!-- Fourth (Contact) section -->

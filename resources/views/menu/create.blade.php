@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+      <h2><div class='col-lg-1 col-ms-1'>
+            <a href="{{url('/menu')}}"><span class="glyphicon glyphicon-backward"></span></a>
+        </div></small></h2>
+
     <h2 class='page-header'>
         Add New Menu
     </h2>

@@ -55,6 +55,8 @@
                                     // $findnews=0;
                                     // $findpromotion=0;
                                     // $findcontact=0;
+                                    $lat=0;
+                                    $lng=0;
                                     $myservices='';
                                     $mypage_top='';
                                     $myabout='';
@@ -758,7 +760,7 @@
                     </div>
                 </div>
 
-          <!--  </div>                                                                                                              sally's update remove
+          <!--  </div>                                                                                                           
         </div>-->
         <!-- section end -->
 

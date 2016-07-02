@@ -26,6 +26,7 @@
       <ul class="nav navbar-nav hidden-lg hidden-md ">
         <?php  
             $flagelang=0;
+            $count_static=1;
             // $findpage_top=0;
             // $findservices=0;
             // $findabout=0;
@@ -33,6 +34,8 @@
             // $findnews=0;
             // $findpromotion=0;
             // $findcontact=0;
+            $lat=0;
+            $lng=0;
             $myservices='';
             $mypage_top='';
             $myabout='';
@@ -40,13 +43,15 @@
             $mynews='';
             $mypromotion='';
             $mygallery='';
+            $menuearray_static=[];
+            $pagearray_static=[];
         ?>
 
         @for ($x = 0; $x < count($urlpages); $x++)
 
             @if($urlpages[$x]=='page_top')
                  <li>
-                    <a class="active" href="#head">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                    <a class="active" href="#head">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php 
                 // $findpage_top=1;
@@ -100,7 +105,19 @@
                   // $findcontact=1;
                  $mycontact=$ar_menupages[$x];?>
             @endif 
+            <!-- for static page -->
+            @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                <li>
+                    <a href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$ar_menupages[$x]}}</a>
+                </li>
+                 <?php
+                  $count_static+=1;
+                 array_push($pagearray_static, $urlpages[$x]);
+                 array_push($menuearray_static, $ar_menupages[$x]);?>
+
+            @endif
             @endfor
+            
 
     </ul>
             </div>
@@ -169,6 +186,13 @@
                               // $findcontact=1;
                              $mycontact=$ar_menupages[$x];?>
                         @endif 
+                        <!-- for static page -->
+                        @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                            <li>
+                                <a  href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$ar_menupages[$x]}}</a>
+                            </li>
+                            
+                        @endif
                         @endfor
                     </ol>
                 </div>
@@ -231,9 +255,9 @@
     
         <h2 class="text-center title"><?php echo $myabout; ?></h2>
         <div class="row backg">
-            <div class="col-sm-4 col-sm-offset-1">  <?php echo $myabout; ?>  
-                <!--<h5><strong>Where's my lorem ipsum?<br></strong></h5>
-                <p>Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?</p>  -->
+            <div class="col-sm-4 col-sm-offset-1"> 
+                <!-- <h5><strong> <?php echo $myabout; ?>  <br></strong></h5> -->
+                <!-- <p>Well, here it is: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, ullam, ducimus, eaque, ex autem est dolore illo similique quasi unde sint rerum magnam quod amet iste dolorem ad laudantium molestias enim quibusdam inventore totam fugit eum iusto ratione alias deleniti suscipit modi quis nostrum veniam fugiat debitis officiis impedit ipsum natus ipsa. Doloremque, id, at, corporis, libero laborum architecto mollitia molestiae maxime aut deserunt sed perspiciatis quibusdam praesentium consectetur in sint impedit voluptates! Deleniti, sequi voluptate recusandae facere nostrum?</p>   -->
                 <?php $img='/assets/images'.$aboutus->image ?>
                 <img class="img-responsive" src="{{ url($img)}}"/>
             </div>
@@ -522,6 +546,23 @@
 </section>
 
 @endif
+
+<!-- ========================================================= -->
+<!-- start staticpage -->
+@for($static=0;$static< count($pagearray_static); $static++) 
+<section class="section" id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+    <div class="container">
+    
+        <h2 class="text-center title"><?php echo $menuearray_static[$static];?></h2>
+        <div class="row backg">
+        <?php echo "$containpages[$static]";?>
+        </div>
+    </div>
+</section>
+@endfor        
+
+<!-- end staticpage -->
+<!-- =========================================================== -->
 
 <!-- Fourth (Contact) section -->
 @if($contacts) 

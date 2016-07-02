@@ -1,6 +1,10 @@
 .breadcrumb{
-    font-size:20px;
+    font-size:18px;
+    background: none;
+    padding: 15px 0px;
+    font-family: 'Wire One', Helvetica, Arial, sans-serif;
 }
+
 
 .title, .subtitle{
 

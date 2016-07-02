@@ -189,17 +189,18 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                  <a  href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
+                  <a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span></a>
                   <ul class="dropdown">
                     <li>
-                      <a href="{{url('/'.$subdomain.'/ar')}}">
-                    <span class="lang-sm lang-lbl" lang="ar"></span>
+                      <a href="{{url('/'.$subdomain.'/en')}}">
+                    <span class="lang-sm lang-lbl" lang="en"></span>
                     </a>
                     </li>
                  </ul>
               </li>
                 <?php  
                   $flagelang=0;
+                  // $count_static=1;
                   // $findpage_top=0;
                   // $findservices=0;
                   // $findabout=0;
@@ -207,6 +208,8 @@
                   // $findnews=0;
                   // $findpromotion=0;
                   // $findcontact=0;
+                  $lat=0;
+                  $lng=0;
                   $myservices='';
                   $mypage_top='';
                   $myabout='';
@@ -214,6 +217,8 @@
                   $mynews='';
                   $mypromotion='';
                   $mygallery='';
+                  $menuearray_static=[];
+                  $pagearray_static=[];
               ?>
 
               @for ($x = 0; $x < count($urlpages); $x++)
@@ -277,6 +282,16 @@
                           // $findcontact=1;
                          $mycontact=$ar_menupages[$x];?>
                     @endif
+                <!-- for static page -->
+                    @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                        <li>
+                            <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$ar_menupages[$x]}}</a>
+                        </li>
+                         <?php
+                          // $count_static+=1;
+                         array_push($pagearray_static, $urlpages[$x]);
+                         array_push($menuearray_static, $ar_menupages[$x]);?>
+                    @endif 
               @endfor
           </ul>
             <!-- End Navigation List -->
@@ -347,13 +362,19 @@
                       // $findcontact=1;
                      $mycontact=$ar_menupages[$x];?>
                 @endif
+                <!-- for static page -->
+                  @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                      <li>
+                          <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$ar_menupages[$x]}}</a>
+                      </li>
+                  @endif 
           @endfor
               <li>
-                <a  href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
+                <a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span></a>
                 <ul class="dropdown">
                   <li>
-                    <a href="{{url('/'.$subdomain.'/ar')}}">
-                  <span class="lang-sm lang-lbl" lang="ar"></span>
+                    <a href="{{url('/'.$subdomain.'/en')}}">
+                  <span class="lang-sm lang-lbl" lang="en"></span>
                   </a>
                   </li>
                </ul>
@@ -829,6 +850,83 @@
     </div>
     @endif
     <!-- End Promotion Section -->
+
+
+<!-- ==================================================================================== -->
+<!-- start staticpage -->
+@for($static=0;$static< count($pagearray_static);$static++) 
+  <div id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+      <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
+        <div class="container">
+
+          <div class="row">
+
+            <!-- Start Left Side -->
+            <div class="col-md-6" data-animation="fadeInUp">
+
+              <!-- Start Big Heading -->
+              <div class="big-title">
+                <h1><strong class="primary-text"><?php echo $menuearray_static[$static];?></strong> </h1>
+                <!-- <p class="title-desc">Some Words About Our Company</p> -->
+              </div>
+              <!-- End Big Heading -->
+                <?php echo "$containpages[$static]";?>
+
+              <!-- Divider -->
+              <div class="hr1" style="margin-bottom:14px;"></div>
+
+              <!-- Start Icons Lists -->
+              
+              <!-- End Icons Lists -->
+
+              <!-- Divider -->
+              <div class="hr1" style="margin-bottom:20px;"></div>
+
+              <!-- Button -->
+              <a class="primary btn-system btn-small" data-toggle="modal" href="#<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>modal">Read More <?php echo $menuearray_static[$static];?></a>
+            </div>
+            <!-- End Left Side -->
+
+            <!-- Vimeo Iframe -->
+            <!-- <div class="col-md-6" data-animation="fadeInDown">
+              
+                <div class="img1">
+                    <figure><img class="img-responsive" src="" alt="image"></figure> 
+                </div>
+                <div class="img2">
+                    <figure><img class="img-responsive" src="" alt="image"></figure>
+                </div>
+            </div> -->
+
+          </div>
+
+        </div>
+      </div>
+      </div>
+
+      <div class="modal fade" id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title"><?php echo $menuearray_static[$static];?></h4>
+                    </div>
+                    <div class="modal-body">
+                      <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="" ></p><br>
+                      <p><?php echo "$containpages[$static]";?></p><br>
+                      <!-- <p><b><a href="#" class="primary">Visit Site</a></b></p> -->
+                    </div>
+                    <div class="modals-footer">
+                      <button type="button" class="primary btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+      @endfor
+
+<!-- end statiic page -->
+<!-- ===================================================================================== -->
+
 
     <!-- Start Footer Section -->
     <footer>

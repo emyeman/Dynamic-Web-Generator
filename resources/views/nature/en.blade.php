@@ -68,21 +68,26 @@
   <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
 
   <?php  
-      $flagelang=0;
-      // $findpage_top=0;
-      // $findservices=0;
-      // $findabout=0;
-      // $findgallery=0;
-      // $findnews=0;
-      // $findpromotion=0;
-      // $findcontact=0;
-      $myservices='';
-      $mypage_top='';
-      $myabout='';
-      $mycontact='';
-      $mynews='';
-      $mypromotion='';
-      $mygallery='';
+    $flagelang=0;
+    // $count_static=1;
+    // $findpage_top=0;
+    // $findservices=0;
+    // $findabout=0;
+    // $findgallery=0;
+    // $findnews=0;
+    // $findpromotion=0;
+    // $findcontact=0;
+    $lat=0;
+    $lng=0;
+    $myservices='';
+    $mypage_top='';
+    $myabout='';
+    $mycontact='';
+    $mynews='';
+    $mypromotion='';
+    $mygallery='';
+    $menuearray_static=[];
+    $pagearray_static=[];
   ?>
   @if(isset($crusals))
 
@@ -212,7 +217,16 @@
                     // $findcontact=1;
                    $mycontact=$en_menupages[$x];?>
               @endif 
-           
+              <!-- for static page -->
+            @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                <li>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$en_menupages[$x]}}</a>
+                </li>
+                 <?php
+                  // $count_static+=1;
+                 array_push($pagearray_static, $urlpages[$x]);
+                 array_push($menuearray_static, $en_menupages[$x]);?>
+            @endif
              @endfor
             <li>
               <div id="mydropdown">
@@ -518,6 +532,54 @@
     </div> 
 
 @endif
+
+<!-- ================================================================================ -->
+<!-- start staticpage -->
+
+@for($static=0;$static< count($pagearray_static);$static++)
+
+    <div id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+        <div class="container">
+            <div class="row">
+    <div class="section-title center wow fadeInDown" data-wow-delay="0.1s" >
+        <h2 class="text-center"><strong><?php echo $menuearray_static[$static];?></strong></h2>
+        <div class="line">
+            <hr>
+        </div>
+    </div>
+                <div class="col-md-6">
+                    <div class="about-text wow fadeInRight" data-wow-delay="0.2s">
+
+                        <!-- <p class="intro">{{ $aboutus->description }}</p>
+                        <ul class="about-list">
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
+                            </li>
+                        </ul> -->
+                        <?php echo "$containpages[$static]";?>
+                    </div>
+                </div>
+    <div class="col-md-6">
+    <!-- <img id="myimg" src="" class="img-responsive wow fadeInLeft" data-wow-delay="0.2s"> -->
+    </div>
+            </div>
+        </div>
+    </div>
+
+   @endfor
+<!-- end staticpage -->
+   <!-- ====================================================================================== -->
+
+
 
     <!-- Contact Section
     ==========================================-->
