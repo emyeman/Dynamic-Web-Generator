@@ -47,6 +47,7 @@
                                 <ul class="nav navbar-nav navbar-right">
                                 <?php  
                                     $flagelang=0;
+                                    // $count_static=1;
                                     // $findpage_top=0;
                                     // $findservices=0;
                                     // $findabout=0;
@@ -61,6 +62,8 @@
                                     $mynews='';
                                     $mypromotion='';
                                     $mygallery='';
+                                    $menuearray_static=[];
+                                    $pagearray_static=[];
                                 ?>
 
                                 @for ($x = 0; $x < count($urlpages); $x++)
@@ -145,6 +148,16 @@
                                                  <?php
                                                   // $findcontact=1;
                                                  $mycontact=$ar_menupages[$x];?>
+                                            @endif 
+                                            <!-- for static page -->
+                                            @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                                                <li>
+                                                    <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$ar_menupages[$x]}}</a>
+                                                </li>
+                                                 <?php
+                                                  // $count_static+=1;
+                                                 array_push($pagearray_static, $urlpages[$x]);
+                                                 array_push($menuearray_static, $ar_menupages[$x]);?>
                                             @endif    
                                           @endfor
 
@@ -288,55 +301,55 @@
             @else
                  <div class="item pro-back"> 
             @endif
-                
-                                <div class="row">
-                                    <div class="col-md-offset-1 col-md-4 ">
-                                        <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" class="img-responsive img-pro">
-                                    </div>
-                                    <div class="col-md-offset-2"></div>
-                                    <div class="col-md-4 col-md-push-2">
-                                        <div class="space"></div>
-                                        <div class="space"></div>
-                                        <div class="space"></div>
-                                        <p class="text-center">{{ $promotion->description }}</p>
-                                        <div class="space"></div>
-                                        <div>
-                                            <!-- <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p> -->
+
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4 ">
+                    <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" class="img-responsive img-pro">
+                </div>
+                <div class="col-md-offset-2"></div>
+                <div class="col-md-4 col-md-push-2">
+                    <div class="space"></div>
+                    <div class="space"></div>
+                    <div class="space"></div>
+                    <p class="text-center">{{ $promotion->description }}</p>
+                    <div class="space"></div>
+                    <div>
+                        <!-- <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p> -->
+                    </div>
+
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="promotion-1" tabindex="-1" role="dialog" aria-labelledby="promotion-1-label" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">غلاق</span></button>
+                                    <h4 class="modal-title" id="promotion-1-label">promotion </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <p class="lead text-center">{{ $promotion->description }} </p>
                                         </div>
-
-
-
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="promotion-1" tabindex="-1" role="dialog" aria-labelledby="promotion-1-label" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"></span><span class="sr-only">غلاق</span></button>
-                                                        <h4 class="modal-title" id="promotion-1-label">promotion </h4>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-
-                                                                <p class="lead text-center">{{ $promotion->description }} </p>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلاق</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="col-md-6">
+                                            <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="">
                                         </div>
-
-                                        
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلاق</button>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
 
             <?php $pro_count++; ?>
         @endforeach
@@ -713,10 +726,50 @@
 
 
 
-<!-- section start -->
-<!-- ================ -->
+<!-- staticpage start -->
 
-<!-- section end -->
+<!-- =========================================== -->
+<!-- section start -->
+     @for($static=0; $static< count($pagearray_static);$static++) 
+     <div class="section_space"></div> 
+        <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>" class="title text-center"><?php echo $menuearray_static[$static];?></h1>
+                       <!--  <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p>
+                        <div class="space"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-rounded" src="images/portfolio-10.jpg" alt="">
+                            </div>
+                            <div class="col-md-6 abouty">
+                                <div class="space"></div>
+                            
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ducimus explicabo quibusdam temporibus deserunt doloremque pariatur ea, animi a. Delectus similique atque eligendi, enim vel reiciendis deleniti neque aliquid, sit?</p>
+                        </div>
+                            </div> -->
+
+                            <?php echo "$containpages[$static]";?>
+                        </div>
+                        <div class="space"></div>
+                        </div>
+                    </div>
+                </div>
+
+          <!--  </div>                                                                                                              sally's update remove
+        </div>-->
+        <!-- section end -->
+
+
+      <!--  <div class="line">
+            <hr>
+        </div>-->
+        <div class="section_space"></div>
+@endfor        
+ <!-- ============================================= -->
+<!-- staticpage end -->
 
 
 

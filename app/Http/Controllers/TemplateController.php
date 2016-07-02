@@ -66,6 +66,17 @@ class TemplateController extends Controller
         }
  // var_dump($en_menupages);
  // var_dump($ar_menupages);die();
+ // ***************** for staticpage ***************************
+        $staticpages=[];
+        $containpages=[];
+        foreach ($pages as $page) {
+            if ($page->content) {
+                array_push($staticpages, $page->title);
+                array_push($containpages, $page->content);
+            }
+        }
+
+       
   // ***************** for contact us ***************************
         $contacts = DB::table('contacts')->where('site_id',$site_id)->get();       
 
@@ -100,10 +111,10 @@ class TemplateController extends Controller
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
         }elseif ($arrayurl[1]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
 
         }
     }
