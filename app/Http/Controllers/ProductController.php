@@ -110,9 +110,14 @@ class ProductController extends Controller
                 $product->image=$subdomain.'/product/'.$extention; 
             }
             $product->category_id=$request->input('subcategory_id');
-            $product->save();
-            Session::flash('insert_success', 'A new product has been added successfully');
-            return  redirect ('/product/create');
+            $is_saved=$product->save();
+           if($is_saved){
+                 Session::flash('insert_success', 'A new product has been added successfully');
+                return  redirect ('/product/create');
+            }else{
+                abort(500);
+            } 
+           
         } else{
             return  redirect ('/login');   
         }
@@ -122,7 +127,16 @@ class ProductController extends Controller
 
      public function edit($id){
         if (Auth::user()){
-            $product=Product::find($id);
+          try
+            {
+                $product=Product::findOrFail($id);
+            }
+           catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
+            
             $subcategory=Category::find($product->category_id);
             $category=Category::find($subcategory->category_id);
 
@@ -140,6 +154,15 @@ class ProductController extends Controller
 
      public function update($id,Request $request){
         if (Auth::user()){
+            try
+            {
+                $product=Product::findOrFail($id);
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
 
             $this->validate($request, [
                 'category_id' => 'required|max:255',
@@ -150,7 +173,6 @@ class ProductController extends Controller
                 
             ]);
 
-            $product=Product::find($id);
             $product->name=trim($request->input('title_product'));
             $product->description=trim($request->input('description'));
             $product->price=$request->input('price_product');
@@ -169,8 +191,13 @@ class ProductController extends Controller
             }
 
             $product->category_id=$request->input('subcategory_id');
-            $product->save();
-            return  redirect ('/product');
+           $is_saved=$product->save();
+           if($is_saved){
+                Session::flash('update_success', 'the product item has been updated successfully');
+                return  redirect ('/product');
+            }else{
+                abort(500);
+            }    
         } else{
             return  redirect ('/login');   
         }
@@ -180,7 +207,16 @@ class ProductController extends Controller
 
      public function destroy($id){
         if (Auth::user()){
-            $product=Product::find($id);
+          try
+            {
+                $product=Product::findOrFail($id);
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
+            // $product=Product::find($id);
             // $product->delete();
             // return  redirect ('/product');
             // return  view ('product.index');

@@ -68,9 +68,14 @@ class CategoryController extends Controller
             }
 
             $category->site_id=Auth::user()->id;
-            $category->save();
-            Session::flash('insert_success', 'A new category has been added successfully');
-    		return  redirect ('/category/create');
+            $is_saved=$category->save();
+            if($is_saved){
+                Session::flash('insert_success', 'A new category has been added successfully');
+                return  redirect ('/category/create');
+            }else{
+                abort(500);
+            }
+            
         } else{
             return  redirect ('/login');   
         }  
@@ -80,7 +85,16 @@ class CategoryController extends Controller
 
      public function edit($id){
         if (Auth::user()){
-            $category=Category::find($id);
+            try
+            {
+                $category=Category::findOrFail($id);
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
+            
             return  view ('category.edit',compact('category'));
         } else{
             return  redirect ('/login');   
@@ -90,14 +104,21 @@ class CategoryController extends Controller
 
      public function update($id,Request $request){
         if (Auth::user()){
-
+            try
+            {
+                $category=Category::findOrFail($id);
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
             $this->validate($request, [
                 'title_category' => 'required|max:255',
                 'description' => 'required',
                 // 'image_category' => 'required',                 
             ]);
 
-            $category=Category::find($id);
             $category->name=trim($request->input('title_category'));
             $category->description=trim($request->input('description'));
             // for upload image
@@ -116,9 +137,15 @@ class CategoryController extends Controller
             }
 
             $category->site_id=Auth::user()->id;
-            $category->save();
-            // return  redirect ('categorys/'.$id);
-    		return  redirect ('/category');
+           $is_saved=$category->save();
+            if($is_saved){
+                Session::flash('update_success', 'the category item has been updated successfully');
+                // return  redirect ('categorys/'.$id);
+        		return  redirect ('/category');
+            }else{
+                abort(500);
+            }
+
          } else{
             return  redirect ('/login');   
          }   
@@ -128,7 +155,16 @@ class CategoryController extends Controller
 
      public function destroy($id){
         if (Auth::user()){
-            $category=Category::find($id);
+            try
+            {
+                $category=Category::findOrFail($id);
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
+            // $category=Category::find($id);
             // for use redirect
             // $category->delete();
             // return  redirect ('/category');

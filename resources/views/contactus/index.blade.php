@@ -45,6 +45,11 @@
             </div>
         </div>
         <!-- /.row -->
+        
+@if(Session::has('update_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
+    @endif
+    
 
         <div class="row">
             <div class="col-md-10">
@@ -79,7 +84,7 @@
                             <td>{{$contact->facebook}}</td>
                         </tr>
                         <tr>
-                            <td><b><span style="color:blue;">Google_plus</span></b></td>
+                            <td><b><span style="color:blue;">Google+</span></b></td>
                             <td>{{$contact->google_plus}}</td>
                         </tr>
                         <tr>

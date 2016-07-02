@@ -24,10 +24,10 @@ class MenuController extends Controller
             ->leftJoin('menus as parent', 'parent.id', '=', 'menus.parent_id')
             ->where('menus.site_id', $site_id)
             ->where('menus.deleted_at', null)
-            ->select('menus.id as menu_id','menus.title as menu_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
+            ->select('menus.id as menu_id','menus.title as menu_title','menus.ar_title as menu_ar_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
             ->orderBy('parent.title')
             ->get();
-
+// var_dump($rows);die();
         return  view ('menu.index',['rows'=>$rows]);
         // var_dump($rows);
      }

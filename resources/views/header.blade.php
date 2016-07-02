@@ -260,9 +260,9 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="javascript:void(0);">
-                        <!-- <i class="icon-edit"></i> -->
+                        
                         Contact Us
                     </a>
                     <ul class="sub-menu">
@@ -279,6 +279,12 @@
                             </a>
                         </li>
                     </ul>
+                </li> -->
+                <li>
+                    <a href="{{ url('/contactus') }}">
+                        <!-- <i class="icon-dashboard"></i> -->
+                        Contact Us
+                    </a>
                 </li>
                 <li>
                     <a href="{{ url('/aboutus/create')}}">
