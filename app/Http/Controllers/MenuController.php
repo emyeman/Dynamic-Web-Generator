@@ -38,8 +38,12 @@ class MenuController extends Controller
      }
 
      public function create(){
-     	$menus=Menu::pluck('title','id');
-     	$pages=Page::pluck('title','id');
+     	// $menus=Menu::pluck('title','id');
+     	// $pages=Page::pluck('title','id');
+        $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
+        $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
+
+        // var_dump($menus);die();
         return  view ('menu.create',['menus'=>$menus,'pages'=>$pages]);
      }
 

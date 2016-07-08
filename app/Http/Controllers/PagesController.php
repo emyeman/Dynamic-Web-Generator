@@ -43,8 +43,11 @@ class PagesController extends Controller
         }else{
             $new_row->title=$findtitle;
         }
-        
-        $new_row->content=$request->input('content');
+        if($request->input('content')){
+            $new_row->content=$request->input('content');
+        }else{
+            $new_row->content=NULL;
+        }
         $new_row->site_id=$site_id;
         $is_saved=$new_row->save();
         if($is_saved)

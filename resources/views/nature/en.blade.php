@@ -550,8 +550,7 @@
                 <div class="col-md-6">
                     <div class="about-text wow fadeInRight" data-wow-delay="0.2s">
 
-                        <!-- <p class="intro">{{ $aboutus->description }}</p>
-                        <ul class="about-list">
+                        <!--<ul class="about-list">
                             <li>
                                 <span class="fa fa-dot-circle-o"></span>
                                 <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>

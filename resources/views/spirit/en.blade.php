@@ -570,18 +570,19 @@
                         <div class="isotope-container row grid-space-20">
                             <?php $flagproject=1?>
                             @foreach($subcategories as $subcategory)
-                            @foreach($products as $product)
-                                @if($subcategory->id == $product->category_id)
+                            @for($prod=0; $prod< count($rand_product);$prod++)
+                                <?php $index_prod=$rand_product[$prod]-1;?>
+                                @if($subcategory->id == $cat_id_product[$index_prod])
                             <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                                 <div class="image-box">
                                     <div class="overlay-container">
-                                        <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                                        <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                         <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
                                             <i class="fa fa-search-plus"></i>
                                             <span>{{$subcategory->name}}</span>
                                         </a>
                                     </div>
-                                    <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$product->name}}</a>
+                                    <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$name_product[$index_prod]}}</a>
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
@@ -589,21 +590,21 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$product->name}}</h4>
+                                                <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$name_product[$index_prod]}}</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h3><u>{{$product->name}} Description</u></h3>
+                                                <h3><u>{{$name_product[$index_prod]}} Description</u></h3>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p>{{$product->description}}</p>
+                                                        <p>{{$description_product[$index_prod]}}</p>
                                                         <hr/>
-                                                        <h3><u>{{$product->name}} Price</u></h3>
-                                                        <p>{{$product->price}} LE</p>
+                                                        <h3><u>{{$name_product[$index_prod]}} Price</u></h3>
+                                                        <p>{{$price_product[$index_prod]}} LE</p>
                                                     </div>
                                                     <div class="col-md-1">
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                                                        <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -618,7 +619,7 @@
                          
                          <?php $flagproject+=1?>
                         @endif
-                        @endforeach
+                        @endfor
                     @endforeach
                     </div>
                         <!-- portfolio items end -->

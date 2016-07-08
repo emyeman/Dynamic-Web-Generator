@@ -42,16 +42,27 @@
         <div class='form-group'>
             <label class='col-md-2'>Parent</label>
             <div class='col-md-10 input-group'>
-                {!! Form::select('parent_id', $menus, old('parent_id'), ['class' => 'form-control','placeholder' => 'Pick a menu..']) !!}
+                <select class='form-control'id='parent_id' name='parent_id' >
+                    <option value="">choose parent page</option>
+                    @foreach ($menus as $menu) 
+                        <option  value="{{$menu->id}}">{{$menu->title}}</option>                            
+                    @endforeach    
+                </select>
             </div>
         </div>  
         <div class='form-group'>
             <label class='col-md-2'>Page*</label>
             <div class='col-md-10 input-group'>
-                {!! Form::select('route', $pages, old('route'), ['class' => 'form-control','placeholder' => 'Pick a page..']) !!}
+                <select class='form-control'id='route' name='route' >
+                    <option value="">choose a page</option>
+                    @foreach ($pages as $page) 
+                        <option  value="{{$page->id}}">{{$page->title}}</option>                            
+                    @endforeach    
+                </select>           
             </div>
         </div>    
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
     {!!Form::close() !!}
+
 @endsection

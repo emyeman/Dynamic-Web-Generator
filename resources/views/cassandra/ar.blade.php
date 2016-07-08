@@ -322,41 +322,43 @@
 
 <div class="isotope-container row grid-space-20" id="container">
             <?php $flagproject=1?>
-            @foreach($subcategories as $subcategory)
-            @foreach($products as $product)
-                @if($subcategory->id == $product->category_id)
+        @foreach($subcategories as $subcategory)
+        @for($prod=0; $prod< count($rand_product);$prod++)
+            <?php $index_prod=$rand_product[$prod]-1;?>
+            @if($subcategory->id == $cat_id_product[$index_prod])
+
             <div class="col-sm-4 col-sm-offset-1 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                 <div class="thumbnail">
-                    <img src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                    <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                     <div class="caption">
-                        <h3>{{$subcategory->name}}--> {{$product->name}}</h3>
-                        <p>{{substr($product->description,0,50)}}</p>
-                        <p><a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$product->name}}</a></p>
+                        <h3>{{$subcategory->name}}--> {{$name_product[$index_prod]}}</h3>
+                        <p>{{substr($description_product[$index_prod],0,50)}}</p>
+                        <p><a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$name_product[$index_prod]}}</a></p>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلق</span></button>
-                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$product->name}}</h4>
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلاق</span></button>
+                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$name_product[$index_prod]}}</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h3><u>تفصيل وصف {{$product->name}} </u></h3>
+                                    <h3><u>تفصيل وصف {{$name_product[$index_prod]}}</u></h3>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <p>{{$product->description}}</p>
+                                            <p>{{$description_product[$index_prod]}}</p>
                                             <hr/>
-                                            <h3><u>السعر  {{$product->name}} </u></h3>
-                                            <p>{{$product->price}} جنيها</p>
+                                            <h3><u>السعر {{$name_product[$index_prod]}}</u></h3>
+                                            <p>{{$price_product[$index_prod]}} جنيها</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <img class="img-responsive" src="{{ url('/assets/images/'.$product->image)}}" alt="">
+                                            <img class="img-responsive" src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلق</button>
+                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلاق</button>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +368,7 @@
                 </div>
                 <?php $flagproject+=1?>
                 @endif
-                @endforeach
+                @endfor
             @endforeach
 
         </div>
@@ -459,7 +461,7 @@
                 <img class="img-responsive" src="{{url('/assets/images/'.$new->image)}}"/>
                 <!-- <h4>{{ $new->description }}</h4> -->
                 <a class="btn btn-default btn-block">{{ $new->title }}</a>
-                <p class="text-muted">{{ $new->description }}</p>
+                <p class="text-muted" style="background-color:white;padding-right:10px; padding-left:10px;">{{ $new->description }}</p>
             </div> 
             @endif  
             <?php  $inc_n+=1; ?> 

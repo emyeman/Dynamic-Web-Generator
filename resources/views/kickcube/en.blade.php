@@ -913,7 +913,6 @@
                       <h4 class="modal-title"><?php echo $menuearray_static[$static];?></h4>
                     </div>
                     <div class="modal-body">
-                      <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="" ></p><br>
                       <p><?php echo "$containpages[$static]";?></p><br>
                       <!-- <p><b><a href="#" class="primary">Visit Site</a></b></p> -->
                     </div>

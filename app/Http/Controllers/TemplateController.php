@@ -18,8 +18,13 @@ use App\Header;
 use App\Template;
 use App;
 
-class TemplateController extends Controller
-{
+class TemplateController extends Controller{
+
+    private function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
+        $numbers = range($min, $max);
+        shuffle($numbers);
+        return array_slice($numbers, 0, $quantity);
+    }
     
     public function index(){
 
@@ -87,15 +92,39 @@ class TemplateController extends Controller
             # code...
             $category->subcategories = DB::table('categories')->where('site_id',$site_id)->where('category_id',$category->id)->get(); 
             foreach ($category->subcategories as $subcategory) {
-                # code...
                 $subcategory->products = DB::table('products')->where('category_id',$subcategory->id)->get();
             }
             array_push($cats_and_subcats, $category) ;
         }
 
         $subcategories = DB::table('categories')->where('site_id',$site_id)->whereNotNull('category_id')->get();
-        $products= DB::table('products')->get();
-
+        $products= DB::table('products')->orderBy('created_at', 'desc')->get();
+        // for make randam for display product
+        $cat_id_product=[];
+        $name_product=[];
+        $image_product=[];
+        $description_product=[];
+        $price_product=[];
+        foreach ($subcategories as $subcategory) {
+            foreach($products as $product){
+                if($subcategory->id == $product->category_id){
+                    array_push($cat_id_product, $product->category_id);
+                    array_push($name_product, $product->name);
+                    array_push($image_product, $product->image);
+                    array_push($description_product, $product->description);
+                    array_push($price_product, $product->price);
+                }
+            }
+        }  
+        $rand_product=[];
+        $leng=0;
+        if(count($name_product)< 12){
+            $leng=count($name_product);
+        }else{
+            $leng=12;
+        }  
+        $rand_product=TemplateController::UniqueRandomNumbersWithinRange(1,count($name_product),$leng);
+        // print_r($name_product);print_r($rand_product);die();
 // ***************** for services ***************************
         $services = DB::table('services')->where('site_id',$site_id)->get();
         $crusals = DB::table('crusals')->where('site_id',$site_id)->get();
@@ -111,10 +140,10 @@ class TemplateController extends Controller
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
         }elseif ($arrayurl[1]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
 
         }
     }
