@@ -140,10 +140,10 @@ class TemplateController extends Controller{
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
         }elseif ($arrayurl[1]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','products','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
 
         }
     }
