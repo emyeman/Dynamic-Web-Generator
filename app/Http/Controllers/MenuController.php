@@ -24,10 +24,10 @@ class MenuController extends Controller
             ->leftJoin('menus as parent', 'parent.id', '=', 'menus.parent_id')
             ->where('menus.site_id', $site_id)
             ->where('menus.deleted_at', null)
-            ->select('menus.id as menu_id','menus.title as menu_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
+            ->select('menus.id as menu_id','menus.title as menu_title','menus.ar_title as menu_ar_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
             ->orderBy('parent.title')
             ->get();
-
+// var_dump($rows);die();
         return  view ('menu.index',['rows'=>$rows]);
         // var_dump($rows);
      }
@@ -38,8 +38,12 @@ class MenuController extends Controller
      }
 
      public function create(){
-     	$menus=Menu::pluck('title','id');
-     	$pages=Page::pluck('title','id');
+     	// $menus=Menu::pluck('title','id');
+     	// $pages=Page::pluck('title','id');
+        $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
+        $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
+
+        // var_dump($menus);die();
         return  view ('menu.create',['menus'=>$menus,'pages'=>$pages]);
      }
 
@@ -51,6 +55,7 @@ class MenuController extends Controller
         ]); 
         $new_row=new Menu;
         $new_row->title=trim($request->input('title'));
+        $new_row->ar_title=trim($request->input('ar_title'));
         if (trim($request->input('parent_id'))!='')
         	$new_row->parent_id=trim($request->input('parent_id'));
         $new_row->route=trim($request->input('route'));
@@ -105,6 +110,7 @@ class MenuController extends Controller
             'route' => 'required|integer',   
         ]);
         $row->title=trim($request->input('title'));
+        $row->ar_title=trim($request->input('ar_title'));
         if (trim($request->input('parent_id'))!='')
         	$row->parent_id=trim($request->input('parent_id'));
         $row->route=trim($request->input('route'));

@@ -32,9 +32,10 @@
                     <thead>
                         <tr>
                             
-                            <th width='35%'><span class="text">title</span></th>
-                            <th width='35%'><span class="text">parent</span></th>
-                            <th width='25%'><span class="text">page</span></th>
+                            <th width='20%'><span class="text">English Title</span></th>
+                            <th width='20%'><span class="text">Arabic Title</span></th>
+                            <th width='30%'><span class="text">Parent</span></th>
+                            <th width='25%'><span class="text">Page</span></th>
                             <th width='5%'></th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@
                         @foreach ($rows as $row)
                             <tr> 
                                 <td class='wrap'><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->menu_title}}<a/></td>
+                                <td class='wrap'><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->menu_ar_title}}<a/></td>
                                 <td class='wrap'><a href="{{url('/menu/'.$row->parent_id.'/edit')}}">{{$row->parent_title}}</a></td>
                                 <td><a href="{{url('/page/'.$row->page_id.'/edit')}}">{{$row->page_title}}</a></td>
                                 <td><span class="glyphicon glyphicon-remove delete" id="{{$row->menu_id}}"></span></td>

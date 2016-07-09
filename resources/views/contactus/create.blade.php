@@ -64,9 +64,9 @@
             <label class='col-md-2'>Facebook:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter your facebook' class='form-control' id='facebook' name='facebook' type='text'/>
+                <input placeholder='PlZ,enter your facebook Like (aaabbb)' class='form-control' id='facebook' name='facebook' type='text'/>
             </div>
-            <span style="color:blue;" class='col-lg-offset-3' id="spemail">Please enter a valid facebook address Like (aaabbb).  </span>
+            <!-- <span style="color:blue;" class='col-lg-offset-3' id="spemail">Please enter a valid facebook address Like (aaabbb).  </span> -->
         </div> 
         <div class='form-group'>
             <label class='col-md-2'>Google+:</label>

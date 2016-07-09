@@ -9,6 +9,8 @@ use Session;
 use Illuminate\Support\Facades\Input;
 use Auth;
 
+
+
 class ServiceController extends Controller
 {
     public function index(){
@@ -37,8 +39,11 @@ class ServiceController extends Controller
             'description' => 'required',
         ]);
        if($service->update($request->all()))
-       {
+       {        
+            Session::flash('update_success', 'the service item has been updated successfully');
             return redirect('/service');
+       }else{
+            abort(500);
        }
        return redirect('service.edit');
 
@@ -61,7 +66,10 @@ class ServiceController extends Controller
         $service->site_id = Auth::user()->id;
      	if( $service->addService($service))
         {
-            return redirect('/service');
+            Session::flash('insert_success', 'A new service has been added successfully');
+            return redirect('/service/create');
+        }else{
+            abort(500);
         }
         return redirect('service.create');
      }

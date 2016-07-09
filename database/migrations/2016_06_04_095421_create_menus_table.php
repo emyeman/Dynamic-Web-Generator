@@ -16,6 +16,7 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->integer('site_id')->unsigned();
             $table->string('title');
+            $table->string('ar_title');
             $table->integer('parent_id')->unsigned()->nullable();
             $table->integer('route')->unsigned();
             $table->softDeletes();

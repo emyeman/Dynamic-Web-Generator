@@ -248,7 +248,7 @@
                                 </a>
                             </li> -->
                             <li class="footer">
-                                <a href="/message">View all messages</a>
+                                <a href="{{url('/message')}}">View all messages</a>
                             </li>
                         </ul>
                     </li>

@@ -7,7 +7,9 @@
 @section('content')
 
   {!! Html::script('assets/tinymce/tinymce.js') !!}
-
+  <h2><div class='col-lg-1 col-ms-1'>
+            <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a>
+        </div></small></h2>
   <h2 class='page-header'>Add New Page</h2>
   @if(Session::has('insert_success'))
       <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>

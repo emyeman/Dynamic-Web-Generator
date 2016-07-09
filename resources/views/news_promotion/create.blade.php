@@ -6,6 +6,14 @@
 
 @section('content')
 
+<h2><div class='col-lg-1 col-ms-1'>
+    @if($type=='promotion')
+        <a href="{{url('/news_promotion/promotion')}}"><span class="glyphicon glyphicon-backward"></span></a>
+     @else
+        <a href="{{url('/news_promotion/news')}}"><span class="glyphicon glyphicon-backward"></span></a>
+     @endif  
+</div></small></h2>
+
     <h2 class='page-header'>
         @if($type=='promotion')
             Add New Promotion
@@ -23,10 +31,11 @@
         </div>
     @endif
 
-    <br><br>
+    
     @if(Session::has('insert_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
     @endif
+    <br/>
     {!!Form::open(['route'=>'news_promotion.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
         <div class='form-group'>
             <label class='col-md-2'>Title *</label>

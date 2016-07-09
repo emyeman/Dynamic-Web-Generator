@@ -5,9 +5,10 @@
 @endsection
 
 @section('content')
-    <!-- <h2><div class='col-lg-1 col-ms-1'>
+    <h2><div class='col-lg-1 col-ms-1'>
         <a href="{{url('/category')}}"><span class="glyphicon glyphicon-backward"></span></a>
-    </div></small>Add New Category</h2> -->
+    </div></small> </h2>
+
     <h2 class='page-header'>Add New Category</h2>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -18,7 +19,12 @@
             </ul>
         </div>
     @endif
-    <br><br>
+
+    @if(Session::has('insert_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+    @endif
+
+    <br>
     {!!Form::open(['route'=>'category.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
       <div class='form-group'>
             <label class='col-md-2'>Title *</label>

@@ -78,8 +78,8 @@
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 @if($contact->facebook==NULL)
-                    <input placeholder='PlZ,enter your facebook' class='form-control' name='facebook' type='text'/>
-                    <span style="color:blue;" class='col-lg-offset-3' id="spemail">Please enter a valid facebook address Like (aaabbb).  </span>
+                    <input placeholder='PlZ,enter your facebook Like (aaabbb)' class='form-control' name='facebook' type='text'/>
+                    <!-- <span style="color:blue;" class='col-lg-offset-3' id="spemail">Please enter a valid facebook address Like (aaabbb).  </span> -->
 
                 @else
                     <input value="{{$contact->facebook}}" class='form-control' name='facebook' type='text'/>
@@ -87,7 +87,7 @@
             </div>
         </div> 
         <div class='form-group'>
-            <label class='col-md-2'>Google_Plus:</label>
+            <label class='col-md-2'>Google+:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 @if($contact->google_plus==NULL)

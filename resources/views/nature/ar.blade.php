@@ -58,14 +58,19 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
   <body>
     <!-- Navigation
     ==========================================-->
-<?php  
-    $findpage_top=0;
-    $findservices=0;
-    $findabout=0;
-    $findgallery=0;
-    $findnews=0;
-    $findpromotion=0;
-    $findcontact=0;
+    
+ <?php  
+    $flagelang=0;
+    // $count_static=1;
+    // $findpage_top=0;
+    // $findservices=0;
+    // $findabout=0;
+    // $findgallery=0;
+    // $findnews=0;
+    // $findpromotion=0;
+    // $findcontact=0;
+    $lat=0;
+    $lng=0;
     $myservices='';
     $mypage_top='';
     $myabout='';
@@ -73,9 +78,9 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
     $mynews='';
     $mypromotion='';
     $mygallery='';
-?>
-    
-	
+    $menuearray_static=[];
+    $pagearray_static=[];
+  ?>
 
     <!--News section-->
     
@@ -135,53 +140,70 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
 
             @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
               </li>
-              <?php $findpage_top=1;
-              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+              <?php 
+              // $findpage_top=1;
+              $mypage_top=$ar_menupages[$x];?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findservices=1;
-                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                <?php 
+                // $findservices=1;
+                $myservices=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findabout=1;
-                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                <?php 
+                // $findabout=1;
+                 $myabout=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findgallery=1;
-                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                <?php
+                 // $findgallery=1;
+                $mygallery=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findnews=1;
-                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                <?php 
+                // $findnews=1;
+                $mynews=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                <?php $findpromotion=1;
-                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                <?php
+                 // $findpromotion=1;
+                $mypromotion=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
-                 <?php $findcontact=1;
-                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
-            @endif    
+                  <?php
+                   // $findcontact=1;
+                 $mycontact=$ar_menupages[$x];?>
+            @endif
+            <!-- for static page -->
+            @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                <li>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$ar_menupages[$x]}}</a>
+                </li>
+                 <?php
+                  // $count_static+=1;
+                 array_push($pagearray_static, $urlpages[$x]);
+                 array_push($menuearray_static, $ar_menupages[$x]);?>
+            @endif     
              @endfor
 
 
@@ -479,6 +501,51 @@ trans('arabic_english.'.$menupages[$x])<!DOCTYPE html>
     </div>
 @endif
 
+
+<!-- ================================================================================ -->
+<!-- start staticpage -->
+
+@for($static=0;$static< count($pagearray_static);$static++)
+
+    <div id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+        <div class="container">
+            <div class="row">
+    <div class="section-title center wow fadeInDown" data-wow-delay="0.1s" >
+        <h2 class="text-center"><strong><?php echo $menuearray_static[$static];?></strong></h2>
+        <div class="line">
+            <hr>
+        </div>
+    </div>
+                <div class="col-md-6">
+                    <div class="about-text wow fadeInRight" data-wow-delay="0.2s">
+
+                        <!--<ul class="about-list">
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
+                            </li>
+                        </ul> -->
+                        <?php echo "$containpages[$static]";?>
+                    </div>
+                </div>
+    <div class="col-md-6">
+    <!-- <img id="myimg" src="" class="img-responsive wow fadeInLeft" data-wow-delay="0.2s"> -->
+    </div>
+            </div>
+        </div>
+    </div>
+
+   @endfor
+<!-- end staticpage -->
+   <!-- ====================================================================================== -->
 
 
 

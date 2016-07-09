@@ -12,6 +12,8 @@ use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
 use File;
+use Session;
+
 
 class SubCategoryController extends Controller
 {
@@ -49,11 +51,11 @@ class SubCategoryController extends Controller
 
      public function store(Request $request){
         if (Auth::user()){
-
+            
              $this->validate($request, [
                 'category_id' => 'required|max:255',
                 'title_subcategory' => 'required|max:255',
-                'subdescription' => 'required|max:255',
+                'subdescription' => 'required',
                 'image_subcategory' => 'required',                 
             ]);
 
@@ -75,8 +77,14 @@ class SubCategoryController extends Controller
 
             $subcategory->site_id=Auth::user()->id;
             $subcategory->category_id=$request->input('category_id');
-            $subcategory->save();
-            return  redirect ('/subcategory');
+            $is_saved=$subcategory->save();
+            if($is_saved){
+                Session::flash('insert_success', 'A new subcategory has been added successfully');
+                return  redirect ('/subcategory/create');
+            }else{
+                abort(500);
+            }
+            
         } else{
             return  redirect ('/login');   
         }
@@ -87,7 +95,16 @@ class SubCategoryController extends Controller
 
      public function edit($id){
         if (Auth::user()){
-            $subcategory=Category::find($id);
+            try
+            {
+                $subcategory=Category::findOrFail($id);
+
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
             $category=Category::find($subcategory->category_id);
             $categories=Category::All();
             return  view ('subcategory.edit',compact('subcategory','category','categories'));
@@ -99,15 +116,24 @@ class SubCategoryController extends Controller
 
      public function update($id,Request $request){
 	    if (Auth::user()){
+            try
+            {
+                $subcategory=Category::findOrFail($id);
+
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
 
             $this->validate($request, [
                 'category_id' => 'required|max:255',
                 'title_subcategory' => 'required|max:255',
-                'subdescription' => 'required|max:255',
+                'subdescription' => 'required',
                 // 'image_subcategory' => 'required',                 
             ]);
 
-            $subcategory=Category::find($id);
             $subcategory->name=trim($request->input('title_subcategory'));
             $subcategory->description=trim($request->input('subdescription'));
             $old_image=$subcategory->image;
@@ -125,8 +151,13 @@ class SubCategoryController extends Controller
             }
             $subcategory->site_id=Auth::user()->id;
             $subcategory->category_id=$request->input('category_id');
-            $subcategory->save();
-            return  redirect ('/subcategory');
+            $is_saved=$subcategory->save();
+            if($is_saved){
+                Session::flash('update_success', 'the subcategory item has been updated successfully');
+                return  redirect ('/subcategory');
+            }else{
+                abort(500);
+            }   
         } else{
             return  redirect ('/login');   
         }
@@ -136,7 +167,17 @@ class SubCategoryController extends Controller
 
      public function destroy($id){
         if (Auth::user()){
-            $subcategory=Category::find($id);
+            try
+            {
+                $subcategory=Category::findOrFail($id);
+
+            }
+            catch(Exception $e)
+            {
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
+            // $subcategory=Category::find($id);
             // $subcategory->delete();
             // return  redirect ('/subcategory');
             // return  view ('subcategory.index');

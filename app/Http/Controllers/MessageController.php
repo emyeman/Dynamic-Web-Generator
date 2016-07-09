@@ -22,7 +22,7 @@ class MessageController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255|string',
-            'name' => 'required|max:255',
+            // 'name' => 'required|max:255',
             'email' => 'required|max:255|email',
             'content' => 'required|max:65500',
             'site_id'=> 'exists:sites,id',

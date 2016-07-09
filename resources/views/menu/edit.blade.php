@@ -18,11 +18,18 @@
     <br><br>
     {{Form::model($row,['route'=>['menu.update',$row->id],'method'=>'put','class'=>'form-horizontal']) }}
         <div class='form-group'>
-            <label class='col-md-2'>Title*</label>
+            <label class='col-md-2'>English Title*</label>
             <div class='col-md-10 input-group'>
                 {{Form::text('title', old('title') ,['class'=>'col-ms-2 form-control'])}}
             </div>
-        </div>  
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Title*</label>
+            <div class='col-md-10 input-group'>
+                {{Form::text('ar_title', old('ar_title') ,['class'=>'col-ms-2 form-control'])}}
+            </div>
+        </div> 
+
         <div class='form-group'>
             <label class='col-md-2'>Parent</label>
             <div class='col-md-10 input-group'>
