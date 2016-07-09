@@ -4,8 +4,10 @@
 <html lang="en">
 <head>
   <!-- Basic -->
-  <title>KICKCUBE</title>
+  @if(isset($header))
 
+    <title>{{ $header->company_name }}</title>
+  @endif
   <!-- Define Charset -->
   <meta charset="utf-8">
 
@@ -114,10 +116,6 @@
           <div class="row">
             <div class="col-md-7">
               <!-- Start Contact Info -->
-              @if(isset($header))
-              <img alt="" src="{{ url('/') }}{{ $header->logo }}">
-              <!-- End Contact Info -->
-              @endif
             </div>
             <!-- .col-md-6 -->
             <div class="col-md-5">
@@ -165,9 +163,7 @@
       <!-- .top-bar -->
       <!-- End Top Bar -->
 
-
       <!-- Start  Logo & Naviagtion  -->
-    
       <div class="navbar navbar-default navbar-top">
         <div class="container">
           <div class="navbar-header">
@@ -177,10 +173,11 @@
             </button>
             <!-- End Toggle Nav Link For Mobiles -->
              @if(isset($header))
-            <a class="navbar-brand" href="index.html">
-              <img alt="" src="{{ url('/') }}{{ $header->logo }}">
-            </a>
+                <a class="navbar-brand" href="#">
+                  <img alt="" src="{{ url('/') }}{{ $header->logo }}">
+                </a>
             @endif
+
           </div>
           <div class="navbar-collapse collapse">
     
@@ -295,7 +292,7 @@
                 <div class="slider-content">
                   <div class="col-md-12 text-center">
                     <h2 class="animated2">
-                                  <span>Welcome to <strong class="primary-text">{{ $crusal->title }}</strong></span>
+                                  <span> <strong class="primary-text">{{ $crusal->title }}</strong></span>
                                   </h2>
                     <h3 class="animated3">
                                     <span>{{ $crusal->description }}</span>
@@ -311,7 +308,7 @@
                 <div class="slider-content">
                   <div class="col-md-12 text-center">
                     <h2 class="animated2">
-                                  <span>Welcome to <strong class="primary-text">{{ $crusal->title }}</strong></span>
+                                  <span><strong class="primary-text">{{ $crusal->title }}</strong></span>
                                   </h2>
                     <h3 class="animated3">
                                     <span>{{ $crusal->description }}</span>
@@ -386,9 +383,7 @@
                                 <div class="img1">
                                     <figure><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="image"></figure> 
                                 </div>
-                                <div class="img2">
-                                    <figure><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="image"></figure>
-                                </div>
+              
             </div>
 
           </div>
@@ -731,13 +726,14 @@
     <!-- End Promotion Section -->
 
     <!-- Start Footer Section -->
+    @if(isset($contacts[0])) 
     <footer>
       <div class="container" id="contact">
         <div class="row footer-widgets">
 
 
           <!-- Start Subscribe & Social Links Widget -->
-           @if(isset($contacts))  
+            
           <div class="col-md-3 col-xs-12">
             <div class="footer-widget mail-subscribe-widget">
               <h4>Get in touch<span class="head-line"></span></h4>
@@ -750,37 +746,37 @@
             <div class="footer-widget social-widget">
               <h4>Follow Us<span class="head-line"></span></h4>
               <ul class="social-icons">
-              @if(!empty($contacts->facebook))
+              @if(!empty($contacts[0]->facebook))
                 <li>
                   <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->twitter))
+              @if(!empty($contacts[0]->twitter))
               <li>
                   <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->google_plus)) 
+              @if(!empty($contacts[0]->google_plus)) 
               <li>
                   <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->skype))
+              @if(!empty($contacts[0]->skype))
               <li>
                   <a class="skype" href="#"><i class="fa fa-skype"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->linkedin)) 
+              @if(!empty($contacts[0]->linkedin)) 
               <li>
                   <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->flickr))
+              @if(!empty($contacts[0]->flickr))
               <li>
                   <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
                 </li>
@@ -791,14 +787,14 @@
             </div>
           </div>
 
-          @endif
+        
           <!-- .col-md-3 -->
           <!-- End Subscribe & Social Links Widget -->
 
            <div class="col-md-3 col-xs-12">
            <div class="footer-widget">
            <h4>Find Us<span class="head-line"></span></h4>
-            <div id="map" data-position-latitude="30.04442" data-position-longitude="31.23571"></div>
+            <div id="map" data-position-latitude="{{ $contacts[0]->lat }}" data-position-longitude="{{ $contacts[0]->lng }}"></div>
            </div>
           </div>
           <!-- Start Twitter Widget -->
@@ -836,12 +832,12 @@
             @if(isset($header))
               <h4><img src="{{ url('/') }}{{ $header->logo }}" class="img-responsive" alt="Footer Logo" /></h4>
             @endif
-
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
               <ul>
-                <li><span>Phone Number:</span> +01 234 567 890</li>
-                <li><span>Email:</span> company@company.com</li>
-                <li><span>Website:</span> www.yourdomain.com</li>
+                <li><span>Address:</span>{{ $contacts[0]->address }}</li>
+                
+                <li><span>Mobile Number:</span> {{ $contacts[0]->mobile }}</li>
+                <li><span>Email:</span> {{ $contacts[0]->email }}</li>
+                
               </ul>
             </div>
           </div>
@@ -877,6 +873,7 @@
 
       </div>
     </footer>
+      @endif
     <!-- End Footer Section -->
 
   </div>

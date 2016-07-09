@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Template </title>
+   @if(isset($header))
 
+                 <title>{{ $header->company_name }}</title>
+        @endif
     
     <!-- Favicons
     ================================================== -->
@@ -18,6 +20,8 @@
     <link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
 
     <!-- Bootstrap -->
+     <link href="{{ url('/assets/bootstrap-3.2.0/css/bootstrap.min.css')}}" rel="stylesheet">
+     
     <link rel="stylesheet" type="text/css"  href="{{ url('/assets/Temp2/en/css/bootstrap.css')}}">
       <link rel="stylesheet" type="text/css"  href="{{ url('/assets/Temp2/en/css/bootstrap.min.css')}}">
    

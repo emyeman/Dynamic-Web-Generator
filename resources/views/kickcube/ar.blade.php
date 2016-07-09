@@ -6,8 +6,10 @@
 <head>
 
   <!-- Basic -->
-  <title>KICKCUBE</title>
+  @if(isset($header))
 
+    <title>{{ $header->company_name }}</title>
+  @endif
   <!-- Define Charset -->
   <meta charset="utf-8">
 
@@ -118,7 +120,6 @@
           <div class="row">
             <div class="col-md-7">
               <!-- Start Contact Info -->
-              <img alt="" src="images/header.png">
               <!-- End Contact Info -->
             </div>
             <!-- .col-md-6 -->
@@ -180,7 +181,7 @@
             <!-- End Toggle Nav Link For Mobiles -->
             @if(isset($header))
             <a class="navbar-brand" href="index.html">
-              <img alt="" src="images/logo.png" width="114" height="23">
+              <img alt="" src="{{ url('/') }}{{ $header->logo }}" width="114" height="23">
             </a>
             @endif
           </div>
@@ -189,11 +190,11 @@
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                <a  href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/en"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
+                <a  href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/ar"><span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span></a>
                 <ul class="dropdown">
                   <li>
-                    <a href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/ar">
-                  <span class="lang-sm lang-lbl" lang="ar"></span>
+                    <a href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/en">
+                  <span class="lang-sm lang-lbl" lang="en"></span>
                   </a>
                   </li>
                </ul>
@@ -247,11 +248,11 @@
               </li>
 
               <li>
-                <a  href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/en"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
+                <a  href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/ar"><span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span></a>
                 <ul class="dropdown">
                   <li>
-                    <a href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/ar">
-                  <span class="lang-sm lang-lbl" lang="ar"></span>
+                    <a href="{{ url('/') }}/{{ explode("/",\Request::path(), 2)[0] }}/en">
+                  <span class="lang-sm lang-lbl" lang="en"></span>
                   </a>
                   </li>
                </ul>
@@ -290,7 +291,7 @@
             <div class="slider-content">
               <div class="col-md-12 text-center">
                 <h2 class="animated2">
-                              <span> مرحبا بكم في<strong> {{ $crusal->title }}</strong>   </span></h2>
+                              <span><strong> {{ $crusal->title }}</strong>   </span></h2>
                 <h3 class="animated3">
                                 <span>{{ $crusal->description }}</span>
                               </h3>
@@ -306,7 +307,7 @@
             <div class="slider-content">
               <div class="col-md-12 text-center">
                 <h2 class="animated4">
-                                <span> اهلا  بكم في<strong>{{ $crusal->title }} </strong>  </span>
+                                <span><strong>{{ $crusal->title }} </strong>  </span>
                             </h2>
                 <h3 class="animated5">
                               <span>{{ $crusal->description }}</span>
@@ -353,9 +354,9 @@
                                 <div class="img1">
                                     <figure><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="image"></figure> 
                                 </div>
-                                <div class="img2">
+                               {{--  <div class="img2">
                                     <figure><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="image"></figure>
-                                </div>
+                                </div> --}}
             </div>
 
 
@@ -412,8 +413,6 @@
                   </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
               </div><!-- /.modal -->
-      @endif
-
       @endif
       <!-- End Full Width Section 2 -->
 
@@ -730,13 +729,14 @@
     <!-- End Promotion Section -->
 
     <!-- Start Footer Section -->
+     @if(isset($contacts[0])) 
     <footer>
       <div class="container" id="contact">
         <div class="row footer-widgets">
 
 
           <!-- Start Subscribe & Social Links Widget -->
-          @if(isset($contacts)) 
+         
           <div class="col-md-3 col-xs-12">
             <div class="footer-widget mail-subscribe-widget">
               <h4>ابق علي اتصال<span class="head-line"></span></h4>
@@ -749,37 +749,37 @@
             <div class="footer-widget social-widget">
               <h4>تابعنا<span class="head-line"></span></h4>
               <ul class="social-icons">
-              @if(!empty($contacts->facebook))
+              @if(!empty($contacts[0]->facebook))
                 <li>
                   <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->twitter))
+              @if(!empty($contacts[0]->twitter))
               <li>
                   <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->google_plus)) 
+              @if(!empty($contacts[0]->google_plus)) 
               <li>
                   <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->skype))
+              @if(!empty($contacts[0]->skype))
               <li>
                   <a class="skype" href="#"><i class="fa fa-skype"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->linkedin)) 
+              @if(!empty($contacts[0]->linkedin)) 
               <li>
                   <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
                 </li>
               @endif
 
-              @if(!empty($contacts->flickr))
+              @if(!empty($contacts[0]->flickr))
               <li>
                   <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
                 </li>
@@ -789,14 +789,13 @@
               </ul>
             </div>
           </div>
-          @endif
           <!-- .col-md-3 -->
           <!-- End Subscribe & Social Links Widget -->
 
            <div class="col-md-3 col-xs-12">
            <div class="footer-widget">
            <h4>اين نحن<span class="head-line"></span></h4>
-            <div id="map" data-position-latitude="30.04442" data-position-longitude="31.23571"></div>
+            <div id="map" data-position-latitude="{{ $contacts[0]->lat }}" data-position-longitude="{{ $contacts[0]->lng }}"></div>
            </div>
           </div>
           <!-- Start Twitter Widget -->
@@ -831,13 +830,11 @@
           <!-- Start Contact Widget -->
           <div class="col-md-3 col-xs-12">
             <div class="footer-widget contact-widget">
-              <h4><img src="images/footer-kickcube.png" class="img-responsive" alt="Footer Logo" /></h4>
-              <p>عدد عن قدما يتعلّق ومحاولة, استدعى وبلجيكا، الساحة. وزار
-                  جهة إذ وترك إعمار عسكرياً, الطريق مواقعها جهة بل. ٣٠ الى كرسي كثيرة. الثقيل الجديدة، يبق إذ, شرسة لفشل تم دار, يعادل التجارية و بها. أن جعل عجّل ترتيب, يتم الأمم والمعدات الإقتصادية كل,</p>
+              <h4><img src="{{ url('/') }}{{ $header->logo }}" class="img-responsive" alt="Footer Logo" /></h4>
               <ul>
-                <li  style="float: right;"><span> رقم الهاتف  :+</span>  234 567 890 10</li>
-                <li  style="float: right;"> company@company.com <span>:  الايميل </span></li>
-                <li  style="float: right;"> www.yourdomain.com <span>:  الموقع الالكتروني </span></li>
+                <li><span>العنوان:</span>{{$contacts[0]->address}}</li>
+                <li><span>رقم الهاتف:</span> {{$contacts[0]->mobile}}</li>
+                <li><span>البريد الالكتروني:</span> {{$contacts[0]->email}}</li>
               </ul>
             </div>
           </div>
@@ -873,6 +870,7 @@
 
       </div>
     </footer>
+    @endif
     <!-- End Footer Section -->
 
   </div>

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Header;
 
 class Header extends Model
 {
@@ -12,5 +13,10 @@ class Header extends Model
     public function site()
     {
     	return $this->belongsTo(Site::class);
+    }
+
+    public function addHeader(Header $header)
+    {
+    	return $header->save();
     }
 }

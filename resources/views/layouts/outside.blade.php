@@ -10,10 +10,10 @@
     <meta name="format-detection" content="telephone=no"/>
 
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon"/>
-    <link rel="icon" href="images/favicon.ico" type="image/x-ico"/>
+    <link rel="shortcut icon" href="{{ url('assets/DynamicWebGenerator/images/favicon.ico')}}" type="image/vnd.microsoft.icon"/>
+    <link rel="icon" href="{{ url('assets/DynamicWebGenerator/images/favicon.ico')}}" type="image/x-ico"/>
 
-    <title>ALTOS Agency &#8211; Creative HTML Theme</title>
+    <title>Dynamic Website Generate</title>
 
     <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/defaults.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('/assets/css/demo.css') }}">

@@ -5,7 +5,10 @@
 <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>Spirit template</title>
+        @if(isset($header))
+
+                 <title>{{ $header->company_name }}</title>
+        @endif
         <meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
         <meta name="author" content="htmlcoder.me">
 

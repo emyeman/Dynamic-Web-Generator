@@ -337,6 +337,13 @@
             <?php $pro_count++; ?>
         @endforeach
             </div>
+
+        <ol class="carousel-indicators">
+            <li data-target="#move_p" data-slide-to="0" class="active"></li>
+             @for($i=1 ;$i < count($promotions);$i++)
+                <li data-target="#move_p" data-slide-to="{{ $i }}"></li>
+            @endfor
+        </ol>
 </div>
 </div>
 </div>
