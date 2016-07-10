@@ -33,7 +33,7 @@
                         <option value="">Select Category</option>
                         @foreach ($categories as $category) 
                             @if(Auth::user()->id == $category->site_id)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{$category->name}} &nbsp; {{$category->ar_name}}</option>
                                 
                             @endif
                         @endforeach 
@@ -47,7 +47,7 @@
                         <option value="">Select SubCategory</option>
                         @foreach ($subcategories as $subcategory) 
                             @if(Auth::user()->id == $subcategory->site_id)
-                                <option  value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                <option  value="{{$subcategory->id}}">{{$subcategory->name}} &nbsp; {{$subcategory->ar_name}}</option>
                             @endif
                         @endforeach 
                     </select> -->
@@ -62,28 +62,46 @@
             </div>
             <!-- end select of subcategory -->
             <div class='form-group'>
-                <label class='col-md-2'>Title *</label>
+                <label class='col-md-2'>English Title *</label>
                 <div class='col-md-10 input-group'>                   
-                    <input placeholder='title ...' class='form-control' name='title_product' type='text' value="{{old('title_product')}}"/>
+                    <input placeholder='Plz,enter title ...' class='form-control' name='title_product' type='text' value="{{old('title_product')}}"/>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-md-2'>Arabic Title *</label>
+                <div class='col-md-10 input-group'>                   
+                    <input placeholder='من فضلك ادخل اسم المنتج' class='form-control' name='ar_title_product' type='text' value="{{old('ar_title_product')}}"/>
                 </div>
             </div>  
             <div class='form-group'>
-                <label class='col-md-2'>Image*</label>
+                <label class='col-md-2'>Image *</label>
                 <div class='col-md-10 input-group'>                    
                     <input class='form-control' name='image_product' type='file' />
                 </div>
             </div>  
             <div class='form-group'>
-                <label class='col-md-2'>Description </label>
+                <label class='col-md-2'>English Description *</label>
                 <div class='col-md-10 input-group'>                    
-                    <textarea placeholder='description ...' class='form-control' name='description'>{{old('description')}}</textarea> 
+                    <textarea placeholder='Plz,enter description ...' rows='5' class='form-control' name='description'>{{old('description')}}</textarea> 
+                </div>
+            </div> 
+            <div class='form-group'>
+                <label class='col-md-2'>Arabic Description *</label>
+                <div class='col-md-10 input-group'>                    
+                    <textarea placeholder='من فضلك ادخل وصف المنتج..' rows='5' class='form-control' name='ar_description'>{{old('description')}}</textarea> 
                 </div>
             </div> 
 
             <div class='form-group'>
-                <label class='col-md-2'>Price</label>
+                <label class='col-md-2'>English Price *</label>
                 <div class='col-md-10 input-group'>                    
-                    <input placeholder='price ...' class='form-control' name='price_product' type='decimal' />
+                    <input placeholder='Plz,enter price ...' class='form-control' name='price_product' type='decimal' />
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-md-2'>Arabic Price *</label>
+                <div class='col-md-10 input-group'>                    
+                    <input placeholder='من فضلك ادخل سعر المنتج' class='form-control' name='ar_price_product' type='decimal' />
                 </div>
             </div>     
             <span class='col-md-2'></span>
@@ -127,7 +145,7 @@
             showdata="<select class='form-control'id='subcategory_id' name='subcategory_id'>";
                 showdata+="<option value=''>Select SubCategory</option>";
                 for(i=0;i<data.length;i++){
-                    showdata+="<option value="+data[i]['id']+">"+data[i]['name']+"</option>";
+                    showdata+="<option value="+data[i]['id']+">"+data[i]['name']+"  "+data[i]['ar_name']+"</option>";
                 }      
             showdata+="</select>";
             $('#subcategorydata').html(showdata);

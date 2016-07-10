@@ -27,9 +27,15 @@
     <br>
     {!!Form::open(['route'=>'category.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
       <div class='form-group'>
-            <label class='col-md-2'>Title *</label>
+            <label class='col-md-2'>English Title *</label>
             <div class='col-md-10 input-group'>
-                <input placeholder='title ...' class='form-control' name='title_category' type='text' value="{{old('title_category')}}"/>
+                <input placeholder='PLZ,enter title ...' class='form-control' name='title_category' type='text' value="{{old('title_category')}}"/>
+            </div>
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Title *</label>
+            <div class='col-md-10 input-group'>
+                <input placeholder='من فضلك ادخل اسم القسم' class='form-control' name='ar_title_category' type='text' value="{{old('ar_title_category')}}"/>
             </div>
         </div>  
         <div class='form-group'>
@@ -39,11 +45,19 @@
             </div>
         </div>  
         <div class='form-group'>
-            <label class='col-md-2'>Description</label>
+            <label class='col-md-2'>English Description</label>
             <div class='col-md-10 input-group'>
-                <textarea placeholder='description ...' class='form-control' rows='5' name='description'>{{old('description')}}</textarea> 
+                <textarea placeholder='PLZ,enter description ...' class='form-control' rows='5' name='description'>{{old('description')}}</textarea> 
             </div>
-        </div>      
+        </div> 
+
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Description</label>
+            <div class='col-md-10 input-group'>
+                <textarea placeholder='من فضلك ادخل الوصف' class='form-control' rows='5' name='ar_description'>{{old('ar_description')}}</textarea> 
+            </div>
+        </div> 
+
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
     {!!Form::close() !!}

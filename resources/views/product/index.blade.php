@@ -29,12 +29,15 @@
                 <table class='table table-hover' style="table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th width='15%'><span class="text">Category</span></th>
-                            <th width='15%'><span class="text">Sub Category</span></th>
-                            <th width='15%'><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image</span></th>
-                            <th width='10%'><span class="text">Product</span></th>
-                            <th width='15%'><span class="text">Description</span></th>
-                            <th width='15%'><span class="text">Price</span></th>
+                            <th width='10%'><span class="text">Category</span></th>
+                            <th width='10%'><span class="text">Sub Category</span></th>
+                            <th width='10%'><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image</span></th>
+                            <th width='10%'><span class="text">En_Title</span></th>
+                            <th width='10%'><span class="text">Ar_Title</span></th>
+                            <th width='15%'><span class="text">En_Description</span></th>
+                            <th width='15%'><span class="text">Ar_Description</span></th>
+                            <th width='10%'><span class="text">En_Price</span></th>
+                            <th width='10%'><span class="text">Ar_Price</span></th>
                             <th width='10%'><span class="text">Publish At</span></th>
                             <th width='5%'></th>
                             <th width='5%'></th> <!-- edit operation -->
@@ -49,7 +52,7 @@
                                     @if($allcategory->id==$product->category_id)
                                          @foreach ($categories as $category)
                                             @if($category->id==$allcategory->category_id)
-                                             <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$category->name}}<a/></td>
+                                             <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$category->name}} &nbsp; {{$category->ar_name}}<a/></td>
                                             @endif
                                         @endforeach
                                     @endif
@@ -58,7 +61,7 @@
                             <!-- for obtain name of subcategory  -->
                             @foreach ($subcategories as $subcategory)
                                 @if($subcategory->id == $product->category_id)
-                                <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$subcategory->name}}<a/></td>
+                                <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$subcategory->name}} &nbsp; {{$subcategory->ar_name}}<a/></td>
                                 @endif
                             @endforeach
                             <td>
@@ -68,8 +71,11 @@
                             </td>
 
                              <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$product->name}}<a/></td>
+                             <td class='wrap'><a href="{{url('/product/'.$product->id.'/edit')}}">{{$product->ar_name}}<a/></td>
                                 <td class='wrap'>{{substr($product->description,0,50)}}</td>
+                                <td class='wrap'>{{substr($product->ar_description,0,50)}}</td>
                                 <td>{{$product->price}} LE</td>
+                                <td>{{$product->ar_price}} جنيها</td>
                                 <td>{{substr($product->created_at,0,10)}}</td> 
                                 <td>
                                     <a href="{{url('/product/'.$product->id.'/edit')}}">

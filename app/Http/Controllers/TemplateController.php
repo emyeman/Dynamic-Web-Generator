@@ -41,7 +41,7 @@ class TemplateController extends Controller{
         // echo $arrayurl[1];die();
         $subdomain=$arrayurl[0];
         $mysite = DB::table('sites')->where('subdomain',$arrayurl[0])->get();
-        // var_dump($mysite);
+        // var_dump($mysite);die();
         foreach ($mysite as $site) {
             $site_id=$site->id;
             $template_id=$site->template_id;
@@ -101,29 +101,35 @@ class TemplateController extends Controller{
         $products= DB::table('products')->orderBy('created_at', 'desc')->get();
         // for make randam for display product
         $cat_id_product=[];
-        $name_product=[];
-        $image_product=[];
-        $description_product=[];
-        $price_product=[];
+        $image_product=[];        
+        $en_name_product=[];
+        $en_description_product=[];
+        $en_price_product=[];
+        $ar_name_product=[];
+        $ar_description_product=[];
+        $ar_price_product=[];
         foreach ($subcategories as $subcategory) {
             foreach($products as $product){
                 if($subcategory->id == $product->category_id){
                     array_push($cat_id_product, $product->category_id);
-                    array_push($name_product, $product->name);
                     array_push($image_product, $product->image);
-                    array_push($description_product, $product->description);
-                    array_push($price_product, $product->price);
+                    array_push($en_name_product, $product->name);
+                    array_push($en_description_product, $product->description);
+                    array_push($en_price_product, $product->price);
+                    array_push($ar_name_product, $product->ar_name);
+                    array_push($ar_description_product, $product->ar_description);
+                    array_push($ar_price_product, $product->ar_price);
                 }
             }
         }  
         $rand_product=[];
         $leng=0;
-        if(count($name_product)< 12){
-            $leng=count($name_product);
+        if(count($en_name_product)< 12){
+            $leng=count($en_name_product);
         }else{
             $leng=12;
         }  
-        $rand_product=TemplateController::UniqueRandomNumbersWithinRange(1,count($name_product),$leng);
+        $rand_product=TemplateController::UniqueRandomNumbersWithinRange(1,count($en_name_product),$leng);
         // print_r($name_product);print_r($rand_product);die();
 // ***************** for services ***************************
         $services = DB::table('services')->where('site_id',$site_id)->get();
@@ -140,10 +146,10 @@ class TemplateController extends Controller{
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','en_name_product','image_product','en_description_product','en_price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
         }elseif ($arrayurl[1]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','name_product','image_product','description_product','price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','ar_name_product','image_product','ar_description_product','ar_price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
 
         }
     }

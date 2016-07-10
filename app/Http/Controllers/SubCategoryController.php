@@ -56,12 +56,16 @@ class SubCategoryController extends Controller
                 'category_id' => 'required|max:255',
                 'title_subcategory' => 'required|max:255',
                 'subdescription' => 'required',
+                'ar_title_subcategory' => 'required|max:255',
+                'ar_subdescription' => 'required',
                 'image_subcategory' => 'required',                 
             ]);
 
             $subcategory= new Category;
             $subcategory->name=trim($request->input('title_subcategory'));
             $subcategory->description=trim($request->input('subdescription'));
+            $subcategory->ar_name=trim($request->input('ar_title_subcategory'));
+            $subcategory->ar_description=trim($request->input('ar_subdescription'));            
             // for uploadimage
             if(Input::file('image_subcategory')){
                 // echo "image_subcategory";die();
@@ -131,11 +135,15 @@ class SubCategoryController extends Controller
                 'category_id' => 'required|max:255',
                 'title_subcategory' => 'required|max:255',
                 'subdescription' => 'required',
+                'ar_title_subcategory' => 'required|max:255',
+                'ar_subdescription' => 'required',
                 // 'image_subcategory' => 'required',                 
             ]);
 
             $subcategory->name=trim($request->input('title_subcategory'));
             $subcategory->description=trim($request->input('subdescription'));
+            $subcategory->ar_name=trim($request->input('ar_title_subcategory'));
+            $subcategory->ar_description=trim($request->input('ar_subdescription'));
             $old_image=$subcategory->image;
             if(Input::file('image_subcategory')){
                 // echo "image_subcategory";die();

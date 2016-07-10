@@ -238,7 +238,7 @@
                 </h3>-->
                 
                 <!-- Nice place to describe your site in a sentence or two -->
-                <p><a href="#" class="btn btn-default btn-lg">تعرف علينا</a></p>
+                <!-- <p><a href="#" class="btn btn-default btn-lg">تعرف علينا</a></p> -->
     
             </div> <!-- /col -->
         </div> <!-- /row -->
@@ -280,7 +280,7 @@
 
         <h2 class="text-center title"><?php echo $mygallery;?></h2>
         <p class="lead text-center">
-            تعرف علي منتجاتنا المميزة
+            تعرف علي <?php echo $mygallery;?> المميزة
         </p>
 
         <div class="row object-non-visible" data-animation-effect="fadeIn">
@@ -295,14 +295,14 @@
 
                                 <div class="dropdown">
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="true">
-                                        {{$category->name}}
+                                        {{$category->ar_name}}
                                         <span class="caret"></span>
                                     </button>
                                     <?php $allsub='';?>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->ar_name}}</a></li>
                                         <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
@@ -331,9 +331,9 @@
                 <div class="thumbnail">
                     <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                     <div class="caption">
-                        <h3>{{$subcategory->name}}--> {{$name_product[$index_prod]}}</h3>
-                        <p>{{substr($description_product[$index_prod],0,50)}}</p>
-                        <p><a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$name_product[$index_prod]}}</a></p>
+                        <h3>{{$subcategory->ar_name}}--> {{$ar_name_product[$index_prod]}}</h3>
+                        <p>{{substr($ar_description_product[$index_prod],0,50)}}</p>
+                        <p><a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$ar_name_product[$index_prod]}}</a></p>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
@@ -341,16 +341,16 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلاق</span></button>
-                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$name_product[$index_prod]}}</h4>
+                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$ar_name_product[$index_prod]}}</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h3><u>تفصيل وصف {{$name_product[$index_prod]}}</u></h3>
+                                    <h3><u>تفصيل وصف {{$ar_name_product[$index_prod]}}</u></h3>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <p>{{$description_product[$index_prod]}}</p>
+                                            <p>{{$ar_description_product[$index_prod]}}</p>
                                             <hr/>
-                                            <h3><u>السعر {{$name_product[$index_prod]}}</u></h3>
-                                            <p>{{$price_product[$index_prod]}} جنيها</p>
+                                            <h3><u>السعر {{$ar_name_product[$index_prod]}}</u></h3>
+                                            <p>{{$ar_price_product[$index_prod]}} جنيها</p>
                                         </div>
                                         <div class="col-md-6">
                                             <img class="img-responsive" src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
@@ -579,9 +579,9 @@
             <div class="footer-content">
                 <!-- <p class="large"> كلمة</p> -->
                 <ul class="list-icons">
-                    <li><i class="fa fa-map-marker pr-10"></i>   {{$contact->address}}</li>
-                    <li><i class="fa fa-phone pr-10"></i>    {{$contact->phone}}</li>
-                    <li><i class="fa fa-mobile pr-10"></i>   {{$contact->mobile}}</li>
+                    <li><i class="fa fa-map-marker pr-10"></i>   {{$contact->ar_address}}</li>
+                    <li><i class="fa fa-phone pr-10"></i>    {{$contact->ar_phone}}</li>
+                    <li><i class="fa fa-mobile pr-10"></i>   {{$contact->ar_mobile}}</li>
                     <li><i class="fa fa-envelope-o pr-10"></i>   {{$contact->email}}</li>
                 </ul>
                 <ul class="social-links">

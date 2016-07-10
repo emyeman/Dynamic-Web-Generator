@@ -327,9 +327,9 @@
                 <div class="thumbnail">
                     <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                     <div class="caption">
-                        <h3>{{$subcategory->name}}--> {{$name_product[$index_prod]}}</h3>
-                        <p>{{substr($description_product[$index_prod],0,50)}}</p>
-                        <p><a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$name_product[$index_prod]}}</a></p>
+                        <h3>{{$subcategory->name}}--> {{$en_name_product[$index_prod]}}</h3>
+                        <p>{{substr($en_description_product[$index_prod],0,50)}}</p>
+                        <p><a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$en_name_product[$index_prod]}}</a></p>
                     </div>
                     <!-- Modal -->
                     <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
@@ -337,16 +337,16 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$name_product[$index_prod]}}</h4>
+                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$en_name_product[$index_prod]}}</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <h3><u>{{$name_product[$index_prod]}} Description</u></h3>
+                                    <h3><u>{{$en_name_product[$index_prod]}} Description</u></h3>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <p>{{$description_product[$index_prod]}}</p>
+                                            <p>{{$en_description_product[$index_prod]}}</p>
                                             <hr/>
-                                            <h3><u>{{$name_product[$index_prod]}} Price</u></h3>
-                                            <p>{{$price_product[$index_prod]}} LE</p>
+                                            <h3><u>{{$en_name_product[$index_prod]}} Price</u></h3>
+                                            <p>{{$en_price_product[$index_prod]}} LE</p>
                                         </div>
                                         <div class="col-md-6">
                                             <img class="img-responsive" src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">

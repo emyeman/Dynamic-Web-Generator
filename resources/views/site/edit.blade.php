@@ -85,19 +85,22 @@
             </div>
         </div>
 
-         <div class='form-group has-warning'>
+         <div class='form-group'>
             <label class='col-md-2'>Image</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <label class="btn btn-default btn-file">
+                <label class="btn btn-info form-control btn-file">
                     Browse <input id="image" type="file" name="background_image" style="display: none;">
                 </label>  
             </div>
         </div>
       
-
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-1 btn btn-default' name='ok' value='update' />
+        <div class='form-group'>
+            <label class='col-md-2'></label>
+            <div class='col-md-8 input-group'>
+                <input type='submit' class='col-md-1 btn btn-primary form-control' name='ok' value='update' />
+            </div>    
+        </div>
         <br/><br/><br/><br/>
     {!!Form::close() !!}
 

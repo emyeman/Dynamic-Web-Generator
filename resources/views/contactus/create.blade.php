@@ -21,26 +21,49 @@
       {!!Form::open(['route'=>'contactus.store','method'=>'post']) !!}
 
         <div class='form-group '>
-            <label class='col-md-2'>Address:</label>
+            <label class='col-md-2'>En_Address:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 <input placeholder='PlZ,enter your address' class='form-control' name='address' type='text'/>
             </div>
         </div> 
-
         <div class='form-group '>
-            <label class='col-md-2'>Phone:</label>
+            <label class='col-md-2'>Ar_Address:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
-                <input placeholder='PlZ,enter your phone' class='form-control'id=='phone' name='phone' type='number'/>
+                <input placeholder='من فضلك ادخل عنوانك' class='form-control' name='ar_address' type='text'/>
+            </div>
+        </div> 
+
+        <div class='form-group '>
+            <label class='col-md-2'>En_Phone:</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                <input placeholder='PlZ,enter your phone' class='form-control'id='phone' name='phone' type='number'/>
+            </div>
+          <!-- <span class='col-lg-offset-3' id="spphone">Please enter a valid phone number Like (34125678).  </span>   -->
+        </div> 
+        <div class='form-group '>
+            <label class='col-md-2'>Ar_Phone:</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                <input placeholder='من فضلك ادخل رقم التلفون' class='form-control'id='ar_phone' name='ar_phone' type='number'/>
             </div>
           <!-- <span class='col-lg-offset-3' id="spphone">Please enter a valid phone number Like (34125678).  </span>   -->
         </div> 
         <div class='form-group'>
-            <label class='col-md-2'>Mobile:</label>
+            <label class='col-md-2'>En_Mobile:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 <input placeholder='PlZ,enter your mobile' class='form-control' id='mobile' name='mobile' type='number'/>
+            </div>
+             <!-- <span class='col-lg-offset-3' id="spmobile">Please enter a valid mobile number Like (01023456789).  </span>                         -->
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'> Ar_Mobile:</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                <input placeholder='من فضلك ادخل رقم الجوال' class='form-control' id='ar_mobile' name='ar_mobile' type='number'/>
             </div>
              <!-- <span class='col-lg-offset-3' id="spmobile">Please enter a valid mobile number Like (01023456789).  </span>                         -->
         </div> 

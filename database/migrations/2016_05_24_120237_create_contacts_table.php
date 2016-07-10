@@ -16,10 +16,13 @@ class CreateContactsTable extends Migration
             $table->increments('id');
             $table->integer('site_id')->unsigned()->unique();
             $table->string('address')->nullable();
+            $table->string('ar_address')->nullable();
             $table->float('lat',11, 8)->nullable();
             $table->float('lng',11, 8)->nullable();
             $table->string('phone')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('ar_phone')->nullable();
+            $table->string('ar_mobile')->nullable();
             $table->string('email')->nullable();
             $table->string('fax')->nullable();
             $table->string('facebook')->nullable();

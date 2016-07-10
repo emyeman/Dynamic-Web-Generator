@@ -90,6 +90,10 @@ class ProductController extends Controller
                 'subcategory_id' => 'required|max:255',
                 'title_product' => 'required|max:255',
                 'description' => 'required',
+                'price_product' => 'required',
+                'ar_title_product' => 'required|max:255',
+                'ar_description' => 'required',
+                'ar_price_product' => 'required',
                 'image_product' => 'required',
                 
             ]);
@@ -98,6 +102,9 @@ class ProductController extends Controller
             $product->name=trim($request->input('title_product'));
             $product->description=trim($request->input('description'));
             $product->price=$request->input('price_product');
+            $product->ar_name=trim($request->input('ar_title_product'));
+            $product->ar_description=trim($request->input('ar_description'));
+            $product->ar_price=$request->input('ar_price_product');
 
             if(Input::file('image_product')){
                 // echo "image_product";die();
@@ -169,6 +176,10 @@ class ProductController extends Controller
                 'subcategory_id' => 'required|max:255',
                 'title_product' => 'required|max:255',
                 'description' => 'required',
+                'price_product' => 'required',
+                'ar_title_product' => 'required|max:255',
+                'ar_description' => 'required',
+                'ar_price_product' => 'required',
                 // 'image_product' => 'required',
                 
             ]);
@@ -176,6 +187,9 @@ class ProductController extends Controller
             $product->name=trim($request->input('title_product'));
             $product->description=trim($request->input('description'));
             $product->price=$request->input('price_product');
+            $product->ar_name=trim($request->input('ar_title_product'));
+            $product->ar_description=trim($request->input('ar_description'));
+            $product->ar_price=$request->input('ar_price_product');
             $old_image=$product->image;
             if(Input::file('image_product')){
                 // echo "image_product";die();
