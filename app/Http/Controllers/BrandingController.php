@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+
 use Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Header;
+ 
 
 class BrandingController extends Controller {
 
@@ -50,45 +53,78 @@ class BrandingController extends Controller {
     }
 
     public function store(Request $request) {
+        // dd($request->all());
+        $this->validate($request, [
+            'company_name' => 'required|max:255',
+            'slogan' => 'required',
+            'logo' => 'max:10',
+        ]);
+        $header = new Header($request->all());
+        $header->site_id = Auth::user()->id;
 
+        // get the subdomain
+        $domain_name = $this->request->user()->site['subdomain'];
 
-        $image = Input::file('image')->getClientOriginalName();
+        $imagePath='';
+        if(Input::hasFile('logo')){  
+                $file = Input::file('logo');
+                $extension = $file->getClientOriginalExtension();
+                $file = $file->move(public_path().'/assets/images/'.$domain_name.'/branding/',time().$extension);
+                // $user->image = $file->getRealPath();
+                $imagePath = '/assets/images/'.$domain_name.'/branding/'.time().$extension;
+        }
+        $header->logo = $imagePath;
 
-        if ($this->site && $logo = $this->upload_image($image)) {
-            $brand = new Header;
-            $brand->site_id = $this->site->id;
-            $brand->company_name = $this->request->input('companyname');
-            $brand->logo = $logo;
-            $brand->slogan = $this->request->input('slogan');
-            // die(print_r($brand));
-            if ($brand->save()) {
-                return redirect('/branding');
-            }
+        if($header->addHeader($header)) 
+        {
+            return redirect('/branding');
         }
         return redirect('/branding/create')->withErrors('Something error');
     }
 
-    public function edit() {
-        if ($this->site->header) {
-            return view('branding.edit')->withBranding($this->site->header);
-        }
-        return view('branding.index')->withErrors('Something Error');
+
+    public function edit(Header $header) {
+        return view('branding.edit',compact('header'));
     }
 
-    public function update($id) {
-
-        $image = Input::file('image')->getClientOriginalName();
-
-        if ($id == $this->site->header->id && $logo = $this->upload_image($image)) {
-            $brand = Header::find($id);
-            $brand->company_name = $this->request->input('companyname');
-            $brand->logo = $logo;
-            $brand->slogan = $this->request->input('slogan');
-            if ($brand->save()) {
-                return redirect('/branding')->withBranding($brand);
-            }
+    public function update(Request $request, Header $header) {
+        $this->validate($request, [
+            'company_name' => 'required|max:255',
+            'slogan' => 'required',
+            'logo' => 'max:10',
+        ]);
+        $domain_name = $this->request->user()->site['subdomain'];
+        $old_imag_name = $header['attributes']['logo'];
+        $imagePath=$old_imag_name;
+        $has_new_file = 0;
+        if(Input::hasFile('logo')){  
+                $has_new_file = 1;
+                $file = Input::file('logo');
+                $extension = $file->getClientOriginalExtension();
+                $file = $file->move(public_path().'/assets/images/'.$domain_name.'/branding/',time().'.'.$extension);
+                // $user->image = $file->getRealPath();
+                $imagePath = '/assets/images/'.$domain_name.'/branding/'.time().'.'.$extension;
         }
-        return redirect('/branding')->withErrors('Something Error');
+
+        if($header->update([
+            'company_name'=>$request->all()['company_name'],
+            'slogan' => $request->all()['slogan'],
+            'logo' => $imagePath,
+        ]))
+       {
+        if($has_new_file == 1)
+        {
+                try {
+                    unlink(public_path().$old_imag_name);    
+                }
+                catch (\Exception $e) {
+                }
+        }
+
+            return redirect('/branding');
+       }
+       dd('hit');
+       return back();
     }
 
     public function destroy() {

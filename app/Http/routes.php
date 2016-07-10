@@ -49,8 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/site/edit/{site}','SiteController@edit');
 	Route::patch('/site/update/{site}','SiteController@update');
     Route::resource('/site','SiteController'); 
-	Route::any('branding/edit','BrandingController@edit'); 
-	Route::any('branding/update','BrandingController@update');     
+	Route::get('/branding/edit/{header}','BrandingController@edit'); 
+	Route::patch('/branding/{header}','BrandingController@update');     
     Route::resource('/branding','BrandingController');    
 	Route::resource('/stylecontainer','StyleContainerController');
 	Route::resource('/category','CategoryController');

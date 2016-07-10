@@ -356,6 +356,12 @@
             <?php $pro_count++; ?>
         @endforeach
             </div>
+        <ol class="carousel-indicators">
+            <li data-target="#move_p" data-slide-to="0" class="active"></li>
+             @for($i=1 ;$i < count($promotions);$i++)
+                <li data-target="#move_p" data-slide-to="{{ $i }}"></li>
+            @endfor
+        </ol>
 </div>
 </div>
 </div>
@@ -374,7 +380,7 @@
 @if(isset($services) && $services != null)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 class="text-center title">Services</h1>
+    <h1 class="text-center title">خدماتنا</h1>
     <div class="space"></div>
 
     <div id="move_s" class="carousel slide" data-ride="carousel">

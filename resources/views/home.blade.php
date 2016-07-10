@@ -8,10 +8,10 @@
     <meta name="format-detection" content="telephone=no"/>
 
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon"/>
-    <link rel="icon" href="images/favicon.ico" type="image/x-ico"/>
+    <link rel="shortcut icon" href="{{ url('assets/DynamicWebGenerator/images/favicon.ico')}}" type="image/vnd.microsoft.icon"/>
+    <link rel="icon" href="{{ url('assets/DynamicWebGenerator/images/favicon.ico')}}" type="image/x-ico"/>
 
-    <title>ALTOS Agency &#8211; Creative HTML Theme</title>
+    <title>Dynamin Website Generator</title>
 
        <link rel="stylesheet" href="{{ url('/assets/bootstrap-3.2.0/css/bootstrap.min.css')}}"/>
 <!-- Bootstrap-Iconpicker -->

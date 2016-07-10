@@ -21,14 +21,16 @@
     <div class='form-group'>
         <label class='col-md-2'>Company Name</label>
         <div class='col-md-10 input-group'>
-            <input placeholder='company name ...' class='form-control' name='companyname' type='text' value="{{old('companyname')}}"/>
+            <input placeholder='company name ...' class='form-control' name='company_name' type='text' value="{{old('companyname')}}"/>
         </div>
     </div>  
     <div class='form-group'>
         <label class='col-md-2'>Logo</label>
         <div class='col-md-10 input-group'>
-            {!! Form::file('image', ['class'=>'form-control']) !!}
-
+            <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
+                <label class="btn btn-default btn-file">
+                    Browse <input id="image" type="file" name="logo" style="display: none;">
+                </label>  
         </div>
     </div>  
     <div class='form-group'>
