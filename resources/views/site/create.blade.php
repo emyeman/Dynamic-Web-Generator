@@ -23,7 +23,7 @@
 
       @endif
       {!!Form::open(['route'=>'site.store' , 'method'=>'post', 'files'=>true]) !!}
-        <div class='form-group has-warning'>
+        <div class='form-group '>
             <label class='col-md-2'>SubDomain</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
@@ -33,7 +33,7 @@
             </div>
         </div>  
 
-         <div class='form-group has-warning'>
+         <div class='form-group'>
             <label class='col-md-2'>Slogan Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
@@ -45,7 +45,7 @@
           
 
 
-         <div class='form-group has-warning'>
+         <div class='form-group'>
             <label class='col-md-2'>Text Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
@@ -55,7 +55,7 @@
             </div>
         </div>  
 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Primary Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
@@ -63,7 +63,7 @@
             </div>
         </div>      
 
-         <div class='form-group has-warning'>
+         <div class='form-group'>
             <label class='col-md-2'>Secondary Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class='form-group has-warning'>
+        <div class='form-group'>
             <label class='col-md-2'>Site Body</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>

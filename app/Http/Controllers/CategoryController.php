@@ -20,7 +20,7 @@ class CategoryController extends Controller
 	public function index(){
         if (Auth::user()){
             // select categories of this only site;
-            $categories=DB::table('categories')->where('site_id',Auth::user()->id)->get();
+            $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
 
             return  view ('category.index',compact('categories'));
        } else{

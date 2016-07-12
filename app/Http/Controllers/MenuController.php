@@ -42,9 +42,20 @@ class MenuController extends Controller
      	// $pages=Page::pluck('title','id');
         $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
         $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
+        
+        $site_id=Auth::user()->site->id;
+        $rows = DB::table('menus')
+            ->leftJoin('pages', 'menus.route', '=', 'pages.id')
+            ->leftJoin('menus as parent', 'parent.id', '=', 'menus.parent_id')
+            ->where('menus.site_id', $site_id)
+            ->where('menus.deleted_at', null)
+            ->select('menus.id as menu_id','menus.title as menu_title','menus.ar_title as menu_ar_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
+            ->orderBy('parent.title')
+            ->get();
+
 
         // var_dump($menus);die();
-        return  view ('menu.create',['menus'=>$menus,'pages'=>$pages]);
+        return  view ('menu.create',['menus'=>$menus,'pages'=>$pages,'rows'=>$rows]);
      }
 
      public function store(Request $request){

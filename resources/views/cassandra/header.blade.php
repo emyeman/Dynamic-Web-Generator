@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="">
+<html lang="en" style="background:url('{{$mysite[0]->background_image}}') no-repeat center center fixed;" >
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
