@@ -17,7 +17,11 @@ class CreateCrusalsTable extends Migration
             $table->integer('site_id')->unsigned();
             $table->string('image');
             $table->string('title')->nullable();
+            $table->string('ar_title')->nullable();
+
             $table->string('description')->nullable();
+            $table->string('ar_description')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('site_id')

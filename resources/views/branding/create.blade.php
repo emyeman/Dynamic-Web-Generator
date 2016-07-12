@@ -19,11 +19,19 @@
     <br><br>
     {!!Form::open(['route'=>'branding.store','method'=>'post', 'files'=>true ,'class'=>'form-horizontal']) !!}
     <div class='form-group'>
-        <label class='col-md-2'>Company Name</label>
+        <label class='col-md-2'>English Company Name</label>
         <div class='col-md-10 input-group'>
-            <input placeholder='company name ...' class='form-control' name='company_name' type='text' value="{{old('companyname')}}"/>
+            <input placeholder='company name ...' class='form-control' name='company_name' type='text' value="{{old('company_name')}}"/>
+        </div>
+    </div>
+
+    <div class='form-group'>
+        <label class='col-md-2'>Arabic Company Name</label>
+        <div class='col-md-10 input-group'>
+            <input placeholder='company name ...' class='form-control' name='ar_company_name' type='text' value="{{old('ar_company_name')}}"/>
         </div>
     </div>  
+
     <div class='form-group'>
         <label class='col-md-2'>Logo</label>
         <div class='col-md-10 input-group'>
@@ -33,12 +41,22 @@
                 </label>  
         </div>
     </div>  
+
     <div class='form-group'>
-        <label class='col-md-2'>Company Slogan</label>
+        <label class='col-md-2'>English Company Slogan</label>
         <div class='col-md-10 input-group'>
             <input placeholder='slogan ...' class='form-control' name='slogan' type='text' />
         </div>
-    </div>      
+    </div>
+
+    <div class='form-group'>
+        <label class='col-md-2'>Arabic Company Slogan</label>
+        <div class='col-md-10 input-group'>
+            <input placeholder='slogan ...' class='form-control' name='ar_slogan' type='text' />
+        </div>
+    </div>
+
+
     <span class='col-md-2'></span>
     <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
     {!!Form::close() !!}

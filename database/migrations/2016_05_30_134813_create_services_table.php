@@ -16,7 +16,11 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->integer('site_id')->unsigned();
             $table->string('title');
+            $table->string('ar_title');
+
             $table->string('description');
+            $table->string('ar_description');
+
             $table->string('icon');
             $table->softDeletes();
             $table->timestamps();

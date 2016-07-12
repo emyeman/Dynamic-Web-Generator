@@ -38,11 +38,18 @@
     <br/>
     {!!Form::open(['route'=>'news_promotion.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
         <div class='form-group'>
-            <label class='col-md-2'>Title *</label>
+            <label class='col-md-2'>English Title *</label>
             <div class='col-md-10'>
                 <input placeholder='title...' class='form-control required' name='title' type='text' value="{{old('title')}}"/>
             </div>
-        </div>  
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Title *</label>
+            <div class='col-md-10'>
+                <input placeholder='title...' class='form-control required' name='ar_title' type='text' value="{{old('ar_title')}}"/>
+            </div>
+        </div> 
+
         <input type='hidden' value="{{$type}}" name='type'>
         <div class='form-group'>
             <label class='col-md-2'>Image *</label>
@@ -50,12 +57,21 @@
                 <input class='form-control required' name='image' type='file' />
             </div>
         </div>  
+
         <div class='form-group'>
-            <label class='col-md-2'>Description *</label>
+            <label class='col-md-2'>English Description *</label>
             <div class='col-md-10'>
                 <textarea placeholder='description...' class='form-control required' name='description'  rows="4" style='resize: none;'>{{old('description')}}</textarea>
             </div>
-        </div> 
+        </div>
+
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Description *</label>
+            <div class='col-md-10'>
+                <textarea placeholder='description...' class='form-control required' name='ar_description'  rows="4" style='resize: none;'>{{old('ar_description')}}</textarea>
+            </div>
+        </div>
+
         <div class='form-group'>
             <label class='col-md-2'>Start Date *</label>
             <div class='col-md-10'>

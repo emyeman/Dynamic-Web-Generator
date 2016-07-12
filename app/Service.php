@@ -8,7 +8,7 @@ class Service extends Model
 {
     //
     protected $fillable = [
-        'title', 'description', 'icon',
+        'title','ar_title', 'description','ar_description', 'icon',
     ];
     public function addService(Service $service)
     {

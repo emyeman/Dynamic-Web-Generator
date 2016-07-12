@@ -179,7 +179,7 @@
 <!-- header end -->
 
 
-@if($header)
+@if(isset($header) && $header != null)
 <header>
 <div class="container">
     <div class="row">
@@ -196,7 +196,7 @@
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
-@if($crusals)
+@if(isset($crusals) && $crusals != null)
 <!-- Wrapper for slides -->
 <div class="carousel-inner" role="listbox">
 <?php $crusal_count=0;?>
@@ -240,7 +240,7 @@
 <hr>
 </div>
  -->
-@if($aboutus)
+@if(isset($aboutus) && $aboutus != null)
 <!-- section start -->
 <!-- ================ -->
 
@@ -462,7 +462,7 @@
 </div> -->
 <div class="section_space"></div>
 <!--section Start-->
-@if($news)
+@if(isset($news) && $news != null)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
     <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>

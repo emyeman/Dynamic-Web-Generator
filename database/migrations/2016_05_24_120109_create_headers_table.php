@@ -15,8 +15,13 @@ class CreateHeadersTable extends Migration
         Schema::create('headers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('site_id')->unsigned();
+
             $table->string('company_name',100)->nullable();
+            $table->string('ar_company_name',100)->nullable();
+
             $table->string('slogan',255)->nullable();
+            $table->string('ar_slogan',255)->nullable();
+
             $table->string('logo',255)->nullable();
             $table->timestamps();
             $table->foreign('site_id')

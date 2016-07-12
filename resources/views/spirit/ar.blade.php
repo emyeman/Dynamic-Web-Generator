@@ -183,14 +183,14 @@
 <!-- header end -->
 
 
-@if($header)
+@if(isset($header) && $header != null)
 <header>
 <div class="container">
     <div class="row">
         <div class="col-md-offset-2 col-md-8 hidden-sm hidden-xs object-non-visible animated object-visible fadeIn" data-animation-effect="fadeIn">
             <!--<h1 class="text-center"><span>Spirit</span></h1>-->
             <img class="img-responsive center-block" src="{{ url($header->logo)}}"/> 
-            <h3 class="text-center">{{$header->slogan}}</h3>
+            <h3 class="text-center">{{$header->ar_slogan}}</h3>
 
         </div>
     </div>
@@ -200,7 +200,7 @@
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
-@if($crusals)
+@if(isset($crusals) && $crusals != null)
 <!-- Wrapper for slides -->
 <div class="carousel-inner" role="listbox">
 <?php $crusal_count=0;?>
@@ -244,7 +244,7 @@
 <hr>
 </div>
  -->
-@if($aboutus)
+@if(isset($aboutus) && $aboutus != null)
 <!-- section start -->
 <!-- ================ -->
 
@@ -263,7 +263,7 @@
                 <div class="col-md-6 abouty">
                     <div class="space"></div>
                         <p class='lead'>
-                            {{$aboutus->description}}
+                            {{$aboutus->ar_description}}
                         </p>
                     <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi adipisci illo, voluptatum ipsam fuga error commodi architecto, laudantium culpa tenetur at id, beatae placeat deserunt iure quas voluptas fugit eveniet.</p>
                     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo ducimus explicabo quibusdam temporibus deserunt doloremque pariatur ea, animi a. Delectus similique atque eligendi, enim vel reiciendis deleniti neque aliquid, sit?</p> -->
@@ -313,7 +313,7 @@
                     <div class="space"></div>
                     <div class="space"></div>
                     <div class="space"></div>
-                    <p class="text-center">{{ $promotion->description }}</p>
+                    <p class="text-center">{{ $promotion->ar_description }}</p>
                     <div class="space"></div>
                     <div>
                         <!-- <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p> -->
@@ -334,7 +334,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
 
-                                            <p class="lead text-center">{{ $promotion->description }} </p>
+                                            <p class="lead text-center">{{ $promotion->ar_description }} </p>
                                         </div>
                                         <div class="col-md-6">
                                             <img src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="">
@@ -416,8 +416,8 @@
                     <i class="fa fa-circle fa-stack-2x text-primary"></i>
                 <i class="glyphicon {{ $service->icon }} fa-stack-1x fa-inverse"></i>
                 </span>
-                                <h4 class="service-heading">{{ $service->title }}</h4>
-                                <p class="text-muted">{{ $service->description }}</p>
+                                <h4 class="service-heading">{{ $service->ar_title }}</h4>
+                                <p class="text-muted">{{ $service->ar_description }}</p>
                             </div>
                 <?php $count++; ?>
             @endforeach
@@ -465,7 +465,7 @@
 </div> -->
 <div class="section_space"></div>
 <!--section Start-->
-@if($news)
+@if(isset($news) && $news != null)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
     <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>
@@ -499,8 +499,8 @@
                 @endif
                     <div class="col-sm-4  wow fadeInDown text-center animated animated">
                             <img class="img-rounded img-responsive" src="{{ url('/assets/images/')}}{{ $new->image }}" alt="Generic placeholder image">
-                            <h3>{{ $new->title }}</h3>
-                            <p class="lead text-center">{{ $new->description }}</p>
+                            <h3>{{ $new->ar_title }}</h3>
+                            <p class="lead text-center">{{ $new->ar_description }}</p>
                         </div>
                 <?php $news_count++; ?>
             @endforeach

@@ -16,6 +16,7 @@ class CreateAboutusesTable extends Migration
             $table->increments('id');
             $table->integer('site_id')->unsigned();
             $table->text('description');
+            $table->text('ar_description');
             $table->string('image', 200);
             $table->timestamps();
 

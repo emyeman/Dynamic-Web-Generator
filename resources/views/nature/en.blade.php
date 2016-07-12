@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Template </title>
+    @if(isset($header))
 
+                 <title>{{ $header->company_name }}</title>
+        @endif
     
     <!-- Favicons
     ================================================== -->
@@ -51,34 +53,77 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-  <!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-  <link rel="stylesheet" type="text/css" href="{{ url('assets/Temp2/en/engine0/style.css') }}"/>
+	<!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+	<link rel="stylesheet" type="text/css" href="{{ url('assets/Temp2/en/engine0/style.css') }}"/>
 
-  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/jquery.js') }}"></script>
-  <!-- End WOWSlider.com HEAD section --></head>
+	<script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/jquery.js') }}"></script>
+	<!-- End WOWSlider.com HEAD section -->
+  <style type="text/css" media="screen">
+
+    .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+      color: {{ $mysite[0]->primary_color }} !important;
+    }  
+
+    #wowslider-container0 a.ws_next:after, #wowslider-container0 a.ws_prev:after {
+       color:{{ $mysite[0]->primary_color }};
+    }
+
+    #wowslider-container0 .ws-title {
+       color:{{ $mysite[0]->text_color }};
+    }
+
+    #wowslider-container0 .ws_bullets a
+    {
+       box-shadow: inset 0 0 0 1px {{ $mysite[0]->primary_color }};
+    }
+
+    #wowslider-container0 .ws_bullets a.ws_selbull
+    {
+      background:{{ $mysite[0]->primary_color }};
+    }
+
+    #wowslider-container0 .ws_playpause
+    {
+      color:{{ $mysite[0]->primary_color }};
+    }
+
+    .section-title.center hr {
+       border-top: 4px solid {{ $mysite[0]->primary_color }};
+     }
+
+    .section-title.center .line {
+       border-top: 4px solid {{ $mysite[0]->primary_color }};
+    }
+
+    #services i.fa {
+        border: 4px solid {{ $mysite[0]->primary_color }};
+      }
+
+      button.btn.tf-btn.btn-default {
+     background: {{ $mysite[0]->primary_color }};
+  }
+  </style>
+
+  </head>
   <body>
     <!-- Navigation
     ==========================================-->
 
     
-  
+	
 
     <!--News section-->
     
-  <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
 
   <?php  
-    $flagelang=0;
-    // $count_static=1;
-    // $findpage_top=0;
-    // $findservices=0;
-    // $findabout=0;
-    // $findgallery=0;
-    // $findnews=0;
-    // $findpromotion=0;
-    // $findcontact=0;
-    $lat=0;
-    $lng=0;
+    $findpage_top=0;
+    $findservices=0;
+    $findabout=0;
+    $findgallery=0;
+    $findnews=0;
+    $findpromotion=0;
+    $findcontact=0;
     $myservices='';
     $mypage_top='';
     $myabout='';
@@ -86,51 +131,49 @@
     $mynews='';
     $mypromotion='';
     $mygallery='';
-    $menuearray_static=[];
-    $pagearray_static=[];
-  ?>
-  @if(isset($crusals))
+?>
+  @if(isset($crusals) && $crusals != null)
 
-  <div id="wowslider-container0">
+	<div id="wowslider-container0">
 
-  <div class="ws_images">
+	<div class="ws_images">
     <ul>
     <?php $count=0; ?>
     <?php 
 
     $crusals =  array_slice($crusals, 0, 4); 
-
     ?>
+
     @foreach($crusals as $crusal)
         <li><img src="{{ url('/assets/images/')}}{{ $crusal->image }}" alt="{{ $crusal->title }}" title="{{ $crusal->title }}" id="wows0_{{ $count }}"/></li> 
         <?php $count++; ?>  
     @endforeach
-    </ul>
+  	</ul>
   </div>
 
-  <div class="ws_bullets">
+	<div class="ws_bullets">
   <div>
      @for ($x = 0; $x < count($crusals); $x++)
-    <a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[$x]->title }}"/>
+		<a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[$x]->title }}"/>
     {{ ++$x }}</span></a>
     @endfor
-  </div>
+	</div>
   </div>
 
   <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com/vi">css slider</a> by WOWSlider.com v8.7
   </div>
-  <div class="ws_shadow">
+	<div class="ws_shadow">
     
   </div>
 
 
-  </div>  
+	</div>	
 
   @endif
 
-  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/wowslider.js') }}"></script>
-  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/script.js') }}"></script>
-  <!-- End WOWSlider.com BODY section -->
+	<script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/wowslider.js') }}"></script>
+	<script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/script.js') }}"></script>
+	<!-- End WOWSlider.com BODY section -->
 
 <!--start promotion-->
   <nav id="myn" class="navbar navbar-default navbar-fixed-top">
@@ -160,73 +203,56 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             @for ($x = 0; $x < count($urlpages); $x++)
-              @if($urlpages[$x]=='page_top')
-                  
-                  <li>
-                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
-                  </li>
-                  <?php 
-                  // $findpage_top=1;
-                  $mypage_top=$en_menupages[$x];?>
-              @endif 
-              @if($urlpages[$x]=='services')   
-                  <li>
-                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
-                  </li>
-                  <?php 
-                  // $findservices=1;
-                  $myservices=$en_menupages[$x];?>
-              @endif
-              @if($urlpages[$x]=='about')
-                  <li>
-                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
-                  </li>
-                  <?php 
-                  // $findabout=1;
-                   $myabout=$en_menupages[$x];?>
-              @endif
-               @if($urlpages[$x]=='gallery')
-                  <li>
-                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
-                  </li>
-                  <?php 
-                  // $findgallery=1;
-                  $mygallery=$en_menupages[$x];?>
-              @endif
-              @if($urlpages[$x]=='news')
-                  <li>
-                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
-                  </li>
-                  <?php 
-                  // $findnews=1;
-                  $mynews=$en_menupages[$x];?>
-              @endif
-              @if($urlpages[$x]=='promotion')
-                  <li>
-                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
-                  </li>
-                  <?php 
-                  // $findpromotion=1;
-                  $mypromotion=$en_menupages[$x];?>
-              @endif
-              @if($urlpages[$x]=='contact')
-                  <li>
-                      <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
-                  </li>
-                   <?php
-                    // $findcontact=1;
-                   $mycontact=$en_menupages[$x];?>
-              @endif 
-              <!-- for static page -->
-            @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+
+            @if($urlpages[$x]=='page_top')
+              <li>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+              </li>
+              <?php $findpage_top=1;
+              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+            @endif 
+            @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
                 </li>
-                 <?php
-                  // $count_static+=1;
-                 array_push($pagearray_static, $urlpages[$x]);
-                 array_push($menuearray_static, $en_menupages[$x]);?>
+                <?php $findservices=1;
+                $myservices=trans('arabic_english.'.$menupages[$x]);?>
             @endif
+            @if($urlpages[$x]=='about')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findabout=1;
+                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='gallery')
+                <li>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findgallery=1;
+                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='news')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findnews=1;
+                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='promotion')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                <?php $findpromotion=1;
+                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+            @endif
+            @if($urlpages[$x]=='contact')
+                <li>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                </li>
+                 <?php $findcontact=1;
+                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+            @endif    
              @endfor
             <li>
               <div id="mydropdown">
@@ -533,53 +559,6 @@
 
 @endif
 
-<!-- ================================================================================ -->
-<!-- start staticpage -->
-
-@for($static=0;$static< count($pagearray_static);$static++)
-
-    <div id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
-        <div class="container">
-            <div class="row">
-    <div class="section-title center wow fadeInDown" data-wow-delay="0.1s" >
-        <h2 class="text-center"><strong><?php echo $menuearray_static[$static];?></strong></h2>
-        <div class="line">
-            <hr>
-        </div>
-    </div>
-                <div class="col-md-6">
-                    <div class="about-text wow fadeInRight" data-wow-delay="0.2s">
-
-                        <!--<ul class="about-list">
-                            <li>
-                                <span class="fa fa-dot-circle-o"></span>
-                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
-                            </li>
-                            <li>
-                                <span class="fa fa-dot-circle-o"></span>
-                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
-                            </li>
-                            <li>
-                                <span class="fa fa-dot-circle-o"></span>
-                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
-                            </li>
-                        </ul> -->
-                        <?php echo "$containpages[$static]";?>
-                    </div>
-                </div>
-    <div class="col-md-6">
-    <!-- <img id="myimg" src="" class="img-responsive wow fadeInLeft" data-wow-delay="0.2s"> -->
-    </div>
-            </div>
-        </div>
-    </div>
-
-   @endfor
-<!-- end staticpage -->
-   <!-- ====================================================================================== -->
-
-
-
     <!-- Contact Section
     ==========================================-->
   @if(isset($contacts) && $contacts != null)  
@@ -597,45 +576,29 @@
                         <div class="clearfix"></div>
                         <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small>            
                     </div>
-                    @if (count($errors) > 0)
-                      <div class="alert alert-danger">
-                        <ul>
-                          @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                          @endforeach
-                        </ul>
-                      </div>
-                    @endif
-                    {!!Form::open(['route'=>'message.store','method'=>'post']) !!}
+
+                    <form>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" name='email' class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{old('email')}}">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Name</label>
-                                    <input type="text" name='name' class="form-control" id="exampleInputName1" placeholder="Name" value="{{old('name')}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class='row'>
-                          <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Subject</label>
-                                    <input type="text" name='subject' class="form-control" id="exampleInputSubject1" placeholder="Subject" value="{{old('subject')}}">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Message</label>
-                            <textarea name='content' class="form-control" rows="3">{{old('content')}}</textarea>
+                            <textarea class="form-control" rows="3"></textarea>
                         </div>
-                        <input type='hidden' value="{{$site_id}}" name='site_id'>
+                        
                         <button type="submit" class="btn tf-btn btn-default">Submit</button>
-                    {!!Form::close() !!}
+                    </form>
 
                 </div>
             </div>

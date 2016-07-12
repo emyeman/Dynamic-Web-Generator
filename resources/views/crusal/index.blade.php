@@ -24,9 +24,14 @@
                 <table class='table table-hover' style="table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th width='15%'></th> <!-- image -->
-                            <th width='35%'><span class="text">title</span></th>
-                            <th width='40%'><span class="text">description</span></th>
+                            <th width='15%'>Image</th> <!-- image -->
+                            <th width='35%'><span class="text">English title</span></th>
+                            <th width='35%'><span class="text">Arabic title</span></th>
+
+                            <th width='40%'><span class="text">English description</span></th>
+
+                            <th width='40%'><span class="text">Arabic description</span></th>
+
                             <th width='5%'></th> <!-- delete operation -->
                             <th width='5%'></th> <!-- edit operation -->
                         </tr>
@@ -38,8 +43,14 @@
                                     <a href="{{url('/crusal/'.$row->id.'/edit')}}">
                                         <img src="{{url('/assets/images'.$row->image)}}" width='100px' height='100px'></td>
                                     </a>
-                                <td class='wrap'><a href="{{url('/crusal/'.$row->id.'/edit')}}">{{$row->title}}<a/></td> 
+                                <td class='wrap'><a href="{{url('/crusal/'.$row->id.'/edit')}}">{{$row->title}}<a/></td>
+
+                                 <td class='wrap'><a href="{{url('/crusal/'.$row->id.'/edit')}}">{{$row->ar_title}}<a/></td> 
+
                                 <td class='wrap'>{{substr($row->description,0,100)}}</td>
+
+                                <td class='wrap'>{{substr($row->ar_description,0,100)}}</td>
+
                                 <td>
                                     <a href="{{url('/crusal/'.$row->id.'/edit')}}">
                                         <span class="glyphicon glyphicon-edit edit" id="{{$row->id}}"></span>

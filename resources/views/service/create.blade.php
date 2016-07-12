@@ -27,25 +27,44 @@
 
     {!!Form::open(['route'=>'service.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
         <div class='form-group'>
-            <label class='col-md-2'>Tilte* </label>
+            <label class='col-md-2'>English Tilte* </label>
             <div class='col-md-10 input-group'>
             <input placeholder='title ...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
             </div>
         </div>  
+
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Tilte* </label>
+            <div class='col-md-10 input-group'>
+            <input placeholder='title ...' class='form-control' name='ar_title' type='text' value="{{old('ar_title')}}"/>
+            </div>
+        </div>  
+
         <div class='form-group'>
             <label class='col-md-2'>Icon* </label>
             <div class='col-md-10 input-group'>
                 <button class="btn btn-default form-control" name="icon" role="iconpicker"></button>
             </div>
-        </div>  
+        </div> 
+
         <div class='form-group'>
-            <label class='col-md-2'>Description* </label>
+            <label class='col-md-2'>English Description* </label>
             <div class='col-md-10 input-group'>                
                 <!-- <input placeholder='PlZ,enter description' class='form-control'name='description' type='text' />--> 
                 <textarea placeholder='description ...' class='form-control' name='description'>{{old('description')}}</textarea> 
 
             </div>
         </div>      
+
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Description* </label>
+            <div class='col-md-10 input-group'>                
+                <!-- <input placeholder='PlZ,enter description' class='form-control'name='description' type='text' />--> 
+                <textarea placeholder='description ...' class='form-control' name='ar_description'>{{old('ar_description')}}</textarea> 
+
+            </div>
+        </div>    
+
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value="ADD" />
     {!!Form::close() !!}

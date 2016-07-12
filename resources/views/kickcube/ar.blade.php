@@ -391,7 +391,7 @@
 
 
     <!-- Start page_top Page Slider -->
-    @if(isset($crusals))
+    @if(isset($crusals) && $crusals != null)
     <section id="page_top">
       <!-- Carousel -->
       <div id="main-slide" class="carousel slide" data-ride="carousel">
@@ -414,9 +414,9 @@
             <div class="slider-content">
               <div class="col-md-12 text-center">
                 <h2 class="animated2">
-                              <span><strong> {{ $crusal->title }}</strong>   </span></h2>
+                              <span><strong> {{ $crusal->ar_title }}</strong>   </span></h2>
                 <h3 class="animated3">
-                                <span>{{ $crusal->description }}</span>
+                                <span>{{ $crusal->ar_description }}</span>
                               </h3>
                 <p class="animated4"><a href="#" class="slider btn btn-system btn-large">تأكد الان</a>
                 </p>
@@ -430,10 +430,10 @@
             <div class="slider-content">
               <div class="col-md-12 text-center">
                 <h2 class="animated4">
-                                <span><strong>{{ $crusal->title }} </strong>  </span>
+                                <span><strong>{{ $crusal->ar_title }} </strong>  </span>
                             </h2>
                 <h3 class="animated5">
-                              <span>{{ $crusal->description }}</span>
+                              <span>{{ $crusal->ar_description }}</span>
                             </h3>
                 <p class="animated6"><a href="#" class="slider btn btn-system btn-large">اشتري الان</a>
                 </p>
@@ -463,7 +463,7 @@
 
 
   <!-- Start Full Width Section 2 -->
-  @if(isset($aboutus))
+  @if(isset($aboutus) && $aboutus != null)
   <div id="about">
       <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
         <div class="container">
@@ -494,7 +494,7 @@
               <!-- End Big Heading -->
 
               <!-- Some Text -->
-              <p style="text-align: right;">{{ $aboutus->description }}
+              <p style="text-align: right;">{{ $aboutus->ar_description }}
               </p>
 
               <!-- Divider -->
@@ -527,7 +527,7 @@
                     </div>
                     <div class="modal-body">
                       <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $aboutus->image }}" alt="" ></p><br>
-                      <p>{{ $aboutus->description }}   </p><br>
+                      <p>{{ $aboutus->ar_description }}   </p><br>
                       <p><b><a href="#">قم بزيارتنا</a></b></p>
                     </div>
                     <div class="modal-footer">
@@ -550,7 +550,7 @@
 
 
     <!-- Start Services Section -->
-   @if(isset($services))
+   @if(isset($services) && $services != null )
         <div class="row" id="services">
           <div class="col-md-10 col-md-offset-1">
             <!-- Start Services Carousel -->
@@ -576,8 +576,8 @@
                 <i class="glyphicon {{ $service->icon }} icon-medium-effect icon-effect-2"></i>
               </div>
               <div class="service-content">
-                <h4>{{ $service->title }}</h4>
-                <p>{{ $service->description }}</p>
+                <h4>{{ $service->ar_title }}</h4>
+                <p>{{ $service->ar_description }}</p>
               </div>
             </div>
           </div>
@@ -728,7 +728,7 @@
 
 
     <!-- Start News Section -->  
-    @if(isset($news))
+    @if(isset($news) && $news != null)
     <div id="news">
      <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
       <div class="container">
@@ -752,9 +752,9 @@
                     <div class="post-date"><span class="day">28</span><span class="month">Dec</span></div>
                     <div class="post-type"><i class="fa fa-picture-o"></i></div>
                   </div>
-                  <h3 class="post-title"><a href="#">{{ $new->title }}</a></h3>
+                  <h3 class="post-title"><a href="#">{{ $new->ar_title }}</a></h3>
                   <div class="post-content">
-                    <p>{{ $new->description }}
+                    <p>{{ $new->ar_description }}
                   <button type="button" class="btn btn-default btn-sm read-more" data-toggle="modal" href="#myModal"> ...اقرء المزيد </button></p>
                   </div>
                 </div>
@@ -774,11 +774,11 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">{{ $new->title }}</h4>
+                      <h4 class="modal-title">{{ $new->ar_title }}</h4>
                     </div>
                     <div class="modal-body">
                       <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $new->image }}" alt="" ></p><br>
-                      <p> {{ $new->description }}</p><br>
+                      <p> {{ $new->ar_description }}</p><br>
                       <p><b><a href="#">لزياره الموقع</a></b></p>
                     </div>
                     <div class="modal-footer">
@@ -798,7 +798,7 @@
 
 
     <!-- Start Promotions Section -->
-    @if(isset($promotions))
+    @if(isset($promotions) && $promotions != null)
     <div id="promotion" >
       <div class="container">
         <div class="row">
@@ -820,12 +820,12 @@
               <div class="pricing-tables">
                 <div class="pricing-table">
               <div class="plan-name">
-                <h3>{{ $promotion->title }}</h3>
+                <h3>{{ $promotion->ar_title }}</h3>
               </div>
               <div class="plan-price">
                 {{-- <div class="price-value">$49<span>.00</span></div>
                 <div class="interval">per month</div> --}}
-                <p>{{ $promotion->description }}</p>
+                <p>{{ $promotion->ar_description }}</p>
               </div>
               <div class="plan-list">
                 <ul>
@@ -928,7 +928,7 @@
 
 
     <!-- Start Footer Section -->
-     @if(isset($contacts[0])) 
+     @if(isset($contacts[0]) && $contacts[0] != null) 
     <footer>
       <div class="container" id="contact">
         <div class="row footer-widgets">

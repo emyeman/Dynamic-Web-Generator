@@ -55,7 +55,9 @@ class NewsPromotionController extends Controller
      {
         $this->validate($request, [
             'title' => 'required|max:300',
+            'ar_title' => 'required|max:300',
             'description' => 'required|max:2000',
+            'ar_description' => 'required|max:2000',
             'image' => 'required|image', // ????? what is the required max size
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
@@ -65,7 +67,9 @@ class NewsPromotionController extends Controller
         $file_name=NewsPromotionController::path_to_news_promotions_images_folder($image,$type);
         $new_row=new NewsPromotion;
         $new_row->title=trim($request->input('title'));
+        $new_row->ar_title=trim($request->input('ar_title'));
         $new_row->description=trim($request->input('description'));
+        $new_row->ar_description=trim($request->input('ar_description'));
         $new_row->image=$file_name;
         $new_row->start_date=$request->input('start_date');
         $new_row->end_date=$request->input('end_date');
@@ -119,7 +123,9 @@ class NewsPromotionController extends Controller
         }
         $this->validate($request, [
             'title' => 'required|max:300',
+            'ar_title' => 'required|max:300',
             'description' => 'required|max:2000',
+            'ar_description' => 'required|max:2000',
             'image' => 'image', // ????? what is the required max size
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
@@ -133,7 +139,9 @@ class NewsPromotionController extends Controller
             $row->image=$file_name;
         }
         $row->title=trim($request->input('title'));
+        $row->ar_title=trim($request->input('ar_title'));
         $row->description=trim($request->input('description'));
+        $row->ar_description=trim($request->input('ar_description'));
         $row->start_date=$request->input('start_date');
         $row->end_date=$request->input('end_date');
         $is_saved=$row->save();

@@ -11,6 +11,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'name', 'email', 'password','mobile','image',
     ];
@@ -20,6 +21,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -27,5 +30,10 @@ class User extends Authenticatable
     public function site()
     {
         return $this->hasOne(Site::class);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 }

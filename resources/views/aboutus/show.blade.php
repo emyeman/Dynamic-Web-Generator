@@ -21,6 +21,10 @@
 <p>
 {{$row->description}}
 </p>
+
+<p>
+{{$row->ar_description}}
+</p>
 </div>
 </div>
 

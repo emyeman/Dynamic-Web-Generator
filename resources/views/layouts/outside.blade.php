@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -164,7 +163,7 @@ h2.zero,p.zero {
                     <div class="main-menu">
                         <div class="menu-main-nav-menu-container">
                             <ul id="menu-main-nav-menu" class="sf-menu">
-<li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
+                             <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
                                     <ul class="submenu_1">
                                         <li class="menu-item"><a href="{{ url('/') }}">Home #2</a></li>
                                     </ul>

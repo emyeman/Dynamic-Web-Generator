@@ -23,9 +23,14 @@
                 </a>
             </div>
             <div class="col-md-7">
-                <h3><label >Company Name: &nbsp;</label>{{ $branding['company_name'] }}<br/>
-                <label >Company Slogan:&nbsp;</label>{{ $branding['slogan'] }}</h3>
-                 <h4><label >Publish At:&nbsp;</label>{{ $branding['created_at'] }}</h4>
+                <h3><label >English Company Name: &nbsp;</label>{{ $branding['company_name'] }}<br/>
+                <label >Arabic Company Name: &nbsp;</label>{{ $branding['ar_company_name'] }}<br/>
+                <label >English Company Slogan:&nbsp;</label>{{ $branding['slogan'] }}
+                <label >Arabic Company Slogan:&nbsp;</label>{{ $branding['ar_slogan'] }}
+                </h3>
+                 <h4><label >Publish At:&nbsp;</label>{{ $branding['created_at'] }}
+
+                 </h4>
                 <a class="btn btn-primary" href="{{ url('branding/edit/') }}/{{ $branding['id'] }}" >Edit Branding</a><span class="glyphicon glyphicon-chevron-right"></span>
 
 <!--                <a class="btn btn-danger" href="{{ url('branding/destroy') }}">Remove Branding</a><span class="glyphicon glyphicon-chevron-right"></span>-->

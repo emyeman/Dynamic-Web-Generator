@@ -68,8 +68,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/message/unseen','MessageController@unseen');
 	Route::resource('/message','MessageController', ['except' => ['store']]);
 
+	Route::resource('/reseller', 'ResellerController', ['only' => [
+    'index', 'show' , 'create' , 
+	]]);
 
-
+	Route::resource('/reseller', 'ResellerController', ['except' => [
+    	'create', 'store', 'update', 'destroy'
+	]]);
 
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');

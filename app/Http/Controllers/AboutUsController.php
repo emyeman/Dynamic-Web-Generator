@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use DB;
+use Session;
 class AboutUsController extends Controller
 {
 	private function path_to_aboutus_image($image)
@@ -46,12 +47,14 @@ class AboutUsController extends Controller
      {
          $this->validate($request, [
             'description' => 'required|max:64000',
+            'ar_description' => 'required|max:64000',
             'image' => 'required|image' // ????? what is the required max size
         ]);
         $image = Input::file('image');
         $file_name=AboutUsController::path_to_aboutus_image($image);
         $new_row=new Aboutus;
         $new_row->description=trim($request->input('description'));
+        $new_row->ar_description=trim($request->input('ar_description'));
         $new_row->image=$file_name;
         $new_row->site_id=Auth::user()->site->id;
 		$is_saved=$new_row->save();
@@ -98,6 +101,7 @@ class AboutUsController extends Controller
         }
         $this->validate($request, [
             'description' => 'required|max:64000',
+            'ar_description' => 'required|max:64000',
             'image' => 'image', // ????? what is the required max size
         ]);
         $old_imag_name=$row->image;
@@ -109,6 +113,8 @@ class AboutUsController extends Controller
         }
 
         $row->description=trim($request->input('description'));
+        $row->ar_description=trim($request->input('ar_description'));
+
         $is_saved=$row->save();
         if($is_saved && Input::hasFile('image'))
         {

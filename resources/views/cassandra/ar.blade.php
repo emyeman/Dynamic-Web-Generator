@@ -228,9 +228,9 @@
             <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">   
 
                 <!-- Site Title, your name, HELLO msg, etc. -->
-                <h1 class="title">{{$header->slogan}}</h1>
+                <h1 class="title">{{$header->ar_slogan}}</h1>
                 <img src="{{ url($header->logo)}}"/>
-                <h2 class="subtitle">{{$header->company_name}}</h2>
+                <h2 class="subtitle">{{$header->ar_company_name}}</h2>
 
                 <!-- Short introductory (optional) -->
             <!--    <h3 class="tagline">
@@ -264,7 +264,7 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="space"></div>
                 <!-- <h5><strong>More, more lipsum!<br></strong></h5>     -->
-                <p><b>{{$aboutus->description}}</b></p>
+                <p><b>{{$aboutus->ar_description}}</b></p>
 
             </div>
         </div>
@@ -402,8 +402,8 @@
                                 
                                 <i class="glyphicon {{ $service->icon }} fa-stack-1x"></i>
                             </span>
-                                <h4 class="service-heading">{{ $service->title }}</h4>
-                                <p class="text-muted">{{ $service->description }}</p>
+                                <h4 class="service-heading">{{ $service->ar_title }}</h4>
+                                <p class="text-muted">{{ $service->ar_description }}</p>
                         </div>
                         @endif  
                     <?php  $inc_s+=1; ?> 
@@ -460,8 +460,8 @@
             <div class="col-sm-6 col-md-4 col-md-offset-1">
                 <img class="img-responsive" src="{{url('/assets/images/'.$new->image)}}"/>
                 <!-- <h4>{{ $new->description }}</h4> -->
-                <a class="btn btn-default btn-block">{{ $new->title }}</a>
-                <p class="text-muted" style="background-color:white;padding-right:10px; padding-left:10px;">{{ $new->description }}</p>
+                <a class="btn btn-default btn-block">{{ $new->ar_title }}</a>
+                <p class="text-muted" style="background-color:white;padding-right:10px; padding-left:10px;">{{ $new->ar_description }}</p>
             </div> 
             @endif  
             <?php  $inc_n+=1; ?> 
@@ -518,8 +518,8 @@
             <div class="col-md-4 col-md-push-2">
                 <div class="space"></div>
 
-                <h3 class="text-center"> {{ $promotion->title }} </h3>
-                <p class="text-center">{{ $promotion->description }}</p>
+                <h3 class="text-center"> {{ $promotion->ar_title }} </h3>
+                <p class="text-center">{{ $promotion->ar_description }}</p>
                 <div class="space"></div>
                 <div>
                         <p><a class="btn view center-block" role="button">know more</a></p>

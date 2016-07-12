@@ -56,7 +56,11 @@ class BrandingController extends Controller {
         // dd($request->all());
         $this->validate($request, [
             'company_name' => 'required|max:255',
+            'ar_company_name' => 'required|max:255',
+
             'slogan' => 'required',
+            'ar_slogan' => 'required',
+
             'logo' => 'max:10',
         ]);
         $header = new Header($request->all());
@@ -90,7 +94,9 @@ class BrandingController extends Controller {
     public function update(Request $request, Header $header) {
         $this->validate($request, [
             'company_name' => 'required|max:255',
+            'ar_company_name' => 'required|max:255',
             'slogan' => 'required',
+            'ar_slogan' => 'required',
             'logo' => 'max:10',
         ]);
         $domain_name = $this->request->user()->site['subdomain'];
@@ -108,7 +114,9 @@ class BrandingController extends Controller {
 
         if($header->update([
             'company_name'=>$request->all()['company_name'],
+            'ar_company_name'=>$request->all()['ar_company_name'],
             'slogan' => $request->all()['slogan'],
+            'ar_slogan' => $request->all()['ar_slogan'],
             'logo' => $imagePath,
         ]))
        {

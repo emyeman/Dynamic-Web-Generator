@@ -15,8 +15,13 @@ class CreateNewsPromotionsTable extends Migration
         Schema::create('news_promotions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('site_id')->unsigned();
+
             $table->string('title',300);
+            $table->string('ar_title',300);
+
             $table->string('description',2000);
+            $table->string('ar_description',2000);
+
             $table->string('image',200);
             $table->date('start_date');
             $table->date('end_date');

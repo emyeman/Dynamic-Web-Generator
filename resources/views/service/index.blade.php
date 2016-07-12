@@ -24,8 +24,11 @@
                 <thead>
                     <tr>
                         <th width='10%'></th> <!-- icon -->
-                        <th width='35%'><span class="text">title</span></th>
-                        <th width='45%'><span class="text">description</span></th>
+                        <th width='35%'><span class="text">English title</span></th>
+                        <th width='35%'><span class="text">Arabic title</span></th>
+                        <th width='45%'><span class="text">English description</span></th>
+
+                        <th width='45%'><span class="text">Arabic description</span></th>
                         <th width='5%'></th> <!-- delete operation -->
                         <th width='5%'></th> <!-- edit operation -->
                     </tr>
@@ -36,7 +39,9 @@
                             <button class="btn btn-default btn-icon" value="{{$service->icon}}" title="glyphicon-adjust" style="display: inline-block;"><i class="glyphicon {{$service->icon}}"></i></button>
                         </td>
                         <td>{{$service->title}}</td>
+                        <td>{{$service->ar_title}}</td>
                         <td>{{$service->description}}</td>
+                        <td>{{$service->ar_description}}</td>
                         <td>
                             <a href="{{ url('/service/edit') }}/{{$service->id}}">
                                 <span class="glyphicon glyphicon-edit edit" id="{{$service->id}}"></span>

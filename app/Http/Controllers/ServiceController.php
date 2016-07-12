@@ -35,8 +35,10 @@ class ServiceController extends Controller
         # code...
         $this->validate($request, [
             'title' => 'required|max:255',
+            'ar_title' => 'required|max:255',
             'icon' => 'required',
             'description' => 'required',
+            'ar_description' => 'required',
         ]);
        if($service->update($request->all()))
        {        
@@ -59,8 +61,10 @@ class ServiceController extends Controller
      {
         $this->validate($request, [
         'title' => 'required|max:255',
+        'ar_title' => 'required|max:255',
         'icon' => 'required',
         'description' => 'required',
+        'ar_description' => 'required',
         ]);
      	$service = new Service($request->all());
         $service->site_id = Auth::user()->id;

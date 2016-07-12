@@ -19,11 +19,19 @@
     {!!Form::open(['route'=>['service.update', $service->id  ],'method'=>'patch','class'=>'form-horizontal']) !!}
         {{ method_field('patch') }}
         <div class='form-group'>
-            <label class='col-md-2'>Tilte *</label>
+            <label class='col-md-2'>English Tilte *</label>
             <div class='col-md-10 input-group'>                
                 <input value='{{$service->title}}' class='form-control' name='title' type='text'/>
             </div>
         </div>  
+
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Tilte *</label>
+            <div class='col-md-10 input-group'>                
+                <input value='{{$service->ar_title}}' class='form-control' name='ar_title' type='text'/>
+            </div>
+        </div>  
+
         
         <div class='form-group'>
             <label class='col-md-2'>Icon *</label>
@@ -33,13 +41,23 @@
         </div>  
 
         <div class='form-group'>
-            <label class='col-md-2'>Description *</label>
+            <label class='col-md-2'>English Description *</label>
             <div class='col-md-10 input-group'>                
                 <!-- <input value='{{$service->description}}' class='form-control'name='description' type='text' /> -->
                 <textarea class='form-control' name='description'>{{$service->description}}</textarea> 
 
             </div>
-        </div>      
+        </div>   
+
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Description *</label>
+            <div class='col-md-10 input-group'>                
+                <!-- <input value='{{$service->description}}' class='form-control'name='description' type='text' /> -->
+                <textarea class='form-control' name='ar_description'>{{$service->ar_description}}</textarea> 
+
+            </div>
+        </div>   
+
         <span class='col-md-2'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='EDIT' />
     {!!Form::close() !!}

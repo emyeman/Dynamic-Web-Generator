@@ -389,7 +389,7 @@
 
 
     <!-- Start page_top Page Slider -->
-     @if(isset($crusals))
+     @if(isset($crusals) && $crusals != null )
     <section id="page_top">
       <!-- Carousel -->
      
@@ -464,7 +464,7 @@
 
 
   <!-- Start Full Width Section 2 -->
-  @if(isset($aboutus))
+  @if(isset($aboutus) && $aboutus != null )
 
   <div id="about">
       <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
@@ -547,7 +547,7 @@
 
 
     <!-- Start Services Section -->
-    @if(isset($services))
+    @if(isset($services) && $services != null )
         <div class="row" id="services">
           <div class="col-md-10 col-md-offset-1">
             <!-- Start Services Carousel -->
@@ -631,7 +631,7 @@
 
 
     <!-- Start Portfolio Section -->
-      @if(isset($cats_and_subcats))
+      @if(isset($cats_and_subcats) && $cats_and_subcats != null )
 
     <div id="gallery">
 
@@ -727,7 +727,7 @@
 
 
     <!-- Start News Section -->  
-    @if(isset($news))
+    @if(isset($news) && $news != null )
     <div id="news">
      <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
       <div class="container">
@@ -793,7 +793,7 @@
 
 
     <!-- Start Promotions Section -->
-    @if(isset($promotions))
+    @if(isset($promotions) && $promotions != null )
     <div id="promotion" >
       <div class="container">
         <div class="row">
@@ -924,7 +924,7 @@
 
 
     <!-- Start Footer Section -->
-    @if(isset($contacts[0])) 
+    @if(isset($contacts[0]) && $contacts[0] != null ) 
     <footer>
       <div class="container" id="contact">
         <div class="row footer-widgets">

@@ -47,7 +47,11 @@ class CrusalController extends Controller
         $file_name=CrusalController::path_to_crusal_images($image);
         $new_row=new Crusal;
         $new_row->title=trim($request->input('title'));
+        $new_row->ar_title=trim($request->input('ar_title'));
+
         $new_row->description=trim($request->input('description'));
+        $new_row->ar_description=trim($request->input('ar_description'));
+
         $new_row->image=$file_name;
         $new_row->site_id=Auth::user()->site->id;
         $is_saved=$new_row->save();
@@ -103,7 +107,11 @@ class CrusalController extends Controller
             $row->image=$file_name;
         }
         $row->title=trim($request->input('title'));
+        $row->ar_title=trim($request->input('ar_title'));
+
         $row->description=trim($request->input('description'));
+        $row->ar_description=trim($request->input('ar_description'));
+
         $is_saved=$row->save();
         if($is_saved && Input::hasFile('image'))
         {
