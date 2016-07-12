@@ -28,10 +28,12 @@
                 <table class='table table-hover' style="table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th width='30%'><span class="text">Image</span></th>
-                            <th width='20%'><span class="text">Sub Category</span></th>
-                            <th width='30%'><span class="text">Description</span></th>
-                            <th width='20%'><span class="text">Publish At</span></th>
+                            <th width='15%'><span class="text">Image</span></th>
+                            <th width='12%'><span class="text">En_Title</span></th>
+                             <th width='12%'><span class="text">Ar_Title</span></th>
+                            <th width='20%'><span class="text">En_Description</span></th>
+                            <th width='20%'><span class="text">Ar_Description</span></th>
+                            <th width='10%'><span class="text">Publish At</span></th>
                             <th width='5%'></th>
                             <th width='5%'></th> <!-- edit operation -->
                         </tr>
@@ -45,7 +47,9 @@
                                         <img src="{{url('/assets/images/'.$category->image)}}" width='100px' height='100px'></td>
                                     </a>
                                 <td class='wrap'><a href="{{url('/category/'.$category->id.'/edit')}}">{{$category->name}}<a/></td>
-                                <td class='wrap'>{{substr($category->description,0,100)}}</td>
+                                <td class='wrap'><a href="{{url('/category/'.$category->id.'/edit')}}">{{$category->ar_name}}<a/></td>
+                                <td class='wrap'>{{substr($category->description,0,50)}}</td>
+                                <td class='wrap'>{{substr($category->ar_description,0,50)}}</td>
                                 <td>{{$category->created_at}}</td>
                                 <td>
                                     <a href="{{url('/category/'.$category->id.'/edit')}}">

@@ -45,7 +45,11 @@ class ContactUsController extends Controller
             // select contact us of this only site;
             $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
 
-            return  view ('contactus.create',compact('contacts'));
+             if($contacts){
+                return  view ('contactus.index',compact('contacts'));
+            }else{
+                return  view ('contactus.create',compact('contacts'));
+            }
         }else{
             return  redirect ('/login');   
         }
@@ -55,10 +59,13 @@ class ContactUsController extends Controller
         if (Auth::user()){
             $this->validate($request, [
                 'address' => 'max:255',
+                'ar_address' => 'max:255',
                 'lat' => 'max:255',
                 'lng' => 'max:255',
                 'phone' => 'max:255',
                 'mobile' => 'max:255',
+                'ar_phone' => 'max:255',
+                'ar_mobile' => 'max:255',
                 'email' => 'max:255',
                 'fax' => 'max:255',
                 'facebook' => 'max:255', 
@@ -72,12 +79,15 @@ class ContactUsController extends Controller
             $contact= new Contact;
             $contact->site_id=Auth::user()->id;   //becaues site_id of contactus is same as id of user 
             $contact->address=trim($request->input('address'));
+            $contact->ar_address=trim($request->input('ar_address'));
             // data from google map
 
             $contact->lat=trim($request->input('latitude'));
             $contact->lng=trim($request->input('longitude'));
             $contact->phone=trim($request->input('phone'));
             $contact->mobile=trim($request->input('mobile'));
+            $contact->ar_phone=trim($request->input('ar_phone'));
+            $contact->ar_mobile=trim($request->input('ar_mobile'));
             $contact->email=trim($request->input('email'));
             $contact->fax=trim($request->input('fax'));
             $contact->facebook=trim($request->input('facebook'));
@@ -135,10 +145,13 @@ class ContactUsController extends Controller
 
             $this->validate($request, [
                 'address' => 'max:255',
+                'ar_address' => 'max:255',
                 'lat' => 'max:255',
                 'lng' => 'max:255',
                 'phone' => 'max:255',
                 'mobile' => 'max:255',
+                'ar_phone' => 'max:255',
+                'ar_mobile' => 'max:255',
                 'email' => 'max:255',
                 'fax' => 'max:255',
                 'facebook' => 'max:255', 
@@ -151,6 +164,7 @@ class ContactUsController extends Controller
 
             $contact->id=Auth::user()->id;   //becaues id of contactus is same as id of site that equal id of user
             $contact->address=trim($request->input('address'));
+            $contact->ar_address=trim($request->input('ar_address'));
 
             // data from google map
             $lat=trim($request->input('latitude'));
@@ -162,6 +176,8 @@ class ContactUsController extends Controller
             
             $contact->phone=trim($request->input('phone'));
             $contact->mobile=trim($request->input('mobile'));
+            $contact->ar_phone=trim($request->input('ar_phone'));
+            $contact->ar_mobile=trim($request->input('ar_mobile'));
             $contact->email=trim($request->input('email'));
             $contact->fax=trim($request->input('fax'));
             $contact->facebook=trim($request->input('facebook'));

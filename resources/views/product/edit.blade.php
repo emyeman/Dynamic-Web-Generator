@@ -26,12 +26,12 @@
             <label class='col-md-2'>Category</label>
             <div class='col-md-10 input-group'>            
                 <select class='form-control getrequest' id='category_id' name='category_id' >
-                    <option value="{{$category->id}}"> {{$category->name}}</option>
+                    <option value="{{$category->id}}"> {{$category->name}} &nbsp; {{$category->ar_name}}</option>
                     @if (Auth::user()->id == $category->site_id)
                         @foreach ($categories as $sel_category) 
                             <!-- for no repeat name of category-->
                             @if($category->name !=$sel_category->name)
-                                <option value="{{$sel_category->id}}">{{$sel_category->name}}</option>
+                                <option value="{{$sel_category->id}}">{{$sel_category->name}} &nbsp; {{$sel_category->ar_name}}</option>
                             @endif    
                         @endforeach 
                     @endif
@@ -43,12 +43,12 @@
             <label class='col-md-2'>Sub Category</label>
             <div class='col-md-10 input-group'>               
                 <select class='form-control' id='subcategory_id' name='subcategory_id'>
-                    <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                    <option value="{{$subcategory->id}}">{{$subcategory->name}} &nbsp; {{$subcategory->ar_name}}</option>
                      @if (Auth::user()->id == $subcategory->site_id)
                         @foreach ($subcategories as $sel_subcategory) 
                             <!-- ************for no repeat name of subcategory*****************-->
                              @if($subcategory->name !=$sel_subcategory->name)
-                                <option value="{{$sel_subcategory->id}}">{{$sel_subcategory->name}}</option>
+                                <option value="{{$sel_subcategory->id}}">{{$sel_subcategory->name}} &nbsp; {{$sel_subcategory->ar_name}}</option>
                             @endif
                         @endforeach 
                     @endif     
@@ -64,31 +64,50 @@
         <!-- end select of subcategory -->
 
         <div class='form-group'>
-            <label class='col-md-2'>Title</label>
+            <label class='col-md-2'>English Title *</label>
             <div class='col-md-10 input-group'>               
                 <input value='{{$product->name}}' class='form-control' name='title_product' type='text'/>
             </div>
         </div>
 
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Title *</label>
+            <div class='col-md-10 input-group'>               
+                <input value='{{$product->ar_name}}' class='form-control' name='ar_title_product' type='text'/>
+            </div>
+        </div>
+
         <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image)}}"></div>
         <div class='form-group'>
-            <label class='col-md-2'>Image</label>
+            <label class='col-md-2'>Image *</label>
             <div class='col-md-10 input-group'>                
                 <!-- <label class='form-control'>{{$product->image}}</label> -->
                 <input class='form-control' name='image_product' type='file' />
             </div>
         </div>  
         <div class='form-group'>
-            <label class='col-md-2'>Description</label>
+            <label class='col-md-2'>English Description *</label>
             <div class='col-md-10 input-group'>                
-                <textarea  class='form-control' name='description'>{{$product->description}}</textarea> 
+                <textarea  class='form-control' rows='5' name='description'>{{$product->description}}</textarea> 
+            </div>
+        </div>
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Description *</label>
+            <div class='col-md-10 input-group'>                
+                <textarea  class='form-control' rows='5' name='ar_description'>{{$product->ar_description}}</textarea> 
             </div>
         </div>  
 
         <div class='form-group'>
-            <label class='col-md-2'>Price</label>
+            <label class='col-md-2'>English Price *</label>
             <div class='col-md-10 input-group'>                
                 <input value="{{$product->price}}" class='form-control' name='price_product' type='double'/>
+            </div>
+        </div>  
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Price *</label>
+            <div class='col-md-10 input-group'>                
+                <input value="{{$product->ar_price}}" class='form-control' name='ar_price_product' type='double'/>
             </div>
         </div>     
         <span class='col-md-2'></span>
@@ -137,11 +156,11 @@
                 //   }   
                 // }
                          
-                showdata="<label class='form-control'>Old Your Select : {{$subcategory->name}}</label>";
+                showdata="<label class='form-control'>Old Your Select : {{$subcategory->name}}  {{$subcategory->ar_name}}</label>";
                 showdata+="<select class='form-control'id='subcategory_id' name='subcategory_id'>";
                     showdata+="<option value=''>Select SubCategory</option>";
                     for(i=0;i<data.length;i++){
-                        showdata+="<option value="+data[i]['id']+">"+data[i]['name']+"</option>";
+                        showdata+="<option value="+data[i]['id']+">"+data[i]['name']+"  "+data[i]['ar_name']+"</option>";
                     }      
                 showdata+="</select>";
                 $('#subcategorydata').html(showdata);

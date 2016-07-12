@@ -23,14 +23,29 @@
     {!!Form::open(['route'=>['contactus.update',$contact->id],'files'=>true,'method'=>'put']) !!}
         
         <div class='form-group'>
-            <label class='col-md-2'>Address:</label>
+            <label class='col-md-2'>En_Address:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                 @if($contact->address==NULL)
+                <input placeholder='PlZ,enter your address' class='form-control' name='address' type='text'/>
+                @else
                 <input value="{{$contact->address}}" class='form-control' name='address' type='text'/>
+                @endif
             </div>
         </div> 
         <div class='form-group'>
-            <label class='col-md-2'>Phone:</label>
+            <label class='col-md-2'>Ar_Address:</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                @if($contact->ar_address==NULL)
+                    <input placeholder='من فضلك ادخل عنوانك' class='form-control' name='ar_address' type='text'/>
+                @else
+                <input value="{{$contact->ar_address}}" class='form-control' name='ar_address' type='text'/>
+                @endif
+            </div>
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>En_Phone:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 @if($contact->phone==NULL)
@@ -41,13 +56,35 @@
             </div>
         </div> 
         <div class='form-group'>
-            <label class='col-md-2'>Mobile:</label>
+            <label class='col-md-2'>Ar_Phone:</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                @if($contact->ar_phone==NULL)
+                    <input placeholder='من فضلك ادخل التلفون' class='form-control' name='ar_phone' type='number'/>
+                @else
+                    <input value="{{$contact->ar_phone}}" class='form-control' name='ar_phone' type='number'/>
+                @endif
+            </div>
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>En_Mobile:</label>
             <div class='col-md-10 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
                 @if($contact->mobile==NULL)
                     <input placeholder='PlZ,enter your mobile' class='form-control' name='mobile' type='number'/>
                 @else
                     <input value="{{$contact->mobile}}" class='form-control' name='mobile' type='number'/>
+                @endif
+            </div>
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>Ar_Mobile:</label>
+            <div class='col-md-10 input-group'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>
+                @if($contact->ar_mobile==NULL)
+                    <input placeholder='من فضلك ادخل رقم الجوال' class='form-control' name='ar_mobile' type='number'/>
+                @else
+                    <input value="{{$contact->ar_mobile}}" class='form-control' name='ar_mobile' type='number'/>
                 @endif
             </div>
         </div> 

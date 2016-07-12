@@ -86,7 +86,7 @@
                             <label for="image" class="col-md-4 control-label">Image</label>
 
                             <div class="col-md-6">
-                            <label class="btn btn-primary btn-file">
+                            <label class="btn btn-info form-control btn-file">
                                 Browse <input id="image" type="file" name="image" style="display: none;">
                             </label>
 
@@ -101,9 +101,9 @@
 
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Register
+                            <div class="col-md-6 col-md-offset-4 ">
+                                <button type="submit" class="btn btn-primary form-control">
+                                    <i class="fa fa-btn fa-user "></i>Register
                                 </button>
                             </div>
                         </div>

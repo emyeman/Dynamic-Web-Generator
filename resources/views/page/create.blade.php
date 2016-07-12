@@ -44,7 +44,7 @@
         </div>
       </div>  
       <br><br><br>   
-      <textarea  name='content'>{{old('title')}}</textarea> 
+      <textarea  name='content' style="height:295px;">{{old('title')}}</textarea> 
     </div>   
     <br>
     <input type='submit' class='col-md-12 btn btn-primary' name='ok' value='ADD' />

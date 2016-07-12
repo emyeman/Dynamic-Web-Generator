@@ -34,7 +34,7 @@
                     @foreach ($subcategories as $subcategory) 
                         @if(Auth::user()->id == $subcategory->site_id)
                             @if($subcategory->category_id == NULL)
-                                <option  value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                <option  value="{{$subcategory->id}}">{{$subcategory->name}} &nbsp; &nbsp;{{$subcategory->ar_name}}</option>
                             @endif
                         @endif
                     @endforeach    
@@ -42,9 +42,15 @@
              </div>
         </div>
         <div class='form-group'>
-            <label class='col-md-2'>Title *</label>
+            <label class='col-md-2'>English Title *</label>
             <div class='col-md-10 input-group'>                
-                <input placeholder='title ...' class='form-control' name='title_subcategory' type='text' value="{{old('title_subcategory')}}"/>
+                <input placeholder='PLZ,enter title ...' class='form-control' name='title_subcategory' type='text' value="{{old('title_subcategory')}}"/>
+            </div>
+        </div> 
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Title *</label>
+            <div class='col-md-10 input-group'>                
+                <input placeholder='من فضلك ادخل اسم القسم الفرعى' class='form-control' name='ar_title_subcategory' type='text' value="{{old('ar_title_subcategory')}}"/>
             </div>
         </div>  
         <div class='form-group'>
@@ -54,9 +60,15 @@
             </div>
         </div>  
         <div class='form-group'>
-            <label class='col-md-2'>Description</label>
+            <label class='col-md-2'>English Description*</label>
             <div class='col-md-10 input-group'>                
-                <textarea placeholder='description ...' class='form-control' name='subdescription'>{{old('subdescription')}}</textarea> 
+                <textarea placeholder='PLZ,enter description ...' class='form-control' rows='3' name='subdescription'>{{old('subdescription')}}</textarea> 
+            </div>
+        </div>
+        <div class='form-group'>
+            <label class='col-md-2'>Arabic Description *</label>
+            <div class='col-md-10 input-group'>                
+                <textarea placeholder='من فضلك ادخل الوصف' class='form-control' rows='3' name='ar_subdescription'>{{old('ar_subdescription')}}</textarea> 
             </div>
         </div>      
         <span class='col-md-2'></span>

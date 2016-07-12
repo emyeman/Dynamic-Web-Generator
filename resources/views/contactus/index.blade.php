@@ -61,15 +61,36 @@
                     
                         <tr>
                             <td><b><span style="color:blue;">Address</span></b></td>
-                            <td>{{$contact->address}}</td>
+                            <td> 
+                                <table>
+                                    <tr>
+                                        <td>{{$contact->address}}</td>
+                                        <td>{{$contact->ar_address}}</td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                         <tr>
                             <td><b><span style="color:blue;">Phone</span></b></td>
-                            <td>{{$contact->phone}}</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>{{$contact->phone}}</td>
+                                        <td>{{$contact->ar_phone}}</td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                         <tr>
                             <td><b><span style="color:blue;">Mobile</span></b></td>
-                            <td>{{$contact->mobile}}</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>{{$contact->mobile}}</td>
+                                        <td>{{$contact->ar_mobile}}</td>
+                                    </tr>
+                                </table>
+                            </td>
                         </tr>
                         <tr>
                             <td><b><span style="color:blue;">E-mail</span></b></td>

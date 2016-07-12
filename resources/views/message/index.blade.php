@@ -6,17 +6,18 @@
 
 @section('content')
 	{!! Html::style('assets/css/table-scroll.css') !!}
-	<h2>Messages</h2>
+	<h2>All Messages</h2>
 	<div class="row">
         <div id="table-wrapper">
             <div id="table-scroll">
                 <table class='table table-hover' style="table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th width='20%'><span class="text">sender</span></th>
-                            <th width='15%'><span class="text">date</span></th>
-                            <th width='25%'><span class="text">subject</span></th>
-                            <th width='35%'><span class="text">message</span></th>
+                            <th width='15%'><span class="text">Sender</span></th>
+                            <th width='15%'><span class="text"> &nbsp; &nbsp; &nbsp; E-mail</span></th>
+                            <th width='15%'><span class="text"> &nbsp; &nbsp; &nbsp; Date</span></th>
+                            <th width='25%'><span class="text">Subject</span></th>
+                            <th width='30%'><span class="text">Message</span></th>
                             <th width='5%'></th>
                         </tr>
                     </thead>
@@ -27,10 +28,11 @@
 	                        @else
 	                        	<tr style='background-color:lightyellow;'>  
 	                       	@endif
-                                <td class='wrap'><a href='/message/{{$message->id}}'>{{$message->name}}<br><small>{{$message->email}}</small></a></td>
+                                <td class='wrap'><a href='/message/{{$message->id}}'>{{$message->name}}</a></td>
+                                <td class='wrap'><a href='/message/{{$message->id}}'>{{$message->email}}</a></td>
                                 <td>{{$message->created_at}}</td>
                                 <td class='wrap'><a href='/message/{{$message->id}}'>{{$message->subject}}</a></td>
-                                <td class='wrap'>{{substr($message->content,0,100)}}</td>
+                                <td class='wrap'>{{substr($message->content,0,50)}}</td>
                                 
                                 <td><span class="glyphicon glyphicon-remove delete" id="{{$message->id}}"></span></td>
                             </tr>

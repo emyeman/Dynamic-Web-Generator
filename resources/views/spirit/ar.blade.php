@@ -536,7 +536,6 @@
 <!-- ================ -->
 @if($categories) 
 
-@if($products)
     <div class="section">
             <div class="container">
                 <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
@@ -553,14 +552,14 @@
                                 @foreach($categories as $category)                                                                                            
                                 <li class="dropdown">
                                     <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        {{$category->name}}
+                                        {{$category->ar_name}}
                                         <span class="caret"></span>
                                     </a>
                                     <?php $allsub='';?>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                          @foreach($subcategories as $subcategory)
                                             @if($category->id == $subcategory->category_id)
-                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->name}}</a></li>
+                                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">{{$subcategory->ar_name}}</a></li>
                                             <?php 
                                                 $sub='.'.$subcategory->name;
                                                 $allsub=$sub.','.$allsub;
@@ -589,10 +588,10 @@
                                         <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                         <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
                                             <i class="fa fa-search-plus"></i>
-                                            <span>{{$subcategory->name}}</span>
+                                            <span>{{$subcategory->ar_name}}</span>
                                         </a>
                                     </div>
-                                    <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$name_product[$index_prod]}}</a>
+                                    <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$ar_name_product[$index_prod]}}</a>
                                 </div>
                                 <!-- Modal -->
                                 <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
@@ -600,16 +599,16 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلاق</span></button>
-                                                <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$name_product[$index_prod]}}</h4>
+                                                <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$ar_name_product[$index_prod]}}</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h3><u>{{$name_product[$index_prod]}}</u></h3>
+                                                <h3><u>{{$ar_name_product[$index_prod]}}</u></h3>
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p>تفصيل وصف {{$description_product[$index_prod]}}</p>
+                                                        <p>تفصيل وصف {{$ar_description_product[$index_prod]}}</p>
                                                         <hr/>
-                                                        <h3><u>السعر {{$name_product[$index_prod]}}</u></h3>
-                                                        <p>{{$price_product[$index_prod]}} جنيها</p>
+                                                        <h3><u>السعر {{$ar_name_product[$index_prod]}}</u></h3>
+                                                        <p>{{$ar_price_product[$index_prod]}} جنيها</p>
                                                     </div>
                                                     <div class="col-md-1">
                                                     </div>
@@ -639,84 +638,6 @@
             </div>
         </div>
         
-@else
-<div class="section">
-<div class="container">
-    <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
-    <div class="separator"></div>
-    <!-- <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p> -->
-    <br>            
-    <div class="row object-non-visible" data-animation-effect="fadeIn">
-        <div class="col-md-12">
-
-            <!-- isotope filters start -->
-            <div class="filters text-center">
-                <ul class="nav nav-pills">
-                    <li class="active"><a href="#" data-filter="*"> كل <?php echo $mygallery;?> </a></li>
-                    @foreach($categories as $category) 
-
-                        <li><a href="#" data-filter=".{{str_replace(' ', '', str_replace('&', '', $category->name))}}">{{$category->name}}</a></li>
-                    @endforeach
-                    <!-- <li><a href="#" data-filter=".web-design">Web design</a></li>
-                    <li><a href="#" data-filter=".app-development">App development</a></li>
-                    <li><a href="#" data-filter=".site-building">Site building</a></li> -->
-                </ul>
-            </div>
-            <!-- isotope filters end -->
-
-            <!-- portfolio items start -->
-            <div class="isotope-container row grid-space-20">
-<!-- start emyyyyyyyyyyyyyyyy -->
-                <?php $flagproject=1?>
-                @foreach($categories as $category)
-                @foreach($subcategories as $subcategory)
-                    @if($category->id == $subcategory->category_id)
-                <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $category->name))}}">
-                    <div class="image-box">
-                    
-                        <div class="overlay-container">
-                            <img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
-                            <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
-                                <i class="fa fa-search-plus"></i>
-                                <span>{{$subcategory->name}}</span>
-                            </a>
-                        </div>
-                        <a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">{{$subcategory->name}}</a>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="project-<?php echo $flagproject?>" tabindex="-1" role="dialog" aria-labelledby="project-<?php echo $flagproject?>-label" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">اغلاق</span></button>
-                                    <h4 class="modal-title" id="project-<?php echo $flagproject?>-label">{{$subcategory->name}}</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <h3>تفاصيل وصف {{$subcategory->name}}</h3>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p>{{$subcategory->description}}</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <img src="{{ url('/assets/images/'.$subcategory->image)}}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">اغلاق</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal end -->
-                    </div>
-                    <?php $flagproject+=1?>
-                    @endif
-                    @endforeach
-                @endforeach
-<!-- endemyyyyyyyyyyyyyyyy -->
-
-
 
 <!-- emyyyyyyyyy Put part in show_ar -->
             </div>
@@ -725,7 +646,6 @@
     </div>
 </div>
 </div>
-@endif
 <!-- section end -->
 <!-- 
 <div class="line">
@@ -800,9 +720,9 @@
                 <div class="footer-content">
                     <p class="large"> </p>
                     <ul class="list-icons">
-                        <li><i class="fa fa-map-marker pr-10"></i>{{$contact->address}}</li>
-                        <li><i class="fa fa-phone pr-10"></i> {{$contact->phone}}</li>
-                        <li><i class="fa fa-fax pr-10"></i>{{$contact->mobile}}</li>
+                        <li><i class="fa fa-map-marker pr-10"></i>{{$contact->ar_address}}</li>
+                        <li><i class="fa fa-phone pr-10"></i> {{$contact->ar_phone}}</li>
+                        <li><i class="fa fa-fax pr-10"></i>{{$contact->ar_mobile}}</li>
                         <li><i class="fa fa-envelope-o pr-10"></i>{{$contact->email}}</li>
                     </ul>
                     <ul class="social-links">
@@ -844,22 +764,30 @@
                     </div>
                 @endif
                 <div class="footer-content">
-                    {!!Form::open(['route'=>'message.store','method'=>'post','role'=>'form','id'=>'footer-form']) !!}
+                    {!!Form::open(['route'=>'message.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
                         <div class="form-group has-feedback">
-                            <label class="sr-only" for="name2">Name</label>
-                            <input type="text" class="form-control" id="name2" placeholder="الأسم" name="name2" required>
+                            <label class="sr-only" for="name2">اسم المرسل</label>
+                            <input type="text" class="form-control" id="name2" placeholder="اسم المرسل" name="name" required value="{{old('name')}}">
                             <i class="fa fa-user form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="sr-only" for="email2">Email address</label>
-                            <input type="email" class="form-control" id="email2" placeholder="بريدك الالكتروني" name="email2" required>
+                            <label class="sr-only" for="email2">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="email2" placeholder="البريد اﻹلكتروني" name="email" required value="{{old('email')}}">
                             <i class="fa fa-envelope form-control-feedback"></i>
                         </div>
                         <div class="form-group has-feedback">
-                            <label class="sr-only" for="message2">Message</label>
-                            <textarea class="form-control" rows="8" id="message2" placeholder="الرسالة" name="message2" required></textarea>
+                            <label class="sr-only" for="email2">العنوان</label>
+                            <input type="text" class="form-control" id="email2" placeholder="العنوان" name="subject" required value="{{old('subject')}}">
+                            <i class="fa fa-envelope form-control-feedback"></i>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="sr-only" for="message2">الرساله</label>
+                            <textarea class="form-control" rows="8" id="message2" placeholder="محتوى الرساله" name="content" required>{{old('content')}}</textarea>
                             <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
+                        @foreach($mysite as $site)
+                             <input type="hidden" class="form-control" id="site_id"  name="site_id"  value="{{$site->id}}">
+                         @endforeach
                         <input type="submit" value="أرسل" class="btn btn-default">
                         <br/><br/>
                     {!!Form::close() !!}
@@ -869,12 +797,16 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div id="googleMap" style="width:100%;height:500px;"></div>
-            <?php 
-                $lat=$contact->lat;
-                $lng=$contact->lng;
-            ?>
-         </div>
+      
+            <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+            <div style='height:440px;width:100%;'>
+                <div id='gmap_canvas' style='height:440px;width:100%;'>
+                    
+                </div><style>#gmap_canvas img{max-width:none!important;background:none!important;}</style>
+
+            </div>
+            <script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng({{$contact->lat}},{{$contact->lng}}),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{$contact->lat}},{{$contact->lng}})});infowindow = new google.maps.InfoWindow({content:'<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;العنوان</strong><br>{{$contact->ar_address}}<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+        </div>
     </div>
   @endforeach  
 </div>
@@ -887,7 +819,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="text-center">حقوق الملكية محفوظة ل  <a target="_blank" href="http://www.businessmonk.com">Businessmonk</a>.</p>            </div>
+                <p class="text-center">حقوق الملكية محفوظة ل  <a target="_blank" href="http://www.businessmonk.com">Businessmonk</a>.</p>  </div>
         </div>
     </div>
 </div>
@@ -896,23 +828,4 @@
 </footer>
 <!-- footer end -->
 
-<!-- *********************************************************************  -->
-        <script
-                src="http://maps.googleapis.com/maps/api/js">
-        </script>
-
-        <script>
-        console.log(<?php echo $lat;?>);
-        console.log(<?php echo $lng;?>);
-            function initialize() {
-                var mapProp = {
-                    center:new google.maps.LatLng(<?php echo $lat;?>,<?php echo $lng;?>),
-                    zoom:5,
-                    mapTypeId:google.maps.MapTypeId.ROADMAP
-                };
-                var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
-
-        </script>
 @include('../spirit/footer') 

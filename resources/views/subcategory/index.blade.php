@@ -28,10 +28,12 @@
                 <table class='table table-hover' style="table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th width='20%'><span class="text">Category</span></th>
-                            <th width='30%'><span class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Image</span></th>
-                            <th width='20%'><span class="text">Sub Category</span></th>
-                            <th width='30%'><span class="text">Description</span></th>
+                            <th width='30%'><span class="text">Category</span></th>
+                            <th width='15%'><span class="text">&nbsp;&nbsp; Image</span></th>
+                            <th width='20%'><span class="text">&nbsp; En_Title</span></th>
+                            <th width='20%'><span class="text">Ar_Title</span></th>
+                            <th width='30%'><span class="text">En_Description</span></th>
+                            <th width='30%'><span class="text">Ar_Description</span></th>
                             <th width='20%'><span class="text">Publish At</span></th>
                             <th width='5%'></th>
                             <th width='5%'></th> <!-- edit operation -->
@@ -44,7 +46,7 @@
                             <!-- for obtain name of category  -->
                             @foreach ($categories as $category)
                                 @if($category->id==$subcategory->category_id)
-                                <td class='wrap'><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$category->name}}<a/></td>
+                                <td class='wrap'><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$category->name}} &nbsp; {{$category->ar_name}}<a/></td>
                              @endif
                             @endforeach
                                 <td>
@@ -52,8 +54,10 @@
                                         <img src="{{url('/assets/images/'.$subcategory->image)}}" width='100px' height='100px'>
                                     </a>
                                  </td>   
-                                <td class='wrap'><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$subcategory->name}}<a/></td>
-                                <td class='wrap'>{{substr($subcategory->description,0,100)}}</td>
+                                <td class='wrap'><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$subcategory->name}}<a/></td><td class='wrap'>
+                                <a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$subcategory->ar_name}}<a/></td>
+                                <td class='wrap'>{{substr($subcategory->description,0,50)}}</td>
+                                <td class='wrap'>{{substr($subcategory->ar_description,0,50)}}</td>
                                 <td>{{$subcategory->created_at}}</td>
                                 <td>
                                     <a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">

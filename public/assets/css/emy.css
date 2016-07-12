@@ -157,3 +157,7 @@ hr {
     padding: 15px 0px;
     font-family: 'Wire One', Helvetica, Arial, sans-serif;
 }
+.mapgoogle {
+    width: 100%;
+    float: right;
+}

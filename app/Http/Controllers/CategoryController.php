@@ -20,7 +20,7 @@ class CategoryController extends Controller
 	public function index(){
         if (Auth::user()){
             // select categories of this only site;
-            $categories=DB::table('categories')->where('site_id',Auth::user()->id)->get();
+            $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
 
             return  view ('category.index',compact('categories'));
        } else{
@@ -49,12 +49,16 @@ class CategoryController extends Controller
             $this->validate($request, [
                 'title_category' => 'required|max:255',
                 'description' => 'required',
+                'ar_title_category' => 'required|max:255',
+                'ar_description' => 'required',
                 'image_category' => 'required',                 
             ]);
 
             $category= new Category;
             $category->name=trim($request->input('title_category'));
             $category->description=trim($request->input('description'));
+            $category->ar_name=trim($request->input('ar_title_category'));
+            $category->ar_description=trim($request->input('ar_description'));
             // for upload image
             if(Input::file('image_category')){
                 // echo "image_category";die();
@@ -116,11 +120,15 @@ class CategoryController extends Controller
             $this->validate($request, [
                 'title_category' => 'required|max:255',
                 'description' => 'required',
+                'ar_title_category' => 'required|max:255',
+                'ar_description' => 'required',
                 // 'image_category' => 'required',                 
             ]);
 
             $category->name=trim($request->input('title_category'));
             $category->description=trim($request->input('description'));
+            $category->ar_name=trim($request->input('ar_title_category'));
+            $category->ar_description=trim($request->input('ar_description'));
             // for upload image
             $old_image=$category->image; 
             if(Input::file('image_category')){
