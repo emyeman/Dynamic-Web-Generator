@@ -752,27 +752,30 @@
                     </div>
                 @endif
                 <div class="footer-content">
-                    {!!Form::open(['route'=>'message.store','method'=>'post','role'=>'form','id'=>'footer-form']) !!}
-                        <div class="form-group has-feedback">
-                            <label class="sr-only" for="name2">Name</label>
-                            <input type="text" class="form-control" id="name2" placeholder="Name" name="name" required value="{{old('name')}}">
-                            <i class="fa fa-user form-control-feedback"></i>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label class="sr-only" for="email2">Email address</label>
-                            <input type="email" class="form-control" id="email2" placeholder="Enter email" name="email" required value="{{old('email')}}">
-                            <i class="fa fa-envelope form-control-feedback"></i>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label class="sr-only" for="email2">Subject</label>
-                            <input type="text" class="form-control" id="subject2" placeholder="Subject" name="subject" required value="{{old('subject')}}">
-                            <i class="fa fa-envelope form-control-feedback"></i>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <label class="sr-only" for="message2">Message</label>
-                            <textarea class="form-control" rows="8" id="message2" placeholder="Message" name="content" required>{{old('name')}}</textarea>
-                            <i class="fa fa-pencil form-control-feedback"></i>
-                        </div>
+                    {!!Form::open(['route'=>'message.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="name2">Name</label>
+                        <input type="text" class="form-control" id="name2" placeholder="Name" name="name" required value="{{old('name')}}">
+                        <i class="fa fa-user form-control-feedback"></i>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="email2">Email address</label>
+                        <input type="email" class="form-control" id="email2" placeholder="Enter email" name="email" required value="{{old('email')}}">
+                        <i class="fa fa-envelope form-control-feedback"></i>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="email2">Subject</label>
+                        <input type="text" class="form-control" id="subject2" placeholder="Subject" name="subject" required value="{{old('subject')}}">
+                        <i class="fa fa-envelope form-control-feedback"></i>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="sr-only" for="message2">Message</label>
+                        <textarea class="form-control" rows="8" id="message2" placeholder="Message" name="content" required>{{old('name')}}</textarea>
+                        <i class="fa fa-pencil form-control-feedback"></i>
+                    </div>
+                        @foreach($mysite as $site)
+                            <input type="hidden" class="form-control" id="site_id"  name="site_id"  value="{{$site->id}}">
+                        @endforeach
                         <input type="submit" value="Send" class="btn btn-default">
                         <br/><br/>
                     {!!Form::close() !!}

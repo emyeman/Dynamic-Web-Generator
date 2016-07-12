@@ -33,7 +33,8 @@
           </a>
         </div>
       </div>
- --}}    @endforeach  
+ --}}    
+ @endforeach  
   </div>
   <script type="text/javascript">
     var id={{Auth::user()->site->template_id}};

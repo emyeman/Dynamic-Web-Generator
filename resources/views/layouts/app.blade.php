@@ -257,7 +257,7 @@
                     <li class="dropdown user">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!--<img alt="" src="assets/img/avatar1_small.jpg" />-->
-                            <i><img id="profile" class="img-circle" src="{{ url('/') }}{{ Auth::user()->image }}" height='20px' width='10px' alt=""></i>
+                            <i><img id="profile" class="img-circle" src="{{ url('/') }}{{ Auth::user()->image }}" height='50px' width='40px' alt=""></i>
                             <span class="username">{{ Auth::user()->name }}</span>
                             <i class="icon-caret-down small"></i>
                         </a>

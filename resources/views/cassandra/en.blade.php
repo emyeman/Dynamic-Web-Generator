@@ -632,7 +632,7 @@
                 </div>
             @endif
             <div class="footer-content">
-                {!!Form::open(['route'=>'message.store','method'=>'post','role'=>'form','id'=>'footer-form']) !!}
+                {!!Form::open(['route'=>'message.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="name2">Name</label>
                         <input type="text" class="form-control" id="name2" placeholder="Name" name="name" required value="{{old('name')}}">
@@ -653,6 +653,9 @@
                         <textarea class="form-control" rows="8" id="message2" placeholder="Message" name="content" required>{{old('name')}}</textarea>
                         <i class="fa fa-pencil form-control-feedback"></i>
                     </div>
+                    @foreach($mysite as $site)
+                        <input type="hidden" class="form-control" id="site_id"  name="site_id"  value="{{$site->id}}">
+                    @endforeach
                     <input type="submit" value="Send" class="btn btn-default">
                 {!!Form::close() !!}
             </div>
@@ -668,7 +671,7 @@
                         
                     </div><style>#gmap_canvas img{max-width:none!important;background:none!important;}</style>
                 </div>   
-                <script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng({{$contact->lat}},{{$contact->lng}}),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{$contact->lat}},{{$contact->lng}})});infowindow = new google.maps.InfoWindow({content:'<strong>Title</strong><br>{{$contact->address}}<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+                <script type='text/javascript'>function init_map(){var myOptions = {zoom:13,center:new google.maps.LatLng({{$contact->lat}},{{$contact->lng}}),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{$contact->lat}},{{$contact->lng}})});infowindow = new google.maps.InfoWindow({content:'<strong>Title</strong><br>{{$contact->address}}<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
              </div>
         </div>
         @endforeach
