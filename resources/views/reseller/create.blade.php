@@ -1,14 +1,14 @@
-@extends('layouts.outside')
+@extends('layouts.reseller')
 
 @section('content')
 
 <div class="container" >
     <div class="row">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="panel panel-default" style="margin-top:120px;overflow: auto;">
-                <div class="panel-heading">Register</div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">create user</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
+                     {!!Form::open(['route'=>'reseller.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -103,11 +103,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Register
+                                    <i class="fa fa-btn fa-user"></i> create
                                 </button>
                             </div>
                         </div>
-                    </form>
+                        {!!Form::close() !!}
                 </div>
             </div>
         </div>

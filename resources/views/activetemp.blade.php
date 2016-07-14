@@ -1,6 +1,7 @@
 @extends('layouts.outside')
 
 @section('content')
+
   <h2 class='page-header col-md-8 col-md-offset-2' style="margin-top:100px;">Templates</h2>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-5">
@@ -9,6 +10,7 @@
 		  @endif
     </div>
   </div>
+
   <div class="row col-md-10 col-md-offset-2">
     @foreach($temps as $temp)
 <a href="/activetemp/{{ $temp->id }}">
@@ -34,10 +36,7 @@
         </div>
       </div>
  --}}    
- @endforeach  
+ @endforeach
+
   </div>
-  <script type="text/javascript">
-    var id={{Auth::user()->site->template_id}};
-    document.getElementById(id).style.border = '5px solid lightblue';
-  </script>
 @endsection

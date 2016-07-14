@@ -40,7 +40,8 @@ class SiteController extends Controller
      }
 
 
-     public function create(){
+     public function create()
+     {
         $site = Site::find(Auth::user()->id);
         if($site == null)
         {
@@ -65,8 +66,18 @@ class SiteController extends Controller
             'background_image' => 'min:100'
         ]);
         $site = new Site($request->all());
-        $site->id = Auth::user()->id;
-        $site->user_id = Auth::user()->id;
+        if(Auth::user()->status == 'reseller')
+        {
+            $site->id = $request->all()['site_id'];
+            $site->user_id = $request->all()['site_id'];
+        }
+        else
+        {
+            $site->id =Auth::user()->id;
+            $site->user_id = Auth::user()->id;
+        }
+        
+        
         $site->template_id =SiteController::getDefaultTemplate();; 
         $imagePath='';
         if(Input::hasFile('background_image')){  
@@ -80,11 +91,15 @@ class SiteController extends Controller
         $site->background_image = $imagePath;
         if($site->addSite($site)) 
         {
-            // Session::put('site_id', $site->id);
-            // return  redirect('/site');
-            return redirect()->action('TemplateController@index');
-    
-            // return  redirect('/dashboard');
+            if(Auth::user()->status == 'reseller')
+            {
+                return redirect()->action('ResellerController@index');    
+            }
+            else
+            {
+                return redirect()->action('TemplateController@index');       
+            }
+            
         }
         return redirect('site.create');
      }

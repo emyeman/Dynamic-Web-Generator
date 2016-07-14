@@ -13,7 +13,10 @@
 
 Route::auth();
 // Route::get('/home', 'HomeController@index');
-Route::get('/', 'HomeController@index');
+
+Route::get('/', 'HomeController@index');	
+
+
 
 Route::post('/message','MessageController@store')->name('message.store');;
 // The user is logged in...
@@ -68,12 +71,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/message/unseen','MessageController@unseen');
 	Route::resource('/message','MessageController', ['except' => ['store']]);
 
+	Route::get('/reseller/{user}/edit','ResellerController@edit');
+	Route::patch('/reseller/{user}','ResellerController@update');
+
 	Route::resource('/reseller', 'ResellerController', ['only' => [
-    'index', 'show' , 'create' , 
+    'index', 'show' , 'create' , 'store', 'update',
 	]]);
 
 	Route::resource('/reseller', 'ResellerController', ['except' => [
-    	'create', 'store', 'update', 'destroy'
+    	'create' , 'destroy',
 	]]);
 
 	if (Request::ajax()){

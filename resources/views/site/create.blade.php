@@ -8,7 +8,6 @@
 <h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">Create <font color="red">Website</font></h5>
 <hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
 
-
 <div class="col-md-10 col-md-offset-1">
 
 
@@ -92,6 +91,9 @@
 
             </div>
         </div>
+
+        <input type="hidden" value="{{ Session::get('id') }}" name="site_id"/>
+
         <div class='form-group'>
             <label class='col-md-2'></label>
             <div class='col-md-8 input-group'>

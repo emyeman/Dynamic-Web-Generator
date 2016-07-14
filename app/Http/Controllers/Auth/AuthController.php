@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Support\Facades\Auth;
 
 use App\User;
 use Validator;
@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Support\Facades\Input;
+
+
 
 use Illuminate\Http\Request;
 
@@ -43,6 +45,18 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+
+    }
+
+    
+
+    public function redirectPath()
+    {
+        // Logic that determines where to send the user
+        if (\Auth::user()->status == 'reseller') {
+            return '/reseller';
+        }
+        return '/';
     }
 
     /**

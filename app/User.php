@@ -13,7 +13,7 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
-        'name', 'email', 'password','mobile','image',
+        'name', 'email' , 'user_id' ,'password','mobile','image',
     ];
 
     /**
@@ -36,4 +36,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(User::class);
     }
+
+    public function addUser(User $user)
+    {
+        # code...
+        return $user->save();
+    }
+
 }
