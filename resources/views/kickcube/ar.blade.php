@@ -126,36 +126,42 @@
             <div class="col-md-5">
               <!-- Start Social Links -->
               <ul class="social-list">
+              @if(!empty($contacts[0]->facebook))
                 <li>
                   <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
                 </li>
+              @endif
+              @if(!empty($contacts[0]->twitter))
                 <li>
                   <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
                 </li>
+              @endif
+              @if(!empty($contacts[0]->google_plus)) 
                 <li>
                   <a class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a>
                 </li>
-                <li>
-                  <a class="dribbble itl-tooltip" data-placement="bottom" title="Dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
+              @endif
+              @if(!empty($contacts[0]->linkedin)) 
                 <li>
                   <a class="linkdin itl-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
                 </li>
+              @endif
+              @if(!empty($contacts[0]->flickr))
                 <li>
                   <a class="flickr itl-tooltip" data-placement="bottom" title="Flickr" href="#"><i class="fa fa-flickr"></i></a>
                 </li>
-                <li>
-                  <a class="tumblr itl-tooltip" data-placement="bottom" title="Tumblr" href="#"><i class="fa fa-tumblr"></i></a>
-                </li>
+              @endif
+
+              @if(!empty($contacts[0]->instagram))
                 <li>
                   <a class="instgram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
                 </li>
-                <li>
-                  <a class="vimeo itl-tooltip" data-placement="bottom" title="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                </li>
+              @endif
+              @if(!empty($contacts[0]->skype))
                 <li>
                   <a class="skype itl-tooltip" data-placement="bottom" title="Skype" href="#"><i class="fa fa-skype"></i></a>
                 </li>
+              @endif
               </ul>
               <!-- End Social Links -->
             </div>
@@ -181,8 +187,10 @@
             <!-- End Toggle Nav Link For Mobiles -->
             @if(isset($header))
             <a class="navbar-brand" href="index.html">
-              <img alt="" src="{{ url('/') }}{{ $header->logo }}" width="114" height="23">
+              <img alt="" style="width:50px;height:50px;" src="{{ url('/') }}{{ $header->logo }}">
+              <span style="font-size:32px;" class="comp_name">{{ $header->ar_company_name }}</span>
             </a>
+
             @endif
           </div>
           <div class="navbar-collapse collapse">
@@ -418,8 +426,7 @@
                 <h3 class="animated3">
                                 <span>{{ $crusal->ar_description }}</span>
                               </h3>
-                <p class="animated4"><a href="#" class="slider btn btn-system btn-large">تأكد الان</a>
-                </p>
+        
               </div>
             </div>
           </div>
@@ -435,8 +442,7 @@
                 <h3 class="animated5">
                               <span>{{ $crusal->ar_description }}</span>
                             </h3>
-                <p class="animated6"><a href="#" class="slider btn btn-system btn-large">اشتري الان</a>
-                </p>
+              
               </div>
             </div>
           </div>
@@ -619,8 +625,6 @@
 
 
           <!-- Start Buttons -->
-          <a href="#" class="btn-system btn-large"><i class="fa fa-tasks"></i> المميزات الحصريه</a>
-          <a href="#" class="btn-system btn-large btn-wite"><i class="fa fa-download"></i> للشراء هذه</a>
 
         </div>
         <!-- End Section Content -->
@@ -643,7 +647,7 @@
         <h1>اخر <strong>اعمالنا</strong></h1>
       </div>
       <!-- End Big Heading -->
-        <p class="title-desc text-center">الجنود. أسر مسؤولية الساحل بالإنزال. بل ومن بالعمل تزامناً بريطانيا،. ٣٠ ويتّفق الحكومة بريطانيا-فرنسا تلك</p>
+        <p class="title-desc text-center"></p>
 
       <!-- Start Recent Projects Carousel -->
    
@@ -662,7 +666,7 @@
                             <li>
                                 <div class="dropdown">
                                     <button class="btn-system btn-medium border-btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".web" class="active">{{ $cat_and_subcats->name }}</a>
+                                        <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ $cat_and_subcats->name }}</a>
                                         <span class="caret"></span>
                                     </button>
 
@@ -698,7 +702,7 @@
                   @foreach($cat_and_subcats->subcategories as $subcategory)
                     @foreach($subcategory->products as $product)
 
-                <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }}">
+                <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }} {{ $cat_and_subcats->name }}">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                  <a class="lightbox" title="This is an image title" href="img/portfolio/1.jpg" data-lightbox-gallery="gallery1">
@@ -779,7 +783,6 @@
                     <div class="modal-body">
                       <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $new->image }}" alt="" ></p><br>
                       <p> {{ $new->ar_description }}</p><br>
-                      <p><b><a href="#">لزياره الموقع</a></b></p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">اغلاق</button>

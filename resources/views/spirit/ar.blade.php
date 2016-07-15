@@ -252,7 +252,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 id="about" class="title text-center"><?php echo $myabout; ?></h1>
+            <h1 id="about" class="title text-center">عن الشركه</h1>
             <!-- <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p> -->
             <div class="space"></div>
             <div class="row">
@@ -290,7 +290,7 @@
 @if(isset($promotions) && $promotions != null)
 <div class="section translucent-bg bg-image-2 pb-clear" style="background: url('{{ $mysite[0]->background_image }}') 50% 0px no-repeat;">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 id="promotion" class="title text-center"><?php echo $mypromotion;?></h1>
+    <h1 id="promotion" class="title text-center">العروض</h1>
     <div class="space"></div>
     <div id="move_p" class="carousel slide" data-ride="carousel">
 
@@ -310,10 +310,17 @@
                 </div>
                 <div class="col-md-offset-2"></div>
                 <div class="col-md-4 col-md-push-2">
-                    <div class="space"></div>
-                    <div class="space"></div>
-                    <div class="space"></div>
-                    <p class="text-center">{{ $promotion->ar_description }}</p>
+                    <div class="space"><p class="text-center">
+                                        {{ $promotion->ar_description }}
+                                        </p>
+                                        </div>
+
+                                        <div class="space"><span>من:</span>
+                                        {{ $promotion->start_date }} 
+                                        </div>
+                                        <div class="space"><span>الي:</span>
+                                        {{ $promotion->end_date }}
+                                        </div>
                     <div class="space"></div>
                     <div>
                         <!-- <p><a class="btn view center-block" data-toggle="modal" data-target="#promotion-1" role="button">Know More</a></p> -->
@@ -468,7 +475,7 @@
 @if(isset($news) && $news != null)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>
+    <h1 id="news"  class="text-center title">اخر اخبارنا</h1>
     <div class="space"></div>
     <!-- <p class="lead text-center">Know what is always new with us</p> -->
 </div>
@@ -538,7 +545,7 @@
 
     <div class="section">
             <div class="container">
-                <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
+                <h1 class="text-center title" id="gallery">منتجاتنا</h1>
                 <div class="separator"></div>
                 <!-- <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p> -->
                 <br>            
@@ -712,7 +719,7 @@
 @if($contacts)    
 <div class="footer section">
     <div class="container">
-        <h1 class="title text-center" id="contact"><?php echo $mycontact;?></h1>
+        <h1 class="title text-center" id="contact">اتصل بنا</h1>
         <div class="space"></div>
         <div class="row">
             <div class="col-sm-6">

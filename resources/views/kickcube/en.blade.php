@@ -120,37 +120,43 @@
             <!-- .col-md-6 -->
             <div class="col-md-5">
               <!-- Start Social Links -->
-              <ul class="social-list">
+               <ul class="social-list">
+              @if(!empty($contacts[0]->facebook))
                 <li>
                   <a class="facebook itl-tooltip" data-placement="bottom" title="Facebook" href="#"><i class="fa fa-facebook"></i></a>
                 </li>
+              @endif
+              @if(!empty($contacts[0]->twitter))
                 <li>
                   <a class="twitter itl-tooltip" data-placement="bottom" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
                 </li>
+              @endif
+              @if(!empty($contacts[0]->google_plus)) 
                 <li>
                   <a class="google itl-tooltip" data-placement="bottom" title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a>
                 </li>
-                <li>
-                  <a class="dribbble itl-tooltip" data-placement="bottom" title="Dribble" href="#"><i class="fa fa-dribbble"></i></a>
-                </li>
+              @endif
+              @if(!empty($contacts[0]->linkedin)) 
                 <li>
                   <a class="linkdin itl-tooltip" data-placement="bottom" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
                 </li>
+              @endif
+              @if(!empty($contacts[0]->flickr))
                 <li>
                   <a class="flickr itl-tooltip" data-placement="bottom" title="Flickr" href="#"><i class="fa fa-flickr"></i></a>
                 </li>
-                <li>
-                  <a class="tumblr itl-tooltip" data-placement="bottom" title="Tumblr" href="#"><i class="fa fa-tumblr"></i></a>
-                </li>
+              @endif
+
+              @if(!empty($contacts[0]->instagram))
                 <li>
                   <a class="instgram itl-tooltip" data-placement="bottom" title="Instagram" href="#"><i class="fa fa-instagram"></i></a>
                 </li>
-                <li>
-                  <a class="vimeo itl-tooltip" data-placement="bottom" title="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                </li>
+              @endif
+              @if(!empty($contacts[0]->skype))
                 <li>
                   <a class="skype itl-tooltip" data-placement="bottom" title="Skype" href="#"><i class="fa fa-skype"></i></a>
                 </li>
+              @endif
               </ul>
               <!-- End Social Links -->
             </div>
@@ -174,8 +180,10 @@
             <!-- End Toggle Nav Link For Mobiles -->
              @if(isset($header))
                 <a class="navbar-brand" href="#">
-                  <img alt="" src="{{ url('/') }}{{ $header->logo }}">
+                  <img style="width:50px;height:50px;" alt="" src="{{ url('/') }}{{ $header->logo }}">
+                  <span style="font-size:32px;" class="comp_name">{{ $header->company_name }}</span>
                 </a>
+
             @endif
 
           </div>
@@ -420,8 +428,6 @@
                     <h3 class="animated3">
                                     <span>{{ $crusal->description }}</span>
                                   </h3>
-                    <p class="animated4"><a href="#" class="primary slider btn btn-system btn-large">Check Now</a>
-                    </p>
                   </div>
                 </div>
               </div>
@@ -436,8 +442,7 @@
                     <h3 class="animated3">
                                     <span>{{ $crusal->description }}</span>
                                   </h3>
-                    <p class="animated4"><a href="#" class="primary slider btn btn-system btn-large">Check Now</a>
-                    </p>
+          
                   </div>
                 </div>
               </div>
@@ -617,8 +622,7 @@
 
 
           <!-- Start Buttons -->
-          <a href="#" class="primary btn-system btn-large"><i class="fa fa-tasks"></i> Check Out Features</a>
-          <a href="#" class="primary btn-system btn-large btn-wite"><i class="fa fa-download"></i> Purchase This Now</a>
+          
 
         </div>
         <!-- End Section Content -->
@@ -643,8 +647,7 @@
       </div>
       <!-- End Big Heading -->
 
-      <p class="text-center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-        <br/>veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+      <p class="text-center"></p>
 
 
       <!-- Start Recent Projects Carousel -->
@@ -674,7 +677,7 @@
                             <li>
                                 <div class="dropdown">
                                     <button class="btn-system btn-medium border-btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".web" class="active">{{ str_replace(' ', '', $cat_and_subcats->name) }}</a>
+                                        <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ str_replace(' ', '', $cat_and_subcats->name) }}</a>
                                         <span class="caret"></span>
                                     </button>
 
@@ -698,7 +701,7 @@
                   @foreach($cat_and_subcats->subcategories as $subcategory)
                     @foreach($subcategory->products as $product)
 
-                <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }}">
+                <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }} {{ $cat_and_subcats->name }}">
                     <div class="portfolio-item">
                         <div class="hover-bg">
                  <a class="lightbox" title="This is an image title" href="img/portfolio/1.jpg" data-lightbox-gallery="gallery1">
@@ -775,7 +778,7 @@
                     <div class="modal-body">
                       <p><img class="img-responsive" src="{{ url('/assets/images/')}}{{ $new->image }}" alt="" ></p><br>
                       <p>{{ $new->description }}    </p><br>
-                      <p><b><a href="#" class="primary">Visit Site</a></b></p>
+                      
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="primary btn btn-default" data-dismiss="modal">Close</button>

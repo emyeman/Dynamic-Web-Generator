@@ -153,10 +153,10 @@
 
 	<div class="ws_bullets">
   <div>
-     @for ($x = 0; $x < count($crusals); $x++)
-		<a href="#" title="{{ $crusals[$x]->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusals[$x]->image }}" alt="{{ $crusals[$x]->title }}"/>
-    {{ ++$x }}</span></a>
-    @endfor
+     @foreach($crusals as $crusal)
+		<a href="#" title="{{ $crusal->title }}"><span><img src="{{ url('/assets/images/')}}/{{ $crusal->image }}" alt="{{ $crusal->title }}"/>
+    </span></a>
+    @endforeach
 	</div>
   </div>
 
@@ -195,6 +195,7 @@
           </button>
           @if(isset($header))
             <a class="navbar-brand" href="index.html"><img id="mylogo" src="{{ url('/') }}{{ $header->logo }}" ></a>
+            <span style="font-size:32px;" class="comp_name">{{ $header->company_name }}</span>
           @endif
           
         </div>
@@ -206,52 +207,52 @@
 
             @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
               </li>
               <?php $findpage_top=1;
-              $mypage_top=trans('arabic_english.'.$menupages[$x]);?>
+              $mypage_top=trans('arabic_english.'.$en_menupages[$x]);?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findservices=1;
-                $myservices=trans('arabic_english.'.$menupages[$x]);?>
+                $myservices=trans('arabic_english.'.$en_menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findabout=1;
-                 $myabout=trans('arabic_english.'.$menupages[$x]);?>
+                 $myabout=trans('arabic_english.'.$en_menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findgallery=1;
-                $mygallery=trans('arabic_english.'.$menupages[$x]);?>
+                $mygallery=trans('arabic_english.'.$en_menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findnews=1;
-                $mynews=trans('arabic_english.'.$menupages[$x]);?>
+                $mynews=trans('arabic_english.'.$en_menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findpromotion=1;
-                $mypromotion=trans('arabic_english.'.$menupages[$x]);?>
+                $mypromotion=trans('arabic_english.'.$en_menupages[$x]);?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                  <?php $findcontact=1;
-                 $mycontact=trans('arabic_english.'.$menupages[$x]);?>
+                 $mycontact=trans('arabic_english.'.$en_menupages[$x]);?>
             @endif    
              @endfor
             <li>
@@ -449,7 +450,7 @@
                     <hr>
                 </div>
                 <div class="clearfix"></div>
-               <div class="wow fadeInUp"> <small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small></div>
+               <div class="wow fadeInUp"></div>
             </div>
             <div class="space"></div>
 
@@ -494,7 +495,7 @@
                   @foreach($cat_and_subcats->subcategories as $subcategory)
                     @foreach($subcategory->products as $product)
 
-                      <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }}">
+                      <div class="col-sm-6 col-md-3 col-lg-3 {{ $subcategory->name }} {{ $cat_and_subcats->name }}">
                         <div class="portfolio-item">
                             <div class="hover-bg">
                                 <a href="#">
@@ -542,8 +543,8 @@
                                <img src="{{ url('/assets/images/')}}{{ $new->image }}" width="300" height="236">
                             </div>
                                <div class="col-md-4 col-md-offset-2">
-                                <h5>{{ $new->description }}</h5>
-                                <p>Dean Martin, CEO Acme Inc.</p>
+                                <h5>{{ $new->title }}</h5>
+                                <p>{{ $new->description }}</p>
                                 </div>
                             </div>
                         </div>
