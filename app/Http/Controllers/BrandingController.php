@@ -61,7 +61,7 @@ class BrandingController extends Controller {
             'slogan' => 'required',
             'ar_slogan' => 'required',
 
-            'logo' => 'max:10',
+            'logo' => 'max:20',
         ]);
         $header = new Header($request->all());
         $header->site_id = Auth::user()->id;
@@ -97,7 +97,7 @@ class BrandingController extends Controller {
             'ar_company_name' => 'required|max:255',
             'slogan' => 'required',
             'ar_slogan' => 'required',
-            'logo' => 'max:10',
+            // 'logo' => 'max:20',
         ]);
         $domain_name = $this->request->user()->site['subdomain'];
         $old_imag_name = $header['attributes']['logo'];

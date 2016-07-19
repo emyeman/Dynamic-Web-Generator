@@ -252,7 +252,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 id="about" class="title text-center">عن الشركه</h1>
+            <h1 id="about" class="title text-center"><?php echo $myabout;?></h1>
             <!-- <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p> -->
             <div class="space"></div>
             <div class="row">
@@ -387,7 +387,7 @@
 @if(isset($services) && $services != null)
 <div class="section" id="services">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 class="text-center title">خدماتنا</h1>
+    <h1 class="text-center title"><?php echo $myservices;?></h1>
     <div class="space"></div>
 
     <div id="move_s" class="carousel slide" data-ride="carousel">
@@ -475,7 +475,7 @@
 @if(isset($news) && $news != null)
 <div class="section">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
-    <h1 id="news"  class="text-center title">اخر اخبارنا</h1>
+    <h1 id="news"  class="text-center title"><?php echo $mynews;?></h1>
     <div class="space"></div>
     <!-- <p class="lead text-center">Know what is always new with us</p> -->
 </div>
@@ -545,7 +545,7 @@
 
     <div class="section">
             <div class="container">
-                <h1 class="text-center title" id="gallery">منتجاتنا</h1>
+                <h1 class="text-center title" id="gallery"><?php echo $mygallery;?></h1>
                 <div class="separator"></div>
                 <!-- <p class="lead text-center">Lorem ipsum dolor sit amet laudantium molestias similique.<br> Quisquam incidunt ut laboriosam.</p> -->
                 <br>            
@@ -719,7 +719,7 @@
 @if($contacts)    
 <div class="footer section">
     <div class="container">
-        <h1 class="title text-center" id="contact">اتصل بنا</h1>
+        <h1 class="title text-center" id="contact"><?php echo $mycontact;?></h1>
         <div class="space"></div>
         <div class="row">
             <div class="col-sm-6">

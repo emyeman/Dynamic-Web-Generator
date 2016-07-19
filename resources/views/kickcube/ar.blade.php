@@ -666,13 +666,13 @@
                             <li>
                                 <div class="dropdown">
                                     <button class="btn-system btn-medium border-btn dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ $cat_and_subcats->name }}</a>
+                                        <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ $cat_and_subcats->ar_name }}</a>
                                         <span class="caret"></span>
                                     </button>
 
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     @foreach($cat_and_subcats->subcategories as $sub)
-                                        <li><a href="#" data-filter=".{{ $sub->name }}">{{ $sub->name }}</a></li>
+                                        <li><a href="#" data-filter=".{{ $sub->name }}">{{ $sub->ar_name }}</a></li>
                                     @endforeach
                                     </ul>
                                 </div>
@@ -707,8 +707,8 @@
                         <div class="hover-bg">
                  <a class="lightbox" title="This is an image title" href="img/portfolio/1.jpg" data-lightbox-gallery="gallery1">
                                 <div class="hover-text">
-                                    <h4>{{ $product->name }}</h4>
-                                    <small>{{ $product->price }}</small>
+                                    <h4>{{ $product->ar_name }}</h4>
+                                    <small>{{ $product->ar_price }}</small>
                                     <div class="clearfix"></div>
                                     <i class="fa fa-plus"></i>
                                 </div>
@@ -1034,8 +1034,8 @@
             <div class="footer-widget contact-widget">
               <h4><img src="{{ url('/') }}{{ $header->logo }}" class="img-responsive" alt="Footer Logo" /></h4>
               <ul>
-                <li><span>العنوان:</span>{{$contacts[0]->address}}</li>
-                <li><span>رقم الهاتف:</span> {{$contacts[0]->mobile}}</li>
+                <li><span>العنوان:</span>{{$contacts[0]->ar_address}}</li>
+                <li><span>رقم الهاتف:</span> {{$contacts[0]->ar_mobile}}</li>
                 <li><span>البريد الالكتروني:</span> {{$contacts[0]->email}}</li>
               </ul>
             </div>

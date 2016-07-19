@@ -102,7 +102,18 @@
             @foreach ($rows as $row)
                 @if($row->parent_id == null)
                     <li id="{{$row->menu_id}}">
-                        <div class='dd-handle'>{{$row->menu_title}}</div>
+                        <div class='dd-handle'> 
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>{{$row->menu_title}}</td>
+                                        <td>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+                                        <td>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+                                        <td>{{$row->menu_ar_title}}</td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                         @foreach($rows as $submenu)
                             @if($row->menu_id == $submenu->parent_id)
                                 @include('menu.submenus',['menus'=>$rows,'parent_menu'=>$submenu])
