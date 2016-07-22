@@ -64,8 +64,9 @@
             <div class='form-group'>
                 <label class='col-md-2'>English Title *</label>
                 <div class='col-md-10 input-group'>                   
-                    <input placeholder='Plz,enter title ...' class='form-control' name='title_product' type='text' value="{{old('title_product')}}"/>
+                    <input placeholder='Plz,enter title ...' class='form-control title_product' id='title_product' name='title_product' type='text' value="{{old('title_product')}}"/>
                 </div>
+                <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This product already exists</span>                
             </div>
             <div class='form-group'>
                 <label class='col-md-2'>Arabic Title *</label>
@@ -109,11 +110,11 @@
         {!!Form::close() !!}
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
-<script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->
 <script type="text/javascript">
     console.log('hiiiiiii');
+    document.getElementById('title_err').style.display = "none";
     $('.getrequest').click(function() {            
         event.preventDefault();
         // alert($(this).text());
@@ -134,7 +135,7 @@
         console.log(id);
 
         $.get("{{url('/product/create/')}}/"+id,function(data){
-            // console.log(data[0]);
+            console.log(data[0]);
             // console.log(data);
             var showdata;
             // for(i=0;i<data.length;i++){
@@ -151,6 +152,39 @@
             $('#subcategorydata').html(showdata);
         });//end get to obtain data from control
     });  //end get request when press and select category 
+
+// for check about product aleary exit or not
+    $('.title_product').on('blur',function(event) {            
+        event.preventDefault();
+        // alert($(this).text());
+        console.log("emy");
+        
+        console.log($(this));
+        title=$(this).val();
+        console.log(title);
+        
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        $.get("{{url('/product/is_exit/')}}/"+title,function(data){
+            console.log(data);
+            console.log($(this));
+            if (data=='true') {
+               document.getElementById('title_err').style.display = "block";
+                // $('.title_product').focus();
+               $('.title_product').select();
+            }else{
+                document.getElementById('title_err').style.display = "none";
+            }
+            
+        
+            });
+    });  //end get title and check product aleary exit or not
 </script>
 
 @endsection

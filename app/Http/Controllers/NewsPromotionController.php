@@ -51,6 +51,32 @@ class NewsPromotionController extends Controller
         return  view ('news_promotion.create',['type'=>$type]);
      }
 
+     public function ajaxexite_news_promotion(Request $request){
+        if (Auth::user()){
+            if ($request->ajax()){
+                $url=$request->path();
+               $arrayurl = explode("/", $url);
+
+                // $arrayurl[2];   //for obtain on subdomain
+                // $arrayurl[3];  //for obtain on (ar or en)
+                echo $arrayurl[3];die();
+                //select  sub news_promotions of site and check
+                $exit = DB::table('news_promotions')->where('site_id',Auth::user()->id)->where('title',$arrayurl[3])->where('type',$arrayurl[2])->first();
+                if($exit){
+                    $is_exit='true';
+                    // var_dump($is_exit);die();
+                }else{
+                    $is_exit='false';
+                    // var_dump($is_exit);die();
+                }
+                return $is_exit;
+           } 
+        }else{
+            return  redirect ('/login');   
+        }
+     }
+
+
      public function store(Request $request)
      {
         $this->validate($request, [

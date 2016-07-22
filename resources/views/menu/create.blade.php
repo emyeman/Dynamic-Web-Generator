@@ -30,8 +30,9 @@
         <div class='form-group'>
             <label class='col-md-2'>English Title*</label>
             <div class='col-md-10 input-group'>
-                <input placeholder='english title...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
+                <input placeholder='english title...' class='form-control title_menu' id='title_menu' name='title' type='text' value="{{old('title')}}"/>
             </div>
+            <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This menu already exists</span>                        
         </div> 
         <div class='form-group'>
             <label class='col-md-2'>Arabic Title*</label>
@@ -124,4 +125,43 @@
            @endforeach
         </ul>
 @endif
+
+<meta name="_token" id='token' content="{!! csrf_token() !!}"/>
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->
+<script type="text/javascript">
+    console.log('hiiiiiii');
+    document.getElementById('title_err').style.display = "none";
+    $('.title_menu').on('blur',function(event) {            
+        event.preventDefault();
+        // alert($(this).text());
+        console.log("emy");
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        console.log($(this));
+        title=$(this).val();
+        console.log(title);
+        
+        $.get("{{url('/menu/is_exit/')}}/"+title,function(data){
+            console.log(data);
+            console.log($(this));
+            if (data=='true') {
+               document.getElementById('title_err').style.display = "block";
+                // $('.title_menu').focus();
+               $('.title_menu').select();
+            }else{
+                document.getElementById('title_err').style.display = "none";
+            }
+            
+        
+            });
+        });
+
+  </script>
 @endsection

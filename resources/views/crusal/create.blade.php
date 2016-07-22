@@ -31,8 +31,9 @@
         <div class='form-group'>
             <label class='col-md-2'>English Title</label>
             <div class='col-md-10 input-group'>
-                <input placeholder='title...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
+                <input placeholder='title...' class='form-control title_crusal' id='title_crusal' name='title' type='text' value="{{old('title')}}"/>
             </div>
+            <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This crusal already exists</span>            
         </div>
 
         <div class='form-group'>
@@ -65,6 +66,44 @@
         </div>    
         <input type='submit' class='col-md-offset-2 col-md-10 btn btn-primary' name='ok' value='ADD' />
     {!!Form::close() !!}
+
+<meta name="_token" id='token' content="{!! csrf_token() !!}"/>
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
+<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->
+<script type="text/javascript">
+    console.log('hiiiiiii');
+    document.getElementById('title_err').style.display = "none";
+    $('#title_crusal').on('blur',function(event) {            
+        event.preventDefault();
+        // alert($(this).text());
+        console.log("emy");
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        console.log($(this));
+        title=$(this).val();
+        console.log(title);
+        
+        $.get("{{url('/crusal/is_exit/')}}"+title,function(data){
+            console.log(data[0]);
+            console.log($(this));
+            if (data=='true') {
+               document.getElementById('title_err').style.display = "block";
+                // $('.title_crusal').focus();
+               $('.title_crusal').select();
+            }else{
+                document.getElementById('title_err').style.display = "none";
+            }
+        
+        });
+    });
+
+  </script>
 
 @endsection
 

@@ -38,6 +38,25 @@ class CrusalController extends Controller
         return  view ('crusal.create');
      }
 
+    public function ajaxexite_crusal($title,Request $request){
+        if (Auth::user()){
+            if ($request->ajax()){
+            //select all crusals of site and check
+            $exit = DB::table('crusals')->where('site_id',Auth::user()->id)->where('title',$title)->first();
+            if($exit){
+                $is_exit='true';
+                // var_dump($is_exit);die();
+            }else{
+                $is_exit='false';
+                // var_dump($is_exit);die();
+            }
+            return $is_exit;
+          } 
+        }else{
+            return  redirect ('/login');   
+        }
+     }
+
 
      public function store(Request $request){
         $this->validate($request, [

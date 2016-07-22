@@ -28,6 +28,26 @@ class PagesController extends Controller
         return  view ('page.create');
      }
 
+     public function ajaxexite_page($title,Request $request){
+        if (Auth::user()){
+            if ($request->ajax()){
+            //select all pages of site and check
+            $exit = DB::table('pages')->where('site_id',Auth::user()->id)->where('title',$title)->first();
+            if($exit){
+                $is_exit='true';
+                // var_dump($is_exit);die();
+            }else{
+                $is_exit='false';
+                // var_dump($is_exit);die();
+            }
+            return $is_exit;
+          } 
+        }else{
+            return  redirect ('/login');   
+        }
+     }
+
+
      public function store(Request $request){
         $site_id=Auth::user()->site->id;
         $this->validate($request, [

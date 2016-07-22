@@ -82,6 +82,24 @@ class ProductController extends Controller
         }
      }
 
+    public function exiteajax_product($title,Request $request){
+        if (Auth::user()){
+            if ($request->ajax()){
+            //select all products of site and check
+            $exit = DB::table('products')->where('site_id',Auth::user()->id)->where('name',$title)->first();
+            if($exit){
+                $is_exit='true';
+                // var_dump($is_exit);die();
+            }else{
+                $is_exit='false';
+                // var_dump($is_exit);die();
+            }
+            return $is_exit;
+          } 
+        }else{
+            return  redirect ('/login');   
+        }
+     }
 
      public function store(Request $request){
         if (Auth::user()){
