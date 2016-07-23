@@ -20,7 +20,18 @@ class CategoryController extends Controller
 	public function index(){
         if (Auth::user()){
             // select categories of this only site;
-            $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
+
+            if(Auth::user()->status == 'reseller')
+            {
+                 $categories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
+                 // dd($categories);
+            }
+            else
+            {
+                 $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
+            }
+
+           
 
             return  view ('category.index',compact('categories'));
        } else{
@@ -64,14 +75,35 @@ class CategoryController extends Controller
                 // echo "image_category";die();
                 $imagefile = Input::file('image_category');
                  // for obtain domain name for save image
-                $subdomain=Auth::user()->site->subdomain;
+
+                if(Auth::user()->status == 'reseller')
+                {
+                    $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+                     $subdomain = $user_site[0]->subdomain;
+                }
+                else
+                {
+                    $subdomain=Auth::user()->site->subdomain;
+                }
+
+                
+
                 $extention=time().$imagefile->getClientOriginalName();
                 $imagefile->move('assets/images/'.$subdomain.'/category',$extention);
                 // echo $subdomain;die();
                 $category->image=$subdomain.'/category/'.$extention; 
             }
 
-            $category->site_id=Auth::user()->id;
+            if(Auth::user()->status == 'reseller')
+            {
+                $category->site_id=Session::get('user_id');
+            }
+            else
+            {
+                $category->site_id=Auth::user()->id;    
+            }
+            
+
             $is_saved=$category->save();
             if($is_saved){
                 Session::flash('insert_success', 'A new category has been added successfully');
@@ -135,7 +167,15 @@ class CategoryController extends Controller
                 // echo "image_category";die();
                 $imagefile = Input::file('image_category');
                 // for obtain domain name for save image
-                $subdomain=Auth::user()->site->subdomain;
+                if(Auth::user()->status == 'reseller')
+                {
+                    $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+                     $subdomain = $user_site[0]->subdomain;
+                }
+                else
+                {
+                    $subdomain=Auth::user()->site->subdomain;
+                }
                 $extention=time().$imagefile->getClientOriginalName();
                 $imagefile->move('assets/images/'.$subdomain.'/category',$extention);
                 // echo $subdomain;die();
@@ -143,8 +183,15 @@ class CategoryController extends Controller
                 
                 File::delete('assets/images/'.$old_image); //for delete file image from folder   
             }
-
-            $category->site_id=Auth::user()->id;
+            if(Auth::user()->status == 'reseller')
+            {
+                $category->site_id=Session::get('user_id');    
+            }
+            else
+            {
+                $category->site_id=Auth::user()->id; 
+            }
+            
            $is_saved=$category->save();
             if($is_saved){
                 Session::flash('update_success', 'the category item has been updated successfully');

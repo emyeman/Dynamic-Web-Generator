@@ -202,10 +202,10 @@
                 <i class="icon-reorder"></i>
             </a>
             <!-- /Sidebar Toggler -->
-            @if(isset(Auth::user()->site))
+            
             <ul class="nav navbar-nav navbar-left">
                 <li>
-                    <a target="_blank" href="{{url('/'.Auth::user()->site->subdomain.'/en')}}">
+                    <a target="_blank" href="{{url('/gotosite')}}">
                         <strong>GO TO SITE</strong>
                     </a>
                 </li>
@@ -215,7 +215,7 @@
                     </a>
                 </li>
             </ul>
-            @endif
+            {{-- '/'.Auth::user()->site->subdomain.'/en' --}}
             <!-- run website -->
             
 

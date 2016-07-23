@@ -15,7 +15,15 @@ class DomainController extends Controller
 {
 	public function index()
     {
-        $domain = DB::table('domains')->where('site_id',Auth::user()->site->id)->first();
+        if(Auth::user()->status == 'reseller')
+        {
+            $domain = DB::table('domains')->where('site_id',Session::get('user_id'))->first();
+        }
+        else
+        {
+            $domain = DB::table('domains')->where('site_id',Auth::user()->site->id)->first();
+        }
+        
 
 		return  view('domain.index',compact('domain'));
     }
@@ -37,7 +45,16 @@ class DomainController extends Controller
 
 
         $domain = new Domain($request->all());
-        $domain->site_id = Auth::user()->id;
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $domain->site_id = Session::get('user_id');
+        }
+        else
+        {
+            $domain->site_id = Auth::user()->id;
+        }
+        
         
         if($domain->addDomain($domain))
         {
@@ -60,7 +77,7 @@ class DomainController extends Controller
 
         if($domain->update($request->all()))
         {
-            return redirect('/dashboard');
+            return redirect('/domain');
         }
         return back();
 

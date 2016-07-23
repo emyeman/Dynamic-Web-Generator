@@ -17,6 +17,7 @@ use App\Aboutus;
 use App\Header;
 use App\Template;
 use App;
+use Session;
 
 class TemplateController extends Controller{
 
@@ -31,17 +32,36 @@ class TemplateController extends Controller{
         $temps=Template::all();
         return view('activetemp',compact('temps'));
     }
+
+    public function gotosite()
+    {
+        if(Auth::user()->status == 'reseller')
+        {
+            $site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $doman_name = $site[0]->subdomain;
+            return redirect('/'.$doman_name.'/en');
+        }
+        else
+        {
+            return redirect('/'.Auth::user()->site->subdomain.'/en');
+        }        
+    }
     
    public function Show(Request $request){
     	$url=$request->path();
     	$arrayurl = explode("/", $url);
 
-    	// $arrayurl[0];   //for obtain on subdomain
-        // $arrayurl[1];  //for obtain on (ar or en)
-        // echo $arrayurl[1];die();
         $subdomain=$arrayurl[0];
-        $mysite = DB::table('sites')->where('subdomain',$arrayurl[0])->get();
-        // var_dump($mysite);die();
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $mysite = DB::table('sites')->where('id',Session::get('user_id'))->get();
+        }
+        else
+        {
+            $mysite = DB::table('sites')->where('id',Auth::user()->id)->get();
+        }
+        
         foreach ($mysite as $site) {
             $site_id=$site->id;
             $template_id=$site->template_id;

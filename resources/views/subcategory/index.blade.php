@@ -41,7 +41,7 @@
                     </thead>
                     <tbody>
                         @foreach ($subcategories as $subcategory) 
-                            @if (Auth::user()->id == $subcategory->site_id)
+                            
                             <tr>
                             <!-- for obtain name of category  -->
                             @foreach ($categories as $category)
@@ -88,7 +88,6 @@
                             @endif
 
                             </tr>
-                        @endif
                         @endforeach
                     </tbody>
                 </table>

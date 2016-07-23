@@ -20,7 +20,15 @@ class ContactUsController extends Controller
 	public function index(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
+            if(Auth::user()->status == 'reseller')
+            {
+                $contacts=DB::table('contacts')->where('site_id',Session::get('user_id'))->get();
+            }
+            else
+            {
+                $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
+            }
+
             if($contacts){
                 return  view ('contactus.index',compact('contacts'));
             }else{
@@ -43,7 +51,14 @@ class ContactUsController extends Controller
      public function create(){
         if (Auth::user()){
             // select contact us of this only site;
-            $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
+            if(Auth::user()->status == 'reseller')
+            {
+                $contacts=DB::table('contacts')->where('site_id',Session::get('user_id'))->get();
+            }
+            else
+            {
+                $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
+            }
 
              if($contacts){
                 return  view ('contactus.index',compact('contacts'));
@@ -77,7 +92,15 @@ class ContactUsController extends Controller
             ]);
 
             $contact= new Contact;
-            $contact->site_id=Auth::user()->id;   //becaues site_id of contactus is same as id of user 
+            if(Auth::user()->status == 'reseller')
+            {
+                $contact->site_id=Session::get('user_id');
+            }
+            else
+            {
+                $contact->site_id=Auth::user()->id;
+            }
+               //becaues site_id of contactus is same as id of user 
             $contact->address=trim($request->input('address'));
             $contact->ar_address=trim($request->input('ar_address'));
             // data from google map
@@ -162,7 +185,15 @@ class ContactUsController extends Controller
                 'youtube' => 'max:255',          
             ]);
 
-            $contact->id=Auth::user()->id;   //becaues id of contactus is same as id of site that equal id of user
+            if(Auth::user()->status == 'reseller')
+            {
+                $contact->id=Session::get('user_id');   
+            }
+            else
+            {
+                $contact->id=Auth::user()->id;   //becaues id of contactus is same as id of site that equal id of user
+            }
+            
             $contact->address=trim($request->input('address'));
             $contact->ar_address=trim($request->input('ar_address'));
 

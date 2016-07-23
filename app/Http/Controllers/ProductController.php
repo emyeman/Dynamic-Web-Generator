@@ -24,12 +24,20 @@ class ProductController extends Controller
 	public function index(){
         if (Auth::user()){
 
-            //select all categories 
-            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
-
-              //select all subcategories have category_id
-             $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
-
+            if(Auth::user()->status == 'reseller')
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+    
+            }
+            else
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                 //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+    
+            }
             //select all products 
             $allproducts = DB::table('products')->get();
             // for select only product of this only site
@@ -56,11 +64,21 @@ class ProductController extends Controller
 
      public function create(){
         if (Auth::user()){
-            //select all categories have category_id==NULL
-            $categories = DB::table('categories')->whereNull('category_id')->get();
-              //select all subcategories have category_id
-            $subcategories = DB::table('categories')->whereNotNull('category_id')->get();
+            if(Auth::user()->status == 'reseller')
+            {
+                 $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
+                //select all subcategories have category_id
+                $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+            }
+            else
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
+                //select all subcategories have category_id
+                $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
 
+            }
+            //select all categories have category_id==NULL
+            
            return  view ('product.create',compact('categories','subcategories'));
         }else{
             return  redirect ('/login');   
@@ -72,7 +90,14 @@ class ProductController extends Controller
         if (Auth::user()){
           if ($request->ajax()){
             //select all categories 
-            $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$id)->get();
+            if(Auth::user()->status == 'reseller')
+            {
+                $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->where('category_id',$id)->get();
+            }
+            else
+            {
+                $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$id)->get();   
+            }
             // $subcategories='emmmmm';
             // var_dump($subcategories);die();
             return $subcategories;
@@ -110,7 +135,15 @@ class ProductController extends Controller
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
                 // for obtain domain name for save image
-                $subdomain=Auth::user()->site->subdomain;
+                if(Auth::user()->status == 'reseller')
+                {
+                    $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+                     $subdomain = $user_site[0]->subdomain;
+                }
+                else
+                {
+                    $subdomain=Auth::user()->site->subdomain;
+                }
                 $extention=time().$imagefile->getClientOriginalName();
                 $imagefile->move('assets/images/'.$subdomain.'/product',$extention);
                 // echo $subdomain;die();
@@ -147,10 +180,21 @@ class ProductController extends Controller
             $subcategory=Category::find($product->category_id);
             $category=Category::find($subcategory->category_id);
 
-            //select all categories have category_id==NULL
+            if(Auth::user()->status == 'reseller')
+            {
+                //select all categories have category_id==NULL
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
+              //select all subcategories have category_id
+            $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->where('category_id',$subcategory->category_id)->get();
+            }
+            else
+            {
+                //select all categories have category_id==NULL
             $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
               //select all subcategories have category_id
             $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$subcategory->category_id)->get();
+            }
+            
              // var_dump($category);die();
             return  view ('product.edit',compact('category','subcategory','product','categories','subcategories'));
         } else{
@@ -195,7 +239,15 @@ class ProductController extends Controller
                 // echo "image_product";die();
                 $imagefile = Input::file('image_product');
                 // for obtain domain name for save image
-                $subdomain=Auth::user()->site->subdomain;
+                if(Auth::user()->status == 'reseller')
+                {
+                    $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+                     $subdomain = $user_site[0]->subdomain;
+                }
+                else
+                {
+                    $subdomain=Auth::user()->site->subdomain;
+                }
                 $extention=time().$imagefile->getClientOriginalName();
                 $imagefile->move('assets/images/'.$subdomain.'/product',$extention);
                 // echo $subdomain;die();

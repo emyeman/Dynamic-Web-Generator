@@ -13,12 +13,24 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\Handler;
 use Session;
+use DB;
 
 class NewsPromotionController extends Controller
 {
     private function path_to_news_promotions_images_folder($image,$type)
     {
-        $subdomain=Auth::user()->site->subdomain;
+        if(Auth::user()->status == 'reseller')
+        {
+            $site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $subdomain = $site[0]->subdomain;
+        }
+        else
+        {
+            $subdomain=Auth::user()->site->subdomain;
+        }
+        
+
+
         $extension = $image->getClientOriginalExtension();
         if($type=='promotion')
         	return '/'.$subdomain.'/promotions/'.time().'.'.$extension; //path of image inside the storage dir & rename image
@@ -31,7 +43,16 @@ class NewsPromotionController extends Controller
         if( !($type == 'promotion' || $type == 'news')) //prevent sending wrong type, only 1 or 0 are acceptable
             abort(500);
 
-        $site_id=Auth::user()->site->id; // site_id == user_id , becuase of the 1:1 relationship
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id = Session::get('user_id');
+        }
+        else
+        {
+            $site_id = Auth::user()->site->id;
+        }
+       // site_id == user_id , becuase of the 1:1 relationship
+
         $rows=NewsPromotion::where('site_id', $site_id)
                             ->where('type',$type)
                             ->get();
@@ -74,7 +95,19 @@ class NewsPromotionController extends Controller
         $new_row->start_date=$request->input('start_date');
         $new_row->end_date=$request->input('end_date');
         $new_row->type=$type;
-        $new_row->site_id=$request->user()->site->id;
+
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $new_row->site_id = Session::get('user_id');
+        }
+        else
+        {
+            $new_row->site_id = $request->user()->site->id;
+        }
+
+        
+
 		$is_saved=$new_row->save();
         if($is_saved)
         {

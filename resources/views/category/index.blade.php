@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         @foreach ($categories as $category) 
-                            @if (Auth::user()->id == $category->site_id)
+                            
                             <tr> 
                                 <td>
                                     <a href="{{url('/category/'.$category->id.'/edit')}}">
@@ -78,7 +78,6 @@
                             @endif
 
                             </tr>
-                        @endif
                         @endforeach
                     </tbody>
                 </table>

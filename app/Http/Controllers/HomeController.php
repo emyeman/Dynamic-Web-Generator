@@ -34,6 +34,20 @@ class HomeController extends Controller
                 return view('home',compact('site'));            
             }
         }
-        return view('home');
+
+        try {
+                if(Auth::user()->status == 'reseller')
+                {
+                    return redirect('/reseller');
+                }
+                else
+                {
+                    return view('home');   
+                }    
+            }
+        catch (\Exception $e) {
+            return view('home');
+            }
+        
     }
 }

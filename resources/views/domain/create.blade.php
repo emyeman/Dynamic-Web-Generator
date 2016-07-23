@@ -6,7 +6,17 @@
 
 @section('content')
   <h2>Add New Domain</h2>
+  @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
   <br><br>
+
   {!!Form::open(['route'=>'domain.store','method'=>'post','class'=>'form-horizontal']) !!}
     <div class='form-group'>
         <label class='col-md-2'>Domain Name</label>

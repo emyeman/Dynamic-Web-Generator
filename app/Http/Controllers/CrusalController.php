@@ -11,19 +11,37 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Session;
+use DB;
 
 class CrusalController extends Controller
 {
+
     private function path_to_crusal_images($image)
     {
-        $doman_name = Auth::user()->site()->first()['attributes']['subdomain'];
+        if(Auth::user()->status == 'reseller')
+        {
+            $site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $doman_name = $site[0]->subdomain;
+        }
+        else
+        {
+            $doman_name=Auth::user()->site()->first()['attributes']['subdomain'];
+        }
         $extension = $image->getClientOriginalExtension();
         return '/'.$doman_name.'/crusal/'.time().'.'.$extension; //path of image inside the storage dir & rename image
     }
 
 	public function index(){
 
-        $site_id=Auth::user()->site->id;
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id = Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;
+        }
+        
         $rows=Crusal::where('site_id', $site_id)->get();
         return  view ('crusal.index',['rows'=>$rows]);
      }
@@ -53,7 +71,18 @@ class CrusalController extends Controller
         $new_row->ar_description=trim($request->input('ar_description'));
 
         $new_row->image=$file_name;
-        $new_row->site_id=Auth::user()->site->id;
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $new_row->site_id = Session::get('user_id');
+        }
+        else
+        {
+            $new_row->site_id=Auth::user()->site->id;
+        }
+        
+        
+
         $is_saved=$new_row->save();
         if($is_saved)
         {

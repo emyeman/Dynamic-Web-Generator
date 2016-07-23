@@ -13,23 +13,38 @@ class PagesController extends Controller
 {
     
 	public function index(){
-        $site_id=Auth::user()->site->id;
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        
         $rows=Page::where('site_id', $site_id)->get();
         return  view ('page.index',['rows'=>$rows]);
      }
 
-     public function show($id){
-
+     public function show($id)
+     {
         return  view ('page.show');
      }
 
-     public function create(){
-
+     public function create()
+     {
         return  view ('page.create');
      }
 
      public function store(Request $request){
-        $site_id=Auth::user()->site->id;
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
         $this->validate($request, [
             'title' => 'max:255|unique:pages,title,NULL,id,site_id,'.$site_id,
             // 'content' => 'required',

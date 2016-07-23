@@ -29,6 +29,7 @@
                                     <th>Mobile</th>
                                     <th>Dashboard</th>
                                     <th>Edit</th>
+                                    <th>Site Settings</th>
                                     <th>Ban</th>
                                 </tr>
                             @foreach($users as $user)
@@ -42,6 +43,9 @@
                                     </td>
                                     <td>
                                         <a href="{{ url('/reseller') }}/{{$user->id}}/edit" class="btn btn-primary">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('/site') }}/edit/{{$user->id}}" class="btn btn-primary">Edit Site</a>
                                     </td>
                                     <td>
                                         <a href="#" class="btn btn-adn">Ban</a>

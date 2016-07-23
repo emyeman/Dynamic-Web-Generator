@@ -20,10 +20,21 @@ class SubCategoryController extends Controller
 	public function index(){
         if (Auth::user()){
             //select all categories have category_id==NULL
-            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
-              //select all categories have category_id
-            $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
-            // for make compare for delete subcategory or not
+            if(Auth::user()->status == 'reseller')
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
+                //select all categories have category_id
+                 $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                // for make compare for delete subcategory or not
+            }
+            else
+            {  
+                 $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
+                //select all categories have category_id
+                 $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                // for make compare for delete subcategory or not
+            }
+            
             $products = DB::table('products')->get();
 
             return  view ('subcategory.index',compact('categories','subcategories','products'));
@@ -42,7 +53,19 @@ class SubCategoryController extends Controller
 
      public function create(){
         if (Auth::user()){
-            $subcategories=Category::All();
+            // $subcategories=Category::All();
+            if(Auth::user()->status == 'reseller')
+            {
+                //select all categories have category_id
+                 $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                // for make compare for delete subcategory or not
+            }
+            else
+            {  
+                //select all categories have category_id
+                 $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                // for make compare for delete subcategory or not
+            }
             return  view ('subcategory.create',compact('subcategories'));
         }else{
             return  redirect ('/login');   
@@ -71,7 +94,16 @@ class SubCategoryController extends Controller
                 // echo "image_subcategory";die();
                 $imagefile = Input::file('image_subcategory');
                 // for obtain domain name for save image
-                $subdomain=Auth::user()->site->subdomain;
+                if(Auth::user()->status == 'reseller')
+                {
+                    $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+                     $subdomain = $user_site[0]->subdomain;
+                }
+                else
+                {
+                    $subdomain=Auth::user()->site->subdomain;
+                }
+
                 $extention=time().$imagefile->getClientOriginalName();
                 // echo $extention;die();
                 $imagefile->move('assets/images/'.$subdomain.'/subcategory',$extention);
@@ -79,7 +111,15 @@ class SubCategoryController extends Controller
                 $subcategory->image=$subdomain.'/subcategory/'.$extention; 
             }
 
-            $subcategory->site_id=Auth::user()->id;
+            if(Auth::user()->status == 'reseller')
+            {
+                $subcategory->site_id=Session::get('user_id');
+            }
+            else
+            {
+                $subcategory->site_id=Auth::user()->id;    
+            }
+            
             $subcategory->category_id=$request->input('category_id');
             $is_saved=$subcategory->save();
             if($is_saved){
@@ -149,7 +189,16 @@ class SubCategoryController extends Controller
                 // echo "image_subcategory";die();
                 $imagefile = Input::file('image_subcategory');
                 // for obtain domain name for save image
-                $subdomain=Auth::user()->site->subdomain;
+                 if(Auth::user()->status == 'reseller')
+                {
+                    $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+                     $subdomain = $user_site[0]->subdomain;
+                }
+                else
+                {
+                    $subdomain=Auth::user()->site->subdomain;
+                }
+
                 $extention=time().$imagefile->getClientOriginalName();
                 $imagefile->move('assets/images/'.$subdomain.'/subcategory',$extention);
                 // echo $subdomain;die();
@@ -157,7 +206,16 @@ class SubCategoryController extends Controller
 
                 File::delete('assets/images/'.$old_image); //for delete file image from folder
             }
-            $subcategory->site_id=Auth::user()->id;
+            
+            if(Auth::user()->status == 'reseller')
+            {
+                $subcategory->site_id=Session::get('user_id');
+            }
+            else
+            {
+                $subcategory->site_id=Auth::user()->id;    
+            }
+
             $subcategory->category_id=$request->input('category_id');
             $is_saved=$subcategory->save();
             if($is_saved){

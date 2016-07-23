@@ -13,7 +13,14 @@ use Session;
 class MenuController extends Controller
 {
     public function index(){
-    	$site_id=Auth::user()->site->id;
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
      //    $rows=Menu::where('site_id', $site_id)->get();
      //    // $rows=$rows[0]->page;
      //    var_dump($rows[0]->page);
@@ -40,10 +47,25 @@ class MenuController extends Controller
      public function create(){
      	// $menus=Menu::pluck('title','id');
      	// $pages=Page::pluck('title','id');
-        $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
-        $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
-        
-        $site_id=Auth::user()->site->id;
+        if(Auth::user()->status == 'reseller')
+        {
+            $menus=DB::table('menus')->where('site_id',Session::get('user_id'))->get();
+            $pages=DB::table('pages')->where('site_id',Session::get('user_id'))->get();
+        }
+         else
+        {
+            $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
+            $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
+        }
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
         $rows = DB::table('menus')
             ->leftJoin('pages', 'menus.route', '=', 'pages.id')
             ->leftJoin('menus as parent', 'parent.id', '=', 'menus.parent_id')
@@ -59,8 +81,16 @@ class MenuController extends Controller
      }
 
      public function store(Request $request){
+        if(Auth::user()->status == 'reseller')
+        {
+            $id = Session::get('user_id');
+        }
+        else
+        {
+            $id = Auth::user()->site->id;
+        }
 		$this->validate($request, [
-            'title' => 'required|unique:menus,title,NULL,id,site_id,'.Auth::user()->site->id,
+            'title' => 'required|unique:menus,title,NULL,id,site_id,'.$id,
             'parent_id' => 'integer',
             'route' => 'required|integer',   
         ]); 
@@ -70,7 +100,17 @@ class MenuController extends Controller
         if (trim($request->input('parent_id'))!='')
         	$new_row->parent_id=trim($request->input('parent_id'));
         $new_row->route=trim($request->input('route'));
-        $new_row->site_id=Auth::user()->site->id;
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $new_row->site_id=Session::get('user_id');
+        }
+        else
+        {
+            $new_row->site_id=Auth::user()->site->id;
+        }
+
+        
 		$is_saved=$new_row->save();
         if($is_saved)
         {

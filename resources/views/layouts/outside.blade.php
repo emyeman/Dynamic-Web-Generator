@@ -194,7 +194,7 @@ h2.zero,p.zero {
                                   
                                       <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
                                   
-                                    @if (isset($site))
+                                    @if (isset($site) && Auth::user()->status =! 'reseller')
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
@@ -245,7 +245,7 @@ h2.zero,p.zero {
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
                                   
-                                    @if (isset($site))
+                                    @if (isset($site) && Auth::user()->status =! 'reseller')
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
@@ -307,7 +307,7 @@ h2.zero,p.zero {
                                        <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
                                   
 
-                                    @if (isset($site))
+                                    @if (isset($site) && Auth::user()->status =! 'reseller')
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>

@@ -32,10 +32,10 @@
                     <select class='form-control getrequest' id='category_id' name='category_id'>
                         <option value="">Select Category</option>
                         @foreach ($categories as $category) 
-                            @if(Auth::user()->id == $category->site_id)
+                            
                                 <option value="{{$category->id}}">{{$category->name}} &nbsp; {{$category->ar_name}}</option>
                                 
-                            @endif
+                           
                         @endforeach 
                     </select>           
                 </div>

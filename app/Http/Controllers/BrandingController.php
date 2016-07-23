@@ -8,6 +8,8 @@ use Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Header;
+use DB;
+use Session;
  
 
 class BrandingController extends Controller {
@@ -16,13 +18,28 @@ class BrandingController extends Controller {
     private $request;
     public function __construct(Request $request) {
         $this->request = $request;
-        if($this->request->user()->site){
-            $this->site = $this->request->user()->site;
+        if(Auth::user()->status == 'reseller')
+        {
+           $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+           $this->site = $user_site;
         }
+        else
+        {
+            $this->site = $this->request->user()->site; 
+        }
+       
     }
 
     private function upload_image($image) {
-        $domain_name = $this->request->user()->site['subdomain'];
+        if(Auth::user()->status == 'reseller')
+        {
+            $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $doman_name = $user_site[0]->subdomain;
+        }
+        else
+        {
+            $domain_name = $this->request->user()->site['subdomain'];
+        }
 
         $directory = "/assets/images/$domain_name/branding/";
         if (Input::file('image')->move(public_path() . $directory, $image)) {
@@ -33,10 +50,28 @@ class BrandingController extends Controller {
 
     public function index() {
 //        $branding = $request->user()->site->header;
-        if ($this->site->header) {
-            return view('branding.index')->withBranding($this->site->header);
+        try{
+             if(Auth::user()->status == 'reseller')
+             {
+                $branding = DB::table('headers')->where('site_id',Session::get('user_id'))->get();
+                // return view('branding.index')->withBranding($this->site->header);
+             }
+             else
+             {
+                $branding = DB::table('headers')->where('site_id',Auth::user()->id)->get();
+             }
+             if($branding != null)
+             {
+                return view('branding.index')->withBranding($branding);
+             }
+             else
+             {
+                return redirect('/branding/create');
+             }
+        }catch (\Exception $e) {
+            $branding = DB::table('headers')->where('site_id',Session::get('user_id'))->get();
+            return view('branding.index',compact('branding'));    
         }
-        return redirect('branding/create');
     }
 
     public function show($id) {
@@ -45,11 +80,17 @@ class BrandingController extends Controller {
     }
 
     public function create() {
-        if($this->site->header)
-        {
-            return redirect('branding/edit');
+        try{
+            if($this->site->header)
+            {
+                return redirect('branding/edit');
+            }
         }
-        return view('branding.create');
+        catch (\Exception $e) {
+            return view('branding.create');
+        }
+        
+        
     }
 
     public function store(Request $request) {
@@ -64,10 +105,26 @@ class BrandingController extends Controller {
             'logo' => 'max:10',
         ]);
         $header = new Header($request->all());
-        $header->site_id = Auth::user()->id;
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $header->site_id =  Session::get('user_id');
+        }
+        else
+        {
+            $header->site_id = Auth::user()->id;
+        }
 
         // get the subdomain
-        $domain_name = $this->request->user()->site['subdomain'];
+        if(Auth::user()->status == 'reseller')
+        {
+            $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $domain_name = $user_site[0]->subdomain;
+        }
+        else
+        {
+            $domain_name = $this->request->user()->site['subdomain'];
+        }
 
         $imagePath='';
         if(Input::hasFile('logo')){  
@@ -99,7 +156,18 @@ class BrandingController extends Controller {
             'ar_slogan' => 'required',
             'logo' => 'max:10',
         ]);
-        $domain_name = $this->request->user()->site['subdomain'];
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $doman_name = $user_site[0]->subdomain;
+        }
+        else
+        {
+            $domain_name = $this->request->user()->site['subdomain'];
+        }
+        
+        // $domain_name = $this->request->user()->site['subdomain'];
         $old_imag_name = $header['attributes']['logo'];
         $imagePath=$old_imag_name;
         $has_new_file = 0;
@@ -131,7 +199,7 @@ class BrandingController extends Controller {
 
             return redirect('/branding');
        }
-       dd('hit');
+       // dd('hit');
        return back();
     }
 

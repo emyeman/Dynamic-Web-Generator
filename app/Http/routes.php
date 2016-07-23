@@ -74,6 +74,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/reseller/{user}/edit','ResellerController@edit');
 	Route::patch('/reseller/{user}','ResellerController@update');
 
+	Route::get('/gotosite','TemplateController@gotosite');
+
 	Route::resource('/reseller', 'ResellerController', ['only' => [
     'index', 'show' , 'create' , 'store', 'update',
 	]]);

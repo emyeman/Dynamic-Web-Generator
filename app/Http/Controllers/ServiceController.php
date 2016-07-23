@@ -8,14 +8,21 @@ use DB;
 use Session;
 use Illuminate\Support\Facades\Input;
 use Auth;
-
+use Config;
 
 
 class ServiceController extends Controller
 {
     public function index(){
-
-        $services = DB::table('services')->where('site_id',Auth::user()->id)->get();
+        if(Auth::user()->status == 'reseller')
+        {
+            $services = DB::table('services')->where('site_id',Session::get('user_id'))->get();
+        }
+        else
+        {
+            $services = DB::table('services')->where('site_id',Auth::user()->id)->get();
+        }
+        
 		return  view('service.index' ,compact('services'));
      }
 
@@ -67,7 +74,19 @@ class ServiceController extends Controller
         'ar_description' => 'required',
         ]);
      	$service = new Service($request->all());
-        $service->site_id = Auth::user()->id;
+
+        if(Auth::user()->status == 'reseller')
+        {
+            
+           $service->site_id = Session::get('user_id');
+        }
+        else
+        {
+            $service->site_id = Auth::user()->id;
+        }
+
+        
+
      	if( $service->addService($service))
         {
             Session::flash('insert_success', 'A new service has been added successfully');

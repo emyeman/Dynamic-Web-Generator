@@ -84,14 +84,18 @@ class ResellerController extends Controller
      */
     public function show($id)
     {
-        //
-        Auth::logout();
-        Session::flush();
-        $user = DB::table('users')->where('id',$id)->first();
-        Crypt::setKey(Config::get('app.key'));
-        $value = Crypt::decrypt($user->password);
-        dd($value);
-        return redirect('login')->with('user', $user);
+        
+        Session::set('user_id', $id);
+        
+        return redirect('/dashboard');
+        // return Config::get('user.user');
+        // Auth::logout();
+        // Session::flush();
+        // $user = DB::table('users')->where('id',$id)->first();
+        // Crypt::setKey(Config::get('app.key'));
+        // $value = Crypt::decrypt($user->password);
+        // dd($value);
+        // return redirect('login')->with('user', $user);
     }
 
     /**

@@ -16,7 +16,17 @@ class AboutUsController extends Controller
 {
 	private function path_to_aboutus_image($image)
     {
-        $doman_name=Auth::user()->site()->first()['attributes']['subdomain'];
+        if(Auth::user()->status == 'reseller')
+        {
+            $site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $doman_name = $site[0]->subdomain;
+        }
+        else
+        {
+            $doman_name=Auth::user()->site()->first()['attributes']['subdomain'];
+        }
+        
+
         $extension = $image->getClientOriginalExtension();
         return '/'.$doman_name.'/aboutus/'.time().'.'.$extension; //path of image inside the storage dir & rename image
     }
@@ -34,7 +44,14 @@ class AboutUsController extends Controller
 
 
     public function create(){
-    	$aboutus_id = Auth::user()->site->id;
+        if(Auth::user()->status == 'reseller')
+        {
+    	   $aboutus_id = Session::get('user_id');
+        }
+        else
+        {
+            $aboutus_id = Auth::user()->site->id;
+        }
     	$is_exists=Aboutus::where('site_id', '=',$aboutus_id)->first();
 		if($is_exists===null)
 			return  view ('aboutus.create');
@@ -56,7 +73,16 @@ class AboutUsController extends Controller
         $new_row->description=trim($request->input('description'));
         $new_row->ar_description=trim($request->input('ar_description'));
         $new_row->image=$file_name;
-        $new_row->site_id=Auth::user()->site->id;
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $new_row->site_id=Session::get('user_id');
+        }
+        else
+        {
+            $new_row->site_id=Auth::user()->site->id;   
+        }
+
 		$is_saved=$new_row->save();
         if($is_saved)
         {

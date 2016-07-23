@@ -21,7 +21,16 @@ class SiteController extends Controller
     }
 
     public function activetemp($id){
-        $site_id=Auth::user()->site->id;
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;
+        }
+        
+
         $row=Site::find($site_id);
         $row->template_id=$id;
         $row->save();
@@ -105,10 +114,10 @@ class SiteController extends Controller
      }
 
 
-
      public function edit(Site $site)
      {
         # code...
+
         return view('site.edit',compact('site'));
      }
 
@@ -155,7 +164,14 @@ class SiteController extends Controller
                 catch (\Exception $e) {
                 }
         }
+        if(Auth::user()->status == 'reseller')
+        {
+            return redirect()->action('ResellerController@index'); 
+        }
+        else
+        {
             return redirect('/dashboard');
+        }
        }
        return back();
      }

@@ -32,11 +32,13 @@
                 <select class='form-control'id='category_id' name='category_id' >
                     <option value="">choose a category</option>
                     @foreach ($subcategories as $subcategory) 
-                        @if(Auth::user()->id == $subcategory->site_id)
+
+                        
                             @if($subcategory->category_id == NULL)
                                 <option  value="{{$subcategory->id}}">{{$subcategory->name}} &nbsp; &nbsp;{{$subcategory->ar_name}}</option>
                             @endif
-                        @endif
+                        
+
                     @endforeach    
                 </select>           
              </div>
