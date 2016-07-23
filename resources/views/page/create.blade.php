@@ -18,7 +18,7 @@
     <div class='form-group' id='ourpage'>
       <label class='col-md-2'>Select Your Page</label>
       <div class='col-md-8'>
-          <select class='form-control'id='findtitle' name='findtitle' >
+          <select class='form-control findtitle'id='findtitle' name='findtitle' >
               <option value="">PLZ,Select Name Page</option>
                 <option  value="page_top">Home</option>
                 <option  value="services">Services</option>
@@ -29,6 +29,7 @@
                 <option  value="promotion">Promotion</option>
           </select>           
       </div>
+      <span id="find_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists</span>            
     </div>
     <!-- for display select between write address and use google map -->
     <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
@@ -40,8 +41,9 @@
       <div class='form-group'>
         <label class='col-md-2'>Title *</label>
         <div class='col-md-10'>
-            <input placeholder='title ...' class='form-control' name='title' type='text' value="{{old('title')}}"/>
+            <input placeholder='title ...' class='form-control title_page' id='title_page' name='title' type='text' value="{{old('title')}}"/>
         </div>
+        <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists</span>            
       </div>  
       <br><br><br>   
       <textarea  name='content' style="height:295px;">{{old('title')}}</textarea> 
@@ -117,7 +119,75 @@
   };
 
   tinymce.init(editor_config);
-</script>
+
+
+    console.log('hiiiiiii');
+    document.getElementById('find_err').style.display = "none";
+    $('.findtitle').on('blur',function(event) {            
+        event.preventDefault();
+        // alert($(this).text());
+        console.log("emy");
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        console.log($(this));
+        title=$(this).val();
+        console.log(title);
+        
+        $.get("{{url('/page/is_exit/')}}/"+title,function(data){
+            console.log(data);
+            console.log($(this));
+            if (data=='true') {
+               document.getElementById('find_err').style.display = "block";
+                // $('.findtitle').focus();
+               $('.findtitle').select();
+            }else{
+                document.getElementById('find_err').style.display = "none";
+            }
+            
+        
+            });
+        });
+
+    document.getElementById('title_err').style.display = "none";
+    $('.title_page').on('blur',function(event) {            
+        event.preventDefault();
+        // alert($(this).text());
+        console.log("emy");
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        console.log($(this));
+        title=$(this).val();
+        console.log(title);
+        
+        $.get("{{url('/page/is_exit/')}}/"+title,function(data){
+            console.log(data);
+            console.log($(this));
+            if (data=='true') {
+               document.getElementById('title_err').style.display = "block";
+                // $('.title_page').focus();
+               $('.title_page').select();
+            }else{
+                document.getElementById('title_err').style.display = "none";
+            }
+            
+        
+            });
+        });
+
+  </script>
+
 @endsection
 
 

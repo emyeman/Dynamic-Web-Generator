@@ -72,6 +72,25 @@ class SubCategoryController extends Controller
         }
      }
 
+     public function ajaxexite_subcategory($title,Request $request){
+        if (Auth::user()){
+            if ($request->ajax()){
+            //select all sub categories of site and check
+            $exit = DB::table('categories')->where('site_id',Auth::user()->id)->where('name',$title)->whereNotNull('category_id')->first();
+            if($exit){
+                $is_exit='true';
+                // var_dump($is_exit);die();
+            }else{
+                $is_exit='false';
+                // var_dump($is_exit);die();
+            }
+            return $is_exit;
+          } 
+        }else{
+            return  redirect ('/login');   
+        }
+     }
+
      public function store(Request $request){
         if (Auth::user()){
             

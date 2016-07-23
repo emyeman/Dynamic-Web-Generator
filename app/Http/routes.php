@@ -87,20 +87,22 @@ Route::group(['middleware' => 'auth'], function () {
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
 		Route::get('/googlemap/storelocation/{XYlocation}','GoogleMapController@ajaxstore');
+
+		Route::get('/crusal/is_exit/{title}','CrusalController@ajaxexite_crusal');
+		Route::get('/category/is_exit/{title}','CategoryController@ajaxexite_category');
+		Route::get('/subcategory/is_exit/{title}','SubCategoryController@ajaxexite_subcategory');
+		Route::get('/product/is_exit/{title}','ProductController@exiteajax_product');
+		Route::get('/service/is_exit/{title}','ServiceController@ajaxexite_service');
+		Route::get('/page/is_exit/{title}','PagesController@ajaxexite_page');
+		Route::get('/menu/is_exit/{title}','MenuController@ajaxexite_menu');
+		Route::get('/news_promotion/is_exit/{type}/{title}','MenuController@ajaxexite_news_promotion');
 	}
 
 
 
 	// Route::get('/category/destroy/{id}','CategoryController@destroy');
 	// Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
-	// Route::get('/product/destroy/{id}','ProductController@destroy');
-
-	// if (Request::ajax()){
-	// 	Route::get('/product/{id}','ProductController@ajaxcreate');
-	// }
-
-
-	
+	// Route::get('/product/destroy/{id}','ProductController@destroy');	
 	
 });
 

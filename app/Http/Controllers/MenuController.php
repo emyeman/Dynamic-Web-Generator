@@ -80,6 +80,26 @@ class MenuController extends Controller
         return  view ('menu.create',['menus'=>$menus,'pages'=>$pages,'rows'=>$rows]);
      }
 
+    public function ajaxexite_menu($title,Request $request){
+        if (Auth::user()){
+            if ($request->ajax()){
+            //select all menus of site and check
+            $exit = DB::table('menus')->where('site_id',Auth::user()->id)->where('title',$title)->first();
+            if($exit){
+                $is_exit='true';
+                // var_dump($is_exit);die();
+            }else{
+                $is_exit='false';
+                // var_dump($is_exit);die();
+            }
+            return $is_exit;
+          } 
+        }else{
+            return  redirect ('/login');   
+        }
+     }
+
+
      public function store(Request $request){
         if(Auth::user()->status == 'reseller')
         {

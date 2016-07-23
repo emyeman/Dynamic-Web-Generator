@@ -229,52 +229,52 @@
 
             @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
               </li>
               <?php $findpage_top=1;
-              $mypage_top=trans('arabic_english.'.$ar_menupages[$x]);?>
+              $mypage_top=$ar_menupages[$x];?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php $findservices=1;
-                $myservices=trans('arabic_english.'.$ar_menupages[$x]);?>
+                $myservices=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php $findabout=1;
-                 $myabout=trans('arabic_english.'.$ar_menupages[$x]);?>
+                 $myabout=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                  <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php $findgallery=1;
-                $mygallery=trans('arabic_english.'.$ar_menupages[$x]);?>
+                $mygallery=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php $findnews=1;
-                $mynews=trans('arabic_english.'.$ar_menupages[$x]);?>
+                $mynews=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                 <?php $findpromotion=1;
-                $mypromotion=trans('arabic_english.'.$ar_menupages[$x]);?>
+                $mypromotion=$ar_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$ar_menupages[$x])}}</a>
+                    <a class="page-scroll droid-arabic-kufi" href="#{{$urlpages[$x]}}">{{$ar_menupages[$x]}}</a>
                 </li>
                  <?php $findcontact=1;
-                 $mycontact=trans('arabic_english.'.$ar_menupages[$x]);?>
+                 $mycontact=$ar_menupages[$x];?>
             @endif    
              @endfor
 
@@ -480,14 +480,14 @@
                                <li>
                                   <div class="dropdown">
                                       <button class="btn btn-default btn-xs dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                          <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ str_replace(' ', '', $cat_and_subcats->name) }}</a>
+                                          <a href="#" data-filter=".{{ $cat_and_subcats->name }}" class="active">{{ str_replace(' ', '', $cat_and_subcats->ar_name) }}</a>
                                           <span class="caret"></span>
                                       </button>
 
                                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
                                         @foreach($cat_and_subcats->subcategories as $sub)
-                                              <li><a href="#" data-filter=".{{ $sub->name }}">{{ str_replace(' ', '', $sub->name) }}</a></li>
+                                              <li><a href="#" data-filter=".{{ $sub->name }}">{{ str_replace(' ', '', $sub->ar_name) }}</a></li>
                                         @endforeach
                                       </ul>
                                   </div>
@@ -511,8 +511,8 @@
                             <div class="hover-bg">
                                 <a href="#">
                                     <div class="hover-text">
-                                        <h4 style="color:white">{{ $product->name }}</h4>
-                                        <small style="color:white">{{ $product->price }}</small>
+                                        <h4 style="color:white">{{ $product->ar_name }}</h4>
+                                        <small style="color:white">{{ $product->ar_price }}</small>
                                         <div class="clearfix"></div>
                                         <i class="fa fa-plus"></i>
                                     </div>
