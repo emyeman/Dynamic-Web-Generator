@@ -84,6 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
     	'create' , 'destroy',
 	]]);
 
+	Route::get('/ticket/reseller_index','TicketController@reseller_index');
+	Route::resource('/ticket','TicketController');
+
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
 		Route::get('/googlemap/storelocation/{XYlocation}','GoogleMapController@ajaxstore');
@@ -96,6 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/page/is_exit/{title}','PagesController@ajaxexite_page');
 		Route::get('/menu/is_exit/{title}','MenuController@ajaxexite_menu');
 		Route::get('/news_promotion/is_exit/{type}/{title}','MenuController@ajaxexite_news_promotion');
+		Route::get('/ticket/is_exit/{title}','TicketController@ajaxexite_ticket');
 	}
 
 
