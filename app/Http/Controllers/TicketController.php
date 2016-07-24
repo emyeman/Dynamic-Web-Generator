@@ -114,7 +114,7 @@ class TicketController extends Controller
 
 
 
-     public function edit($id){
+     /*public function edit($id){
         if (Auth::user()){
             try
             {
@@ -170,7 +170,7 @@ class TicketController extends Controller
          }   
      }
 
-
+*/
 
      public function destroy($id){
         if (Auth::user()){
@@ -190,7 +190,7 @@ class TicketController extends Controller
             // return  view ('Ticket.index');
             // ****************************************************
             // // for use ajax for remove
-            $del_ticket =$Ticket->delete();
+            $del_ticket =$ticket->delete();
             return json_encode( $del_ticket );
         } else{
             return  redirect ('/login');   
