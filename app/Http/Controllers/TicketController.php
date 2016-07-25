@@ -22,7 +22,10 @@ class TicketController extends Controller
         	$tickets=DB::table('tickets')->where('reseller_id',Auth::user()->id)->get();
             $users=DB::table('users')->where('user_id',Auth::user()->id)->get();
             $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
-            return  view ('ticket.reseller_index',compact('tickets','users','reseller'));
+            $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+            $count_unseen=count($ticket_unseen);
+            // var_dump($count_unseen);die();
+            return  view ('ticket.reseller_index',compact('tickets','users','reseller','count_unseen'));
        } else{
             return  redirect ('/login');   
        }
@@ -33,6 +36,7 @@ class TicketController extends Controller
             $tickets=DB::table('tickets')->where('site_id',Auth::user()->id)->get();
             $user=DB::table('users')->where('id',Auth::user()->id)->first();
             $reseller=DB::table('users')->where('id',$user->user_id)->first();
+            
             return  view ('ticket.index',compact('tickets','user','reseller'));
        } else{
             return  redirect ('/login');   
@@ -40,7 +44,96 @@ class TicketController extends Controller
      }
 
 
-     public function show($id,Request $request){
+     public function resellershow($id,Request $request){
+        if (Auth::user()){
+            try
+                {$ticket=Ticket::findOrFail($id);}
+            catch(Exception $e)
+                {throw new ModelNotFoundException($e->getMassege());}
+            $user=DB::table('users')->where('id',$ticket->site_id)->first();
+            $reseller=DB::table('users')->where('id',$ticket->reseller_id)->first();          
+            $ticket->is_seen=true;
+            $ticket->save();
+            $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+            $count_unseen=count($ticket_unseen);
+            return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen'));
+        } else{
+            return  redirect ('/login');   
+        }    
+    }
+
+    public function show($id,Request $request){
+        if (Auth::user()){
+            try
+                {$ticket=Ticket::findOrFail($id);}
+            catch(Exception $e)
+                {throw new ModelNotFoundException($e->getMassege());}
+            $user=DB::table('users')->where('id',Auth::user()->id)->first();
+            $reseller=DB::table('users')->where('id',$user->user_id)->first();          
+            
+
+            return view('ticket.show',compact('ticket','user','reseller'));
+        } else{
+            return  redirect ('/login');   
+        }    
+    }
+
+
+    public function solve_resellerindex($id,Request $request){
+         if (Auth::user()){
+            try
+                {$ticket=Ticket::findOrFail($id);}
+            catch(Exception $e)
+                {throw new ModelNotFoundException($e->getMassege());}
+            $ticket->is_solved=true;
+            $ticket->save();
+
+            return  redirect ('/ticket/reseller_index');
+        } else{
+            return  redirect ('/login');   
+        }    
+    }
+    
+
+    public function solve_resellershow($id,Request $request){
+        if (Auth::user()){
+            try
+                {$ticket=Ticket::findOrFail($id);}
+            catch(Exception $e)
+                {throw new ModelNotFoundException($e->getMassege());}
+            $user=DB::table('users')->where('id',$ticket->site_id)->first();
+            $reseller=DB::table('users')->where('id',$ticket->reseller_id)->first();          
+            $ticket->is_seen=true;
+            $ticket->save();
+            $ticket->is_solved=true;
+            $ticket->save();
+            $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+            $count_unseen=count($ticket_unseen);
+
+            return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen'));
+        } else{
+            return  redirect ('/login');   
+        }    
+    }
+    
+
+    public function solve_index($id,Request $request){
+         if (Auth::user()){
+            try
+                {$ticket=Ticket::findOrFail($id);}
+            catch(Exception $e)
+                {throw new ModelNotFoundException($e->getMassege());}
+            $ticket->is_solved=true;
+            $ticket->save();
+            
+            return  redirect ('/ticket');
+        } else{
+            return  redirect ('/login');   
+        }    
+    }
+
+
+    public function solve_show($id,Request $request){
         if (Auth::user()){
             try
                 {$ticket=Ticket::findOrFail($id);}
@@ -55,6 +148,7 @@ class TicketController extends Controller
             return  redirect ('/login');   
         }    
     }
+
 
 
      public function create(){
@@ -190,8 +284,8 @@ class TicketController extends Controller
             // return  view ('Ticket.index');
             // ****************************************************
             // // for use ajax for remove
-            $del_ticket =$ticket->delete();
-            return json_encode( $del_ticket );
+            $del_tickets =$ticket->delete();
+            return json_encode( $del_tickets);
         } else{
             return  redirect ('/login');   
          } 

@@ -19,6 +19,7 @@ class CreateTicketsTable extends Migration
             $table->string('subject');
             $table->text('message');
             $table->boolean('is_solved')->default(false);
+            $table->boolean('is_seen')->default(false);
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('site_id')

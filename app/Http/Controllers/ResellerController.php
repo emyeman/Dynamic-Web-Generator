@@ -23,7 +23,12 @@ class ResellerController extends Controller
     {
         //
         $users = DB::table('users')->where('user_id',Auth::user()->id)->get();
-        return view('reseller.index', compact('users'));
+
+        // for count unseen of ticket 
+        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+        $count_unseen=count($ticket_unseen);
+
+        return view('reseller.index', compact('users','count_unseen'));
     }
 
     /**
@@ -33,8 +38,11 @@ class ResellerController extends Controller
      */
     public function create()
     {
-        //
-        return view('reseller.create');
+        // for count unseen of ticket 
+        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+        $count_unseen=count($ticket_unseen);
+
+        return view('reseller.create', compact('count_unseen'));
     }
 
     /**
@@ -87,7 +95,11 @@ class ResellerController extends Controller
         
         Session::set('user_id', $id);
         
-        return redirect('/dashboard');
+        // for count unseen of ticket 
+        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+        $count_unseen=count($ticket_unseen);
+
+        return redirect('/dashboard', compact('count_unseen'));
         // return Config::get('user.user');
         // Auth::logout();
         // Session::flush();
@@ -106,8 +118,11 @@ class ResellerController extends Controller
      */
     public function edit(User $user)
     {
-        //
-        return view('reseller.edit', compact('user'));
+            // for count unseen of ticket 
+        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+        $count_unseen=count($ticket_unseen);
+
+        return view('reseller.edit', compact('user','count_unseen'));
     }
 
     /**
