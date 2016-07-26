@@ -168,7 +168,7 @@ class BrandingController extends Controller {
         if(Auth::user()->status == 'reseller')
         {
             $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
-            $doman_name = $user_site[0]->subdomain;
+            $domain_name = $user_site[0]->subdomain;
         }
         else
         {
