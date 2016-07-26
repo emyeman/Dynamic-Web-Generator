@@ -95,11 +95,7 @@ class ResellerController extends Controller
         
         Session::set('user_id', $id);
         
-        // for count unseen of ticket 
-        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
-        $count_unseen=count($ticket_unseen);
-
-        return redirect('/dashboard', compact('count_unseen'));
+        return redirect('/dashboard');
         // return Config::get('user.user');
         // Auth::logout();
         // Session::flush();
