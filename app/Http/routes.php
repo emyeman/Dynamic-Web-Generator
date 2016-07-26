@@ -85,6 +85,17 @@ Route::group(['middleware' => 'auth'], function () {
     	'create' , 'destroy',
 	]]);
 
+	Route::get('/ticket/reseller_index','TicketController@reseller_index');
+	Route::get('/ticket/resellershow/{id}','TicketController@resellershow');
+
+	Route::get('/ticket/solve_resellerindex/{id}','TicketController@solve_resellerindex');
+	Route::get('/ticket/solve_resellershow/{id}','TicketController@solve_resellershow');
+	Route::get('/ticket/solve_index/{id}','TicketController@solve_index');
+	Route::get('/ticket/solve_show/{id}','TicketController@solve_show');
+
+	Route::resource('/ticket','TicketController');
+
+
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
 		Route::get('/googlemap/storelocation/{XYlocation}','GoogleMapController@ajaxstore');
@@ -97,11 +108,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/page/is_exit/{title}','PagesController@ajaxexite_page');
 		Route::get('/menu/is_exit/{title}','MenuController@ajaxexite_menu');
 		Route::get('/news_promotion/is_exit/{type}/{title}','MenuController@ajaxexite_news_promotion');
+		Route::get('/ticket/is_exit/{title}','TicketController@ajaxexite_ticket');
 	}
 
 
 
-	// Route::get('/category/destroy/{id}','CategoryController@destroy');
+	// Route::get('/ticket/destroy/{id}','TicketController@destroy');
 	// Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
 	// Route::get('/product/destroy/{id}','ProductController@destroy');	
 	

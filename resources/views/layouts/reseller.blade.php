@@ -274,15 +274,14 @@
 			</ul>
 		</li>
 		<li>
-			<a href="pages/Tickets.html">
+			<a href="{{url('/ticket/reseller_index')}}">
 				<i class="fa fa-list-alt"></i>
 				<span>Tickets</span>
-                <span class="label label-danger pull-right">1</span>
+
+                <span class="label label-danger pull-right">{{$count_unseen}}</span>
 			</a>
 
 		</li>
-
-
 
 	</ul>
 	</section>

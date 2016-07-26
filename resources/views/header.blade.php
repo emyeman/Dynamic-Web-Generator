@@ -298,12 +298,35 @@
                         Templates
                     </a>
                 </li>
+                
                 <li>
                     <a href="{{ url('/domain')}}">
                         <!-- <i class="icon-dashboard"></i> -->
                         Domain
                     </a>
                 </li>
+
+                <li>
+                    <a href="javascript:void(0);">
+                        <!-- <i class="icon-edit"></i> -->
+                        Ticket
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{ url('/ticket') }}">
+                            <i class="icon-angle-right"></i>
+                            Show Ticket
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/ticket/create')}}">
+                            <i class="icon-angle-right"></i>
+                            Add Ticket
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <!-- <li>
                     <a href="javascript:void(0);">
                         <i class="icon-desktop"></i>

@@ -83,5 +83,10 @@ class Site extends Model
     {
         return $this->hasMany(Message::class);
     }
+
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class);
+    }
     
 }
