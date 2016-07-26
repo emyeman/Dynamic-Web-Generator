@@ -45,7 +45,7 @@
 
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="index2.html" class="logo">
+			<a href="{{ url('/reseller') }}" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>A</b>LT</span>
 				<!-- logo for regular state and mobile devices -->
@@ -239,7 +239,7 @@
 	<ul class="sidebar-menu">
 
 		<li class="active">
-			<a href="#">
+			<a href="{{ url('/reseller') }}">
 				<i class="fa fa-users"></i><span>Current Customers</span>
 				<span class="label label-info pull-right">25</span>
 				<!--<i class="fa fa-angle-left pull-right"></i>-->

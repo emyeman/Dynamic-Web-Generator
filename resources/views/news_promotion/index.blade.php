@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.UserDashboard')
 
 @section('sidebar')
-    @include('../header')
+    @include('../UserDashboardHeader')
 @endsection
 
 @section('content')
 
-
+{{-- 
 {!! Html::style('assets/css/table-scroll.css') !!}
 
     <h1 class="page-header">
@@ -71,7 +71,78 @@
             </div>
         </div>
     </div>
+ --}}
+        <section class="content">
+        <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+        </div>  
+        </div>
+    @if(Session::has('update_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
+    @endif
+     <div class="row">
+    <div class="col-md-11 col-md-offset-0">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">
+                    @if($type=='promotion')
+                        Promotions
+                    @else
+                        News
+                    @endif
+              </h3>
 
+              <div class="pull-right">
+              <a href="{{url('/news_promotion/create/'.$type)}}">
+              <i class="fa fa-plus fa-3x" aria-hidden="true" style="color: #00a65a;"></i></a>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr>
+                  <th>Images</th>
+                  <th>English Title</th>
+                  <th>Arabic Title</th>
+                  <th>English Description</th>
+                  <th>Arabic Description</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th></th>
+                </tr>
+                @foreach ($rows as $row)
+                <tr>
+                  <td><img src="{{url('/assets/images'.$row->image)}}" width='100px' height='100px' class="img-responsive"></td>
+                  <td>{{$row->title}}</td>
+                  <td>{{$row->ar_title}}</td>
+                  <td style="width:200px;">
+                    <div >
+                      <p>{{$row->description}}</p>
+                    </div>
+                  </td>
+                  <td style="width:200px;">
+                    <div >
+                      <p>{{$row->ar_description}}</p>
+                    </div>
+                  </td>
+                  <td>{{$row->start_date}}</td>
+                  <td>{{$row->end_date}}</td>
+                  <td>
+                  <a href="{{url('/news_promotion/'.$row->id.'/edit')}}">
+                  <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color:#3c8dbc;"></i></a>
+
+                  <i class="fa fa-times fa-2x delete" id="{{$row->id}}" aria-hidden="true" style="margin-left: 20px; color: red;"></i>
+                  </td>
+                </tr>
+                @endforeach
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+             </div>
+        </section>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>

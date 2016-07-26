@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.UserDashboard')
 
 @section('content')
 <div class="container">
 
-  @include('../header')
+  @include('../UserDashboardHeader')
 
   {!! Html::script('assets/tinymce/tinymce.js') !!}
 

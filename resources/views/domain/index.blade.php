@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.UserDashboard')
 
 @section('content')
-<div class="container">
+{{-- <div class="container"> --}}
 
-@include('../header')
-<div class="col-sm-9">
+@include('../UserDashboardHeader')
+{{-- <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Show Domain
@@ -46,7 +46,31 @@
  <br/><br/><hr/><hr/>
 
 
-</div>
+</div> --}}
+        <section class="content">
+     <div class="row">
+     @if(!$domain)
+            <div class="pull-right">
+              <a href="{{url('/domain/create')}}">
+              <i class="fa fa-plus fa-3x" aria-hidden="true" style="color: #00a65a;"></i>
+              </a>
+            </div>
+    @endif
+        </div>
+      <div class="row">
+        <table class="table">
+                    <tr>
+                    @if($domain)
+                        <td>{{ $domain->Domain_name }}</td>
+                        <td><a href="{{ url('/domain/edit/'.$domain->id) }}">
+                        <span class="glyphicon glyphicon-edit edit" id="{{$domain->id}}"></span></a></td>
+                    @else
+                        <h1 style="color:red;text-align:center;">Empty Set</h1>
+                    @endif
+                    </tr>
+                </table>
+      </div>
+        </section>
 @endsection
 
 

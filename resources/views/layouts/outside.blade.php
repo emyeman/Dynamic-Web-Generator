@@ -194,12 +194,14 @@ h2.zero,p.zero {
                                   
                                       <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
                                   
-                                    @if (isset($site) && Auth::user()->status =! 'reseller')
+                                    @if (isset($site))
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
                                     @else
-                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                        @if(Auth::user()->status == 'user')
+                                            <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                        @endif
                                     @endif
                                      </ul>
                                     </li>
@@ -245,12 +247,14 @@ h2.zero,p.zero {
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
                                   
-                                    @if (isset($site) && Auth::user()->status =! 'reseller')
+                                    @if (isset($site))
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
                                     @else
+                                        @if(Auth::user()->status == 'user')
                                         <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                        @endif
                                     @endif
 
                                      </ul>
@@ -307,12 +311,14 @@ h2.zero,p.zero {
                                        <li class="menu-item one-page-subsite"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a></li>
                                   
 
-                                    @if (isset($site) && Auth::user()->status =! 'reseller')
+                                    @if (isset($site))
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
                                     @else
-                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                        @if(Auth::user()->status == 'user')
+                                         <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                         @endif
                                     @endif
                                      </ul>
                                     </li>
