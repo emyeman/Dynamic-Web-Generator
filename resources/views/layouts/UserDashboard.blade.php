@@ -45,7 +45,7 @@
     {!! Html::script('assets/bootstrap/js/bootstrap.min.js') !!}
     
     {!! Html::script('assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js') !!}
-    
+    {!! Html::script('assets/js/jquery-1.12.0.min.js') !!}
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -333,6 +333,8 @@
 	<!-- ./wrapper -->
 
 	<!-- jQuery 2.2.0 -->
+	
+    
 	<script src="{{ url('assets/reseller_assets/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
 	<!-- jQuery UI 1.11.4 -->
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -369,7 +371,7 @@
 	<script src="{{ url('assets/reseller_assets/dist/js/pages/dashboard.js') }}"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="{{ url('assets/reseller_assets/dist/js/demo.js') }}"></script>
-
+	
 </body>
 
 </html>

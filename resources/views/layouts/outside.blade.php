@@ -198,7 +198,7 @@ h2.zero,p.zero {
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
-                                    @else
+                                    @elseif (Auth::user()->status == 'user')
                                         <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
                                     @endif
                                      </ul>
@@ -249,7 +249,7 @@ h2.zero,p.zero {
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
-                                    @else
+                                    @elseif (Auth::user()->status == 'user')
                                         <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
                                     @endif
 
@@ -311,9 +311,10 @@ h2.zero,p.zero {
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
-                                    @else
+                                    @elseif (Auth::user()->status == 'user')
                                         
                                          <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+
                                     @endif
                                      </ul>
                                     </li>
