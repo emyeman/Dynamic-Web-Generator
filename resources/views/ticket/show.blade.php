@@ -20,4 +20,5 @@
 	@endif
 	<br><br>
 	<div class='col-md-10'>{{$ticket->message}}</div>
+
 @endsection

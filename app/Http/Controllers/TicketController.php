@@ -65,9 +65,12 @@ class TicketController extends Controller
     public function show($id,Request $request){
         if (Auth::user()){
             try
-                {$ticket=Ticket::findOrFail($id);}
+                {
+                    // $ticket=Ticket::findOrFail($id);
+                    $ticket=DB::table('tickets')->where('id',$id)->first();}
             catch(Exception $e)
                 {throw new ModelNotFoundException($e->getMassege());}
+             
             $user=DB::table('users')->where('id',Auth::user()->id)->first();
             $reseller=DB::table('users')->where('id',$user->user_id)->first();          
             
