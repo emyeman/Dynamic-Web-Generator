@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.UserDashboard')
 
 @section('sidebar')
-    @include('../header')
+    @include('../UserDashboardHeader')
 @endsection
+
+@section('content')
 
 @section('content')
 <h2><div class='col-lg-1 col-ms-1'>

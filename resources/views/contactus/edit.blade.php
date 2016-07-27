@@ -5,22 +5,35 @@
 @endsection
 
 @section('content')
-
 <div class="col-sm-9">
-      <h2><div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small>Edit Contact Us</h2>
-          @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+<!-- Main content -->
+    <section class="content">
+    <div class="col-md-6 col-md-offset-3">
+      <img src="{{url('assets/reseller_assets/images/10.png')}}" width="350" height="329" class="img-responsive" style="margin-left: 100px;
+              margin-top: -15px;">
+    </div>
+  @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+     <div class="row">
+   
+        <div class="col-md-12 col-xs-12  col-md-offset-2">
+         
+           <div class="box box-info">
+            <div class="box-header with-border">
+            <h3 class="box-title"><a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
+              Edit Contact Us</h3>
+
             </div>
-        @endif
-      <br><br>
-    {!!Form::open(['route'=>['contactus.update',$contact->id],'files'=>true,'method'=>'put']) !!}
+            <!-- /.box-header -->
+            <!-- form start -->
+       {!!Form::open(['route'=>['contactus.update',$contact->id],'files'=>true,'method'=>'put']) !!}
         
         <div class='form-group'>
             <label class='col-md-2'>En_Address:</label>
@@ -231,23 +244,34 @@
                 <!-- there draw input of value lat and lon  and draw google map -->
                <br/><br/>                     
           </div> 
-          <br/>
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='Edit' />
+
+        <!-- <span class='col-md-2'></span> col-xs-8 -->
+       <div class="col-md-10 col-md-offset-1">  
+       <br/>     
+           <div class="box">
+              <div class="box-header">
+                  <div class="box-footer clearfix">
+                 <div class="input-group-btn">Edit
+                      <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='Edit' />   
+                 </div>
+              </div>
+              </div>
+            <!-- /.box --> 
+       </div>
+         
+       </div>
       {!!Form::close() !!}
+         </div>
+        </div>
+     </div>
+        
+        <!-- /.col -->
+      </section>
+    <!-- /.content -->
+</div> 
+</div>  
 
-      <br/><br/>
 
-        <!-- for make cancel -->
-        <!-- <a class="col-md-10 btn btn-info btn-lg" href="/contactus" >Cansel Edit<span class="glyphicon glyphicon-edit"></span></a> -->
-
-      <br><br>
-      <br><br>
-</div><!--end leftsideof from-->
-
- <!-- <br/><br/><hr/><hr/> -->
-
-</div>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
@@ -319,7 +343,7 @@
             lon = position.coords.longitude;
             latlon = lat + ' , ' + lon;
             var showdata;
-
+console.log(latlon);
              showdata="<div class='form-group'>";
              showdata+="<label class='col-md-2'>Latitude (X):</label>";
              showdata+="<div class='col-md-10 input-group'>";
@@ -344,7 +368,7 @@
 
             img = "http://maps.googleapis.com/maps/api/staticmap?center="
              + latlon + "&markers=color:blue|label:N|" + latlon + "&zoom=15&size=1057x600&sensor=false";
-            savedata+="<img src='{{url('"+img+"')}}'/>";
+            savedata+="<img src='{{url("+img+")}}/>";
 
             $('#savelocation').html(savedata);
             console.log(latlon);

@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-    <h2><div class='col-lg-1 col-ms-1'>
-        <a href="{{url('/subcategory')}}"><span class="glyphicon glyphicon-backward"></span></a>
-    </div></small> </h2>  
-
-    <h2 class='page-header'>Add New Sub Category</h2> 
-    @if (count($errors) > 0)
+    <!-- Main content -->
+        <section class="content">
+      <div>
+        <img src="{{url('assets/reseller_assets/images/14a.png')}}" style="max-width: 50%; margin-left: 250px;" class="img-responsive">    
+        </div>
+        @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -26,10 +26,19 @@
     
     <br>
     {!!Form::open(['route'=>'subcategory.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
-       <div class='form-group'>
-            <label class='col-md-2'>Category</label>
-            <div class='col-md-10 input-group'>
-                <select class='form-control'id='category_id' name='category_id' >
+      
+     <div class="row">
+    <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Category Name</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <label >Choose Category</label>
+                  <select class='form-control'id='category_id' name='category_id' >
                     <option value="">choose a category</option>
                     @foreach ($subcategories as $subcategory) 
 
@@ -40,43 +49,105 @@
                         
 
                     @endforeach    
-                </select>           
-             </div>
-        </div>
-        <div class='form-group'>
-            <label class='col-md-2'>English Title *</label>
-            <div class='col-md-10 input-group'>                
-                <input placeholder='PLZ,enter title ...' class='form-control title_subcategory' id='title_subcategory' name='title_subcategory' type='text' value="{{old('title_subcategory')}}"/>
-            </div>
-            <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This sub category already exists</span>
-        </div> 
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Title *</label>
-            <div class='col-md-10 input-group'>                
-                <input placeholder='من فضلك ادخل اسم القسم الفرعى' class='form-control' name='ar_title_subcategory' type='text' value="{{old('ar_title_subcategory')}}"/>
-            </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>Image</label>
-            <div class='col-md-10 input-group'>        
-                <input class='form-control' name='image_subcategory' type='file' />
-            </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>English Description*</label>
-            <div class='col-md-10 input-group'>                
-                <textarea placeholder='PLZ,enter description ...' class='form-control' rows='3' name='subdescription'>{{old('subdescription')}}</textarea> 
+                </select> 
+
+                </div>
             </div>
         </div>
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Description *</label>
-            <div class='col-md-10 input-group'>                
-                <textarea placeholder='من فضلك ادخل الوصف' class='form-control' rows='3' name='ar_subdescription'>{{old('ar_subdescription')}}</textarea> 
+        </div>
+
+     <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Title Sub Category</h3>
+            <!--   <div class="pull-right">
+                <a href="{{url('/subcategory')}}"><span class="glyphicon glyphicon-backward"></span></a>
+              </div> -->
             </div>
-        </div>      
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
-    {!!Form::close() !!}
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <label >English Title *</label>
+                   <input placeholder='PLZ,enter english title ...' class='form-control title_subcategory' name='title_subcategory' id='title_subcategory' type='text' value="{{old('title_subcategory')}}"/>
+                   <span id="title_err" style="color:red; size:12px; padding:10px 100px;font-weight:bold;background-color:lightpink;">This sub category already exists</span>
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Arabic Title *</label>
+                  <input placeholder='من فضلك ادخل اسم القسم الفرعى' class='form-control' name='ar_title_subcategory' type='text' value="{{old('ar_title_subcategory')}}"/>
+                </div>
+            </div>
+        </div>
+        </div>
+    
+    <div class="col-md-10 col-md-offset-1" >
+        <div class="box">
+            <div class="box-header with-border">
+             <center> <h3 class="box-title">Choose Picture</h3></center>
+            </div>
+            <!-- <div class="box-body">
+             <center><img src="image/11.jpg" class="img-responsive" alt="brand"></center>
+            </div> -->
+            <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input class='form-control' name='image_subcategory' type='file' />
+                    <!-- <button id="add-new-event" type="button" class="btn btn-info btn-flat pull-right form-control">Browse</button>   -->
+               </div>
+            </div>  
+       </div>
+        </div>
+   
+        <div class="col-md-5 col-xs-12 col-md-offset-1" >      
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">English Description
+                <small>Write some words descriping this Sub Categorie ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='subdescription'>{{old('subdescription')}}</textarea>
+            </div>
+            </div>
+            </div>
+        <div class="col-md-5 col-xs-12 "> 
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Arabic Description
+                <small>من فضلك ادخل وصف لهذا القسم الفرعى ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" placeholder="من فضلك ادخل الوصف" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"name='ar_subdescription'>{{old('ar_subdescription')}}</textarea>
+            </div>
+            </div>               
+          <!-- /.box --> 
+     </div>
+        <!-- <span class='col-md-2'></span> col-xs-8 -->
+     <div class="col-md-10 col-md-offset-1">       
+         <div class="box">
+            <div class="box-header">
+                <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='ADD' />   
+               </div>
+            </div>
+            </div>
+          <!-- /.box --> 
+     </div>
+       
+     </div>
+     </div>
+      
+ {!!Form::close() !!}
+    
+        <!-- /.col -->
+        </section>
+        <!-- /.content -->
+</div>  
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
@@ -116,6 +187,7 @@
         });
 
   </script>
+
 @endsection
 
 

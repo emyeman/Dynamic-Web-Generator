@@ -6,66 +6,73 @@
 
 @section('content')
 
-
-{!! Html::style('assets/css/table-scroll.css') !!}
-
-    <h1 class="page-header">
-        Show SubCategories
-    </h1>
-    <div class="subcategory">
-        <div class='col-lg-offset-11 col-ms-1'>
-            <a href="{{url('/subcategory/create/')}}"><span class="glyphicon glyphicon-plus"></span></a>
+        <!-- Main content -->
+        
+        <section class="content">
+        <div>
+        <img style="max-width: 50%; margin-left: 250px;" src="{{url('assets/reseller_assets/images/14.png')}}" class="img-responsive"> 
         </div>
-    </div >
-
+    
     @if(Session::has('update_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
     @endif
     
-    <div class="subcategory">
-        <div id="table-wrapper">
-            <div id="table-scroll">
-                <table class='table table-hover' style="table-layout: fixed;">
-                    <thead>
-                        <tr>
-                            <th width='30%'><span class="text">Category</span></th>
-                            <th width='15%'><span class="text">&nbsp;&nbsp; Image</span></th>
-                            <th width='20%'><span class="text">&nbsp; En_Title</span></th>
-                            <th width='20%'><span class="text">Ar_Title</span></th>
-                            <th width='30%'><span class="text">En_Description</span></th>
-                            <th width='30%'><span class="text">Ar_Description</span></th>
-                            <th width='20%'><span class="text">Publish At</span></th>
-                            <th width='5%'></th>
-                            <th width='5%'></th> <!-- edit operation -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($subcategories as $subcategory) 
-                            
-                            <tr>
-                            <!-- for obtain name of category  -->
-                            @foreach ($categories as $category)
-                                @if($category->id==$subcategory->category_id)
-                                <td class='wrap'><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$category->name}} &nbsp; {{$category->ar_name}}<a/></td>
-                             @endif
-                            @endforeach
-                                <td>
-                                    <a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">
-                                        <img src="{{url('/assets/images/'.$subcategory->image)}}" width='100px' height='100px'>
-                                    </a>
-                                 </td>   
-                                <td class='wrap'><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$subcategory->name}}<a/></td><td class='wrap'>
-                                <a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$subcategory->ar_name}}<a/></td>
-                                <td class='wrap'>{{substr($subcategory->description,0,50)}}</td>
-                                <td class='wrap'>{{substr($subcategory->ar_description,0,50)}}</td>
-                                <td>{{$subcategory->created_at}}</td>
-                                <td>
-                                    <a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">
-                                        <span style="color:blue;" class="glyphicon glyphicon-edit edit" id="{{$subcategory->id}}"></span>
-                                    </a>
-                                </td> 
+     <div class="row">
+    <div class=" col-md-12 col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">View your Sub category</h3>
 
-                                 <?php $flage_relation=0 ?>
+              <div class="pull-right">
+              <a href="{{url('/subcategory/create/')}}">
+              <i class="fa fa-plus fa-3x" aria-hidden="true" style="color: #00a65a;"></i></a>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr>
+                  <th>Category</th>
+                  <th>&nbsp; &nbsp; Images</th>
+                  <th>En_Sub category</th>
+                  <th>Ar_Sub category</th>
+                  <th>En_Description</th>
+                  <th>Ar_Description</th>
+                  <th>Published At</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                @foreach ($subcategories as $subcategory) 
+
+                <tr>
+                  @foreach ($categories as $category)
+                        @if($category->id==$subcategory->category_id)
+                        <td><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$category->name}} <br/> {{$category->ar_name}}<a/></td>
+                     @endif
+                    @endforeach
+
+                  <td><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">
+                        <img src="{{url('/assets/images/'.$subcategory->image)}}" width='100px' height='100px' class="img-responsive">
+                    </a></td>
+                    <td><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$subcategory->name}}<a/></td>
+                      <td><a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">{{$subcategory->ar_name}}<a/></td>
+                      <td style="width:200px;">
+                        <div>
+                          <p>{{substr($subcategory->description,0,100)}}</p>
+                        </div>
+                      </td>
+                      <td style="width:200px;">
+                        <div >
+                          <p>{{substr($subcategory->ar_description,0,100)}}</p>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-red">{{$subcategory->created_at}}</span></td>
+                      <td>
+                      <a href="{{url('/subcategory/'.$subcategory->id.'/edit')}}">
+                      <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color:#3c8dbc;"></i></a></td>
+                      <td>
+
+                        <?php $flage_relation=0 ?>
                             @foreach ($products as $product)
                                 @if($subcategory->id==$product->category_id)
                                     <?php $flage_relation=1 ?>
@@ -73,27 +80,26 @@
                             @endforeach
 
                             @if($flage_relation==1)
-                                <!-- <span class="btn btn-danger disabled" > Remove SubCategory  <span class="glyphicon glyphicon-remove disabled"></span></span> -->
-                               <td><span style="size-weight:bold;" class="disabled">x</span></td>
+                                <!-- <i class="fa fa-times fa-2x" aria-hidden="true" style="margin-left: 20px; color: red;"></i> -->
+                                <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-ban-circle" ></span>
+                            @else
+                                <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-trash delete" id="{{$subcategory->id}}"></span>
+                            @endif    
+                      </td>
 
-
-                            @endif
-                            @if($flage_relation==0)
-                            <!-- <a class="btn btn-danger" href="/subcategory/destroy/{{$subcategory->id}}">Remove SubCategory <span class="glyphicon glyphicon-remove"></span></a> -->
-
-                                <!-- use ajax for remove -->
-                                <td><span class="glyphicon glyphicon-remove delete" id="{{$subcategory->id}}"></span></td>
-
-                                 <!-- <a id="{{$subcategory->id}}" class="btn btn-danger delete">Remove Category<span class="glyphicon glyphicon-remove"></span> </a> -->
-                            @endif
-
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                </tr>
+            @endforeach  
+              </table>
             </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-    </div>
+             </div>
+        </section>
+        <!-- /.content -->
+</div>  
+
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->

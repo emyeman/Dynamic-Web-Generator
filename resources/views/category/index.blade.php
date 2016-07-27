@@ -6,58 +6,65 @@
 
 @section('content')
 
-
 {!! Html::style('assets/css/table-scroll.css') !!}
 
-    <h1 class="page-header">
-        Show Categories
-    </h1>
-    <div class="category">
-        <div class='col-lg-offset-11 col-ms-1'>
-            <a href="{{url('/category/create/')}}"><span class="glyphicon glyphicon-plus"></span></a>
+<!-- Main content -->
+        <section class="content">
+        <div>
+        <img src="{{url('assets/reseller_assets/images/13.png')}}" class="img-responsive"> 
         </div>
-    </div >
-
+    
     @if(Session::has('update_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
     @endif
-    
-    <div class="category">
-        <div id="table-wrapper">
-            <div id="table-scroll">
-                <table class='table table-hover' style="table-layout: fixed;">
-                    <thead>
-                        <tr>
-                            <th width='15%'><span class="text">Image</span></th>
-                            <th width='12%'><span class="text">En_Title</span></th>
-                             <th width='12%'><span class="text">Ar_Title</span></th>
-                            <th width='20%'><span class="text">En_Description</span></th>
-                            <th width='20%'><span class="text">Ar_Description</span></th>
-                            <th width='10%'><span class="text">Publish At</span></th>
-                            <th width='5%'></th>
-                            <th width='5%'></th> <!-- edit operation -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($categories as $category) 
-                            
-                            <tr> 
-                                <td>
-                                    <a href="{{url('/category/'.$category->id.'/edit')}}">
-                                        <img src="{{url('/assets/images/'.$category->image)}}" width='100px' height='100px'></td>
-                                    </a>
-                                <td class='wrap'><a href="{{url('/category/'.$category->id.'/edit')}}">{{$category->name}}<a/></td>
-                                <td class='wrap'><a href="{{url('/category/'.$category->id.'/edit')}}">{{$category->ar_name}}<a/></td>
-                                <td class='wrap'>{{substr($category->description,0,50)}}</td>
-                                <td class='wrap'>{{substr($category->ar_description,0,50)}}</td>
-                                <td>{{$category->created_at}}</td>
-                                <td>
-                                    <a href="{{url('/category/'.$category->id.'/edit')}}">
-                                        <span style="color:blue;" class="glyphicon glyphicon-edit edit" id="{{$category->id}}"></span>
-                                    </a>
-                                </td> 
+     <div class="row">
+    <div class="col-md-12 col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">View your category</h3>
 
-                             <?php $flage_relation=0 ?>
+              <div class="pull-right">
+               <a href="{{url('/category/create/')}}">
+              <i class="fa fa-plus fa-3x" aria-hidden="true" style="color: #00a65a;"></i></a>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+            <div id="table-scroll">
+              <table class="table">
+                    <tr>
+                      <th>&nbsp; &nbsp; Images</th>
+                      <th>En_Category</th>
+                      <th>Ar_Category</th>
+                      <th>En_Description</th>
+                      <th>Ar_Description</th>
+                      <th>Published At</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                @foreach ($categories as $category) 
+                    <tr>
+                      <td><a href="{{url('/category/'.$category->id.'/edit')}}">
+                      <img src="{{url('/assets/images/'.$category->image)}}" class="img-responsive" width='100px' height='100px'></a></td>
+                      <td><a href="{{url('/category/'.$category->id.'/edit')}}">{{$category->name}}<a/></td>
+                      <td><a href="{{url('/category/'.$category->id.'/edit')}}">{{$category->ar_name}}<a/></td>
+                      <td style="width:200px;">
+                        <div>
+                          <p>{{substr($category->description,0,100)}}</p>
+                        </div>
+                      </td>
+                      <td style="width:200px;">
+                        <div >
+                          <p>{{substr($category->ar_description,0,100)}}</p>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-red">{{$category->created_at}}</span></td>
+                      <td>
+                      <a href="{{url('/category/'.$category->id.'/edit')}}">
+                      <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color:#3c8dbc;"></i></a></td>
+                      <td>
+                      
+                      <?php $flage_relation=0 ?>
                             @foreach ($categories as $del_category)
                                 @if($category->id==$del_category->category_id)
                                     <?php $flage_relation=1 ?>
@@ -65,26 +72,26 @@
                             @endforeach
 
                             @if($flage_relation==1)
-                                <!-- <span class="btn btn-danger disabled" > Remove category  <span class="glyphicon glyphicon-remove disabled"></span></span> -->
-                                <td><span style="size-weight:bold;" class="disabled">x</span></td>
-                            @endif
-                            @if($flage_relation==0)
-                            <!-- <a class="btn btn-danger" href="/category/destroy/{{$category->id}}">Remove category <span class="glyphicon glyphicon-remove"></span></a> -->
+                                <!-- <i class="fa fa-times fa-2x" aria-hidden="true" style="margin-left: 20px; color: red;"></i> -->
+                                <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-ban-circle" ></span>
+                            @else
+                                <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-trash delete" id="{{$category->id}}"></span>
+                            @endif    
+                      </td>
 
-                                <!-- use ajax for remove -->
-                                <td><span class="glyphicon glyphicon-remove delete" id="{{$category->id}}"></span></td>
-
-                                 <!-- <a id="{{$category->id}}" class="btn btn-danger delete">Remove Category<span class="glyphicon glyphicon-remove"></span> </a> -->
-                            @endif
-
-                            </tr>
-                        @endforeach
-                    </tbody>
+                    </tr>
+                  @endforeach  
                 </table>
+                </div>
             </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-    </div>
-
+             </div>
+        </section>
+        <!-- /.content -->
+</div>
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>

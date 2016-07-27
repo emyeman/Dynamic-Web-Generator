@@ -1,12 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.UserDashboard')
 
 @section('sidebar')
-    @include('../header')
+    @include('../UserDashboardHeader')
 @endsection
 
 @section('content')
 	{!! Html::style('assets/css/table-scroll.css') !!}
     <h1 class="page-header">Show All Tickets</h1>
+    <div class="row">
+    <div class="col-md-12 col-xs-12">
+    <div class="box">
     <div class="row">
         <div class='col-lg-offset-11 col-ms-1'>
             <a href="{{url('/ticket/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
@@ -61,7 +64,9 @@
             </div>
         </div>
     </div>
-
+</div>
+</div>
+</div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
