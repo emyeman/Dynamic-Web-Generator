@@ -153,38 +153,6 @@
         });//end get to obtain data from control
     });  //end get request when press and select category 
 
-// for check about product aleary exit or not
-    $('.title_product').on('blur',function(event) {            
-        event.preventDefault();
-        // alert($(this).text());
-        console.log("emy");
-        
-        console.log($(this));
-        title=$(this).val();
-        console.log(title);
-        
-        //Declaration
-        var token = $('#token').attr('content');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        
-        $.get("{{url('/product/is_exit/')}}/"+title,function(data){
-            console.log(data);
-            console.log($(this));
-            if (data=='true') {
-               document.getElementById('title_err').style.display = "block";
-                // $('.title_product').focus();
-               $('.title_product').select();
-            }else{
-                document.getElementById('title_err').style.display = "none";
-            }
-            
-        
-            });
-    });  //end get title and check product aleary exit or not
 </script>
 
 @endsection
