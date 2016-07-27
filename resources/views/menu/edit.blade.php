@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.UserDashboard')
 
 @section('sidebar')
-    @include('../header')
+    @include('../UserDashboardHeader')
 @endsectio
 
 @section('content')

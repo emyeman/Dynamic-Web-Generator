@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 	Route::get('/dashboard', function () {
-    	return view('dashboard');
+    	return view('DashboardIndex');
 	});
 
 	// Route::get('/dashboard','DashboardController@index');
@@ -53,7 +53,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::patch('/site/update/{site}','SiteController@update');
     Route::resource('/site','SiteController'); 
 	Route::get('/branding/edit/{header}','BrandingController@edit'); 
-	Route::patch('/branding/{header}','BrandingController@update');     
+	Route::patch('/branding/{header}','BrandingController@update');
+	Route::get('/branding/delete/{header}','BrandingController@delete');
     Route::resource('/branding','BrandingController');    
 	Route::resource('/stylecontainer','StyleContainerController');
 	Route::resource('/category','CategoryController');

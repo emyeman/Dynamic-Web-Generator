@@ -80,13 +80,21 @@ class BrandingController extends Controller {
     }
 
     public function create() {
+
         try{
             if($this->site->header)
             {
-                return redirect('branding/edit');
+
+                $id =$this->site->header->id;
+                return redirect("branding/edit/".$id);
+            }
+            else
+            {
+                return view('branding.create');
             }
         }
         catch (\Exception $e) {
+
             return view('branding.create');
         }
         
@@ -160,7 +168,7 @@ class BrandingController extends Controller {
         if(Auth::user()->status == 'reseller')
         {
             $user_site = DB::table('sites')->where('id',Session::get('user_id'))->get();
-            $doman_name = $user_site[0]->subdomain;
+            $domain_name = $user_site[0]->subdomain;
         }
         else
         {
@@ -203,12 +211,9 @@ class BrandingController extends Controller {
        return back();
     }
 
-    public function destroy() {
-        if ($this->branding) {
-            Header::destroy($this->site->header->id);
-            return redirect('branding/create');
-        }
-        return view('branding.index')->withErrors('Something Error'); 
+    public function delete(Header $header) {
+        $header->delete();
+        return back(); 
     }
 
 }
