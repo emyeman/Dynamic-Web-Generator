@@ -7,10 +7,30 @@
 @section('content')
 
 {!! Html::style('assets/css/table-scroll.css') !!}
-<div class="col-sm-9">
+
+{!! Html::style('assets/reseller_assets/dist/css/user_emy.css') !!}
+
+
+<div class="col-md-offset-1 col-sm-9">
+<section class="content">
+    <div class="col-md-6 col-md-offset-1">
+      <img src="{{url('assets/reseller_assets/images/10.png')}}" width="350" height="329" class="img-responsive" style="margin-left: 100px;
+              margin-top: -15px;">
+    </div>
+
         <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Show Contact Us
+            <div class="col-md-12 col-xs-12">
+
+            @if(Session::has('update_success'))
+                <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
+            @endif
+            
+           <div class="box box-info">
+            <div class="box-header with-border">
+            
+
+            </div>
+                <h1 class="page-header">&nbsp; &nbsp; Show Contact Us
                     <!-- for display add only one first and then display edit everytime -->
                      <?php $flagadd=0?>
                         @foreach($contacts as $contact)
@@ -27,9 +47,9 @@
                     @else
                         <small>
                         <!-- <i>Hello current_user</i> -->
-                        <div class='col-lg-offset-9 col-ms-3' id="del_edit">
+                        <div class='col-lg-offset-10 col-ms-3' id="del_edit">
                         @foreach($contacts as $contact)
-                            <a href="{{url('/contactus/'.$contact->id.'/edit')}}" class="btn btn-primary">Edit <span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="{{url('/contactus/'.$contact->id.'/edit')}}" class="btn btn-primary">&nbsp; &nbsp; &nbsp; Edit <span class="glyphicon glyphicon-edit"></span></a>
                                    
                                 <!-- use ajax for remove -->
                             <!-- <a id="{{$contact->id}}" class="btn btn-danger delete">Remove <span class="glyphicon glyphicon-remove"></span> </a> -->
@@ -43,16 +63,12 @@
                     </div></small>
                 </h1>
             </div>
+            </div>
         </div>
         <!-- /.row -->
-        
-@if(Session::has('update_success'))
-        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
-    @endif
-    
 
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-10 box-body no-padding">
             @if (Auth::user())
                 <div id="table-wrapper">
                 @foreach ($contacts as $contact)
@@ -127,6 +143,7 @@
                         </tr>
                            
                     </table>
+                    <hr/><br/>
                         <!-- <div id="map"> -->
                         @if ($contact->lat != 0.0 or $contact->lng != 0.0 )
                             <img src='http://maps.googleapis.com/maps/api/staticmap?center={{$contact->lat}},{{$contact->lng}}&markers=color:blue|label:N|{{$contact->lat}},{{$contact->lng}}&zoom=15&size=1057x600&sensor=false'/>
@@ -147,6 +164,7 @@
         </div>
         <!-- /.row -->
         <hr/>
+    </section>
 </div><!--end leftsideof from-->
 
 <!--  <br/><br/><hr/><hr/>

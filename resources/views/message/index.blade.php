@@ -6,6 +6,7 @@
 
 @section('content')
 	{!! Html::style('assets/css/table-scroll.css') !!}
+<div class="col-md-offset-1 col-sm-11">
 	<h2>All Messages</h2>
 	<div class="row">
         <div id="table-wrapper">
@@ -13,12 +14,12 @@
                 <table class='table table-hover' style="table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th width='15%'><span class="text">Sender</span></th>
-                            <th width='15%'><span class="text"> &nbsp; &nbsp; &nbsp; E-mail</span></th>
-                            <th width='15%'><span class="text"> &nbsp; &nbsp; &nbsp; Date</span></th>
-                            <th width='25%'><span class="text">Subject</span></th>
-                            <th width='30%'><span class="text">Message</span></th>
-                            <th width='5%'></th>
+                            <th><span class="text">Sender</span></th>
+                            <th><span class="text"> &nbsp; &nbsp; &nbsp; E-mail</span></th>
+                            <th><span class="text"> &nbsp; &nbsp; &nbsp; Date</span></th>
+                            <th><span class="text">Subject</span></th>
+                            <th><span class="text">Message</span></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,11 +29,11 @@
 	                        @else
 	                        	<tr style='background-color:lightyellow;'>  
 	                       	@endif
-                                <td class='wrap'><a href='/message/{{$message->id}}'>{{$message->name}}</a></td>
-                                <td class='wrap'><a href='/message/{{$message->id}}'>{{$message->email}}</a></td>
+                                <td><a href='/message/{{$message->id}}'>{{$message->name}}</a></td>
+                                <td><a href='/message/{{$message->id}}'>{{$message->email}}</a></td>
                                 <td>{{$message->created_at}}</td>
-                                <td class='wrap'><a href='/message/{{$message->id}}'>{{$message->subject}}</a></td>
-                                <td class='wrap'>{{substr($message->content,0,50)}}</td>
+                                <td><a href='/message/{{$message->id}}'>{{$message->subject}}</a></td>
+                                <td>{{substr($message->content,0,50)}}</td>
                                 
                                 <td><span class="glyphicon glyphicon-remove delete" id="{{$message->id}}"></span></td>
                             </tr>
@@ -42,6 +43,7 @@
             </div>
         </div>
     </div>
+ </div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <script type="text/javascript">
     $('.delete').on('click',function(event){

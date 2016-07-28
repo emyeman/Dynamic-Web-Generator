@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/AdminLTE.min.css') }}">
+	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/AdminLTE.css') }}">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/skins/skin-red.css') }}">
@@ -32,14 +33,16 @@
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
-
-	
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Abeezee:400|Open+Sans:400,600,700|Source+Sans+Pro:400,600">	
     {!! Html::style('assets/css/plugins.css') !!}
    {!! Html::style('assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css') !!}
     <!-- <link rel="stylesheet" href="{{ url('/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}"/> -->
     <!--=== JavaScript ===-->
 
     
+	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/table-scroll.css')}}">
+	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/main.css')}}">
+	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/bootstrap.min.css')}}">
 
     
     {!! Html::script('assets/bootstrap/js/bootstrap.min.js') !!}

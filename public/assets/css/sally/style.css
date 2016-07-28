@@ -156,6 +156,8 @@ blockquote {
 
 .img-rounded{
     border-radius: 40px;
+    width:300px;
+    height: 200px;
 }
 
 
@@ -296,10 +298,14 @@ background-color: #DDDDDD;
 
 
 /*indicators*/
-#move_p .carousel-indicators,#move_s .carousel-indicators,#move .carousel-indicators{
+#move_p .carousel-indicators,#move .carousel-indicators{
 
 	position: absolute;
 	bottom:-30px;
+}
+#move_s .carousel-indicators{
+	position:relative;
+	bottom:-10px;
 }
 
 #move .carousel-indicators li,#move_s .carousel-indicators li,#move_p .carousel-indicators li{
@@ -330,17 +336,17 @@ background-color: #DDDDDD;
 
 
 /*lines*/
-/*
+
 hr {
     margin-left: 200px;
-    margin-right: 200px;                                                               sally's update
-    border: 2px;
+    margin-right: 200px;                                                               
+    /* border: 2px; */
     border-top: 1px solid #c00939;
-    box-shadow: #a20832;
+    /* box-shadow: #a20832; */
     height:5px;
 }
 
-*/
+
 
 
 /* Backgrounds
