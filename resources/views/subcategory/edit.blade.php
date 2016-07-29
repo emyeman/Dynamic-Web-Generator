@@ -5,11 +5,12 @@
 @endsection
 
 @section('content')
-      <!-- <h2><div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/subcategory')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small>Edit SubCategory</h2> -->
-    <h2 class='page-header'>Edit SubCategory</h2>
-    @if (count($errors) > 0)
+      <!-- Main content -->
+        <section class="content">
+      <div>
+        <img src="{{url('assets/reseller_assets/images/14a.png')}}" style="max-width: 50%; margin-left: 250px;" class="img-responsive">    
+        </div>
+     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -18,12 +19,21 @@
             </ul>
         </div>
     @endif
-    <br><br>
+    <br>
     {!!Form::open(['route'=>['subcategory.update',$subcategory->id],'files'=>true,'method'=>'put','class'=>'form-horizontal']) !!}
-       <div class='form-group'>
-            <label class='col-md-2'>Category</label>
-            <div class='col-md-10 input-group'>                
-                <select class='form-control' id='category_id' name='category_id'>
+      
+     <div class="row">
+    <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Category Name</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <label >Choose Category</label>
+                  <select class='form-control' id='category_id' name='category_id'>
                     <option value="{{$category->id}}">{{$category->name}} &nbsp; &nbsp;{{$category->ar_name}}</option>
                     @foreach ($categories as $sel_category) 
                         @if (Auth::user()->id == $sel_category->site_id)
@@ -35,44 +45,104 @@
                             @endif
                         @endif
                     @endforeach    
-                </select>           
-             </div>
-        </div>
-        <div class='form-group'>
-            <label class='col-md-2'>English Title *</label>
-            <div class='col-md-10 input-group'>                
-                <input value='{{$subcategory->name}}' class='form-control' name='title_subcategory' type='text'/>
+                </select>  
+
+                </div>
             </div>
         </div>
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Title *</label>
-            <div class='col-md-10 input-group'>                
-                <input value='{{$subcategory->ar_name}}' class='form-control' name='ar_title_subcategory' type='text'/>
+        </div>
+
+     <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Title Sub Category</h3>
+            <!--   <div class="pull-right">
+                <a href="{{url('/subcategory')}}"><span class="glyphicon glyphicon-backward"></span></a>
+              </div> -->
             </div>
-        </div> 
-        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$subcategory->image)}}"></div>         
-        <div class='form-group'>
-            <label class='col-md-2'>Image</label>
-            <div class='col-md-10 input-group'>                
-                <!-- <label class='form-control'>{{$subcategory->image}}</label> -->
-                <input class='form-control' name='image_subcategory' type='file' />
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <label >English Title *</label>
+                   <input class='form-control title_subcategory' name='title_subcategory' id='title_subcategory' type='text' value="{{$subcategory->name}}"/>
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Arabic Title *</label>
+                  <input class='form-control' name='ar_title_subcategory' type='text' value="{{$subcategory->ar_name}}"/>
+                </div>
             </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>English Description *</label>
-            <div class='col-md-10 input-group'>                
-                <textarea  class='form-control' rows='3' name='subdescription'>{{$subcategory->description}}</textarea> 
+        </div>
+        </div>
+    
+    <div class="col-md-10 col-md-offset-1" >
+        <div class="box">
+            <div class="box-header with-border">
+             <center> <h3 class="box-title">Choose Picture</h3></center>
             </div>
-        </div> 
-         <div class='form-group'>
-            <label class='col-md-2'>Arabic Description *</label>
-            <div class='col-md-10 input-group'>                
-                <textarea  class='form-control' rows='3' name='ar_subdescription'>{{$subcategory->ar_description}}</textarea> 
+            <div class="box-body">
+             <center><img width='300px' height='300px' src="{{url('/assets/images/'.$subcategory->image)}}" class="img-responsive" alt="brand"></center>
             </div>
-        </div>      
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='EDIT' />
-    {!!Form::close() !!}
+            <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input class='form-control' name='image_subcategory' type='file' />
+                    <!-- <button id="add-new-event" type="button" class="btn btn-info btn-flat pull-right form-control">Browse</button>   -->
+               </div>
+            </div>  
+       </div>
+        </div>
+   
+        <div class="col-md-5 col-xs-12 col-md-offset-1" >      
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">English Description
+                <small>Write some words descriping this Sub Categorie ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='subdescription'>{{$subcategory->description}}</textarea>
+            </div>
+            </div>
+            </div>
+        <div class="col-md-5 col-xs-12 "> 
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Arabic Description
+                <small>من فضلك ادخل وصف لهذا القسم الفرعى ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"name='ar_subdescription'>{{$subcategory->ar_description}}</textarea>
+            </div>
+            </div>               
+          <!-- /.box --> 
+     </div>
+        <!-- <span class='col-md-2'></span> col-xs-8 -->
+     <div class="col-md-10 col-md-offset-1">       
+         <div class="box">
+            <div class="box-header">
+                <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='EDIT' />   
+               </div>
+            </div>
+            </div>
+          <!-- /.box --> 
+     </div>
+       
+     </div>
+     </div>
+      
+ {!!Form::close() !!}
+    
+        <!-- /.col -->
+        </section>
+        <!-- /.content -->
+</div> 
 @endsection
 
 

@@ -13,12 +13,35 @@
         @endif
     @endforeach
  @if($flagadd==0)
-  <h2><div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small>Add New Contact Us</h2>
-      <br><br>
-        
-      {!!Form::open(['route'=>'contactus.store','method'=>'post']) !!}
+  <!-- Main content -->
+    <section class="content">
+    <div class="col-md-6 col-md-offset-3">
+      <img src="{{url('assets/reseller_assets/images/10.png')}}" width="350" height="329" class="img-responsive" style="margin-left: 100px;
+              margin-top: -15px;">
+    </div>
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    
+     <div class="row">
+   
+        <div class="col-md-12 col-xs-12  col-md-offset-2">
+         
+           <div class="box box-info">
+            <div class="box-header with-border">
+            <h3 class="box-title"><a href="{{url('/contactus')}}"><span class="glyphicon glyphicon-backward"></span></a>
+              ADD Contact Us</h3>
+
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            {!!Form::open(['route'=>'contactus.store','method'=>'post']) !!}
 
         <div class='form-group '>
             <label class='col-md-2'>En_Address:</label>
@@ -183,10 +206,31 @@
                 <!-- there draw input of value lat and lon  and draw google map -->
                <br/><br/>                     
           </div> 
-          <br/>
-        <span class='col-md-1'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='add' />
+          
+        <!-- <span class='col-md-2'></span> col-xs-8 -->
+       <div class="col-md-10 col-md-offset-1">  
+       <br/>     
+           <div class="box">
+              <div class="box-header">
+                  <div class="box-footer clearfix">
+                 <div class="input-group-btn">
+                      <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='ADD' />   
+                 </div>
+              </div>
+              </div>
+            <!-- /.box --> 
+       </div>
+         
+       </div>
       {!!Form::close() !!}
+         </div>
+        </div>
+     </div>
+        
+        <!-- /.col -->
+      </section>
+    <!-- /.content -->
+</div>  
 
 @else
     <h2><div class='col-lg-1 col-ms-1'>

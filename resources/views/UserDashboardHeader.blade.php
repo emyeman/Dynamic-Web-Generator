@@ -141,8 +141,18 @@
 		<li><a href="{{ url('/template')}}"><i class="fa fa-television"></i> <span>Templets</span></a></li>
 		<li><a href="{{ url('/domain')}}"><i class="fa fa-share-square-o"></i> <span>Domain</span></a></li>
 
-		<li><a href="Notification.html"><i class="fa fa-flag-o"></i> <span>Notification</span></a></li>
+		<!-- <li><a href="Notification.html"><i class="fa fa-flag-o"></i> <span>Notification</span></a></li> -->
 
+		<li class="treeview">
+			<a href="#">
+				<i class="fa fa-flag-o"></i> <span>Ticket</span>
+				<i class="fa fa-angle-left pull-right"></i>
+			</a>
+			<ul class="treeview-menu">
+			    <li><a href="{{ url('/ticket') }}"><i class="fa fa-circle-o"></i> Show Ticket</a></li>
+				<li><a href="{{ url('/ticket/create')}}"><i class="fa fa-circle-o"></i> Add Ticket</a></li>
+			</ul>
+		</li>
 	</ul>
 	</section>
 	<!-- /.sidebar -->

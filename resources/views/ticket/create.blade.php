@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.UserDashboard')
 
 @section('sidebar')
-    @include('../header')
+    @include('../UserDashboardHeader')
 @endsection
 
 @section('content')
@@ -55,7 +55,7 @@
         <span class='col-md-1'></span>
         <input type='submit' class='col-md-10 btn btn-primary' name='ok' value="send" />
     {!!Form::close() !!}
-
+</div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}"/>
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->

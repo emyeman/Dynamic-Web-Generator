@@ -5,27 +5,38 @@
 @endsection
 
 @section('content')
-      <!-- <h2>
-      <div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/product')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div>
-        </small>Edit Product</h2> -->
-    <h2 class='page-header'>Edit Product</h2>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <br><br>
+      <!-- Main content -->
+        <section class="content" style="background-image: url({{url('assets/reseller_assets/images/18a.png')}});">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
+<div class="info">
+  <h1 style="font-size:34px; font-weight: 700;">
+    <a href="{{url('/product')}}"><span class="glyphicon glyphicon-backward"></span></a>
+ Edit Products </h1>
+</div>
+<br/>
     {!!Form::open(['route'=>['product.update',$product->id],'files'=>true,'method'=>'put','class'=>'form-horizontal']) !!}
-       <div class='form-group'>
-            <label class='col-md-2'>Category</label>
-            <div class='col-md-10 input-group'>            
-                <select class='form-control getrequest' id='category_id' name='category_id' >
+
+    <!-- <div class="row" style="margin-top:15px;"> -->
+    <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Category & Sub Category</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <label >Choose Category *</label>
+                    <select class='form-control getrequest' id='category_id' name='category_id' >
                     <option value="{{$category->id}}"> {{$category->name}} &nbsp; {{$category->ar_name}}</option>
                     @if (Auth::user()->id == $category->site_id)
                         @foreach ($categories as $sel_category) 
@@ -35,14 +46,11 @@
                             @endif    
                         @endforeach 
                     @endif
-                </select>           
-             </div>
-        </div>
-
-        <div class='form-group' id="beforselect" style="display:show">
-            <label class='col-md-2'>Sub Category</label>
-            <div class='col-md-10 input-group'>               
-                <select class='form-control' id='subcategory_id' name='subcategory_id'>
+                </select>
+                </div>
+                <div class="form-group col-md-12" id="beforselect" style="display:show">
+                  <label>Choose Sub Category *</label>
+                  <select class='form-control' id='subcategory_id' name='subcategory_id'>
                     <option value="{{$subcategory->id}}">{{$subcategory->name}} &nbsp; {{$subcategory->ar_name}}</option>
                      @if (Auth::user()->id == $subcategory->site_id)
                         @foreach ($subcategories as $sel_subcategory) 
@@ -52,67 +60,122 @@
                             @endif
                         @endforeach 
                     @endif     
-                </select>           
-             </div>
-        </div>
-        <div class='form-group'id="afterselect" style="display:none">
-            <label class='col-md-2'>Select Sub Category</label>
-                <div class='col-md-10 input-group'id='subcategorydata' >
-                   
+                </select> 
                 </div>
-        </div>
-        <!-- end select of subcategory -->
 
-        <div class='form-group'>
-            <label class='col-md-2'>English Title *</label>
-            <div class='col-md-10 input-group'>               
-                <input value='{{$product->name}}' class='form-control' name='title_product' type='text'/>
-            </div>
-        </div>
 
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Title *</label>
-            <div class='col-md-10 input-group'>               
-                <input value='{{$product->ar_name}}' class='form-control' name='ar_title_product' type='text'/>
+                <div class="form-group col-md-12" id="afterselect" style="display:none">
+                  <label>Choose Sub Category *</label>
+                  <div id='subcategorydata' ></div>
+                </div>
+
+
             </div>
         </div>
+        </div>
+    <!-- </div> -->
 
-        <div class='col-lg-offset-4' style='margin-bottom:20px;'><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image)}}"></div>
-        <div class='form-group'>
-            <label class='col-md-2'>Image *</label>
-            <div class='col-md-10 input-group'>                
-                <!-- <label class='form-control'>{{$product->image}}</label> -->
-                <input class='form-control' name='image_product' type='file' />
+   <!-- <div class="row"> -->
+    
+
+<div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Product</h3>
             </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>English Description *</label>
-            <div class='col-md-10 input-group'>                
-                <textarea  class='form-control' rows='5' name='description'>{{$product->description}}</textarea> 
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <label >English Title *</label>
+                  <input value='{{$product->name}}' class='form-control' name='title_product' type='text'/>
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Arabic Title *</label>
+                  <input value='{{$product->ar_name}}' class='form-control' name='ar_title_product' type='text'/>
+                </div>
+
+                <div class="form-group col-md-12">
+                  <label>English Price *</label>
+                  <input value="{{$product->price}}" class='form-control' name='price_product' type='double'/>
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Arabic Price *</label>
+                  <input value="{{$product->ar_price}}" class='form-control' name='ar_price_product' type='double'/>
+                </div>
             </div>
         </div>
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Description *</label>
-            <div class='col-md-10 input-group'>                
-                <textarea  class='form-control' rows='5' name='ar_description'>{{$product->ar_description}}</textarea> 
-            </div>
-        </div>  
+        </div>
 
-        <div class='form-group'>
-            <label class='col-md-2'>English Price *</label>
-            <div class='col-md-10 input-group'>                
-                <input value="{{$product->price}}" class='form-control' name='price_product' type='double'/>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1" >
+        <div class="box">
+            <div class="box-header with-border">
+             <center> <h3 class="box-title">Choose Picture</h3></center>
             </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Price *</label>
-            <div class='col-md-10 input-group'>                
-                <input value="{{$product->ar_price}}" class='form-control' name='ar_price_product' type='double'/>
+            <div class="box-body">
+             <center><img width='300px' height='300px' src="{{url('/assets/images/'.$product->image)}}" class="img-responsive" alt="brand"></center>
             </div>
-        </div>     
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary btn-lg' name='ok' value='Edit' />
-    {!!Form::close() !!}
+            <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input class='form-control' name='image_product' type='file' />
+                    <!-- <button id="add-new-event" type="button" class="btn btn-info btn-flat pull-right form-control">Browse</button>   -->
+               </div>
+            </div>  
+       </div>
+        </div>
+   <div class="col-md-5 col-xs-12 col-md-offset-1" >      
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">English Description
+                <small>Write some words descriping this Product ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='description'>{{$product->description}}</textarea>
+            </div>
+            </div>
+            </div>
+        <div class="col-md-5 col-xs-12 "> 
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Arabic Description
+                <small>من فضلك ادخل وصف لهذا المنتج ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='ar_description'>{{$product->ar_description}}</textarea>
+            </div>
+            </div>               
+          <!-- /.box --> 
+     </div>
+
+     <!-- <span class='col-md-2'></span> col-xs-8 -->
+     <div class="col-md-10 col-md-offset-1">       
+         <div class="box">
+            <div class="box-header">
+                <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='Edit' />   
+               </div>
+            </div>
+            </div>
+          <!-- /.box --> 
+     </div>
+       
+     </div>
+     <!-- </div> -->
+      
+ {!!Form::close() !!}
+        </section>
+        <!-- /.content -->
+</div>  
+   
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>

@@ -215,10 +215,9 @@
                       <span class='input-group-addon'>Y</span>
                       <input value="{{$contact->lng}}" class='form-control' name='longitude' type='text'/>
                   </div>
-              </div>
+              </div> 
           </div>
-
-          <div  id="googlelatlng">    
+<div  id="googlelatlng">    
 <!--           <div class='form-group'>
               <label class='col-md-2'>Latitude (X):</label>
               <div class='col-md-10 input-group'>
@@ -245,8 +244,6 @@
                 <!-- there draw input of value lat and lon  and draw google map -->
                <br/><br/>                     
           </div> 
-       
-
         <!-- <span class='col-md-2'></span> col-xs-8 -->
        <div class="col-md-10 col-md-offset-1">  
        <br/>     
@@ -272,7 +269,9 @@
     <!-- /.content -->
 </div> 
 </div>  
-</div>
+
+
+
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
@@ -371,7 +370,7 @@
             savedata+="<img src='"+img+"'/>";
 
             $('#savelocation').html(savedata);
-            console.log('latlon');
+            console.log(latlon);
             }
 
         function errorhandeler(error) {
@@ -403,5 +402,9 @@
 </script>
 
 @endsection
+
+
+    
+
 
     

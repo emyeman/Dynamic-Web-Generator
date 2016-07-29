@@ -5,11 +5,12 @@
 @endsection
 
 @section('content')
-    <h2><div class='col-lg-1 col-ms-1'>
-        <a href="{{url('/category')}}"><span class="glyphicon glyphicon-backward"></span></a>
-    </div></small> </h2>
 
-    <h2 class='page-header'>Add New Category</h2>
+    <!-- Main content -->
+    <section class="content">
+        <div>
+        <img src="{{url('assets/reseller_assets/images/12.png')}}" class="img-responsive"> 
+        </div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -25,45 +26,107 @@
     @endif
 
     <br>
+
     {!!Form::open(['route'=>'category.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
-      <div class='form-group'>
-            <label class='col-md-2'>English Title *</label>
-            <div class='col-md-10 input-group'>
-                <input placeholder='PLZ,enter title ...' class='form-control title_category' name='title_category' id='title_category' type='text' value="{{old('title_category')}}"/>
+
+     <div class="row">
+    <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Title Category</h3>
+            <!--   <div class="pull-right">
+                <a href="{{url('/category')}}"><span class="glyphicon glyphicon-backward"></span></a>
+              </div> -->
             </div>
-            <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This category already exists</span>
-        </div> 
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Title *</label>
-            <div class='col-md-10 input-group'>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <label>English Title *</label>
+                   <input placeholder='PLZ,enter english title ...' class='form-control title_category' name='title_category' id='title_category' type='text' value="{{old('title_category')}}"/>
+                   <span id="title_err" style="color:red; size:12px; padding:10px 100px;font-weight:bold;background-color:lightpink;">This category already exists</span>
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Arabic Title *</label>
                 <input placeholder='من فضلك ادخل اسم القسم' class='form-control' name='ar_title_category' type='text' value="{{old('ar_title_category')}}"/>
+                </div>
             </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>Image</label>
-            <div class='col-md-10 input-group'>
-                <input class='form-control' name='image_category' type='file' />
-            </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>English Description</label>
-            <div class='col-md-10 input-group'>
-                <textarea placeholder='PLZ,enter description ...' class='form-control' rows='5' name='description'>{{old('description')}}</textarea> 
-            </div>
-        </div> 
+        </div>
+        </div>
 
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Description</label>
-            <div class='col-md-10 input-group'>
-                <textarea placeholder='من فضلك ادخل الوصف' class='form-control' rows='5' name='ar_description'>{{old('ar_description')}}</textarea> 
+     
+      <div class="col-md-10 col-md-offset-1" >
+        <div class="box">
+            <div class="box-header with-border">
+             <center> <h3 class="box-title">Choose Picture</h3></center>
             </div>
-        </div> 
+            <!-- <div class="box-body">
+             <center><img src="image/11.jpg" class="img-responsive" alt="brand"></center>
+            </div> -->
+            <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input class='form-control' name='image_category' type='file' />
+                    <!-- <button id="add-new-event" type="button" class="btn btn-info btn-flat pull-right form-control">Browse</button>   -->
+               </div>
+            </div>  
+       </div>
+        </div>
+   
+          
+        <div class="col-md-5 col-xs-12 col-md-offset-1" >      
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">English Description
+                <small>Write some words descriping this Categorie ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='description'>{{old('description')}}</textarea>
+            </div>
+            </div>
+            </div>
+        <div class="col-md-5 col-xs-12 "> 
+         <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Arabic Description
+                <small>من فضلك ادخل وصف لهذا القسم ...</small>
+              </h3>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body pad">
+                <textarea class="textarea" placeholder="من فضلك ادخل الوصف" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"name='ar_description'>{{old('ar_description')}}</textarea>
+            </div>
+            </div>
+                
+          <!-- /.box --> 
+     </div>
+    <!-- <span class='col-md-2'></span> col-xs-8 -->
+     <div class="col-md-10 col-md-offset-1">       
+         <div class="box">
+            <div class="box-header">
+                <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='ADD' />   
+               </div>
+            </div>
+            </div>
+          <!-- /.box --> 
+     </div>
+       
+     </div>
+</div>
 
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
-    {!!Form::close() !!}
+      
+ {!!Form::close() !!}
 
-<meta name="_token" id='token' content="{!! csrf_token() !!}"/>
+        <!-- /.col -->
+        </section>
+ </div>
+
+ <meta name="_token" id='token' content="{!! csrf_token() !!}"/>
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script> -->
 <script type="text/javascript">
@@ -100,7 +163,7 @@
             });
         });
 
-  </script>
+  </script>       
 @endsection
 
  
