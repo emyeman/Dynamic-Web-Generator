@@ -163,8 +163,11 @@ class NewsPromotionController extends Controller
             
         }
         $user=Auth::user();
-        if ($user->cannot('access-news_promotions', $row)) {
-            abort(403);
+        if(Auth::user()->status == 'user')
+        {
+            if ($user->cannot('access-news_promotions', $row)) {
+                abort(403);
+            }
         }
 		return  view ('news_promotion.edit',['row'=>$row]);
      }
@@ -177,8 +180,11 @@ class NewsPromotionController extends Controller
             {throw new ModelNotFoundException($e->getMassege());}
 
         $user=Auth::user();
-        if ($user->cannot('access-news_promotions', $row)) {
-            abort(403);
+        if(Auth::user()->status == 'user')
+        {
+            if ($user->cannot('access-news_promotions', $row)) {
+                abort(403);
+            }
         }
         $this->validate($request, [
             'title' => 'required|max:300',
@@ -227,8 +233,11 @@ class NewsPromotionController extends Controller
             {throw new ModelNotFoundException($e->getMassege());}
         $image_path=$row->image;
         $user=Auth::user();
-        if ($user->cannot('access-news_promotions', $row)) {
-            abort(403);
+        if(Auth::user()->status == 'user')
+        {
+            if ($user->cannot('access-news_promotions', $row)) {
+                abort(403);
+            }
         }
         $affectedRows  =$row->delete();
         if($affectedRows)

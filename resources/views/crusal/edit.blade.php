@@ -73,6 +73,7 @@
                     </ul>
                 </div>
             @endif
+            
             <!-- /.box-header -->
             @if(Session::has('update_success'))
              <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>

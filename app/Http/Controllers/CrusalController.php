@@ -120,11 +120,17 @@ class CrusalController extends Controller
      public function edit($id){
         try
         {
+
             $row=Crusal::findOrFail($id);
             $user=Auth::user();
-            if ($user->cannot('access-crusal', $row)) {
-                abort(403);
+
+            if(Auth::user()->status == 'user')
+            {
+                if ($user->cannot('access-crusal', $row)) {
+                    abort(403);
+                }
             }
+
             return  view ('crusal.edit',['row'=>$row]);
         }
         catch(Exception $e)
@@ -141,8 +147,11 @@ class CrusalController extends Controller
             {throw new ModelNotFoundException($e->getMassege());}
 
         $user=Auth::user();
-        if ($user->cannot('access-crusal', $row)) {
-            abort(403);
+        if(Auth::user()->status == 'user')
+        {
+            if ($user->cannot('access-crusal', $row)) {
+                abort(403);
+            }
         }
         $this->validate($request, [
             'image' => 'image|max:700'
@@ -185,8 +194,11 @@ class CrusalController extends Controller
             {throw new ModelNotFoundException($e->getMassege());}
         $image_path=$row->image;
         $user=Auth::user();
-        if ($user->cannot('access-crusal', $row)) {
-            abort(403);
+        if(Auth::user()->status == 'user')
+        {
+            if ($user->cannot('access-crusal', $row)) {
+                abort(403);
+            }
         }
         $affectedRows  =$row->delete();
         if($affectedRows)
