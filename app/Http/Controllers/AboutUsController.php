@@ -102,9 +102,12 @@ class AboutUsController extends Controller
         {
             $row=Aboutus::findOrFail($id);
             $user=Auth::user();
-	        if (Auth::user()->cannot('access-aboutus', $row)) {
-	            abort(403);
-        	}
+            if(Auth::user()->status == 'user')
+            {
+	           if (Auth::user()->cannot('access-aboutus', $row)) {
+	                abort(403);
+        	   }
+            }
 			return  view ('aboutus.edit',['row'=>$row]);
         }
         catch(Exception $e)
@@ -122,8 +125,11 @@ class AboutUsController extends Controller
             {throw new ModelNotFoundException($e->getMassege());}
 
         $user=Auth::user();
-        if ($user->cannot('access-aboutus', $row)) {
-            abort(403);
+        if(Auth::user()->status == 'user')
+        {
+            if ($user->cannot('access-aboutus', $row)) {
+                abort(403);
+            }
         }
         $this->validate($request, [
             'description' => 'required|max:64000',

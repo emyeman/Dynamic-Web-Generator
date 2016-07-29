@@ -374,7 +374,9 @@
 	<script src="{{ url('assets/reseller_assets/dist/js/pages/dashboard.js') }}"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="{{ url('assets/reseller_assets/dist/js/demo.js') }}"></script>
-	
+	 {!! Html::script('assets/bootstrap-iconpicker/js/iconset/iconset-glyphicon.min.js') !!}
+    <!-- Bootstrap-Iconpicker -->
+    {!! Html::script('assets/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js') !!}
 </body>
 
 </html>
