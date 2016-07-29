@@ -5,14 +5,20 @@
 @endsection
 
 @section('content')
-      <h2><div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/menu')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small></h2>
-
-    <h2 class='page-header'>
-        Add New Menu
-    </h2>
-      @if (count($errors) > 0)
+    
+    <!-- Main content -->
+    <section class="content">
+    <div class="row text-uppercase" style="text-align: center;">
+        <h1 style="color:#01A4A4;">
+        <span style="font-size:34px; font-weight: 700; ">
+          <a href="{{url('/menu')}}"><span class="glyphicon glyphicon-backward"></span></a> 
+          ADD your "Menus" page<br>
+        </span>
+        </h1>
+       <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc; ">  
+        </div>
+    
+@if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -26,45 +32,101 @@
     @if(Session::has('insert_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
     @endif
-    {!!Form::open(['route'=>'menu.store','method'=>'post','class'=>'form-horizontal']) !!}
-        <div class='form-group'>
-            <label class='col-md-2'>English Title*</label>
-            <div class='col-md-10 input-group'>
-                <input placeholder='english title...' class='form-control title_menu' id='title_menu' name='title' type='text' value="{{old('title')}}"/>
+    
+{!!Form::open(['route'=>'menu.store','method'=>'post','class'=>'form-horizontal']) !!}
+
+<!-- <div class="row"> -->
+ <div class="col-md-10 col-md-offset-1">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">English Title</h3>
             </div>
-            <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This menu already exists</span>                        
-        </div> 
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Title*</label>
-            <div class='col-md-10 input-group'>
-                <input placeholder='arabic title...' class='form-control' name='ar_title' type='text' value="{{old('ar_title')}}"/>
+            <!-- /.box-header -->
+            <div class="box-body col-md-offset-1">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                    <input placeholder='english title...' class='form-control title_menu' id='title_menu' name='title' type='text' value="{{old('title')}}"/>
+                    <span id="title_err" style="color:red; size:12px; padding:10px 70px;font-weight:bold;background-color:lightpink;">This menu already exists.PLZ,Write another title ...</span>                        
+                </div>
             </div>
-        </div> 
-        <div class='form-group'>
-            <label class='col-md-2'>Parent</label>
-            <div class='col-md-10 input-group'>
-                <select class='form-control'id='parent_id' name='parent_id' >
+        </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1 ">
+          <div class="box box-warning">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Arabic Title</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body col-md-offset-1">
+                    <!-- text input -->
+                    <div class="form-group col-md-12">
+                     <input placeholder='arabic title...' class='form-control' name='ar_title' type='text' value="{{old('ar_title')}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--     <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Parent Name</h3>
+            </div>
+            <div class="box-body col-md-offset-1">
+                <div class="form-group col-md-12">
+                  <select class='form-control'id='parent_id' name='parent_id' >
                     <option value="">choose parent page</option>
                     @foreach ($menus as $menu) 
                         <option  value="{{$menu->id}}">{{$menu->title}}</option>                            
                     @endforeach    
                 </select>
+                </div>
             </div>
-        </div>  
-        <div class='form-group'>
-            <label class='col-md-2'>Page*</label>
-            <div class='col-md-10 input-group'>
-                <select class='form-control'id='route' name='route' >
+        </div>
+        </div>
+ -->
+
+    <div class="col-md-10 col-md-offset-1 ">
+      <div class="box box-warning">
+            <div class="box-header with-border">
+              <h3 class="box-title">Page Name</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body col-md-offset-1">
+                <!-- text input -->
+                <div class="form-group col-md-12">
+                  <select class='form-control'id='route' name='route' >
                     <option value="">choose a page</option>
                     @foreach ($pages as $page) 
                         <option  value="{{$page->id}}">{{$page->title}}</option>                            
                     @endforeach    
-                </select>           
+                </select> 
+                </div>
             </div>
-        </div>    
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary' name='ok' value='ADD' />
-    {!!Form::close() !!}
+        </div>
+        </div>
+        
+            <!-- <span class='col-md-2'></span> col-xs-8 -->
+             <div class="col-md-10 col-md-offset-1">       
+                 <div class="box">
+                    <div class="box-header">
+                        <div class="box-footer clearfix">
+                       <div class="input-group-btn">
+                            <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='ADD' />   
+                       </div>
+                    </div>
+                    </div>
+                  <!-- /.box --> 
+             </div>
+               
+             </div>
+
+          <!-- /.box --> 
+     <!-- </div> -->
+
+   {!!Form::close() !!}
+         
+
             <style type="text/css">
                 .dd-handle {
                     display: block;
@@ -90,7 +152,8 @@
                 } */
         </style>
     @if($rows)
-        <br/><br/><hr/>
+        <hr/>
+    <div class="col-md-10 col-md-offset-1">  
         <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">
@@ -107,10 +170,10 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <td>{{$row->menu_title}}</td>
-                                        <td>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
-                                        <td>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
-                                        <td>{{$row->menu_ar_title}}</td>
+                                        <td width='30%'>{{$row->menu_title}}</td>
+                                        <td width='20%' style="width:300px;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+                                        <td width='20%' style="width:300px;">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
+                                        <td width='30%'>{{$row->menu_ar_title}}</td>
                                     </tr>
                                 </thead>
                             </table>
@@ -125,6 +188,10 @@
            @endforeach
         </ul>
 @endif
+</div>
+</section>
+        <!-- /.content -->
+</div>  
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}"/>
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script> -->

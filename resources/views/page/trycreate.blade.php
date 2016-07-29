@@ -1,50 +1,89 @@
 @extends('layouts.UserDashboard')
 
-@section('content')
-<div class="container">
+@section('sidebar')
+    @include('../UserDashboardHeader')
+@endsection
 
-  @include('../UserDashboardHeader')
+@section('content')
 
   {!! Html::script('assets/tinymce/tinymce.js') !!}
-
-  <div class="col-sm-9">
-        <h2 class='page-header'>Add New Page</h2>
-        <br><br>
-        {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
-
-            <div class='form-group has-warning'>
-            <label class='col-md-2'>Select Your Page</label>
-            <div class='col-md-10 input-group'>
-                <span class='input-group-addon'><i class='glyphicon glyphicon-flag'></i></span>
-                <select class='form-control'id='title' name='title' >
-                    <option value="">PLZ,Select Name Page</option>
-                      <option  value="page_top">Home</option>
-                      <option  value="services">Services</option>
-                      <option  value="about">About Us</option>
-                      <option  value="contact">Contact Us</option>
-                      <option  value="gallery">Category</option>
-                      <option  value="news">News</option>
-                      <option  value="promotion">Promotion</option>
-                      <!-- <option  value=""></option> -->
-                </select>           
-             </div>
+  <h2><div class='col-lg-1 col-ms-1'>
+            <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a>
+        </div></small></h2>
+  <h2 class='page-header'>Add New Page</h2>
+  @if(Session::has('insert_success'))
+      <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+  @endif
+  {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
+    <div class='form-group' id='ourpage'>
+      <label class='col-md-2'>Select Your Page</label>
+      <div class='col-md-8'>
+          <select class='form-control findtitle'id='findtitle' name='findtitle' >
+              <option value="">PLZ,Select Name Page</option>
+                <option  value="page_top">Home</option>
+                <option  value="services">Services</option>
+                <option  value="about">About Us</option>
+                <option  value="contact">Contact Us</option>
+                <option  value="gallery">Category</option>
+                <option  value="news">News</option>
+                <option  value="promotion">Promotion</option>
+          </select>           
+      </div>
+      <span id="find_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists</span>            
+    </div>
+    <!-- for display select between write address and use google map -->
+    <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
+      <a id="id_getbage" class="getbage"><input type='button>' class='btn btn-info' value='Create New Page'/></a>
+      <a id="backbage" class="oldbage" href="{{url('/page/create')}}"><input type='button>' class='btn btn-info' value='Back to Our Page'/></a>
+    </div> 
+    <br/>
+    <div id="enternewbage">
+      <div class='form-group'>
+        <label class='col-md-2'>Title *</label>
+        <div class='col-md-10'>
+            <input placeholder='title ...' class='form-control title_page' id='title_page' name='title' type='text' value="{{old('title')}}"/>
         </div>
+        <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists</span>            
+      </div>  
+      <br><br><br>   
+      <textarea  name='content' style="height:295px;">{{old('title')}}</textarea> 
+    </div>   
+    <br>
+    <input type='submit' class='col-md-12 btn btn-primary' name='ok' value='ADD' />
+  {!!Form::close() !!}
 
+<meta name="_token" id='token' content="{!! csrf_token() !!}" />
 
-
-
-          <div class='form-group'>
-              <div class='col-md-12 input-group'>
-                  <input placeholder='page title ...' class='form-control' name='title' type='text'/>
-              </div>
-          </div>     
-          <textarea name='content'></textarea>
-          <br><br>
-          <input type='submit' class='col-md-offset-1 col-md-10 btn btn-primary btn-lg' name='ok' value='ADD' />
-      {!!Form::close() !!}
-  </div><!--end leftsideof from-->
-</div>
 <script>
+
+    console.log('hii');
+    document.getElementById('ourpage').style.display = "block";
+    document.getElementById('enternewbage').style.display = "none";
+
+    document.getElementById('id_getbage').style.display = "block";
+    document.getElementById('backbage').style.display = "none";
+    
+    $('.getbage').click(function() {
+      document.getElementById('ourpage').style.display = "none";
+      document.getElementById('enternewbage').style.display = "block";
+
+    document.getElementById('id_getbage').style.display = "none";
+    document.getElementById('backbage').style.display = "block";
+      // var newpage; 
+      // newpage="<div class='form-group has-warning'>";
+      //       newpage+="<label class='col-md-2'>Title Page</label>";
+      //       newpage+="<div class='col-md-10 input-group'>";
+      //         newpage+="<span class='input-group-addon'><i class='glyphicon glyphicon-pencil'></i></span>";
+      //           newpage+="<input placeholder='PlZ,enter page title ...' class='form-control' name='title' type='text'/>";
+      //       newpage+="</div>";
+      //   newpage+="</div>";     
+      //   newpage+="<textarea  name='content'></textarea>";
+      //   $('#enternewbage').html(newpage);
+
+
+
+});
+
   var editor_config = {
     path_absolute : "/",
     selector: "textarea",
@@ -80,7 +119,75 @@
   };
 
   tinymce.init(editor_config);
-</script>
+
+
+    console.log('hiiiiiii');
+    document.getElementById('find_err').style.display = "none";
+    $('.findtitle').on('blur',function(event) {            
+        event.preventDefault();
+        // alert($(this).text());
+        console.log("emy");
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        console.log($(this));
+        title=$(this).val();
+        console.log(title);
+        
+        $.get("{{url('/page/is_exit/')}}/"+title,function(data){
+            console.log(data);
+            console.log($(this));
+            if (data=='true') {
+               document.getElementById('find_err').style.display = "block";
+                // $('.findtitle').focus();
+               $('.findtitle').select();
+            }else{
+                document.getElementById('find_err').style.display = "none";
+            }
+            
+        
+            });
+        });
+
+    document.getElementById('title_err').style.display = "none";
+    $('.title_page').on('blur',function(event) {            
+        event.preventDefault();
+        // alert($(this).text());
+        console.log("emy");
+        //Declaration
+        var token = $('#token').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        
+        console.log($(this));
+        title=$(this).val();
+        console.log(title);
+        
+        $.get("{{url('/page/is_exit/')}}/"+title,function(data){
+            console.log(data);
+            console.log($(this));
+            if (data=='true') {
+               document.getElementById('title_err').style.display = "block";
+                // $('.title_page').focus();
+               $('.title_page').select();
+            }else{
+                document.getElementById('title_err').style.display = "none";
+            }
+            
+        
+            });
+        });
+
+  </script>
+
 @endsection
 
 

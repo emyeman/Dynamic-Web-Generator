@@ -7,18 +7,29 @@
 @section('content')
 
   {!! Html::script('assets/tinymce/tinymce.js') !!}
-  <h2><div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a>
-        </div></small></h2>
-  <h2 class='page-header'>Add New Page</h2>
-  @if(Session::has('insert_success'))
+  <!-- Main content -->
+    <section class="content">
+       <div class="row">
+      <div class="col-md-10 col-md-offset-1 ">
+    <img src="{{url('assets/reseller_assets/images/19a.png')}}" class="img-responsive" style="margin-top:-15px; margin-left: 12px;"> 
+    </div>
+    </div>
+@if(Session::has('insert_success'))
       <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
   @endif
+
+   <!-- <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
+
   {!!Form::open(['route'=>'page.store','method'=>'post']) !!}
     <div class='form-group' id='ourpage'>
-      <label class='col-md-2'>Select Your Page</label>
-      <div class='col-md-8'>
-          <select class='form-control findtitle'id='findtitle' name='findtitle' >
+      <!-- <label class='col-md-2'>Select Your Page</label> -->
+      <!-- <div class="box-header with-border"> -->
+          <h3 class="box-title">&nbsp; <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a> Select Your Page</h3>
+      <!-- </div> -->
+      <div class='col-md-10'>
+      <div class="box box-warning">
+          <div class="box-body">
+          <select class='form-control findtitle' id='findtitle' name='findtitle' >
               <option value="">PLZ,Select Name Page</option>
                 <option  value="page_top">Home</option>
                 <option  value="services">Services</option>
@@ -29,28 +40,63 @@
                 <option  value="promotion">Promotion</option>
           </select>           
       </div>
+      </div>
       <span id="find_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists</span>            
+    </div>
     </div>
     <!-- for display select between write address and use google map -->
     <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
       <a id="id_getbage" class="getbage"><input type='button>' class='btn btn-info' value='Create New Page'/></a>
-      <a id="backbage" class="oldbage" href="{{url('/page/create')}}"><input type='button>' class='btn btn-info' value='Back to Our Page'/></a>
+      <!-- <a id="backbage" class="oldbage" href="{{url('/page/create')}}"><input type='button>' class='btn btn-info' value='Back to Our Page'/></a> -->
     </div> 
-    <br/>
+  
+
     <div id="enternewbage">
       <div class='form-group'>
-        <label class='col-md-2'>Title *</label>
+        <!-- <label class='col-md-2'>Title *</label> -->
+        <!-- <div class="box-header with-border"> -->
+          <h3 class="box-title">&nbsp; Write Your Title of Page</h3>
+      <!-- </div> -->
         <div class='col-md-10'>
+        <div class="box box-warning">
+          <div class="box-body">
             <input placeholder='title ...' class='form-control title_page' id='title_page' name='title' type='text' value="{{old('title')}}"/>
         </div>
+        </div>
         <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists</span>            
-      </div>  
+      </div>
+      </div> 
+
+      <div class='col-lg-offset-10 col-ms-2' id="sel_getpage"> 
+      <!-- <a id="id_getbage" class="getbage"><input type='button>' class='btn btn-info' value='Create New Page'/></a> -->
+      <a id="backbage" class="oldbage" href="{{url('/page/create')}}"><input type='button>' class='btn btn-info' value='Back to Our Page'/></a>
+    </div> 
+
       <br><br><br>   
       <textarea  name='content' style="height:295px;">{{old('title')}}</textarea> 
     </div>   
     <br>
-    <input type='submit' class='col-md-12 btn btn-primary' name='ok' value='ADD' />
+
+
+    <!-- <span class='col-md-2'></span> col-xs-8 -->
+     <div class="col-md-10 col-md-offset-1">       
+         <div class="box">
+            <div class="box-header">
+                <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='ADD' />   
+               </div>
+            </div>
+            </div>
+          <!-- /.box --> 
+     </div>
+       
+     </div>
   {!!Form::close() !!}
+</section>
+    <!-- /.content -->
+</div>  
+
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 
