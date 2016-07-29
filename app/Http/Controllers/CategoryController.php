@@ -24,13 +24,13 @@ class CategoryController extends Controller
             if(Auth::user()->status == 'reseller')
             {
                  $categories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
-                 $allcategories=DB::table('categories')->where('site_id',Session::get('user_id'))->wherenotNull('category_id')->get();
+                 $allcategories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
                  // dd($categories);
             }
             else
             {
                  $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
-                 $allcategories=DB::table('categories')->where('site_id',Auth::user()->id)->wherenotNull('category_id')->get();
+                 $allcategories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
 
             }
 

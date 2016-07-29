@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/ticket/solve_resellershow/{id}','TicketController@solve_resellershow');
 	Route::get('/ticket/solve_index/{id}','TicketController@solve_index');
 	Route::get('/ticket/solve_show/{id}','TicketController@solve_show');
-
+	Route::get('/ticket/destroy/{id}','TicketController@destroy');
 	Route::resource('/ticket','TicketController');
 
 
@@ -113,7 +113,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-	// Route::get('/ticket/destroy/{id}','TicketController@destroy');
+	
 	// Route::get('/subcategory/destroy/{id}','SubCategoryController@destroy');
 	// Route::get('/product/destroy/{id}','ProductController@destroy');	
 	
