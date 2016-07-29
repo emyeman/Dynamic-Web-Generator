@@ -29,7 +29,7 @@
               <h3 class="box-title">Category Name</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body col-md-offset-1">
                 <!-- text input -->
                 <div class="form-group col-md-12">
                   <label >Choose Category</label>
@@ -61,7 +61,7 @@
               </div> -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body col-md-offset-1">
                 <!-- text input -->
                 <div class="form-group col-md-12">
                   <label >English Title *</label>
@@ -80,7 +80,7 @@
             <div class="box-header with-border">
              <center> <h3 class="box-title">Choose Picture</h3></center>
             </div>
-            <div class="box-body">
+            <div class="box-body col-md-offset-1">
              <center><img width='300px' height='300px' src="{{url('/assets/images/'.$subcategory->image)}}" class="img-responsive" alt="brand"></center>
             </div>
             <div class="box-footer clearfix">

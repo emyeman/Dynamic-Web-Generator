@@ -33,7 +33,7 @@
               </div> -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body col-md-offset-1">
                 <!-- text input -->
                 <div class="form-group col-md-12">
                   <label>English Title *</label>
@@ -53,11 +53,11 @@
             <div class="box-header with-border">
              <center> <h3 class="box-title">Choose Picture</h3></center>
             </div>
-            <div class="box-body">
+            <div class="box-body col-md-offset-1">
                 <center><img  width='300px' height='300px' src="{{url('/assets/images/'.$category->image)}}" class="img-responsive" alt="brand"></center>
             </div>
             <div class="box-footer clearfix">
-               <div class="input-group-btn">
+               <div class="input-group-btn col-md-offset-1">
                     <input class='form-control' name='image_category' type='file' />
                     <!-- <button id="add-new-event" type="button" class="btn btn-info btn-flat pull-right form-control">Browse</button>   -->
                </div>

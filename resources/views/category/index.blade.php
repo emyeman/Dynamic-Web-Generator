@@ -64,14 +64,14 @@
                       <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color:#3c8dbc;"></i></a></td>
                       <td>
                       
-                      <?php $flage_relation=0 ?>
-                            @foreach ($categories as $del_category)
-                                @if($category->id==$del_category->category_id)
-                                    <?php $flage_relation=1 ?>
+                      <?php $flage_relat=0; ?>
+                            @foreach ($allcategories as $del_category)
+                                @if($category->id ==$del_category->category_id)
+                                    <?php $flage_relat=1; ?>
                                 @endif    
                             @endforeach
 
-                            @if($flage_relation==1)
+                            @if($flage_relat==1)
                                 <!-- <i class="fa fa-times fa-2x" aria-hidden="true" style="margin-left: 20px; color: red;"></i> -->
                                 <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-ban-circle" ></span>
                             @else
