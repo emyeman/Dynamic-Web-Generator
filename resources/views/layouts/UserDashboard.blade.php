@@ -131,11 +131,6 @@
              })
         })
     </script>
-
-    {!! Html::script('assets/reseller_assets/dist/js/bootstrap.min.js') !!}
-    {!! Html::script('assets/reseller_assets/dist/js/jquery-1.10.2.min.js') !!}
-    {!! Html::script('assets/reseller_assets/dist/js/custom.js') !!}
-
       
     <script>
     $(document).ready(function(){
