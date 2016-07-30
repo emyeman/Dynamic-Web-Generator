@@ -41,7 +41,7 @@
           </select>           
       </div>
       </div>
-      <span id="find_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists</span>            
+      <span id="find_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This page already exists </span>            
     </div>
     </div>
     <!-- for display select between write address and use google map -->
@@ -103,6 +103,9 @@
 <script>
 
     console.log('hii');
+    document.getElementById('find_err').style.display = "none";
+    document.getElementById('title_err').style.display = "none";
+
     document.getElementById('ourpage').style.display = "block";
     document.getElementById('enternewbage').style.display = "none";
 
@@ -168,7 +171,6 @@
 
 
     console.log('hiiiiiii');
-    document.getElementById('find_err').style.display = "none";
     $('.findtitle').on('blur',function(event) {            
         event.preventDefault();
         // alert($(this).text());
@@ -200,7 +202,7 @@
             });
         });
 
-    document.getElementById('title_err').style.display = "none";
+
     $('.title_page').on('blur',function(event) {            
         event.preventDefault();
         // alert($(this).text());

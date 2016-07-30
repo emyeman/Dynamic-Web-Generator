@@ -5,22 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Ticket extends Model
+class Comment extends Model
 {
     use SoftDeletes;
-    public function site()
+    public function ticket()
     {
-    	return $this->belongsTo(Site::class);
+    	return $this->belongsTo(Ticket::class);
     }
 
     public function user()
     {
     	return $this->belongsTo(User::class);
-    }
-
-    public function comment()
-    {
-        return $this->hasMany(Comment::class);
     }
     
 }
