@@ -122,6 +122,15 @@
     {!! Html::script('assets/js/plugins.form-components.js') !!}
     <!-- color picker -->
     {!! Html::script('colorPicker/jqColorPicker.min.js') !!}
+
+     <script>
+        $(document).ready(function() {
+             $("input[type=file]").on('change',function(event) {
+                 // body...
+                 $(this).parent().parent().append("<label style='margin-left:5px;'>"+$(this).val().substring(12)+"</label>");
+             })
+        })
+    </script>
     <script>
     $(document).ready(function(){
         "use strict";
@@ -201,6 +210,12 @@
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<!-- Messages: style can be found in dropdown.less-->
+						<li class="dropdown messages-menu">
+						 <a target="_blank" href="{{url('/gotosite')}}">
+                        	<strong>GO TO SITE</strong>
+                    		</a>
+                    	</li>
+
 						<li class="dropdown messages-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-envelope-o"></i>

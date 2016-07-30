@@ -110,7 +110,7 @@ class BrandingController extends Controller {
             'slogan' => 'required',
             'ar_slogan' => 'required',
 
-            'logo' => 'max:20',
+            'logo' => 'max:700',
         ]);
         $header = new Header($request->all());
 

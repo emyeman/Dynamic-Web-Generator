@@ -1,7 +1,6 @@
 @extends('layouts.outside')
 
 @section('content')
-
   <h2 class='page-header col-md-8 col-md-offset-2' style="margin-top:100px;">Templates</h2>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-5">
@@ -14,12 +13,12 @@
   <div class="row col-md-10 col-md-offset-2">
     @foreach($temps as $temp)
 <a href="/activetemp/{{ $temp->id }}">
-<ul class="demo-2 effect" id="{{ $temp->id }}">
+<ul class="demo-2 effect" id="{{ $temp->id }}" style="margin-top:5px;">
     <li>
        <h2 class="zero">{{ $temp->name }}</h2>
        <p class="zero">{{ $temp->name }}</p>
     </li>
-    <li><img class="top" src="{{ url('assets/DynamicWebGenerator/upload/bg-slider4.jpg')}}" alt=""/></li>
+    <li><img class="top" src="{{ $temp->image }}" alt=""/></li>
 </ul>
 </a>
 {{-- 

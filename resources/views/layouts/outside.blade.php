@@ -184,7 +184,7 @@ h2.zero,p.zero {
                              @if (Auth::guest())
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Make Your Website</a></li>
 
                                 @else
                                     
@@ -235,7 +235,7 @@ h2.zero,p.zero {
                              @if (Auth::guest())
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Make Your Website</a></li>
 
                                 @else
                                     
@@ -250,7 +250,8 @@ h2.zero,p.zero {
 
                                         <li class="menu-item one-page-subsite"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a></li>
                                     @elseif (Auth::user()->status == 'user')
-                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a></li>
+                                        <li class="menu-item one-page-subsite"><a href="{{  url('/site/create') }}">Create WebSite</a>
+                                        </li>
                                     @endif
 
                                      </ul>
@@ -296,7 +297,7 @@ h2.zero,p.zero {
                              @if (Auth::guest())
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
-                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Register</a></li>
+                                    <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Make Your Website</a></li>
 
                                 @else
                                     
@@ -365,7 +366,14 @@ h2.zero,p.zero {
          $('.picker').colorPicker(/* optinal options */); // that's it
     </script>
 
-
+    <script>
+        $(document).ready(function() {
+             $("input[type=file]").on('change',function(event) {
+                 // body...
+                 $(this).parent().parent().parent().append("<label style='margin-left:5px;'>"+$(this).val().substring(12)+"</label>");
+             })
+        })
+    </script>
 
 
     <script type='text/javascript' src="{{ url('assets/DynamicWebGenerator/js/jquery/jquery.js')}}"></script>
@@ -887,6 +895,7 @@ h2.zero,p.zero {
 
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+
 </body>
 </html>
 

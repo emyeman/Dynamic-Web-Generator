@@ -22,13 +22,41 @@ class ResellerController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')->where('user_id',Auth::user()->id)->get();
+        if(Auth::user()->id == 1 )
+        {
+            $users = DB::table('users')->where('user_id',null)->where('id','!=',1)->get();
+        }
+        else
+        {
+            $users = DB::table('users')->where('user_id',Auth::user()->id)->get(); 
+            foreach ($users as $user) {
+                   # code...
+                    $site = DB::table('sites')->where('user_id',$user->id)->first();
+                    if($site == null)
+                    {
+                        $user->site=-1;
+                    }
+                    else
+                    {
+                        $user->site = $site->id;
+                    }
+               }   
+        }
+        
 
         // for count unseen of ticket 
         $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
         $count_unseen=count($ticket_unseen);
 
         return view('reseller.index', compact('users','count_unseen'));
+    }
+
+
+    public function ban(User $user)
+    {
+        # code...
+        $user->delete();
+        return back();
     }
 
     /**
@@ -82,6 +110,12 @@ class ResellerController extends Controller
             abort(500);
         }
         //
+    }
+
+    public function createsiteforuser(User $user)
+    {
+        # code...
+        return redirect('/site/create')->with('id', $user->id);
     }
 
     /**

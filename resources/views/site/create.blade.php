@@ -23,7 +23,7 @@
       @endif
       {!!Form::open(['route'=>'site.store' , 'method'=>'post', 'files'=>true]) !!}
         <div class='form-group '>
-            <label class='col-md-2'>SubDomain</label>
+            <label class='col-md-2'>Site Name</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
@@ -83,7 +83,7 @@
 
          <div class='form-group'>
             <label class='col-md-2'>Image</label>
-            <div class='col-md-8 input-group'>
+            <div class='col-md-4 input-group' style="float:left;">
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                 <label class="btn btn-info form-control btn-file">
                     Browse <input id="image" type="file" name="background_image" style="display: none;">

@@ -57,7 +57,7 @@
                     <label class="btn btn-default btn-file">
                                 Browse <input id="image" type="file" name="image" style="display: none;">
                             </label>
-                            <img id="profile" style="width:50px;height:50px;" class="col-md-offset-2" src="{{ $user->image }}" alt="">
+                            {{-- <img id="profile" style="width:50px;height:50px;" class="col-md-offset-2" src="{{ $user->image }}" alt=""> --}}
             </div>
         </div>
         <span class='col-md-2'></span>
@@ -67,4 +67,5 @@
 </div><!--end leftsideof from-->
 </div>
 </div>
+
 @endsection

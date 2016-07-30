@@ -123,7 +123,7 @@
     <div class="row" style="margin-top:15px;">
      <div class="col-md-5 col-md-offset-1 ">
      <label class="btn btn-default btn-file">
-                    Choose Picture <input id="image" type="file" name="image" style="display: none;">
+                    Choose Picture <input id="image" type="file" name="image">
     </label>
     </div>
    </div>
