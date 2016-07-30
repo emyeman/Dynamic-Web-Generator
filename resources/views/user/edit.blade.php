@@ -51,16 +51,16 @@
 
         <div class='form-group'>
             <label class='col-md-2'>Image</label>
-            <div class='col-md-8 input-group'>
+            <div class='col-md-4 input-group' style="float:left;">
                 
-                    <label class="btn btn-default btn-file">
+                    <label class="btn btn-info form-control btn-file">
                                 Browse <input id="image" type="file" name="image" style="display: none;">
                             </label>
-                            <img id="profile" class="col-md-offset-2" src="{{ Auth::user()->image }}" alt="">
+                            {{-- <img id="profile" class="col-md-offset-2" src="{{ Auth::user()->image }}" alt=""> --}}
             </div>
         </div>
         <span class='col-md-2'></span>
-        <input type='submit' class='col-md-1 col-md-offset-0 btn btn-default' name='ok' value='update' />
+        <input type='submit' class='col-md-2 col-md-offset-0 btn btn-primary' name='ok' value='update' />
         
     {!!Form::close() !!}
 </div><!--end leftsideof from-->

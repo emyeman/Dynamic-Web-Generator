@@ -58,7 +58,7 @@ class SiteController extends Controller
         }
         else
         {
-            return view('home');       
+            return redirect('/');       
         } 
      }
 

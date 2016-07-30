@@ -219,6 +219,14 @@
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
 	</script>
+	<script>
+        $(document).ready(function() {
+             $("input[type=file]").on('change',function(event) {
+                 // body...
+                 $(this).parent().parent().append("<label style='margin-left:5px;'>"+$(this).val().substring(12)+"</label>");
+             })
+        })
+    </script>
 	<!-- Bootstrap 3.3.6 -->
 	<script src="{{ url('assets/reseller_assets/bootstrap/js/bootstrap.min.js') }}"></script>
 	<!-- Morris.js charts -->

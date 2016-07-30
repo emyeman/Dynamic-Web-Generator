@@ -28,9 +28,9 @@ class TemplateController extends Controller{
     }
     
     public function index(){
-        
+        $site =Auth::user()->site()->first()['attributes']['id'];
         $temps=Template::all();
-        return view('activetemp',compact('temps'));
+        return view('activetemp',compact('temps','site'));
     }
 
     public function gotosite()

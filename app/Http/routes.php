@@ -84,7 +84,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/reseller', 'ResellerController', ['except' => [
     	'create' , 'destroy',
 	]]);
-
+	Route::get('/ban/{user}','ResellerController@ban');
+	Route::get('/reseller/createsiteforuser/{user}','ResellerController@createsiteforuser');
 	Route::get('/ticket/reseller_index','TicketController@reseller_index');
 	Route::get('/ticket/resellershow/{id}','TicketController@resellershow');
 
