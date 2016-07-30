@@ -96,6 +96,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/ticket/destroy/{id}','TicketController@destroy');
 	Route::resource('/ticket','TicketController');
 
+	Route::resource('/comment','CommentController');
+
 
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
