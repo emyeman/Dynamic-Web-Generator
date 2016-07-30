@@ -218,6 +218,14 @@
                     		</a>
                     	</li>
 
+                    	@if(Auth::user()->status == 'reseller')
+							<li class="dropdown messages-menu">
+							 	<a target="_blank" href="{{url('/reseller')}}">
+                        			<strong>GO TO RESELLER DASHBOARD</strong>
+                    			</a>
+                    		</li>                    		
+                    	@endif
+
 						<li class="dropdown messages-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-envelope-o"></i>

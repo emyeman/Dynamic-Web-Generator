@@ -28,7 +28,7 @@
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
-                <input placeholder='PlZ,enter title news' class='form-control' name='subdomain' type='text'/>
+                <input placeholder='PlZ,enter title news' class='form-control' name='subdomain' type='text' value="{{old('subdomain')}}"/>
             </div>
         </div>  
 
@@ -38,7 +38,7 @@
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
-                <input placeholder='PlZ,enter title news' class='form-control picker' name='slogan_color' type='text'/>
+                <input placeholder='PlZ,enter title news' class='form-control picker' name='slogan_color' type='text' value="{{old('slogan_color')}}"/>
             </div>
         </div>  
           
@@ -50,7 +50,7 @@
                 <span class='input-group-addon'>
                 <i class='glyphicon glyphicon-pencil'></i>
                 </span>
-                <input placeholder='PlZ,enter title news' class='form-control picker' name='text_color' type='text'/>
+                <input placeholder='PlZ,enter title news' class='form-control picker' name='text_color' type='text' value="{{old('text_color')}}"/>
             </div>
         </div>  
 
@@ -58,7 +58,7 @@
             <label class='col-md-2'>Primary Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <input placeholder='PlZ,enter description' class='form-control picker' name='primary_color' type='text' />
+                <input placeholder='PlZ,enter description' class='form-control picker' name='primary_color' type='text' value="{{old('primary_color')}}"/>
             </div>
         </div>      
 
@@ -66,7 +66,7 @@
             <label class='col-md-2'>Secondary Color</label>
             <div class='col-md-8 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
-                <input placeholder='PlZ,enter description' class='form-control picker' name='secondry_color' type='text' />
+                <input placeholder='PlZ,enter description' class='form-control picker' name='secondry_color' type='text' value="{{old('secondry_color')}}"/>
             </div>
         </div>
 
