@@ -105,7 +105,8 @@ class ResellerController extends Controller
         if( $user->addUser($user))
         {
             Session::flash('insert_success', 'A new service has been added successfully');
-            return redirect('/site/create')->with('id', $user->id);
+            Session::set('user_id',$user->id);
+            return redirect('/site/create');
         }else{
             abort(500);
         }
@@ -115,7 +116,8 @@ class ResellerController extends Controller
     public function createsiteforuser(User $user)
     {
         # code...
-        return redirect('/site/create')->with('id', $user->id);
+        Session::set('user_id', $user->id);
+        return redirect('/site/create');
     }
 
     /**

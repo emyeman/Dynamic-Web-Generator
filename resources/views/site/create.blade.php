@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <input type="hidden" value="{{ Session::get('id') }}" name="site_id"/>
+        <input type="hidden" value="{{ Session::get('user_id') }}" name="site_id"/>
 
         <div class='form-group'>
             <label class='col-md-2'></label>
