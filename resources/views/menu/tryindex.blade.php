@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Menus
+               All Menus
                 <!-- <small><i>Hello current_user</i></small> -->
             </h1>
         </div>
@@ -24,8 +24,33 @@
         @if(Session::has('update_success'))
             <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
         @endif
-        <div >
+        
             <!-- *************************** -->
+            <style type="text/css">
+                .dd-handle {
+                    display: block;
+                    height: 30px;
+                    margin: 5px 0;
+                    cursor: move;
+                    padding: 5px 10px;
+                    color: #333;
+                    text-decoration: none;
+                    font-weight: 400;
+                    border: 1px solid #ccc;
+                    background: lightblue;
+                    box-sizing: border-box;
+                }
+                ul
+                {
+                    list-style-type: none;
+                }
+                /* #table-scroll {
+                    height: 200px;
+                    overflow: auto;
+                    margin-top: 30px;
+                } */
+        </style>
+        <div>
             <div id="table-wrapper">
               <div id="table-scroll">
                 <table class='table table-hover' style="table-layout: fixed;">
@@ -56,74 +81,13 @@
         </div>
     </div>
     <!-- /.row -->
-     <!-- <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Brand</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ol class="nav navbar-nav">
-                <li class="active" id='item_a'><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li id='item_b'><a href="#">Link</a></li>
-                <li class="dropdown" id='item_c'>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ol class="dropdown-menu">
-                    <li id='item_c1'>
-                        <a href="#">Action</a>
-                    </li>
-                    <li id='item_c2'><a href="#">Another action</a></li>
-                    <li><a href="#" id='item_c3'>Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li id='item_c4'><a href="#">Separated link</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ol>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </nav> -->
-
-        <!-- <div class='span4'>
-          <ol class='limited_drop_targets vertical'>
-            <li class='highlight' id='item_a'>Item 1</li>
-            <li id='item_b'>Item 2</li>
-            <li class='highlight' id='item_c'>Item 3</li>
-            <li id='item_d'>Item 4</li>
-            <li class='highlight' id='item_e'>Item 5</li>
-            <li id='item_f'>Item 6</li>
-          </ol>
-        </div> -->
-        <style type="text/css">
-            .dd-handle {
-                display: block;
-                height: 30px;
-                margin: 5px 0;
-                cursor: move;
-                padding: 5px 10px;
-                color: #333;
-                text-decoration: none;
-                font-weight: 400;
-                border: 1px solid #ccc;
-                background: lightblue;
-                box-sizing: border-box;
-            }
-            ul
-            {
-                list-style-type: none;
-            }
-            .scroll {
-                height: 380px;
-                overflow: auto;
-                margin-top: 50px;
-            }
-        </style>
+<!--     <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">
+                Show Your Menus
+            </h2>
+        </div>
+    </div>
 
         <ul class='sortable-list'>
             @foreach ($rows as $row)
@@ -139,7 +103,7 @@
                 @endif
            @endforeach
         </ul>
-
+ -->
 
         <!-- <ul class='hhh'>
            <li id='item_a'>

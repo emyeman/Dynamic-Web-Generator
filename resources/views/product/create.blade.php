@@ -37,7 +37,7 @@
               <h3 class="box-title">Category & Sub Category</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body col-md-offset-1">
                 <!-- text input -->
                 <div class="form-group col-md-12">
                   <label >Choose Category *</label>
@@ -86,7 +86,7 @@
               <h3 class="box-title">Product</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
+            <div class="box-body col-md-offset-1">
                 <!-- text input -->
                 <div class="form-group col-md-12">
                   <label >English Title *</label>
@@ -121,7 +121,7 @@
              <center><img src="image/11.jpg" class="img-responsive" alt="brand"></center>
             </div> -->
             <div class="box-footer clearfix">
-               <div class="input-group-btn">
+               <div class="input-group-btn col-md-offset-1">
                     <input class='form-control' name='image_product' type='file' />
                     <!-- <button id="add-new-event" type="button" class="btn btn-info btn-flat pull-right form-control">Browse</button>   -->
                </div>

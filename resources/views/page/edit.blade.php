@@ -5,34 +5,70 @@
 @endsection
 
 @section('content')
-    {!! Html::script('assets/tinymce/tinymce.js') !!}
-          <h2 class='page-header'>
-            Edit Page
-          </h2>
-          @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+
+  {!! Html::script('assets/tinymce/tinymce.js') !!}
+
+  <!-- Main content -->
+    <section class="content">
+       <div class="row">
+      <div class="col-md-10 col-md-offset-1 ">
+    <img src="{{url('assets/reseller_assets/images/19a.png')}}" class="img-responsive" style="margin-top:-15px; margin-left: 12px;"> 
+    </div>
+    </div>
+ @if (count($errors) > 0)
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+    <br>
+   <!-- <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
+
+  {{Form::model($row,['route'=>['page.update',$row->id],'method'=>'put','class'=>'form-horizontal']) }}
+
+    <div id="enternewbage">
+      <div class='form-group'>
+        <!-- <label class='col-md-2'>Title *</label> -->
+        <!-- <div class="box-header with-border"> -->
+          <h3 class="box-title">&nbsp; <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a> Edit Your Title of Page</h3>
+      <!-- </div> -->
+        <div class='col-md-12'>
+        <div class="box box-warning">
+          <div class="box-body">
+          {{Form::text('title', old('title') ,['class'=>'form-control','placeholder'=>'page title ...'])}}
+        </div>
+        </div>
+      </div>
+      </div> 
+
+      {{Form::textarea('content', old('content'))}}
+    
+    </div>   
+    <br>
+
+
+    <!-- <span class='col-md-2'></span> col-xs-8 -->
+     <div class="col-md-10 col-md-offset-1">       
+         <div class="box">
+            <div class="box-header">
+                <div class="box-footer clearfix">
+               <div class="input-group-btn">
+                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='EDIT' />   
+               </div>
             </div>
-        @endif
-          <br><br>
-          {{Form::model($row,['route'=>['page.update',$row->id],'method'=>'put','class'=>'form-horizontal']) }}
-            
-              <div class='form-group'>
-                <label class='col-md-2'>Title</label>
-                <div class='col-md-10 input-group'>
-                    {{Form::text('title', old('title') ,['class'=>'form-control','placeholder'=>'page title ...'])}}
-                  </div>
-              </div>
-              {{Form::textarea('content', old('content'))}}
-            <br><br>
-            <input type='submit' class='col-md-12 btn btn-primary' name='ok' value='EDIT' />
-        {{Form::close() }}
-    </div><!--end leftsideof from-->
-</div>
+            </div>
+          <!-- /.box --> 
+     </div>
+       
+     </div>
+  {!!Form::close() !!}
+</section>
+    <!-- /.content -->
+</div>  
+
 <script>
   var editor_config = {
     path_absolute : "/",

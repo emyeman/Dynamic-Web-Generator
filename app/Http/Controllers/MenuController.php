@@ -145,24 +145,54 @@ class MenuController extends Controller
 
 
 
-     public function edit($id){
-     	try
-        {
-            $row=Menu::findOrFail($id);
+     public function edit($id,Request $request){
+        if(Auth::user()){
+         	try{
+                $row=Menu::findOrFail($id);
+            }
+            catch(Exception $e){
+                throw new ModelNotFoundException($e->getMassege());
+                
+            }
+            // if ($user->cannot('access-menus', $row)) {
+            //     abort(403);
+            // }
+            if(Auth::user()->status == 'reseller'){
+                $menus=DB::table('menus')->where('site_id',Session::get('user_id'))->get();
+                $pages=DB::table('pages')->where('site_id',Session::get('user_id'))->get();
+                $sel_menu=DB::table('menus')->where('site_id',Session::get('user_id'))->where('id',$id)->first();
+                $sel_page=DB::table('pages')->where('site_id',Session::get('user_id'))->where('id',$sel_menu->route)->first();
+            }
+             else{
+                $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
+                $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
+                $sel_menu=DB::table('menus')->where('site_id',Auth::user()->id)->where('id',$id)->first();
+                $sel_page=DB::table('pages')->where('site_id',Auth::user()->id)->where('id',$sel_menu->route)->first();
+            }
+
+            if(Auth::user()->status == 'reseller'){
+                $site_id=Session::get('user_id');
+            }
+            else{
+                $site_id=Auth::user()->site->id;    
+            }
+
+            $rows = DB::table('menus')
+            ->leftJoin('pages', 'menus.route', '=', 'pages.id')
+            ->leftJoin('menus as parent', 'parent.id', '=', 'menus.parent_id')
+            ->where('menus.site_id', $site_id)
+            ->where('menus.deleted_at', null)
+            ->select('menus.id as menu_id','menus.title as menu_title','menus.ar_title as menu_ar_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
+            ->orderBy('parent.title')
+            ->get();
+
+            // var_dump($menus);die();
+            return  view ('menu.edit',['menus'=>$menus,'pages'=>$pages,'row'=>$row,'rows'=>$rows,'sel_menu'=>$sel_menu,'sel_page'=>$sel_page]);
+        
+        } else{
+            return  redirect ('/login');   
         }
-        catch(Exception $e)
-        {
-            throw new ModelNotFoundException($e->getMassege());
-            
-        }
-        $menus=Menu::where('id','!=', $id)->pluck('title','id'); // to not add a menu as a parent to itself
-     	$pages=Page::pluck('title','id');
-        $user=Auth::user();
-        if ($user->cannot('access-menus', $row)) {
-            abort(403);
-        }
-		return  view ('menu.edit',['row'=>$row,'menus'=>$menus,'pages'=>$pages]);
-     }
+    }
 
 
      public function update($id,Request $request){

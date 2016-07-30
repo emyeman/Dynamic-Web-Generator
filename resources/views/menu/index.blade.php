@@ -7,21 +7,18 @@
 
 {!! Html::style('assets/css/table-scroll.css') !!}
 
-<div class="col-sm-9">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-               All Menus
-                <!-- <small><i>Hello current_user</i></small> -->
-            </h1>
-        </div>
+<!-- Main content -->
+<section class="content">
+    <div class="row text-uppercase" style="text-align: center;">
+        <h1 style="color:#01A4A4;">
+        <span style="font-size:34px; font-weight: 700; ">
+        View your "Menus" page<br>
+        </span>
+        </h1>
+       <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc;">  
     </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class='col-lg-offset-11 col-ms-1'>
-            <a href="{{url('/menu/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
-        </div>
-        @if(Session::has('update_success'))
+
+    @if(Session::has('update_success'))
             <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
         @endif
         
@@ -50,77 +47,58 @@
                     margin-top: 30px;
                 } */
         </style>
-        <div>
-            <div id="table-wrapper">
-              <div id="table-scroll">
-                <table class='table table-hover' style="table-layout: fixed;">
-                    <thead>
-                        <tr>
-                            
-                            <th width='20%'><span class="text">English Title</span></th>
-                            <th width='20%'><span class="text">Arabic Title</span></th>
-                            <th width='30%'><span class="text">Parent</span></th>
-                            <th width='25%'><span class="text">Page</span></th>
-                            <th width='5%'></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($rows as $row)
-                            <tr> 
-                                <td class='wrap'><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->menu_title}}<a/></td>
-                                <td class='wrap'><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->menu_ar_title}}<a/></td>
-                                <td class='wrap'><a href="{{url('/menu/'.$row->parent_id.'/edit')}}">{{$row->parent_title}}</a></td>
-                                <td><a href="{{url('/page/'.$row->page_id.'/edit')}}">{{$row->page_title}}</a></td>
-                                <td><span class="glyphicon glyphicon-remove delete" id="{{$row->menu_id}}"></span></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+
+    
+     <div class="row">
+    <div class="col-md-9 col-md-offset-1">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title" style="color: #01A4A4; font-weight:bold;" >View your Menu</h3>
+
+              <div class="pull-right">
+               <a href="{{url('/menu/create')}}">
+              <i class="fa fa-plus fa-3x" aria-hidden="true" style="color: #00a65a;"></i>
+              </a>
               </div>
             </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table">
+                <tr>
+                    <th>English Title</th>
+                    <th>Arabic Title</th>
+                    <!-- <th>Parent</th> -->
+                    <th>Page</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @foreach ($rows as $row)
+                    <tr> 
+                        <td><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->menu_title}}<a/></td>
+                        <td><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->menu_ar_title}}<a/></td>
+                        <!-- <td><a href="{{url('/menu/'.$row->parent_id.'/edit')}}">{{$row->parent_title}}</a></td> -->
+                        <td><a href="{{url('/menu/'.$row->menu_id.'/edit')}}">{{$row->page_title}}</a></td>
+                        <td>
+                          <a href="{{url('/menu/'.$row->menu_id.'/edit')}}">
+                          <!-- <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" style="color:#3c8dbc;"></i> -->
+                          <span style="color: blue;" class="glyphicon glyphicon-edit" id="{{$row->menu_id}}"></span>
+                          </a>
+                        </td>
+                        <td><span style="color: red;" class="glyphicon glyphicon-trash delete" id="{{$row->menu_id}}"></span></td>
+                    </tr>
+                @endforeach
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
     </div>
-    <!-- /.row -->
-<!--     <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">
-                Show Your Menus
-            </h2>
-        </div>
-    </div>
+</section>
+        <!-- /.content -->
+</div>  
 
-        <ul class='sortable-list'>
-            @foreach ($rows as $row)
-                @if($row->parent_id == null)
-                    <li id="{{$row->menu_id}}">
-                        <div class='dd-handle'>{{$row->menu_title}}</div>
-                        @foreach($rows as $submenu)
-                            @if($row->menu_id == $submenu->parent_id)
-                                @include('menu.submenus',['menus'=>$rows,'parent_menu'=>$submenu])
-                            @endif
-                        @endforeach
-                    </li>
-                @endif
-           @endforeach
-        </ul>
- -->
 
-        <!-- <ul class='hhh'>
-           <li id='item_a'>
-              <div style='background-color: red;'>Whatever you want here a</div>
-              <ul>
-                 <li id='item_b'><div style='background-color: red;'>Nested list item b </div></li>
-                 <li id='item_c'><div>Another item c</div></li>
-              </ul>
-           </li>
-        </ul> -->
-
-        <!-- <input type='button' id='update_menus' value='save'> -->
-</div><!--end leftsideof from-->
-
- <br/><br/><hr/><hr/>
-
-</div>
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
 <!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->

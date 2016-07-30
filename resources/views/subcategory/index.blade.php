@@ -81,7 +81,7 @@
 
                             @if($flage_relation==1)
                                 <!-- <i class="fa fa-times fa-2x" aria-hidden="true" style="margin-left: 20px; color: red;"></i> -->
-                                <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-ban-circle" ></span>
+                                <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-ban-circle" > </span>
                             @else
                                 <span style="size-weight:bold; color:red;" class="glyphicon glyphicon-trash delete" id="{{$subcategory->id}}"></span>
                             @endif    

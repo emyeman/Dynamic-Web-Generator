@@ -271,19 +271,21 @@ class TicketController extends Controller
 
      public function destroy($id){
         if (Auth::user()){
-            try
-            {
+            try{
                 $ticket=Ticket::findOrFail($id);
+                // $ticket = DB::table('tickets')->where('site_id',Auth::user()->id)->where('id',$id)->get();
             }
-            catch(Exception $e)
-            {
-                throw new ModelNotFoundException($e->getMassege());
-                
+            catch(Exception $e){
+                throw new ModelNotFoundException($e->getMassege());               
             }
+
             // $ticket=Ticket::find($id);
+            // var_dump($ticket);die();
             // for use redirect
-            // $Ticket->delete();
-            // return  redirect ('/Ticket');
+            // if (!is_null($ticket)) {
+            //     $ticket->delete();dd('hit');
+            // }
+            // return  redirect ('/ticket');
             // return  view ('Ticket.index');
             // ****************************************************
             // // for use ajax for remove

@@ -131,6 +131,12 @@
              })
         })
     </script>
+
+    {!! Html::script('assets/reseller_assets/dist/js/bootstrap.min.js') !!}
+    {!! Html::script('assets/reseller_assets/dist/js/jquery-1.10.2.min.js') !!}
+    {!! Html::script('assets/reseller_assets/dist/js/custom.js') !!}
+
+      
     <script>
     $(document).ready(function(){
         "use strict";
@@ -139,7 +145,7 @@
         Plugins.init(); // Init all plugins
         FormComponents.init(); // Init all form-specific plugins
 
-        $('.picker').colorPicker(/* optinal options */); // that's it
+        // $('.picker').colorPicker(); // that's it
     });
     </script>
     <script type="text/javascript">
@@ -147,6 +153,7 @@
             $('.alert-autocloseable').delay(5000).slideUp( 1000);
         });
     </script>
+    
        <meta name="_token" id='token' content="{!! csrf_token() !!}" />
     <script type="text/javascript">
             var token = $('#token').attr('content');
