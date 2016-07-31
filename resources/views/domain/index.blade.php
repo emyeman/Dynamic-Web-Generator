@@ -58,7 +58,14 @@
     @endif
         </div>
       <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="box">
+            <div class="box-header">
         <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Edit</th>
+                    </tr>
                     <tr>
                     @if($domain)
                         <td>{{ $domain->Domain_name }}</td>
@@ -69,6 +76,9 @@
                     @endif
                     </tr>
                 </table>
+      </div>
+      </div>
+      </div>
       </div>
         </section>
 @endsection

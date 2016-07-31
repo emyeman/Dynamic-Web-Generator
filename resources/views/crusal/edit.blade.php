@@ -62,7 +62,7 @@
            <section class="content">
        <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Form</h3>
+              <h3 class="box-title">Edit Crusal</h3>
             </div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
