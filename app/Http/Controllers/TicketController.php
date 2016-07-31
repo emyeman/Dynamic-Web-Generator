@@ -56,7 +56,16 @@ class TicketController extends Controller
             $ticket->save();
             $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
             $count_unseen=count($ticket_unseen);
-            return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen'));
+
+            // for show comment on ticket
+            $comments=DB::table('comments')->where('ticket_id',$id)->get();
+            $user_comments=[];   
+            foreach ($comments as $comment) {
+                $user_comment=DB::table('users')->where('id',$comment->user_id)->first(); 
+                array_push($user_comments, $user_comment);
+            }
+ // var_dump($user_comments);die(); 
+            return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen','comments','user_comments'));
         } else{
             return  redirect ('/login');   
         }    
@@ -64,18 +73,25 @@ class TicketController extends Controller
 
     public function show($id,Request $request){
         if (Auth::user()){
-            try
-                {
+            try{
                     // $ticket=Ticket::findOrFail($id);
-                    $ticket=DB::table('tickets')->where('id',$id)->first();}
+                $ticket=DB::table('tickets')->where('id',$id)->first();}
             catch(Exception $e)
                 {throw new ModelNotFoundException($e->getMassege());}
              
             $user=DB::table('users')->where('id',Auth::user()->id)->first();
             $reseller=DB::table('users')->where('id',$user->user_id)->first();          
             
+            // for show comment on ticket
+            $comments=DB::table('comments')->where('ticket_id',$id)->get();
+            $user_comments=[];   
+            foreach ($comments as $comment) {
+                $user_comment=DB::table('users')->where('id',$comment->user_id)->first(); 
+                array_push($user_comments, $user_comment);
+            }
+ // var_dump($user_comments);die();
 
-            return view('ticket.show',compact('ticket','user','reseller'));
+            return view('ticket.show',compact('ticket','user','reseller','comments','user_comments'));
         } else{
             return  redirect ('/login');   
         }    
@@ -104,16 +120,15 @@ class TicketController extends Controller
                 {$ticket=Ticket::findOrFail($id);}
             catch(Exception $e)
                 {throw new ModelNotFoundException($e->getMassege());}
-            $user=DB::table('users')->where('id',$ticket->site_id)->first();
-            $reseller=DB::table('users')->where('id',$ticket->reseller_id)->first();          
+            // $user=DB::table('users')->where('id',$ticket->site_id)->first();
+            // $reseller=DB::table('users')->where('id',$ticket->reseller_id)->first();          
             $ticket->is_seen=true;
-            $ticket->save();
             $ticket->is_solved=true;
             $ticket->save();
-            $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
-            $count_unseen=count($ticket_unseen);
-
-            return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen'));
+            // $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+            // $count_unseen=count($ticket_unseen);
+            return  redirect ('/ticket/resellershow/'.$id);
+            // return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen'));
         } else{
             return  redirect ('/login');   
         }    
@@ -141,12 +156,10 @@ class TicketController extends Controller
             try
                 {$ticket=Ticket::findOrFail($id);}
             catch(Exception $e)
-                {throw new ModelNotFoundException($e->getMassege());}
-            $user=DB::table('users')->where('id',Auth::user()->id)->first();
-            $reseller=DB::table('users')->where('id',$user->user_id)->first();          
+                {throw new ModelNotFoundException($e->getMassege());}         
             $ticket->is_solved=true;
             $ticket->save();
-            return view('ticket.show',compact('ticket','user','reseller'));
+            return  redirect ('/ticket/'.$id);
         } else{
             return  redirect ('/login');   
         }    
@@ -296,7 +309,29 @@ class TicketController extends Controller
          } 
      }
 
+public function commentstore(Request $request){
+        if (Auth::user()){
+            $this->validate($request, [
+                'comment' => 'required'
+            ]);
+            $comment= new Comment;
+            $comment->comment=trim($request->input('comment'));
+            $comment->ticker_id=$request->input('ticker_id');
+            $ticket_id=$request->input('ticker_id');
+            $comment->user_id=Auth::user()->id;
 
+            $is_saved=$comment->save();
+            if($is_saved){
+                // Session::flash('insert_success', 'A new comment has been added successfully');
+                return  redirect ('/ticket/'.$ticket_id);
+            }else{
+                abort(500);
+            }
+            
+        } else{
+            return  redirect ('/login');   
+        }  
+     }
 
 
 }

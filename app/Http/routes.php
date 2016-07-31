@@ -94,6 +94,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/ticket/solve_index/{id}','TicketController@solve_index');
 	Route::get('/ticket/solve_show/{id}','TicketController@solve_show');
 	Route::get('/ticket/destroy/{id}','TicketController@destroy');
+
+	// Route::post('/ticket/commentstore','TicketController@commentstore');
 	Route::resource('/ticket','TicketController');
 
 	Route::resource('/comment','CommentController');

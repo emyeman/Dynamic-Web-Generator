@@ -24,7 +24,7 @@ class ResellerController extends Controller
         //
         if(Auth::user()->id == 1 )
         {
-            $users = DB::table('users')->where('user_id',null)->where('id','!=',1)->get();
+            $users = DB::table('users')->where('user_id',null)->orWhere('user_id',1)->where('id','!=',1)->get();
         }
         else
         {
