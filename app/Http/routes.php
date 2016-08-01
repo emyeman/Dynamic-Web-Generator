@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::auth();
 // Route::get('/home', 'HomeController@index');
 
@@ -101,6 +102,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/comment','CommentController');
 
 
+	// for send to email 
+	// Route::get('/email','CommentController@email');
+
+
+// for route make any ajax processing in project
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
 		Route::get('/googlemap/storelocation/{XYlocation}','GoogleMapController@ajaxstore');
@@ -145,3 +151,5 @@ Route::get('/{subdomain}/ar','TemplateController@Show');
 
 
 // Route::get('/{subdomain}/{locale}','TemplateController@Show');
+
+

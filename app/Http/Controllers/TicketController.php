@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use App\Ticket;
+use App\User;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
 use DB;
 use File;
 use Session;
+use Illuminate\Mail\Mailer;
+use Mail;
+use View;
 
 class TicketController extends Controller
 {
@@ -208,10 +212,39 @@ class TicketController extends Controller
             $ticket->reseller_id=$request->input('reseller_id');
             $ticket->site_id=Auth::user()->id;
             $ticket->is_solved=0; 
+// *********************************************************************************
+        // for send message to email
+            $reseller_id=$request->input('reseller_id');
+            $reseller = User::findOrFail($reseller_id);
+            $user = User::findOrFail(Auth::user()->id);
 
+            //Make a Data Array
+            $send_subject=trim($request->input('subject'));
+            $subject="This ticket (".$send_subject.")";
+            $last_ticket = array(
+                'subject' => $subject,
+            );
+            //Convert the view into a string
+            $contents ="<b>This ticket from  : </b>".$user->email."<h3><b>subject : </b>(".$send_subject.")</h3><p>".trim($request->input('message'))."</p>";
+
+            //Store the content on a file with .blad.php extension in the view/send_email folder
+            $myfile = fopen("../resources/views/send_email.blade.php", "w") or die("Unable to open file!");
+            fwrite($myfile, $contents);
+            fclose($myfile);
+
+            //Use the create file as view for Mail function and send the email
+            Mail::send('send_email', ['reseller' => $reseller,$last_ticket], function ($message) use ($reseller,$last_ticket) {
+                // $message->from($reseller->email, $reseller->name);
+                $message->to($reseller->email, $reseller->name)->subject($last_ticket['subject']);
+                 // dd(config('mail'));
+                // var_dump($message);die();
+            });
+// *********************************************************************************
+
+            // for save in database
             $is_saved=$ticket->save();
             if($is_saved){
-                Session::flash('insert_success', 'A new Ticket has been added successfully');
+                Session::flash('insert_success', 'A new Ticket has been added successfully and send confirm to email of reseller _^_');
                 return  redirect ('/ticket/create');
             }else{
                 abort(500);

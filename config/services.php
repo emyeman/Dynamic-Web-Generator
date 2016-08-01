@@ -19,6 +19,11 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+//     'mailgun' => [
+//     'domain' => env('your-mailgun-domain'),
+//     'secret' => env('your-mailgun-key',)
+// ],
+
     'ses' => [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
@@ -33,6 +38,11 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+
+    'mandrill' => [
+        'secret' => env('your-mandrill-key'),
     ],
 
 ];

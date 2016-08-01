@@ -41,7 +41,11 @@
                       <div class="row">
                         <div class="col-sm-11" style="background-color:rgb(248, 243, 249);">
                               <div class="col-sm-2 text-center">
-                                <img src="{{url($user_comment->image)}}" class="img-circle" height="65" width="65" alt="Avatar">
+                                @if($user_comment->image != null)
+                                  <img src="{{url($user_comment->image)}}" class="img-circle" height="60" width="60" alt="Avatar">
+                              @else
+                                <img src="{{url('default.jpg')}}" class="img-circle" height="60" width="60" alt="emy">
+                              @endif
                               </div>
                           <div class="col-sm-9">
                             <font size="4px" color="blue">{{$user_comment->name}} : &nbsp; 
