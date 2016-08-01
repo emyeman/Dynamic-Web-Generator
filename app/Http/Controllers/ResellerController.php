@@ -42,13 +42,32 @@ class ResellerController extends Controller
                     }
                }   
         }
-        
 
-        // for count unseen of ticket 
-        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
-        $count_unseen=count($ticket_unseen);
+            // for show number of domain that not seen
+            $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
+            //  make count for domain and ticket 
+            if($reseller->id==1){
+              $user_domains=DB::table('users')->where('user_id',null)->get();
+            }else{
+              $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
+            }
+            // var_dump($user_domains);die();
+            $domain_unseens=[];
+            foreach ($user_domains as $user_domain) {
+              $domain_unseen=DB::table('domains')->where('site_id',$user_domain->id)->where('is_seen',false)->first();
+              if(!empty($domain_unseen)){
+                array_push($domain_unseens,$domain_unseen);
+              }
+            }
 
-        return view('reseller.index', compact('users','count_unseen'));
+            $domaincount_unseen=count($domain_unseens);
+            // var_dump($domaincount_unseen);die();
+            // for ticket that not seen
+            $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+            $count_unseen=count($ticket_unseen);
+            // var_dump($count_unseen);die();
+
+        return view('reseller.index', compact('users','count_unseen','domaincount_unseen'));
     }
 
 
@@ -66,11 +85,32 @@ class ResellerController extends Controller
      */
     public function create()
     {
-        // for count unseen of ticket 
-        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
-        $count_unseen=count($ticket_unseen);
 
-        return view('reseller.create', compact('count_unseen'));
+        // for show number of domain that not seen
+        $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
+        //  make count for domain and ticket 
+            if($reseller->id==1){
+              $user_domains=DB::table('users')->where('user_id',null)->get();
+            }else{
+              $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
+            }
+            // var_dump($user_domains);die();
+            $domain_unseens=[];
+            foreach ($user_domains as $user_domain) {
+              $domain_unseen=DB::table('domains')->where('site_id',$user_domain->id)->where('is_seen',false)->first();
+              if(!empty($domain_unseen)){
+                array_push($domain_unseens,$domain_unseen);
+              }
+            }
+
+            $domaincount_unseen=count($domain_unseens);
+            // var_dump($domaincount_unseen);die();
+            // for ticket that not seen
+            $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+            $count_unseen=count($ticket_unseen);
+            // var_dump($count_unseen);die();
+
+        return view('reseller.create', compact('count_unseen','domaincount_unseen'));
     }
 
     /**
@@ -150,11 +190,31 @@ class ResellerController extends Controller
      */
     public function edit(User $user)
     {
-            // for count unseen of ticket 
-        $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
-        $count_unseen=count($ticket_unseen);
+        // for show number of domain that not seen
+        $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
+        //  make count for domain and ticket 
+            if($reseller->id==1){
+              $user_domains=DB::table('users')->where('user_id',null)->get();
+            }else{
+              $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
+            }
+            // var_dump($user_domains);die();
+            $domain_unseens=[];
+            foreach ($user_domains as $user_domain) {
+              $domain_unseen=DB::table('domains')->where('site_id',$user_domain->id)->where('is_seen',false)->first();
+              if(!empty($domain_unseen)){
+                array_push($domain_unseens,$domain_unseen);
+              }
+            }
 
-        return view('reseller.edit', compact('user','count_unseen'));
+            $domaincount_unseen=count($domain_unseens);
+            // var_dump($domaincount_unseen);die();
+            // for ticket that not seen
+            $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
+            $count_unseen=count($ticket_unseen);
+            // var_dump($count_unseen);die();
+            
+        return view('reseller.edit', compact('user','count_unseen','domaincount_unseen'));
     }
 
     /**

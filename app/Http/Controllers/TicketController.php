@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use App\Ticket;
 use App\User;
+use App\Domain;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -22,14 +23,34 @@ class TicketController extends Controller
 {
     
 	public function reseller_index(){
-        if (Auth::user()){
+        if (Auth::user()->status == 'reseller'){
         	$tickets=DB::table('tickets')->where('reseller_id',Auth::user()->id)->get();
             $users=DB::table('users')->where('user_id',Auth::user()->id)->get();
             $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
+
+            //  make count for domain and ticket 
+            if($reseller->id==1){
+              $user_domains=DB::table('users')->where('user_id',null)->get();
+            }else{
+              $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
+            }
+            // var_dump($user_domains);die();
+            $domain_unseens=[];
+            foreach ($user_domains as $user_domain) {
+              $domain_unseen=DB::table('domains')->where('site_id',$user_domain->id)->where('is_seen',false)->first();
+              if(!empty($domain_unseen)){
+                array_push($domain_unseens,$domain_unseen);
+              }
+            }
+
+            $domaincount_unseen=count($domain_unseens);
+            // var_dump($domaincount_unseen);die();
+            // for ticket that not seen
             $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
             $count_unseen=count($ticket_unseen);
             // var_dump($count_unseen);die();
-            return  view ('ticket.reseller_index',compact('tickets','users','reseller','count_unseen'));
+
+            return  view ('ticket.reseller_index',compact('tickets','users','reseller','count_unseen','domaincount_unseen'));
        } else{
             return  redirect ('/login');   
        }
@@ -58,8 +79,29 @@ class TicketController extends Controller
             $reseller=DB::table('users')->where('id',$ticket->reseller_id)->first();          
             $ticket->is_seen=true;
             $ticket->save();
+            
+            //  make count for domain and ticket 
+            if($reseller->id==1){
+              $user_domains=DB::table('users')->where('user_id',null)->get();
+            }else{
+              $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
+            }
+            // var_dump($user_domains);die();
+            $domain_unseens=[];
+            foreach ($user_domains as $user_domain) {
+              $domain_unseen=DB::table('domains')->where('site_id',$user_domain->id)->where('is_seen',false)->first();
+              if(!empty($domain_unseen)){
+                array_push($domain_unseens,$domain_unseen);
+              }
+            }
+
+            $domaincount_unseen=count($domain_unseens);
+            // var_dump($domaincount_unseen);die();
+            // for ticket that not seen
             $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
             $count_unseen=count($ticket_unseen);
+            // var_dump($count_unseen);die();
+
 
             // for show comment on ticket
             $comments=DB::table('comments')->where('ticket_id',$id)->get();
@@ -69,7 +111,7 @@ class TicketController extends Controller
                 array_push($user_comments, $user_comment);
             }
  // var_dump($user_comments);die(); 
-            return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen','comments','user_comments'));
+            return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen','comments','user_comments','domaincount_unseen'));
         } else{
             return  redirect ('/login');   
         }    
@@ -123,14 +165,12 @@ class TicketController extends Controller
             try
                 {$ticket=Ticket::findOrFail($id);}
             catch(Exception $e)
-                {throw new ModelNotFoundException($e->getMassege());}
-            // $user=DB::table('users')->where('id',$ticket->site_id)->first();
-            // $reseller=DB::table('users')->where('id',$ticket->reseller_id)->first();          
+                {throw new ModelNotFoundException($e->getMassege());}          
+            
             $ticket->is_seen=true;
             $ticket->is_solved=true;
             $ticket->save();
-            // $ticket_unseen=DB::table('tickets')->where('reseller_id',Auth::user()->id)->where('is_seen',false)->get();
-            // $count_unseen=count($ticket_unseen);
+
             return  redirect ('/ticket/resellershow/'.$id);
             // return view('ticket.resellershow',compact('ticket','user','reseller','count_unseen'));
         } else{
@@ -281,6 +321,7 @@ class TicketController extends Controller
             try
             {
                 $Ticket=Ticket::findOrFail($id);
+                $Ticket->subject=trim($request->input('subject'));
             }
             catch(Exception $e)
             {
@@ -342,29 +383,29 @@ class TicketController extends Controller
          } 
      }
 
-public function commentstore(Request $request){
-        if (Auth::user()){
-            $this->validate($request, [
-                'comment' => 'required'
-            ]);
-            $comment= new Comment;
-            $comment->comment=trim($request->input('comment'));
-            $comment->ticker_id=$request->input('ticker_id');
-            $ticket_id=$request->input('ticker_id');
-            $comment->user_id=Auth::user()->id;
+// public function commentstore(Request $request){
+//         if (Auth::user()){
+//             $this->validate($request, [
+//                 'comment' => 'required'
+//             ]);
+//             $comment= new Comment;
+//             $comment->comment=trim($request->input('comment'));
+//             $comment->ticker_id=$request->input('ticker_id');
+//             $ticket_id=$request->input('ticker_id');
+//             $comment->user_id=Auth::user()->id;
 
-            $is_saved=$comment->save();
-            if($is_saved){
-                // Session::flash('insert_success', 'A new comment has been added successfully');
-                return  redirect ('/ticket/'.$ticket_id);
-            }else{
-                abort(500);
-            }
+//             $is_saved=$comment->save();
+//             if($is_saved){
+//                 // Session::flash('insert_success', 'A new comment has been added successfully');
+//                 return  redirect ('/ticket/'.$ticket_id);
+//             }else{
+//                 abort(500);
+//             }
             
-        } else{
-            return  redirect ('/login');   
-        }  
-     }
+//         } else{
+//             return  redirect ('/login');   
+//         }  
+//      }
 
 
 }

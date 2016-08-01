@@ -25,33 +25,35 @@ class ProductController extends Controller
         if (Auth::user()){
 
             if(Auth::user()->status == 'reseller')
-            {
-                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
-                //select all subcategories have category_id
-                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
-    
-            }
-            else
-            {
-                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
-                 //select all subcategories have category_id
-                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
-    
-            }
-            //select all products 
-            $allproducts = DB::table('products')->get();
-            // for select only product of this only site
-            $products = array();
-            foreach ($subcategories as $subcategory) {
-              foreach ($allproducts as $product) {
-                  if ($subcategory->id ==$product->category_id) {
-                      array_push($products, $product);
-                  } 
-              }
-            }
-       
+                {
+                    $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+                    $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+        
+                }
+                else
+                {
+                    $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+                    $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+        
+                }
+                
+                    //select all products 
+                    $allproducts = DB::table('products')->get();
+                    // for select only product of this only site
+                    $products = array();
+                    foreach ($subcategories as $subcategory) {
+                      foreach ($allproducts as $product) {
+                          if ($subcategory->id ==$product->category_id) {
+                              array_push($products, $product);
+                          } 
+                      }
+                    }
+               
+                    return  view ('product.index',compact('categories','subcategories','products'));
+               
 
-            return  view ('product.index',compact('categories','subcategories','products'));
         }else{
             return  redirect ('/login');   
         }
@@ -78,8 +80,12 @@ class ProductController extends Controller
 
             }
             //select all categories have category_id==NULL
-            
-           return  view ('product.create',compact('categories','subcategories'));
+            if (!empty($subcategories)) {
+                return  view ('product.create',compact('categories','subcategories'));
+            }else{
+                return  redirect ('/subcategory/create');
+            }
+                 
         }else{
             return  redirect ('/login');   
         }    

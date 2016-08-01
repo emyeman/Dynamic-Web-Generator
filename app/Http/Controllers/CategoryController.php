@@ -34,9 +34,8 @@ class CategoryController extends Controller
 
             }
 
-           
-
             return  view ('category.index',compact('categories','allcategories'));
+            
        } else{
             return  redirect ('/login');   
        }

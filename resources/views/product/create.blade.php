@@ -6,28 +6,31 @@
 
 @section('content')
     <!-- Main content -->
-        <section class="content" style="background-image: url({{url('assets/reseller_assets/images/18a.png')}});">
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        
-    @if(Session::has('insert_success'))
-        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
-    @endif
-    
-    <br>
+<section class="content" style="background-image: url({{url('assets/reseller_assets/images/18a.png')}});">
+       
 <div class="info">
   <h1 style="font-size:34px; font-weight: 700;">
     <a href="{{url('/product')}}"><span class="glyphicon glyphicon-backward"></span></a>
  Add Products </h1>
 </div>
 
+@if (count($errors) > 0)
+    <br>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+    @if(Session::has('insert_success'))
+        <br>
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
+    @endif
+    
+    
 {!!Form::open(['route'=>'product.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
 
     <!-- <div class="row" style="margin-top:15px;"> -->
@@ -51,7 +54,7 @@
                     </select> 
                 </div>
                 <div class="form-group col-md-12" id="beforselect" style="display:show">
-                  <label>Choose Sub Category *</label>
+                  <label>Choose SubCategory *</label>
                   <!-- <select class='form-control' id='subcategory_id' name='subcategory_id'>
                         <option value="">Select SubCategory</option>
                         @foreach ($subcategories as $subcategory) 
@@ -207,7 +210,7 @@
 
         $.get("{{url('/product/create/')}}/"+id,function(data){
             console.log(data[0]);
-            // console.log(data);
+            console.log(data);
             var showdata;
             // for(i=0;i<data.length;i++){
             //   for(j in data[i]){

@@ -140,7 +140,7 @@
         Plugins.init(); // Init all plugins
         FormComponents.init(); // Init all form-specific plugins
 
-        // $('.picker').colorPicker(); // that's it
+        $('.picker').colorPicker(); // that's it
     });
     </script>
     <script type="text/javascript">

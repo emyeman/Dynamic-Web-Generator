@@ -23,7 +23,8 @@
  Edit Products </h1>
 </div>
 <br/>
-    {!!Form::open(['route'=>['product.update',$product->id],'files'=>true,'method'=>'put','class'=>'form-horizontal']) !!}
+  
+  {!!Form::open(['route'=>['product.update',$product->id],'files'=>true,'method'=>'put','class'=>'form-horizontal']) !!}
 
     <!-- <div class="row" style="margin-top:15px;"> -->
     <div class="col-md-10 col-md-offset-1 ">
@@ -178,9 +179,9 @@
    
 
 <meta name="_token" id='token' content="{!! csrf_token() !!}" />
-<!-- <script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
+<script type="text/javascript" src="{{url('/assets/js/jquery-2.1.4.min.js')}}"></script>
 <script type="text/javascript" src="{{url('/assets/js/jquery-1.12.0.min.js')}}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
     console.log('hiiiiiii');
     $('.getrequest').click(function() {            

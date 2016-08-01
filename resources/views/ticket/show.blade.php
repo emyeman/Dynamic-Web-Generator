@@ -90,6 +90,7 @@
             <div class="form-group col-sm-11">
               <textarea class="form-control" rows="3" placeholder='Write comment ...' required  name='comment'>{{old('comment')}}</textarea>
               <input value="{{$ticket->id}}" id='ticket_id' name='ticket_id' type='hidden'/>
+              <input value="ticket" id='type_ticket' name='type_ticket' type='hidden'/>
               <input value="user_ticket" id='redirect_ticket' name='redirect_ticket' type='hidden'/>
                 <div class="box-header">
                         <div class="box-footer clearfix">

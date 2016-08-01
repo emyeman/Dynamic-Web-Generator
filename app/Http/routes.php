@@ -66,6 +66,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/numberview','NumberViewController');
 	Route::patch('/domain/update/{domain}','DomainController@update');
 	Route::get('/domain/edit/{domain}','DomainController@edit');
+	Route::get('/domain/reseller_index','DomainController@reseller_index');
+	Route::get('/domain/resellershow/{id}','DomainController@resellershow');
+	Route::get('/domain/solve_resellerindex/{id}','DomainController@solve_resellerindex');
+	Route::get('/domain/solve_resellershow/{id}','DomainController@solve_resellershow');
 	Route::resource('/domain','DomainController');
 	Route::resource('/googlemap','GoogleMapController');
 
@@ -120,6 +124,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/menu/is_exit/{title}','MenuController@ajaxexite_menu');
 		Route::get('/news_promotion/is_exit/{type}/{title}','MenuController@ajaxexite_news_promotion');
 		Route::get('/ticket/is_exit/{title}','TicketController@ajaxexite_ticket');
+		Route::get('/domain/is_exit/{title}','TicketController@ajaxexite_domain');
 	}
 
 

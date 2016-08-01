@@ -34,10 +34,11 @@ class SubCategoryController extends Controller
                  $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
                 // for make compare for delete subcategory or not
             }
-            
-            $products = DB::table('products')->get();
 
+            $products = DB::table('products')->get();
             return  view ('subcategory.index',compact('categories','subcategories','products'));
+            
+
         } else{
             return  redirect ('/login');   
         }
@@ -56,17 +57,25 @@ class SubCategoryController extends Controller
             // $subcategories=Category::All();
             if(Auth::user()->status == 'reseller')
             {
-                //select all categories have category_id
-                 $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                //select all categories have category_id                
+                $categories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
+                $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
                 // for make compare for delete subcategory or not
             }
             else
             {  
                 //select all categories have category_id
-                 $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
+                $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
                 // for make compare for delete subcategory or not
             }
-            return  view ('subcategory.create',compact('subcategories'));
+
+            if (!empty($categories)) {
+                return  view ('subcategory.create',compact('subcategories'));
+            }else{
+                return  redirect ('/category/create');
+            }
+                
         }else{
             return  redirect ('/login');   
         }

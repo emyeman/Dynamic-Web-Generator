@@ -145,7 +145,7 @@
 
 		<li class="treeview">
 			<a href="#">
-				<i class="fa fa-flag-o"></i> <span>Ticket</span>
+				<i class="fa fa-list-alt"></i> <span>Ticket</span>
 				<i class="fa fa-angle-left pull-right"></i>
 			</a>
 			<ul class="treeview-menu">

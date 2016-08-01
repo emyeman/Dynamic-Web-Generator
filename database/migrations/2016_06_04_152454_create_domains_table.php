@@ -16,6 +16,9 @@ class CreateDomainsTable extends Migration
             $table->increments('id');
             $table->string('Domain_name');
             $table->integer('site_id')->unsigned();
+            $table->boolean('is_solved')->default(false);
+            $table->boolean('is_seen')->default(false);
+
             $table->foreign('site_id')
                 ->references('id')
                 ->on('sites')
