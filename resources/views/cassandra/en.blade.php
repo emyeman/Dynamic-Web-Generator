@@ -203,8 +203,8 @@
         </button>
         <ul class="dropdown-menu" role="menu">
         <li class="space"></li>
-            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></button></li>                               
-            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></button></li>                               
+            <li><a href="{{url('/'.$subdomain.'/ar')}}"class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>
+            <li><a href="{{url('/'.$subdomain.'/en')}}" class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></a></li>
         </ul>
         </div>      
         </div> 
