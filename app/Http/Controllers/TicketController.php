@@ -259,7 +259,12 @@ class TicketController extends Controller
 // *********************************************************************************
         // for send message to email
             $reseller_id=$request->input('reseller_id');
-            $reseller = User::findOrFail($reseller_id);
+            if ($reseller_id==null) {
+                $reseller = User::findOrFail(1);
+            }else{
+                $reseller = User::findOrFail($reseller_id);
+            }
+            
             $user = User::findOrFail(Auth::user()->id);
 
             //Make a Data Array

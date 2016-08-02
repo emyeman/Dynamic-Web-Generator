@@ -30,7 +30,7 @@
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
     @endif
     
-    
+   <br/> 
 {!!Form::open(['route'=>'product.store','files'=>true,'method'=>'post','class'=>'form-horizontal']) !!}
 
     <!-- <div class="row" style="margin-top:15px;"> -->
