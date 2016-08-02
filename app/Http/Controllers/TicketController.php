@@ -214,7 +214,11 @@ class TicketController extends Controller
      public function create(){
         if (Auth::user()){
             $user=DB::table('users')->where('id',Auth::user()->id)->first();
-            $reseller=DB::table('users')->where('id',$user->user_id)->first();
+            if ($user->user_id ==null) {
+                $reseller=DB::table('users')->where('id',1)->first();
+            }else{
+               $reseller=DB::table('users')->where('id',$user->user_id)->first();
+            }
             return  view ('ticket.create',compact('user','reseller'));
         }else{
             return  redirect ('/login');   
