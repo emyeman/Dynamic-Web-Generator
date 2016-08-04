@@ -13,6 +13,7 @@ use DB;
 use Illuminate\Mail\Mailer;
 use Mail;
 use View;
+use App\Message;
 
 class DomainController extends Controller
 {
@@ -21,14 +22,20 @@ class DomainController extends Controller
         if(Auth::user()->status == 'reseller')
         {
             $domain = DB::table('domains')->where('site_id',Session::get('user_id'))->first();
+            $site_id=Session::get('user_id');
+
         }
         else
         {
             $domain = DB::table('domains')->where('site_id',Auth::user()->site->id)->first();
+            $site_id=Auth::user()->site->id;    
         }
         
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
 
-		return  view('domain.index',compact('domain'));
+		return  view('domain.index',compact('domain','count_message'));
     }
 
 
@@ -241,8 +248,18 @@ class DomainController extends Controller
 
 
      public function create(){
-
-        return  view('domain.create');
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
+        return  view('domain.create',['count_message'=>$count_message]);
      }
 
 
@@ -276,7 +293,18 @@ class DomainController extends Controller
 
 
      public function edit(Domain $domain){
-		return  view('domain.edit',compact('domain'));
+         if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
+		return  view('domain.edit',compact('domain','count_message'));
      }
 
 

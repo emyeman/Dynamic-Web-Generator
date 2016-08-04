@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Service;
+use App\Message;
 use App\Http\Requests;
 use DB;
 use Session;
@@ -17,13 +18,18 @@ class ServiceController extends Controller
         if(Auth::user()->status == 'reseller')
         {
             $services = DB::table('services')->where('site_id',Session::get('user_id'))->get();
+            $site_id=Session::get('user_id');
         }
         else
         {
             $services = DB::table('services')->where('site_id',Auth::user()->id)->get();
+            $site_id=Auth::user()->site->id;
         }
         
-		return  view('service.index' ,compact('services'));
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
+		return  view('service.index' ,compact('services','count_message'));
      }
 
      public function show($id){
@@ -33,8 +39,19 @@ class ServiceController extends Controller
 
      public function edit(Service $service)
      {
-        # code...
-        return view('service.edit',compact('service'));
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
+        return view('service.edit',compact('service','count_message'));
      }
 
      public function update(Request $request, Service $service)
@@ -59,7 +76,19 @@ class ServiceController extends Controller
      }
 
      public function create(){
-        return  view('service.create');
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+        
+        return  view('service.create',compact('count_message'));
         // die('ssss');
      }
 

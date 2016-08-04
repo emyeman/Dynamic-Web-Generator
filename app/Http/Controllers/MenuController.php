@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Auth;
 use App\Menu;
 use App\Page;
+use App\Message;
 use DB;
 use Session;
 class MenuController extends Controller
@@ -35,7 +36,10 @@ class MenuController extends Controller
             ->orderBy('parent.title')
             ->get();
 // var_dump($rows);die();
-        return  view ('menu.index',['rows'=>$rows]);
+
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
+        return  view ('menu.index',['rows'=>$rows,'count_message'=>$count_message]);
         // var_dump($rows);
      }
 
@@ -51,21 +55,15 @@ class MenuController extends Controller
         {
             $menus=DB::table('menus')->where('site_id',Session::get('user_id'))->get();
             $pages=DB::table('pages')->where('site_id',Session::get('user_id'))->get();
+            $site_id=Session::get('user_id');
         }
          else
         {
             $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
             $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
+            $site_id=Auth::user()->site->id;
         }
 
-        if(Auth::user()->status == 'reseller')
-        {
-            $site_id=Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;    
-        }
         $rows = DB::table('menus')
             ->leftJoin('pages', 'menus.route', '=', 'pages.id')
             ->leftJoin('menus as parent', 'parent.id', '=', 'menus.parent_id')
@@ -74,10 +72,12 @@ class MenuController extends Controller
             ->select('menus.id as menu_id','menus.title as menu_title','menus.ar_title as menu_ar_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
             ->orderBy('parent.title')
             ->get();
-
+            
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
 
         // var_dump($menus);die();
-        return  view ('menu.create',['menus'=>$menus,'pages'=>$pages,'rows'=>$rows]);
+        return  view ('menu.create',['menus'=>$menus,'pages'=>$pages,'rows'=>$rows,'count_message'=>$count_message]);
      }
 
     public function ajaxexite_menu($title,Request $request){
@@ -158,6 +158,7 @@ class MenuController extends Controller
             //     abort(403);
             // }
             if(Auth::user()->status == 'reseller'){
+                 $site_id=Session::get('user_id');
                 $menus=DB::table('menus')->where('site_id',Session::get('user_id'))->get();
                 $pages=DB::table('pages')->where('site_id',Session::get('user_id'))->get();
                 $sel_menu=DB::table('menus')->where('site_id',Session::get('user_id'))->where('id',$id)->first();
@@ -168,13 +169,7 @@ class MenuController extends Controller
                 $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
                 $sel_menu=DB::table('menus')->where('site_id',Auth::user()->id)->where('id',$id)->first();
                 $sel_page=DB::table('pages')->where('site_id',Auth::user()->id)->where('id',$sel_menu->route)->first();
-            }
-
-            if(Auth::user()->status == 'reseller'){
-                $site_id=Session::get('user_id');
-            }
-            else{
-                $site_id=Auth::user()->site->id;    
+                $site_id=Auth::user()->site->id; 
             }
 
             $rows = DB::table('menus')
@@ -185,9 +180,11 @@ class MenuController extends Controller
             ->select('menus.id as menu_id','menus.title as menu_title','menus.ar_title as menu_ar_title','parent.id as parent_id', 'parent.title as parent_title', 'pages.id as page_id', 'pages.title as page_title')
             ->orderBy('parent.title')
             ->get();
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
 
             // var_dump($menus);die();
-            return  view ('menu.edit',['menus'=>$menus,'pages'=>$pages,'row'=>$row,'rows'=>$rows,'sel_menu'=>$sel_menu,'sel_page'=>$sel_page]);
+            return  view ('menu.edit',['menus'=>$menus,'pages'=>$pages,'row'=>$row,'rows'=>$rows,'sel_menu'=>$sel_menu,'sel_page'=>$sel_page,'count_message'=>$count_message]);
         
         } else{
             return  redirect ('/login');   

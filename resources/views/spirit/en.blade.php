@@ -659,7 +659,7 @@
 
 <!-- =========================================== -->
 <!-- section start -->
-     @for($static=0;$static< count($pagearray_static);$static++) 
+    @for($static=0;$static< count($pagearray_static);$static++) 
      <div class="section_space"></div> 
         <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
             <div class="container">
@@ -802,7 +802,7 @@
                     
                 </div><style>#gmap_canvas img{max-width:none!important;background:none!important;}</style>
             </div>   
-            <script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng({{$contact->lat}},{{$contact->lng}}),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{$contact->lat}},{{$contact->lng}})});infowindow = new google.maps.InfoWindow({content:'<strong>Title</strong><br>{{$contact->address}}<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+            <script type='text/javascript'>function init_map(){var myOptions = {zoom:13,center:new google.maps.LatLng({{$contact->lat}},{{$contact->lng}}),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{$contact->lat}},{{$contact->lng}})});infowindow = new google.maps.InfoWindow({content:'<strong>Title</strong><br>{{$contact->address}}<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
          </div>
     </div>
   @endforeach  

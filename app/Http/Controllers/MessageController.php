@@ -12,10 +12,14 @@ class MessageController extends Controller
 {
     public function index()
     {
+
         $user=Auth::user();
         $site_id=$user->site->id;
         $messages=Message::where('site_id','=',$site_id)->get();
-        return view('message.index',['messages'=>$messages]);
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+        return view('message.index',['messages'=>$messages,'count_message'=>$count_message]);
     }
 
     public function store(Request $request)
@@ -59,7 +63,10 @@ class MessageController extends Controller
         }
     	$message->is_seen=true;
     	$message->save();
-    	return view('message.show',['message'=>$message]);
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+    	return view('message.show',['message'=>$message,'count_message'=>$count_message]);
     }
 
     public function destroy($id)
@@ -81,13 +88,13 @@ class MessageController extends Controller
 
     public function unseen(){
         $site_id=Auth::user()->site->id;
-    	$unseen_messages=Message::where('is_seen','=',false)
-                                ->where('site_id','=',$site_id)->get();
+    	$unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+
     	$last3=$unseen_messages->take(3);
     	$count=$unseen_messages->count();
     	$data=[$last3,$count];
     	return json_encode($data);
     }
 
-    
+
 }

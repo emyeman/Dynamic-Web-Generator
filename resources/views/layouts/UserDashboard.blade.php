@@ -229,7 +229,7 @@
 						<li class="dropdown messages-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-envelope-o"></i>
-								<span class="label label-success">4</span>
+								<span class="label label-success">{{$count_message}}</span>
 							</a>
 							<ul class="dropdown-menu extended notification">
                             <!-- <li class="title">

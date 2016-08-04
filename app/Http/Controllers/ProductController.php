@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Product;
+use App\Message;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -29,14 +30,14 @@ class ProductController extends Controller
                     $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
                     //select all subcategories have category_id
                     $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
-        
+                    $site_id=Session::get('user_id');
                 }
                 else
                 {
                     $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
                      //select all subcategories have category_id
                     $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
-        
+                    $site_id=Auth::user()->site->id;
                 }
                 
                     //select all products 
@@ -50,8 +51,11 @@ class ProductController extends Controller
                           } 
                       }
                     }
-               
-                    return  view ('product.index',compact('categories','subcategories','products'));
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
+        return  view ('product.index',compact('categories','subcategories','products','count_message'));
                
 
         }else{
@@ -71,17 +75,23 @@ class ProductController extends Controller
                  $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
                 //select all subcategories have category_id
                 $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
             }
             else
             {
                 $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
                 //select all subcategories have category_id
                 $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
-
+                $site_id=Auth::user()->site->id; 
             }
+
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
             //select all categories have category_id==NULL
             if (!empty($subcategories)) {
-                return  view ('product.create',compact('categories','subcategories'));
+                return  view ('product.create',compact('categories','subcategories','count_message'));
             }else{
                 return  redirect ('/subcategory/create');
             }
@@ -210,6 +220,7 @@ class ProductController extends Controller
             $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
               //select all subcategories have category_id
             $subcategories = DB::table('categories')->where('site_id',Session::get('user_id'))->where('category_id',$subcategory->category_id)->get();
+            $site_id=Session::get('user_id');
             }
             else
             {
@@ -217,10 +228,14 @@ class ProductController extends Controller
             $categories = DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
               //select all subcategories have category_id
             $subcategories = DB::table('categories')->where('site_id',Auth::user()->id)->where('category_id',$subcategory->category_id)->get();
+            $site_id=Auth::user()->site->id; 
             }
-            
+
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
              // var_dump($category);die();
-            return  view ('product.edit',compact('category','subcategory','product','categories','subcategories'));
+            return  view ('product.edit',compact('category','subcategory','product','categories','subcategories','count_message'));
         } else{
             return  redirect ('/login');   
         } 

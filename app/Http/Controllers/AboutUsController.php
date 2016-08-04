@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use DB;
 use Session;
+ use App\Message;
 
 class AboutUsController extends Controller
 {
@@ -36,7 +37,18 @@ class AboutUsController extends Controller
     	try //the requested row is exists
             {
             	$row=Aboutus::findOrFail($id);
-            	return  view ('aboutus.show',['row'=>$row]);
+                if(Auth::user()->status == 'reseller')
+                {
+                    $site_id = Session::get('user_id');
+                }
+                else
+                {
+                    $site_id=Auth::user()->site->id;
+                }
+                $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+                $count_message=count($unseen_messages);
+
+            	return  view ('aboutus.show',['row'=>$row,'count_message'=>$count_message]);
             }
         catch(Exception $e)
             {throw new ModelNotFoundException($e->getMassege());}
@@ -47,14 +59,20 @@ class AboutUsController extends Controller
         if(Auth::user()->status == 'reseller')
         {
     	   $aboutus_id = Session::get('user_id');
+           $site_id = Session::get('user_id');
         }
         else
         {
             $aboutus_id = Auth::user()->site->id;
+             $site_id=Auth::user()->site->id;
         }
     	$is_exists=Aboutus::where('site_id', '=',$aboutus_id)->first();
+
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
 		if($is_exists===null)
-			return  view ('aboutus.create');
+			return  view ('aboutus.create',compact('count_message'));
 		// return view('aboutus.edit'); 
 		return redirect()->action('AboutUsController@show',[$is_exists['attributes']['id']]);      
     }
@@ -108,7 +126,18 @@ class AboutUsController extends Controller
 	                abort(403);
         	   }
             }
-			return  view ('aboutus.edit',['row'=>$row]);
+            if(Auth::user()->status == 'reseller')
+                {
+                    $site_id = Session::get('user_id');
+                }
+                else
+                {
+                    $site_id=Auth::user()->site->id;
+                }
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
+            
+			return  view ('aboutus.edit',['row'=>$row ,'count_message'=>$count_message]);
         }
         catch(Exception $e)
         {

@@ -19,6 +19,8 @@ use App\Template;
 use App;
 use Session;
 
+// type_static
+
 class TemplateController extends Controller{
 
     private function UniqueRandomNumbersWithinRange($min, $max, $quantity) {

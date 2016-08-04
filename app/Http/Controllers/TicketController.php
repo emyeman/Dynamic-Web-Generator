@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Ticket;
 use App\User;
 use App\Domain;
+use App\Message;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -62,7 +63,11 @@ class TicketController extends Controller
             $user=DB::table('users')->where('id',Auth::user()->id)->first();
             $reseller=DB::table('users')->where('id',$user->user_id)->first();
             
-            return  view ('ticket.index',compact('tickets','user','reseller'));
+            $site_id=Auth::user()->site->id;    
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
+         
+            return  view ('ticket.index',compact('tickets','user','reseller' ,'count_message'));
        } else{
             return  redirect ('/login');   
        }
@@ -137,8 +142,11 @@ class TicketController extends Controller
                 array_push($user_comments, $user_comment);
             }
  // var_dump($user_comments);die();
+             $site_id=Auth::user()->site->id;    
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
 
-            return view('ticket.show',compact('ticket','user','reseller','comments','user_comments'));
+            return view('ticket.show',compact('ticket','user','reseller','comments','user_comments','count_message'));
         } else{
             return  redirect ('/login');   
         }    
@@ -220,7 +228,11 @@ class TicketController extends Controller
             }else{
                $reseller=DB::table('users')->where('id',$user->user_id)->first();
             }
-            return  view ('ticket.create',compact('user','reseller'));
+            $site_id=Auth::user()->site->id;    
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
+
+            return  view ('ticket.create',compact('user','reseller','count_message'));
         }else{
             return  redirect ('/login');   
         }

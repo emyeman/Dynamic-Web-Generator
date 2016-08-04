@@ -10,7 +10,7 @@ use App\Http\Requests;
 use App\Header;
 use DB;
 use Session;
- 
+use App\Message; 
 
 class BrandingController extends Controller {
 
@@ -55,14 +55,20 @@ class BrandingController extends Controller {
              {
                 $branding = DB::table('headers')->where('site_id',Session::get('user_id'))->get();
                 // return view('branding.index')->withBranding($this->site->header);
+                 $site_id = Session::get('user_id');
              }
              else
              {
                 $branding = DB::table('headers')->where('site_id',Auth::user()->id)->get();
+                $site_id=Auth::user()->site->id;
              }
+        
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
+
              if($branding != null)
              {
-                return view('branding.index')->withBranding($branding);
+                return view('branding.index',compact('count_message'))->withBranding($branding);
              }
              else
              {
@@ -70,7 +76,7 @@ class BrandingController extends Controller {
              }
         }catch (\Exception $e) {
             $branding = DB::table('headers')->where('site_id',Session::get('user_id'))->get();
-            return view('branding.index',compact('branding'));    
+            return view('branding.index',compact('branding','count_message'));    
         }
     }
 
@@ -90,12 +96,22 @@ class BrandingController extends Controller {
             }
             else
             {
-                return view('branding.create');
+               if(Auth::user()->status == 'reseller')
+                {
+                    $site_id = Session::get('user_id');
+                }
+                else
+                {
+                    $site_id=Auth::user()->site->id;
+                }
+                $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+                $count_message=count($unseen_messages);
+                return view('branding.create',compact('count_message'));
             }
         }
         catch (\Exception $e) {
 
-            return view('branding.create');
+            return redirect('branding/create');
         }
         
         
@@ -153,7 +169,18 @@ class BrandingController extends Controller {
 
 
     public function edit(Header $header) {
-        return view('branding.edit',compact('header'));
+         if(Auth::user()->status == 'reseller')
+        {
+            $site_id = Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;
+        }
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+        return view('branding.edit',compact('header','count_message'));
     }
 
     public function update(Request $request, Header $header) {
