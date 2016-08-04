@@ -83,6 +83,9 @@ class PagesController extends Controller
         }else{
             $new_row->content=NULL;
         }
+
+        $new_row->type_static=$request->input('type_static');
+        
         $new_row->site_id=$site_id;
         $is_saved=$new_row->save();
         if($is_saved)
@@ -136,6 +139,8 @@ class PagesController extends Controller
         }
 
         $row->content=trim($request->input('content'));
+        $row->type_static=$request->input('type_static');
+
         $is_saved=$row->save();
         Session::flash('update_success', 'the page has been updated successfully');
         return redirect()->route('page.index');

@@ -79,8 +79,7 @@ class MessageController extends Controller
             abort(500);
     }
 
-    public function unseen()
-    {
+    public function unseen(){
         $site_id=Auth::user()->site->id;
     	$unseen_messages=Message::where('is_seen','=',false)
                                 ->where('site_id','=',$site_id)->get();
@@ -89,4 +88,6 @@ class MessageController extends Controller
     	$data=[$last3,$count];
     	return json_encode($data);
     }
+
+    
 }
