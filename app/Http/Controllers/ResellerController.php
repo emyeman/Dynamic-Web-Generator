@@ -46,11 +46,11 @@ class ResellerController extends Controller
             // for show number of domain that not seen
             $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
             //  make count for domain and ticket 
-            if($reseller->id==1){
-              $user_domains=DB::table('users')->where('user_id',null)->get();
-            }else{
+            // if($reseller->id==1){
+            //   $user_domains=DB::table('users')->where('user_id',null)->get();
+            // }else{}
               $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
-            }
+            
             // var_dump($user_domains);die();
             $domain_unseens=[];
             foreach ($user_domains as $user_domain) {
@@ -89,11 +89,11 @@ class ResellerController extends Controller
         // for show number of domain that not seen
         $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
         //  make count for domain and ticket 
-            if($reseller->id==1){
-              $user_domains=DB::table('users')->where('user_id',null)->get();
-            }else{
+            // if($reseller->id==1){
+            //   $user_domains=DB::table('users')->where('user_id',null)->get();
+            // }else{}
               $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
-            }
+            
             // var_dump($user_domains);die();
             $domain_unseens=[];
             foreach ($user_domains as $user_domain) {
@@ -193,11 +193,11 @@ class ResellerController extends Controller
         // for show number of domain that not seen
         $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
         //  make count for domain and ticket 
-            if($reseller->id==1){
-              $user_domains=DB::table('users')->where('user_id',null)->get();
-            }else{
+            // if($reseller->id==1){
+            //   $user_domains=DB::table('users')->where('user_id',null)->get();
+            // }else{}
               $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
-            }
+            
             // var_dump($user_domains);die();
             $domain_unseens=[];
             foreach ($user_domains as $user_domain) {

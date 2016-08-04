@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration
             $table->integer('site_id')->unsigned();
             $table->text('content')->nullable();
             $table->string('title');
-            
+            $table->boolean('type_static')->default(false);
             // $table->primary(array('title', 'site_id'));
             $table->timestamps();
 

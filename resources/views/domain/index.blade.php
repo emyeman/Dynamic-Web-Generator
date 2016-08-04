@@ -41,7 +41,7 @@
                     <tr>
                         <th width='45%'>Domain Name</th>
                          <th width='20%'> &nbsp; &nbsp; Seen</th>
-                        <th width='20%'> &nbsp; &nbsp; &nbsp; Active</th>
+                        <th width='20%'> &nbsp; &nbsp; &nbsp; Status</th>
                         <th width='15%'>Edit</th>
                     </tr>
                     <tr>
@@ -55,9 +55,9 @@
                         @endif
 
                         @if($domain->is_solved==1)
-                            <td> &nbsp; <span style="color:green" class='glyphicon glyphicon-ok'> Active</span></td>
+                            <td> &nbsp; <span style="color:green" class='glyphicon glyphicon-ok'> Selling</span></td>
                         @else
-                            <td> &nbsp; <span style="color:red" class='glyphicon glyphicon-remove'> Inactive</span></td>
+                            <td> &nbsp; <span style="color:red" class='glyphicon glyphicon-remove'> Not Selling</span></td>
                         @endif
 
 

@@ -11,9 +11,9 @@
     <b>|</b> <span class='glyphicon glyphicon-envelope'> {{$user->email}}</span>
     <b>|</b> <span class='glyphicon glyphicon-calendar'> {{$domain->created_at}}</span> &nbsp;
     @if($domain->is_solved==1) 
-        <b>|</b>  &nbsp;  &nbsp;  &nbsp; <span style="color:green" class='glyphicon glyphicon-ok'> Active</span>
+        <b>|</b>  &nbsp;  &nbsp;  &nbsp; <span style="color:green" class='glyphicon glyphicon-ok'> Selling</span>
     @else
-        <b>|</b>  &nbsp;  &nbsp;  &nbsp; <a href="{{url('/domain/solve_resellershow/'.$domain->id)}}"><span style="color:red" class='glyphicon glyphicon-remove'> Inactive</span></a>
+        <b>|</b>  &nbsp;  &nbsp;  &nbsp; <a href="{{url('/domain/solve_resellershow/'.$domain->id)}}"><span style="color:red" class='glyphicon glyphicon-remove'> Not Selling</span></a>
     @endif
     <br><br>
     

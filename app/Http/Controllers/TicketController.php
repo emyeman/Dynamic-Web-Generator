@@ -29,11 +29,11 @@ class TicketController extends Controller
             $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
 
             //  make count for domain and ticket 
-            if($reseller->id==1){
-              $user_domains=DB::table('users')->where('user_id',null)->get();
-            }else{
+            // if($reseller->id==1){
+            //   $user_domains=DB::table('users')->where('user_id',null)->get();
+            // }else{}
               $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
-            }
+            
             // var_dump($user_domains);die();
             $domain_unseens=[];
             foreach ($user_domains as $user_domain) {
@@ -81,11 +81,11 @@ class TicketController extends Controller
             $ticket->save();
             
             //  make count for domain and ticket 
-            if($reseller->id==1){
-              $user_domains=DB::table('users')->where('user_id',null)->get();
-            }else{
+            // if($reseller->id==1){
+            //   $user_domains=DB::table('users')->where('user_id',null)->get();
+            // }else{}
               $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
-            }
+            
             // var_dump($user_domains);die();
             $domain_unseens=[];
             foreach ($user_domains as $user_domain) {
@@ -102,9 +102,10 @@ class TicketController extends Controller
             $count_unseen=count($ticket_unseen);
             // var_dump($count_unseen);die();
 
-
+        
             // for show comment on ticket
             $comments=DB::table('comments')->where('ticket_id',$id)->get();
+
             $user_comments=[];   
             foreach ($comments as $comment) {
                 $user_comment=DB::table('users')->where('id',$comment->user_id)->first(); 

@@ -36,11 +36,11 @@ class DomainController extends Controller
         if(Auth::user()->status == 'reseller')
         {
             $reseller=DB::table('users')->where('id',Auth::user()->id)->first();
-            if($reseller->id==1){
-              $user_domains=DB::table('users')->where('user_id',null)->get();
-            }else{
+            // if($reseller->id==1){
+            //   $user_domains=DB::table('users')->where('user_id',null)->get();
+            // }else{}
               $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
-            }
+            
             // var_dump($user_domains);die();
             $domains=[];
             $domain_unseens=[];
@@ -82,7 +82,7 @@ class DomainController extends Controller
             }else{
                $reseller=DB::table('users')->where('id',$user->user_id)->first();          
             }
-            if($domain->is_seen=false){
+            if($domain->is_seen==false){
                 $domain->is_seen=true;
                 $domain->save();
 
@@ -91,7 +91,7 @@ class DomainController extends Controller
                 $user = User::findOrFail($domain->site_id);
                 $reseller = User::findOrFail($user->user_id);            
                 //Convert the view into a string
-                $contents ="<b>This reply from  : </b>".$reseller->email."<h3><b>subject : </b>(reseller seen your domain )</h3><p>".$domain->domain_name."</p>";
+                $contents ="<b>This reply from  : </b>".$reseller->email."<h3><b>subject : </b>(reseller seen your domain )</h3><p>".$domain->Domain_name."</p>";
 
                 //Store the content on a file with .blad.php extension in the view/send_email folder
                 $myfile = fopen("../resources/views/send_email.blade.php", "w") or die("Unable to open file!");
@@ -107,13 +107,13 @@ class DomainController extends Controller
                 });
         // *********************************************************************************
             }
-            
+
             //  make count for domain and ticket 
-            if($reseller->id==1){
-              $user_domains=DB::table('users')->where('user_id',null)->get();
-            }else{
+            // if($reseller->id==1){
+            //   $user_domains=DB::table('users')->where('user_id',null)->get();
+            // }else{}
               $user_domains=DB::table('users')->where('user_id',$reseller->id)->get();
-            }
+            
             // var_dump($user_domains);die();
             $domain_unseens=[];
             foreach ($user_domains as $user_domain) {
@@ -147,11 +147,11 @@ class DomainController extends Controller
             $domain->save();
 
             // *********************************************************************************
-        // for send message to email from reseller to user to confirm active your request for making domain
+        // for send message to email from reseller to user to confirm active or selling your request for making domain
             $user = User::findOrFail($domain->site_id);
             $reseller = User::findOrFail($user->user_id);            
             //Convert the view into a string
-            $contents ="<b>This reply from  : </b>".$reseller->email."<h3><b>subject : </b>(reseller Active your domain )</h3><p>".$domain->domain_name."Plz,We are waiting you for payment</p>";
+            $contents ="<b>This reply from  : </b>".$reseller->email."<h3><b>subject : </b>(reseller selling your domain )</h3><p>".$domain->Domain_name."</p>";
 
             //Store the content on a file with .blad.php extension in the view/send_email folder
             $myfile = fopen("../resources/views/send_email.blade.php", "w") or die("Unable to open file!");
@@ -161,7 +161,7 @@ class DomainController extends Controller
             //Use the create file as view for Mail function and send the email
             Mail::send('send_email', ['user' => $user], function ($message) use ($user) {
                 // $message->from($user->email, $user->name);
-                $message->to($user->email, $user->name)->subject("active your domain");
+                $message->to($user->email, $user->name)->subject("Selling your domain");
                  // dd(config('mail'));
                 // var_dump($message);die();
             });
@@ -191,7 +191,7 @@ class DomainController extends Controller
             $user = User::findOrFail($domain->site_id);
             $reseller = User::findOrFail($user->user_id);            
             //Convert the view into a string
-            $contents ="<b>This reply from  : </b>".$reseller->email."<h3><b>subject : </b>(reseller Active your domain )</h3><p>".$domain->domain_name."Plz,We are waiting you for payment</p>";
+            $contents ="<b>This reply from  : </b>".$reseller->email."<h3><b>subject : </b>(reseller selling your domain )</h3><p>".$domain->Domain_name."</p>";
 
             //Store the content on a file with .blad.php extension in the view/send_email folder
             $myfile = fopen("../resources/views/send_email.blade.php", "w") or die("Unable to open file!");
@@ -201,7 +201,7 @@ class DomainController extends Controller
             //Use the create file as view for Mail function and send the email
             Mail::send('send_email', ['user' => $user], function ($message) use ($user) {
                 // $message->from($user->email, $user->name);
-                $message->to($user->email, $user->name)->subject("active your domain");
+                $message->to($user->email, $user->name)->subject("Selling your domain");
                  // dd(config('mail'));
                 // var_dump($message);die();
             });

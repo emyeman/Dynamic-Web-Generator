@@ -23,10 +23,10 @@
                 <div class="box-tools">
                     @if($domain->is_solved==1)
                         <button type="button" class="btn btn-box-tool" data-toggle="tooltip" style="color:green;" title="Mark as solved">
-                        <i style="color:green;" class="fa fa-check">&nbsp; Active</i></button>
+                        <i style="color:green;" class="fa fa-check">&nbsp; Selling</i></button>
                      @else
                         <button type="button" class="btn btn-box-tool" data-toggle="tooltip" style="color:red;" title="Mark as unsolved">
-                       <a href="{{url('/domain/solve_resellerindex/'.$domain->id)}}"><i style="color:red;" class="fa fa-check">&nbsp; Inactive</i></a></button>
+                       <a href="{{url('/domain/solve_resellerindex/'.$domain->id)}}"><i style="color:red;" class="fa fa-check">&nbsp; Not Selling</i></a></button>
                      @endif   
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
