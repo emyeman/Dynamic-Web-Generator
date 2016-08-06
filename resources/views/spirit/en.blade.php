@@ -1,5 +1,5 @@
 @include('../spirit/header')
-            <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
+        <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
 
     </head>
 
@@ -158,6 +158,15 @@
                                                  array_push($menuearray_static, $en_menupages[$x]);?>
                                             @endif    
                                           @endfor
+                                          
+                                            @if($url_outside_pages)
+                                                @for ($x = 0; $x < count($url_outside_pages); $x++)
+                                                    <li>
+                                                        <a class="page-scroll" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
+                                                    </li>
+                                                
+                                                @endfor
+                                            @endif
 
                                         </ul>
                             </div>

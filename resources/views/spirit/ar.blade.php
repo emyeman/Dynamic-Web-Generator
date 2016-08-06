@@ -163,6 +163,15 @@
                                             @endif    
                                           @endfor
 
+                                           @if($url_outside_pages)
+                                                @for ($x = 0; $x < count($url_outside_pages); $x++)
+                                                    <li>
+                                                        <a class="page-scroll" href="{{url($subdomain.'/static_page/ar')}}">{{$ar_outside_menupages[$x]}}</a>
+                                                    </li>
+                                                
+                                                @endfor
+                                            @endif
+
                                         </ul>
                             </div>
 

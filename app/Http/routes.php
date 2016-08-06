@@ -153,6 +153,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/{subdomain}/en','TemplateController@Show');
 Route::get('/{subdomain}/ar','TemplateController@Show');
 
+Route::get('/{subdomain}/{static_page}/en','TemplateController@static_page');
+Route::get('/{subdomain}/{static_page}/ar','TemplateController@static_page');
+
 
 
 
