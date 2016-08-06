@@ -34,7 +34,6 @@
             <!-- /.box-header -->
             <div class="box-body no-padding col-md-offset-1">
             
-
 			<h2>{{$ticket->subject}}</h2>
 			<span class='glyphicon glyphicon-user'> {{$user->name}}</span>
 			<b>|</b> <span class='glyphicon glyphicon-envelope'> {{$user->email}}</span>
@@ -107,6 +106,8 @@
 
 </div>
 <!-- end comment --> 
+
+
   <!-- /.box -->
 </div>
      </div>

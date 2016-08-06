@@ -61,6 +61,15 @@ class MessageController extends Controller
         if ($user->cannot('access-messages', $message)) {
             abort(403);
         }
+        
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
     	$message->is_seen=true;
     	$message->save();
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
@@ -94,6 +103,25 @@ class MessageController extends Controller
     	$count=$unseen_messages->count();
     	$data=[$last3,$count];
     	return json_encode($data);
+    }
+
+
+    public function dashboard(){
+        if(Auth::user()){
+            if(Auth::user()->status == 'reseller')
+            {
+                $site_id=Session::get('user_id');
+            }
+            else
+            {
+                $site_id=Auth::user()->site->id;    
+            }
+                $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+                $count_message=count($unseen_messages);
+            return view('DashboardIndex',compact('count_message'));
+        }else{
+            return  redirect ('/login');   
+        }    
     }
 
 
