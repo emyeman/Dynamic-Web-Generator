@@ -207,54 +207,73 @@
 
             @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
               </li>
               <?php $findpage_top=1;
-              $mypage_top=trans('arabic_english.'.$en_menupages[$x]);?>
+              $mypage_top=$en_menupages[$x];?>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                 </li>
                 <?php $findservices=1;
-                $myservices=trans('arabic_english.'.$en_menupages[$x]);?>
+                $myservices=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                 </li>
                 <?php $findabout=1;
-                 $myabout=trans('arabic_english.'.$en_menupages[$x]);?>
+                 $myabout=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
+                  <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                 </li>
                 <?php $findgallery=1;
-                $mygallery=trans('arabic_english.'.$en_menupages[$x]);?>
+                $mygallery=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findnews=1;
-                $mynews=trans('arabic_english.'.$en_menupages[$x]);?>
+                $mynews=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findpromotion=1;
-                $mypromotion=trans('arabic_english.'.$en_menupages[$x]);?>
+                $mypromotion=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
                     <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                  <?php $findcontact=1;
-                 $mycontact=trans('arabic_english.'.$en_menupages[$x]);?>
+                 $mycontact=$en_menupages[$x];?>
             @endif    
-             @endfor
+             <!-- for static page -->
+          @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+              <li>
+                  <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$en_menupages[$x]}}</a>
+              </li>
+               <?php
+                // $count_static+=1;
+                array_push($pagearray_static, $urlpages[$x]);
+               array_push($menuearray_static, $en_menupages[$x]);?>
+          @endif    
+        @endfor
+        
+          @if($url_outside_pages)
+              @for ($x = 0; $x < count($url_outside_pages); $x++)
+                  <li>
+                      <a class="page-scroll" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
+                  </li>
+              
+              @endfor
+          @endif
             <li>
               <div id="mydropdown">
                <div class="btn-group dropdown" >
@@ -330,7 +349,13 @@
                     <hr>
                 </div>
                 <div class="clearfix"></div>
-                <div class="wow fadeInUp" data-wow-delay="0.1s"><small><em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</em></small></div>
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                <!-- <small>
+                <em>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+                 This book is a treatise on the theory of ethics, very popular during the Renaissance.
+                  The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in s
+                  ection 1.10.32.</em></small> -->
+                  </div>
             </div>
             <div class="space"></div>
             <div class="row">

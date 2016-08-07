@@ -125,28 +125,14 @@
     $mynews='';
     $mypromotion='';
     $mygallery='';
+    $menuearray_static=[];
+    $pagearray_static=[];
 ?>
     
 	
 
     <!--News section-->
     
-	<!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
-	{{-- <div id="page_top">
-	<div class="ws_images"><ul>
-		<li><img src="data0/images/8.jpg" alt="Welcome" title="مرحبا" id="wows0_0"/></li>
-		<li><img src="data0/images/1.jpg" alt="Creating a unique look." title="يوجد لدينا احدث التصميمات" id="wows0_1"/></li>
-		<li><a href="http://wowslider.com/vi"><img src="data0/images/3.jpg" alt="cssslider" title="انتظروا المزيد" id="wows0_2"/></a></li>
-		<li><img src="data0/images/5.jpg" alt="Creating a unique look." title="يوجد لدينا احدث التصميمات" id="wows0_3"/></li>
-	</ul></div>
-	<div class="ws_bullets"><div>
-		<a href="#" title="مرحبا"><span><img src="data0/tooltips/8.jpg" alt="مرحبا"/>1</span></a>
-		<a href="#" title="يوجد لدينا احدث التصميمات"><span><img src="data0/tooltips/1.jpg" alt="يوجد لدينا احدث التصميمات"/>2</span></a>
-		<a href="#" title="انتظروا المزيد"><span><img src="data0/tooltips/3.jpg" alt="انتظروا المزيد"/>3</span></a>
-		<a href="#" title="يوجد لدينا احدث التصميمات"><span><img src="data0/tooltips/5.jpg" alt="يوجد لدينا احدث التصميمات"/>4</span></a>
-	</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com/vi">css slider</a> by WOWSlider.com v8.7</div>
-	<div class="ws_shadow"></div>
-	</div>	 --}}
   @if(isset($crusals) && $crusals != null)
 
   <div id="wowslider-container0">
@@ -275,9 +261,27 @@
                 </li>
                  <?php $findcontact=1;
                  $mycontact=$ar_menupages[$x];?>
-            @endif    
+            @endif  
+            <!-- for static page -->
+              @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
+                  <li>
+                      <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$ar_menupages[$x]}}</a>
+                  </li>
+                   <?php
+                    // $count_static+=1;
+                   array_push($pagearray_static, $urlpages[$x]);
+                   array_push($menuearray_static, $ar_menupages[$x]);?>
+              @endif   
              @endfor
 
+              @if($url_outside_pages)
+                  @for ($x = 0; $x < count($url_outside_pages); $x++)
+                      <li>
+                          <a class="page-scroll" href="{{url($subdomain.'/static_page/ar')}}">{{$ar_outside_menupages[$x]}}</a>
+                      </li>
+                  
+                  @endfor
+              @endif
 
 
           </ul>
@@ -573,8 +577,35 @@
     </div>
 @endif
 
+    <!-- static  Section
+    ==========================================-->
+@for($static=0; $static< count($pagearray_static);$static++) 
+    <div id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+        <div class="container">
+            <div class="row">
+    <div class="section-title center wow fadeInDown" data-wow-delay="0.1s" >
+            <br/><br/>
 
+        <h2 class="text-center"><strong><?php echo $menuearray_static[$static];?></strong></h2>
+        <div class="line">
+            <hr>
+        </div>
+    </div>
+        <div class="col-md-6">
+            <img id="myimg" src="" class="img-responsive wow fadeInLeft" data-wow-delay="0.2s">
+        </div>
+        <div class="col-md-12">
+            <!-- <div class="about-text wow fadeInRight" data-wow-delay="0.2s"> -->
 
+               <?php echo "$containpages[$static]";?>
+
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+</div>
+
+   @endfor
 
 
 

@@ -262,14 +262,16 @@ class TemplateController extends Controller{
                 array_push($containpages, $outside_page->content);
             }
         }
+         // ***************** for header  ***************************
 
+        $header=Header::where('site_id', '=', $site_id)->first();
         // ***************** return  ar or en***************************
         if ($arrayurl[2]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/static_page/en',compact('subdomain','en_menupages','urlpages','url_outside_pages','en_outside_menupages','mysite','containpages'));
+            return view($templat_name.'/static_page/en',compact('subdomain','en_menupages','urlpages','url_outside_pages','en_outside_menupages','mysite','containpages','staticpages','header'));
         }elseif ($arrayurl[2]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/static_page/ar',compact('subdomain','ar_menupages','urlpages','url_outside_pages','ar_outside_menupages','mysite','containpages'));
+            return view($templat_name.'/static_page/ar',compact('subdomain','ar_menupages','urlpages','url_outside_pages','ar_outside_menupages','mysite','containpages','staticpages','header'));
         }
 
     }

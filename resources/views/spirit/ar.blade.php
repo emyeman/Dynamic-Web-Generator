@@ -6,7 +6,7 @@
         <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
 
     </head>
-
+    
     <body class="no-trans" id="page_top">
         <!-- scrollToTop -->
         <!-- ================ -->

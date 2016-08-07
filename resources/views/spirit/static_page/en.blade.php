@@ -161,7 +161,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>" class="title text-center"><?php echo $menuearray_static[$static];?></h1>
+                        <h1 id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>" class="title text-center"><?php echo $staticpages[$static];?></h1>
                        <!--  <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta officia, aspernatur.</p>
                         <div class="space"></div>
                         <div class="row">

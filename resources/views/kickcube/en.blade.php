@@ -286,6 +286,14 @@
                                  array_push($menuearray_static, $en_menupages[$x]);?>
                             @endif 
                       @endfor
+                      @if($url_outside_pages)
+                      @for ($x = 0; $x < count($url_outside_pages); $x++)
+                          <li>
+                              <a class="page-scroll" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
+                          </li>
+                      
+                      @endfor
+                  @endif
 
                 <li>
                 <a  href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
@@ -375,7 +383,14 @@
                   </li>
               @endif 
         @endfor
-
+        @if($url_outside_pages)
+              @for ($x = 0; $x < count($url_outside_pages); $x++)
+                  <li>
+                      <a class="page-scroll" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
+                  </li>
+              
+              @endfor
+          @endif
               <li>
                 <a  href="{{url('/'.$subdomain.'/en')}}"><span class="lang-sm lang-lbl" lang="en"></span> <span class="caret"></span></a>
                 <ul class="dropdown">
@@ -854,6 +869,7 @@
 <!-- ==================================================================================== -->
 <!-- start staticpage -->
 @for($static=0;$static< count($pagearray_static);$static++) 
+<br/><br/><br/><br/>
   <div id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
       <div class="section" style="padding-top:60px; padding-bottom:60px; border-top:1px solid #eee; border-bottom:1px solid #eee; background:#f9f9f9;">
         <div class="container">
@@ -861,11 +877,11 @@
           <div class="row">
 
             <!-- Start Left Side -->
-            <div class="col-md-6" data-animation="fadeInUp">
+            <div class="col-md-12" data-animation="fadeInUp">
 
               <!-- Start Big Heading -->
               <div class="big-title">
-                <h1><strong class="primary-text"><?php echo $menuearray_static[$static];?></strong> </h1>
+                <h1><strong class="primary-text"><?php echo $staticpages[$static];?></strong> </h1>
                 <!-- <p class="title-desc">Some Words About Our Company</p> -->
               </div>
               <!-- End Big Heading -->
