@@ -251,12 +251,8 @@
                 <!-- for static page -->
                     @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
                         <li>
-                            <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $urlpages[$x]))}}">{{$en_menupages[$x]}}</a>
+                            <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                         </li>
-                         <?php
-                          // $count_static+=1;
-                         array_push($pagearray_static, $urlpages[$x]);
-                         array_push($menuearray_static, $en_menupages[$x]);?>
                     @endif 
               @endfor
               <!-- for static page outside -->
