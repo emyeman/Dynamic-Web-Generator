@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @if(isset($header))
+
+                 <title>{{ $header->company_name }}</title>
+        @endif
     
     <!-- Favicons
     ================================================== -->
@@ -109,123 +113,120 @@
   
 
     <!--News section-->
-    
-  <!-- Start WOWSlider.com BODY section --> <!-- add to the <body> of your page -->
+     <?php  
+        $flagelang=0;
+        $static=0;
+        $outside='';
+        $menuearray_static=[];
+        $pagearray_static=[];
+    ?>
 
+  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/wowslider.js') }}"></script>
+  <script type="text/javascript" src="{{ url('assets/Temp2/en/engine0/script.js') }}"></script>
+  <!-- End WOWSlider.com BODY section -->
 
-    <!-- Navigation
-    ==========================================-->
-<?php  
-    $flagelang=0;
-    $static=0;
-    $outside='';
-    $menuearray_static=[];
-    $pagearray_static=[];
-?>
-
-    <script type="text/javascript" src="{{ url('/assets/engine0/wowslider.js')}}"></script>
-    <script type="text/javascript" src="{{ url('/assets/engine0/script.js')}}"></script>
-    <!-- End WOWSlider.com BODY section --><nav id="myn" class="navbar navbar-default navbar-fixed-top">
+<!--start promotion-->
+  <nav id="myn" class="navbar navbar-default navbar-fixed-top">
         <div>
-          <marquee><p id="myadd">لدينا افضل العروض واحدث المواقع إضافة إلى نشرة إعلانية وخدمات تحريرية أخري</p></marquee>
+          <marquee><p id="myadd">This is our latest news please stay with us to know more</p></marquee>  
         </div>
     </nav>
-    <!--End of news-->
+<!--end promotion-->
 
     <nav id="page_top" class="navbar navbar-default navbar-fixed-top">
       <div class="container" id="nav2">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header navbar-right">
+        <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-
-
-
-
+          @if(isset($header))
+            <a class="navbar-brand" href="index.html"><img id="mylogo" src="{{ url('/') }}{{ $header->logo }}" ></a>
+            <span style="font-size:32px;" class="comp_name">{{ $header->company_name }}</span>
+          @endif
+          
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-
-            <li>
-                        
-          <div class="btn-group dropdown" >
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><a href="{{url('/'.$subdomain.'/static_page/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a>
-          </button>
-          <ul class="dropdown-menu" >
-            <li><a href="{{url('/'.$subdomain.'/static_page/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a></li>
-          </ul>
-        </div>
-
-        @for ($x = 0; $x < count($urlpages); $x++)
+          <ul class="nav navbar-nav navbar-right">
+            @for ($x = 0; $x < count($urlpages); $x++)
 
             @if($urlpages[$x]=='page_top')
               <li>
-                  <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                  <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
               </li>
             @endif 
             @if($urlpages[$x]=='services')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                  <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                  <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
-            @endif 
-
-            <!-- for static page -->
+            @endif    
+             <!-- for static page -->
           @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
               <li>
-                  <a class="page-scroll droid-arabic-kufi" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                  <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
               </li>
-          @endif   
-          @endfor
-
-
-             <!-- for static page outside -->
-        @if($url_outside_pages)
-          @for ($x = 0; $x < count($url_outside_pages); $x++)
+          @endif    
+        @endfor
+        
+          <!-- for static page outside -->
+          @if($url_outside_pages)
+            @for ($x = 0; $x < count($url_outside_pages); $x++)
+              <li>
+                    <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
+                </li>
+                <?php 
+                // $findpage_top=1;
+                $outside=$en_outside_menupages[$x];
+                array_push($pagearray_static, $url_outside_pages[$x]);
+                array_push($menuearray_static, $en_outside_menupages[$x]);
+                ?>
+            
+            @endfor
+          @endif
             <li>
-                  <a class="page-scroll droid-arabic-kufi" href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
-              </li>
-              <?php 
-              // $findpage_top=1;
-              $outside=$en_outside_menupages[$x];
-              array_push($pagearray_static, $url_outside_pages[$x]);
-              array_push($menuearray_static, $en_outside_menupages[$x]);
-              ?>
-          
-          @endfor
-        @endif
-
-
+              <div id="mydropdown">
+               <div class="btn-group dropdown" >
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <a href="{{url('/'.$subdomain.'/static_page/en')}}"><span class="lang-sm lang-lbl" lang="en"></span></a> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" >
+                <li><center><a href="{{url('/'.$subdomain.'/static_page/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span></a></center></li>
+               
+              </ul>
+            </div>
+                </div>
+            </li>
+         
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

@@ -6,7 +6,11 @@
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+   @if(isset($header))
+
+                 <title>{{ $header->company_name }}</title>
+        @endif
+    
     <!-- Favicons
     ================================================== -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -50,11 +54,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-    
-    <!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-    <link rel="stylesheet" type="text/css" href="{{ url('/assets/engine0/style.css')}}" />
-    <script type="text/javascript" src="{{ url('/assets/engine0/jquery.js')}}"></script>
-    <!-- End WOWSlider.com HEAD section -->
+  
+  <!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+  <link rel="stylesheet" type="text/css" href="{{ url('/assets/engine0/style.css')}}" />
+  <script type="text/javascript" src="{{ url('/assets/engine0/jquery.js')}}"></script>
+  <!-- End WOWSlider.com HEAD section -->
 
  <style type="text/css" media="screen">
 
@@ -134,9 +138,10 @@
             <span class="icon-bar"></span>
           </button>
 
-
-
-
+      @if(isset($header))
+            <a class="navbar-brand" href="index.html"><img id="mylogo" src="{{ url('/') }}{{ $header->logo }}" ></a>
+            <span style="font-size:32px;" class="comp_name">{{ $header->ar_company_name }}</span>
+          @endif
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

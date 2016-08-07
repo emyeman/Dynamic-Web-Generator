@@ -131,6 +131,8 @@
     $mynews='';
     $mypromotion='';
     $mygallery='';
+    $menuearray_static=[];
+    $pagearray_static=[];
 ?>
   @if(isset($crusals) && $crusals != null)
 
@@ -584,6 +586,37 @@
     </div> 
 
 @endif
+
+    <!-- static  Section
+    ==========================================-->
+@for($static=0; $static< count($pagearray_static);$static++) 
+    <div id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+        <div class="container">
+            <div class="row">
+    <div class="section-title center wow fadeInDown" data-wow-delay="0.1s" >
+            <br/><br/>
+
+        <h2 class="text-center"><strong><?php echo $menuearray_static[$static];?></strong></h2>
+        <div class="line">
+            <hr>
+        </div>
+    </div>
+        <div class="col-md-6">
+            <img id="myimg" src="" class="img-responsive wow fadeInLeft" data-wow-delay="0.2s">
+        </div>
+        <div class="col-md-12">
+            <!-- <div class="about-text wow fadeInRight" data-wow-delay="0.2s"> -->
+
+               <?php echo "$containpages[$static]";?>
+
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+</div>
+
+   @endfor
+
 
     <!-- Contact Section
     ==========================================-->
