@@ -601,7 +601,7 @@
                             <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                                 <div class="image-box">
                                     <div class="overlay-container">
-                                        <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
+                                        <img style="height:100; width:300px;" src="{{url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                         <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
                                             <i class="fa fa-search-plus"></i>
                                             <span>{{$subcategory->ar_name}}</span>
@@ -629,7 +629,7 @@
                                                     <div class="col-md-1">
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
+                                                        <img  style="height:200; width:500px;" src="{{url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
