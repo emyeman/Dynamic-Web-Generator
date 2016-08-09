@@ -116,7 +116,7 @@
             @if($url_outside_pages)
             @for ($x = 0; $x < count($url_outside_pages); $x++)
                 <li>
-                    <a class="page-scroll" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
+                    <a class="notaDiv" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
                 </li>
             
             @endfor
@@ -200,7 +200,7 @@
                         @if($url_outside_pages)
                         @for ($x = 0; $x < count($url_outside_pages); $x++)
                             <li>
-                                <a class="page-scroll" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
+                                <a  class="notaDiv" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
                             </li>
                         
                         @endfor
@@ -217,7 +217,7 @@
         </button>
         <ul class="dropdown-menu" role="menu">
         <li class="space"></li>
-            <li><a href="{{url('/'.$subdomain.'/ar')}}"class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>
+            <li><a href="{{url('/'.$subdomain.'/ar')}}" class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>
             <li><a href="{{url('/'.$subdomain.'/en')}}" class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></a></li>
         </ul>
         </div>      
