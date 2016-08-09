@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="format-detection" content="telephone=no"/>
-
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="{{ url('assets/DynamicWebGenerator/images/favicon.ico')}}" type="image/vnd.microsoft.icon"/>
     <link rel="icon" href="{{ url('assets/DynamicWebGenerator/images/favicon.ico')}}" type="image/x-ico"/>
@@ -44,7 +44,18 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CRaleway%3A400%2C700&amp;ver=1.0.0' type='text/css' media='all'/>
     <link href="http://fonts.googleapis.com/css?family=Raleway%3A300%2C900%2C100%2C600%2C400%2C500%2C800" rel="stylesheet" property="stylesheet" type="text/css" media="all"/>
     <link href="http://fonts.googleapis.com/css?family=Raleway%3A800%2C300%2C500" rel="stylesheet" property="stylesheet" type="text/css" media="all"/>
+     <!-- for login and registeration -->
+      <link rel="stylesheet" href="{{ url('assets/reseller_assets/bootstrap/css/bootstrap.min.css')}}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/AdminLTE.min.css')}}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ url('assets/reseller_assets/plugins/iCheck/square/blue.css')}}">
     <style type="text/css" media="screen">
+
 
 .demo-2 {
     position:relative;
