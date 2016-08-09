@@ -2,12 +2,12 @@
 
 @section('content')
 
-<div class="container" >
-    <div class="row">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="panel panel-default" style="margin-top:120px;overflow: auto;">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
+<div class="container">
+<div class="row">
+<h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">User <font color="red">Risigter</font></h5>
+<hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
+
+<div class="col-md-10 col-md-offset-0">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -111,6 +111,8 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div style="height:50px;">
+    
 </div>
+
 @endsection

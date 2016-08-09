@@ -5,6 +5,102 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Reseller | Dashboard</title>
+	<style type="text/css">
+i{
+	margin-left: 25px;
+
+}
+
+.hovereffect {
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.hovereffect .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.hovereffect img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+
+.hovereffect:hover img {
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /><feGaussianBlur stdDeviation="3" /></filter></svg>#filter');
+  filter: grayscale(1) blur(3px);
+  -webkit-filter: grayscale(1) blur(3px);
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.hovereffect h2 {
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  font-size: 17px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hovereffect a.info {
+	width: 50%;
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid #fff;
+  margin: 20px 0 0 0;
+  background-color: transparent;
+}
+
+.hovereffect a.info:hover {
+  box-shadow: 0 0 5px #fff;
+}
+
+.hovereffect a.info, .hovereffect h2 {
+  -webkit-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.hovereffect:hover a.info, .hovereffect:hover h2 {
+	
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.myim{
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image-source:url({{ url('assets/reseller_assets/images/bor.png') }});
+    border-image-repeat: round;
+    border-image-slice: 77;
+    border-image-width: 64px;
+
+}
+
+</style>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.6 -->
@@ -196,11 +292,11 @@
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="{{ url('/reseller') }}" class="logo">
+			<a href="#" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>A</b>LT</span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>Reseller</b>Panel</span>
+				<span class="logo-lg"><b>User</b>Panel</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">

@@ -24,7 +24,7 @@ class ResellerController extends Controller
         //
         if(Auth::user()->id == 1 )
         {
-            $users = DB::table('users')->where('user_id',null)->where('id','!=',1)->get();
+            $users = DB::table('users')->where('user_id',1)->where('id','!=',1)->get();
         }
         else
         {
@@ -55,8 +55,13 @@ class ResellerController extends Controller
     public function ban(User $user)
     {
         # code...
-        $user->delete();
-        return back();
+        if($user->update([
+          'access_status' => 'banned',
+            ]))
+        {
+            return back();
+        }
+        // $user->delete();
     }
 
     /**

@@ -128,6 +128,46 @@ h2.zero,p.zero {
             -webkit-transition: all 0.7s ease;
             transition: all 0.7s ease;
             }   
+
+            .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
     </style>
 
 
@@ -159,8 +199,43 @@ h2.zero,p.zero {
                             <div class="menu-icon menu-icon-mobile"><span class="menu-icon-create"></span></div>
                         </div>
                         <div id="trigger-overlay" class="header-search pe-7s-search"></div>
+
+                <!-- the user image -->
+                @if(Auth::user())
+                
+                <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                    
+                    <a href="{{ url('/logout') }}">Logout</a>
+
+
+                    <a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a>
+
+                    @if (isset($site))
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
+
+                        <a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a>
+                    @else
+                        <a href="{{  url('/site/create') }}">Create WebSite</a>
+                    @endif
+                </div>
+                </div>
+                @else
+                    <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}/default.jpg" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                       <a href="{{ url('/login') }}">Login</a></li>
+
+                        <a href="{{ url('/register') }}">Make Your Website</a>
                     </div>
-                    <div class="main-menu">
+                  </div>
+                @endif
+                <!-- the end of user image -->
+
+
+                    </div>
+                    <div class="main-menu" style="margin-right:100px;">
                         <div class="menu-main-nav-menu-container">
                             <ul id="menu-main-nav-menu" class="sf-menu">
                              <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
@@ -181,7 +256,7 @@ h2.zero,p.zero {
                                 <li class="menu-item"><a href="#our-contact">Contact</a></li>
                             @endif
 
-                             @if (Auth::guest())
+{{--                              @if (Auth::guest())
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Make Your Website</a></li>
@@ -203,7 +278,9 @@ h2.zero,p.zero {
                                     @endif
                                      </ul>
                                     </li>
-                                @endif
+                                @endif --}}
+
+
                             </ul>
                         </div>
                     </div>
@@ -211,6 +288,7 @@ h2.zero,p.zero {
             </div>
             <div class="clear"></div>
         </div>
+
         <div class="mobile-menu-wrapper">
             <div class="menu-main-nav-menu-container">
                 <ul id="menu-main-nav-menu-1" class="mobile-menu">
@@ -260,6 +338,8 @@ h2.zero,p.zero {
                 </ul>
             </div>
         </div>
+
+
         <div class="header-wrapper header2">
             <div class="header-inside">
                 <div class="logo">
@@ -272,8 +352,42 @@ h2.zero,p.zero {
                             <div class="menu-icon menu-icon-standard"><span class="menu-icon-create"></span></div>
                         </div>
                         <div id="trigger-overlay-sticky" class="header-search pe-7s-search"></div>
+
+            <!-- the user image -->
+                @if(Auth::user())
+                
+                <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                    
+                    <a href="{{ url('/logout') }}">Logout</a>
+
+
+                    <a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a>
+
+                    @if (isset($site))
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
+
+                        <a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a>
+                    @else
+                        <a href="{{  url('/site/create') }}">Create WebSite</a>
+                    @endif
+                </div>
+                </div>
+                @else
+                    <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}/default.jpg" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                       <a href="{{ url('/login') }}">Login</a></li>
+
+                        <a href="{{ url('/register') }}">Make Your Website</a>
                     </div>
-                    <div class="main-menu">
+                  </div>
+                @endif
+                <!-- the end of user image -->
+
+                    </div>
+                    <div class="main-menu" style="margin-right:100px;">
                         <div class="menu-main-nav-menu-container">
                             <ul id="menu-main-nav-menu-2" class="sf-menu">
                                 <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
@@ -294,7 +408,7 @@ h2.zero,p.zero {
                                 <li class="menu-item"><a href="#our-contact">Contact</a></li>
                             @endif
 
-                             @if (Auth::guest())
+{{--                              @if (Auth::guest())
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
                                     <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Make Your Website</a></li>
@@ -319,7 +433,8 @@ h2.zero,p.zero {
                                     @endif
                                      </ul>
                                     </li>
-                                @endif
+                                @endif --}}
+
                             </ul>
                         </div>
                     </div>
@@ -330,7 +445,7 @@ h2.zero,p.zero {
 
         @yield('content')
 
-        <div id="footer" class="footer">
+        <div id="footer" class="footer" style="position:inherit;">
             {{-- <div class="footer-inner">
                 <div class="footer-left">
                     <img id="logoFooterImage" class="footer-logo" src="{{ url('assets/DynamicWebGenerator/images/logo-footer.png')}}" alt="ALTOS Agency"/>

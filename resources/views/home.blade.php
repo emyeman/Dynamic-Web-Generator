@@ -20,7 +20,14 @@
 <link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/revslider/public/assets/css/settings.css")}}' type='text/css' media='all'/>
 <link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/css/animsition.css")}}' type='text/css' media='all'/>
 <link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/css/fontello.css")}}' type='text/css' media='all'/>
+
+<link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/bootstrap-3.2.0/font-awesome-animation.css")}}' type='text/css' media='all'/>
+
+<link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/bootstrap-3.2.0/font-awesome.min.css")}}' type='text/css' media='all'/>
+
+
 <link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/css/font-awesome.css")}}' type='text/css' media='all'/>
+
 <link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/css/owl.carousel.css")}}' type='text/css' media='all'/>
 <link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/css/owl.transitions.css")}}' type='text/css' media='all'/>
 <link rel='stylesheet' href='{{ url("assets/DynamicWebGenerator/css/pe-icon-7-stroke.css")}}' type='text/css' media='all'/>
@@ -33,7 +40,48 @@
 <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CRaleway%3A400%2C700&amp;ver=1.0.0' type='text/css' media='all'/>
 <link href="http://fonts.googleapis.com/css?family=Raleway%3A300%2C900%2C100%2C600%2C400%2C500%2C800" rel="stylesheet" property="stylesheet" type="text/css" media="all"/>
 <link href="http://fonts.googleapis.com/css?family=Raleway%3A800%2C300%2C500" rel="stylesheet" property="stylesheet" type="text/css" media="all"/>
+<style>
 
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
 
 </head>
 
@@ -56,15 +104,54 @@
                 <a href="#" title="ALTOS Agency"><img class="logoImage" src="{{ url('assets/DynamicWebGenerator/images/logo.png')}}" alt="ALTOS Agency"/><img class="logoImageRetina" src="{{ url('assets/DynamicWebGenerator/images/logo-retina.png')}}" alt="ALTOS Agency"/></a>
                 <div class="clear"></div>
             </div>
+
+
             <div class="menu-wrapper">
                 <div class="menu-icons">
                     <div class="menu-icons-inside">
                         <div class="menu-icon menu-icon-standard"><span class="menu-icon-create"></span></div>
                         <div class="menu-icon menu-icon-mobile"><span class="menu-icon-create"></span></div>
                     </div>
+
+                    
+
                     <div id="trigger-overlay" class="header-search pe-7s-search"></div>
+
+                <!-- the user image -->
+                @if(Auth::user())
+                
+                <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                    
+                    <a href="{{ url('/logout') }}">Logout</a>
+
+
+                    <a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a>
+
+                    @if (isset($site))
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
+
+                        <a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a>
+                    @else
+                        <a href="{{  url('/site/create') }}">Create WebSite</a>
+                    @endif
                 </div>
-                <div class="main-menu">
+                </div>
+                @else
+                    <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}/default.jpg" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                       <a href="{{ url('/login') }}">Login</a></li>
+
+                        <a href="{{ url('/register') }}">Make Your Website</a>
+                    </div>
+                  </div>
+                @endif
+                <!-- the end of user image -->
+
+                </div>
+                <div class="main-menu" style="margin-right:100px;">
                     <div class="menu-main-nav-menu-container">
                         <ul id="menu-main-nav-menu" class="sf-menu">
                             <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
@@ -77,14 +164,12 @@
 
                         @if (Request::path() == '/')
 
-                            <li class="menu-item"><a href="#about">About us</a></li>
-                            <li class="menu-item"><a href="#services">Services</a></li>
-                            <li class="menu-item"><a href="#portfolio-items">Portfolio</a></li>
-
-
-                            <li class="menu-item"><a href="#our-contact">Contact</a></li>
+                            <li class="menu-item one-page-subsite"><a href="#about">About us</a></li>
+                            <li class="menu-item one-page-subsite"><a href="#services">Services</a></li>
+                            <li class="menu-item one-page-subsite"><a href="#portfolio-items">Portfolio</a></li>
+                            <li class="menu-item one-page-subsite"><a href="#our-contact">Contact</a></li>
                         @endif
-
+{{-- 
                          @if (Auth::guest())
                                 <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
@@ -108,16 +193,38 @@
                                 @endif
                                  </ul>
                                 </li>
-                            @endif
+
+                            @endif --}}
 
                            
                         </ul>
+
+                         
+                            
+                        
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="clear"></div>
+
+        <!-- notify the user -->
+        <div class="clear" style="margin-left:1050px;">
+             <i class="glyphicon glyphicon-arrow-right" aria-hidden="true"></i>
+                            <style>
+                             .glyphicon-arrow-right
+                             {
+                                font-size: 40px;
+                                color: #c3593e;
+                                margin-top: 100px;
+                             }  
+                            </style>
+        </div>
+        <!-- end notify the user -->
+
     </div>
+
+
     <div class="mobile-menu-wrapper">
         <div class="menu-main-nav-menu-container">
             <ul id="menu-main-nav-menu-1" class="mobile-menu">
@@ -167,6 +274,8 @@
             </ul>
         </div>
     </div>
+
+
     <div class="header-wrapper header2">
         <div class="header-inside">
             <div class="logo">
@@ -179,8 +288,42 @@
                         <div class="menu-icon menu-icon-standard"><span class="menu-icon-create"></span></div>
                     </div>
                     <div id="trigger-overlay-sticky" class="header-search pe-7s-search"></div>
+
+                <!-- the user image -->
+                @if(Auth::user())
+                
+                <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}{{ Auth::user()->image }}" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                    
+                    <a href="{{ url('/logout') }}">Logout</a>
+
+
+                    <a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}">Edit Profile</a>
+
+                    @if (isset($site))
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
+
+                        <a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}">my site</a>
+                    @else
+                        <a href="{{  url('/site/create') }}">Create WebSite</a>
+                    @endif
                 </div>
-                <div class="main-menu">
+                </div>
+                @else
+                    <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
+                  <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}/default.jpg" class="img-circle">
+                    <div class="dropdown-content" style="left:0;">
+                       <a href="{{ url('/login') }}">Login</a></li>
+
+                        <a href="{{ url('/register') }}">Make Your Website</a>
+                    </div>
+                  </div>
+                @endif
+                <!-- the end of user image -->
+
+                </div>
+                <div class="main-menu" style="margin-right:100px;">
                     <div class="menu-main-nav-menu-container">
                         <ul id="menu-main-nav-menu-2" class="sf-menu">
                             <li class="menu-item current-menu-item current_page_item menu-item-has-children"><a href="{{ url('/') }}">Home</a>
@@ -201,7 +344,7 @@
                             <li class="menu-item"><a href="#our-contact">Contact</a></li>
                         @endif
 
-                         @if (Auth::guest())
+ {{--                         @if (Auth::guest())
                                 <li class="menu-item one-page-subsite"><a href="{{ url('/login') }}">Login</a></li>
 
                                 <li class="menu-item one-page-subsite"><a href="{{ url('/register') }}">Make Your Website</a></li>
@@ -225,7 +368,8 @@
                                 @endif
                                  </ul>
                                 </li>
-                            @endif
+                            @endif --}}
+
                         </ul>
                     </div>
                 </div>
@@ -1356,6 +1500,49 @@
 <script type='text/javascript' src="{{ url('assets/DynamicWebGenerator/js/bower/isotope/dist/isotope.pkgd.min.js')}}"></script>
 <script type='text/javascript' src="{{ url('assets/DynamicWebGenerator/js/prettyphoto/js/jquery.prettyPhoto.min.js')}}"></script>
 <script type='text/javascript' src="{{ url('assets/DynamicWebGenerator/js/owl.carousel.js')}}"></script>
+
+@if(isset($firstvisit))
+    @if($firstvisit == 'yes')
+    <script>
+            $(document).ready(function() {
+                function animatethis(targetElement, speed) {      
+                    $(targetElement).animate({ marginLeft: "+=50px"},
+                    {
+                        duration: speed,
+                        complete: function ()
+                        {
+                            targetElement.animate({ marginLeft: "-=50px" },
+                            {
+                                duration: speed,
+                                complete: function ()
+                                {
+                                    animatethis(targetElement, speed);
+                                }
+                            });
+                        }
+                    });
+                };
+            animatethis($('.glyphicon-arrow-right'), 1000); 
+
+            $("div[class='dropdown-content']").slideDown();
+            $("a:contains('Create')").css('background-color', '#c3593e');
+            }) 
+    </script>
+    @else
+        <script>
+            $(document).ready(function() {
+               $('.glyphicon-arrow-right').css('display', 'none');
+            })
+        </script>
+    @endif
+@else
+     <script>
+            $(document).ready(function() {
+               $('.glyphicon-arrow-right').css('display', 'none');
+            })
+        </script>
+@endif
+
 
 <script>
     var htmlDiv = document.getElementById("rs-plugin-settings-inline-css");

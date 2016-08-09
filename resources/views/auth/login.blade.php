@@ -5,12 +5,13 @@
 
 @if(Session::get('user'))
 
-<div class="container" >
-    <div class="row">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="panel panel-default" style="margin-top:140px;">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+<div class="container">
+<div class="row">
+<h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">User <font color="red">Login</font></h5>
+<hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
+
+<div class="col-md-10 col-md-offset-0">
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
@@ -63,21 +64,21 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
         </div>
-    </div>
+        </div>
 </div>
-
+<div style="height:200px;">
+    
+</div>
 
 @else
 
-<div class="container" >
-    <div class="row">
-        <div class="col-md-8 col-md-offset-3">
-            <div class="panel panel-default" style="margin-top:140px;">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+<div class="container">
+<div class="row">
+<h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">User <font color="red">Login</font></h5>
+<hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
+
+<div class="col-md-10 col-md-offset-0">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
@@ -134,7 +135,8 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div style="height:200px;">
+    
 </div>
 
 @endif

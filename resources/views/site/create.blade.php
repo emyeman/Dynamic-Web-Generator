@@ -83,7 +83,7 @@
 
          <div class='form-group'>
             <label class='col-md-2'>Image</label>
-            <div class='col-md-4 input-group' style="float:left;">
+            <div class='col-md-4 input-group'>
                 <span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>
                 <label class="btn btn-info form-control btn-file">
                     Browse <input id="image" type="file" name="background_image" style="display: none;">

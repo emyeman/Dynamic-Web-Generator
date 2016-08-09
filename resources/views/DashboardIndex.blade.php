@@ -5,18 +5,7 @@
 @endsection
 
 @section('content')
-<section class="content" style="background-image: url(image/1.jpg)">
-       <section class="content-header">
-			<h1 style="color:#fff;">
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-			<ol class="breadcrumb">
-				<li><a href="#" style="color:#fff;"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active" style="color:#fff;">Dashboard</li>
-			</ol>
-			
-		</section>		
+<section class="content" style="background-image: url({{ url('assets/reseller_assets/images/1.jpg') }})">	
 	    <div class="row">
         <div class="col-md-4 col-xs-8 col-xs-offset-2 col-md-offset-4">
          <img src="{{ url('assets/reseller_assets/images/2.png') }}" style="margin-top:20px;" class="img-responsive" >

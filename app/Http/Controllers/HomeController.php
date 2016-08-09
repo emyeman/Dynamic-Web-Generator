@@ -23,6 +23,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {    
         if(isset(Auth::user()->id))
@@ -34,20 +35,29 @@ class HomeController extends Controller
                 return view('home',compact('site'));            
             }
         }
-
-        try {
+        try {                   
                 if(Auth::user()->status == 'reseller')
                 {
                     return redirect('/reseller');
                 }
                 else
                 {
-                    return view('home');   
+                    $firstvisit = '';
+                    if (!isset($_COOKIE['firsttime']))
+                    {
+                        $firstvisit = 'yes';
+                        setcookie("firsttime", "no");
+                        return view('home',compact("firstvisit"));
+                    }
+                    else
+                    {
+                        $firstvisit = 'no';
+                        return view('home',compact("firstvisit"));
+                    } 
                 }    
             }
         catch (\Exception $e) {
-            return view('home');
-            }
-        
+                return view('home');
+            }        
     }
 }
