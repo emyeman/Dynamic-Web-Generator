@@ -210,6 +210,7 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         /*UniShap file manager for tinymce html editor*/
         'Image' => Intervention\Image\Facades\Image::class,
+        'Mail' => Illuminate\Support\Facades\Mail::class,
 
     ],
 

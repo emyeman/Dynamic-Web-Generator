@@ -20,7 +20,6 @@
       </button>
    
     </div>
-    
 <!-- ********************************************************************** -->
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -118,6 +117,14 @@
 
             @endif
             @endfor
+            @if($url_outside_pages)
+            @for ($x = 0; $x < count($url_outside_pages); $x++)
+                <li>
+                    <a class="page-scroll" href="{{url($subdomain.'/static_page/ar')}}">{{$ar_outside_menupages[$x]}}</a>
+                </li>
+            
+            @endfor
+        @endif
             
 
     </ul>
@@ -195,6 +202,15 @@
                             
                         @endif
                         @endfor
+                        
+                        @if($url_outside_pages)
+                        @for ($x = 0; $x < count($url_outside_pages); $x++)
+                            <li>
+                                <a class="page-scroll" href="{{url($subdomain.'/static_page/ar')}}">{{$ar_outside_menupages[$x]}}</a>
+                            </li>
+                        
+                        @endfor
+                    @endif
                     </ol>
                 </div>
     
@@ -205,10 +221,11 @@
         </button>
         <ul class="dropdown-menu" role="menu">
         <li class="space"></li>
-            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></button></li>                               
-            <li><button class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></button></li>                               
+            <li><a href="{{url('/'.$subdomain.'/ar')}}" class="notaDiv"><span class="lang-sm lang-lbl" lang="ar"></span></a></li>                               
+            <li><a href="{{url('/'.$subdomain.'/en')}}" class="notaDiv"><span class="lang-sm lang-lbl" lang="en"></span></a></li>                               
         </ul>
-        </div>     
+    </div> 
+
         </div> 
         
     </div>
@@ -556,7 +573,7 @@
 <section class="section" id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
     <div class="container">
     
-        <h2 class="text-center title"><?php echo $menuearray_static[$static];?></h2>
+        <h2 class="text-center title"><?php echo $staticpages[$static];?></h2>
         <div class="row backg">
         <?php echo "$containpages[$static]";?>
         </div>

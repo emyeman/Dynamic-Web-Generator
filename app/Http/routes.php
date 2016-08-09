@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::auth();
 // Route::get('/home', 'HomeController@index');
 
@@ -23,9 +24,10 @@ Route::post('/message','MessageController@store')->name('message.store');;
 Route::group(['middleware' => 'auth'], function () {
 
 
-	Route::get('/dashboard', function () {
-    	return view('DashboardIndex');
-	});
+	// Route::get('/dashboard', function () {
+ //    	return view('DashboardIndex');
+	// });
+	Route::get('/dashboard','MessageController@dashboard');
 
 	// Route::get('/dashboard','DashboardController@index');
 
@@ -65,6 +67,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('/numberview','NumberViewController');
 	Route::patch('/domain/update/{domain}','DomainController@update');
 	Route::get('/domain/edit/{domain}','DomainController@edit');
+	Route::get('/domain/reseller_index','DomainController@reseller_index');
+	Route::get('/domain/resellershow/{id}','DomainController@resellershow');
+	Route::get('/domain/solve_resellerindex/{id}','DomainController@solve_resellerindex');
+	Route::get('/domain/solve_resellershow/{id}','DomainController@solve_resellershow');
 	Route::resource('/domain','DomainController');
 	Route::resource('/googlemap','GoogleMapController');
 
@@ -94,11 +100,18 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/ticket/solve_index/{id}','TicketController@solve_index');
 	Route::get('/ticket/solve_show/{id}','TicketController@solve_show');
 	Route::get('/ticket/destroy/{id}','TicketController@destroy');
+
+	// Route::post('/ticket/commentstore','TicketController@commentstore');
 	Route::resource('/ticket','TicketController');
 
 	Route::resource('/comment','CommentController');
 
 
+	// for send to email 
+	// Route::get('/email','CommentController@email');
+
+
+// for route make any ajax processing in project
 	if (Request::ajax()){
 		Route::get('/product/create/{id}','ProductController@ajaxcreate');
 		Route::get('/googlemap/storelocation/{XYlocation}','GoogleMapController@ajaxstore');
@@ -112,6 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/menu/is_exit/{title}','MenuController@ajaxexite_menu');
 		Route::get('/news_promotion/is_exit/{type}/{title}','MenuController@ajaxexite_news_promotion');
 		Route::get('/ticket/is_exit/{title}','TicketController@ajaxexite_ticket');
+		Route::get('/domain/is_exit/{title}','TicketController@ajaxexite_domain');
 	}
 
 
@@ -139,7 +153,12 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/{subdomain}/en','TemplateController@Show');
 Route::get('/{subdomain}/ar','TemplateController@Show');
 
+Route::get('/{subdomain}/{static_page}/en','TemplateController@static_page');
+Route::get('/{subdomain}/{static_page}/ar','TemplateController@static_page');
+
 
 
 
 // Route::get('/{subdomain}/{locale}','TemplateController@Show');
+
+

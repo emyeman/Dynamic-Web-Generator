@@ -1,5 +1,5 @@
 @include('../spirit/header')
-            <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
+        <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
 
     </head>
 
@@ -158,6 +158,15 @@
                                                  array_push($menuearray_static, $en_menupages[$x]);?>
                                             @endif    
                                           @endfor
+                                          
+                                            @if($url_outside_pages)
+                                                @for ($x = 0; $x < count($url_outside_pages); $x++)
+                                                    <li>
+                                                        <a class="page-scroll" href="{{url($subdomain.'/static_page/en')}}">{{$en_outside_menupages[$x]}}</a>
+                                                    </li>
+                                                
+                                                @endfor
+                                            @endif
 
                                         </ul>
                             </div>
@@ -593,7 +602,7 @@
                             <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                                 <div class="image-box">
                                     <div class="overlay-container">
-                                        <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
+                                        <img style="height:100; width:300px;" src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                         <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
                                             <i class="fa fa-search-plus"></i>
                                             <span>{{$subcategory->name}}</span>
@@ -621,7 +630,7 @@
                                                     <div class="col-md-1">
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <img src="{{ url('/assets/images/'.$image_product[$index_prod])}}" alt="">
+                                                        <img style="height:200; width:500px;" src="{{url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -659,7 +668,7 @@
 
 <!-- =========================================== -->
 <!-- section start -->
-     @for($static=0;$static< count($pagearray_static);$static++) 
+    @for($static=0;$static< count($pagearray_static);$static++) 
      <div class="section_space"></div> 
         <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
             <div class="container">
@@ -802,7 +811,7 @@
                     
                 </div><style>#gmap_canvas img{max-width:none!important;background:none!important;}</style>
             </div>   
-            <script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng({{$contact->lat}},{{$contact->lng}}),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{$contact->lat}},{{$contact->lng}})});infowindow = new google.maps.InfoWindow({content:'<strong>Title</strong><br>{{$contact->address}}<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+            <script type='text/javascript'>function init_map(){var myOptions = {zoom:13,center:new google.maps.LatLng({{$contact->lat}},{{$contact->lng}}),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng({{$contact->lat}},{{$contact->lng}})});infowindow = new google.maps.InfoWindow({content:'<strong>Title</strong><br>{{$contact->address}}<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
          </div>
     </div>
   @endforeach  

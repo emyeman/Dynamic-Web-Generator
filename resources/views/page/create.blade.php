@@ -72,11 +72,20 @@
       <a id="backbage" class="oldbage" href="{{url('/page/create')}}"><input type='button>' class='btn btn-info' value='Back to Our Page'/></a>
     </div> 
 
-      <br><br><br>   
+      <br><br>  
       <textarea  name='content' style="height:295px;">{{old('title')}}</textarea> 
-    </div>   
-    <br>
+      <br/>
+      <label class="col-lg-offset-1" ></label>
+      <label class="radio-inline" style="color:#33395a; font-weight:bold;" >
+        <input type="radio" name="type_static" checked value="0">Display this page in same main web page
+      </label>
+      <label class="col-lg-offset-3" ></label>
+      <label class="radio-inline" style="color:#33395a; font-weight:bold;" >
+        <input type="radio" name="type_static" value="1">Display this page in page outside  main web page
+      </label>
 
+    </div>   
+    <br/><br/>
 
     <!-- <span class='col-md-2'></span> col-xs-8 -->
      <div class="col-md-10 col-md-offset-1">       

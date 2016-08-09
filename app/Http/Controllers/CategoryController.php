@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
+use App\Message;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -26,17 +27,21 @@ class CategoryController extends Controller
                  $categories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
                  $allcategories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
                  // dd($categories);
+                  $site_id = Session::get('user_id');
             }
             else
             {
                  $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
                  $allcategories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
-
+                 $site_id=Auth::user()->site->id;
             }
+        
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
 
-           
-
-            return  view ('category.index',compact('categories','allcategories'));
+            return  view ('category.index',compact('categories','allcategories','count_message'));
+            
        } else{
             return  redirect ('/login');   
        }
@@ -53,7 +58,17 @@ class CategoryController extends Controller
 
      public function create(){
         if (Auth::user()){
-            return  view ('category.create');
+            if(Auth::user()->status == 'reseller')
+        {
+            $site_id = Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;
+        }
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
+            return  view ('category.create',compact('count_message'));
         }else{
             return  redirect ('/login');   
         }
@@ -153,8 +168,18 @@ class CategoryController extends Controller
                 throw new ModelNotFoundException($e->getMassege());
                 
             }
+            if(Auth::user()->status == 'reseller')
+        {
+            $site_id = Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;
+        }
+            $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
             
-            return  view ('category.edit',compact('category'));
+            return  view ('category.edit',compact('category','count_message'));
         } else{
             return  redirect ('/login');   
         }    

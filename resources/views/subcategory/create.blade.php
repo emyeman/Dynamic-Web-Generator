@@ -107,7 +107,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='subdescription'>{{old('subdescription')}}</textarea>
+                <textarea placeholder="Place some text here" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='subdescription'>{{old('subdescription')}}</textarea>
             </div>
             </div>
             </div>
@@ -121,7 +121,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <textarea class="textarea" placeholder="من فضلك ادخل الوصف" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"name='ar_subdescription'>{{old('ar_subdescription')}}</textarea>
+                <textarea placeholder="من فضلك ادخل الوصف" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"name='ar_subdescription'>{{old('ar_subdescription')}}</textarea>
             </div>
             </div>               
           <!-- /.box --> 

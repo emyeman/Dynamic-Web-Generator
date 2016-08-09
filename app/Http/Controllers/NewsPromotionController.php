@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+ use App\Message;
 use App\NewsPromotion;
 use Auth;
 use Illuminate\Support\Facades\Storage;
@@ -56,7 +56,18 @@ class NewsPromotionController extends Controller
         $rows=NewsPromotion::where('site_id', $site_id)
                             ->where('type',$type)
                             ->get();
-        return  view ('news_promotion.index',['rows'=>$rows,'type'=>$type]);
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+        return  view ('news_promotion.index',['rows'=>$rows,'type'=>$type,'count_message'=>$count_message]);
 
      }
 
@@ -68,8 +79,18 @@ class NewsPromotionController extends Controller
         $type=trim($type);
         if( !($type == 'promotion' || $type == 'news')) //prevent sending wrong type, only 1 or 0 are acceptable
             abort(500);
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
 
-        return  view ('news_promotion.create',['type'=>$type]);
+        return  view ('news_promotion.create',['type'=>$type,'count_message'=>$count_message]);
      }
 
      public function ajaxexite_news_promotion(Request $request){
@@ -169,7 +190,18 @@ class NewsPromotionController extends Controller
                 abort(403);
             }
         }
-		return  view ('news_promotion.edit',['row'=>$row]);
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+        
+		return  view ('news_promotion.edit',['row'=>$row,'count_message'=>$count_message]);
      }
 
 

@@ -302,6 +302,14 @@
                          array_push($menuearray_static, $ar_menupages[$x]);?>
                     @endif 
               @endfor
+              @if($url_outside_pages)
+                @for ($x = 0; $x < count($url_outside_pages); $x++)
+                    <li>
+                        <a class="page-scroll" href="{{url($subdomain.'/static_page/ar')}}">{{$ar_outside_menupages[$x]}}</a>
+                    </li>
+                
+                @endfor
+            @endif
           </ul>
             <!-- End Navigation List -->
           </div>
@@ -378,6 +386,14 @@
                       </li>
                   @endif 
           @endfor
+          @if($url_outside_pages)
+                @for ($x = 0; $x < count($url_outside_pages); $x++)
+                    <li>
+                        <a class="page-scroll" href="{{url($subdomain.'/static_page/ar')}}">{{$ar_outside_menupages[$x]}}</a>
+                    </li>
+                
+                @endfor
+            @endif
               <li>
                 <a  href="{{url('/'.$subdomain.'/ar')}}"><span class="lang-sm lang-lbl" lang="ar"></span> <span class="caret"></span></a>
                 <ul class="dropdown">
@@ -865,11 +881,11 @@
           <div class="row">
 
             <!-- Start Left Side -->
-            <div class="col-md-6" data-animation="fadeInUp">
+            <div class="col-md-12" data-animation="fadeInUp">
 
               <!-- Start Big Heading -->
               <div class="big-title">
-                <h1><strong class="primary-text"><?php echo $menuearray_static[$static];?></strong> </h1>
+                <h1><strong class="primary-text"><?php echo $staticpages[$static];?></strong> </h1>
                 <!-- <p class="title-desc">Some Words About Our Company</p> -->
               </div>
               <!-- End Big Heading -->

@@ -24,7 +24,7 @@
               <h3 class="box-title">View your Sub category</h3>
 
               <div class="pull-right">
-              <a href="{{url('/subcategory/create/')}}">
+              <a href="{{url('/subcategory/create')}}">
               <i class="fa fa-plus fa-3x" aria-hidden="true" style="color: #00a65a;"></i></a>
               </div>
             </div>

@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 465),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'sherif.elkhiat.700@gmail.com', 'name' => 'sherif'],
+    'from' => ['address' => 'monkbusiness03@gmail.com', 'name' => 'WSGmonkbusiness'],
 
     /*
     |--------------------------------------------------------------------------
@@ -68,8 +68,9 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
-
+    // 'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    // 'encryption' => 'tls',
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
@@ -81,7 +82,8 @@ return [
     |
     */
 
-    'username' => env('sherif.elkhiat.700@gmail.com'),
+    // 'username' => env('MAIL_USERNAME','monkbusiness03@gmail.com'),
+    'username' => env('MAIL_USERNAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +96,9 @@ return [
     |
     */
 
-    'password' => env('sherifacc147'),
+    // 'password' => env('MAIL_PASSWORD','monk123456789'),
+    'password' => env('MAIL_PASSWORD'),
+
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +112,18 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mail "Pretend"
+    |--------------------------------------------------------------------------
+    |
+    | When this option is enabled, e-mail will not actually be sent over the
+    | web and will instead be written to your application's logs files so
+    | you may inspect the message. This is great for local development.
+    |
+    */
+
+    'pretend' => false,
 
 ];

@@ -19,6 +19,8 @@ use App\Template;
 use App;
 use Session;
 
+// type_static
+
 class TemplateController extends Controller{
 
     private function UniqueRandomNumbersWithinRange($min, $max, $quantity) {
@@ -75,7 +77,7 @@ class TemplateController extends Controller{
         // die($templat_name);
  // ***************** for pages and navbar ***************************
         $menus = DB::table('menus')->where('site_id',$site_id)->get();
-        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->where('type_static',0)->get();
         $en_menupages = array();
         $ar_menupages = array();
         $urlpages = array();
@@ -91,7 +93,23 @@ class TemplateController extends Controller{
         }
  // var_dump($en_menupages);
  // var_dump($ar_menupages);die();
- // ***************** for staticpage ***************************
+
+        // ***************** for pages and navbar for display menu of page that outside main web page ***************************
+        $en_outside_menupages=[];
+        $ar_outside_menupages=[];
+        $url_outside_pages=[];
+        $outside_pages = DB::table('pages')->where('site_id',$site_id)->where('type_static',1)->get();
+        foreach ($menus as $menu) {
+            foreach ($outside_pages as $outside_page) {
+                if ($menu->route==$outside_page->id) {
+                    array_push($en_outside_menupages, $menu->title);
+                    array_push($ar_outside_menupages, $menu->ar_title);
+                    array_push($url_outside_pages,$outside_page->title);
+                }
+            }
+        }
+
+ // ***************** for staticpage in the same page of webpage ***************************
         $staticpages=[];
         $containpages=[];
         foreach ($pages as $page) {
@@ -166,13 +184,98 @@ class TemplateController extends Controller{
 // ***************** return  ar or en***************************
         if ($arrayurl[1]=='en') {
             App::setLocale('en');
-            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','en_name_product','image_product','en_description_product','en_price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/en',compact('mysite','subdomain','en_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','en_name_product','image_product','en_description_product','en_price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id','en_outside_menupages','url_outside_pages'));
         }elseif ($arrayurl[1]=='ar') {
             App::setLocale('ar');
-            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','ar_name_product','image_product','ar_description_product','ar_price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id'));
+            return view($templat_name.'/ar',compact('mysite','subdomain','ar_menupages','urlpages','staticpages','containpages','contacts','categories','subcategories','cat_id_product','ar_name_product','image_product','ar_description_product','ar_price_product','rand_product','cats_and_subcats','services' , 'crusals' , 'news' , 'promotions','aboutus','header','site_id','ar_outside_menupages','url_outside_pages'));
 
         }
     }
+
+
+    public function static_page(Request $request){
+        $url=$request->path();
+        $arrayurl = explode("/", $url);
+
+        $subdomain=$arrayurl[0];
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $mysite = DB::table('sites')->where('id',Session::get('user_id'))->get();
+        }
+        else
+        {
+            $mysite = DB::table('sites')->where('id',Auth::user()->id)->get();
+        }
+        
+        foreach ($mysite as $site) {
+            $site_id=$site->id;
+            $template_id=$site->template_id;
+        }
+        // die($template_id);  
+        $mytemplate = DB::table('templates')->where('id',$template_id)->get();
+        foreach ($mytemplate as $templat) {
+            $templat_name=$templat->development_name;
+        }
+        // var_dump($templat_name);die();
+
+        // ***************** for pages and navbar for display menu main web page ***************************
+        $menus = DB::table('menus')->where('site_id',$site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->where('type_static',0)->get();
+        $en_menupages = array();
+        $ar_menupages = array();
+        $urlpages = array();
+        // var_dump($menus);die();
+        foreach ($menus as $menu) {
+            foreach ($pages as $page) {
+                if ($menu->route==$page->id) {
+                    array_push($en_menupages, $menu->title);
+                    array_push($ar_menupages, $menu->ar_title);
+                    array_push($urlpages,$page->title);
+                }
+            }
+        }
+ // var_dump($en_menupages);
+ // var_dump($ar_menupages);die();
+
+        // ***************** for pages and navbar for display menu of page that outside main web page ***************************
+        $en_outside_menupages=[];
+        $ar_outside_menupages=[];
+        $url_outside_pages=[];
+        $outside_pages = DB::table('pages')->where('site_id',$site_id)->where('type_static',1)->get();
+        foreach ($menus as $menu) {
+            foreach ($outside_pages as $outside_page) {
+                if ($menu->route==$outside_page->id) {
+                    array_push($en_outside_menupages, $menu->title);
+                    array_push($ar_outside_menupages, $menu->ar_title);
+                    array_push($url_outside_pages,$outside_page->title);
+                }
+            }
+        }
+
+         // ***************** for staticpage in the outpage from main webpage ***************************
+        $staticpages=[];
+        $containpages=[];
+        foreach ($outside_pages as $outside_page) {
+            if ($outside_page->content) {
+                array_push($staticpages, $outside_page->title);
+                array_push($containpages, $outside_page->content);
+            }
+        }
+         // ***************** for header  ***************************
+
+        $header=Header::where('site_id', '=', $site_id)->first();
+        // ***************** return  ar or en***************************
+        if ($arrayurl[2]=='en') {
+            App::setLocale('en');
+            return view($templat_name.'/static_page/en',compact('subdomain','en_menupages','urlpages','url_outside_pages','en_outside_menupages','mysite','containpages','staticpages','header'));
+        }elseif ($arrayurl[2]=='ar') {
+            App::setLocale('ar');
+            return view($templat_name.'/static_page/ar',compact('subdomain','ar_menupages','urlpages','url_outside_pages','ar_outside_menupages','mysite','containpages','staticpages','header'));
+        }
+
+    }
+
 
 }
 

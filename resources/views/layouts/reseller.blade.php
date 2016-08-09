@@ -163,6 +163,16 @@
 			</ul>
 		</li>
 		<li>
+			<a href="{{url('/domain/reseller_index')}}">
+				<i class="fa fa-share-square-o"></i>
+				<span>Domain</span>
+
+                <span class="label label-success pull-right">{{$domaincount_unseen}}</span>
+			</a>
+
+		</li>
+
+		<li>
 			<a href="{{url('/ticket/reseller_index')}}">
 				<i class="fa fa-list-alt"></i>
 				<span>Tickets</span>

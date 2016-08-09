@@ -23,16 +23,76 @@
 
         <p>{{$ticket->message}}</p>
     </div>
-    <div class="box-footer">
+
+<!-- for make comment  and show -->
+<div class="box">
+            <div class="box-header">
+              <h3 class="box-title" style="color:#01A4A4; font-weight:blod;">
+                &nbsp; &nbsp; Comment your Ticket</h3>
+            </div>
+            <!-- /.box-header -->
+    <div class="box-body no-padding col-md-offset-1">
+           @foreach ($comments as $comment)   
+            <?php $flag_comment=0;?>
+            @foreach ($user_comments as $user_comment) 
+                @if($flag_comment==0)
+                    @if($user_comment->id==$comment->user_id)
+                    <?php $flag_comment=1;?>
+                      <div class="row">
+                        <div class="col-sm-11" style="background-color:rgb(248, 243, 249);">
+                              <div class="col-sm-2 text-center">
+                                @if($user_comment->image != null)
+                                  <img src="{{url($user_comment->image)}}" class="img-circle" height="60" width="60" alt="Avatar">
+                              @else
+                                <img src="{{url('default.jpg')}}" class="img-circle" height="60" width="60" alt="emy">
+                              @endif
+                              </div>
+                          <div class="col-sm-9">
+                            <font size="4px" color="blue">{{$user_comment->name}} : &nbsp; 
+                            </font><font size="2px">{{$comment->comment}}</font><br/>
+                            created_at : &nbsp; <small>{{$comment->created_at}}</small><br/><br/>
+                          </div>
+                        </div>
+                      </div>
+                    @endif
+                @endif
+              @endforeach
+            @endforeach
+              <hr/>
+        <!-- form add comment -->
+          <h4>ADD Comment:</h4>
+  {!!Form::open(['route'=>'comment.store','method'=>'post']) !!}
+            <div class="form-group col-sm-11">
+              <textarea class="form-control" rows="3" placeholder='Write comment ...' required  name='comment'>{{old('comment')}}</textarea>
+              <input value="{{$ticket->id}}" id='ticket_id' name='ticket_id' type='hidden'/>
+              <input value="ticket" id='type_ticket' name='type_ticket' type='hidden'/>
+              <input value="reseller_ticket" id='redirect_ticket' name='redirect_ticket' type='hidden'/>
+                <div class="box-header">
+                        <div class="box-footer clearfix">
+                       <div class="input-group-btn">
+                            <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='ADD Comment' />   
+                       </div>
+                    </div>
+                  </div>
+               </div>
+  {!!Form::close() !!}
+
+
+</div>
+
+</div>
+<!-- end comment -->
+
+
+    <!-- <div class="box-footer">
     <form action="#" method="post">
             <img class="img-responsive img-circle img-sm" style="height:45px; width:40px;" src="{{url($reseller->image)}}" alt="Alt Text">
-        <!-- .img-push is used to add margin to elements next to floating images -->
         <div class="img-push">
             <input type="text" class="form-control input-sm" placeholder="Press enter to send an E-mail">
 
         </div>
     </form>
-</div>
+</div> -->
     </section>
  
 @endsection

@@ -45,6 +45,27 @@
       </div> 
 
       {{Form::textarea('content', old('content'))}}
+
+      <br/>
+      <label class="col-lg-offset-1" ></label>
+        @if($row->type_static==0)
+      <label class="radio-inline" style="color:#33395a; font-weight:bold;" >
+        <input type="radio" name="type_static" checked value="0">Display this page in same main web page
+      </label>
+      <label class="col-lg-offset-3" ></label>
+      <label class="radio-inline" style="color:#33395a; font-weight:bold;" >
+        <input type="radio" name="type_static" value="1">Display this page in page outside  main web page
+      </label>
+      @else
+      <label class="radio-inline" style="color:#33395a; font-weight:bold;" >
+        <input type="radio" name="type_static"  value="0">Display this page in same main web page
+      </label>
+      <label class="col-lg-offset-3" ></label>
+      <label class="radio-inline" style="color:#33395a; font-weight:bold;" >
+        <input type="radio" name="type_static" checked value="1">Display this page in page outside  main web page
+      </label>
+
+      @endif
     
     </div>   
     <br>

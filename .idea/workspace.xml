@@ -2,25 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33bd5ea6-b50a-42f6-a320-2e4867fc0d51" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.2.0/font-awesome.min.css" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/images/wissa/branding/1469928580jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.2.0/font-awesome-animation.css" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/images/wissa/branding/1469928594.jpg" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/profile/1469929314.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.2.0/font-awesome-animation.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assets/bootstrap-3.2.0/font-awesome.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ResellerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResellerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/DashboardIndex.blade.php" afterPath="$PROJECT_DIR$/resources/views/DashboardIndex.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/activetemp.blade.php" afterPath="$PROJECT_DIR$/resources/views/activetemp.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/UserDashboard.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/UserDashboard.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/activetemp.blade.php" afterPath="$PROJECT_DIR$/resources/views/activetemp.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/outside.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/outside.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/UserDashboard.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/UserDashboard.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/DashboardIndex.blade.php" afterPath="$PROJECT_DIR$/resources/views/DashboardIndex.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/site/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/site/create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/site/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/site/edit.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ResellerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ResellerController.php" />
     </list>
     <ignored path="Dynamic-Web-Generator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,11 +51,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="364">
               <caret line="49" column="66" selection-start-line="49" selection-start-column="66" selection-end-line="49" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResellerController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ResellerController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -183,8 +193,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -273,6 +281,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -361,6 +371,7 @@
       <workItem from="1470650784459" duration="677000" />
       <workItem from="1470651790295" duration="2271000" />
       <workItem from="1470691975836" duration="1650000" />
+      <workItem from="1470778802659" duration="18000" />
     </task>
     <task id="LOCAL-00001" summary="Convert all relative paths to absolute paths&#10;If you found any path error please let me know on slack">
       <created>1465427074658</created>
@@ -380,7 +391,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29339000" />
+    <option name="totallyTimeSpent" value="29357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1368" height="739" extended-state="6" />
@@ -428,13 +439,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_24_120452_create_products_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_01_135357_create_aboutuses_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -741,6 +745,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
           <caret line="49" column="66" selection-start-line="49" selection-start-column="66" selection-end-line="49" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ResellerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -12,10 +12,14 @@ class MessageController extends Controller
 {
     public function index()
     {
+
         $user=Auth::user();
         $site_id=$user->site->id;
         $messages=Message::where('site_id','=',$site_id)->get();
-        return view('message.index',['messages'=>$messages]);
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+        return view('message.index',['messages'=>$messages,'count_message'=>$count_message]);
     }
 
     public function store(Request $request)
@@ -57,9 +61,21 @@ class MessageController extends Controller
         if ($user->cannot('access-messages', $message)) {
             abort(403);
         }
+        
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
     	$message->is_seen=true;
     	$message->save();
-    	return view('message.show',['message'=>$message]);
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+    	return view('message.show',['message'=>$message,'count_message'=>$count_message]);
     }
 
     public function destroy($id)
@@ -79,14 +95,34 @@ class MessageController extends Controller
             abort(500);
     }
 
-    public function unseen()
-    {
+    public function unseen(){
         $site_id=Auth::user()->site->id;
-    	$unseen_messages=Message::where('is_seen','=',false)
-                                ->where('site_id','=',$site_id)->get();
+    	$unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+
     	$last3=$unseen_messages->take(3);
     	$count=$unseen_messages->count();
     	$data=[$last3,$count];
     	return json_encode($data);
     }
+
+
+    public function dashboard(){
+        if(Auth::user()){
+            if(Auth::user()->status == 'reseller')
+            {
+                $site_id=Session::get('user_id');
+            }
+            else
+            {
+                $site_id=Auth::user()->site->id;    
+            }
+                $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+                $count_message=count($unseen_messages);
+            return view('DashboardIndex',compact('count_message'));
+        }else{
+            return  redirect ('/login');   
+        }    
+    }
+
+
 }

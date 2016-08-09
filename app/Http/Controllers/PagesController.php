@@ -8,10 +8,11 @@ use App\Http\Requests;
 use App\Page;
 use Auth;
 use Session;
+use App\Message; 
 
 class PagesController extends Controller
 {
-    
+
 	public function index(){
         if(Auth::user()->status == 'reseller')
         {
@@ -23,7 +24,10 @@ class PagesController extends Controller
         }
         
         $rows=Page::where('site_id', $site_id)->get();
-        return  view ('page.index',['rows'=>$rows]);
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+        return  view ('page.index',['rows'=>$rows,'count_message'=>$count_message]);
      }
 
      public function show($id)
@@ -33,7 +37,19 @@ class PagesController extends Controller
 
      public function create()
      {
-        return  view ('page.create');
+       if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+
+        return  view ('page.create',['count_message'=>$count_message]);
      }
 
      public function ajaxexite_page($title,Request $request){
@@ -83,6 +99,9 @@ class PagesController extends Controller
         }else{
             $new_row->content=NULL;
         }
+
+        $new_row->type_static=$request->input('type_static');
+        
         $new_row->site_id=$site_id;
         $is_saved=$new_row->save();
         if($is_saved)
@@ -110,7 +129,20 @@ class PagesController extends Controller
         if ($user->cannot('access-pages', $row->site)) {
             abort(403);
         }
-        return  view ('page.edit',['row'=>$row]);
+
+        if(Auth::user()->status == 'reseller')
+        {
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $site_id=Auth::user()->site->id;    
+        }
+        
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
+     
+        return  view ('page.edit',['row'=>$row,'count_message'=>$count_message ]);
      }
 
      public function update($id,Request $request){
@@ -136,6 +168,8 @@ class PagesController extends Controller
         }
 
         $row->content=trim($request->input('content'));
+        $row->type_static=$request->input('type_static');
+
         $is_saved=$row->save();
         Session::flash('update_success', 'the page has been updated successfully');
         return redirect()->route('page.index');

@@ -236,7 +236,7 @@ i{
         Plugins.init(); // Init all plugins
         FormComponents.init(); // Init all form-specific plugins
 
-        // $('.picker').colorPicker(); // that's it
+        $('.picker').colorPicker(); // that's it
     });
     </script>
     <script type="text/javascript">
@@ -325,7 +325,7 @@ i{
 						<li class="dropdown messages-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="fa fa-envelope-o"></i>
-								<span class="label label-success">4</span>
+								<span class="label label-success">{{$count_message}}</span>
 							</a>
 							<ul class="dropdown-menu extended notification">
                             <!-- <li class="title">

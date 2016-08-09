@@ -4,50 +4,26 @@
 {{-- <div class="container"> --}}
 
 @include('../UserDashboardHeader')
-{{-- <div class="col-sm-9">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Show Domain
-                    <small>
-                    <!-- <i>Hello current_user</i> -->
-                    @if(!$domain)
-                    <div class='col-lg-offset-11 col-ms-1'>
-                        <a href="{{url('/domain/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
-                    </div></small>
-                    @endif
-                    <!-- <small><i>Hello current_user</i></small> -->
-                </h1>
-            </div>
+
+<section class="content">
+        <!-- <div>
+        <img src="{{url('assets/reseller_assets/images/13.png')}}" class="img-responsive"> 
+        </div> -->
+
+    <div class="row text-uppercase" style="text-align: center;">
+        <h1 style="color:#01A4A4;">
+        <span style="font-size:34px; font-weight: 700;">
+          Show Domain<br>
+        </span>
+        </h1>
+       <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc; ">  
         </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-md-5">
-                <a href="#">
-                </a>
-            </div>
-            <div class="col-md-10">
-               <table class="table">
-                    <tr>
-                    @if($domain)
-                        <td>{{ $domain->Domain_name }}</td>
-                        <td><a href="{{ url('/domain/edit/'.$domain->id) }}">
-                        <span class="glyphicon glyphicon-edit edit" id="{{$domain->id}}"></span></a></td>
-                    @else
-                        <h1>Empty Set</h1>
-                    @endif
-                    </tr>
-                </table>
-            </div> 
-        </div>
-        <!-- /.row -->
-        <hr/>
-</div><!--end leftsideof from-->
 
- <br/><br/><hr/><hr/>
+    @if(Session::has('update_success'))
+        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
+    @endif
 
 
-</div> --}}
-        <section class="content">
      <div class="row">
      @if(!$domain)
             <div class="pull-right">
@@ -63,12 +39,29 @@
             <div class="box-header">
         <table class="table">
                     <tr>
-                        <th>Name</th>
-                        <th>Edit</th>
+                        <th width='45%'>Domain Name</th>
+                         <th width='20%'> &nbsp; &nbsp; Seen</th>
+                        <th width='20%'> &nbsp; &nbsp; &nbsp; Status</th>
+                        <th width='15%'>Edit</th>
                     </tr>
                     <tr>
                     @if($domain)
                         <td>{{ $domain->Domain_name }}</td>
+
+                        @if($domain->is_seen==1)
+                            <td> &nbsp; <span style="color:green" class='glyphicon glyphicon-eye-open'> Seen</span></td>
+                        @else
+                            <td> &nbsp; <span style="color:red" class='glyphicon glyphicon-eye-close'> unseen</span></td>
+                        @endif
+
+                        @if($domain->is_solved==1)
+                            <td> &nbsp; <span style="color:green" class='glyphicon glyphicon-ok'> Selling</span></td>
+                        @else
+                            <td> &nbsp; <span style="color:red" class='glyphicon glyphicon-remove'> Not Selling</span></td>
+                        @endif
+
+
+
                         <td><a href="{{ url('/domain/edit/'.$domain->id) }}">
                         <span class="glyphicon glyphicon-edit edit" id="{{$domain->id}}"></span></a></td>
                     @else
@@ -78,9 +71,15 @@
                 </table>
       </div>
       </div>
+
+
+
+
+
       </div>
       </div>
         </section>
+        </div>
 @endsection
 
 

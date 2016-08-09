@@ -102,7 +102,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <textarea class="textarea" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='subdescription'>{{$subcategory->description}}</textarea>
+                <textarea style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" name='subdescription'>{{$subcategory->description}}</textarea>
             </div>
             </div>
             </div>
@@ -116,7 +116,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <textarea class="textarea" style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"name='ar_subdescription'>{{$subcategory->ar_description}}</textarea>
+                <textarea style="width: 100%; height: 150px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"name='ar_subdescription'>{{$subcategory->ar_description}}</textarea>
             </div>
             </div>               
           <!-- /.box --> 
