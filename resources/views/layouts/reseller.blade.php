@@ -150,7 +150,8 @@
             </ul>
 		</li>
 
-		<li class="treeview">
+<!-- for email -->
+		<!-- <li class="treeview">
 			<a href="#">
 				<i class="fa fa-envelope"></i>
 				<span>E-mail</span>
@@ -161,7 +162,10 @@
 				<li><a href="pages/email.html"><i class="fa fa-circle-o"></i>send E-mail</a></li>
 
 			</ul>
-		</li>
+		</li> -->
+
+
+
 		<li>
 			<a href="{{url('/domain/reseller_index')}}">
 				<i class="fa fa-share-square-o"></i>
