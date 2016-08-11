@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 08, 2016 at 07:44 PM
+-- Generation Time: Aug 10, 2016 at 11:07 PM
 -- Server version: 5.6.31-0ubuntu0.15.10.1
 -- PHP Version: 5.6.11-1ubuntu3.4
 
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `headers` (
 --
 
 INSERT INTO `headers` (`id`, `site_id`, `company_name`, `ar_company_name`, `slogan`, `ar_slogan`, `logo`, `created_at`, `updated_at`) VALUES
-(1, 2, 'library monk', 'مكتبة الراهب', 'library monk  you in everywhere', ' مكتبة الراهب معك فى كل مكان', '/assets/images/eman/branding/1470331364.png', '2016-08-04 14:23:51', '2016-08-04 15:22:44');
+(1, 2, 'library monk', 'مكتبة الراهب', 'library monk  you in everywhere', ' مكتبة الراهب معك فى كل مكان', '/assets/images/eman/branding/1470831488.png', '2016-08-04 14:23:51', '2016-08-10 10:18:08');
 
 -- --------------------------------------------------------
 
@@ -514,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `sites` (
 --
 
 INSERT INTO `sites` (`id`, `user_id`, `template_id`, `subdomain`, `slogan_color`, `text_color`, `primary_color`, `secondry_color`, `body_type`, `background_image`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(2, 2, 3, 'eman', 'rgb(165, 16, 16)', 'rgb(29, 99, 189)', 'rgb(205, 26, 127)', 'rgb(149, 181, 36)', 'centered', '/assets/images/eman/backgrounds/1470314512jpg', NULL, '2016-08-04 10:41:52', '2016-08-08 14:41:30');
+(2, 2, 4, 'eman', 'rgb(165, 16, 16)', 'rgb(29, 99, 189)', 'rgb(205, 26, 127)', 'rgb(149, 181, 36)', 'centered', '/assets/images/eman/backgrounds/1470314512jpg', NULL, '2016-08-04 10:41:52', '2016-08-09 20:10:40');
 
 -- --------------------------------------------------------
 
@@ -614,7 +614,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `mobile`, `password`, `image`, `status`, `remember_token`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 1, 'BusinessMonk', 'emanelabasy.iti@gmail.com', '01017149336', '$2y$10$JQbX/zPf3IUtUs9bFhnClu432apxHCwRYsOWZ9aC.6HFm66P2106e', '/default.jpg', 'reseller', NULL, NULL, NULL, NULL),
-(2, 1, 'eman', 'egad86@yahoo.com', '0101234567', '$2y$10$JQbX/zPf3IUtUs9bFhnClu432apxHCwRYsOWZ9aC.6HFm66P2106e', '/images/profile/portfolio-6.jpg', 'user', 'Jly9SClGJXPjUMLxjFRMgFgPqMpI1cYmqTGVq3hSXj3mFgfoQaMQHmxVMzp6', NULL, '2016-08-04 10:41:06', '2016-08-04 15:45:56');
+(2, 1, 'eman', 'egad86@yahoo.com', '0101234567', '$2y$10$JQbX/zPf3IUtUs9bFhnClu432apxHCwRYsOWZ9aC.6HFm66P2106e', '/images/profile/portfolio-6.jpg', 'user', 'nRveisNWuAerOLkC4okshZgHraLlWawjMV8v5KLPe84ay85MByxwKW268pkc', NULL, '2016-08-04 10:41:06', '2016-08-10 18:04:36');
 
 --
 -- Indexes for dumped tables

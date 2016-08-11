@@ -33,72 +33,57 @@
 
             @if($urlpages[$x]=='page_top')
                  <li>
-                    <a class="active" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="notaDiv" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
-                <?php 
-                // $findpage_top=1;
-                $mypage_top=$en_menupages[$x];?>
             @endif 
             @if($urlpages[$x]=='services')   
                 <li>
-                    <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
-                <?php 
-                // $findservices=1;
-                $myservices=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='about')
                 <li>
-                    <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
-                <?php 
-                // $findabout=1;
-                 $myabout=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='gallery')
                 <li>
-                    <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a  class="notaDiv" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
-                <?php 
-                // $findgallery=1;
-                $mygallery=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
-                <?php 
-                // $findnews=1;
-                $mynews=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="notaDiv"   href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
-                <?php 
-                // $findpromotion=1;
-                $mypromotion=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="notaDiv" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
-                 <?php
-                  // $findcontact=1;
-                 $mycontact=$en_menupages[$x];?>
             @endif 
             <!-- for static page -->
             @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
                 <li>
-                    <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                    <a class="notaDiv" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                 </li>
             @endif 
             @endfor
             <!-- for static page outside -->
             @if($url_outside_pages)
+            <?php $fstatic=0;?>
                 @for ($x = 0; $x < count($url_outside_pages); $x++)
                     <li>
-                        <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
+                        @if($fstatic==0)
+                            <a  class="active" href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
+                            <?php $fstatic=1;?>
+                        @else
+                            <a  href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
+                        @endif    
                     </li>
                     <?php 
                     // $findpage_top=1;
@@ -123,72 +108,57 @@
 
                         @if($urlpages[$x]=='page_top')
                              <li>
-                                <a class="active" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
-                            <?php 
-                            // $findpage_top=1;
-                            $mypage_top=$en_menupages[$x];?>
                         @endif 
                         @if($urlpages[$x]=='services')   
                             <li>
-                                <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a  class="notaDiv" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
-                            <?php 
-                            // $findservices=1;
-                            $myservices=$en_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='about')
                             <li>
-                                <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a  class="notaDiv" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
-                            <?php 
-                            // $findabout=1;
-                             $myabout=$en_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='gallery')
                             <li>
-                                <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
-                            <?php 
-                            // $findgallery=1;
-                            $mygallery=$en_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='news')
                             <li>
-                                <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
-                            <?php 
-                            // $findnews=1;
-                            $mynews=$en_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='promotion')
                             <li>
-                                <a  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
-                            <?php 
-                            // $findpromotion=1;
-                            $mypromotion=$en_menupages[$x];?>
                         @endif
                         @if($urlpages[$x]=='contact')
                             <li>
-                                <a href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a class="notaDiv" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
-                             <?php
-                              // $findcontact=1;
-                             $mycontact=$en_menupages[$x];?>
                         @endif 
                        <!-- for static page -->
                         @if($urlpages[$x]!='contact' and $urlpages[$x]!='promotion' and $urlpages[$x]!='gallery' and $urlpages[$x]!='news' and $urlpages[$x]!='page_top' and $urlpages[$x]!='services' and $urlpages[$x]!='about')
                             <li>
-                                <a class="page-scroll" href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
+                                <a class="notaDiv"  href="{{url($subdomain.'/en')}}">{{$en_menupages[$x]}}</a>
                             </li>
                         @endif 
                         @endfor
                         <!-- for static page outside -->
                         @if($url_outside_pages)
+                        <?php $fstaic=0;?>
                             @for ($x = 0; $x < count($url_outside_pages); $x++)
                                 <li>
-                                    <a class="page-scroll" href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
+                                    @if($fstaic==0)
+                                    <a  class="active" href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
+                                    <?php $fstaic=1;?>
+                                    @else
+                                    <a  href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$en_outside_menupages[$x]}}</a>
+                                    @endif
                                 </li>
                             
                             @endfor
@@ -217,9 +187,11 @@
 
 
 <!-- ========================================================= -->
+
 <!-- start staticpage -->
-@for($static=0;$static< count($pagearray_static);$static++) 
+@for($static=0; $static< count($url_outside_pages);$static++) 
 <section class="section" id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+    
     <div class="container">
     
         <h2 class="text-center title"><?php echo $staticpages[$static];?></h2>
