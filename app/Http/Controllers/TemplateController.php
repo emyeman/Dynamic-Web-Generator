@@ -14,6 +14,7 @@ use DB;
 use App\Category;
 use App\Site;
 use App\Aboutus;
+use App\Message;
 use App\Header;
 use App\Template;
 use App;
@@ -32,7 +33,19 @@ class TemplateController extends Controller{
     public function index(){
         $site =Auth::user()->site()->first()['attributes']['id'];
         $temps=Template::all();
-        return view('activetemp',compact('temps','site'));
+
+        if(Auth::user()->status == 'reseller')
+            {
+                $site_id=Session::get('user_id');
+            }
+            else
+            {
+                $site_id=Auth::user()->site->id;    
+            }
+                $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+                $count_message=count($unseen_messages);
+            
+        return view('activetemp',compact('temps','site','count_message'));
     }
 
     public function gotosite()
