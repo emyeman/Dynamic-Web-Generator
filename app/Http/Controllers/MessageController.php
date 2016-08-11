@@ -118,6 +118,7 @@ class MessageController extends Controller
             }
                 $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
                 $count_message=count($unseen_messages);
+                
             return view('DashboardIndex',compact('count_message'));
         }else{
             return  redirect ('/login');   
