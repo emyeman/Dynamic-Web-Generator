@@ -58,7 +58,7 @@
           <img class="img-responsive" src="{{ $temp->image }}" alt="" width="350" height="200" style=" margin-top: 25px;">
           <div class="overlay">
              <h2>{{ $temp->name }}</h2>
-             <a class="info" href="{{ url('/activetemp') }}/{{ $temp->id }}">live Demo</a>
+              <a class="info" href="{{ $temp->image }}" data-lightbox="23">live Demo</a>
           </div>
       </div>
   </div>

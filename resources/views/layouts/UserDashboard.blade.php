@@ -135,7 +135,7 @@ i{
     <!-- <link rel="stylesheet" href="{{ url('/assets/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}"/> -->
     <!--=== JavaScript ===-->
 
-    
+	<link rel="stylesheet" href="{{ url('assets/css/lightbox.css')}}">
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/table-scroll.css')}}">
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/main.css')}}">
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/bootstrap.min.css')}}">
@@ -493,6 +493,8 @@ i{
 	<script src="{{ url('assets/reseller_assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 	<!-- FastClick -->
 	<script src="{{ url('assets/reseller_assets/plugins/fastclick/fastclick.js') }}"></script>
+	<!--lightbox-->
+	<script src="{{ url('assets/js/lightbox.js')}}"></script>
 	<!-- AdminLTE App -->
 	<script src="{{ url('assets/reseller_assets/dist/js/app.min.js') }}"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
