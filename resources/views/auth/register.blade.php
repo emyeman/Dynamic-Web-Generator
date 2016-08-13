@@ -70,7 +70,7 @@
       <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
           <label for="image" class="col-md-5 control-label">Profile Image</label>
 
-          <div class="col-md-7">
+          <div class="col-md-5">
           <label class="btn btn-info form-control btn-file">
               Browse <input id="image" type="file" name="image" style="display: none;">
           </label>
