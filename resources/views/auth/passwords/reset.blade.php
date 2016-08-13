@@ -3,17 +3,11 @@
 @section('content')
 
 <div class="container">
-<div class="row">
-<h5 class="col-md-4 col-md-offset-3" style="margin-top:120px;">Reset <font color="red">Password</font></h5>
-<hr class="col-md-10 col-md-offset-2" style="margin-top:0px;"/>
+    <div class="row">
+        <h5 class="col-md-4 col-md-offset-3" style="margin-top:120px;">Reset <font color="red">Password</font></h5>
+            <hr class="col-md-10 col-md-offset-2" style="margin-top:0px;"/>
 
-<div class="col-md-10 col-md-offset-2">
-
-
-
-
-
-
+                <div class="col-md-10 col-md-offset-2">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {{ csrf_field() }}
 
@@ -68,8 +62,6 @@
                             </div>
                         </div>
                     </form>
-
-
                     </div>
                 </div>
             </div>
