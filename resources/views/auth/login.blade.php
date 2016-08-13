@@ -7,10 +7,10 @@
 
 <div class="container">
 <div class="row">
-<h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">User <font color="red">Login</font></h5>
-<hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
+<h5 class="col-md-4 col-md-offset-3" style="margin-top:120px;">User <font color="red">Login</font></h5>
+<hr class="col-md-10 col-md-offset-2" style="margin-top:0px;"/>
 
-<div class="col-md-10 col-md-offset-0">
+<div class="col-md-10 col-md-offset-2">
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
@@ -67,7 +67,7 @@
         </div>
         </div>
 </div>
-<div style="height:200px;">
+<div style="height:262px;">
 
 </div>
 
@@ -75,10 +75,10 @@
 
 <div class="container">
 <div class="row">
-<h5 class="col-md-4 col-md-offset-1" style="margin-top:120px;">User <font color="red">Login</font></h5>
-<hr class="col-md-10 col-md-offset-1" style="margin-top:0px;"/>
+<h5 class="col-md-4 col-md-offset-3" style="margin-top:120px;">User <font color="red">Login</font></h5>
+<hr class="col-md-10 col-md-offset-2" style="margin-top:0px;"/>
 
-<div class="col-md-10 col-md-offset-0">
+<div class="col-md-10 col-md-offset-2">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
@@ -135,12 +135,11 @@
                 </div>
             </div>
         </div>
-        <div style="height:200px;">
+        <div style="height:262px;">
 
 </div>
 
    
-
 
 <!-- jQuery 2.2.0 -->
 <script src="{{ url('assets/reseller_assets/plugins/jQuery/jQuery-2.2.0.min.js')}}"></script>
@@ -158,6 +157,7 @@
   });
 </script>
 
-
 @endif
+
+
 @endsection
