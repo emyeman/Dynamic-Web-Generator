@@ -154,7 +154,7 @@ class BrandingController extends Controller {
         if(Input::hasFile('logo')){  
                 $file = Input::file('logo');
                 $extension = $file->getClientOriginalExtension();
-                $file = $file->move(public_path().'/assets/images/'.$domain_name.'/branding/',time().$extension);
+                $file = $file->move(public_path().'/assets/images/'.$domain_name.'/branding/',time().'.'.$extension);
                 // $user->image = $file->getRealPath();
                 $imagePath = '/assets/images/'.$domain_name.'/branding/'.time().'.'.$extension;
         }
