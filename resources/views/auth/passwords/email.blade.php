@@ -1,13 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.outside')
 
-<!-- Main Content -->
 @section('content')
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
+<div class="row">
+<h5 class="col-md-4 col-md-offset-3" style="margin-top:120px;">Reset <font color="red">Password</font></h5>
+<hr class="col-md-10 col-md-offset-2" style="margin-top:0px;"/>
+
+<div class="col-md-10 col-md-offset-2">
+
+
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -39,9 +41,12 @@
                             </div>
                         </div>
                     </form>
+      
+
+                    </div>
                 </div>
             </div>
-        </div>
+        <div style="height:356px;">
+
     </div>
-</div>
 @endsection

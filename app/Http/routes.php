@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::get('/dashboard', function () {
  //    	return view('DashboardIndex');
 	// });
+
+	Route::get('/home', 'MessageController@dashboard');
 	Route::get('/dashboard','MessageController@dashboard');
 
 	// Route::get('/dashboard','DashboardController@index');
