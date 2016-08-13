@@ -13,11 +13,9 @@
 
 
 Route::auth();
-// Route::get('/home', 'HomeController@index');
 
-Route::get('/', 'HomeController@index');	
-
-
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::post('/message','MessageController@store')->name('message.store');;
 // The user is logged in...
@@ -28,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
  //    	return view('DashboardIndex');
 	// });
 
-	Route::get('/home', 'MessageController@dashboard');
+	// Route::get('/home', 'MessageController@dashboard');
 	Route::get('/dashboard','MessageController@dashboard');
 
 	// Route::get('/dashboard','DashboardController@index');
