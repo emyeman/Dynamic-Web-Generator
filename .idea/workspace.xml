@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33bd5ea6-b50a-42f6-a320-2e4867fc0d51" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth/.fuse_hidden0000345e00000001" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/try_activetemp.blade.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/assets/images/eman/crusal/1470330661.jpg" afterPath="$PROJECT_DIR$/public/assets/images/eman/crusal/1471178338.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/assets/images/eman/crusal/1470330870.jpg" afterPath="$PROJECT_DIR$/public/assets/images/eman/crusal/1471178350.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/BrandingController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/BrandingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/CrusalController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CrusalController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/NewsPromotionController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/NewsPromotionController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/activetemp.blade.php" afterPath="$PROJECT_DIR$/resources/views/activetemp.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/kickcube/ar.blade.php" afterPath="$PROJECT_DIR$/resources/views/kickcube/ar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/kickcube/en.blade.php" afterPath="$PROJECT_DIR$/resources/views/kickcube/en.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/UserDashboard.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/UserDashboard.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/reseller.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/reseller.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/spirit/ar.blade.php" afterPath="$PROJECT_DIR$/resources/views/spirit/ar.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/spirit/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/spirit/header.blade.php" />
     </list>
     <ignored path="Dynamic-Web-Generator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,11 +63,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="activetemp.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/activetemp.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SiteController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SiteController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="339">
-              <caret line="149" column="35" selection-start-line="149" selection-start-column="35" selection-end-line="149" selection-end-column="35" />
+              <caret line="161" column="35" selection-start-line="161" selection-start-column="35" selection-end-line="161" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -90,7 +103,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
@@ -115,16 +128,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1128">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoryController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -182,7 +185,6 @@
         <option value="$PROJECT_DIR$/resources/views/auth/old_login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/activetemp.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/kickcube/en.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/kickcube/ar.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CrusalController.php" />
@@ -190,6 +192,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/BrandingController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/NewsPromotionController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+        <option value="$PROJECT_DIR$/resources/views/activetemp.blade.php" />
       </list>
     </option>
   </component>
@@ -297,7 +300,25 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dynamic-Web-Generator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dynamic-Web-Generator" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,7 +503,7 @@
       <workItem from="1471076841994" duration="89000" />
       <workItem from="1471077230654" duration="3471000" />
       <workItem from="1471172943485" duration="6047000" />
-      <workItem from="1471179628702" duration="667000" />
+      <workItem from="1471179628702" duration="859000" />
     </task>
     <task id="LOCAL-00001" summary="Convert all relative paths to absolute paths&#10;If you found any path error please let me know on slack">
       <created>1465427074658</created>
@@ -502,7 +523,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74362000" />
+    <option name="totallyTimeSpent" value="74554000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="738" extended-state="0" />
@@ -775,14 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/activetemp.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/kickcube/en.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13260">
@@ -898,7 +911,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SiteController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
-          <caret line="149" column="35" selection-start-line="149" selection-start-column="35" selection-end-line="149" selection-end-column="35" />
+          <caret line="161" column="35" selection-start-line="161" selection-start-column="35" selection-end-line="161" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -923,6 +936,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/activetemp.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
           <folding />
         </state>
       </provider>

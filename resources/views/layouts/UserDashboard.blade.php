@@ -418,10 +418,10 @@ i{
 									</div>
 								</li>
 								@if(isset(Auth::user()->site))
-                                	<li class="dropdown-item"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}" >My Site</a></li>
-                            	@endif
-                                	<li class="dropdown-item"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}" >My Profile</a></li>
-                            	<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Log Out</a></li>
+                      	<li class="dropdown-item"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}" >My Site</a></li>
+                  	@endif
+                      	<li class="dropdown-item"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}" >My Profile</a></li>
+                  	<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Log Out</a></li>
 							</ul>
 						</li>
 
@@ -449,9 +449,9 @@ i{
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
 		<div class="pull-right hidden-xs">
-			<b>Version</b> 2.3.3
+			<b>Version</b> 1.1.1
 		</div>
-		<strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+		<strong>Copyright &copy; 2016-2017 <a target="_blank" href="http://businessmonk.net/"> Businessmonk</a>.</strong> All rights reserved.
 	</footer>
 
 

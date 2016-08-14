@@ -4,6 +4,12 @@
 
         <link href="{{ url('/assets/css/bootstrap-rtl.css')}}" type="text/css" rel="stylesheet">
         <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
+        <style type="text/css" media="screen">
+           .main-navigation .navbar-default .navbar-nav > li > a 
+            {
+                color:{{ $mysite[0]->primary_color }};
+            }  
+        </style>
 
     </head>
     
@@ -39,6 +45,7 @@
                                                 <span class="icon-bar"></span>
                                             </button>
                                         </div>
+
 
         <!-- ********************************************************** -->
                             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -601,7 +608,7 @@
                             <div class="col-sm-6 col-md-3 isotope-item {{str_replace(' ', '', str_replace('&', '', $subcategory->name))}}">
                                 <div class="image-box">
                                     <div class="overlay-container">
-                                        <img style="height:100; width:300px;" src="{{url('/assets/images/'.$image_product[$index_prod])}}" alt="">
+                                        <img style="max-height:100; max-width:300px; height:100; width:300px;" src="{{url('/assets/images/'.$image_product[$index_prod])}}" alt="">
                                         <a class="overlay" data-toggle="modal" data-target="#project-<?php echo $flagproject?>">
                                             <i class="fa fa-search-plus"></i>
                                             <span>{{$subcategory->ar_name}}</span>

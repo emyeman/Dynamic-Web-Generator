@@ -34,7 +34,19 @@ class SiteController extends Controller
         $row=Site::find($site_id);
         $row->template_id=$id;
         $row->save();
-        return redirect('/');
+
+
+         if(Auth::user()->status == 'reseller')
+        {
+            $site = DB::table('sites')->where('id',Session::get('user_id'))->get();
+            $doman_name = $site[0]->subdomain;
+            return redirect('/'.$doman_name.'/en');
+        }
+        else
+        {
+            return redirect('/'.Auth::user()->site->subdomain.'/en');
+        } 
+        // return redirect('/template');
 
 
     }
