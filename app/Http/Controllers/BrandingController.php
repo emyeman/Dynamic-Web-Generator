@@ -126,7 +126,7 @@ class BrandingController extends Controller {
             'slogan' => 'required',
             'ar_slogan' => 'required',
 
-            'logo' => 'max:700',
+            'logo' => 'max:2000',
         ]);
         $header = new Header($request->all());
 
@@ -185,8 +185,8 @@ class BrandingController extends Controller {
 
     public function update(Request $request, Header $header) {
         $this->validate($request, [
-            'company_name' => 'required|max:255',
-            'ar_company_name' => 'required|max:255',
+            'company_name' => 'required|max:2000',
+            'ar_company_name' => 'required|max:2000',
             'slogan' => 'required',
             'ar_slogan' => 'required',
             // 'logo' => 'max:20',

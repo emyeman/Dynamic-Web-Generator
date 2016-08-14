@@ -62,7 +62,7 @@
           </div>
       </div>
   </div>
-
+      <a href="{{ url('/active')  }}" class="btn btn-success"></a>
 <?php $row++; ?>
 @if($row % 2 == 0)
   </div>
