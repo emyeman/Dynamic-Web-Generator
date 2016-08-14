@@ -418,10 +418,10 @@ i{
 									</div>
 								</li>
 								@if(isset(Auth::user()->site))
-                                	<li class="dropdown-item"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}" >My Site</a></li>
-                            	@endif
-                                	<li class="dropdown-item"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}" >My Profile</a></li>
-                            	<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Log Out</a></li>
+                      	<li class="dropdown-item"><a href="{{ url('/site/edit/') }}/{{ Auth::user()->site->id }}" >My Site</a></li>
+                  	@endif
+                      	<li class="dropdown-item"><a href="{{ url('/user/edit/') }}/{{ Auth::user()->id }}" >My Profile</a></li>
+                  	<li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Log Out</a></li>
 							</ul>
 						</li>
 
