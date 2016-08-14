@@ -62,6 +62,7 @@
           </div>
       </div>
   </div>
+      
 <?php $row++; ?>
 @if($row % 2 == 0)
   </div>
