@@ -126,7 +126,7 @@ class NewsPromotionController extends Controller
             'ar_title' => 'required|max:300',
             'description' => 'required|max:2000',
             'ar_description' => 'required|max:2000',
-            'image' => 'required|image', // ????? what is the required max size
+            'image' => 'required|image|max:2000', // ????? what is the required max size
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
         ]);
@@ -223,7 +223,7 @@ class NewsPromotionController extends Controller
             'ar_title' => 'required|max:300',
             'description' => 'required|max:2000',
             'ar_description' => 'required|max:2000',
-            'image' => 'image', // ????? what is the required max size
+            'image' => 'image|max:2000', // ????? what is the required max size
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
         ]);

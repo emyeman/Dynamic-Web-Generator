@@ -153,7 +153,7 @@ class ProductController extends Controller
                 'ar_title_product' => 'required|max:255',
                 'ar_description' => 'required',
                 'ar_price_product' => 'required',
-                'image_product' => 'required',
+                'image_product' => 'required|max:2000',
                 
             ]);
 
@@ -263,7 +263,7 @@ class ProductController extends Controller
                 'ar_title_product' => 'required|max:255',
                 'ar_description' => 'required',
                 'ar_price_product' => 'required',
-                // 'image_product' => 'required',
+                'image_product' => 'max:2000',
                 
             ]);
 

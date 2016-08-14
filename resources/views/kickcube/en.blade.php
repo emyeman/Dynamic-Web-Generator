@@ -726,7 +726,7 @@
                                             <div class="clearfix"></div>
                                             <i class="fa fa-plus"></i>
                                         </div>
-                                        <img src="{{ url('/assets/images') }}/{{$product->image}}" class="img-responsive" alt="...">
+                                        <img src="{{ url('/assets/images') }}/{{$product->image}}" style="width:300px;height:300px;" class="img-responsive" alt="...">
                                     </a>
                                 </div>
                             </div>
@@ -742,7 +742,7 @@
     @foreach($cats_and_subcats as $cat_and_subcats)
         @foreach($cat_and_subcats->subcategories as $subcategory)
             @foreach($subcategory->products as $product)
-                    <div class="modal fade" id="product{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="product{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top:9%; outline: none; position: fixed;">
                         <div class="modal-dialog">
                             <div class="modal-content">
 
@@ -859,7 +859,7 @@
               <!-- Promotions 1 -->
                @foreach($promotions as $promotion)
               <div class="Promotion-item item">
-                  <a href="#promotion{{ $promotion->id }}"  data-toggle="modal" data-target="#promotion{{ $promotion->id }}">
+                  <a href="#promotion{{ $promotion->id }}"  data-toggle="modal">
               <div class="pricing-tables">
                 <div class="pricing-table">
               <div class="plan-name">
@@ -874,7 +874,7 @@
                 <ul>
                   <li><strong class="primary-text">Start Date</strong> {{ $promotion->start_date }}</li>
                   <li><strong class="primary-text">End Date</strong> {{ $promotion->end_date }}</li>
-                  
+
                 </ul>
               </div>
              
@@ -883,32 +883,34 @@
                       </a>
               </div>
               @endforeach
-
-                @foreach($promotions as $promotion)
-                    <div class="modal fade" id="promotion{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-md-12" >
-                                            <img src="{{ url('/assets/images') }}/{{$promotion->image}}" class="img-responsive" alt="...">
-                                        </div>
-                                        <hr>
-                                        <div class="col-md-12">
-                                            <h2 class="big-title text-center"> {{ $promotion->title }}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-                @endforeach
             </div>
           </div>
+            @foreach($promotions as $promotion)
+                <div class="modal fade" id="promotion{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                     style="top:9%; outline: none; position: fixed;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">{{ $promotion->title }}</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6" >
+                                        <img class="img-responsive" src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="" >
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p> {{ $promotion->description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+        @endforeach
           <!-- End Promotion Carousel -->
         </div>
         <!-- .row -->

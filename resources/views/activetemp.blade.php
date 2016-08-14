@@ -23,7 +23,7 @@
               <a class="info" href="{{ $temp->image }}" data-lightbox="23">live Demo</a>
           </div>
       </div>
-  
+      
 
 <br/><br/>
   <button style="width:250px; height:60px;" class="col-sm-6 col-md-4 container">

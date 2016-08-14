@@ -95,7 +95,7 @@ class CrusalController extends Controller
 
      public function store(Request $request){
         $this->validate($request, [
-            'image' => 'required|image|max:700'
+            'image' => 'required|image|max:2000'
         ]);
         $image = Input::file('image');
         $file_name=CrusalController::path_to_crusal_images($image);
@@ -183,7 +183,7 @@ class CrusalController extends Controller
             }
         }
         $this->validate($request, [
-            'image' => 'image|max:700'
+            'image' => 'image|max:2000'
         ]);
         $old_imag_name=$row->image;
         if (Input::hasFile('image'))// if the user didn't update the image the old image remain the same
