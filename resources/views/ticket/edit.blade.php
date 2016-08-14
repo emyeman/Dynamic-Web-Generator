@@ -7,8 +7,9 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">All Ticket</h3>
-
+                        <div>
+                        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/14-b.png')}}" class="img-responsive"> 
+                        </div>
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">

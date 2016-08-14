@@ -8,11 +8,11 @@
     <!-- Main content -->
 <section class="content" style="background-image: url({{url('assets/reseller_assets/images/18a.png')}});">
        
-<div class="info">
-  <h1 style="font-size:34px; font-weight: 700;">
-    <a href="{{url('/product')}}"><span class="glyphicon glyphicon-backward"></span></a>
- Add Products </h1>
-</div>
+<!-- <div class="info"> -->
+    <div>
+    <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/5a.png')}}" class="img-responsive"> 
+    </div>
+<!-- </div> -->
 
 @if (count($errors) > 0)
     <br>

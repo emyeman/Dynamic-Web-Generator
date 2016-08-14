@@ -7,9 +7,15 @@
 @section('content')
 
     @if($type=='promotion')
-        <a href="{{url('/news_promotion/promotion')}}"><span class="glyphicon glyphicon-backward"></span></a>
+        <!-- <a href="{{url('/news_promotion/promotion')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
+      <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/6a.png')}}" class="img-responsive"> 
+        </div>
      @else
-        <a href="{{url('/news_promotion/news')}}"><span class="glyphicon glyphicon-backward"></span></a>
+        <!-- <a href="{{url('/news_promotion/news')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
+        <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/2a.png')}}" class="img-responsive"> 
+        </div>
      @endif
        <section class="content">
        <div class="box box-warning">

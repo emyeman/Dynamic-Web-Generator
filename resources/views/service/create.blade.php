@@ -5,83 +5,12 @@
 @endsection
 
 @section('content')
-{{--     <h2><div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/service')}}"><span class="glyphicon glyphicon-backward"></span></a>
-    </div></small></h2>
-    <h2 class='page-header'>Add New Service</h2>
-    <br><br>
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    @if(Session::has('insert_success'))
-        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
-    @endif
-    <br/>
-
-    {!!Form::open(['route'=>'service.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
-        <div class='form-group'>
-            <label class='col-md-2'>English Tilte* </label>
-            <div class='col-md-10 input-group'>
-            <input placeholder='title ...' class='form-control title_service' id='title_service' name='title' type='text' value="{{old('title')}}"/>
-            </div>
-            <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This service already exists</span>            
-        </div>  
-
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Tilte* </label>
-            <div class='col-md-10 input-group'>
-            <input placeholder='title ...' class='form-control' name='ar_title' type='text' value="{{old('ar_title')}}"/>
-            </div>
-        </div>  
-
-        <div class='form-group'>
-            <label class='col-md-2'>Icon* </label>
-            <div class='col-md-10 input-group'>
-                <button class="btn btn-default form-control" name="icon" role="iconpicker"></button>
-            </div>
-        </div> 
-
-        <div class='form-group'>
-            <label class='col-md-2'>English Description* </label>
-            <div class='col-md-10 input-group'>                
-                <!-- <input placeholder='PlZ,enter description' class='form-control'name='description' type='text' />--> 
-                <textarea placeholder='description ...' class='form-control' name='description'>{{old('description')}}</textarea> 
-
-            </div>
-        </div>      
-
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Description* </label>
-            <div class='col-md-10 input-group'>                
-                <!-- <input placeholder='PlZ,enter description' class='form-control'name='description' type='text' />--> 
-                <textarea placeholder='description ...' class='form-control' name='ar_description'>{{old('ar_description')}}</textarea> 
-
-            </div>
-        </div>    
-
-        <span class='col-md-2'></span>
-        <input type='submit' class='col-md-10 btn btn-primary' name='ok' value="ADD" />
-    {!!Form::close() !!} --}}
-
-
-
-
-
-
-
-
         <section class="content">
         <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Add New Service</h3>
-            </div>
+        <div>
+            <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/10a.png')}}" class="img-responsive"> 
+            </div>            </div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>

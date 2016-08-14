@@ -7,7 +7,9 @@
 @section('content')
 	{!! Html::style('assets/css/table-scroll.css') !!}
 <div class="col-md-offset-1 col-sm-11">
-	<h2>All Messages</h2>
+	<div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/15.png')}}" class="img-responsive"> 
+        </div>
 	<div class="row">
         <div id="table-wrapper">
             <div id="table-scroll">

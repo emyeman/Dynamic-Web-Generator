@@ -17,11 +17,11 @@
             </div>
         @endif
         
-<div class="info">
-  <h1 style="font-size:34px; font-weight: 700;">
-    <a href="{{url('/product')}}"><span class="glyphicon glyphicon-backward"></span></a>
- Edit Products </h1>
-</div>
+<!-- <div class="info"> -->
+  <div>
+    <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/5b.png')}}" class="img-responsive"> 
+    </div>
+<!-- </div> -->
 <br/>
   
   {!!Form::open(['route'=>['product.update',$product->id],'files'=>true,'method'=>'put','class'=>'form-horizontal']) !!}

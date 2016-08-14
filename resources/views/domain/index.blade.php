@@ -11,11 +11,9 @@
         </div> -->
 
     <div class="row text-uppercase" style="text-align: center;">
-        <h1 style="color:#01A4A4;">
-        <span style="font-size:34px; font-weight: 700;">
-          Show Domain<br>
-        </span>
-        </h1>
+        <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/13-c.png')}}" class="img-responsive"> 
+        </div>
        <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc; ">  
         </div>
 

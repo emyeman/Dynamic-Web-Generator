@@ -9,9 +9,9 @@
 <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Show  Branding
-                    <!-- <small><i>Hello current_user</i></small> -->
-                </h1>
+                <div>
+                <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/3.png')}}" class="img-responsive"> 
+                </div>
             </div>
         </div>
         <!-- /.row -->

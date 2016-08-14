@@ -6,76 +6,11 @@
 
 @section('content')
 
-{{--     {!! Html::style('assets/css/table-scroll.css') !!}
-    <h1 class="page-header">Crusal</h1>
-    <div class="row">
-        <div class='col-lg-offset-11 col-ms-1'>
-            <a href="{{url('/crusal/create')}}"><span class="glyphicon glyphicon-plus"></span></a>
-        </div>
-    </div>
-    @if(Session::has('update_success'))
-        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
-    @endif
-    @if(Session::has('update_failed'))
-        <div class="alert alert-warning alert-autocloseable" role="alert">{!!session('update_failed')!!}</div>
-    @endif
-    <div class="row">
-        <div id="table-wrapper">
-            <div id="table-scroll">
-                <table class='table table-hover' style="table-layout: fixed;">
-                    <thead>
-                        <tr>
-                            <th width='15%'>Image</th> <!-- image -->
-                            <th width='35%'><span class="text">English title</span></th>
-                            <th width='35%'><span class="text">Arabic title</span></th>
-
-                            <th width='40%'><span class="text">English description</span></th>
-
-                            <th width='40%'><span class="text">Arabic description</span></th>
-
-                            <th width='5%'></th> <!-- delete operation -->
-                            <th width='5%'></th> <!-- edit operation -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($rows as $row)
-                            <tr> 
-                                <td>
-                                    <a href="{{url('/crusal/'.$row->id.'/edit')}}">
-                                        <img src="{{url('/assets/images'.$row->image)}}" width='100px' height='100px'></td>
-                                    </a>
-                                <td class='wrap'><a href="{{url('/crusal/'.$row->id.'/edit')}}">{{$row->title}}<a/></td>
-
-                                 <td class='wrap'><a href="{{url('/crusal/'.$row->id.'/edit')}}">{{$row->ar_title}}<a/></td> 
-
-                                <td class='wrap'>{{substr($row->description,0,100)}}</td>
-
-                                <td class='wrap'>{{substr($row->ar_description,0,100)}}</td>
-
-                                <td>
-                                    <a href="{{url('/crusal/'.$row->id.'/edit')}}">
-                                        <span class="glyphicon glyphicon-edit edit" id="{{$row->id}}"></span>
-                                    </a>
-                                </td> 
-                                <td><span class="glyphicon glyphicon-remove delete" id="{{$row->id}}"></span></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-
-     --}}
             <section class="content">
     <div class="row text-uppercase" style="text-align: center;">
-        <h1 style="color:#01A4A4;">
-        <span style="font-size:34px; font-weight: 700; ">
-        View your "Crusal" page<br>
-        Choose a picture&title and description.
-        </span>
-        </h1>
+        <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/7c.png')}}" class="img-responsive"> 
+        </div>
        <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc; margin-bottom: 75px;">  
         </div>
     @if(Session::has('update_success'))

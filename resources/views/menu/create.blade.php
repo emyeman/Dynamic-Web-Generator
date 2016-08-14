@@ -9,11 +9,9 @@
     <!-- Main content -->
     <section class="content">
     <div class="row text-uppercase" style="text-align: center;">
-        <h1 style="color:#01A4A4;">
-        <span style="font-size:34px; font-weight: 700; ">
-          <a href="{{url('/menu')}}"><span class="glyphicon glyphicon-backward"></span></a> 
-          ADD your "Menus" page<br>
-        </span>
+        <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/4a.png')}}" class="img-responsive"> 
+        </div>
         </h1>
        <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc; ">  
         </div>

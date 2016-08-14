@@ -10,8 +10,9 @@
         
         <section class="content">
         <div>
-        <img style="max-width: 50%; margin-left: 250px;" src="{{url('assets/reseller_assets/images/14.png')}}" class="img-responsive"> 
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/9c.png')}}" class="img-responsive"> 
         </div>
+
     
     @if(Session::has('update_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
