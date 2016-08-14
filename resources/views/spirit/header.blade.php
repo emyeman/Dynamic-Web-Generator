@@ -36,8 +36,6 @@
         <!-- Plugins -->
         <link href="{{ url('/assets/css/animations.css')}}" rel="stylesheet">
 
-        
-
         <!-- Worthy core CSS file -->
         <link href="{{ url('/assets/css/sally/style.css') }}" rel="stylesheet">
 

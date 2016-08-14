@@ -4,6 +4,12 @@
 
         <link href="{{ url('/assets/css/bootstrap-rtl.css')}}" type="text/css" rel="stylesheet">
         <link href="{{ url('/assets/css/emy.css')}}" rel="stylesheet">
+        <style type="text/css" media="screen">
+           .main-navigation .navbar-default .navbar-nav > li > a 
+            {
+                color:{{ $mysite[0]->primary_color }};
+            }  
+        </style>
 
     </head>
     
@@ -39,6 +45,7 @@
                                                 <span class="icon-bar"></span>
                                             </button>
                                         </div>
+
 
         <!-- ********************************************************** -->
                             <!-- Collect the nav links, forms, and other content for toggling -->
