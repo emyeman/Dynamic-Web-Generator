@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Message;
+use App\Page;
 use Auth;
+use DB;
 
 class MessageController extends Controller
 {
@@ -16,10 +18,17 @@ class MessageController extends Controller
         $user=Auth::user();
         $site_id=$user->site->id;
         $messages=Message::where('site_id','=',$site_id)->get();
+        $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+        $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+        
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-        return view('message.index',['messages'=>$messages,'count_message'=>$count_message]);
+        return view('message.index',['messages'=>$messages,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
     }
 
     public function store(Request $request)
@@ -64,18 +73,28 @@ class MessageController extends Controller
         
         if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
     	$message->is_seen=true;
     	$message->save();
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-    	return view('message.show',['message'=>$message,'count_message'=>$count_message]);
+    	return view('message.show',['message'=>$message,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
     }
 
     public function destroy($id)
@@ -109,17 +128,27 @@ class MessageController extends Controller
     public function dashboard(){
         if(Auth::user()){
             if(Auth::user()->status == 'reseller')
-            {
-                $site_id=Session::get('user_id');
-            }
-            else
-            {
-                $site_id=Auth::user()->site->id;    
-            }
-                $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
-                $count_message=count($unseen_messages);
+        {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            $site_id=Auth::user()->site->id;    
+        }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
                 
-            return view('DashboardIndex',compact('count_message'));
+            return view('DashboardIndex',compact('categories','subcategories','pages','count_message'));
         }else{
             return  redirect ('/login');   
         }    

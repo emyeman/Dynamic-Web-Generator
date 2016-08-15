@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Message;
+use App\Page;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -39,19 +40,14 @@ class SubCategoryController extends Controller
             }
 
             $products = DB::table('products')->get();
-            if(Auth::user()->status == 'reseller')
-            {
-                $site_id=Session::get('user_id');
-            }
-            else
-            {
-                $site_id=Auth::user()->site->id;    
-            }
             
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
          
-            return  view ('subcategory.index',compact('categories','subcategories','products','count_message'));
+            return  view ('subcategory.index',compact('categories','subcategories','pages','products','count_message'));
             
 
         } else{
@@ -86,12 +82,14 @@ class SubCategoryController extends Controller
                 // for make compare for delete subcategory or not
                 $site_id=Auth::user()->site->id; 
             }
+        // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
 
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
      
             if (!empty($categories)) {
-                return  view ('subcategory.create',compact('subcategories','count_message'));
+                return  view ('subcategory.create',compact('categories','subcategories','pages','count_message'));
             }else{
                 return  redirect ('/category/create');
             }
@@ -202,17 +200,26 @@ class SubCategoryController extends Controller
 
             if(Auth::user()->status == 'reseller')
             {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
                 $site_id=Session::get('user_id');
             }
             else
             {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
                 $site_id=Auth::user()->site->id;    
             }
         
+        // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
      
-            return  view ('subcategory.edit',compact('subcategory','category','categories','count_message'));
+            return  view ('subcategory.edit',compact('subcategory','category','categories','subcategories','pages','count_message'));
         } else{
             return  redirect ('/login');   
         } 

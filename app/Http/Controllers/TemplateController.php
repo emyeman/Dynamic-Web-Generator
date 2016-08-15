@@ -14,6 +14,7 @@ use DB;
 use App\Category;
 use App\Site;
 use App\Aboutus;
+use App\Page;
 use App\Message;
 use App\Header;
 use App\Template;
@@ -35,17 +36,27 @@ class TemplateController extends Controller{
         $temps=Template::all();
 
         if(Auth::user()->status == 'reseller')
-            {
-                $site_id=Session::get('user_id');
-            }
-            else
-            {
-                $site_id=Auth::user()->site->id;    
-            }
-                $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
-                $count_message=count($unseen_messages);
+        {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+            $site_id=Session::get('user_id');
+        }
+        else
+        {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            $site_id=Auth::user()->site->id;    
+        }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
+        $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+        $count_message=count($unseen_messages);
             
-        return view('activetemp',compact('temps','site','count_message'));
+        return view('activetemp',compact('categories','subcategories','pages','temps','site','count_message'));
     }
 
     public function gotosite()

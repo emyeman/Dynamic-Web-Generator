@@ -1,8 +1,25 @@
-/* element.style {
-    min-height: 1030px;
+/* .element.style {
+    min-height: 1427px;
 } */
 
-
-.element.style {
-    min-height: 1427px;
+.content-wrapper{
+  -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+  /* margin-left: 230px; */
+  height: 1427px;
 }
+
+/* 
+.main-sidebar, .left-side {
+    background-color: #222d32;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 57px;
+    height: 1427px;
+    width: 230px;
+    z-index: 810;
+
+ } */

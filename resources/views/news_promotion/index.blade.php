@@ -6,86 +6,31 @@
 
 @section('content')
 
-{{-- 
 {!! Html::style('assets/css/table-scroll.css') !!}
 
-    <h1 class="page-header">
-        @if($type=='promotion')
-            <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/6c.png')}}" class="img-responsive"> 
-        </div>
-        @else
-            <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/2c.png')}}" class="img-responsive"> 
-        </div>
-        @endif
-    </h1>
-    <div class="row">
-        <div class='col-lg-offset-11 col-ms-1'>
-            <a href="{{url('/news_promotion/create/'.$type)}}"><span class="glyphicon glyphicon-plus"></span></a>
-        </div>
-    </div >
-    @if(Session::has('update_success'))
-        <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
-    @endif
-    <div class="row">
-        <div id="table-wrapper">
-            <div id="table-scroll">
-                <table class='table table-hover' style="table-layout: fixed;">
-                    <thead>
-                        <tr>
-                            <th width='15%'></th>
-                            <th width='20%'><span class="text">English title</span></th>
-                            <th width='20%'><span class="text">Arabic title</span></th>
-                            <th width='25%'><span class="text">English description</span></th>
-                            <th width='25%'><span class="text">Arabic description</span></th>
-                            <th width='15%'><span class="text">start date</span></th>
-                            <th width='15%'><span class="text">end date</span></th>
-                            <th width='5%'></th>
-                            <th width='5%'></th> <!-- edit operation -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($rows as $row)
-                            <tr> 
-                                <td>
-                                    <a href="{{url('/news_promotion/'.$row->id.'/edit')}}">
-                                        <img src="{{url('/assets/images'.$row->image)}}" width='100px' height='100px'></td>
-                                    </a>
-                                <td class='wrap'><a href="{{url('/news_promotion/'.$row->id.'/edit')}}">{{$row->title}}<a/></td>
-
-                                <td class='wrap'><a href="{{url('/news_promotion/'.$row->id.'/edit')}}">{{$row->ar_title}}<a/></td>
-
-                                <td class='wrap'>{{substr($row->description,0,100)}}</td>
-
-                                <td class='wrap'>{{substr($row->ar_description,0,100)}}</td>
-
-                                <td>{{$row->start_date}}</td>
-                                <td>{{$row->end_date}}</td> 
-                                <td>
-                                    <a href="{{url('/news_promotion/'.$row->id.'/edit')}}">
-                                        <span class="glyphicon glyphicon-edit edit" id="{{$row->id}}"></span>
-                                    </a>
-                                </td> 
-                                <td><span class="glyphicon glyphicon-remove delete" id="{{$row->id}}"></span></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
- --}}
-        <section class="content">
+    @if($type=='promotion')
+        <!-- <a href="{{url('/news_promotion/promotion')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
         <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-        </div>  
+        <div class="col-md-4 col-md-offset-4">
+        <img style="min-width: 30%; " src="{{url('assets/reseller_assets/images/6c.png')}}" class="img-responsive"> 
         </div>
+        </div>
+     @else
+        <!-- <a href="{{url('/news_promotion/news')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <img style="min-width: 30%; " src="{{url('assets/reseller_assets/images/2c.png')}}" class="img-responsive"> 
+        </div>
+        </div>
+     @endif
+<br/>
+        <section class="content">
+        
     @if(Session::has('update_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
     @endif
      <div class="row">
-    <div class="col-md-11 col-md-offset-0">
+    <div class="col-md-10 col-md-offset-1">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">

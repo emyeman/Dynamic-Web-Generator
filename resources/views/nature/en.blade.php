@@ -237,21 +237,21 @@
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                 </li>
                 <?php $findnews=1;
                 $mynews=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                 </li>
                 <?php $findpromotion=1;
                 $mypromotion=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
                 </li>
                  <?php $findcontact=1;
                  $mycontact=$en_menupages[$x];?>

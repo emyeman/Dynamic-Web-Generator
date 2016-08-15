@@ -10,9 +10,11 @@
 
 <!-- Main content -->
         <section class="content">
-        <!-- <div>
+        <!-- <div class="row">
+        <div class="col-md-4 col-md-offset-4">
         <img src="{{url('assets/reseller_assets/images/13.png')}}" class="img-responsive"> 
-        </div> -->
+        </div> 
+        </div>-->
 
     <div class="row text-uppercase" style="text-align: center;">
         <h1 style="color:#01A4A4;">

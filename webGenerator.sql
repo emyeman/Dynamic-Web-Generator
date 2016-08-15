@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `aboutuses` (
 -- Dumping data for table `aboutuses`
 --
 
-INSERT INTO `aboutuses` (`id`, `site_id`, `description`, `ar_description`, `image`, `created_at`, `updated_at`) VALUES
+INSERT INTO `aboutuses` (`id`, `site_id`, `ar_description`, `description`, `image`, `created_at`, `updated_at`) VALUES
 (1, 2, 'من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن من نحن', 'about us about us about us about us about us about us about us about us about us aboutabout us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us about us  us', '/eman/aboutus/1470671892.jpg', '2016-08-08 13:58:12', '2016-08-08 13:58:12');
 
 -- --------------------------------------------------------
@@ -97,10 +97,6 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`id`, `user_id`, `ticket_id`, `comment`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'hkghdlkh jlkdhlk', NULL, '2016-08-04 10:47:30', '2016-08-04 10:47:30'),
-(2, 2, 1, 'giiertg ionh fg', NULL, '2016-08-04 10:48:53', '2016-08-04 10:48:53'),
-(3, 2, 1, 'sssssss ssss', NULL, '2016-08-04 14:15:48', '2016-08-04 14:15:48');
 
 -- --------------------------------------------------------
 

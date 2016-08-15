@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use App\Contact;
 use App\Message;
+use App\Page;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -24,19 +25,28 @@ class ContactUsController extends Controller
             if(Auth::user()->status == 'reseller')
             {
                 $contacts=DB::table('contacts')->where('site_id',Session::get('user_id'))->get();
-                $site_id = Session::get('user_id');
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
             }
             else
             {
                 $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
                 $site_id=Auth::user()->site->id;
             }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
 
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
 
             if($contacts){
-                return  view ('contactus.index',compact('contacts','count_message'));
+                return  view ('contactus.index',compact('categories','subcategories','pages','contacts','count_message'));
             }else{
                 // return  view ('contactus.create',compact('contacts'));
                 return  redirect ('/contactus/create');
@@ -61,21 +71,30 @@ class ContactUsController extends Controller
             if(Auth::user()->status == 'reseller')
             {
                 $contacts=DB::table('contacts')->where('site_id',Session::get('user_id'))->get();
-                $site_id = Session::get('user_id');
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
             }
             else
             {
                 $contacts=DB::table('contacts')->where('site_id',Auth::user()->id)->get();
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
                 $site_id=Auth::user()->site->id;
             }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
 
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
 
              if($contacts){
-                return  view ('contactus.index',compact('contacts','count_message'));
+                return  view ('contactus.index',compact('categories','subcategories','pages','contacts','count_message'));
             }else{
-                return  view ('contactus.create',compact('contacts','count_message'));
+                return  view ('contactus.create',compact('categories','subcategories','pages','contacts','count_message'));
             }
         }else{
             return  redirect ('/login');   
@@ -157,19 +176,30 @@ class ContactUsController extends Controller
                 throw new ModelNotFoundException($e->getMassege());
                 
             }
+            
+            if(Auth::user()->status == 'reseller')
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+            }
+            else
+           
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;    
+            }
 
-        if(Auth::user()->status == 'reseller')
-        {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;
-        }
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
             
-            return  view ('contactus.edit',compact('contact','count_message'));
+            return  view ('contactus.edit',compact('categories','subcategories','pages','contact','count_message'));
         } else{
             return  redirect ('/login');   
         }

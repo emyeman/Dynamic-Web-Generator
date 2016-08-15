@@ -8,8 +8,10 @@
       
     <!-- Main content -->
     <section class="content">
-        <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/3b.png')}}" class="img-responsive"> 
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4"> 
+        <img style="min-width: 30%;" src="{{url('assets/reseller_assets/images/3b.png')}}" class="img-responsive"> 
+        </div>
         </div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -101,10 +103,18 @@
          <div class="box">
             <div class="box-header">
                 <div class="box-footer clearfix">
-               <div class="input-group-btn">
-                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='EDIT' />   
-               </div>
-            </div>
+                  <div class="input-group-btn">
+                     <div class="row">
+                     <div class="col-md-4">
+                       <a href="{{url('/category')}}"><input id="add-new-event" type="button" class="btn btn-primary  pull-left "  value='Back' style="width:250px;"></a>
+                      </div>
+                      <div class="col-md-4"></div>
+                      <div class="col-md-4">
+                          <input type='submit' class='pull-right btn btn-primary ' name='ok' value='EDIT' style="width:250px;"/>   
+                       </div>
+                       </div>  
+                  </div>
+              </div>
             </div>
           <!-- /.box --> 
      </div>

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Session;
 use DB;
 use App\Message;
+use App\Page;
 
 class CrusalController extends Controller
 {
@@ -34,21 +35,32 @@ class CrusalController extends Controller
 
 	public function index(){
 
-        if(Auth::user()->status == 'reseller')
-        {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;
-        }
+         if(Auth::user()->status == 'reseller')
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+            }
+            else
+           
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;    
+            }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+            
         
         $rows=Crusal::where('site_id', $site_id)->get();
 
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-        return  view ('crusal.index',['rows'=>$rows,'count_message'=>$count_message]);
+        return  view ('crusal.index',['rows'=>$rows,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
      }
 
      public function show($id){
@@ -58,19 +70,30 @@ class CrusalController extends Controller
 
      public function create(){
           if(Auth::user()->status == 'reseller')
-        {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;
-        }
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+            }
+            else
+           
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;    
+            }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+            
         
         $rows=Crusal::where('site_id', $site_id)->get();
 
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
-        return  view ('crusal.create',['count_message'=>$count_message]);
+        return  view ('crusal.create',['categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
      }
 
     public function ajaxexite_crusal($title,Request $request){
@@ -148,19 +171,30 @@ class CrusalController extends Controller
                 }
             }
 
-        if(Auth::user()->status == 'reseller')
-        {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;
-        }
+             if(Auth::user()->status == 'reseller')
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+            }
+            else
+           
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;    
+            }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+            
     
          $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
             
-            return  view ('crusal.edit',['row'=>$row,'count_message'=>$count_message]);
+            return  view ('crusal.edit',['row'=>$row,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
         }
         catch(Exception $e)
         {

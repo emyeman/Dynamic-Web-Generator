@@ -7,15 +7,20 @@
 @section('content')
     @if($type=='promotion')
         <!-- <a href="{{url('/news_promotion/promotion')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
-      <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/6b.png')}}" class="img-responsive"> 
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <img style="min-width: 30%; " src="{{url('assets/reseller_assets/images/6b.png')}}" class="img-responsive"> 
+        </div>
         </div>
      @else
         <!-- <a href="{{url('/news_promotion/news')}}"><span class="glyphicon glyphicon-backward"></span></a> -->
-        <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/2b.png')}}" class="img-responsive"> 
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <img style="min-width: 30%; " src="{{url('assets/reseller_assets/images/2b.png')}}" class="img-responsive"> 
+        </div>
         </div>
      @endif
+
        <section class="content">
        <div class="box box-warning">
             <div class="box-header with-border">
@@ -102,10 +107,22 @@
       {{Form::text('end_date', old('end_date') ,['class'=>'form-control','rows'=>'4','style'=>'position: absolute; z-index: 5;'])}}
       </div>
     </div>
-
+<br/>
         <div class="box-footer clearfix col-md-5 col-md-offset-1" style="margin-top:30px;">
-            <div class="input-group-btn">
-                <input type='submit' class='btn btn-primary btn-flat pull-right' name='ok' value='Update' />
+                        <div class="input-group-btn">
+               <div class="row">
+               <div class="col-md-4">
+               @if($type=='promotion')
+                 <a href="{{url('/news_promotion/promotion')}}"><input id="add-new-event" type="button" class="btn btn-primary  pull-left "  value='Back' style="width:200px;"></a>
+              @else
+                <a href="{{url('/news_promotion/news')}}"><input id="add-new-event" type="button" class="btn btn-primary  pull-left "  value='Back' style="width:200px;"></a>
+              @endif
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <input type='submit' class='pull-right btn btn-primary ' name='ok' value='EDIT' style="width:200px;"/>   
+                 </div>
+                 </div>  
             </div>
         </div>
             {!!Form::close() !!}

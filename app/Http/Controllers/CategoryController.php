@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Message;
+use App\Page;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -27,20 +28,24 @@ class CategoryController extends Controller
                  $categories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNull('category_id')->get();
                  $allcategories=DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
                  // dd($categories);
-                  $site_id = Session::get('user_id');
+                 $subcategories=$allcategories;
+                $site_id = Session::get('user_id');
             }
             else
             {
                  $categories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNull('category_id')->get();
                  $allcategories=DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                 $subcategories=$allcategories;
                  $site_id=Auth::user()->site->id;
             }
         
-        
+        // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-            return  view ('category.index',compact('categories','allcategories','count_message'));
+            return  view ('category.index',compact('categories','subcategories','pages','allcategories','count_message'));
             
        } else{
             return  redirect ('/login');   
@@ -59,16 +64,26 @@ class CategoryController extends Controller
      public function create(){
         if (Auth::user()){
             if(Auth::user()->status == 'reseller')
-        {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;
-        }
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+            }
+            else
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;    
+            }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+            
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
-            return  view ('category.create',compact('count_message'));
+            return  view ('category.create',compact('categories','subcategories','pages','count_message'));
         }else{
             return  redirect ('/login');   
         }
@@ -168,18 +183,29 @@ class CategoryController extends Controller
                 throw new ModelNotFoundException($e->getMassege());
                 
             }
+            
             if(Auth::user()->status == 'reseller')
-        {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;
-        }
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+            }
+            else
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;    
+            }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
             
-            return  view ('category.edit',compact('category','count_message'));
+            return  view ('category.edit',compact('categories','subcategories','pages','category','count_message'));
         } else{
             return  redirect ('/login');   
         }    

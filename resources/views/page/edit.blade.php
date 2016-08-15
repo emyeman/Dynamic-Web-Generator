@@ -11,8 +11,8 @@
   <!-- Main content -->
     <section class="content">
        <div class="row">
-      <div class="col-md-10 col-md-offset-1 ">
-    <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/8b.png')}}" class="img-responsive" style="margin-top:-15px; margin-left: 12px;"> 
+      <div class="col-md-4 col-md-offset-4 ">
+    <img style="min-width: 30%; " src="{{url('assets/reseller_assets/images/8b.png')}}" class="img-responsive" style="margin-top:-15px; margin-left: 12px;"> 
     </div>
     </div>
  @if (count($errors) > 0)
@@ -33,7 +33,7 @@
       <div class='form-group'>
         <!-- <label class='col-md-2'>Title *</label> -->
         <!-- <div class="box-header with-border"> -->
-          <h3 class="box-title">&nbsp; <a href="{{url('/page')}}"><span class="glyphicon glyphicon-backward"></span></a> Edit Your Title of Page</h3>
+          <h3 class="box-title">&nbsp;   Edit Your Title of Page</h3>
       <!-- </div> -->
         <div class='col-md-12'>
         <div class="box box-warning">
@@ -77,8 +77,16 @@
             <div class="box-header">
                 <div class="box-footer clearfix">
                <div class="input-group-btn">
-                    <input type='submit' class='btn-flat pull-right form-control btn btn-primary' name='ok' value='EDIT' />   
-               </div>
+               <div class="row">
+               <div class="col-md-4">
+                 <a href="{{url('/page')}}"><input id="add-new-event" type="button" class="btn btn-primary  pull-left "  value='Back' style="width:250px;"></a>
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <input type='submit' class='pull-right btn btn-primary ' name='ok' value='EDIT' style="width:250px;"/>   
+                 </div>
+                 </div>  
+            </div>
             </div>
             </div>
           <!-- /.box --> 

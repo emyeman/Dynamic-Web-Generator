@@ -9,6 +9,7 @@ use App\Page;
 use Auth;
 use Session;
 use App\Message; 
+use DB;
 
 class PagesController extends Controller
 {
@@ -16,18 +17,27 @@ class PagesController extends Controller
 	public function index(){
         if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
         
         $rows=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-        return  view ('page.index',['rows'=>$rows,'count_message'=>$count_message]);
+        return  view ('page.index',['rows'=>$rows,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
      }
 
      public function show($id)
@@ -39,17 +49,26 @@ class PagesController extends Controller
      {
        if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
-        
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-        return  view ('page.create',['count_message'=>$count_message]);
+        return  view ('page.create',['categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
      }
 
      public function ajaxexite_page($title,Request $request){
@@ -132,17 +151,27 @@ class PagesController extends Controller
 
         if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+        
         
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
      
-        return  view ('page.edit',['row'=>$row,'count_message'=>$count_message ]);
+        return  view ('page.edit',['row'=>$row,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message ]);
      }
 
      public function update($id,Request $request){
