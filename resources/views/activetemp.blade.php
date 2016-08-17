@@ -23,10 +23,10 @@
               <a class="info" href="{{ $temp->image }}" data-lightbox="23">live Demo</a>
           </div>
       </div>
-      
+
 
 <br/><br/>
-  <button style="width:250px; height:60px;" class="col-sm-6 col-md-4 container">
+  <button style="width:230px; height:60px;" class="col-sm-6 col-md-4 container">
     <a target="_blank" href="/activetemp/{{ $temp->id }}">  
       <p class="text" style="text-align:center;"><strong>
       <font color="gray" style="font-size:20px;">{{ $temp->name }}</font></strong></p> 

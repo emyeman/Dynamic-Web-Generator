@@ -203,7 +203,7 @@
 </header>
 @endif
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
 
 @if(isset($crusals) && $crusals != null)
 <!-- Wrapper for slides -->
@@ -253,7 +253,7 @@
 <!-- section start -->
 <!-- ================ -->
 
-<div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
+<div class="section clearfix object-non-visible" data-animation-effect="fadeIn" style="margin-top: 100px;">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -293,7 +293,7 @@
 <!-- section start -->
 <!-- ================ -->
 @if(isset($promotions) && $promotions != null)
-<div class="section translucent-bg bg-image-2 pb-clear" style="background: url('{{ $mysite[0]->background_image }}') 50% 0px no-repeat;">
+<div class="section translucent-bg bg-image-2 pb-clear" style="background: url('{{ $mysite[0]->background_image }}') 50% 0px no-repeat;margin-top: 100px;">
 <div class="container object-non-visible" data-animation-effect="fadeIn">
     <h1 id="promotion" class="title text-center">Promotions</h1>
     <div class="space"></div>

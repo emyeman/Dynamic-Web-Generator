@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
 
     public function index()
-    {    
+    {
         if(isset(Auth::user()->id))
         {
             $site =Auth::user()->site()->first()['attributes']['id'];
@@ -57,7 +57,8 @@ class HomeController extends Controller
                 }    
             }
         catch (\Exception $e) {
+
                 return view('home');
-            }        
+        }
     }
 }

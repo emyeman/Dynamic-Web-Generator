@@ -235,7 +235,7 @@ h2.zero,p.zero {
                 @else
                     <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
                   <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}/default.jpg" class="img-circle">
-                    <div class="dropdown-content" style="left:0;">
+                    <div class="dropdown-content" style="left:-10px;">
                        <a href="{{ url('/login') }}">Login</a></li>
 
                         <a href="{{ url('/register') }}">Make Your Website</a>
@@ -388,7 +388,7 @@ h2.zero,p.zero {
                 @else
                     <div class="dropdown" style="float:left;margin-left:5px;margin-top:-5px;">
                   <img style="width:45px;height:40px;overflow:visible" src="{{ url('/') }}/default.jpg" class="img-circle">
-                    <div class="dropdown-content" style="left:0;">
+                    <div class="dropdown-content" style="left:-10px;">
                        <a href="{{ url('/login') }}">Login</a></li>
 
                         <a href="{{ url('/register') }}">Make Your Website</a>
