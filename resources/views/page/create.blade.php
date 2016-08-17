@@ -11,7 +11,7 @@
     <section class="content">
        <div class="row">
       <div class="col-md-10 col-md-offset-1 ">
-    <img src="{{url('assets/reseller_assets/images/19a.png')}}" class="img-responsive" style="margin-top:-15px; margin-left: 12px;"> 
+    <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/8a.png')}}" class="img-responsive" style="margin-top:-15px; margin-left: 12px;"> 
     </div>
     </div>
 @if(Session::has('insert_success'))

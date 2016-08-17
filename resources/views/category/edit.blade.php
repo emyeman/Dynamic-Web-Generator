@@ -9,7 +9,7 @@
     <!-- Main content -->
     <section class="content">
         <div>
-        <img src="{{url('assets/reseller_assets/images/12.png')}}" class="img-responsive"> 
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/3b.png')}}" class="img-responsive"> 
         </div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">

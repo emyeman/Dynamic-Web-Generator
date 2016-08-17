@@ -11,9 +11,13 @@
 
     <h1 class="page-header">
         @if($type=='promotion')
-            Promotions
+            <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/6c.png')}}" class="img-responsive"> 
+        </div>
         @else
-            News
+            <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/2c.png')}}" class="img-responsive"> 
+        </div>
         @endif
     </h1>
     <div class="row">

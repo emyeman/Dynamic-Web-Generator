@@ -8,6 +8,9 @@
 
 
         <section class="content">
+        <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/1a.png')}}" class="img-responsive"> 
+        </div>
         @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -64,13 +67,10 @@
     </label>
     </div>
    </div>
-
-
-        
-             </div>
+</div>
             
        
-            </div>
+</div>
 
         </div>
         <div class="box-footer clearfix">

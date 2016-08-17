@@ -15,9 +15,8 @@
  @if($flagadd==0)
   <!-- Main content -->
     <section class="content">
-    <div class="col-md-6 col-md-offset-3">
-      <img src="{{url('assets/reseller_assets/images/10.png')}}" width="350" height="329" class="img-responsive" style="margin-left: 100px;
-              margin-top: -15px;">
+    <div>
+      <img src="{{url('assets/reseller_assets/images/12-a.png')}}"  class="img-responsive" style="min-width: 35%; margin-left: 290px;">
     </div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">

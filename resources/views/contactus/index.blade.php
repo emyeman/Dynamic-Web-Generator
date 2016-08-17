@@ -13,9 +13,8 @@
 
 <div class="col-md-offset-1 col-sm-9">
 <section class="content">
-    <div class="col-md-6 col-md-offset-1">
-      <img src="{{url('assets/reseller_assets/images/10.png')}}" width="350" height="329" class="img-responsive" style="margin-left: 100px;
-              margin-top: -15px;">
+    <div>
+      <img src="{{url('assets/reseller_assets/images/12-c.png')}}"  class="img-responsive" style="min-width: 3%; margin-left: 290px;">
     </div>
 
         <div class="row">

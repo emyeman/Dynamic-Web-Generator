@@ -5,75 +5,13 @@
 @endsection
 
 @section('content')
-{{--     <h2><div class='col-lg-1 col-ms-1'>
-            <a href="{{url('/crusal')}}"><span class="glyphicon glyphicon-backward"></span></a>
-    </div></small></h2>
-
-    <h2 class='page-header'>Add Image to Crusal</h2>
-
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <br><br>
-    
-    @if(Session::has('insert_success'))
-        <div class="alert alert-success alert-autocloseable" role="alert">{{session('insert_success')}}</div>
-    @endif
-    {!!Form::open(['route'=>'crusal.store','method'=>'post','files'=>true,'class'=>'form-horizontal']) !!}
-        <div class='form-group'>
-            <label class='col-md-2'>English Title</label>
-            <div class='col-md-10 input-group'>
-                <input placeholder='title...' class='form-control title_crusal' id='title_crusal' name='title' type='text' value="{{old('title')}}"/>
-            </div>
-            <span id="title_err" style="color:red; size:12px; margin-left:170px;padding:10px 100px;font-weight:bold;background-color:lightpink;">This crusal already exists</span>            
-        </div>
-
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Title</label>
-            <div class='col-md-10 input-group'>
-                <input placeholder='title...' class='form-control' name='ar_title' type='text' value="{{old('ar_title')}}"/>
-            </div>
-        </div>  
-
-        <div class='form-group'>
-            <label class='col-md-2'>English Description</label>
-            <div class='col-md-10 input-group'>
-                <textarea placeholder='description...' class='form-control' name='description'  rows="4" style='resize: none;'>{{old('description')}}</textarea>
-            </div>
-        </div>
-
-        <div class='form-group'>
-            <label class='col-md-2'>Arabic Description</label>
-            <div class='col-md-10 input-group'>
-                <textarea placeholder='description...' class='form-control' name='ar_description'  rows="4" style='resize: none;'>{{old('ar_description')}}</textarea>
-            </div>
-        </div>
-
-
-        <div class='form-group'>
-            <label class='col-md-2'>Image*</label>
-            <div class='col-md-10 input-group'>
-                <input class='form-control' name='image' type='file' />
-            </div>
-        </div>    
-        <input type='submit' class='col-md-offset-2 col-md-10 btn btn-primary' name='ok' value='ADD' />
-    {!!Form::close() !!} --}}
-
-
 
        <section class="content">
        <div class="box box-warning">
             <div class="box-header with-border">
-              <h3 class="box-title">Add New Crusal</h3>
-            </div>
+        <div>
+        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/7a.png')}}" class="img-responsive"> 
+        </div>            </div>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
