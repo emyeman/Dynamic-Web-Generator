@@ -153,7 +153,7 @@ class ResellerController extends Controller
         $user->user_id = Auth::user()->id;
         if( $user->addUser($user))
         {
-            Session::flash('insert_success', 'A new service has been added successfully');
+            Session::flash('insert_success', 'A new user has been added successfully');
             Session::set('user_id',$user->id);
             return redirect('/site/create');
         }else{

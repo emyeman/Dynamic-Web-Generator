@@ -104,6 +104,9 @@
       button.btn.tf-btn.btn-default {
      background: {{ $mysite[0]->primary_color }};
   }
+    .hover-text h2{
+        color:{{ $mysite[0]->text_color }};
+    }
   </style>
 
   </head>
@@ -427,32 +430,7 @@
         </div>
     </div>
 
-    @foreach($promotions as $promotion)
-    <div class="modal fade" id="{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    
-                  <div class="modal-content">
-                    <div class="modal-header" style="background: #09ab9b;">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title">{{ $promotion->ar_title }}</h4>
-                    </div>
-                    <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-6 col-xs-12">
-                        <img class="img-responsive" src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="" >
-                      </div>
-                       <div class="col-md-6 col-xs-12">
-                         <p> {{ $promotion->ar_description }}</p>
-                       </div>
-                    </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">اغلاق</button>
-                    </div>
-                  </div><!-- /.modal-content -->               
-              </div>
-           </div>
-           @endforeach
+
 
   @endif
 
@@ -478,7 +456,7 @@
                     <li class="pull-right wow fadeInRight">
                         <ol class="type">
 
-                            <li> <button class="btn btn-default btn-xs" type="button" id="buton1"  ><a href="#" data-filter="*" class="active">الكل</a>
+                            <li> <button class="btn btn-default btn-xs" type="button" id="buton1" style="margin-top: -42px;" ><a href="#" data-filter="*" class="active">الكل</a>
                             </button></li>
 
                             @foreach($cats_and_subcats as $cat_and_subcats)
@@ -516,12 +494,12 @@
                             <div class="hover-bg">
                                 <a href="#">
                                     <div class="hover-text">
-                                        <h4 style="color:white">{{ $product->ar_name }}</h4>
+                                        <h2>{{ $product->ar_name }}</h2>
                                         <small style="color:white">{{ $product->ar_price }}</small>
                                         <div class="clearfix"></div>
                                         <i class="fa fa-plus"></i>
                                     </div>
-                                    <img src="{{ url('/assets/images') }}/{{$product->image}}" class="img-responsive" alt="...">
+                                    <img src="{{ url('/assets/images') }}/{{$product->image}}" style="width: 300px;height: 300px;" class="img-responsive" alt="...">
                                 </a>
                             </div>
                         </div>
@@ -534,6 +512,32 @@
             </div>
         </div>
     </div>
+
+
+    @foreach($cats_and_subcats as $cat_and_subcats)
+        @foreach($cat_and_subcats->subcategories as $subcategory)
+            @foreach($subcategory->products as $product)
+                <div class="modal fade" id="product{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">{{ $product->ar_name }}</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p><img class="img-responsive" src="{{ url('/assets/images') }}/{{$product->image}}" alt="" ></p><br>
+                                <p>{{ $product->ar_description }}</p><br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div>
+                </div>
+            @endforeach
+        @endforeach
+    @endforeach
 
 @endif
 
@@ -716,6 +720,36 @@
     <!-- Javascripts
     ================================================== -->
     <script type="text/javascript" src="{{ url('/assets/Temp2/en/js/main.js')}}"></script>
+
+    @foreach($promotions as $promotion)
+        <div class="modal fade" id="{{ $promotion->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document" style="z-index: inherit">
+
+                <div class="modal-content">
+                    <div class="modal-header" style="background: #09ab9b;">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">{{ $promotion->ar_title }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <img class="img-responsive" src="{{ url('/assets/images/')}}{{ $promotion->image }}" alt="" >
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <p> {{ $promotion->ar_description }}</p>
+                                From:<span style="margin-left: 10px;color: blue;"><b>{{ $promotion->start_date }}</b></span>
+                                <br>
+                                To:<span style="margin-left: 12px;color: blue;"><b>{{ $promotion->end_date }}</b></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">اغلاق</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+        </div>
+    @endforeach
 
   </body>
 </html>
