@@ -104,6 +104,7 @@ i{
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.6 -->
+
 	{{-- {{ url("assets/reseller_assets/revslider/public/assets/css/settings.css")}} --}}
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/bootstrap/css/bootstrap.min.css') }}">
 	<!-- Font Awesome -->
@@ -111,11 +112,11 @@ i{
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/AdminLTE.min.css') }}">
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/AdminLTE.css') }}">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/skins/skin-red.css') }}">
+
 	<!-- iCheck -->
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/plugins/iCheck/flat/blue.css') }}">
 	<!-- Morris chart -->
@@ -140,7 +141,7 @@ i{
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/main.css')}}">
 	<link rel="stylesheet" href="{{ url('assets/reseller_assets/dist/css/bootstrap.min.css')}}">
 
-    
+
     {!! Html::script('assets/bootstrap/js/bootstrap.min.js') !!}
     
     {!! Html::script('assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js') !!}

@@ -21,6 +21,11 @@ body {
 	font-family: 'Open Sans', sans-serif;
 
 }
+
+.carousel {
+	min-height: 655px;
+}
+
 .site-name {
 	font-family: 'Slabo 27px', serif;
 	color:white;
