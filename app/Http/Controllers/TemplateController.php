@@ -100,7 +100,7 @@ class TemplateController extends Controller{
         
         // die($templat_name);
  // ***************** for pages and navbar ***************************
-        $menus = DB::table('menus')->where('site_id',$site_id)->get();
+        $menus = DB::table('menus')->where('site_id',$site_id)->where('deleted_at',null)->get();
         $pages = DB::table('pages')->where('site_id',$site_id)->where('type_static',0)->get();
         $en_menupages = array();
         $ar_menupages = array();
@@ -116,7 +116,7 @@ class TemplateController extends Controller{
         	}
         }
  // var_dump($en_menupages);
- // var_dump($ar_menupages);die();
+ // var_dump($urlpages);die();
 
         // ***************** for pages and navbar for display menu of page that outside main web page ***************************
         $en_outside_menupages=[];
