@@ -11,17 +11,28 @@ use App\Page;
 use App\Message;
 use DB;
 use Session;
+
 class MenuController extends Controller
 {
     public function index(){
         if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
      //    $rows=Menu::where('site_id', $site_id)->get();
      //    // $rows=$rows[0]->page;
      //    var_dump($rows[0]->page);
@@ -39,7 +50,7 @@ class MenuController extends Controller
 
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
-        return  view ('menu.index',['rows'=>$rows,'count_message'=>$count_message]);
+        return  view ('menu.index',['rows'=>$rows,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
         // var_dump($rows);
      }
 
@@ -55,12 +66,19 @@ class MenuController extends Controller
         {
             $menus=DB::table('menus')->where('site_id',Session::get('user_id'))->get();
             $pages=DB::table('pages')->where('site_id',Session::get('user_id'))->get();
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
          else
         {
             $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
             $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            
             $site_id=Auth::user()->site->id;
         }
 
@@ -77,7 +95,7 @@ class MenuController extends Controller
             $count_message=count($unseen_messages);
 
         // var_dump($menus);die();
-        return  view ('menu.create',['menus'=>$menus,'pages'=>$pages,'rows'=>$rows,'count_message'=>$count_message]);
+        return  view ('menu.create',['menus'=>$menus,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'rows'=>$rows,'count_message'=>$count_message]);
      }
 
     public function ajaxexite_menu($title,Request $request){
@@ -163,12 +181,19 @@ class MenuController extends Controller
                 $pages=DB::table('pages')->where('site_id',Session::get('user_id'))->get();
                 $sel_menu=DB::table('menus')->where('site_id',Session::get('user_id'))->where('id',$id)->first();
                 $sel_page=DB::table('pages')->where('site_id',Session::get('user_id'))->where('id',$sel_menu->route)->first();
-            }
-             else{
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+            
+            }else{
                 $menus=DB::table('menus')->where('site_id',Auth::user()->id)->get();
                 $pages=DB::table('pages')->where('site_id',Auth::user()->id)->get();
                 $sel_menu=DB::table('menus')->where('site_id',Auth::user()->id)->where('id',$id)->first();
                 $sel_page=DB::table('pages')->where('site_id',Auth::user()->id)->where('id',$sel_menu->route)->first();
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            
                 $site_id=Auth::user()->site->id; 
             }
 
@@ -184,7 +209,7 @@ class MenuController extends Controller
             $count_message=count($unseen_messages);
 
             // var_dump($menus);die();
-            return  view ('menu.edit',['menus'=>$menus,'pages'=>$pages,'row'=>$row,'rows'=>$rows,'sel_menu'=>$sel_menu,'sel_page'=>$sel_page,'count_message'=>$count_message]);
+            return  view ('menu.edit',['menus'=>$menus,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'row'=>$row,'rows'=>$rows,'sel_menu'=>$sel_menu,'sel_page'=>$sel_page,'count_message'=>$count_message]);
         
         } else{
             return  redirect ('/login');   

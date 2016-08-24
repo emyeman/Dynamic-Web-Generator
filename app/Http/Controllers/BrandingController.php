@@ -8,6 +8,7 @@ use Input;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Header;
+use App\Page;
 use DB;
 use Session;
 use App\Message; 
@@ -55,20 +56,28 @@ class BrandingController extends Controller {
              {
                 $branding = DB::table('headers')->where('site_id',Session::get('user_id'))->get();
                 // return view('branding.index')->withBranding($this->site->header);
-                 $site_id = Session::get('user_id');
+                 $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
              }
              else
              {
                 $branding = DB::table('headers')->where('site_id',Auth::user()->id)->get();
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
                 $site_id=Auth::user()->site->id;
              }
-        
+            
+             $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
 
              if($branding != null)
              {
-                return view('branding.index',compact('count_message'))->withBranding($branding);
+                return view('branding.index',compact('categories','subcategories','pages','count_message'))->withBranding($branding);
              }
              else
              {
@@ -76,7 +85,28 @@ class BrandingController extends Controller {
              }
         }catch (\Exception $e) {
             $branding = DB::table('headers')->where('site_id',Session::get('user_id'))->get();
-            return view('branding.index',compact('branding','count_message'));    
+
+             if(Auth::user()->status == 'reseller')
+             {
+                 $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+             }
+             else
+             {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;
+             }
+            
+             $pages = DB::table('pages')->where('site_id',$site_id)->get();
+             
+             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
+            $count_message=count($unseen_messages);
+
+            return view('branding.index',compact('categories','subcategories','pages','branding','count_message'));    
         }
     }
 
@@ -98,15 +128,25 @@ class BrandingController extends Controller {
             {
                if(Auth::user()->status == 'reseller')
                 {
-                    $site_id = Session::get('user_id');
+                    $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                            //select all subcategories have category_id
+                    $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                    $site_id=Session::get('user_id');
                 }
                 else
                 {
-                    $site_id=Auth::user()->site->id;
+                    $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                             //select all subcategories have category_id
+                    $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                    $site_id=Auth::user()->site->id;    
                 }
+
+                // $pages=Page::where('site_id', $site_id)->get();
+                 $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
                 $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
                 $count_message=count($unseen_messages);
-                return view('branding.create',compact('count_message'));
+                return view('branding.create',compact('categories','subcategories','pages','count_message'));
             }
         }
         catch (\Exception $e) {
@@ -170,17 +210,27 @@ class BrandingController extends Controller {
 
     public function edit(Header $header) {
          if(Auth::user()->status == 'reseller')
-        {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id=Auth::user()->site->id;
-        }
+            {
+                $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                        //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
+                $site_id=Session::get('user_id');
+            }
+            else
+            {
+                $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                         //select all subcategories have category_id
+                $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+                $site_id=Auth::user()->site->id;    
+            }
+
+            // $pages=Page::where('site_id', $site_id)->get();
+             $pages = DB::table('pages')->where('site_id',$site_id)->get();
+            
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-        return view('branding.edit',compact('header','count_message'));
+        return view('branding.edit',compact('categories','subcategories','pages','header','count_message'));
     }
 
     public function update(Request $request, Header $header) {

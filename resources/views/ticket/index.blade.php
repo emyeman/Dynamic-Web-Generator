@@ -15,11 +15,13 @@
         </div> -->
 
     <div class="row text-uppercase" style="text-align: center;">
-        <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/14-c.png')}}" class="img-responsive"> 
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <img style="min-width: 30%;" src="{{url('assets/reseller_assets/images/14-c.png')}}" class="img-responsive"> 
         </div>
-
-       <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc; ">  
+        </div>
+        <br/>
+       <!-- <hr style="display: inline-block; width: 50px; height: 2px; background: #cccccc; ">   -->
         </div>
 
     @if(Session::has('update_success'))

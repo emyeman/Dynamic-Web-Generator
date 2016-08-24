@@ -10,10 +10,11 @@
 
 <!-- Main content -->
         <section class="content">
-        <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/3c.png')}}" class="img-responsive"> 
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4"> 
+        <img style="min-width: 30%;" src="{{url('assets/reseller_assets/images/3c.png')}}" class="img-responsive"> 
         </div>
-    
+        </div>
     @if(Session::has('update_success'))
         <div class="alert alert-success alert-autocloseable" role="alert">{{session('update_success')}}</div>
     @endif

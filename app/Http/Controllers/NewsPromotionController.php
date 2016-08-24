@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
  use App\Message;
+ use App\Page;
 use App\NewsPromotion;
 use Auth;
 use Illuminate\Support\Facades\Storage;
@@ -43,31 +44,34 @@ class NewsPromotionController extends Controller
         if( !($type == 'promotion' || $type == 'news')) //prevent sending wrong type, only 1 or 0 are acceptable
             abort(500);
 
+       
         if(Auth::user()->status == 'reseller')
         {
-            $site_id = Session::get('user_id');
-        }
-        else
-        {
-            $site_id = Auth::user()->site->id;
-        }
-       // site_id == user_id , becuase of the 1:1 relationship
-
-        $rows=NewsPromotion::where('site_id', $site_id)
-                            ->where('type',$type)
-                            ->get();
-        if(Auth::user()->status == 'reseller')
-        {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
+        // site_id == user_id , becuase of the 1:1 relationship
+        $rows=NewsPromotion::where('site_id', $site_id)
+                            ->where('type',$type)
+                            ->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-        return  view ('news_promotion.index',['rows'=>$rows,'type'=>$type,'count_message'=>$count_message]);
+        return  view ('news_promotion.index',['rows'=>$rows,'type'=>$type,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
 
      }
 
@@ -81,16 +85,26 @@ class NewsPromotionController extends Controller
             abort(500);
         if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-        return  view ('news_promotion.create',['type'=>$type,'count_message'=>$count_message]);
+        return  view ('news_promotion.create',['type'=>$type,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
      }
 
      public function ajaxexite_news_promotion(Request $request){
@@ -190,18 +204,29 @@ class NewsPromotionController extends Controller
                 abort(403);
             }
         }
+
         if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
         
-		return  view ('news_promotion.edit',['row'=>$row,'count_message'=>$count_message]);
+		return  view ('news_promotion.edit',['row'=>$row,'categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
      }
 
 

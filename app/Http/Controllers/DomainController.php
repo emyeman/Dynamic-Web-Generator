@@ -14,6 +14,7 @@ use Illuminate\Mail\Mailer;
 use Mail;
 use View;
 use App\Message;
+use App\Page;
 
 class DomainController extends Controller
 {
@@ -22,20 +23,28 @@ class DomainController extends Controller
         if(Auth::user()->status == 'reseller')
         {
             $domain = DB::table('domains')->where('site_id',Session::get('user_id'))->first();
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
 
         }
         else
         {
             $domain = DB::table('domains')->where('site_id',Auth::user()->site->id)->first();
-            $site_id=Auth::user()->site->id;    
+             $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            $site_id=Auth::user()->site->id;     
         }
         
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
         
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
 
-		return  view('domain.index',compact('domain','count_message'));
+		return  view('domain.index',compact('categories','subcategories','pages','domain','count_message'));
     }
 
 
@@ -250,16 +259,26 @@ class DomainController extends Controller
      public function create(){
         if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
      
-        return  view('domain.create',['count_message'=>$count_message]);
+        return  view('domain.create',['categories'=>$categories,'subcategories'=>$subcategories,'pages'=>$pages,'count_message'=>$count_message]);
      }
 
 
@@ -295,16 +314,26 @@ class DomainController extends Controller
      public function edit(Domain $domain){
          if(Auth::user()->status == 'reseller')
         {
+            $categories = DB::table('categories')->where('site_id',Session::get('user_id'))->get();
+                    //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Session::get('user_id'))->whereNotNull('category_id')->get();
             $site_id=Session::get('user_id');
         }
         else
         {
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
             $site_id=Auth::user()->site->id;    
         }
+
+        // $pages=Page::where('site_id', $site_id)->get();
+        $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
         $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
         $count_message=count($unseen_messages);
      
-		return  view('domain.edit',compact('domain','count_message'));
+		return  view('domain.edit',compact('categories','subcategories','pages','domain','count_message'));
      }
 
 

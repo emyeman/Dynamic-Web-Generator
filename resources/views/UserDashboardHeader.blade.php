@@ -26,6 +26,7 @@
 				<li><a href="{{ url('/branding') }}"><i class="fa fa-circle-o"></i> Show Branding</a></li>
 			</ul>
 		</li>
+
 		<li class="treeview">
 			<a href="#">
 				<i class="fa fa-pie-chart"></i>
@@ -37,18 +38,38 @@
 				<li><a href="{{ url('/category/create')}}"><i class="fa fa-circle-o"></i> Add NewCategories</a></li>
 			</ul>
 		</li>
-		<li class="treeview">
-			<a href="#">
-				<i class="fa fa-database"></i>
-				<span>Sub Categories</span>
-				<i class="fa fa-angle-left pull-right"></i>
-			</a>
-			<ul class="treeview-menu">
-			    <li><a href="{{ url('/subcategory')}}"><i class="fa fa-circle-o"></i>Show Sub Categories</a></li>
-				<li><a href="{{ url('/subcategory/create')}}"><i class="fa fa-circle-o"></i>Add Sub Categories</a></li>
-				
-			</ul>
-		</li>
+
+		@if($categories)
+			<li class="treeview">
+				<a href="#">
+					<i class="fa fa-database"></i>
+					<span>Sub Categories</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+				    <li><a href="{{ url('/subcategory')}}"><i class="fa fa-circle-o"></i>Show Sub Categories</a></li>
+					<li><a href="{{ url('/subcategory/create')}}"><i class="fa fa-circle-o"></i>Add Sub Categories</a></li>
+					
+				</ul>
+			</li>
+
+		@else
+			<li class="treeview dropdown messages-menu">
+				<a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-database"></i>
+					<span>Sub Categories</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="dropdown-menu extended notification">
+           
+                    <li class="footer">
+                        <p>Plz,Add Category First</p>
+                    </li>
+                </ul>
+			</li>
+		@endif
+
+		@if($subcategories)
 		<li class="treeview">
 			<a href="#">
 				<i class="fa fa-product-hunt"></i> <span>Products</span>
@@ -59,6 +80,34 @@
 				<li><a href="{{ url('/product/create')}}"><i class="fa fa-circle-o"></i> Add Products</a></li>
 			</ul>
 		</li>
+		@elseif($categories)
+			<li class="treeview dropdown messages-menu">
+				<a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-product-hunt"></i> <span>Products</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="dropdown-menu extended notification">
+           
+                    <li class="footer">
+                        <p>Plz,Add Sub Category First</p>
+                    </li>
+                </ul>
+			</li>
+		@else
+			<li class="treeview dropdown messages-menu">
+				<a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-product-hunt"></i> <span>Products</span>
+					<i class="fa fa-angle-left pull-right"></i>	
+				</a>
+				<ul class="dropdown-menu extended notification">
+           
+                    <li class="footer">
+                        <p>Plz,Add Category First</p>
+                    </li>
+                </ul>
+			</li>		
+		@endif
+
 		<li class="treeview">
 			<a href="#">
 				<i class="fa fa-slideshare"></i> <span>Crusal</span>
@@ -104,6 +153,7 @@
 			</ul>
 		</li>
 
+		@if($pages)
 		<li class="treeview">
 			<a href="#">
 				<i class="fa fa-bars"></i> <span>Menus</span>
@@ -114,7 +164,20 @@
 				<li><a href="{{ url('/menu/create')}}"><i class="fa fa-circle-o"></i> Add Menu</a></li>
 			</ul>
 		</li>
-
+		@else
+			<li class="treeview dropdown messages-menu">
+				<a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-bars"></i> <span>Menus</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="dropdown-menu extended notification">
+           
+                    <li class="footer">
+                        <p>Plz,Add Page First</p>
+                    </li>
+                </ul>
+			</li>		
+		@endif
 		<li class="treeview">
 			<a href="#">
 				<i class="fa fa-archive"></i> <span>Services</span>

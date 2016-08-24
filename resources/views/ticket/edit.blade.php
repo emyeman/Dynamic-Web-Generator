@@ -7,8 +7,10 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                        <div>
-                        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/14-b.png')}}" class="img-responsive"> 
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4">
+                            <img style="min-width: 30%;" src="{{url('assets/reseller_assets/images/14-b.png')}}" class="img-responsive"> 
+                            </div>
                         </div>
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">

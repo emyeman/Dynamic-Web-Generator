@@ -8,8 +8,10 @@
 
             <section class="content">
     <div class="row text-uppercase" style="text-align: center;">
-        <div>
-        <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/7c.png')}}" class="img-responsive"> 
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4"> 
+        <img style="min-width: 30%;" src="{{url('assets/reseller_assets/images/7c.png')}}" class="img-responsive"> 
+        </div>
         </div>
        <hr style="display: inline-block; width: 40px; height: 2px; background: #cccccc; margin-bottom: 75px;">  
         </div>

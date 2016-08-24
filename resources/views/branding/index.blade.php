@@ -9,8 +9,10 @@
 <div class="col-sm-9">
         <div class="row">
             <div class="col-lg-12">
-                <div>
-                <img style="min-width: 30%; margin-left: 400px;" src="{{url('assets/reseller_assets/images/3.png')}}" class="img-responsive"> 
+                <div class="row">
+        <div class="col-md-4 col-md-offset-4"> 
+                <img style="min-width: 30%;" src="{{url('assets/reseller_assets/images/3.png')}}" class="img-responsive"> 
+                </div>
                 </div>
             </div>
         </div>

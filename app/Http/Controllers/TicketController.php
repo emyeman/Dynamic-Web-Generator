@@ -10,6 +10,7 @@ use App\Ticket;
 use App\User;
 use App\Domain;
 use App\Message;
+use App\Page;
 // use Request;
 use Auth;
 use \Input as Input;   //or use this -------->  use Illuminate\Support\Facades\Input as input;
@@ -63,11 +64,18 @@ class TicketController extends Controller
             $user=DB::table('users')->where('id',Auth::user()->id)->first();
             $reseller=DB::table('users')->where('id',$user->user_id)->first();
             
-            $site_id=Auth::user()->site->id;    
+            $site_id=Auth::user()->site->id;
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+                
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
          
-            return  view ('ticket.index',compact('tickets','user','reseller' ,'count_message'));
+            return  view ('ticket.index',compact('categories','subcategories','pages','tickets','user','reseller' ,'count_message'));
        } else{
             return  redirect ('/login');   
        }
@@ -142,11 +150,19 @@ class TicketController extends Controller
                 array_push($user_comments, $user_comment);
             }
  // var_dump($user_comments);die();
-             $site_id=Auth::user()->site->id;    
+
+            $site_id=Auth::user()->site->id;  
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get();
+
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
 
-            return view('ticket.show',compact('ticket','user','reseller','comments','user_comments','count_message'));
+            return view('ticket.show',compact('categories','subcategories','pages','ticket','user','reseller','comments','user_comments','count_message'));
         } else{
             return  redirect ('/login');   
         }    
@@ -228,11 +244,19 @@ class TicketController extends Controller
             }else{
                $reseller=DB::table('users')->where('id',$user->user_id)->first();
             }
-            $site_id=Auth::user()->site->id;    
+
+            $site_id=Auth::user()->site->id;
+            $categories = DB::table('categories')->where('site_id',Auth::user()->id)->get();
+                     //select all subcategories have category_id
+            $subcategories =DB::table('categories')->where('site_id',Auth::user()->id)->whereNotNull('category_id')->get();
+            
+            // $pages=Page::where('site_id', $site_id)->get();
+            $pages = DB::table('pages')->where('site_id',$site_id)->get(); 
+               
             $unseen_messages=Message::where('is_seen','=',false)->where('site_id','=',$site_id)->get();
             $count_message=count($unseen_messages);
 
-            return  view ('ticket.create',compact('user','reseller','count_message'));
+            return  view ('ticket.create',compact('categories','subcategories','pages','user','reseller','count_message'));
         }else{
             return  redirect ('/login');   
         }
