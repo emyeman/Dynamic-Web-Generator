@@ -82,7 +82,7 @@
                 @for ($x = 0; $x < count($url_outside_pages); $x++)
                     <li>
                         @if($fstatic==0)
-                            <a class="active"  href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$ar_outside_menupages[$x]}}</a>
+                            <a class="active"  href="#head">{{$ar_outside_menupages[$x]}}</a>
                             <?php $fstatic=1;?>
                         @else
                             <a  href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$ar_outside_menupages[$x]}}</a>
@@ -112,7 +112,7 @@
 
                         @if($urlpages[$x]=='page_top')
                              <li>
-                                <a class="notaDiv" href="#head">{{$ar_menupages[$x]}}</a>
+                                <a class="notaDiv" href="{{url($subdomain.'/ar')}}">{{$ar_menupages[$x]}}</a>
                             </li>
                         @endif 
                         @if($urlpages[$x]=='services')   
@@ -159,7 +159,7 @@
                             @for ($x = 0; $x < count($url_outside_pages); $x++)
                                 <li>
                                     @if($fstaic==0)
-                                        <a class="active"  href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$ar_outside_menupages[$x]}}</a>
+                                        <a class="active"  href="#head">{{$ar_outside_menupages[$x]}}</a>
                                         <?php $fstaic=1;?>
                                     @else
                                         <a  href="#{{str_replace(' ', '', str_replace('&', '', $url_outside_pages[$x]))}}">{{$ar_outside_menupages[$x]}}</a>
@@ -192,10 +192,16 @@
 
 <!-- ========================================================= -->
 <!-- start staticpage -->
-
+<?php $headstaic=0;?>
 @for($static=0; $static< count($url_outside_pages);$static++) 
 
+@if($headstaic==0)
+<section class="section" id="head">
+<?php $headstaic=1;?>
+@else
 <section class="section" id="<?php echo str_replace(' ', '', str_replace('&', '', $pagearray_static[$static]));?>">
+@endif  
+
     <div class="container">
     
         <h2 class="text-center title"><?php echo $staticpages[$static];?></h2>
