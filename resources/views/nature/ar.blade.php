@@ -107,6 +107,8 @@
     .hover-text h2{
         color:{{ $mysite[0]->text_color }};
     }
+
+
   </style>
 
   </head>
@@ -362,7 +364,7 @@
             @for($i = 0; $i < count($services) ; $i++)
                  @if($i <= 1)
                   <div class="col-md-3 col-sm-6 service wow fadeInLeft" data-wow-delay="0.2s">
-                      <i class="glyphicon {{ $services[$i]->icon }}"></i>
+                      <i class="glyphicon {{ $services[$i]->icon }}" style="font-size: 50px;color:{{ $mysite[0]->text_color }};"></i>
                       <h4><strong>{{ $services[$i]->ar_title }}</strong></h4>
                       <p>{{ $services[$i]->ar_description }}</p>
                   </div>
@@ -396,7 +398,7 @@
                     </div>
                 </div>
                 <div class="wow bounceInRight">
-                <div id="clients" class="owl-carousel owl-theme ">
+                <div id="clients" class="owl-carousel owl-theme">
 
 
                 @foreach($promotions as $promotion)

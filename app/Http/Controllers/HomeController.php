@@ -26,39 +26,62 @@ class HomeController extends Controller
 
     public function index()
     {
+//        if (isset($_SERVER['HTTP_COOKIE'])) {
+//            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+//            foreach($cookies as $cookie) {
+//                $parts = explode('=', $cookie);
+//                $name = trim($parts[0]);
+//                setcookie($name, '', time()-1000);
+//                setcookie($name, '', time()-1000, '/');
+//            }
+//        }
+
+
         if(isset(Auth::user()->id))
         {
             $site =Auth::user()->site()->first()['attributes']['id'];
             // $site = Site::find(Auth::user()->id);
             if($site)
             {
-                return view('home',compact('site'));            
+                return redirect('/dashboard');
             }
-        }
-        try {                   
-                if(Auth::user()->status == 'reseller')
+
+            if(Auth::user()->status == 'reseller')
+            {
+                return redirect('/reseller');
+            }
+            else
+            {
+                $firstvisitsite = '';
+                if (!isset($_COOKIE['firsttimesite']))
                 {
-                    return redirect('/reseller');
+                    $firstvisitsite = 'yes';
+                    setcookie("firsttimesite", "no");
+                    return view('home',compact("firstvisitsite"));
                 }
                 else
                 {
-                    $firstvisit = '';
-                    if (!isset($_COOKIE['firsttime']))
-                    {
-                        $firstvisit = 'yes';
-                        setcookie("firsttime", "no");
-                        return view('home',compact("firstvisit"));
-                    }
-                    else
-                    {
-                        $firstvisit = 'no';
-                        return view('home',compact("firstvisit"));
-                    } 
-                }    
+                    $firstvisitsite = 'no';
+                    return view('home',compact("firstvisitsite"));
+                }
             }
-        catch (\Exception $e) {
-
-                return view('home');
         }
+
+
+        $firstvisit = '';
+        if (!isset($_COOKIE['firsttime']))
+        {
+            $firstvisit = 'yes';
+            setcookie("firsttime", "no");
+            return view('home',compact("firstvisit"));
+        }
+        else
+        {
+            $firstvisit = 'no';
+            return view('home',compact("firstvisit"));
+        }
+
+
+
     }
 }

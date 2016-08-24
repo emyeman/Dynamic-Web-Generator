@@ -210,17 +210,31 @@
 
         <!-- notify the user -->
         <div class="clear" style="margin-left:1050px;">
-             <i class="glyphicon glyphicon-arrow-right" aria-hidden="true"></i>
+             <i class="glyphicon glyphicon-arrow-right registerarrow" aria-hidden="true"></i>
                             <style>
-                             .glyphicon-arrow-right
+                             .registerarrow
                              {
                                 font-size: 40px;
                                 color: #c3593e;
-                                margin-top: 100px;
+                                margin-top: 60px;
                              }  
                             </style>
         </div>
         <!-- end notify the user -->
+
+        <!-- notify the user to create web site -->
+        <div class="clear" style="margin-left:1050px;">
+            <i class="glyphicon glyphicon-arrow-right sitearrow" aria-hidden="true"></i>
+            <style>
+                .sitearrow
+                {
+                    font-size: 40px;
+                    color: #c3593e;
+                    margin-top: 100px;
+                }
+            </style>
+        </div>
+        <!-- notify the user to create web site -->
 
     </div>
 
@@ -1522,26 +1536,71 @@
                         }
                     });
                 };
-            animatethis($('.glyphicon-arrow-right'), 1000); 
+            animatethis($('.registerarrow'), 1000);
 
             $("div[class='dropdown-content']").slideDown();
-            $("a:contains('Create')").css('background-color', '#c3593e');
+            $("a:contains('Make')").css('background-color', '#c3593e');
             }) 
     </script>
     @else
         <script>
             $(document).ready(function() {
-               $('.glyphicon-arrow-right').css('display', 'none');
+               $('.registerarrow').css('display', 'none');
             })
         </script>
     @endif
 @else
      <script>
             $(document).ready(function() {
-               $('.glyphicon-arrow-right').css('display', 'none');
+               $('.registerarrow').css('display', 'none');
             })
         </script>
 @endif
+
+
+
+@if(isset($firstvisitsite))
+    @if($firstvisitsite == 'yes')
+        <script>
+            $(document).ready(function() {
+                function animatethis(targetElement, speed) {
+                    $(targetElement).animate({ marginLeft: "+=50px"},
+                            {
+                                duration: speed,
+                                complete: function ()
+                                {
+                                    targetElement.animate({ marginLeft: "-=50px" },
+                                            {
+                                                duration: speed,
+                                                complete: function ()
+                                                {
+                                                    animatethis(targetElement, speed);
+                                                }
+                                            });
+                                }
+                            });
+                };
+                animatethis($('.sitearrow'), 1000);
+
+                $("div[class='dropdown-content']").slideDown();
+                $("a:contains('Create')").css('background-color', '#c3593e');
+            })
+        </script>
+    @else
+        <script>
+            $(document).ready(function() {
+                $('.sitearrow').css('display', 'none');
+            })
+        </script>
+    @endif
+@else
+    <script>
+        $(document).ready(function() {
+            $('.sitearrow').css('display', 'none');
+        })
+    </script>
+@endif
+
 
 
 <script>
