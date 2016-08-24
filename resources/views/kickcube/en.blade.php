@@ -93,6 +93,28 @@
         border-color: {{ $mysite[0]->primary_color }};
         color: {{ $mysite[0]->primary_color }};
     }
+    .hover-text h2{
+        color:{{ $mysite[0]->text_color }};
+    }
+
+
+    /*the service icon*/
+    .icon-effect-2 {
+        background: #fff;
+        -webkit-transition: color 0.4s;
+        -moz-transition: color 0.4s;
+        transition: color 0.4s;
+    }
+    .icon-effect-2 {
+        color: {{ $mysite[0]->text_color }};
+        box-shadow: 0 0 0 3px {{ $mysite[0]->text_color }};
+        -o-box-shadow: 0 0 0 3px {{ $mysite[0]->text_color }};
+        -moz-box-shadow: 0 0 0 3px {{ $mysite[0]->text_color }};
+        -webkit-box-shadow: 0 0 0 3px {{ $mysite[0]->text_color }};
+    }
+    .icon-effect-2:after {
+        background-color: {{ $mysite[0]->text_color }};
+    }
   </style>
 
   <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -721,7 +743,7 @@
                                 <div class="hover-bg">
                                     <a data-toggle="modal" href="#product{{ $product->id }}">
                                         <div class="hover-text">
-                                            <h4>{{ $product->name }}</h4>
+                                            <h2>{{ $product->name }}</h2>
                                             <small>{{ $product->price }}</small>
                                             <div class="clearfix"></div>
                                             <i class="fa fa-plus"></i>
@@ -754,6 +776,9 @@
                                         <hr>
                                         <div class="col-md-12">
                                             <h2 class="big-title text-center"> {{ $product->name }}</h2>
+                                            <p class="text-center">
+                                                {{ $product->description }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -901,6 +926,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <p> {{ $promotion->description }}</p>
+                                        <p ><strong>From:</strong>{{ $promotion->start_date }}</p>
+                                        <p ><strong>To:</strong>{{ $promotion->end_date }}</p>
                                     </div>
                                 </div>
                             </div>

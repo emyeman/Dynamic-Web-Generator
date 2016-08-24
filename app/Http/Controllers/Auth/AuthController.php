@@ -56,6 +56,11 @@ class AuthController extends Controller
         if (\Auth::user()->status == 'reseller') {
             return '/reseller';
         }
+        if(\Auth::user()->access_status == 'banned')
+        {
+            Auth::logout();
+            return '/';
+        }
         return '/';
     }
 

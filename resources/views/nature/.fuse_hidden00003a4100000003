@@ -107,11 +107,6 @@
       button.btn.tf-btn.btn-default {
      background: {{ $mysite[0]->primary_color }};
   }
-      .hover-text h2{
-          color:{{ $mysite[0]->text_color }};
-      }
-
-
   </style>
 
   </head>
@@ -247,21 +242,21 @@
             @endif
             @if($urlpages[$x]=='news')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findnews=1;
                 $mynews=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='promotion')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                 <?php $findpromotion=1;
                 $mypromotion=$en_menupages[$x];?>
             @endif
             @if($urlpages[$x]=='contact')
                 <li>
-                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{$en_menupages[$x]}}</a>
+                    <a class="page-scroll" href="#{{$urlpages[$x]}}">{{trans('arabic_english.'.$en_menupages[$x])}}</a>
                 </li>
                  <?php $findcontact=1;
                  $mycontact=$en_menupages[$x];?>
@@ -376,7 +371,7 @@
                @for($i = 0; $i < count($services) ; $i++)
                  @if($i <= 1)
                   <div class="col-md-3 col-sm-6 service wow fadeInLeft" data-wow-delay="0.2s">
-                      <i class="glyphicon {{ $services[$i]->icon }}" style="font-size: 50px;color:{{ $mysite[0]->text_color }};"></i>
+                      <i class="glyphicon {{ $services[$i]->icon }}"></i>
                       <h4><strong>{{ $services[$i]->title }}</strong></h4>
                       <p>{{ $services[$i]->description }}</p>
                   </div>
@@ -408,9 +403,10 @@
                     </div>
                 </div>
                <div class="wow bounceInRight" >
-                <div id="clients" class="owl-carousel owl-theme " style="display:block">
+                <div id="clients" class="owl-carousel owl-theme ">
 
                 @foreach($promotions as $promotion)
+
                     <div class="item">
                         <a href="#{{ $promotion->id }}"  data-toggle="modal" data-target="#{{ $promotion->id }}">
                         <div class="panel">
@@ -510,12 +506,12 @@
                             <div class="hover-bg">
                                 <a data-toggle="modal" href="#product{{ $product->id }}">
                                     <div class="hover-text">
-                                        <h2>{{ $product->name }}</h2>
+                                        <h4 style="color:white">{{ $product->name }}</h4>
                                         <small style="color:white">{{ $product->price }}</small>
                                         <div class="clearfix"></div>
                                         <i class="fa fa-plus"></i>
                                     </div>
-                                    <img src="{{ url('/assets/images') }}/{{$product->image}}" style="width:300px;height:300px;" class="img-responsive" alt="...">
+                                    <img src="{{ url('/assets/images') }}/{{$product->image}}" class="img-responsive" alt="...">
                                 </a>
                             </div>
                         </div>
@@ -571,7 +567,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <div id="testimonial" class="owl-carousel owl-theme" style="display:block">
+                        <div id="testimonial" class="owl-carousel owl-theme">
                         <?php $news  = array_slice($news, -3); ?>
                         @foreach($news as $new)
                           <div class="item wow lightSpeedIn">

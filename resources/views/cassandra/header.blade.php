@@ -15,6 +15,9 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{url('assets/css/magister.css')}}">
 
+
+
+
    <!-- Fonts -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     

@@ -95,6 +95,27 @@
         border-color: {{ $mysite[0]->primary_color }};
         color: {{ $mysite[0]->primary_color }};
     }
+    .hover-text h2{
+        color:{{ $mysite[0]->text_color }};
+    }
+
+    /*the service icon*/
+    .icon-effect-2 {
+        background: #fff;
+        -webkit-transition: color 0.4s;
+        -moz-transition: color 0.4s;
+        transition: color 0.4s;
+    }
+    .icon-effect-2 {
+        color: {{ $mysite[0]->text_color }};
+        box-shadow: 0 0 0 3px #ee3733;
+        -o-box-shadow: 0 0 0 3px #ee3733;
+        -moz-box-shadow: 0 0 0 3px #ee3733;
+        -webkit-box-shadow: 0 0 0 3px #ee3733;
+    }
+    .icon-effect-2:after {
+        background-color: {{ $mysite[0]->text_color }};
+    }
   </style>
 
   
@@ -723,7 +744,7 @@
                                     <div class="hover-bg">
                                         <a data-toggle="modal" href="#product{{ $product->id }}">
                                             <div class="hover-text">
-                                                <h4>{{ $product->ar_name }}</h4>
+                                                <h2>{{ $product->ar_name }}</h2>
                                                 <small>{{ $product->ar_price }}</small>
                                                 <div class="clearfix"></div>
                                                 <i class="fa fa-plus"></i>
@@ -755,6 +776,9 @@
                                         <hr>
                                         <div class="col-md-12">
                                             <h2 class="big-title text-center"> {{ $product->ar_name }}</h2>
+                                            <p class="text-center">
+                                                {{ $product->ar_description }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -906,6 +930,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <p> {{ $promotion->ar_description }}</p>
+                                        <p ><strong>From:</strong>{{ $promotion->start_date }}</p>
+                                        <p ><strong>To:</strong>{{ $promotion->end_date }}</p>
                                     </div>
                                 </div>
                             </div>

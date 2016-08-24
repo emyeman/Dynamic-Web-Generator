@@ -214,7 +214,7 @@
 </header>
 @endif
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="min-height: 655px;">
 
 @if(isset($crusals) && $crusals != null)
 <!-- Wrapper for slides -->
@@ -255,7 +255,7 @@
 
 @endif
 <div class="section_space"></div>
-
+</div>
 <!-- <div class="line">
 <hr>
 </div>
